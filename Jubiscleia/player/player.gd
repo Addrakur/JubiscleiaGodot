@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@onready var jump_cd: Timer = $JumpCD
 
 @export var speed: float = 300.0
 @export var jump_force: float = -400.0
@@ -26,10 +27,13 @@ func move_player(delta) -> void:
 		can_jump = true
 		jump_count = 0
 	
-	if Input.is_action_just_pressed("jump") and jump_count < max_jump_count: # Faz o player pular
+	#if Input.is_action_just_pressed("jump") and jump_count < max_jump_count: # Faz o player pular
+	#	velocity.y = jump_force
+	#	jump_count += 1
+	
+	if Input.is_action_pressed("jump") and jump_count < max_jump_count:
 		velocity.y = jump_force
 		jump_count += 1
 	
 	velocity.x = direction * speed
 	
-	pass
