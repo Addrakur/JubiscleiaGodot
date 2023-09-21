@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://g5ygoqs8aqtn"]
+
+[ext_resource type="PackedScene" uid="uid://bjnydnpb0bjuf" path="res://player/player.tscn" id="2_c3vei"]
+
+[sub_resource type="GDScript" id="GDScript_pppg1"]
+script/source = "extends StaticBody2D
+
+@onready var polygon2D: Polygon2D = $Polygon2D
+@onready var collision_polygon_2d: CollisionPolygon2D = $CollisionPolygon2D
+
+func _ready() -> void:
+	collision_polygon_2d.polygon = polygon2D.polygon
+"
+
+[node name="LevelTest" type="Node2D"]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+collision_layer = 3
+script = SubResource("GDScript_pppg1")
+
+[node name="Polygon2D" type="Polygon2D" parent="Ground"]
+invert_border = 1.0
+polygon = PackedVector2Array(0, 128, 0, 640, 1312, 640, 1312, 128, 64, 128, 64, 192, 1248, 192, 1248, 576, 416, 576, 416, 480, 352, 480, 352, 576, 64, 576, 64, 128)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
+
+[node name="player" parent="." instance=ExtResource("2_c3vei")]
+position = Vector2(144, 528)
