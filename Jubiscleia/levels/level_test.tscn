@@ -21,7 +21,7 @@ script = SubResource("GDScript_pppg1")
 
 [node name="Polygon2D" type="Polygon2D" parent="Ground"]
 invert_border = 1.0
-polygon = PackedVector2Array(0, 128, 0, 640, 1312, 640, 1312, 128, 64, 128, 64, 192, 1248, 192, 1248, 576, 416, 576, 416, 480, 352, 480, 352, 576, 64, 576, 64, 128)
+polygon = PackedVector2Array(0, 128, 0, 640, 1312, 640, 1312, 128, 64, 128, 64, 192, 1248, 192, 1248, 352, 1056, 352, 1056, 576, 416, 576, 416, 480, 352, 480, 352, 576, 64, 576, 64, 128)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
 
@@ -29,7 +29,7 @@ polygon = PackedVector2Array(0, 128, 0, 640, 1312, 640, 1312, 128, 64, 128, 64, 
 position = Vector2(144, 528)
 
 [node name="Plataform" parent="." instance=ExtResource("2_tceqm")]
-position = Vector2(512, 480)
+position = Vector2(576, 480)
 
 [node name="Plataform2" parent="." instance=ExtResource("2_tceqm")]
-position = Vector2(672, 384)
+position = Vector2(800, 384)
