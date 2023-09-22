@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var jump_height: float
 @export var jump_time_to_peak: float
 @export var jump_time_to_descent: float
+@export var jump_time_to_peak_mult: float
 var first_jump: bool
 var double_jump: bool
 
@@ -13,6 +14,7 @@ var jump_velocity: float
 var jump_gravity: float
 var fall_gravity: float
 
+var jump_timer: float = 0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -37,14 +39,15 @@ func move_player(delta) -> void:
 	else:
 		first_jump = true
 		double_jump = true
+		jump_timer = 0
 	
-	if Input.is_action_just_pressed("jump"):
-		if first_jump:
+	if Input.is_action_pressed("jump"):
+		if first_jump && jump_timer < jump_time_to_peak * jump_time_to_peak_mult:
 			velocity.y = jump_velocity
-			first_jump = false
-		elif double_jump:
+			jump_timer += delta
+		elif double_jump && jump_timer < jump_time_to_peak * jump_time_to_peak_mult:
 			velocity.y = jump_velocity
-			double_jump = false
+			jump_timer += delta
 	
 	velocity.x = direction * speed
 	
