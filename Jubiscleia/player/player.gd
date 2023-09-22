@@ -35,7 +35,6 @@ func move_player(delta) -> void:
 	
 	if not is_on_floor():  # Faz o player ser afetado pela gravidade
 		velocity.y += gravity * delta
-		first_jump = false
 	else:
 		first_jump = true
 		double_jump = true
@@ -48,6 +47,13 @@ func move_player(delta) -> void:
 		elif double_jump && jump_timer < jump_time_to_peak * jump_time_to_peak_mult:
 			velocity.y = jump_velocity
 			jump_timer += delta
+	
+	if Input.is_action_just_released("jump"):
+		if first_jump:
+			first_jump = false
+			jump_timer = 0
+		elif double_jump:
+			double_jump = false
 	
 	velocity.x = direction * speed
 	
