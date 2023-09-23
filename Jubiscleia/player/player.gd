@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var jump_time_to_peak_mult: float
 var first_jump: bool
 var double_jump: bool
+var is_jumping: bool
 
 var jump_velocity: float
 var jump_gravity: float
@@ -35,18 +36,23 @@ func move_player(delta) -> void:
 	
 	if not is_on_floor():  # Faz o player ser afetado pela gravidade
 		velocity.y += gravity * delta
+		if not is_jumping:
+			first_jump = false
 	else:
 		first_jump = true
 		double_jump = true
+		is_jumping = false
 		jump_timer = 0
 	
 	if Input.is_action_pressed("jump"):
 		if first_jump && jump_timer < jump_time_to_peak * jump_time_to_peak_mult:
 			velocity.y = jump_velocity
 			jump_timer += delta
+			is_jumping = true
 		elif double_jump && jump_timer < jump_time_to_peak * jump_time_to_peak_mult:
 			velocity.y = jump_velocity
 			jump_timer += delta
+			is_jumping = true
 	
 	if Input.is_action_just_released("jump"):
 		if first_jump:
