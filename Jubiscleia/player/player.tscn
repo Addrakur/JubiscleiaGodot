@@ -7,7 +7,7 @@ size = Vector2(30, 30)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_5lux4")
-speed = 200.0
+speed = 250.0
 jump_height = 20.0
 jump_time_to_peak = 0.12
 jump_time_to_descent = 0.15
