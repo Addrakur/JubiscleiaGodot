@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://drrt3ou6xbeyo"]
+[gd_scene load_steps=5 format=3 uid="uid://drrt3ou6xbeyo"]
 
 [ext_resource type="Script" path="res://Scripts/ground.gd" id="1_vp4k4"]
 [ext_resource type="PackedScene" uid="uid://bjnydnpb0bjuf" path="res://player/player.tscn" id="2_oy7pp"]
 [ext_resource type="PackedScene" uid="uid://bi6cc6w3ecvyj" path="res://objects/plataform.tscn" id="3_ficbx"]
+[ext_resource type="PackedScene" uid="uid://bx4lmho2y840s" path="res://enemy/enemy.tscn" id="4_jp6h7"]
 
 [node name="PrototypeLevel" type="Node2D"]
 
@@ -11,7 +12,7 @@ script = ExtResource("1_vp4k4")
 
 [node name="Polygon2D" type="Polygon2D" parent="Ground"]
 color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(0, 416, 768, 416, 768, 704, 2688, 704, 2688, 384, 2048, 384, 2048, 640, 1440, 640, 1440, 544, 1376, 544, 1376, 640, 1184, 640, 1184, 544, 1120, 544, 1120, 640, 832, 640, 832, 256, 608, 256, 576, 256, 576, 288, 544, 288, 544, 320, 512, 320, 512, 352, 64, 352, 64, 64, 2624, 64, 2624, 384, 2688, 384, 2688, 0, 0, 0)
+polygon = PackedVector2Array(0, 416, 768, 416, 768, 704, 2688, 704, 2688, 384, 2048, 384, 2048, 640, 1440, 640, 1440, 544, 1376, 544, 1376, 640, 1184, 640, 1184, 544, 1120, 544, 1120, 640, 832, 640, 832, 256, 608, 256, 576, 256, 576, 288, 544, 288, 544, 320, 512, 320, 512, 352, 64, 352, 64, 64, 928, 64, 928, 576, 992, 576, 992, 224, 1056, 192, 1088, 192, 1088, 160, 992, 160, 992, 64, 2624, 64, 2624, 384, 2688, 384, 2688, 0, 0, 0)
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Ground"]
 
@@ -22,6 +23,21 @@ position = Vector2(224, 288)
 
 [node name="Plataform" parent="Plataforms" instance=ExtResource("3_ficbx")]
 position = Vector2(832, 352)
+
+[node name="Plataform7" parent="Plataforms" instance=ExtResource("3_ficbx")]
+position = Vector2(832, 256)
+
+[node name="Plataform8" parent="Plataforms" instance=ExtResource("3_ficbx")]
+position = Vector2(1344, 352)
+
+[node name="Plataform9" parent="Plataforms" instance=ExtResource("3_ficbx")]
+position = Vector2(1088, 352)
+
+[node name="Plataform10" parent="Plataforms" instance=ExtResource("3_ficbx")]
+position = Vector2(1216, 256)
+
+[node name="Plataform11" parent="Plataforms" instance=ExtResource("3_ficbx")]
+position = Vector2(1088, 160)
 
 [node name="Plataform2" parent="Plataforms" instance=ExtResource("3_ficbx")]
 position = Vector2(832, 448)
@@ -37,3 +53,14 @@ position = Vector2(1696, 544)
 
 [node name="Plataform6" parent="Plataforms" instance=ExtResource("3_ficbx")]
 position = Vector2(1856, 448)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("4_jp6h7")]
+position = Vector2(1280, 608)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("4_jp6h7")]
+position = Vector2(1600, 608)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("4_jp6h7")]
+position = Vector2(2400, 352)
