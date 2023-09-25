@@ -3,7 +3,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mc3m"]
 size = Vector2(96, 8)
 
-[node name="Plataform" type="StaticBody2D"]
+[node name="Plataform" type="StaticBody2D" groups=["plataform"]]
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 color = Color(0.180392, 0.207843, 1, 1)
