@@ -1,9 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjnydnpb0bjuf"]
+[gd_scene load_steps=6 format=3 uid="uid://bjnydnpb0bjuf"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttoyg"]
 size = Vector2(30, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jx0u7"]
+size = Vector2(64, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83ogw"]
+size = Vector2(32, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c0rd4"]
+size = Vector2(32, 32)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_5lux4")
@@ -23,3 +32,20 @@ shape = SubResource("RectangleShape2D_ttoyg")
 [node name="Camera" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
+
+[node name="AttackArea" type="Area2D" parent="."]
+
+[node name="AttackAreaSide" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(48, 0)
+shape = SubResource("RectangleShape2D_jx0u7")
+disabled = true
+
+[node name="AttackAreaUp" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, -40)
+shape = SubResource("RectangleShape2D_83ogw")
+disabled = true
+
+[node name="AttackAreaDown" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(0, 32)
+shape = SubResource("RectangleShape2D_c0rd4")
+disabled = true
