@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bjnydnpb0bjuf"]
+[gd_scene load_steps=15 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="Texture2D" uid="uid://c88oa0t8i0khk" path="res://assets/player/player_idle.png" id="2_kp26l"]
+[ext_resource type="Script" path="res://player/AttackAreaSide.gd" id="2_wqrgs"]
 [ext_resource type="Texture2D" uid="uid://cgou4ns5nt5ti" path="res://assets/player/player_run.png" id="3_6asi0"]
 [ext_resource type="Texture2D" uid="uid://co5sxfulkhxgx" path="res://assets/player/player_jump.png" id="4_ys0tm"]
 
@@ -17,6 +18,21 @@ size = Vector2(32, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c0rd4"]
 size = Vector2(32, 32)
 
+[sub_resource type="Animation" id="Animation_8x3g8"]
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_kp26l")]
+}
+
 [sub_resource type="Animation" id="Animation_cf82n"]
 resource_name = "idle"
 length = 0.1
@@ -31,37 +47,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("2_kp26l")]
-}
-
-[sub_resource type="Animation" id="Animation_8x3g8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_kp26l")]
-}
-
-[sub_resource type="Animation" id="Animation_1uy6y"]
-resource_name = "run"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_6asi0")]
 }
 
 [sub_resource type="Animation" id="Animation_kor4u"]
@@ -80,6 +65,22 @@ tracks/0/keys = {
 "values": [ExtResource("4_ys0tm")]
 }
 
+[sub_resource type="Animation" id="Animation_1uy6y"]
+resource_name = "run"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_6asi0")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ofbi6"]
 _data = {
 "RESET": SubResource("Animation_8x3g8"),
@@ -88,7 +89,7 @@ _data = {
 "run": SubResource("Animation_1uy6y")
 }
 
-[node name="player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["ally", "player"]]
 script = ExtResource("1_5lux4")
 speed = 250.0
 jump_height = 20.0
@@ -109,16 +110,24 @@ position_smoothing_speed = 10.0
 position = Vector2(48, 0)
 shape = SubResource("RectangleShape2D_jx0u7")
 disabled = true
+script = ExtResource("2_wqrgs")
+
+[node name="Lifetime" type="Timer" parent="AttackArea/AttackAreaSide"]
+one_shot = true
 
 [node name="AttackAreaUp" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(0, -40)
 shape = SubResource("RectangleShape2D_83ogw")
 disabled = true
 
+[node name="Lifetime" type="Timer" parent="AttackArea/AttackAreaUp"]
+
 [node name="AttackAreaDown" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(0, 32)
 shape = SubResource("RectangleShape2D_c0rd4")
 disabled = true
+
+[node name="Lifetime" type="Timer" parent="AttackArea/AttackAreaDown"]
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -128,3 +137,5 @@ texture = ExtResource("2_kp26l")
 libraries = {
 "": SubResource("AnimationLibrary_ofbi6")
 }
+
+[connection signal="area_entered" from="AttackArea" to="AttackArea/AttackAreaSide" method="on_attack_area_entered"]

@@ -18,12 +18,14 @@ extends CharacterBody2D
 var first_jump: bool
 var double_jump: bool = false
 var is_jumping: bool
-
 var jump_velocity: float
 var jump_gravity: float
 var fall_gravity: float
-
 var jump_timer: float = 0
+
+@export_group("Fight Variables")
+@export var life:float
+@export var damage: float
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
