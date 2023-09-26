@@ -1,15 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://bi6cc6w3ecvyj"]
+[gd_scene load_steps=3 format=3 uid="uid://bi6cc6w3ecvyj"]
+
+[ext_resource type="Texture2D" uid="uid://jacfmdm25k4l" path="res://assets/Plataforma.png" id="1_6x0hf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mc3m"]
 size = Vector2(96, 8)
 
 [node name="Plataform" type="StaticBody2D" groups=["plataform"]]
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-color = Color(0.180392, 0.207843, 1, 1)
-polygon = PackedVector2Array(0, 0, 96, 0, 96, 8, 0, 8)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(48, 4)
 shape = SubResource("RectangleShape2D_0mc3m")
 one_way_collision = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(48, 16)
+texture = ExtResource("1_6x0hf")

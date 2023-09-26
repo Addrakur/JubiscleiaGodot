@@ -4,6 +4,8 @@ extends CharacterBody2D
 @onready var attack_area_side: CollisionObject2D = $AttackAreaSide
 @onready var attack_area_up: CollisionObject2D = $AttackAreaUp
 @onready var attack_area_down: CollisionObject2D = $AttackAreaDown
+@onready var animation: AnimationPlayer = $Animations
+@onready var texture: Sprite2D = $Texture
 
 @export var speed: float = 300.0
 
@@ -32,7 +34,10 @@ func _ready():
 	
 	if can_double_jump:
 		double_jump = true
-	
+
+func _process(delta):
+	animations()
+
 func _physics_process(delta):
 	get_gravity()
 	move_player(delta)
@@ -87,3 +92,16 @@ func get_gravity():
 		gravity = jump_gravity
 	else:
 		gravity = fall_gravity
+
+func animations() -> void:
+	if velocity.x > 0:
+		texture.flip_h = false
+	elif velocity.x < 0:
+		texture.flip_h = true
+	
+	if velocity.y != 0:
+		animation.play("jump")
+	elif velocity.x != 0:
+		animation.play("run")
+	else:
+		animation.play("idle")
