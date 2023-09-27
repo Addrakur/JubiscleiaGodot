@@ -113,7 +113,11 @@ func animations() -> void:
 		else:
 			animation.play("idle")
 
-
 func on_animation_finished(anim_name):
 	if anim_name == "attack_side" or anim_name == "attack_up" or anim_name == "attack_down":
 		is_attacking = false
+
+
+func _on_attack_area_body_entered(body):
+	if body.is_in_group("enemy"):
+		print("bateu")
