@@ -8,7 +8,7 @@ func _ready() -> void:
 	pass
 	
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if player_on_chase_range:
 		if player_on_attack_range:
 			attack()

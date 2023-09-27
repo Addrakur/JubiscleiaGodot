@@ -1,11 +1,10 @@
 extends CharacterBody2D
 
 @onready var attack_area: Area2D = $AttackArea
-@onready var attack_area_side: CollisionObject2D = $AttackAreaSide
-@onready var attack_area_up: CollisionObject2D = $AttackAreaUp
-@onready var attack_area_down: CollisionObject2D = $AttackAreaDown
 @onready var animation: AnimationPlayer = $Animations
 @onready var texture: Sprite2D = $Texture
+@onready var attack_area_side: CollisionShape2D = $AttackArea/AttackAreaSide
+const ATTACK_AREA_SIDE_LOCATION: float = 48
 
 @export var speed: float = 300.0
 
@@ -26,6 +25,8 @@ var jump_timer: float = 0
 @export_group("Fight Variables")
 @export var life:float
 @export var damage: float
+var is_attacking: bool = false
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -37,7 +38,7 @@ func _ready():
 	if can_double_jump:
 		double_jump = true
 
-func _process(delta):
+func _process(_delta):
 	animations()
 
 func _physics_process(delta):
@@ -80,12 +81,13 @@ func move_player(delta) -> void:
 		position.y += 1
 	
 	if Input.is_action_just_pressed("Basic_Attack"):
+		is_attacking = true
 		if Input.is_action_pressed("look_up"):
-			print("attack up")
+			animation.play("attack_up")
 		elif Input.is_action_pressed("look_down"):
-			print("attack down")
+			animation.play("attack_down")
 		else:
-			print("attack side")
+			animation.play("attack_side")
 	
 	velocity.x = direction * speed
 
@@ -98,12 +100,20 @@ func get_gravity():
 func animations() -> void:
 	if velocity.x > 0:
 		texture.flip_h = false
+		attack_area_side.position.x = ATTACK_AREA_SIDE_LOCATION
 	elif velocity.x < 0:
 		texture.flip_h = true
+		attack_area_side.position.x = -ATTACK_AREA_SIDE_LOCATION
 	
-	if velocity.y != 0:
-		animation.play("jump")
-	elif velocity.x != 0:
-		animation.play("run")
-	else:
-		animation.play("idle")
+	if is_attacking == false:
+		if velocity.y != 0:
+			animation.play("jump")
+		elif velocity.x != 0:
+			animation.play("run")
+		else:
+			animation.play("idle")
+
+
+func on_animation_finished(anim_name):
+	if anim_name == "attack_side" or anim_name == "attack_up" or anim_name == "attack_down":
+		is_attacking = false
