@@ -29,9 +29,9 @@ var jump_timer: float = 0
 var is_attacking: bool = false
 var knockup: bool = false
 
-
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 func _ready():
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
 	jump_gravity = ((-2.0 * jump_height) / pow(jump_time_to_peak,2)) * -1
@@ -122,9 +122,7 @@ func on_animation_finished(anim_name):
 		is_attacking = false
 		knockup = false
 
-
 func _on_attack_area_body_entered(body):
 	if body.is_in_group("enemy"):
-		print("bateu")
 		if knockup:
 			velocity.y = knockup_force

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bx4lmho2y840s"]
+[gd_scene load_steps=16 format=3 uid="uid://bx4lmho2y840s"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_134v5"]
 [ext_resource type="Texture2D" uid="uid://cohu7ko2n1vi6" path="res://assets/enemy/idle.png" id="2_gy08j"]
@@ -110,6 +110,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/AttackCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_xk164"]
@@ -267,6 +279,18 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 0, 1, 1, 2, 3, 3]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/AttackCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p3sgm"]
 _data = {
@@ -277,9 +301,19 @@ _data = {
 "run": SubResource("Animation_xk164")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10i2g"]
+size = Vector2(56, 87)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2yagt"]
+size = Vector2(224, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2j01"]
+size = Vector2(48, 64)
+
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_134v5")
+speed = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ep2qw")
@@ -292,3 +326,32 @@ texture = ExtResource("2_gy08j")
 libraries = {
 "": SubResource("AnimationLibrary_p3sgm")
 }
+
+[node name="AttackArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(68, -11.5)
+shape = SubResource("RectangleShape2D_10i2g")
+disabled = true
+
+[node name="DetectionArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="DetectionCollision" type="CollisionShape2D" parent="DetectionArea"]
+position = Vector2(144, 0)
+shape = SubResource("RectangleShape2D_2yagt")
+
+[node name="CanAttackArea" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CanAttackCollision" type="CollisionShape2D" parent="CanAttackArea"]
+position = Vector2(56, 0)
+shape = SubResource("RectangleShape2D_n2j01")
+debug_color = Color(0.831373, 0.305882, 0.317647, 0.419608)
+
+[connection signal="animation_finished" from="Animations" to="." method="_on_animation_finished"]
+[connection signal="body_entered" from="DetectionArea" to="." method="on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="on_detection_area_body_exited"]
+[connection signal="body_entered" from="CanAttackArea" to="." method="on_can_attack_area_body_entered"]
+[connection signal="body_exited" from="CanAttackArea" to="." method="on_can_attack_area_body_exited"]

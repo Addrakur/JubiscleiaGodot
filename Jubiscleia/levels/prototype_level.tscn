@@ -166,7 +166,7 @@ position = Vector2(2400, 352)
 [node name="Enemy4" parent="Enemies" instance=ExtResource("4_jp6h7")]
 position = Vector2(704, 224)
 
-[node name="TileMap" type="TileMap" parent="."]
+[node name="TileMap" type="TileMap" parent="." groups=["tilemap"]]
 tile_set = SubResource("TileSet_milyk")
 cell_quadrant_size = 32
 format = 2
