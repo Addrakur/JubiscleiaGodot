@@ -25,7 +25,9 @@ var jump_timer: float = 0
 @export_group("Fight Variables")
 @export var life:float
 @export var damage: float
+@export var knockup_force: float
 var is_attacking: bool = false
+var knockup: bool = false
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -86,6 +88,8 @@ func move_player(delta) -> void:
 			animation.play("attack_up")
 		elif Input.is_action_pressed("look_down"):
 			animation.play("attack_down")
+			if velocity.y != 0:
+				knockup = true
 		else:
 			animation.play("attack_side")
 	
@@ -116,8 +120,11 @@ func animations() -> void:
 func on_animation_finished(anim_name):
 	if anim_name == "attack_side" or anim_name == "attack_up" or anim_name == "attack_down":
 		is_attacking = false
+		knockup = false
 
 
 func _on_attack_area_body_entered(body):
 	if body.is_in_group("enemy"):
 		print("bateu")
+		if knockup:
+			velocity.y = knockup_force
