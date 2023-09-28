@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var attack_area_collision: CollisionShape2D = $AttackArea/AttackCollision
 const AAC_POSITION: float = 68
 @onready var detection_area_collision: CollisionShape2D = $DetectionArea/DetectionCollision
-const DAC_POSITION: float = 160
+const DAC_POSITION: float = 104
 @onready var can_attack_area: CollisionShape2D = $CanAttackArea/CanAttackCollision
 const CAA_POSITION: float = 56
 var player_ref: CharacterBody2D
@@ -19,16 +19,6 @@ var is_attacking: bool = false
 var direction: float
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
-
-func _ready() -> void:
-	pass
-
-func _process(delta):
-	#print("player_on_limit: " + str(player_on_limit))
-	#print("player_on_chase_range: " + str(player_on_chase_range))
-	#print("player_on_attack_range: " + str(player_on_attack_range))
-	#print("is_attacking: " + str(is_attacking))
-	pass
 
 func _physics_process(delta):
 	flip()
@@ -55,6 +45,10 @@ func idle() -> void:
 
 func chase_player() -> void:
 	animation.play("chase")
+	if player_ref.position.x > position.x:
+		direction = 1
+	else:
+		direction = -1
 	velocity.x = direction * speed
 
 func attack() -> void:

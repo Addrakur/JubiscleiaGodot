@@ -304,7 +304,7 @@ _data = {
 size = Vector2(56, 87)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yagt"]
-size = Vector2(256, 128)
+size = Vector2(368, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2j01"]
 size = Vector2(48, 64)
@@ -339,7 +339,7 @@ debug_color = Color(0.890196, 0.682353, 0, 0.419608)
 collision_layer = 0
 
 [node name="DetectionCollision" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(160, -32)
+position = Vector2(104, -32)
 shape = SubResource("RectangleShape2D_2yagt")
 
 [node name="CanAttackArea" type="Area2D" parent="."]
