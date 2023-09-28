@@ -42,6 +42,7 @@ func _ready():
 
 func _process(_delta):
 	animations()
+	die()
 
 func _physics_process(delta):
 	get_gravity()
@@ -101,15 +102,20 @@ func get_gravity():
 	else:
 		gravity = fall_gravity
 
+func die() -> void:
+	if life <= 0:
+		queue_free()
+
 func animations() -> void:
-	if velocity.x > 0:
-		texture.flip_h = false
-		attack_area_side.position.x = ATTACK_AREA_SIDE_LOCATION
-	elif velocity.x < 0:
-		texture.flip_h = true
-		attack_area_side.position.x = -ATTACK_AREA_SIDE_LOCATION
 	
-	if is_attacking == false:
+	if !is_attacking:
+		if velocity.x > 0:
+			texture.flip_h = false
+			attack_area_side.position.x = ATTACK_AREA_SIDE_LOCATION
+		elif velocity.x < 0:
+			texture.flip_h = true
+			attack_area_side.position.x = -ATTACK_AREA_SIDE_LOCATION
+		
 		if velocity.y != 0:
 			animation.play("jump")
 		elif velocity.x != 0:
@@ -124,5 +130,9 @@ func on_animation_finished(anim_name):
 
 func _on_attack_area_body_entered(body):
 	if body.is_in_group("enemy"):
+		body.update_life(damage)
 		if knockup:
 			velocity.y = knockup_force
+
+func update_life(damage: float) -> void:
+	life -= damage

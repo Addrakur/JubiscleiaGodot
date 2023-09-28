@@ -486,6 +486,8 @@ jump_height = 20.0
 jump_time_to_peak = 0.12
 jump_time_to_descent = 0.15
 jump_time_to_peak_mult = 2.4
+life = 10.0
+damage = 1.0
 knockup_force = -700.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
