@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv8owgy7v2lhb"]
+
+[ext_resource type="Script" path="res://enemy/Limit.gd" id="1_l4xsx"]
+
+[node name="Limit" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_l4xsx")
+limit_points = [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+
+[node name="LimitArea" type="CollisionPolygon2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="on_body_entered"]
+[connection signal="body_exited" from="." to="." method="on_body_exited"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://drrt3ou6xbeyo"]
+[gd_scene load_steps=8 format=3 uid="uid://drrt3ou6xbeyo"]
 
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="2_oy7pp"]
 [ext_resource type="PackedScene" uid="uid://bi6cc6w3ecvyj" path="res://objects/plataform.tscn" id="3_ficbx"]
+[ext_resource type="PackedScene" uid="uid://cv8owgy7v2lhb" path="res://enemy/enemy_limit.tscn" id="3_v6kio"]
 [ext_resource type="PackedScene" uid="uid://bx4lmho2y840s" path="res://enemy/enemy.tscn" id="4_jp6h7"]
 [ext_resource type="Texture2D" uid="uid://kqqrqxtmdb03" path="res://assets/Chao.png" id="5_s4ynw"]
 
@@ -154,17 +155,29 @@ position = Vector2(1856, 448)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Enemy" parent="Enemies" instance=ExtResource("4_jp6h7")]
+[node name="Limit" parent="Enemies" instance=ExtResource("3_v6kio")]
+limit_points = [Vector2(928, 64), Vector2(576, 64), Vector2(576, 256), Vector2(928, 256)]
+
+[node name="Enemy" parent="Enemies/Limit" instance=ExtResource("4_jp6h7")]
+position = Vector2(704, 224)
+
+[node name="Limit2" parent="Enemies" instance=ExtResource("3_v6kio")]
+limit_points = [Vector2(1184, 544), Vector2(1376, 544), Vector2(1376, 640), Vector2(1184, 640)]
+
+[node name="Enemy" parent="Enemies/Limit2" instance=ExtResource("4_jp6h7")]
 position = Vector2(1280, 608)
 
-[node name="Enemy2" parent="Enemies" instance=ExtResource("4_jp6h7")]
+[node name="Limit3" parent="Enemies" instance=ExtResource("3_v6kio")]
+limit_points = [Vector2(1440, 544), Vector2(2048, 544), Vector2(2048, 640), Vector2(1440, 640)]
+
+[node name="Enemy" parent="Enemies/Limit3" instance=ExtResource("4_jp6h7")]
 position = Vector2(1600, 608)
 
-[node name="Enemy3" parent="Enemies" instance=ExtResource("4_jp6h7")]
-position = Vector2(2400, 352)
+[node name="Limit4" parent="Enemies" instance=ExtResource("3_v6kio")]
+limit_points = [Vector2(2048, 256), Vector2(2624, 256), Vector2(2624, 384), Vector2(2048, 384)]
 
-[node name="Enemy4" parent="Enemies" instance=ExtResource("4_jp6h7")]
-position = Vector2(704, 224)
+[node name="Enemy" parent="Enemies/Limit4" instance=ExtResource("4_jp6h7")]
+position = Vector2(2400, 352)
 
 [node name="TileMap" type="TileMap" parent="." groups=["tilemap"]]
 tile_set = SubResource("TileSet_milyk")
