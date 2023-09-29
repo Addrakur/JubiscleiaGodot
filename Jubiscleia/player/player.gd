@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var texture: Sprite2D = $Texture
 @onready var attack_area_side: CollisionShape2D = $AttackArea/AttackAreaSide
 @onready var interface: CanvasLayer = $Interface
+@onready var camera: Camera2D = $Camera
+@onready var camera_bounds: Polygon2D
 const ATTACK_AREA_SIDE_LOCATION: float = 48
 
 @export var speed: float = 300.0
