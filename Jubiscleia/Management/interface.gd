@@ -1,11 +1,18 @@
-extends Control
+extends CanvasLayer
 
+@onready var life_bar: TextureProgressBar = $Control/HP
+@onready var player: CharacterBody2D = get_parent()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+@export var max_life: float
+@export var life: float
 
+func _ready() -> void:
+	life_bar.max_value = max_life
+	life_bar.value = life
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
+
+func update_life(damage) -> void:
+	life -=damage
+	life_bar.value = life

@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var animation: AnimationPlayer = $Animations
 @onready var texture: Sprite2D = $Texture
 @onready var attack_area_side: CollisionShape2D = $AttackArea/AttackAreaSide
+@onready var interface: CanvasLayer = $Interface
 const ATTACK_AREA_SIDE_LOCATION: float = 48
 
 @export var speed: float = 300.0
@@ -23,11 +24,11 @@ var fall_gravity: float
 var jump_timer: float = 0
 
 @export_group("Fight Variables")
-@export var life:float
 @export var damage: float
 @export var knockup_force: float
 var is_attacking: bool = false
 var knockup: bool = false
+var alive: bool = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -45,9 +46,10 @@ func _process(_delta):
 	die()
 
 func _physics_process(delta):
-	get_gravity()
-	move_player(delta)
-	move_and_slide()
+	if alive:
+		get_gravity()
+		move_player(delta)
+		move_and_slide()
 
 func move_player(delta) -> void:
 	var direction = Input.get_axis("left","right")  # Verifica para qual direcao o jogador precisa ir
@@ -103,8 +105,9 @@ func get_gravity():
 		gravity = fall_gravity
 
 func die() -> void:
-	if life <= 0:
-		queue_free()
+	if interface.life <= 0:
+		alive = false
+		animation.play("dead")
 
 func animations() -> void:
 	
@@ -135,4 +138,4 @@ func _on_attack_area_body_entered(body):
 			velocity.y = knockup_force
 
 func update_life(damage: float) -> void:
-	life -= damage
+	interface.update_life(damage)

@@ -34,7 +34,7 @@ func _physics_process(delta):
 		velocity.y = gravity * delta
 		
 	if !is_attacking and alive:
-		if player_on_limit:
+		if player_on_limit && player_ref != null && player_ref.alive:
 			if player_on_chase_range:
 				if player_on_attack_range:
 					attack()
@@ -44,7 +44,7 @@ func _physics_process(delta):
 				idle()
 		else:
 			idle()
-	
+			
 	move_and_slide()
 
 func idle() -> void:

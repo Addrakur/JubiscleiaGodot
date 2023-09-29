@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=21 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="Texture2D" uid="uid://c88oa0t8i0khk" path="res://assets/player/player_idle.png" id="2_kp26l"]
@@ -117,6 +117,30 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Texture:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Collision:disabled")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_br07h"]
@@ -467,12 +491,40 @@ tracks/3/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_jwydc"]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Collision:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ofbi6"]
 _data = {
 "RESET": SubResource("Animation_8x3g8"),
 "attack_down": SubResource("Animation_br07h"),
 "attack_side": SubResource("Animation_2wyak"),
 "attack_up": SubResource("Animation_p4vox"),
+"dead": SubResource("Animation_jwydc"),
 "idle": SubResource("Animation_cf82n"),
 "jump": SubResource("Animation_kor4u"),
 "run": SubResource("Animation_1uy6y")
@@ -486,7 +538,6 @@ jump_height = 20.0
 jump_time_to_peak = 0.12
 jump_time_to_descent = 0.15
 jump_time_to_peak_mult = 2.4
-life = 10.0
 damage = 1.0
 knockup_force = -700.0
 
