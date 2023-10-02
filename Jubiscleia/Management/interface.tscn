@@ -36,3 +36,13 @@ texture_progress = ExtResource("2_5se83")
 tint_under = Color(0.296875, 0.296875, 0.296875, 1)
 tint_over = Color(0, 0, 0, 1)
 tint_progress = Color(0.160784, 1, 0.172549, 1)
+
+[node name="Restart" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 561.0
+offset_top = 8.0
+offset_right = 626.0
+offset_bottom = 40.0
+text = "Restart"
+
+[connection signal="pressed" from="Control/Restart" to="." method="_on_restart_pressed"]

@@ -6,6 +6,7 @@
 size = Vector2(96, 8)
 
 [node name="Plataform" type="StaticBody2D" groups=["plataform"]]
+texture_filter = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(48, 4)

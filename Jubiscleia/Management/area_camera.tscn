@@ -5,4 +5,6 @@
 [node name="AreaCamera" type="Area2D"]
 script = ExtResource("1_txxu0")
 
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+
 [connection signal="body_entered" from="." to="." method="on_player_entered"]
