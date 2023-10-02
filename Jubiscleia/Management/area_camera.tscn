@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6ol8vnubfw0i"]
+
+[ext_resource type="Script" path="res://Management/area_camera.gd" id="1_txxu0"]
+
+[node name="AreaCamera" type="Area2D"]
+script = ExtResource("1_txxu0")
+
+[connection signal="body_entered" from="." to="." method="on_player_entered"]
