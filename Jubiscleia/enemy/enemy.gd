@@ -104,8 +104,8 @@ func _on_animation_finished(anim_name):
 	if anim_name == "attack":
 		is_attacking = false
 
-func update_life(damage: float) -> void:
-	life -= damage
+func update_life(value: float) -> void:
+	life -= value
 
 func on_attack_area_body_entered(body):
 	if body.is_in_group("player"):

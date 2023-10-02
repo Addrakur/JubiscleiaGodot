@@ -139,5 +139,5 @@ func _on_attack_area_body_entered(body):
 		if knockup:
 			velocity.y = knockup_force
 
-func update_life(damage: float) -> void:
-	interface.update_life(damage)
+func update_life(value: float) -> void:
+	interface.update_life(value)
