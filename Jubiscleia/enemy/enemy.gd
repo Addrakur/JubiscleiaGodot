@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
-@onready var health_component: Node2D = $HealthComponent
+@export var health_component: Node2D
+@export var attack_area: Area2D
 
 @onready var animation: AnimationPlayer = $Animations
 @onready var texture: Sprite2D = $Texture
@@ -19,22 +20,22 @@ var player_on_attack_range: bool = false
 var player_on_limit: bool = false
 
 var is_attacking: bool = false
-var alive: bool = true
 
 var direction: float
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _process(_delta):
-	die()
+	if health_component.alive:
+		health_component.die()
 
 func _physics_process(delta):
 	flip()
 	if not is_on_floor():
 		velocity.y = gravity * delta
 		
-	if !is_attacking and alive:
-		if player_on_limit && player_ref != null && player_ref.alive:
+	if !is_attacking and health_component.alive:
+		if player_on_limit && player_ref != null && player_ref.health_component.alive:
 			if player_on_chase_range:
 				if player_on_attack_range:
 					attack()
@@ -77,10 +78,6 @@ func flip() -> void:
 		detection_area_collision.position.x = -DAC_POSITION
 		can_attack_area.position.x = -CAA_POSITION
 		
-
-func die() -> void:
-	if health_component.current_health <= 0:
-		queue_free()
 
 func on_detection_area_body_entered(body):
 	if body.is_in_group("player"):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bx4lmho2y840s"]
+[gd_scene load_steps=19 format=3 uid="uid://bx4lmho2y840s"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_134v5"]
 [ext_resource type="Texture2D" uid="uid://cohu7ko2n1vi6" path="res://assets/enemy/idle.png" id="2_gy08j"]
@@ -305,11 +305,28 @@ tracks/3/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_rljuu"]
+resource_name = "dead"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p3sgm"]
 _data = {
 "RESET": SubResource("Animation_fixrv"),
 "attack": SubResource("Animation_u7nyx"),
 "chase": SubResource("Animation_4ikfk"),
+"dead": SubResource("Animation_rljuu"),
 "idle": SubResource("Animation_nbeqx"),
 "run": SubResource("Animation_xk164")
 }
@@ -323,9 +340,11 @@ size = Vector2(48, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10i2g"]
 size = Vector2(56, 87)
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_134v5")
+health_component = NodePath("HealthComponent")
+attack_area = NodePath("AttackArea")
 speed = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -368,9 +387,12 @@ shape = SubResource("RectangleShape2D_10i2g")
 disabled = true
 debug_color = Color(0.890196, 0.682353, 0, 0.419608)
 
-[node name="HealthComponent" parent="." instance=ExtResource("7_d63es")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("animator", "parent") instance=ExtResource("7_d63es")]
 scale = Vector2(0.967821, 1)
 max_health = 3
+animator = NodePath("../Animations")
+parent = NodePath("..")
+destroy_after_dead = true
 
 [connection signal="animation_finished" from="Animations" to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="DetectionArea" to="." method="on_detection_area_body_entered"]

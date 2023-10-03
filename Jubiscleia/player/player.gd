@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
-@onready var attack_area: Area2D = $AttackArea
-@onready var health_component: Node2D = $HealthComponent
+@export var attack_area: Area2D
+@export var health_component: Node2D
 
 @onready var animation: AnimationPlayer = $Animations
 @onready var texture: Sprite2D = $Texture
@@ -26,7 +26,7 @@ var jump_gravity: float
 var fall_gravity: float
 var jump_timer: float = 0
 var is_attacking: bool = false
-var alive: bool = true
+#var alive: bool = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -41,10 +41,10 @@ func _ready():
 	
 func _process(_delta):
 	animations()
-	die()
+	health_component.die()
 
 func _physics_process(delta):
-	if alive:
+	if health_component.alive:
 		get_gravity()
 		move_player(delta)
 		move_and_slide()
@@ -101,11 +101,6 @@ func get_gravity():
 		gravity = jump_gravity
 	else:
 		gravity = fall_gravity
-
-func die() -> void:
-	if health_component.current_health <= 0:
-		alive = false
-		animation.play("dead")
 
 func animations() -> void:
 	

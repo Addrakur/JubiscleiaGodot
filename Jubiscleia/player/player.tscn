@@ -533,9 +533,11 @@ _data = {
 "run": SubResource("Animation_1uy6y")
 }
 
-[node name="Player" type="CharacterBody2D" groups=["player"]]
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("attack_area", "health_component") groups=["player"]]
 collision_mask = 3
 script = ExtResource("1_5lux4")
+attack_area = NodePath("AttackArea")
+health_component = NodePath("HealthComponent")
 speed = 250.0
 jump_height = 20.0
 jump_time_to_peak = 0.12
@@ -581,8 +583,10 @@ libraries = {
 "": SubResource("AnimationLibrary_ofbi6")
 }
 
-[node name="HealthComponent" parent="." instance=ExtResource("9_6bxkt")]
-max_health = 10
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("animator", "parent") instance=ExtResource("9_6bxkt")]
+max_health = 5
+animator = NodePath("../Animations")
+parent = NodePath("..")
 
 [node name="Interface" parent="." node_paths=PackedStringArray("player", "health_component") instance=ExtResource("10_sss6s")]
 player = NodePath("..")
