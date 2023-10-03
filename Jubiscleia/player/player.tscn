@@ -586,7 +586,7 @@ libraries = {
 }
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("animator", "parent") instance=ExtResource("9_6bxkt")]
-max_health = 5
+max_health = 5.0
 animator = NodePath("../Animations")
 parent = NodePath("..")
 

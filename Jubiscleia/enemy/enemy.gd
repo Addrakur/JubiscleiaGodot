@@ -30,11 +30,15 @@ func _process(_delta):
 		health_component.die()
 
 func _physics_process(delta):
-	flip()
 	if not is_on_floor():
 		velocity.y = gravity * delta
+	
+	if !health_component.alive:
+		return
+	
+	flip()
 		
-	if !is_attacking and health_component.alive:
+	if !is_attacking:
 		if player_on_limit && player_ref != null && player_ref.health_component.alive:
 			if player_on_chase_range:
 				if player_on_attack_range:

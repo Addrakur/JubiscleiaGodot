@@ -389,7 +389,7 @@ debug_color = Color(0.890196, 0.682353, 0, 0.419608)
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("animator", "parent") instance=ExtResource("7_d63es")]
 scale = Vector2(0.967821, 1)
-max_health = 3
+max_health = 3.0
 animator = NodePath("../Animations")
 parent = NodePath("..")
 destroy_after_dead = true

@@ -1,10 +1,10 @@
 extends Node2D
 
-@export var max_health: int
+@export var max_health: float
 @export var animator: AnimationPlayer
 @export var parent: Node2D
 @export var destroy_after_dead: bool
-var current_health: int = 1
+var current_health: float = 1
 var alive: bool = true
 
 func _ready() -> void:

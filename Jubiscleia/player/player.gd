@@ -6,7 +6,6 @@ extends CharacterBody2D
 @onready var animation: AnimationPlayer = $Animations
 @onready var texture: Sprite2D = $Texture
 @onready var attack_area_side: CollisionShape2D = $AttackArea/AttackAreaSide
-@onready var interface: CanvasLayer = $Interface
 @onready var camera: Camera2D = $Camera
 const ATTACK_AREA_SIDE_LOCATION: float = 48
 
@@ -43,10 +42,11 @@ func _process(_delta):
 	health_component.die()
 
 func _physics_process(delta):
-	if health_component.alive:
-		get_gravity()
-		move_player(delta)
-		move_and_slide()
+	if !health_component.alive:
+		return
+	get_gravity()
+	move_player(delta)
+	move_and_slide()
 
 func move_player(delta) -> void:
 	var direction = Input.get_axis("left","right")  # Verifica para qual direcao o jogador precisa ir
