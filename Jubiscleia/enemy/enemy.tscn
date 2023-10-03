@@ -1,10 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://bx4lmho2y840s"]
+[gd_scene load_steps=18 format=3 uid="uid://bx4lmho2y840s"]
 
 [ext_resource type="Script" path="res://enemy/enemy.gd" id="1_134v5"]
 [ext_resource type="Texture2D" uid="uid://cohu7ko2n1vi6" path="res://assets/enemy/idle.png" id="2_gy08j"]
 [ext_resource type="Texture2D" uid="uid://cqwrkpbmli2q1" path="res://assets/enemy/enemy_run.png" id="3_yghfg"]
 [ext_resource type="Texture2D" uid="uid://di681tdojhiwp" path="res://assets/enemy/enemy_chase.png" id="4_fr4he"]
 [ext_resource type="Texture2D" uid="uid://b3q4buqpd6tp" path="res://assets/enemy/enemy_attack.png" id="5_4axxy"]
+[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="6_drop3"]
+[ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="7_d63es"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ep2qw"]
 size = Vector2(64, 64)
@@ -62,7 +64,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AttackArea/AttackCollision:disabled")
+tracks/4/path = NodePath("Texture:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -74,7 +76,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Texture:visible")
+tracks/5/path = NodePath("AttackArea/AttackCollision:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -312,21 +314,19 @@ _data = {
 "run": SubResource("Animation_xk164")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_10i2g"]
-size = Vector2(56, 87)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2yagt"]
 size = Vector2(368, 128)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2j01"]
 size = Vector2(48, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_10i2g"]
+size = Vector2(56, 87)
+
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
 script = ExtResource("1_134v5")
 speed = 50.0
-life = 3.0
-damage = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ep2qw")
@@ -340,15 +340,6 @@ texture = ExtResource("2_gy08j")
 libraries = {
 "": SubResource("AnimationLibrary_p3sgm")
 }
-
-[node name="AttackArea" type="Area2D" parent="."]
-collision_layer = 0
-
-[node name="AttackCollision" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(68, -11.5)
-shape = SubResource("RectangleShape2D_10i2g")
-disabled = true
-debug_color = Color(0.890196, 0.682353, 0, 0.419608)
 
 [node name="DetectionArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -365,8 +356,23 @@ position = Vector2(56, 0)
 shape = SubResource("RectangleShape2D_n2j01")
 debug_color = Color(0.831373, 0.305882, 0.317647, 0.419608)
 
+[node name="AttackArea" parent="." instance=ExtResource("6_drop3")]
+collision_layer = 2
+collision_mask = 1
+target = "player"
+damage = 1.0
+
+[node name="AttackCollision" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(68, -11.5)
+shape = SubResource("RectangleShape2D_10i2g")
+disabled = true
+debug_color = Color(0.890196, 0.682353, 0, 0.419608)
+
+[node name="HealthComponent" parent="." instance=ExtResource("7_d63es")]
+scale = Vector2(0.967821, 1)
+max_health = 3
+
 [connection signal="animation_finished" from="Animations" to="." method="_on_animation_finished"]
-[connection signal="body_entered" from="AttackArea" to="." method="on_attack_area_body_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="on_detection_area_body_exited"]
 [connection signal="body_entered" from="CanAttackArea" to="." method="on_can_attack_area_body_entered"]

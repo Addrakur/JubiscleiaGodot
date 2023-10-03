@@ -1,23 +1,17 @@
 extends CanvasLayer
 
-@onready var life_bar: TextureProgressBar = $Control/HP
-@onready var player: CharacterBody2D = get_parent()
+@export var player: CharacterBody2D
+@export var health_component: Node2D
+@onready var hp_bar: TextureProgressBar = $Control/HP
 @onready var restart_button: Button = $Control/Restart
 @onready var level: Node2D = get_parent().get_parent()
 
-@export var max_life: float
-@export var life: float
-
 func _ready() -> void:
-	life_bar.max_value = max_life
-	life_bar.value = life
+	hp_bar.max_value = health_component.max_health
+	hp_bar.value = health_component.current_health
 
 func _process(_delta):
-	pass
-
-func update_life(damage) -> void:
-	life -=damage
-	life_bar.value = life
+	hp_bar.value = health_component.current_health
 
 func _on_restart_pressed():
 	level.restart()

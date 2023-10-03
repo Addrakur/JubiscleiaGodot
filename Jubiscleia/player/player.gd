@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @onready var attack_area: Area2D = $AttackArea
+@onready var health_component: Node2D = $HealthComponent
+
 @onready var animation: AnimationPlayer = $Animations
 @onready var texture: Sprite2D = $Texture
 @onready var attack_area_side: CollisionShape2D = $AttackArea/AttackAreaSide
@@ -23,12 +25,7 @@ var jump_velocity: float
 var jump_gravity: float
 var fall_gravity: float
 var jump_timer: float = 0
-
-@export_group("Fight Variables")
-@export var damage: float
-@export var knockup_force: float
 var is_attacking: bool = false
-var knockup: bool = false
 var alive: bool = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -42,7 +39,6 @@ func _ready():
 	if can_double_jump:
 		double_jump = true
 	
-
 func _process(_delta):
 	animations()
 	die()
@@ -94,7 +90,7 @@ func move_player(delta) -> void:
 		elif Input.is_action_pressed("look_down"):
 			animation.play("attack_down")
 			if velocity.y != 0:
-				knockup = true
+				attack_area.knockup = true
 		else:
 			animation.play("attack_side")
 	
@@ -107,7 +103,7 @@ func get_gravity():
 		gravity = fall_gravity
 
 func die() -> void:
-	if interface.life <= 0:
+	if health_component.current_health <= 0:
 		alive = false
 		animation.play("dead")
 
@@ -131,13 +127,4 @@ func animations() -> void:
 func on_animation_finished(anim_name):
 	if anim_name == "attack_side" or anim_name == "attack_up" or anim_name == "attack_down":
 		is_attacking = false
-		knockup = false
-
-func _on_attack_area_body_entered(body):
-	if body.is_in_group("enemy"):
-		body.update_life(damage)
-		if knockup:
-			velocity.y = knockup_force
-
-func update_life(value: float) -> void:
-	interface.update_life(value)
+		attack_area.knockup = false

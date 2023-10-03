@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+@onready var health_component: Node2D = $HealthComponent
+
 @onready var animation: AnimationPlayer = $Animations
 @onready var texture: Sprite2D = $Texture
 @onready var attack_area_collision: CollisionShape2D = $AttackArea/AttackCollision
@@ -11,8 +13,6 @@ const CAA_POSITION: float = 56
 var player_ref: CharacterBody2D
 
 @export var speed: float
-@export var life: float
-@export var damage: float
 
 var player_on_chase_range: bool
 var player_on_attack_range: bool = false
@@ -79,7 +79,7 @@ func flip() -> void:
 		
 
 func die() -> void:
-	if life <= 0:
+	if health_component.current_health <= 0:
 		queue_free()
 
 func on_detection_area_body_entered(body):
@@ -103,10 +103,3 @@ func on_can_attack_area_body_exited(body):
 func _on_animation_finished(anim_name):
 	if anim_name == "attack":
 		is_attacking = false
-
-func update_life(value: float) -> void:
-	life -= value
-
-func on_attack_area_body_entered(body):
-	if body.is_in_group("player"):
-		body.update_life(damage)
