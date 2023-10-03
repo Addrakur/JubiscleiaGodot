@@ -26,7 +26,6 @@ var jump_gravity: float
 var fall_gravity: float
 var jump_timer: float = 0
 var is_attacking: bool = false
-#var alive: bool = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")

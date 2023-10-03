@@ -1,6 +1,7 @@
-[gd_scene load_steps=24 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=25 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
+[ext_resource type="Script" path="res://player/Camera.gd" id="2_4f3vw"]
 [ext_resource type="Texture2D" uid="uid://c88oa0t8i0khk" path="res://assets/player/player_idle.png" id="2_kp26l"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_tuo6g"]
 [ext_resource type="Texture2D" uid="uid://cgou4ns5nt5ti" path="res://assets/player/player_run.png" id="3_6asi0"]
@@ -538,7 +539,7 @@ collision_mask = 3
 script = ExtResource("1_5lux4")
 attack_area = NodePath("AttackArea")
 health_component = NodePath("HealthComponent")
-speed = 250.0
+speed = 200.0
 jump_height = 20.0
 jump_time_to_peak = 0.12
 jump_time_to_descent = 0.15
@@ -551,6 +552,7 @@ shape = SubResource("RectangleShape2D_ttoyg")
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 editor_draw_limits = true
+script = ExtResource("2_4f3vw")
 
 [node name="AttackArea" parent="." instance=ExtResource("2_tuo6g")]
 collision_layer = 1

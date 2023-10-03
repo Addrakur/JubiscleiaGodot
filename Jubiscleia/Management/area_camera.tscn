@@ -1,9 +1,24 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6ol8vnubfw0i"]
+[gd_scene load_steps=2 format=3 uid="uid://co7bxcr0g76q3"]
 
-[ext_resource type="Script" path="res://Management/area_camera.gd" id="1_txxu0"]
+[sub_resource type="GDScript" id="GDScript_rsk6b"]
+script/source = "extends Area2D
+
+@onready var level: Node2D = get_parent().get_parent()
+@onready var collision_polygon: CollisionPolygon2D = $Collision
+@onready var polygon: Polygon2D = $Area
+
+@export var limits: Array
+
+func _ready() -> void:
+	collision_polygon.polygon = polygon.polygon
+
+func on_player_entered(body):
+	if body.is_in_group(\"player\"):
+		level.change_limit(limits[0],limits[1],limits[2],limits[3])
+"
 
 [node name="AreaCamera" type="Area2D"]
-script = ExtResource("1_txxu0")
+script = SubResource("GDScript_rsk6b")
 
 [node name="Collision" type="CollisionPolygon2D" parent="."]
 

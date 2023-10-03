@@ -114,8 +114,10 @@ terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_nbnpc")
 
-[node name="PrototypeLevel" type="Node2D"]
+[node name="PrototypeLevel" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_xeixo")
+player = NodePath("player")
+camera_limits = Array[int]([0, 0, 2688, 704])
 
 [node name="player" parent="." instance=ExtResource("2_oy7pp")]
 position = Vector2(160, 256)
