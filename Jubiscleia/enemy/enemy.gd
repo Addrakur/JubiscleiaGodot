@@ -30,10 +30,11 @@ func _process(_delta):
 		health_component.die()
 
 func _physics_process(delta):
+	move_and_slide()
 	if not is_on_floor():
 		velocity.y = gravity * delta
 	
-	if !health_component.alive:
+	if !health_component.alive or health_component.is_getting_hit:
 		return
 	
 	flip()
@@ -50,7 +51,6 @@ func _physics_process(delta):
 		else:
 			idle()
 			
-	move_and_slide()
 
 func idle() -> void:
 	animation.play("idle")
@@ -104,3 +104,5 @@ func on_can_attack_area_body_exited(body):
 func _on_animation_finished(anim_name):
 	if anim_name == "attack":
 		is_attacking = false
+	if anim_name == "hit":
+		health_component.is_getting_hit = false
