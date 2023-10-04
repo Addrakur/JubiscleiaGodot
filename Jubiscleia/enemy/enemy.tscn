@@ -424,7 +424,7 @@ health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
 speed = 50.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ep2qw")
 
 [node name="Texture" type="Sprite2D" parent="."]
