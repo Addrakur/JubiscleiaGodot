@@ -5,29 +5,34 @@ extends Camera2D
 @export var camera_offset_y: float
 @export var tween_timer: float
 
+var tween_up: bool
+var tween_right: bool
+var tween_left: bool
+var tween_down: bool
+
 func _process(_delta):
-	if Input.is_action_pressed("look_up"):
+	if tween_up:
 		var tween = create_tween().set_parallel(true)
 		tween.tween_property(self, "offset", Vector2(offset.x,camera_offset_y), tween_timer)
 	else:
 		var tween = create_tween().set_parallel(true)
 		tween.tween_property(self, "offset", Vector2(offset.x,0), tween_timer)
 	
-	if Input.is_action_pressed("look_down"):
+	if tween_down:
 		var tween = create_tween().set_parallel(true)
 		tween.tween_property(self, "offset", Vector2(offset.x,-camera_offset_y), tween_timer)
 	else:
 		var tween = create_tween().set_parallel(true)
 		tween.tween_property(self, "offset", Vector2(offset.x,0), tween_timer)
 		
-	if Input.is_action_pressed("right"):
+	if tween_right:
 		var tween = create_tween().set_parallel(true)
 		tween.tween_property(self, "offset", Vector2(camera_offset_x,offset.y), tween_timer)
 	else:
 		var tween = create_tween().set_parallel(true)
 		tween.tween_property(self, "offset", Vector2(0,offset.y), tween_timer)
 	
-	if Input.is_action_pressed("left"):
+	if tween_left:
 		var tween = create_tween().set_parallel(true)
 		tween.tween_property(self, "offset", Vector2(-camera_offset_x,offset.y), tween_timer)
 	else:
