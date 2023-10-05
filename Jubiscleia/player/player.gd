@@ -82,7 +82,7 @@ func move_player(delta) -> void:
 	if Input.is_action_pressed("look_down") && is_on_floor() && Input.is_action_just_pressed("jump"):
 		position.y += 1
 	
-	if Input.is_action_just_pressed("Basic_Attack"):
+	if Input.is_action_just_pressed("Basic_Attack") && !health_component.is_getting_hit:
 		is_attacking = true
 		if Input.is_action_pressed("look_up"):
 			animation.play("attack_up")
@@ -103,23 +103,25 @@ func get_gravity():
 
 func animations() -> void:
 	
-	if !is_attacking:
-		if velocity.x > 0:
-			texture.flip_h = false
-			attack_area_side.position.x = ATTACK_AREA_SIDE_LOCATION
-		elif velocity.x < 0:
-			texture.flip_h = true
-			attack_area_side.position.x = -ATTACK_AREA_SIDE_LOCATION
-		
-		if velocity.y != 0:
-			animation.play("jump")
-		elif velocity.x != 0:
-			animation.play("run")
-		else:
-			animation.play("idle")
+	if !health_component.is_getting_hit:
+		if !is_attacking:
+			if velocity.x > 0:
+				texture.flip_h = false
+				attack_area_side.position.x = ATTACK_AREA_SIDE_LOCATION
+			elif velocity.x < 0:
+				texture.flip_h = true
+				attack_area_side.position.x = -ATTACK_AREA_SIDE_LOCATION
+			
+			if velocity.y != 0:
+				animation.play("jump")
+			elif velocity.x != 0:
+				animation.play("run")
+			else:
+				animation.play("idle")
 
 func on_animation_finished(anim_name):
 	if anim_name == "attack_side" or anim_name == "attack_up" or anim_name == "attack_down":
 		is_attacking = false
 		attack_area.knockup = false
-	
+	if anim_name == "hit":
+		health_component.is_getting_hit = false
