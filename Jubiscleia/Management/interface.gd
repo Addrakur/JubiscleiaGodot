@@ -1,10 +1,11 @@
 extends CanvasLayer
 
+@export var game: Node
 @export var player: CharacterBody2D
-@export var health_component: Node2D
-@onready var hp_bar: TextureProgressBar = $Control/HP
-@onready var restart_button: Button = $Control/Restart
-@onready var level: Node2D = get_parent().get_parent()
+@export var level: Node2D
+@onready var pause_menu: Control = $PauseMenu
+@onready var health_component: Node2D = player.health_component
+@onready var hp_bar: TextureProgressBar = $PlayerUI/HP
 
 func _ready() -> void:
 	hp_bar.max_value = health_component.max_health
@@ -12,6 +13,17 @@ func _ready() -> void:
 
 func _process(_delta):
 	hp_bar.value = health_component.current_health
+	if get_tree().paused:
+		pause_menu.show()
+	else:
+		pause_menu.hide()
 
-func _on_restart_pressed():
-	level.restart()
+func on_resume_pressed():
+	get_tree().paused = false
+
+func on_restart_pressed():
+	get_tree().reload_current_scene()
+	get_tree().paused = false
+
+func on_exit_pressed():
+	get_tree().change_scene_to_file("res://Management/menu.tscn")

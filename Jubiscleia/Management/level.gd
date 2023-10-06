@@ -1,4 +1,4 @@
-extends Node2D
+extends Node
 
 @export var player: CharacterBody2D
 @export var camera_limits: Array[int]
@@ -9,3 +9,8 @@ func _ready() -> void:
 
 func restart() -> void:
 	get_tree().reload_current_scene()
+
+func _input(event):
+	if event.is_action_pressed("pause"):
+		var current_value: bool = get_tree().paused
+		get_tree().paused = !current_value
