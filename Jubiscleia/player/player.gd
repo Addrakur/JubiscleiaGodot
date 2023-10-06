@@ -5,9 +5,9 @@ extends CharacterBody2D
 
 @onready var animation: AnimationPlayer = $Animations
 @onready var texture: Sprite2D = $Texture
-@onready var attack_area_side: CollisionShape2D = $AttackArea/AttackAreaSide
 @onready var camera: Camera2D = $Camera
-const ATTACK_AREA_SIDE_LOCATION: float = 38
+@onready var attack_area_polygon: CollisionPolygon2D = $AttackArea/AttackArea
+const ATTACK_AREA_POSITION: float = 39
 
 @export var speed: float = 300.0
 
@@ -20,6 +20,7 @@ const ATTACK_AREA_SIDE_LOCATION: float = 38
 var first_jump: bool
 var double_jump: bool = false
 var is_jumping: bool
+var is_looking_down: bool
 var jump_velocity: float
 var jump_gravity: float
 var fall_gravity: float
@@ -62,7 +63,7 @@ func move_player(delta) -> void:
 		if can_double_jump:  # Verifica se o player pode usar o double jump
 			double_jump = true  # Devolve o segundo pulo para o player
 	
-	if Input.is_action_pressed("jump") && !Input.is_action_pressed("look_down"):
+	if Input.is_action_pressed("jump") && !is_looking_down:
 		if first_jump && jump_timer < jump_time_to_peak * jump_time_to_peak_mult:
 			velocity.y = jump_velocity
 			jump_timer += delta
@@ -79,19 +80,18 @@ func move_player(delta) -> void:
 		elif double_jump:
 			double_jump = false
 	
-	if Input.is_action_pressed("look_down") && is_on_floor() && Input.is_action_just_pressed("jump"):
+	if is_looking_down && is_on_floor() && Input.is_action_just_pressed("jump"):
 		position.y += 1
 	
 	if Input.is_action_just_pressed("Basic_Attack") && !health_component.is_getting_hit:
 		is_attacking = true
-		if Input.is_action_pressed("look_up"):
-			animation.play("attack_up")
-		elif Input.is_action_pressed("look_down"):
-			animation.play("attack_down")
-			if velocity.y != 0:
-				attack_area.knockup = true
-		else:
-			animation.play("attack_side")
+		animation.play("attack_side")
+	
+	if Input.is_action_pressed("look_down"):
+		is_looking_down = true
+	
+	if Input.is_action_just_released("look_down"):
+		is_looking_down = false
 	
 	velocity.x = direction * speed
 
@@ -107,11 +107,13 @@ func animations() -> void:
 		if !is_attacking:
 			if velocity.x > 0:
 				texture.flip_h = false
-				attack_area_side.position.x = ATTACK_AREA_SIDE_LOCATION
+				attack_area_polygon.position.x = ATTACK_AREA_POSITION
+				attack_area_polygon.scale.x = 1
 			elif velocity.x < 0:
 				texture.flip_h = true
-				attack_area_side.position.x = -ATTACK_AREA_SIDE_LOCATION
-			
+				attack_area_polygon.position.x = -ATTACK_AREA_POSITION
+				attack_area_polygon.scale.x = -1
+	
 			if velocity.y != 0:
 				animation.play("jump")
 			elif velocity.x != 0:
@@ -120,7 +122,7 @@ func animations() -> void:
 				animation.play("idle")
 
 func on_animation_finished(anim_name):
-	if anim_name == "attack_side" or anim_name == "attack_up" or anim_name == "attack_down":
+	if anim_name == "attack_side":
 		is_attacking = false
 		attack_area.knockup = false
 	if anim_name == "hit":
