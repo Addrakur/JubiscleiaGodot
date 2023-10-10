@@ -24,6 +24,3 @@ func on_resume_pressed():
 func on_restart_pressed():
 	get_tree().reload_current_scene()
 	get_tree().paused = false
-
-func on_exit_pressed():
-	get_tree().change_scene_to_file("res://Management/menu.tscn")

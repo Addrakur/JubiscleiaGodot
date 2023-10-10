@@ -84,10 +84,5 @@ text = "Resume"
 layout_mode = 2
 text = "Restart"
 
-[node name="Exit" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Exit"
-
 [connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Resume" to="." method="on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Restart" to="." method="on_restart_pressed"]
-[connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Exit" to="." method="on_exit_pressed"]
