@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://boritu71vaq7e"]
+
+[ext_resource type="Script" path="res://Management/game.gd" id="1_m8a5j"]
+[ext_resource type="PackedScene" uid="uid://lqfqrp52dju2" path="res://levels/prototype_level.tscn" id="2_e0xpk"]
+[ext_resource type="PackedScene" uid="uid://c38p3p0grwy4a" path="res://Management/pause_menu.tscn" id="3_8f3fa"]
+
+[node name="Game" type="Node" node_paths=PackedStringArray("level")]
+process_mode = 3
+script = ExtResource("1_m8a5j")
+level = NodePath("PrototypeLevel")
+
+[node name="PrototypeLevel" parent="." instance=ExtResource("2_e0xpk")]
+
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("game") instance=ExtResource("3_8f3fa")]
+game = NodePath("..")

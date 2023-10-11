@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=19 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="Script" path="res://player/Camera.gd" id="2_4f3vw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://co5sxfulkhxgx" path="res://assets/player/player_jump.png" id="4_ys0tm"]
 [ext_resource type="Texture2D" uid="uid://610l1pkwwste" path="res://assets/player/player_attack.png" id="6_1o5fg"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="9_6bxkt"]
+[ext_resource type="PackedScene" uid="uid://dig4ptur76dp0" path="res://Management/interface.tscn" id="9_181sd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttoyg"]
 size = Vector2(31, 31)
@@ -475,6 +476,10 @@ texture = ExtResource("2_kp26l")
 libraries = {
 "": SubResource("AnimationLibrary_ofbi6")
 }
+
+[node name="Interface" parent="." node_paths=PackedStringArray("player", "health_component") instance=ExtResource("9_181sd")]
+player = NodePath("..")
+health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("animator", "parent") instance=ExtResource("9_6bxkt")]
 max_health = 15.0
