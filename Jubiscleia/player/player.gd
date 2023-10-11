@@ -9,7 +9,8 @@ extends CharacterBody2D
 @onready var attack_area_polygon: CollisionPolygon2D = $AttackArea/AttackArea
 const ATTACK_AREA_POSITION: float = 39
 
-@export var speed: float = 300.0
+@export var speed: float
+@export var dash_force: float
 
 @export_group("Jump Variables")
 @export var jump_height: float
@@ -26,6 +27,7 @@ var jump_gravity: float
 var fall_gravity: float
 var jump_timer: float = 0
 var is_attacking: bool = false
+var can_dash: bool = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -92,6 +94,10 @@ func move_player(delta) -> void:
 	
 	if Input.is_action_just_released("look_down"):
 		is_looking_down = false
+	
+	if Input.is_action_just_pressed("dash") && can_dash:
+		var tween = create_tween().set_parallel(true)
+		tween.tween_property(self,"position",direction * dash_force,0.1)
 	
 	velocity.x = direction * speed
 

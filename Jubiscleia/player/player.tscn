@@ -440,6 +440,7 @@ script = ExtResource("1_5lux4")
 attack_area = NodePath("AttackArea")
 health_component = NodePath("HealthComponent")
 speed = 200.0
+dash_force = 500.0
 jump_height = 20.0
 jump_time_to_peak = 0.12
 jump_time_to_descent = 0.15
@@ -450,7 +451,6 @@ shape = SubResource("RectangleShape2D_ttoyg")
 
 [node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
 position_smoothing_enabled = true
-position_smoothing_speed = 10.0
 editor_draw_limits = true
 script = ExtResource("2_4f3vw")
 player = NodePath("..")
