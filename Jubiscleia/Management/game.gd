@@ -5,6 +5,7 @@ extends Node
 @onready var player: CharacterBody2D = level.player
 
 func _ready() -> void:
+	
 	player.camera.change_limit(camera_limits[0], camera_limits[1], camera_limits[2], camera_limits[3])
 	pass
 
