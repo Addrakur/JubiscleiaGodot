@@ -10,6 +10,7 @@ extends CharacterBody2D
 const ATTACK_AREA_POSITION: float = 39
 
 @export var speed: float
+@export var down_speed: float
 @export var dash_force: float
 
 @export_group("Jump Variables")
@@ -65,6 +66,9 @@ func move_player(delta) -> void:
 		if can_double_jump:  # Verifica se o player pode usar o double jump
 			double_jump = true  # Devolve o segundo pulo para o player
 	
+	if is_on_ceiling():
+		jump_timer = jump_time_to_peak * jump_time_to_peak_mult
+	
 	if Input.is_action_pressed("jump") && !is_looking_down:
 		if first_jump && jump_timer < jump_time_to_peak * jump_time_to_peak_mult:
 			velocity.y = jump_velocity
@@ -85,11 +89,11 @@ func move_player(delta) -> void:
 	if is_looking_down && is_on_floor() && Input.is_action_just_pressed("jump"):
 		position.y += 1
 	
-	if Input.is_action_just_pressed("Basic_Attack") && !health_component.is_getting_hit:
+	if Input.is_action_just_pressed("Basic_Attack") && !health_component.is_getting_hit && !is_looking_down:
 		is_attacking = true
 		animation.play("attack_side")
 	
-	if Input.is_action_pressed("look_down"):
+	if Input.is_action_pressed("look_down") && !is_attacking && is_on_floor():
 		is_looking_down = true
 	
 	if Input.is_action_just_released("look_down"):
@@ -98,7 +102,10 @@ func move_player(delta) -> void:
 	if Input.is_action_just_pressed("dash") && can_dash:
 		print("dash")
 	
-	velocity.x = direction * speed
+	if !is_looking_down:
+		velocity.x = direction * speed
+	else:
+		velocity.x = direction * down_speed
 
 func get_gravity():
 	if velocity.y < 0:
@@ -119,12 +126,15 @@ func animations() -> void:
 				attack_area_polygon.position.x = -ATTACK_AREA_POSITION
 				attack_area_polygon.scale.x = -1
 	
-			if velocity.y != 0:
-				animation.play("jump")
-			elif velocity.x != 0:
-				animation.play("run")
+			if !is_looking_down:
+				if velocity.y != 0:
+					animation.play("jump")
+				elif velocity.x != 0:
+					animation.play("run")
+				else:
+					animation.play("idle")
 			else:
-				animation.play("idle")
+				animation.play("down")
 
 func on_animation_finished(anim_name):
 	if anim_name == "attack_side":

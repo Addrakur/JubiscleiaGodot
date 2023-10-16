@@ -5,6 +5,9 @@ extends Camera2D
 func _ready() -> void:
 	pass
 
+func _process(_delta):
+	position = position.round()
+
 func change_limit(top_limit: int, left_limit: int, right_limit: int, bottom_limit: int) -> void:
 	limit_top = top_limit
 	limit_left = left_limit
