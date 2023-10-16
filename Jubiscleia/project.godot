@@ -15,13 +15,18 @@ run/main_scene="res://Management/menu.tscn"
 config/features=PackedStringArray("4.1", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GameSettings="*res://singletons/game_settings.gd"
+PlayerVariables="*res://singletons/player_variables.gd"
+
 [display]
 
 window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/mode=2
 window/stretch/mode="viewport"
-window/vsync/vsync_mode=3
+window/vsync/vsync_mode=0
 
 [input]
 

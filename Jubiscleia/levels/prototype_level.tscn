@@ -15,7 +15,7 @@ player = NodePath("player")
 camera_limits = Array[int]([0, 0, 3712, 704])
 
 [node name="player" parent="." instance=ExtResource("2_oy7pp")]
-position = Vector2(1152, 512)
+position = Vector2(96, 292)
 
 [node name="Plataforms" type="Node2D" parent="."]
 

@@ -96,8 +96,7 @@ func move_player(delta) -> void:
 		is_looking_down = false
 	
 	if Input.is_action_just_pressed("dash") && can_dash:
-		var tween = create_tween().set_parallel(true)
-		tween.tween_property(self,"position",direction * dash_force,0.1)
+		print("dash")
 	
 	velocity.x = direction * speed
 

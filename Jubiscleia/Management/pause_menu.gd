@@ -1,7 +1,7 @@
 extends CanvasLayer
 
-@export var game: Node
 @onready var pause_menu: Control = $PauseMenu
+var menu: String = "res://Management/menu.tscn"
 
 func _process(_delta):
 	if get_tree().paused:
@@ -14,4 +14,9 @@ func on_resume_pressed():
 
 func on_restart_pressed():
 	get_tree().reload_current_scene()
+	get_tree().paused = false
+
+
+func on_menu_pressed():
+	GameSettings.change_scene(menu)
 	get_tree().paused = false

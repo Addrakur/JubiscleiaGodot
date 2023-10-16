@@ -54,5 +54,10 @@ text = "Resume"
 layout_mode = 2
 text = "Restart"
 
+[node name="Menu" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Go to Menu"
+
 [connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Resume" to="." method="on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Restart" to="." method="on_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Menu" to="." method="on_menu_pressed"]
