@@ -9,3 +9,7 @@ func on_level1_pressed():
 
 func on_level2_pressed():
 	GameSettings.change_scene(level2)
+
+
+func on_quit_pressed():
+	get_tree().quit()

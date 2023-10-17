@@ -99,6 +99,12 @@ limit_points = [Vector2(2048, 256), Vector2(2624, 256), Vector2(2624, 384), Vect
 [node name="Enemy" parent="Enemies/Limit5" instance=ExtResource("4_jp6h7")]
 position = Vector2(2144, 352)
 
+[node name="Limit6" parent="Enemies" instance=ExtResource("3_v6kio")]
+limit_points = [Vector2(2048, 672), Vector2(2656, 672), Vector2(2656, 512), Vector2(2048, 512)]
+
+[node name="Enemy" parent="Enemies/Limit6" instance=ExtResource("4_jp6h7")]
+position = Vector2(2336, 640)
+
 [node name="TileMap" type="TileMap" parent="." groups=["tilemap"]]
 texture_filter = 1
 tile_set = ExtResource("6_00r81")
