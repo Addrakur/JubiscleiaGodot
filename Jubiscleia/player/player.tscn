@@ -684,10 +684,9 @@ libraries = {
 player = NodePath("..")
 health_component = NodePath("../HealthComponent")
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("animator", "parent") instance=ExtResource("9_6bxkt")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("animator") instance=ExtResource("9_6bxkt")]
 max_health = 15.0
 animator = NodePath("../Animations")
-parent = NodePath("..")
 
 [node name="PauseMenu" parent="." instance=ExtResource("10_yhe3o")]
 process_mode = 3

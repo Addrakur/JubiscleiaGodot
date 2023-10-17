@@ -1,16 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://bb2cdotqvfh4g"]
+[gd_scene load_steps=5 format=3 uid="uid://bb2cdotqvfh4g"]
 
+[ext_resource type="Script" path="res://enemy/bee.gd" id="1_hotr7"]
 [ext_resource type="Texture2D" uid="uid://cmctdooj6fqif" path="res://assets/enemy/turret/projectile.png" id="1_vgddl"]
+[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_xksvo"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m5kid"]
 radius = 2.0
 height = 8.0
 
-[node name="Bee" type="Area2D"]
+[node name="Bee" type="Node2D"]
+script = ExtResource("1_hotr7")
+speed = 250.0
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("1_vgddl")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="AttackArea" parent="." instance=ExtResource("2_xksvo")]
+collision_layer = 2
+collision_mask = 1
+target = "player"
+damage = 1.0
+one_hit_destroy = true
+destroy_on_terrain = true
+
+[node name="Collision" type="CollisionShape2D" parent="AttackArea"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_m5kid")

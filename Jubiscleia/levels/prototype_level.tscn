@@ -105,7 +105,7 @@ limit_points = [Vector2(2048, 672), Vector2(2656, 672), Vector2(2656, 512), Vect
 [node name="Enemy" parent="Enemies/Limit6" instance=ExtResource("4_jp6h7")]
 position = Vector2(2336, 640)
 
-[node name="TileMap" type="TileMap" parent="." groups=["tilemap"]]
+[node name="TileMap" type="TileMap" parent="." groups=["terrain"]]
 texture_filter = 1
 tile_set = ExtResource("6_00r81")
 cell_quadrant_size = 32
