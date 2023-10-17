@@ -25,6 +25,13 @@ var direction: float
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+func _ready():
+	var dir_chance: float = randf_range(-50,50)
+	if dir_chance < 0:
+		direction = -1
+	else:
+		direction = 1
+
 func _process(_delta):
 	if health_component.alive:
 		health_component.die()
@@ -54,7 +61,9 @@ func _physics_process(delta):
 
 func idle() -> void:
 	animation.play("idle")
-	velocity.x = 0
+	if is_on_wall():
+		direction *= -1
+	velocity.x = direction * speed
 
 func chase_player() -> void:
 	animation.play("chase")

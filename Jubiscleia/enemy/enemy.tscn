@@ -457,8 +457,8 @@ collision_layer = 2
 collision_mask = 1
 target = "player"
 damage = 1.0
-knockback = true
 knockback_force = 100.0
+knockback = true
 
 [node name="AttackCollision" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(68, -11.5)
@@ -466,11 +466,10 @@ shape = SubResource("RectangleShape2D_10i2g")
 disabled = true
 debug_color = Color(0.890196, 0.682353, 0, 0.419608)
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("animator", "parent") instance=ExtResource("7_d63es")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("animator") instance=ExtResource("7_d63es")]
 scale = Vector2(0.967821, 1)
 max_health = 3.0
 animator = NodePath("../Animations")
-parent = NodePath("..")
 destroy_after_dead = true
 
 [connection signal="animation_finished" from="Animations" to="." method="_on_animation_finished"]

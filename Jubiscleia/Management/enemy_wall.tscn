@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dofww7w55i7it"]
+
+[node name="EnemyWall" type="StaticBody2D"]
+collision_mask = 2
