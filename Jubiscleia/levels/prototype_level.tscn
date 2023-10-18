@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://lqfqrp52dju2"]
+[gd_scene load_steps=14 format=3 uid="uid://lqfqrp52dju2"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_rdehp"]
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="2_oy7pp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dofww7w55i7it" path="res://Management/enemy_wall.tscn" id="6_m5w2o"]
 [ext_resource type="PackedScene" uid="uid://dujgxpnuckrha" path="res://Management/tween_area.tscn" id="8_k86fn"]
 [ext_resource type="PackedScene" uid="uid://cbkmdf5fph8mt" path="res://enemy/turret.tscn" id="8_rqbkd"]
+[ext_resource type="PackedScene" uid="uid://bolenc8px11st" path="res://Management/level_end.tscn" id="10_aso8h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1u3jq"]
 size = Vector2(32, 64)
@@ -204,3 +205,6 @@ direction = -1.0
 [node name="Turret2" parent="." instance=ExtResource("8_rqbkd")]
 position = Vector2(3344, 464)
 direction = -1.0
+
+[node name="LevelEnd" parent="." instance=ExtResource("10_aso8h")]
+position = Vector2(3584, 192)

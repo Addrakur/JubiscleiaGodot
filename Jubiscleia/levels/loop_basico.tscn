@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3xa4xiengywm"]
+[gd_scene load_steps=7 format=3 uid="uid://b3xa4xiengywm"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_7dotf"]
 [ext_resource type="TileSet" uid="uid://dsjlo105wabro" path="res://assets/Tileset/Ground.tres" id="1_brmny"]
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="3_q1c72"]
 [ext_resource type="PackedScene" uid="uid://bi6cc6w3ecvyj" path="res://objects/plataform.tscn" id="4_t307q"]
 [ext_resource type="PackedScene" uid="uid://cbkmdf5fph8mt" path="res://enemy/turret.tscn" id="5_qysfm"]
+[ext_resource type="PackedScene" uid="uid://bolenc8px11st" path="res://Management/level_end.tscn" id="6_ndssn"]
 
 [node name="LoopBasico" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_7dotf")
@@ -77,3 +78,6 @@ position = Vector2(2656, 288)
 [node name="Turret" parent="." instance=ExtResource("5_qysfm")]
 position = Vector2(2640, 176)
 direction = -1.0
+
+[node name="LevelEnd" parent="." instance=ExtResource("6_ndssn")]
+position = Vector2(3008, 416)

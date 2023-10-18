@@ -1,6 +1,7 @@
 extends Node
 
 @onready var player: CharacterBody2D
+var menu: String = "res://Management/menu.tscn"
 
 func _input(event):
 	if event.is_action_pressed("pause"):
