@@ -1,14 +1,11 @@
 extends Control
 
-var level1: String = "res://levels/loop_basico.tscn"
-var level2: String = "res://levels/prototype_level.tscn"
-
 func on_level1_pressed():
-	GameSettings.change_scene(level1)
+	GameSettings.change_scene(GameSettings.level1)
 
 
 func on_level2_pressed():
-	GameSettings.change_scene(level2)
+	GameSettings.change_scene(GameSettings.level2)
 
 
 func on_quit_pressed():
