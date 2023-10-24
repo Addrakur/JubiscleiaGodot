@@ -27,7 +27,9 @@ var jump_velocity: float
 var jump_gravity: float
 var fall_gravity: float
 var jump_timer: float = 0
+
 var is_attacking: bool = false
+
 var can_dash: bool = true
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.

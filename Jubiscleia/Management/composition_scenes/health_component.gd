@@ -18,7 +18,7 @@ func update_health(value: float, knockback: bool, knockback_force: float) -> voi
 	if animator != null:
 		animator.play("hit")
 	if knockback:
-		print("knockback")
+		pass
 
 func die() -> void:
 	if current_health <= 0:
