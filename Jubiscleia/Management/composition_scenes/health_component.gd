@@ -12,7 +12,6 @@ func _ready() -> void:
 	current_health = max_health
 
 func update_health(value: float, knockback: bool, knockback_force: float) -> void:
-	parent.is_attacking = false
 	is_getting_hit = true
 	current_health -= value
 	if animator != null:

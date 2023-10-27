@@ -644,9 +644,9 @@ collision_mask = 2
 script = ExtResource("1_5lux4")
 attack_area = NodePath("AttackArea")
 health_component = NodePath("HealthComponent")
-jump_height = 60.0
-jump_time_to_peak = 0.25
-jump_time_to_descent = 0.3
+jump_height = 50.0
+jump_time_to_peak = 0.2
+jump_time_to_descent = 0.25
 max_jump_count = 2.0
 
 [node name="Texture" type="Sprite2D" parent="."]
@@ -726,3 +726,5 @@ script = ExtResource("17_hgtqx")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 speed = 200.0
+
+[connection signal="animation_finished" from="Animations" to="." method="on_animation_finished"]

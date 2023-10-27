@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=24 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="Script" path="res://player/Camera.gd" id="2_4f3vw"]
@@ -13,10 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://c38p3p0grwy4a" path="res://Management/pause_menu.tscn" id="10_yhe3o"]
 [ext_resource type="Script" path="res://Management/states/state_machine.gd" id="12_8y4yw"]
 [ext_resource type="Script" path="res://Management/states/player/player_idle.gd" id="13_pm7of"]
-[ext_resource type="Script" path="res://Management/states/player/player_move.gd" id="14_37xm8"]
-[ext_resource type="Script" path="res://Management/states/player/player_jump.gd" id="15_gjeku"]
-[ext_resource type="Script" path="res://Management/states/player/player_fall.gd" id="16_37fca"]
-[ext_resource type="Script" path="res://Management/states/player/player_double_jump.gd" id="17_hgtqx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttoyg"]
 size = Vector2(28, 28)
@@ -644,10 +640,13 @@ collision_mask = 2
 script = ExtResource("1_5lux4")
 attack_area = NodePath("AttackArea")
 health_component = NodePath("HealthComponent")
-jump_height = 60.0
-jump_time_to_peak = 0.25
-jump_time_to_descent = 0.3
-max_jump_count = 2.0
+speed = 200.0
+down_speed = 70.0
+dash_force = 500.0
+jump_height = 20.0
+jump_time_to_peak = 0.12
+jump_time_to_descent = 0.15
+jump_time_to_peak_mult = 2.4
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -696,33 +695,10 @@ process_mode = 3
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("12_8y4yw")
-state = NodePath("Idle")
+state = NodePath("PlayerIdle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
+[node name="PlayerIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("13_pm7of")
 player = NodePath("../..")
-animation = NodePath("../../Animations")
 
-[node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
-script = ExtResource("14_37xm8")
-player = NodePath("../..")
-animation = NodePath("../../Animations")
-speed = 200.0
-
-[node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
-script = ExtResource("15_gjeku")
-player = NodePath("../..")
-animation = NodePath("../../Animations")
-speed = 200.0
-
-[node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
-script = ExtResource("16_37fca")
-player = NodePath("../..")
-animation = NodePath("../../Animations")
-speed = 200.0
-
-[node name="DoubleJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
-script = ExtResource("17_hgtqx")
-player = NodePath("../..")
-animation = NodePath("../../Animations")
-speed = 200.0
+[connection signal="animation_finished" from="Animations" to="." method="on_animation_finished"]
