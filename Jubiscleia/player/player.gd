@@ -15,6 +15,7 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var jump_state: State = $StateMachine/Jump as PlayerJump
 @onready var fall_state: State = $StateMachine/Fall as PlayerFall
 @onready var double_jump_state: State = $StateMachine/DoubleJump as PlayerDoubleJump
+@onready var crouch_state: State = $StateMachine/Crouch as PlayerCrouch
 @onready var fsm = $StateMachine as StateMachine
 
 @export_group("Jump Variables")
@@ -33,7 +34,6 @@ var direction: float
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	connect_signals()
 	
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
 	jump_gravity = ((-2.0 * jump_height) / pow(jump_time_to_peak,2)) * -1
@@ -68,21 +68,3 @@ func animations() -> void:
 		texture.flip_h = true
 		attack_area_polygon.position.x = -ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = -1
-
-func connect_signals() -> void:
-	idle_state.idle_move.connect(fsm.change_state.bind(move_state))
-	idle_state.idle_jump.connect(fsm.change_state.bind(jump_state))
-	idle_state.idle_fall.connect(fsm.change_state.bind(fall_state))
-	
-	move_state.move_idle.connect(fsm.change_state.bind(idle_state))
-	move_state.move_jump.connect(fsm.change_state.bind(jump_state))
-	move_state.move_fall.connect(fsm.change_state.bind(fall_state))
-	
-	jump_state.jump_fall.connect(fsm.change_state.bind(fall_state))
-	jump_state.jump_double_jump.connect(fsm.change_state.bind(double_jump_state))
-	
-	double_jump_state.double_jump_fall.connect(fsm.change_state.bind(fall_state))
-	
-	fall_state.fall_idle.connect(fsm.change_state.bind(idle_state))
-	fall_state.fall_move.connect(fsm.change_state.bind(move_state))
-	fall_state.fall_double_jump.connect(fsm.change_state.bind(double_jump_state))

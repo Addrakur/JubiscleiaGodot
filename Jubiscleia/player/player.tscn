@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=29 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="Script" path="res://player/Camera.gd" id="2_4f3vw"]
@@ -12,11 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://dig4ptur76dp0" path="res://Management/interface.tscn" id="9_181sd"]
 [ext_resource type="PackedScene" uid="uid://c38p3p0grwy4a" path="res://Management/pause_menu.tscn" id="10_yhe3o"]
 [ext_resource type="Script" path="res://Management/states/state_machine.gd" id="12_8y4yw"]
-[ext_resource type="Script" path="res://Management/states/player/player_idle.gd" id="13_pm7of"]
-[ext_resource type="Script" path="res://Management/states/player/player_move.gd" id="14_37xm8"]
-[ext_resource type="Script" path="res://Management/states/player/player_jump.gd" id="15_gjeku"]
-[ext_resource type="Script" path="res://Management/states/player/player_fall.gd" id="16_37fca"]
-[ext_resource type="Script" path="res://Management/states/player/player_double_jump.gd" id="17_hgtqx"]
+[ext_resource type="Script" path="res://Management/states/player/movement/player_idle.gd" id="13_8i2bm"]
+[ext_resource type="Script" path="res://Management/states/player/movement/player_move.gd" id="14_nnfso"]
+[ext_resource type="Script" path="res://Management/states/player/movement/player_jump.gd" id="15_dnbrn"]
+[ext_resource type="Script" path="res://Management/states/player/movement/player_fall.gd" id="16_xs1j5"]
+[ext_resource type="Script" path="res://Management/states/player/movement/player_double_jump.gd" id="17_ywk3g"]
+[ext_resource type="Script" path="res://Management/states/player/movement/player_crouch.gd" id="18_ia5tc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttoyg"]
 size = Vector2(28, 28)
@@ -671,7 +672,6 @@ collision_layer = 1
 collision_mask = 2
 target = "enemy"
 damage = 1.0
-knockup_force = -700.0
 
 [node name="AttackArea" type="CollisionPolygon2D" parent="AttackArea"]
 position = Vector2(39, 0)
@@ -699,30 +699,36 @@ script = ExtResource("12_8y4yw")
 state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
-script = ExtResource("13_pm7of")
+script = ExtResource("13_8i2bm")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 
 [node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
-script = ExtResource("14_37xm8")
+script = ExtResource("14_nnfso")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 speed = 200.0
 
 [node name="Jump" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
-script = ExtResource("15_gjeku")
+script = ExtResource("15_dnbrn")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 speed = 200.0
 
 [node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
-script = ExtResource("16_37fca")
+script = ExtResource("16_xs1j5")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 speed = 200.0
 
 [node name="DoubleJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
-script = ExtResource("17_hgtqx")
+script = ExtResource("17_ywk3g")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 speed = 200.0
+
+[node name="Crouch" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
+script = ExtResource("18_ia5tc")
+player = NodePath("../..")
+animation = NodePath("../../Animations")
+speed = 70.0
