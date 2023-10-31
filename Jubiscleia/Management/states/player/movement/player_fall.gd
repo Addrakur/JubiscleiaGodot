@@ -10,7 +10,6 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	animation.play("jump")
 
 func exit_state() -> void:
 	set_physics_process(false)
@@ -18,6 +17,11 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	player.direction = Input.get_axis("left","right")
 	player.velocity.x = player.direction * speed
+	
+	if player.velocity.y > 0:
+		animation.play("fall")
+	else:
+		animation.play("jump")
 	
 	if player.is_on_floor():
 		if player.direction == 0:
@@ -28,3 +32,4 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("jump") and player.jump_count < player.max_jump_count:
 		player.jump_count += 1
 		player.fsm.change_state(player.double_jump_state)
+	

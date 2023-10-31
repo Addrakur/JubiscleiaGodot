@@ -33,3 +33,6 @@ func _physics_process(_delta):
 	
 	if Input.is_action_pressed("look_down"):
 		player.fsm.change_state(player.crouch_state)
+	
+	if Input.is_action_just_pressed("Basic_Attack"):
+		player.fsm.change_state(player.sword_attack_1_state)

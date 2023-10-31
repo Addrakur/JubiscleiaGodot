@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var animation: AnimationPlayer = $Animations
 @onready var texture: Sprite2D = $Texture
 @onready var camera: Camera2D = $Camera
-@onready var attack_area_polygon: CollisionPolygon2D = $AttackArea/AttackArea
+@onready var attack_area_polygon: CollisionPolygon2D = $AttackArea/Sword_Area_1
 const ATTACK_AREA_POSITION: float = 39
 
 @onready var move_state: State = $StateMachine/Move as PlayerMove
@@ -16,6 +16,8 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var fall_state: State = $StateMachine/Fall as PlayerFall
 @onready var double_jump_state: State = $StateMachine/DoubleJump as PlayerDoubleJump
 @onready var crouch_state: State = $StateMachine/Crouch as PlayerCrouch
+@onready var sword_attack_1_state: State = $StateMachine/SwordAttack1 as PlayerSwordAttack1
+@onready var sword_attack_2_state: State = $StateMachine/SwordAttack2 as PlayerSwordAttack2
 @onready var fsm = $StateMachine as StateMachine
 
 @export_group("Jump Variables")
@@ -40,7 +42,7 @@ func _ready():
 	fall_gravity = ((-2.0 * jump_height) / pow(jump_time_to_descent,2)) * -1
 	
 func _process(_delta):
-	animations()
+	flip()
 	health_component.die()
 
 func _physics_process(delta):
@@ -59,7 +61,7 @@ func get_gravity():
 	else:
 		gravity = fall_gravity
 
-func animations() -> void:
+func flip() -> void:
 	if velocity.x > 0:
 		texture.flip_h = false
 		attack_area_polygon.position.x = ATTACK_AREA_POSITION
