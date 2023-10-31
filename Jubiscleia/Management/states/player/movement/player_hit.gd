@@ -1,4 +1,4 @@
-class_name PlayerSwordAttack2
+class_name PlayerHit
 extends State
 
 @export var player: CharacterBody2D
@@ -9,17 +9,18 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	animation.play("sword_attack_2")
+	animation.play("hit")
+	player.velocity.x = 0
+	if player.is_on_floor():
+		player.jump_count = 0
 
 func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(_delta):
-	player.velocity.x = 0
-	
-	if player.health_component.is_getting_hit:
-		player.fsm.change_state(player.hit_state)
+	pass
 
 func _on_animation_finished(anim):
-	if anim == "sword_attack_2":
+	if anim == "hit":
+		player.health_component.is_getting_hit = false
 		player.fsm.change_state(player.idle_state)

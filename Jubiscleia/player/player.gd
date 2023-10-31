@@ -16,6 +16,7 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var fall_state: State = $StateMachine/Fall as PlayerFall
 @onready var double_jump_state: State = $StateMachine/DoubleJump as PlayerDoubleJump
 @onready var crouch_state: State = $StateMachine/Crouch as PlayerCrouch
+@onready var hit_state: State = $StateMachine/Hit as PlayerHit
 @onready var sword_attack_1_state: State = $StateMachine/SwordAttack1 as PlayerSwordAttack1
 @onready var sword_attack_2_state: State = $StateMachine/SwordAttack2 as PlayerSwordAttack2
 @onready var fsm = $StateMachine as StateMachine
