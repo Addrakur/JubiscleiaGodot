@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var limit_area: CollisionPolygon2D = $LimitArea
-@onready var enemy: CharacterBody2D = $Enemy
+@export var enemy: CharacterBody2D
 @export var limit_points: Array
 
 func _ready() -> void:
