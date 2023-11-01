@@ -19,7 +19,7 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	player.velocity.x = 0
 	
-	if Input.is_action_just_pressed("Basic_Attack"):
+	if Input.is_action_just_pressed("basic_Attack"):
 		combo = true
 	
 	if player.health_component.is_getting_hit:
