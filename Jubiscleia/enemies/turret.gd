@@ -5,7 +5,7 @@ extends StaticBody2D
 
 @export var cooldown: float
 @export var direction: float
-var bee = preload("res://enemy/bee.tscn")
+var bee = preload("res://enemies/bee.tscn")
 var can_shoot: bool = true
 
 func _process(_delta):

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbkmdf5fph8mt"]
 
-[ext_resource type="Texture2D" uid="uid://law62h0uiqjx" path="res://assets/enemy/turret/turret.png" id="1_civew"]
-[ext_resource type="Script" path="res://enemy/turret.gd" id="1_oprxg"]
+[ext_resource type="Script" path="res://enemies/turret.gd" id="1_odvsp"]
+[ext_resource type="Texture2D" uid="uid://law62h0uiqjx" path="res://assets/enemy/turret/turret.png" id="2_kataa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1p62m"]
 size = Vector2(26, 32)
@@ -9,11 +9,11 @@ size = Vector2(26, 32)
 [node name="Turret" type="StaticBody2D"]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("1_oprxg")
+script = ExtResource("1_odvsp")
 cooldown = 1.5
 
 [node name="Texture" type="Sprite2D" parent="."]
-texture = ExtResource("1_civew")
+texture = ExtResource("2_kataa")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(3, 0)

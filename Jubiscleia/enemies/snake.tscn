@@ -1,15 +1,22 @@
-[gd_scene load_steps=20 format=3 uid="uid://bx4lmho2y840s"]
+[gd_scene load_steps=25 format=3 uid="uid://bx4lmho2y840s"]
 
-[ext_resource type="Script" path="res://enemy/enemy.gd" id="1_134v5"]
-[ext_resource type="Texture2D" uid="uid://cohu7ko2n1vi6" path="res://assets/enemy/idle.png" id="2_gy08j"]
-[ext_resource type="Texture2D" uid="uid://cqwrkpbmli2q1" path="res://assets/enemy/enemy_run.png" id="3_yghfg"]
-[ext_resource type="Texture2D" uid="uid://di681tdojhiwp" path="res://assets/enemy/enemy_chase.png" id="4_fr4he"]
-[ext_resource type="Texture2D" uid="uid://b3q4buqpd6tp" path="res://assets/enemy/enemy_attack.png" id="5_4axxy"]
-[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="6_drop3"]
-[ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="7_d63es"]
+[ext_resource type="Script" path="res://enemies/snake.gd" id="1_ep4bx"]
+[ext_resource type="Texture2D" uid="uid://beu7vhok5k65h" path="res://assets/enemy/banco_de_assets/Snake_attack.png" id="3_u0csh"]
+[ext_resource type="Texture2D" uid="uid://c0ryy7uf7jrva" path="res://assets/enemy/banco_de_assets/Snake_death.png" id="5_ihiu0"]
+[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="6_krml7"]
+[ext_resource type="Texture2D" uid="uid://cuf7pfauc48dl" path="res://assets/enemy/banco_de_assets/Snake_hurt.png" id="6_o5gfu"]
+[ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="7_0q0uj"]
+[ext_resource type="Texture2D" uid="uid://boe1qhplhi48e" path="res://assets/enemy/banco_de_assets/snake_idle.png" id="7_oru6d"]
+[ext_resource type="Texture2D" uid="uid://bes4jlty8taqc" path="res://assets/enemy/banco_de_assets/Snake_walk.png" id="8_6fua8"]
+[ext_resource type="Script" path="res://Management/states/state_machine.gd" id="11_svs25"]
+[ext_resource type="Script" path="res://Management/states/snake/snake_move.gd" id="12_31np0"]
+[ext_resource type="Script" path="res://Management/states/snake/snake_idle.gd" id="13_6axb0"]
+[ext_resource type="Script" path="res://Management/states/snake/snake_attack.gd" id="13_gcars"]
+[ext_resource type="Script" path="res://Management/states/snake/snake_hit.gd" id="13_k7h8k"]
+[ext_resource type="Script" path="res://Management/states/snake/snake_death.gd" id="14_q5to3"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ep2qw"]
-size = Vector2(64, 64)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyy75"]
+size = Vector2(19, 33)
 
 [sub_resource type="Animation" id="Animation_fixrv"]
 length = 0.001
@@ -23,7 +30,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_gy08j")]
+"values": [ExtResource("7_oru6d")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -35,7 +42,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -52,14 +59,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Texture:frame")
+tracks/3/path = NodePath("AttackArea/AttackCollision:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -73,33 +80,75 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AttackArea/AttackCollision:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Texture:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_u7nyx"]
 resource_name = "attack"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AttackArea/AttackCollision:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_u0csh")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Texture:vframes")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Texture:frame")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="Animation" id="Animation_rljuu"]
+resource_name = "dead"
+length = 0.4
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -110,7 +159,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_4axxy")]
+"values": [ExtResource("5_ihiu0")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -143,123 +192,56 @@ tracks/3/path = NodePath("Texture:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.3, 0.5, 0.6, 0.7, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 0, 1, 1, 2, 3, 3]
+"values": [0, 1, 2, 3]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AttackArea/AttackCollision:disabled")
+tracks/4/path = NodePath("Texture:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_4ikfk"]
-resource_name = "chase"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.4),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_fr4he")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Texture:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Texture:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Texture:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_rljuu"]
-resource_name = "dead"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_8regp"]
 resource_name = "hit"
-length = 0.3
+length = 0.2
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:modulate")
+tracks/0/path = NodePath("Texture:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.780392, 0, 0, 1), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_o5gfu")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Texture:texture")
+tracks/1/path = NodePath("Texture:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_gy08j")]
+"values": [2]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Texture:hframes")
+tracks/2/path = NodePath("Texture:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -271,31 +253,21 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Texture:vframes")
+tracks/3/path = NodePath("Texture:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [1]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Texture:frame")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"values": [0, 1]
 }
 
 [sub_resource type="Animation" id="Animation_nbeqx"]
 resource_name = "idle"
-length = 0.1
+length = 0.4
+loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -306,7 +278,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_gy08j")]
+"values": [ExtResource("7_oru6d")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -318,7 +290,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -339,15 +311,17 @@ tracks/3/path = NodePath("Texture:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_xk164"]
 resource_name = "run"
-length = 0.1
+length = 0.6
+loop_mode = 1
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -358,7 +332,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_yghfg")]
+"values": [ExtResource("8_6fua8")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -370,7 +344,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -391,69 +365,67 @@ tracks/3/path = NodePath("Texture:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p3sgm"]
 _data = {
 "RESET": SubResource("Animation_fixrv"),
 "attack": SubResource("Animation_u7nyx"),
-"chase": SubResource("Animation_4ikfk"),
 "dead": SubResource("Animation_rljuu"),
 "hit": SubResource("Animation_8regp"),
 "idle": SubResource("Animation_nbeqx"),
 "run": SubResource("Animation_xk164")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2yagt"]
-size = Vector2(368, 128)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2j01"]
-size = Vector2(48, 64)
+size = Vector2(16, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10i2g"]
-size = Vector2(56, 87)
+size = Vector2(19, 19)
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
+[node name="Snake" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
+position = Vector2(0, -16)
 collision_layer = 2
-script = ExtResource("1_134v5")
+script = ExtResource("1_ep4bx")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
-speed = 50.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ep2qw")
+position = Vector2(-8.5, 6.5)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_cyy75")
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture_filter = 1
-scale = Vector2(1, 1.00391)
-texture = ExtResource("2_gy08j")
+position = Vector2(0, -8)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("7_oru6d")
+hframes = 4
+frame = 2
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_p3sgm")
 }
 
-[node name="DetectionArea" type="Area2D" parent="."]
-collision_layer = 0
-
-[node name="DetectionCollision" type="CollisionShape2D" parent="DetectionArea"]
-position = Vector2(104, -32)
-shape = SubResource("RectangleShape2D_2yagt")
-
 [node name="CanAttackArea" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CanAttackCollision" type="CollisionShape2D" parent="CanAttackArea"]
-position = Vector2(56, 0)
+position = Vector2(-33, 0)
 shape = SubResource("RectangleShape2D_n2j01")
 debug_color = Color(0.831373, 0.305882, 0.317647, 0.419608)
 
-[node name="AttackArea" parent="." instance=ExtResource("6_drop3")]
-collision_layer = 2
+[node name="CanAttackCollision2" type="CollisionShape2D" parent="CanAttackArea"]
+position = Vector2(16, 0)
+shape = SubResource("RectangleShape2D_n2j01")
+debug_color = Color(0.831373, 0.305882, 0.317647, 0.419608)
+
+[node name="AttackArea" parent="." instance=ExtResource("6_krml7")]
 collision_mask = 1
 target = "player"
 damage = 1.0
@@ -461,19 +433,49 @@ knockback_force = 100.0
 knockback = true
 
 [node name="AttackCollision" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(68, -11.5)
+position = Vector2(-33, 5)
 shape = SubResource("RectangleShape2D_10i2g")
 disabled = true
 debug_color = Color(0.890196, 0.682353, 0, 0.419608)
 
-[node name="HealthComponent" parent="." node_paths=PackedStringArray("animator") instance=ExtResource("7_d63es")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("animator") instance=ExtResource("7_0q0uj")]
 scale = Vector2(0.967821, 1)
 max_health = 3.0
 animator = NodePath("../Animations")
 destroy_after_dead = true
 
-[connection signal="animation_finished" from="Animations" to="." method="_on_animation_finished"]
-[connection signal="body_entered" from="DetectionArea" to="." method="on_detection_area_body_entered"]
-[connection signal="body_exited" from="DetectionArea" to="." method="on_detection_area_body_exited"]
-[connection signal="body_entered" from="CanAttackArea" to="." method="on_can_attack_area_body_entered"]
-[connection signal="body_exited" from="CanAttackArea" to="." method="on_can_attack_area_body_exited"]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("11_svs25")
+state = NodePath("SnakeMove")
+
+[node name="SnakeMove" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
+script = ExtResource("12_31np0")
+snake = NodePath("../..")
+animation = NodePath("../../Animations")
+speed = 30.0
+
+[node name="SnakeAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
+script = ExtResource("13_gcars")
+snake = NodePath("../..")
+animation = NodePath("../../Animations")
+
+[node name="SnakeHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
+script = ExtResource("13_k7h8k")
+snake = NodePath("../..")
+animation = NodePath("../../Animations")
+
+[node name="SnakeIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
+script = ExtResource("13_6axb0")
+snake = NodePath("../..")
+animation = NodePath("../../Animations")
+
+[node name="SnakeDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
+script = ExtResource("14_q5to3")
+snake = NodePath("../..")
+animation = NodePath("../../Animations")
+
+[connection signal="animation_finished" from="Animations" to="StateMachine/SnakeAttack" method="_on_animation_finished"]
+[connection signal="animation_finished" from="Animations" to="StateMachine/SnakeHit" method="_on_animation_finished"]
+[connection signal="animation_finished" from="Animations" to="StateMachine/SnakeDeath" method="_on_animation_finished"]
+[connection signal="body_entered" from="CanAttackArea" to="StateMachine/SnakeMove" method="_on_can_attack_area_body_entered"]
+[connection signal="body_exited" from="CanAttackArea" to="StateMachine/SnakeIdle" method="_on_can_attack_area_body_exited"]

@@ -1,7 +1,7 @@
-class_name PlayerHit
+class_name SnakeHit
 extends State
 
-@export var player: CharacterBody2D
+@export var snake: CharacterBody2D
 @export var animation: AnimationPlayer
 
 func _ready():
@@ -10,18 +10,16 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	animation.play("hit")
-	player.velocity.x = 0
-	if player.is_on_floor():
-		player.jump_count = 0
+	snake.velocity.x = 0
 
 func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(_delta):
-	if not player.alive:
-		player.fsm.change_state(player.death_state)
+	if not snake.alive:
+		snake.fsm.change_state(snake.death_state)
 
 func _on_animation_finished(anim):
 	if anim == "hit":
-		player.health_component.is_getting_hit = false
-		player.fsm.change_state(player.idle_state)
+		snake.health_component.is_getting_hit = false
+		snake.fsm.change_state(snake.move_state)

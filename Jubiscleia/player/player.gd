@@ -17,9 +17,10 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var double_jump_state: State = $StateMachine/DoubleJump as PlayerDoubleJump
 @onready var crouch_state: State = $StateMachine/Crouch as PlayerCrouch
 @onready var hit_state: State = $StateMachine/Hit as PlayerHit
+@onready var death_state: State = $StateMachine/Death as PlayerDeath
 @onready var sword_attack_1_state: State = $StateMachine/SwordAttack1 as PlayerSwordAttack1
 @onready var sword_attack_2_state: State = $StateMachine/SwordAttack2 as PlayerSwordAttack2
-@onready var fsm = $StateMachine as StateMachine
+@onready var fsm: StateMachine = $StateMachine as StateMachine
 
 @export_group("Jump Variables")
 @export var jump_height: float
@@ -31,12 +32,15 @@ var jump_velocity: float
 var jump_gravity: float
 var fall_gravity: float
 
+var alive: bool = true
+
 var direction: float
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
+	GameSettings.player_alive = true
 	
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
 	jump_gravity = ((-2.0 * jump_height) / pow(jump_time_to_peak,2)) * -1
@@ -44,10 +48,11 @@ func _ready():
 	
 func _process(_delta):
 	flip()
-	health_component.die()
+	if !alive:
+		health_component.die()
 
 func _physics_process(delta):
-	if !health_component.alive:
+	if !alive:
 		return
 	
 	if not is_on_floor():

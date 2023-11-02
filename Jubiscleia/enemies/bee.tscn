@@ -1,21 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://bb2cdotqvfh4g"]
 
-[ext_resource type="Script" path="res://enemy/bee.gd" id="1_hotr7"]
-[ext_resource type="Texture2D" uid="uid://cmctdooj6fqif" path="res://assets/enemy/turret/projectile.png" id="1_vgddl"]
-[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_xksvo"]
+[ext_resource type="Script" path="res://enemies/bee.gd" id="1_khtff"]
+[ext_resource type="Texture2D" uid="uid://cmctdooj6fqif" path="res://assets/enemy/turret/projectile.png" id="2_cs6qf"]
+[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="3_fwunx"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m5kid"]
 radius = 2.0
 height = 8.0
 
 [node name="Bee" type="Node2D"]
-script = ExtResource("1_hotr7")
+script = ExtResource("1_khtff")
 speed = 250.0
 
 [node name="Texture" type="Sprite2D" parent="."]
-texture = ExtResource("1_vgddl")
+texture = ExtResource("2_cs6qf")
 
-[node name="AttackArea" parent="." instance=ExtResource("2_xksvo")]
+[node name="AttackArea" parent="." instance=ExtResource("3_fwunx")]
 collision_layer = 2
 collision_mask = 1
 target = "player"

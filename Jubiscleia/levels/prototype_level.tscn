@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://levels/level.gd" id="1_rdehp"]
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="2_oy7pp"]
 [ext_resource type="PackedScene" uid="uid://bi6cc6w3ecvyj" path="res://objects/plataform.tscn" id="3_ficbx"]
-[ext_resource type="PackedScene" uid="uid://cv8owgy7v2lhb" path="res://enemy/enemy_limit.tscn" id="3_v6kio"]
-[ext_resource type="PackedScene" uid="uid://bx4lmho2y840s" path="res://enemy/enemy.tscn" id="4_jp6h7"]
+[ext_resource type="PackedScene" uid="uid://cv8owgy7v2lhb" path="res://enemies/enemy_limit.tscn" id="3_v6kio"]
+[ext_resource type="PackedScene" uid="uid://bx4lmho2y840s" path="res://enemies/snake.tscn" id="4_jp6h7"]
 [ext_resource type="TileSet" uid="uid://dsjlo105wabro" path="res://assets/Tileset/Ground.tres" id="6_00r81"]
 [ext_resource type="PackedScene" uid="uid://dofww7w55i7it" path="res://Management/enemy_wall.tscn" id="6_m5w2o"]
 [ext_resource type="PackedScene" uid="uid://dujgxpnuckrha" path="res://Management/tween_area.tscn" id="8_k86fn"]
-[ext_resource type="PackedScene" uid="uid://cbkmdf5fph8mt" path="res://enemy/turret.tscn" id="8_rqbkd"]
+[ext_resource type="PackedScene" uid="uid://cbkmdf5fph8mt" path="res://enemies/turret.tscn" id="8_rqbkd"]
 [ext_resource type="PackedScene" uid="uid://bolenc8px11st" path="res://Management/level_end.tscn" id="10_aso8h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1u3jq"]
@@ -27,7 +27,7 @@ player = NodePath("player")
 camera_limits = Array[int]([-64, 0, 4512, 704])
 
 [node name="player" parent="." instance=ExtResource("2_oy7pp")]
-position = Vector2(3520, 96)
+position = Vector2(89, 338)
 
 [node name="Plataforms" type="Node2D" parent="."]
 
