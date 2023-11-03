@@ -47,7 +47,7 @@ func _process(_delta):
 	elif velocity.x > 0:
 		right()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	move_and_slide()
 	if not is_on_floor():
 		velocity.y = gravity

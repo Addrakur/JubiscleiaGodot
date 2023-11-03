@@ -25,7 +25,7 @@ func _physics_process(_delta):
 	if not snake.alive:
 		snake.fsm.change_state(snake.death_state)
 	
-func _process(delta):
+func _process(_delta):
 	if snake.is_on_wall():
 		snake.direction *= -1
 
