@@ -21,8 +21,6 @@ func _physics_process(_delta):
 	
 	if snake.player_ref == null or !GameSettings.player_alive:
 		snake.fsm.change_state(snake.move_state)
-	else:
-		snake.fsm.change_state(snake.attack_state)
 	
 	if not snake.alive:
 		snake.fsm.change_state(snake.death_state)
@@ -34,3 +32,7 @@ func _process(delta):
 func _on_can_attack_area_body_exited(body):
 	if body == snake.player_ref:
 		snake.player_ref = null
+
+func _on_attack_timer_timeout():
+	if snake.player_ref != null:
+		snake.fsm.change_state(snake.attack_state)

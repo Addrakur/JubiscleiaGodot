@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var attack_area: Area2D
 
 @onready var collision: CollisionShape2D = $Collision
-const COLLISION_POSITION: float = -6
+const COLLISION_POSITION: float = -8.5
 @onready var texture: Sprite2D = $Texture
 @onready var attack_area_collision: CollisionShape2D = $AttackArea/AttackCollision
 const AAC_POSITION: float = -33
@@ -12,6 +12,7 @@ const AAC_POSITION: float = -33
 const CAA_POSITION: float = -33
 @onready var can_attack_area_2: CollisionShape2D = $CanAttackArea/CanAttackCollision2
 const CAA_POSITION_2: float = 16
+@onready var attack_timer: Timer = $AttackTimer
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var move_state: State = $StateMachine/SnakeMove as SnakeMove
@@ -38,15 +39,33 @@ func _ready():
 		direction = 1
 
 func _process(_delta):
-	flip()
+	#flip()
 	if !alive:
 		health_component.die()
+	if velocity.x < 0:
+		left()
+	elif velocity.x > 0:
+		right()
 
 func _physics_process(delta):
 	move_and_slide()
 	if not is_on_floor():
 		velocity.y = gravity
 	
+
+func right():
+	texture.flip_h = true
+	attack_area_collision.position.x = -AAC_POSITION
+	can_attack_area_1.position.x = -CAA_POSITION
+	can_attack_area_2.position.x = -CAA_POSITION_2
+	collision.position.x = -COLLISION_POSITION
+
+func left():
+	texture.flip_h = false
+	attack_area_collision.position.x = AAC_POSITION
+	can_attack_area_1.position.x = CAA_POSITION
+	can_attack_area_2.position.x = CAA_POSITION_2
+	collision.position.x = COLLISION_POSITION
 
 func flip() -> void:
 	if velocity.x < 0:

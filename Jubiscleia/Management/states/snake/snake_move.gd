@@ -22,11 +22,18 @@ func _physics_process(_delta):
 		snake.fsm.change_state(snake.hit_state)
 	
 	if snake.player_ref != null and GameSettings.player_alive:
-		if snake.direction == 1 and snake.player_ref.position.x < snake.position.x or snake.direction == -1 and snake.player_ref.position.x > snake.position.x:
-			snake.velocity.x *= -1
-			snake.fsm.change_state(snake.attack_state)
+		if snake.direction == 1 and snake.player_ref.position.x > snake.position.x or snake.direction == -1 and snake.player_ref.position.x > snake.position.x:
+			snake.right()
+			if snake.attack_timer.is_stopped():
+				snake.fsm.change_state(snake.attack_state)
+			else:
+				snake.fsm.change_state(snake.idle_state)
 		else:
-			snake.fsm.change_state(snake.attack_state)
+			snake.left()
+			if snake.attack_timer.is_stopped():
+				snake.fsm.change_state(snake.attack_state)
+			else:
+				snake.fsm.change_state(snake.idle_state)
 	
 	if!snake.alive:
 		snake.fsm.change_state(snake.death_state)

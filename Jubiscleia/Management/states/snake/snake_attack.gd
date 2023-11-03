@@ -11,6 +11,7 @@ func enter_state() -> void:
 	set_physics_process(true)
 	animation.play("attack")
 	snake.velocity.x = 0
+	snake.attack_timer.start()
 
 func exit_state() -> void:
 	set_physics_process(false)

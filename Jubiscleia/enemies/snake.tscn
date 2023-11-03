@@ -390,6 +390,7 @@ size = Vector2(19, 19)
 [node name="Snake" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 position = Vector2(0, -16)
 collision_layer = 2
+collision_mask = 15
 script = ExtResource("1_ep4bx")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
@@ -412,6 +413,10 @@ libraries = {
 "": SubResource("AnimationLibrary_p3sgm")
 }
 
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="CanAttackArea" type="Area2D" parent="."]
 collision_layer = 0
 
@@ -426,6 +431,7 @@ shape = SubResource("RectangleShape2D_n2j01")
 debug_color = Color(0.831373, 0.305882, 0.317647, 0.419608)
 
 [node name="AttackArea" parent="." instance=ExtResource("6_krml7")]
+collision_layer = 2
 collision_mask = 1
 target = "player"
 damage = 1.0
@@ -477,5 +483,6 @@ animation = NodePath("../../Animations")
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeHit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeDeath" method="_on_animation_finished"]
+[connection signal="timeout" from="AttackTimer" to="StateMachine/SnakeIdle" method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="CanAttackArea" to="StateMachine/SnakeMove" method="_on_can_attack_area_body_entered"]
 [connection signal="body_exited" from="CanAttackArea" to="StateMachine/SnakeIdle" method="_on_can_attack_area_body_exited"]
