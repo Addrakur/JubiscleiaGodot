@@ -3,6 +3,7 @@ extends State
 
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
+@export var damage: float
 var can_cancel: bool
 var can_move: bool
 
@@ -11,6 +12,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
+	player.attack_area.damage = damage
 	animation.play("sword_attack_1")
 	can_cancel = false
 	can_move = true

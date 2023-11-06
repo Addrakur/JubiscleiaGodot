@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bb2cdotqvfh4g"]
+[gd_scene load_steps=7 format=3 uid="uid://bb2cdotqvfh4g"]
 
 [ext_resource type="Script" path="res://enemies/bee.gd" id="1_khtff"]
 [ext_resource type="Texture2D" uid="uid://cmctdooj6fqif" path="res://assets/enemy/turret/projectile.png" id="2_cs6qf"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="3_fwunx"]
+[ext_resource type="Script" path="res://Management/states/state_machine.gd" id="4_028to"]
+[ext_resource type="Script" path="res://Management/states/bee/bee_attack.gd" id="5_tmsmh"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_m5kid"]
 radius = 2.0
@@ -19,10 +21,19 @@ texture = ExtResource("2_cs6qf")
 collision_layer = 2
 collision_mask = 5
 target = "player"
-damage = 1.0
 one_hit_destroy = true
 destroy_on_terrain = true
 
 [node name="Collision" type="CollisionShape2D" parent="AttackArea"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_m5kid")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("4_028to")
+state = NodePath("BeeAttack")
+
+[node name="BeeAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("bee", "attack_area")]
+script = ExtResource("5_tmsmh")
+bee = NodePath("../..")
+attack_area = NodePath("../../AttackArea")
+damage = 1.0

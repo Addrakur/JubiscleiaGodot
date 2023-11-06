@@ -4,11 +4,14 @@ extends State
 @export var snake: CharacterBody2D
 @export var animation: AnimationPlayer
 
+@export var damage: float
+
 func _ready():
 	set_physics_process(false)
 
 func enter_state() -> void:
 	set_physics_process(true)
+	snake.attack_area.damage = damage
 	animation.play("attack")
 	snake.velocity.x = 0
 	snake.attack_timer.start()

@@ -5,7 +5,6 @@ extends Area2D
 @export var target: String
 
 @export_group("Floats")
-@export var damage: float
 @export var knockback_force: float
 @export var knockup_force: float
 @export_group("Bools")
@@ -14,6 +13,7 @@ extends Area2D
 @export var one_hit_destroy: bool = false
 @export var destroy_on_terrain: bool = false
 
+var damage: float
 
 func on_body_entered(body):
 	if body.is_in_group(target) && !body.health_component.is_getting_hit:
