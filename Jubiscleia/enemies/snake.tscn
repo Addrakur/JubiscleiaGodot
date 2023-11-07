@@ -390,7 +390,7 @@ size = Vector2(18.5, 19.5)
 [node name="Snake" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 position = Vector2(0, -16)
 collision_layer = 2
-collision_mask = 15
+collision_mask = 12
 script = ExtResource("1_ep4bx")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
@@ -431,7 +431,6 @@ shape = SubResource("RectangleShape2D_n2j01")
 debug_color = Color(0.831373, 0.305882, 0.317647, 0.419608)
 
 [node name="AttackArea" parent="." instance=ExtResource("6_krml7")]
-collision_layer = 2
 collision_mask = 1
 target = "player"
 knockback_force = 100.0

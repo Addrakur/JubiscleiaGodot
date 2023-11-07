@@ -35,7 +35,7 @@ func _ready():
 	pass
 
 func _process(_delta):
-	if !alive:
+	if not alive:
 		health_component.die()
 	if velocity.x < 0:
 		left()
