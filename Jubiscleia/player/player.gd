@@ -18,8 +18,9 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var crouch_state: State = $StateMachine/Crouch as PlayerCrouch
 @onready var hit_state: State = $StateMachine/Hit as PlayerHit
 @onready var death_state: State = $StateMachine/Death as PlayerDeath
-@onready var sword_attack_1_state: State = $StateMachine/SwordAttack1 as PlayerSwordAttack1
-@onready var sword_attack_2_state: State = $StateMachine/SwordAttack2 as PlayerSwordAttack2
+@onready var axe_attack_1_state: State = $StateMachine/AxeAttack1 as PlayerAxeAttack1
+@onready var axe_attack_2_state: State = $StateMachine/AxeAttack2 as PlayerAxeAttack2
+@onready var axe_attack_3_state: State = $StateMachine/AxeAttack3 as PlayerAxeAttack3
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 
 @export_group("Jump Variables")
