@@ -4,6 +4,8 @@ extends State
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
 @export var damage: float
+@export var knockback_force: float
+@export var knockup_force: float
 
 var can_combo: bool
 var combo: bool
