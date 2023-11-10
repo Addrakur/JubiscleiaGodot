@@ -37,7 +37,8 @@ var jump_gravity: float
 var fall_gravity: float
 
 var alive: bool = true
-var combo: bool
+var combo_1: bool
+var combo_2: bool
 var can_combo: bool
 
 var direction: float
