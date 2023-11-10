@@ -1385,10 +1385,10 @@ script = ExtResource("25_wysx4")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 
+[connection signal="animation_finished" from="Animations" to="StateMachine/Skill1Attack1" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/Skill1Attack2" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/Skill1Attack3" method="_on_animation_finished"]
-[connection signal="animation_finished" from="Animations" to="StateMachine/Hit" method="_on_animation_finished"]
-[connection signal="animation_finished" from="Animations" to="StateMachine/Skill1Attack1" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/Skill2Attack1" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/Skill2Attack2" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/Skill2Attack3" method="_on_animation_finished"]
+[connection signal="animation_finished" from="Animations" to="StateMachine/Hit" method="_on_animation_finished"]

@@ -42,6 +42,17 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 37
 text = "2"
 
+[node name="Arena" type="Button" parent="."]
+layout_mode = 2
+offset_left = 224.0
+offset_top = 32.0
+offset_right = 288.0
+offset_bottom = 96.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 37
+text = "3"
+
 [node name="Quit" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -60,4 +71,5 @@ text = "Quit"
 
 [connection signal="pressed" from="LoopBasico" to="." method="on_level1_pressed"]
 [connection signal="pressed" from="TesteInimigos" to="." method="on_level2_pressed"]
+[connection signal="pressed" from="Arena" to="." method="_on_arena_pressed"]
 [connection signal="pressed" from="Quit" to="." method="on_quit_pressed"]

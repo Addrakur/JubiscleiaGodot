@@ -4,6 +4,7 @@ extends Node
 var menu: String = "res://Management/menu.tscn"
 var level1: String = "res://levels/loop_basico.tscn"
 var level2: String = "res://levels/prototype_level.tscn"
+var arena: String = "res://levels/arena.tscn"
 
 var player_alive: bool
 
