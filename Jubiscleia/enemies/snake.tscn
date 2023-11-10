@@ -443,7 +443,7 @@ debug_color = Color(0.890196, 0.682353, 0, 0.419608)
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("animator") instance=ExtResource("7_0q0uj")]
 scale = Vector2(0.967821, 1)
-max_health = 3.0
+max_health = 10.0
 animator = NodePath("../Animations")
 destroy_after_dead = true
 
@@ -461,7 +461,7 @@ speed = 30.0
 script = ExtResource("13_gcars")
 snake = NodePath("../..")
 animation = NodePath("../../Animations")
-damage = 1.0
+damage = 5.0
 
 [node name="SnakeHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
 script = ExtResource("13_k7h8k")

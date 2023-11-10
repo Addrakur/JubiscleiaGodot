@@ -18,9 +18,12 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var crouch_state: State = $StateMachine/Crouch as PlayerCrouch
 @onready var hit_state: State = $StateMachine/Hit as PlayerHit
 @onready var death_state: State = $StateMachine/Death as PlayerDeath
-@onready var axe_attack_1_state: State = $StateMachine/AxeAttack1 as PlayerAxeAttack1
-@onready var axe_attack_2_state: State = $StateMachine/AxeAttack2 as PlayerAxeAttack2
-@onready var axe_attack_3_state: State = $StateMachine/AxeAttack3 as PlayerAxeAttack3
+@onready var skill_1_attack_1_state: State = $StateMachine/Skill1Attack1 as PlayerSkill1Attack1
+@onready var skill_1_attack_2_state: State = $StateMachine/Skill1Attack2 as PlayerSkill1Attack2
+@onready var skill_1_attack_3_state: State = $StateMachine/Skill1Attack3 as PlayerSkill1Attack3
+@onready var skill_2_attack_1_state: State = $StateMachine/Skill2Attack1 as PlayerSkill2Attack1
+@onready var skill_2_attack_2_state: State = $StateMachine/Skill2Attack2 as PlayerSkill2Attack2
+@onready var skill_2_attack_3_state: State = $StateMachine/Skill2Attack3 as PlayerSkill2Attack3
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 
 @export_group("Jump Variables")
@@ -34,6 +37,8 @@ var jump_gravity: float
 var fall_gravity: float
 
 var alive: bool = true
+var combo: bool
+var can_combo: bool
 
 var direction: float
 
@@ -77,3 +82,10 @@ func flip() -> void:
 		texture.flip_h = true
 		attack_area_polygon.position.x = -ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = -1
+
+func can_combo_true() -> void:
+	can_combo = true
+
+func move() -> void:
+	if direction != 0:
+		fsm.change_state(move_state)

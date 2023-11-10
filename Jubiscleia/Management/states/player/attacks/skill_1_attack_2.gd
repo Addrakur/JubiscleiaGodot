@@ -1,4 +1,4 @@
-class_name PlayerAxeAttack1
+class_name PlayerSkill1Attack2
 extends State
 
 @export var player: CharacterBody2D
@@ -7,18 +7,15 @@ extends State
 @export var knockback_force: float
 @export var knockup_force: float
 
-var can_combo: bool
-var combo: bool
-
 func _ready():
 	set_physics_process(false)
 
 func enter_state() -> void:
 	set_physics_process(true)
 	player.attack_area.damage = damage
-	animation.play("axe_attack_1")
-	can_combo = false
-	combo = false
+	animation.play(PlayerVariables.skill_1 + "_attack_2")
+	player.can_combo = false
+	player.combo = false
 
 func exit_state() -> void:
 	set_physics_process(false)
@@ -28,10 +25,10 @@ func _physics_process(_delta):
 	player.direction = Input.get_axis("left","right")
 	
 	if Input.is_action_just_pressed("attack_button_1"):
-		combo = true
+		player.combo = true
 	
-	if combo and can_combo:
-		player.fsm.change_state(player.axe_attack_2_state)
+	if player.combo and player.can_combo:
+		player.fsm.change_state(player.skill_1_attack_3_state)
 	
 	if player.health_component.is_getting_hit:
 		player.fsm.change_state(player.hit_state)
@@ -40,13 +37,5 @@ func _physics_process(_delta):
 		player.fsm.change_state(player.death_state)
 
 func _on_animation_finished(anim):
-	if anim == "axe_attack_1":
+	if anim == PlayerVariables.skill_1 + "_attack_2":
 		player.fsm.change_state(player.idle_state)
-	
-
-func move() -> void:
-	if player.direction != 0:
-		player.fsm.change_state(player.move_state)
-
-func can_combo_true() -> void:
-	can_combo = true

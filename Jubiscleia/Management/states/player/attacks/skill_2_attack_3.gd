@@ -1,4 +1,4 @@
-class_name PlayerAxeAttack3
+class_name PlayerSkill2Attack3
 extends State
 
 @export var player: CharacterBody2D
@@ -13,7 +13,7 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	player.attack_area.damage = damage
-	animation.play("axe_attack_3")
+	animation.play(PlayerVariables.skill_2 + "_attack_3")
 
 func exit_state() -> void:
 	set_physics_process(false)
@@ -29,6 +29,6 @@ func _physics_process(_delta):
 		player.fsm.change_state(player.death_state)
 
 func _on_animation_finished(anim):
-	if anim == "axe_attack_3":
+	if anim == PlayerVariables.skill_2 + "_attack_3":
 		player.fsm.change_state(player.idle_state)
 	
