@@ -13,15 +13,14 @@ func _ready() -> void:
 func _process(_delta):
 	die()
 
-func update_health(value: float, knockback: bool, knockback_force: float) -> void:
+func update_health(value: float, knockback_force: float, knockup_force: float) -> void:
 	is_getting_hit = true
 	current_health -= value
 	if animator != null:
 		animator.play("hit")
-	if knockback:
-		parent.velocity.x = knockback_force
+	parent.velocity.x = knockback_force
+	parent.velocity.y = knockup_force
 
 func die() -> void:
 	if current_health <= 0:
 		parent.alive = false
-
