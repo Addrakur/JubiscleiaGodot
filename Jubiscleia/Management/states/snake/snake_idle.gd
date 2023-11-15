@@ -16,6 +16,7 @@ func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(_delta):
+	
 	if snake.health_component.is_getting_hit:
 		snake.fsm.change_state(snake.hit_state)
 	

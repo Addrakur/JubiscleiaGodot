@@ -13,6 +13,8 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	player.attack_area.damage = damage
+	player.attack_area.knockback_force = knockback_force
+	player.attack_area.knockup_force = knockup_force
 	animation.play(PlayerVariables.skill_1 + "_attack_2")
 	player.can_combo = false
 	player.combo_1 = false

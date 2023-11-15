@@ -20,6 +20,7 @@ const CAA_POSITION_2: float = 29
 @onready var hit_state: State = $StateMachine/SnakeHit as SnakeHit
 @onready var idle_state: State = $StateMachine/SnakeIdle as SnakeIdle
 @onready var death_state: State = $StateMachine/SnakeDeath as SnakeDeath
+@onready var fall_state: State = $StateMachine/SnakeFall as SnakeFall
 
 @onready var player_ref: CharacterBody2D
 
@@ -35,15 +36,16 @@ func _ready():
 	pass
 
 func _process(_delta):
-	if velocity.x < 0:
-		left()
-	elif velocity.x > 0:
-		right()
+	if !health_component.is_getting_hit:
+		if velocity.x < 0:
+			left()
+		elif velocity.x > 0:
+			right()
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	move_and_slide()
 	if not is_on_floor():
-		velocity.y = gravity
+		velocity.y = gravity * delta
 	if is_on_wall():
 		direction *= -1
 

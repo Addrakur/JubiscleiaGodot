@@ -14,7 +14,9 @@ var knockback_force: float
 
 func on_body_entered(body):
 	if body.is_in_group(target) && !body.health_component.is_getting_hit:
-		body.health_component.update_health(damage, knockback_force, knockup_force)
+		body.health_component.update_health(damage)
+		body.velocity.x = knockback_force
+		body.velocity.y = knockup_force
 	elif body.is_in_group("terrain") && destroy_on_terrain:
 		parent.queue_free()
 	if one_hit_destroy:
