@@ -1244,7 +1244,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("attack_area", "health_component") groups=["player"]]
-collision_mask = 4
+collision_mask = 6
 floor_constant_speed = true
 script = ExtResource("1_5lux4")
 attack_area = NodePath("AttackArea")
@@ -1341,20 +1341,21 @@ speed = 200.0
 script = ExtResource("27_8o7pp")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
-damage = 4.0
+damage = 1.0
 
 [node name="Skill1Attack2" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("27_gs7jn")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
-damage = 5.0
+damage = 1.0
 
 [node name="Skill1Attack3" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("28_xnw5g")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
-damage = 8.0
+damage = 1.0
 knockback_force = 400.0
+knockup_force = -10.0
 
 [node name="Skill2Attack1" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("30_rqjv3")
@@ -1374,7 +1375,7 @@ player = NodePath("../..")
 animation = NodePath("../../Animations")
 damage = 1.0
 knockback_force = 150.0
-knockup_force = -2000.0
+knockup_force = -10.0
 
 [node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("23_j7sbs")

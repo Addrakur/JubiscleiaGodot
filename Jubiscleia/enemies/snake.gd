@@ -3,9 +3,9 @@ extends CharacterBody2D
 @export var health_component: Node2D
 @export var attack_area: Area2D
 
-@onready var collision: CollisionShape2D = $Collision
-const COLLISION_POSITION: float = -2
 @onready var texture: Sprite2D = $Texture
+@onready var collision_2: CollisionShape2D = $Collision2
+const C_2_POSITION: float = -13
 @onready var attack_area_collision: CollisionShape2D = $AttackArea/AttackCollision
 const AAC_POSITION: float = -33
 @onready var can_attack_area_1: CollisionShape2D = $CanAttackArea/CanAttackCollision
@@ -54,11 +54,11 @@ func right():
 	attack_area_collision.position.x = -AAC_POSITION
 	can_attack_area_1.position.x = -CAA_POSITION
 	can_attack_area_2.position.x = -CAA_POSITION_2
-	collision.position.x = -COLLISION_POSITION
+	collision_2.position.x = -C_2_POSITION
 
 func left():
 	texture.flip_h = false
 	attack_area_collision.position.x = AAC_POSITION
 	can_attack_area_1.position.x = CAA_POSITION
 	can_attack_area_2.position.x = CAA_POSITION_2
-	collision.position.x = COLLISION_POSITION
+	collision_2.position.x = C_2_POSITION
