@@ -1,13 +1,13 @@
 [gd_scene load_steps=28 format=3 uid="uid://bx4lmho2y840s"]
 
 [ext_resource type="Script" path="res://enemies/snake.gd" id="1_ep4bx"]
-[ext_resource type="Texture2D" uid="uid://beu7vhok5k65h" path="res://assets/enemy/banco_de_assets/Snake_attack.png" id="3_u0csh"]
-[ext_resource type="Texture2D" uid="uid://c0ryy7uf7jrva" path="res://assets/enemy/banco_de_assets/Snake_death.png" id="5_ihiu0"]
+[ext_resource type="Texture2D" uid="uid://boe1qhplhi48e" path="res://assets/enemy/banco_de_assets/snake/snake_idle.png" id="2_avb4p"]
+[ext_resource type="Texture2D" uid="uid://beu7vhok5k65h" path="res://assets/enemy/banco_de_assets/snake/Snake_attack.png" id="3_j14wd"]
+[ext_resource type="Texture2D" uid="uid://c0ryy7uf7jrva" path="res://assets/enemy/banco_de_assets/snake/Snake_death.png" id="4_7mk4u"]
+[ext_resource type="Texture2D" uid="uid://cuf7pfauc48dl" path="res://assets/enemy/banco_de_assets/snake/Snake_hurt.png" id="5_04yf1"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="6_krml7"]
-[ext_resource type="Texture2D" uid="uid://cuf7pfauc48dl" path="res://assets/enemy/banco_de_assets/Snake_hurt.png" id="6_o5gfu"]
+[ext_resource type="Texture2D" uid="uid://bes4jlty8taqc" path="res://assets/enemy/banco_de_assets/snake/Snake_walk.png" id="6_nefrm"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="7_0q0uj"]
-[ext_resource type="Texture2D" uid="uid://boe1qhplhi48e" path="res://assets/enemy/banco_de_assets/snake_idle.png" id="7_oru6d"]
-[ext_resource type="Texture2D" uid="uid://bes4jlty8taqc" path="res://assets/enemy/banco_de_assets/Snake_walk.png" id="8_6fua8"]
 [ext_resource type="Script" path="res://Management/states/state_machine.gd" id="11_svs25"]
 [ext_resource type="Script" path="res://Management/states/snake/snake_move.gd" id="12_31np0"]
 [ext_resource type="Script" path="res://Management/states/snake/snake_idle.gd" id="13_6axb0"]
@@ -35,7 +35,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_oru6d")]
+"values": [ExtResource("2_avb4p")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -111,7 +111,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_u0csh")]
+"values": [ExtResource("3_j14wd")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -164,7 +164,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_ihiu0")]
+"values": [ExtResource("4_7mk4u")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -229,7 +229,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_o5gfu")]
+"values": [ExtResource("5_04yf1")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -283,7 +283,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_oru6d")]
+"values": [ExtResource("2_avb4p")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -337,7 +337,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("8_6fua8")]
+"values": [ExtResource("6_nefrm")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -416,7 +416,7 @@ shape = SubResource("CapsuleShape2D_loayh")
 texture_filter = 1
 position = Vector2(0, -8)
 scale = Vector2(1.5, 1.5)
-texture = ExtResource("7_oru6d")
+texture = ExtResource("2_avb4p")
 hframes = 4
 
 [node name="Animations" type="AnimationPlayer" parent="."]
@@ -470,6 +470,8 @@ script = ExtResource("13_gcars")
 snake = NodePath("../..")
 animation = NodePath("../../Animations")
 damage = 5.0
+knockback_force = 300.0
+knockup_force = -150.0
 
 [node name="SnakeHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
 script = ExtResource("13_k7h8k")

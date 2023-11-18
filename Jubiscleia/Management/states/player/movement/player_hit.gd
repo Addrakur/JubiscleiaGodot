@@ -10,7 +10,6 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	animation.play("hit")
-	player.velocity.x = 0
 	if player.is_on_floor():
 		player.jump_count = 0
 
@@ -22,6 +21,6 @@ func _physics_process(_delta):
 		player.fsm.change_state(player.death_state)
 
 func _on_animation_finished(anim):
-	if anim == "hit":
+	if anim == "hit" or player.is_on_floor():
 		player.health_component.is_getting_hit = false
 		player.fsm.change_state(player.idle_state)

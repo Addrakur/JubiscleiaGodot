@@ -12,6 +12,7 @@ func enter_state() -> void:
 	animation.play("idle")
 	if player.is_on_floor():
 		player.jump_count = 0
+	player.velocity.x = 0
 
 func exit_state() -> void:
 	set_physics_process(false)

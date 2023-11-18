@@ -54,19 +54,17 @@ func _ready():
 	fall_gravity = ((-2.0 * jump_height) / pow(jump_time_to_descent,2)) * -1
 	
 func _process(_delta):
-	flip()
+	if not health_component.is_getting_hit:
+		flip()
 	if !alive:
 		health_component.die()
 
 func _physics_process(delta):
-	if !alive:
-		return
-	
 	if not is_on_floor():
 		velocity.y += gravity * delta
-	
-	move_and_slide()
 	get_gravity()
+	if alive:
+		move_and_slide()
 
 func get_gravity():
 	if velocity.y < 0:

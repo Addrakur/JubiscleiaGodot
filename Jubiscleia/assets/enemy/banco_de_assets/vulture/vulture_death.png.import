@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://beu7vhok5k65h"
-path="res://.godot/imported/Snake_attack.png-7fb838cbf9a00725a56816eca630baf2.ctex"
+uid="uid://11v80y8f0cb"
+path="res://.godot/imported/vulture_death.png-bd76459785584d4db174c584ed15b249.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy/banco_de_assets/Snake_attack.png"
-dest_files=["res://.godot/imported/Snake_attack.png-7fb838cbf9a00725a56816eca630baf2.ctex"]
+source_file="res://assets/enemy/banco_de_assets/vulture/vulture_death.png"
+dest_files=["res://.godot/imported/vulture_death.png-bd76459785584d4db174c584ed15b249.ctex"]
 
 [params]
 

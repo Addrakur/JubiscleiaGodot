@@ -5,6 +5,8 @@ extends State
 @export var animation: AnimationPlayer
 
 @export var damage: float
+@export var knockback_force: float
+@export var knockup_force: float
 
 func _ready():
 	set_physics_process(false)
@@ -15,6 +17,8 @@ func enter_state() -> void:
 	animation.play("attack")
 	snake.velocity.x = 0
 	snake.attack_timer.start()
+	snake.attack_area.knockback_force = knockback_force
+	snake.attack_area.knockup_force = knockup_force
 
 func exit_state() -> void:
 	set_physics_process(false)
