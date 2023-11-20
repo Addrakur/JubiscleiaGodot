@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bx4lmho2y840s"]
+[gd_scene load_steps=30 format=3 uid="uid://bx4lmho2y840s"]
 
 [ext_resource type="Script" path="res://enemies/snake.gd" id="1_ep4bx"]
 [ext_resource type="Texture2D" uid="uid://boe1qhplhi48e" path="res://assets/enemy/banco_de_assets/snake/snake_idle.png" id="2_avb4p"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Management/states/snake/snake_hit.gd" id="13_k7h8k"]
 [ext_resource type="Script" path="res://Management/states/snake/snake_death.gd" id="14_q5to3"]
 [ext_resource type="Script" path="res://Management/states/snake/snake_fall.gd" id="15_cx4gy"]
+[ext_resource type="Script" path="res://Management/states/snake/snake_chase.gd" id="16_yplpm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyy75"]
 size = Vector2(9.00003, 38)
@@ -386,6 +387,9 @@ _data = {
 "run": SubResource("Animation_xk164")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_smh5j"]
+size = Vector2(133, 65)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2j01"]
 size = Vector2(16, 32)
 
@@ -427,6 +431,12 @@ libraries = {
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="ChaseArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea"]
+position = Vector2(-29.5, -16.5)
+shape = SubResource("RectangleShape2D_smh5j")
 
 [node name="CanAttackArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -493,9 +503,19 @@ script = ExtResource("15_cx4gy")
 snake = NodePath("../..")
 animation = NodePath("../../Animations")
 
+[node name="SnakeChase" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
+script = ExtResource("16_yplpm")
+snake = NodePath("../..")
+animation = NodePath("../../Animations")
+speed = 50.0
+
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeHit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeDeath" method="_on_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="StateMachine/SnakeIdle" method="_on_attack_timer_timeout"]
-[connection signal="body_entered" from="CanAttackArea" to="StateMachine/SnakeMove" method="_on_can_attack_area_body_entered"]
+[connection signal="body_entered" from="ChaseArea" to="StateMachine/SnakeMove" method="chase_area_entered"]
+[connection signal="body_exited" from="ChaseArea" to="StateMachine/SnakeChase" method="chase_area_exited"]
+[connection signal="body_entered" from="CanAttackArea" to="StateMachine/SnakeChase" method="_on_can_attack_area_body_entered"]
+[connection signal="body_exited" from="CanAttackArea" to="StateMachine/SnakeAttack" method="can_attack_area_exited"]
 [connection signal="body_exited" from="CanAttackArea" to="StateMachine/SnakeIdle" method="_on_can_attack_area_body_exited"]
+[connection signal="body_exited" from="CanAttackArea" to="StateMachine/SnakeChase" method="can_attack_area_exited"]

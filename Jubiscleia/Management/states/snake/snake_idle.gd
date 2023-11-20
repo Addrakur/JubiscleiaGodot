@@ -32,7 +32,7 @@ func _process(_delta):
 
 func _on_can_attack_area_body_exited(body):
 	if body == snake.player_ref:
-		snake.player_ref = null
+		snake.can_attack_player = false
 
 func _on_attack_timer_timeout():
 	if snake.player_ref != null:

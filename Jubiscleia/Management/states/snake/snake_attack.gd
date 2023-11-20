@@ -32,7 +32,11 @@ func _physics_process(_delta):
 
 func _on_animation_finished(anim):
 	if anim == "attack":
-		if snake.player_ref == null or !GameSettings.player_alive:
+		if not snake.can_attack_player or !GameSettings.player_alive:
 			snake.fsm.change_state(snake.move_state)
 		else:
-			snake.fsm.change_state(snake.idle_state)
+			snake.fsm.change_state(snake.chase_state)
+
+func can_attack_area_exited(body):
+	if body == snake.player_ref:
+		snake.can_attack_player = false

@@ -21,8 +21,10 @@ const CAA_POSITION_2: float = 29
 @onready var idle_state: State = $StateMachine/SnakeIdle as SnakeIdle
 @onready var death_state: State = $StateMachine/SnakeDeath as SnakeDeath
 @onready var fall_state: State = $StateMachine/SnakeFall as SnakeFall
+@onready var chase_state: State = $StateMachine/SnakeChase as SnakeChase
 
 @onready var player_ref: CharacterBody2D
+var can_attack_player: bool = false
 
 var is_attacking: bool = false
 
@@ -46,8 +48,6 @@ func _physics_process(delta):
 	move_and_slide()
 	if not is_on_floor():
 		velocity.y = gravity * delta
-	if is_on_wall():
-		direction *= -1
 
 func right():
 	texture.flip_h = true
