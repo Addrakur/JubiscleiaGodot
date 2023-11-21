@@ -20,20 +20,18 @@ func _physics_process(_delta):
 	if snake.health_component.is_getting_hit:
 		snake.fsm.change_state(snake.hit_state)
 	
-	if snake.player_ref == null or !GameSettings.player_alive:
-		snake.fsm.change_state(snake.move_state)
+	if not snake.can_attack_player:
+		snake.fsm.change_state(snake.chase_state)
+	elif snake.attack_timer.is_stopped():
+		snake.fsm.change_state(snake.attack_state)
 	
 	if not snake.alive:
 		snake.fsm.change_state(snake.death_state)
-	
-func _process(_delta):
-	if snake.is_on_wall():
-		snake.direction *= -1
 
 func _on_can_attack_area_body_exited(body):
 	if body == snake.player_ref:
 		snake.can_attack_player = false
 
 func _on_attack_timer_timeout():
-	if snake.player_ref != null:
-		snake.fsm.change_state(snake.attack_state)
+	pass
+ 

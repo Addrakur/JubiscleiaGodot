@@ -14,11 +14,10 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	snake.attack_area.damage = damage
-	animation.play("attack")
-	snake.velocity.x = 0
-	snake.attack_timer.start()
 	snake.attack_area.knockback_force = knockback_force
 	snake.attack_area.knockup_force = knockup_force
+	snake.velocity.x = 0
+	animation.play("attack")
 
 func exit_state() -> void:
 	set_physics_process(false)
@@ -32,8 +31,9 @@ func _physics_process(_delta):
 
 func _on_animation_finished(anim):
 	if anim == "attack":
-		if not snake.can_attack_player or !GameSettings.player_alive:
-			snake.fsm.change_state(snake.move_state)
+		snake.attack_timer.start()
+		if snake.can_attack_player:
+			snake.fsm.change_state(snake.idle_state)
 		else:
 			snake.fsm.change_state(snake.chase_state)
 

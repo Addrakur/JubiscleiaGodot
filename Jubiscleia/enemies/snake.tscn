@@ -388,7 +388,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smh5j"]
-size = Vector2(133, 65)
+size = Vector2(288, 65)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2j01"]
 size = Vector2(16, 32)
@@ -435,7 +435,7 @@ one_shot = true
 [node name="ChaseArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChaseArea"]
-position = Vector2(-29.5, -16.5)
+position = Vector2(-48, -16.5)
 shape = SubResource("RectangleShape2D_smh5j")
 
 [node name="CanAttackArea" type="Area2D" parent="."]
@@ -467,7 +467,7 @@ destroy_after_dead = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("11_svs25")
-state = NodePath("SnakeIdle")
+state = NodePath("SnakeMove")
 
 [node name="SnakeMove" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
 script = ExtResource("12_31np0")
@@ -512,10 +512,8 @@ speed = 50.0
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeHit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeDeath" method="_on_animation_finished"]
-[connection signal="timeout" from="AttackTimer" to="StateMachine/SnakeIdle" method="_on_attack_timer_timeout"]
 [connection signal="body_entered" from="ChaseArea" to="StateMachine/SnakeMove" method="chase_area_entered"]
 [connection signal="body_exited" from="ChaseArea" to="StateMachine/SnakeChase" method="chase_area_exited"]
 [connection signal="body_entered" from="CanAttackArea" to="StateMachine/SnakeChase" method="_on_can_attack_area_body_entered"]
 [connection signal="body_exited" from="CanAttackArea" to="StateMachine/SnakeAttack" method="can_attack_area_exited"]
 [connection signal="body_exited" from="CanAttackArea" to="StateMachine/SnakeIdle" method="_on_can_attack_area_body_exited"]
-[connection signal="body_exited" from="CanAttackArea" to="StateMachine/SnakeChase" method="can_attack_area_exited"]

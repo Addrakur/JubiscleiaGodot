@@ -47,7 +47,7 @@ var direction: float
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	GameSettings.player_alive = true
+	PlayerVariables.player_alive = true
 	
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
 	jump_gravity = ((-2.0 * jump_height) / pow(jump_time_to_peak,2)) * -1
@@ -56,8 +56,8 @@ func _ready():
 func _process(_delta):
 	if not health_component.is_getting_hit:
 		flip()
-	if !alive:
-		health_component.die()
+	if not alive:
+		PlayerVariables.player_alive = false
 
 func _physics_process(delta):
 	if not is_on_floor():
