@@ -29,16 +29,18 @@ func _physics_process(_delta):
 	else:
 		snake.fsm.change_state(snake.move_state)
 	
+	if snake.can_attack_player:
+		if snake.attack_timer.is_stopped():
+			snake.fsm.change_state(snake.attack_state)
+		else:
+			snake.fsm.change_state(snake.idle_state)
+	
 	if!snake.alive:
 		snake.fsm.change_state(snake.death_state)
 
 func _on_can_attack_area_body_entered(body):
 	if body == snake.player_ref:
 		snake.can_attack_player = true
-		if snake.attack_timer.is_stopped():
-			snake.fsm.change_state(snake.attack_state)
-		else:
-			snake.fsm.change_state(snake.idle_state)
 
 func chase_area_exited(body):
 	if body == snake.player_ref:

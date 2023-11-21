@@ -21,5 +21,8 @@ func _physics_process(_delta):
 func _on_animation_finished(anim):
 	if anim == "hit":
 		snake.health_component.is_getting_hit = false
-		snake.fsm.change_state(snake.move_state)
-		
+		if snake.player_ref != null:
+			snake.fsm.change_state(snake.move_state)
+		else: 
+			snake.fsm.change_state(snake.chase_state)
+	

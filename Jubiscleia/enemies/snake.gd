@@ -4,14 +4,16 @@ extends CharacterBody2D
 @export var attack_area: Area2D
 
 @onready var texture: Sprite2D = $Texture
+@onready var collision: CollisionShape2D = $Collision
+const C_POSITION: float = 2
 @onready var collision_2: CollisionShape2D = $Collision2
 const C_2_POSITION: float = -13
 @onready var attack_area_collision: CollisionShape2D = $AttackArea/AttackCollision
 const AAC_POSITION: float = -33
 @onready var can_attack_area_1: CollisionShape2D = $CanAttackArea/CanAttackCollision
 const CAA_POSITION: float = -33
-@onready var can_attack_area_2: CollisionShape2D = $CanAttackArea/CanAttackCollision2
-const CAA_POSITION_2: float = 29
+@onready var can_chase_area: CollisionShape2D = $ChaseArea/CanChaseArea
+const CCA_POSITION: float = -48
 @onready var attack_timer: Timer = $AttackTimer
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
@@ -51,14 +53,16 @@ func _physics_process(delta):
 
 func right():
 	texture.flip_h = true
+	collision.position.x = -C_POSITION
+	collision_2.position.x = -C_2_POSITION
 	attack_area_collision.position.x = -AAC_POSITION
 	can_attack_area_1.position.x = -CAA_POSITION
-	can_attack_area_2.position.x = -CAA_POSITION_2
-	collision_2.position.x = -C_2_POSITION
+	can_chase_area.position.x = -CCA_POSITION
 
 func left():
 	texture.flip_h = false
+	collision.position.x = C_POSITION
+	collision_2.position.x = C_2_POSITION
 	attack_area_collision.position.x = AAC_POSITION
 	can_attack_area_1.position.x = CAA_POSITION
-	can_attack_area_2.position.x = CAA_POSITION_2
-	collision_2.position.x = C_2_POSITION
+	can_chase_area.position.x = CCA_POSITION
