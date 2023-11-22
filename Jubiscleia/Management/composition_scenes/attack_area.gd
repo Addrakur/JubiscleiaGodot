@@ -13,7 +13,7 @@ var knockup_force: float
 var knockback_force: float
 
 func on_body_entered(body):
-	if body.is_in_group(target) && !body.health_component.is_getting_hit:
+	if body.is_in_group(target) && !body.health_component.invulnerable:
 		body.health_component.update_health(damage)
 		body.velocity.y = knockup_force
 		if body.position.x > parent.position.x:

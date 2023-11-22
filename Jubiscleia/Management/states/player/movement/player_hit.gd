@@ -23,4 +23,5 @@ func _physics_process(_delta):
 func _on_animation_finished(anim):
 	if anim == "hit" or player.is_on_floor():
 		player.health_component.is_getting_hit = false
+		player.health_component.invulnerable = false
 		player.fsm.change_state(player.idle_state)
