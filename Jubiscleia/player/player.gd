@@ -10,12 +10,13 @@ extends CharacterBody2D
 @onready var attack_area_polygon: CollisionPolygon2D = $AttackArea/Sword_Area_1
 const ATTACK_AREA_POSITION: float = 39
 
-@onready var move_state: State = $StateMachine/Move as PlayerMove
+@onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var idle_state: State = $StateMachine/Idle as PlayerIdle
-@onready var jump_state: State = $StateMachine/Jump as PlayerJump
-@onready var fall_state: State = $StateMachine/Fall as PlayerFall
-@onready var double_jump_state: State = $StateMachine/DoubleJump as PlayerDoubleJump
+@onready var move_state: State = $StateMachine/Move as PlayerMove
 @onready var crouch_state: State = $StateMachine/Crouch as PlayerCrouch
+@onready var jump_state: State = $StateMachine/Jump as PlayerJump
+@onready var double_jump_state: State = $StateMachine/DoubleJump as PlayerDoubleJump
+@onready var fall_state: State = $StateMachine/Fall as PlayerFall
 @onready var hit_state: State = $StateMachine/Hit as PlayerHit
 @onready var death_state: State = $StateMachine/Death as PlayerDeath
 @onready var skill_1_attack_1_state: State = $StateMachine/Skill1Attack1 as PlayerSkill1Attack1
@@ -24,7 +25,6 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var skill_2_attack_1_state: State = $StateMachine/Skill2Attack1 as PlayerSkill2Attack1
 @onready var skill_2_attack_2_state: State = $StateMachine/Skill2Attack2 as PlayerSkill2Attack2
 @onready var skill_2_attack_3_state: State = $StateMachine/Skill2Attack3 as PlayerSkill2Attack3
-@onready var fsm: StateMachine = $StateMachine as StateMachine
 
 @export_group("Jump Variables")
 @export var jump_height: float

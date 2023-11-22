@@ -500,7 +500,7 @@ animation = NodePath("../../Animations")
 script = ExtResource("16_yplpm")
 snake = NodePath("../..")
 animation = NodePath("../../Animations")
-speed = 50.0
+speed = 100.0
 
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeHit" method="_on_animation_finished"]

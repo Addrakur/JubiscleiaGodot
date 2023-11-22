@@ -24,7 +24,7 @@ func _physics_process(_delta):
 	if snake.health_component.is_getting_hit:
 		snake.fsm.change_state(snake.hit_state)
 	
-	if snake.player_ref != null and PlayerVariables.player_alive:
+	if snake.player_ref != null and PlayerVariables.player_alive and snake.player_on_limit:
 		snake.fsm.change_state(snake.chase_state)
 	
 	if!snake.alive:

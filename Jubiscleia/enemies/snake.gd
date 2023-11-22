@@ -27,7 +27,7 @@ const CCA_POSITION: float = -48
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player: bool = false
-
+var player_on_limit: bool = false
 var is_attacking: bool = false
 
 var alive: bool = true

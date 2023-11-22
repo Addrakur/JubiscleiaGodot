@@ -10,8 +10,8 @@ func _ready() -> void:
 
 func on_body_entered(body):
 	if body.is_in_group("player") && enemy != null:
-		pass
+		enemy.player_on_limit = true
 
 func on_body_exited(body):
 	if body.is_in_group("player") && enemy != null:
-		pass
+		enemy.player_on_limit = false

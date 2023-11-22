@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqp1060wjlhfn"]
+[gd_scene load_steps=6 format=3 uid="uid://cqp1060wjlhfn"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_5moen"]
 [ext_resource type="TileSet" uid="uid://dsjlo105wabro" path="res://assets/Tileset/Ground.tres" id="2_khbs8"]
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="3_2ic4t"]
 [ext_resource type="PackedScene" uid="uid://bx4lmho2y840s" path="res://enemies/snake.tscn" id="4_7k5dd"]
+[ext_resource type="PackedScene" uid="uid://cv8owgy7v2lhb" path="res://enemies/enemy_limit.tscn" id="4_l7r3x"]
 
 [node name="Arena" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_5moen")
@@ -21,12 +22,20 @@ position = Vector2(82, 370)
 [node name="Polygon2D" type="Polygon2D" parent="."]
 visible = false
 color = Color(1, 1, 1, 0.219608)
-polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 512, 0, 512)
+polygon = PackedVector2Array(192, 384, 1088, 384, 1088, 448, 192, 448)
 
-[node name="Snake" parent="." instance=ExtResource("4_7k5dd")]
-position = Vector2(608, 432)
-direction = -1.0
+[node name="Limit2" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_l7r3x")]
+enemy = NodePath("Snake2")
+limit_points = [Vector2(192, 384), Vector2(1088, 384), Vector2(1088, 448), Vector2(192, 448)]
 
-[node name="Snake2" parent="." instance=ExtResource("4_7k5dd")]
+[node name="Snake2" parent="Limit2" instance=ExtResource("4_7k5dd")]
 position = Vector2(704, 432)
 direction = 1.0
+
+[node name="Limit" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_l7r3x")]
+enemy = NodePath("Snake")
+limit_points = [Vector2(192, 384), Vector2(1088, 384), Vector2(1088, 448), Vector2(192, 448)]
+
+[node name="Snake" parent="Limit" instance=ExtResource("4_7k5dd")]
+position = Vector2(608, 432)
+direction = -1.0
