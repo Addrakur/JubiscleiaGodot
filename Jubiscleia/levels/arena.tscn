@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqp1060wjlhfn"]
+[gd_scene load_steps=7 format=3 uid="uid://cqp1060wjlhfn"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_5moen"]
 [ext_resource type="TileSet" uid="uid://dsjlo105wabro" path="res://assets/Tileset/Ground.tres" id="2_khbs8"]
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="3_2ic4t"]
 [ext_resource type="PackedScene" uid="uid://bx4lmho2y840s" path="res://enemies/snake.tscn" id="4_7k5dd"]
 [ext_resource type="PackedScene" uid="uid://cv8owgy7v2lhb" path="res://enemies/enemy_limit.tscn" id="4_l7r3x"]
+[ext_resource type="PackedScene" uid="uid://gbawa3yjl13r" path="res://enemies/vulture.tscn" id="6_nv4tq"]
 
 [node name="Arena" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_5moen")
@@ -39,3 +40,7 @@ limit_points = [Vector2(192, 384), Vector2(1088, 384), Vector2(1088, 448), Vecto
 [node name="Snake" parent="Limit" instance=ExtResource("4_7k5dd")]
 position = Vector2(608, 432)
 direction = -1.0
+
+[node name="Vulture" parent="." instance=ExtResource("6_nv4tq")]
+position = Vector2(96, 256)
+direction = 1.0

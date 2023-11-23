@@ -33,3 +33,4 @@ func _physics_process(_delta):
 func chase_area_entered(body):
 	if body.is_in_group("player"):
 		snake.player_ref = body
+ 
