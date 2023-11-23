@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://gbawa3yjl13r"]
+[gd_scene load_steps=21 format=3 uid="uid://gbawa3yjl13r"]
 
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="1_b2ybq"]
 [ext_resource type="Script" path="res://enemies/vulture.gd" id="1_mfp7s"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://c4c5lwey2vh3u" path="res://assets/enemy/banco_de_assets/vulture/vulture_hurt.png" id="5_jymy8"]
 [ext_resource type="Script" path="res://Management/states/state_machine.gd" id="9_7u5y7"]
 [ext_resource type="Script" path="res://Management/states/vulture/vulture_fly.gd" id="10_fdy43"]
+[ext_resource type="Script" path="res://Management/states/vulture/vulture_idle.gd" id="11_rhgg8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8qb0c"]
 height = 36.0
@@ -425,10 +426,15 @@ disabled = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("9_7u5y7")
-state = NodePath("VultureFly")
+state = NodePath("VultureIdle")
 
 [node name="VultureFly" type="Node" parent="StateMachine" node_paths=PackedStringArray("vulture", "animation")]
 script = ExtResource("10_fdy43")
 vulture = NodePath("../..")
 speed = 50.0
+animation = NodePath("../../Animations")
+
+[node name="VultureIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("vulture", "animation")]
+script = ExtResource("11_rhgg8")
+vulture = NodePath("../..")
 animation = NodePath("../../Animations")

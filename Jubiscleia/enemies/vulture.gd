@@ -8,12 +8,15 @@ extends CharacterBody2D
 @onready var texture: Sprite2D = $Texture
 
 @onready var fly_state: State = $StateMachine/VultureFly as VultureFly
+@onready var idle_state: State = $StateMachine/VultureIdle as VultureIdle
 
 @onready var player_ref: CharacterBody2D
 
 var alive: bool = true
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+const IDLE_OFFSET: float = -16
 
 func _ready():
 	pass

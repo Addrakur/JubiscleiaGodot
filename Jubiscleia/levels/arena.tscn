@@ -41,6 +41,9 @@ limit_points = [Vector2(192, 384), Vector2(1088, 384), Vector2(1088, 448), Vecto
 position = Vector2(608, 432)
 direction = -1.0
 
-[node name="Vulture" parent="." instance=ExtResource("6_nv4tq")]
-position = Vector2(96, 256)
+[node name="VultureSpot1" type="Marker2D" parent="."]
+position = Vector2(1120, 384)
+
+[node name="Vulture" parent="VultureSpot1" instance=ExtResource("6_nv4tq")]
+position = Vector2(0, -16)
 direction = 1.0
