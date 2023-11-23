@@ -21,29 +21,36 @@ layer_0/tile_data = PackedInt32Array(1048615, 131072, 2, 983079, 131072, 1, 9175
 position = Vector2(82, 370)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-visible = false
 color = Color(1, 1, 1, 0.219608)
-polygon = PackedVector2Array(192, 384, 1088, 384, 1088, 448, 192, 448)
+polygon = PackedVector2Array(192, 256, 1088, 256, 1088, 448, 192, 448)
 
 [node name="Limit2" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_l7r3x")]
 enemy = NodePath("Snake2")
 limit_points = [Vector2(192, 384), Vector2(1088, 384), Vector2(1088, 448), Vector2(192, 448)]
 
-[node name="Snake2" parent="Limit2" instance=ExtResource("4_7k5dd")]
+[node name="Snake2" parent="Limit2" node_paths=PackedStringArray("limit") instance=ExtResource("4_7k5dd")]
 position = Vector2(704, 432)
 direction = 1.0
+limit = NodePath("..")
 
 [node name="Limit" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_l7r3x")]
 enemy = NodePath("Snake")
 limit_points = [Vector2(192, 384), Vector2(1088, 384), Vector2(1088, 448), Vector2(192, 448)]
 
-[node name="Snake" parent="Limit" instance=ExtResource("4_7k5dd")]
-position = Vector2(608, 432)
+[node name="Snake" parent="Limit" node_paths=PackedStringArray("limit") instance=ExtResource("4_7k5dd")]
+position = Vector2(288, 432)
 direction = -1.0
+limit = NodePath("..")
 
-[node name="VultureSpot1" type="Marker2D" parent="."]
+[node name="Limit3" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_l7r3x")]
+enemy = NodePath("Vulture")
+limit_points = [Vector2(192, 256), Vector2(1088, 256), Vector2(1088, 448), Vector2(192, 448)]
+
+[node name="Vulture" parent="Limit3" node_paths=PackedStringArray("limit", "idle_point") instance=ExtResource("6_nv4tq")]
+position = Vector2(288, 288)
+direction = -1.0
+limit = NodePath("..")
+idle_point = NodePath("../IdleSpot")
+
+[node name="IdleSpot" type="Marker2D" parent="Limit3"]
 position = Vector2(1120, 384)
-
-[node name="Vulture" parent="VultureSpot1" instance=ExtResource("6_nv4tq")]
-position = Vector2(0, -16)
-direction = 1.0

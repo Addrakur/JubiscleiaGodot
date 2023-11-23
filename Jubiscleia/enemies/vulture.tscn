@@ -527,6 +527,7 @@ height = 36.0
 [node name="Vulture" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area")]
 collision_layer = 2
 collision_mask = 5
+motion_mode = 1
 script = ExtResource("1_mfp7s")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
@@ -568,7 +569,7 @@ shape = SubResource("CapsuleShape2D_rx7tr")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("9_7u5y7")
-state = NodePath("VultureIdle")
+state = NodePath("VultureFly")
 
 [node name="VultureFly" type="Node" parent="StateMachine" node_paths=PackedStringArray("vulture", "animation")]
 script = ExtResource("10_fdy43")

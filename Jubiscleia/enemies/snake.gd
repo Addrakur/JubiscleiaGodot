@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var health_component: Node2D
 @export var attack_area: Area2D
+@export var direction: float
+@export var limit: Area2D
 
 @onready var texture: Sprite2D = $Texture
 @onready var collision: CollisionShape2D = $Collision
@@ -31,8 +33,6 @@ var player_on_limit: bool = false
 var is_attacking: bool = false
 
 var alive: bool = true
-
-@export var direction: float
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 

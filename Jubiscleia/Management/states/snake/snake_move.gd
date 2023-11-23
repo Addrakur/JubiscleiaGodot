@@ -18,8 +18,10 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	snake.velocity.x = snake.direction * speed
 	
-	if snake.is_on_wall():
-		snake.direction *= -1
+	if snake.position.x > snake.limit.limit_points[1].x - 22:
+		snake.direction = -1
+	elif snake.position.x < snake.limit.limit_points[0].x + 22:
+		snake.direction = 1
 	
 	if snake.health_component.is_getting_hit:
 		snake.fsm.change_state(snake.hit_state)
