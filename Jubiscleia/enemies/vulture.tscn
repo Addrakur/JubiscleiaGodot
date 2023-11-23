@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://gbawa3yjl13r"]
+[gd_scene load_steps=22 format=3 uid="uid://gbawa3yjl13r"]
 
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="1_b2ybq"]
 [ext_resource type="Script" path="res://enemies/vulture.gd" id="1_mfp7s"]
@@ -13,7 +13,10 @@
 [ext_resource type="Script" path="res://Management/states/vulture/vulture_idle.gd" id="11_rhgg8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8qb0c"]
-height = 36.0
+radius = 8.0
+height = 40.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j7eb7"]
 
 [sub_resource type="Animation" id="Animation_ks4cv"]
 length = 0.001
@@ -68,22 +71,34 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../AttackArea/CollisionShape2D:disabled")
+tracks/4/path = NodePath("../FlyCollision:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Collision:position")
+tracks/5/path = NodePath("../IdleCollision:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../FlyCollision:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -144,7 +159,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../AttackArea/CollisionShape2D:disabled")
+tracks/4/path = NodePath("../AttackArea/AttackArea:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -152,6 +167,30 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../FlyCollision:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../IdleCollision:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_d2gjt"]
@@ -207,14 +246,38 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Collision:position")
+tracks/4/path = NodePath("../IdleCollision:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../FlyCollision:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../FlyCollision:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 6)]
+"values": [Vector2(0, 8)]
 }
 
 [sub_resource type="Animation" id="Animation_hfcfg"]
@@ -267,6 +330,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../FlyCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../IdleCollision:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_kmsor"]
@@ -321,6 +408,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../FlyCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../IdleCollision:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_472mi"]
 resource_name = "fly"
@@ -374,6 +485,30 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../FlyCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../IdleCollision:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pogm0"]
 _data = {
@@ -390,14 +525,21 @@ radius = 7.0
 height = 36.0
 
 [node name="Vulture" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area")]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("1_mfp7s")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
+[node name="FlyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_8qb0c")
+
+[node name="IdleCollision" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 2)
+rotation = -0.785398
+shape = SubResource("CapsuleShape2D_j7eb7")
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("1_tixdc")
@@ -416,13 +558,13 @@ max_health = 10.0
 destroy_after_dead = true
 
 [node name="AttackArea" parent="." instance=ExtResource("2_wmy3m")]
+collision_mask = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+[node name="AttackArea" type="CollisionShape2D" parent="AttackArea"]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_rx7tr")
-disabled = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("9_7u5y7")
