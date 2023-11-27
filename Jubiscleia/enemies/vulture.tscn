@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://gbawa3yjl13r"]
+[gd_scene load_steps=25 format=3 uid="uid://gbawa3yjl13r"]
 
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="1_b2ybq"]
 [ext_resource type="Script" path="res://enemies/vulture.gd" id="1_mfp7s"]
@@ -11,6 +11,8 @@
 [ext_resource type="Script" path="res://Management/states/state_machine.gd" id="9_7u5y7"]
 [ext_resource type="Script" path="res://Management/states/vulture/vulture_fly.gd" id="10_fdy43"]
 [ext_resource type="Script" path="res://Management/states/vulture/vulture_idle.gd" id="11_rhgg8"]
+[ext_resource type="Script" path="res://Management/states/vulture/vulture_hover.gd" id="12_d6sp6"]
+[ext_resource type="Script" path="res://Management/states/vulture/vulture_transition.gd" id="13_nopf8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8qb0c"]
 radius = 8.0
@@ -280,6 +282,83 @@ tracks/6/keys = {
 "values": [Vector2(0, 8)]
 }
 
+[sub_resource type="Animation" id="Animation_472mi"]
+resource_name = "fly"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_nfi0y")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../FlyCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../IdleCollision:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_hfcfg"]
 resource_name = "hit"
 length = 0.2
@@ -433,83 +512,6 @@ tracks/5/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_472mi"]
-resource_name = "fly"
-length = 0.8
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_nfi0y")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../FlyCollision:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../IdleCollision:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pogm0"]
 _data = {
 "RESET": SubResource("Animation_ks4cv"),
@@ -519,6 +521,9 @@ _data = {
 "hit": SubResource("Animation_hfcfg"),
 "idle": SubResource("Animation_kmsor")
 }
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmysj"]
+size = Vector2(192, 192)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rx7tr"]
 radius = 7.0
@@ -553,10 +558,18 @@ libraries = {
 }
 
 [node name="AttackTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_b2ybq")]
 max_health = 10.0
 destroy_after_dead = true
+
+[node name="DetectArea" type="Area2D" parent="."]
+
+[node name="DetectArea" type="CollisionShape2D" parent="DetectArea"]
+position = Vector2(0, 64)
+shape = SubResource("RectangleShape2D_kmysj")
 
 [node name="AttackArea" parent="." instance=ExtResource("2_wmy3m")]
 collision_mask = 1
@@ -581,3 +594,18 @@ animation = NodePath("../../Animations")
 script = ExtResource("11_rhgg8")
 vulture = NodePath("../..")
 animation = NodePath("../../Animations")
+
+[node name="VultureHover" type="Node" parent="StateMachine" node_paths=PackedStringArray("vulture", "animation")]
+script = ExtResource("12_d6sp6")
+vulture = NodePath("../..")
+animation = NodePath("../../Animations")
+hover_offset = 64.0
+
+[node name="VultureTransition" type="Node" parent="StateMachine" node_paths=PackedStringArray("vulture", "animation")]
+script = ExtResource("13_nopf8")
+vulture = NodePath("../..")
+speed = 50.0
+animation = NodePath("../../Animations")
+
+[connection signal="body_entered" from="DetectArea" to="StateMachine/VultureFly" method="detect_area_body_entered"]
+[connection signal="body_exited" from="DetectArea" to="StateMachine/VultureHover" method="detect_area_body_exited"]
