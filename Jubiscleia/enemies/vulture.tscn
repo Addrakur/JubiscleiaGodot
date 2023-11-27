@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://gbawa3yjl13r"]
+[gd_scene load_steps=24 format=3 uid="uid://gbawa3yjl13r"]
 
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="1_b2ybq"]
 [ext_resource type="Script" path="res://enemies/vulture.gd" id="1_mfp7s"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://c4c5lwey2vh3u" path="res://assets/enemy/banco_de_assets/vulture/vulture_hurt.png" id="5_jymy8"]
 [ext_resource type="Script" path="res://Management/states/state_machine.gd" id="9_7u5y7"]
 [ext_resource type="Script" path="res://Management/states/vulture/vulture_fly.gd" id="10_fdy43"]
-[ext_resource type="Script" path="res://Management/states/vulture/vulture_idle.gd" id="11_rhgg8"]
 [ext_resource type="Script" path="res://Management/states/vulture/vulture_hover.gd" id="12_d6sp6"]
 [ext_resource type="Script" path="res://Management/states/vulture/vulture_transition.gd" id="13_nopf8"]
 
@@ -531,7 +530,7 @@ height = 36.0
 
 [node name="Vulture" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area")]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 4
 motion_mode = 1
 script = ExtResource("1_mfp7s")
 health_component = NodePath("HealthComponent")
@@ -562,7 +561,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_b2ybq")]
-max_health = 10.0
+max_health = 1.0
 destroy_after_dead = true
 
 [node name="DetectArea" type="Area2D" parent="."]
@@ -588,11 +587,6 @@ state = NodePath("VultureFly")
 script = ExtResource("10_fdy43")
 vulture = NodePath("../..")
 speed = 50.0
-animation = NodePath("../../Animations")
-
-[node name="VultureIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("vulture", "animation")]
-script = ExtResource("11_rhgg8")
-vulture = NodePath("../..")
 animation = NodePath("../../Animations")
 
 [node name="VultureHover" type="Node" parent="StateMachine" node_paths=PackedStringArray("vulture", "animation")]

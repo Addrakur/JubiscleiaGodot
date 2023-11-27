@@ -25,17 +25,7 @@ func _physics_process(_delta):
 	
 	if !vulture.alive:
 		vulture.fsm.change_state(vulture.death_state)
-	
-	#if vulture.player_ref == null or not PlayerVariables.player_alive or not vulture.player_on_limit:
-	#	if vulture.position.x > vulture.limit.limit_points[1].x:
-	#		vulture.transition_state.transition_location = Vector2(vulture.limit.limit_points[1].x - 10,vulture.y)
-	#		vulture.fsm.change_state(vulture.transition_state)
-	#	elif vulture.position.x < vulture.limit.limit_points[0].x:
-	#		vulture.transition_state.transition_location = Vector2(vulture.limit.limit_points[0].x + 10,vulture.y)
-	#		vulture.fsm.change_state(vulture.transition_state)
-	#	else:
-	#		vulture.fsm.change_state(vulture.fly_state)
-	
+
 	if not PlayerVariables.player_alive or not vulture.player_on_limit:
 		if vulture.position.x > vulture.limit.limit_points[1].x:
 			vulture.direction = -1

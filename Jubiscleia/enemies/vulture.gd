@@ -12,7 +12,6 @@ extends CharacterBody2D
 @onready var detect_area: Area2D = $DetectArea
 
 @onready var fly_state: State = $StateMachine/VultureFly as VultureFly
-@onready var idle_state: State = $StateMachine/VultureIdle as VultureIdle
 @onready var hover_state: State = $StateMachine/VultureHover as VultureHover
 @onready var transition_state: State = $StateMachine/VultureTransition as VultureTransition
 

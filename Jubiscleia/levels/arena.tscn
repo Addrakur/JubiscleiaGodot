@@ -21,6 +21,7 @@ layer_0/tile_data = PackedInt32Array(1048615, 131072, 2, 983079, 131072, 1, 9175
 position = Vector2(96, 365)
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 color = Color(1, 1, 1, 0.219608)
 polygon = PackedVector2Array(192, 256, 1088, 256, 1088, 448, 192, 448)
 
