@@ -49,6 +49,7 @@ limit_points = [Vector2(192, 256), Vector2(1088, 256), Vector2(1088, 448), Vecto
 [node name="Vulture" parent="Limit3" node_paths=PackedStringArray("limit", "idle_point") instance=ExtResource("6_nv4tq")]
 position = Vector2(288, 288)
 direction = -1.0
+y = 288.0
 limit = NodePath("..")
 idle_point = NodePath("../IdleSpot")
 
