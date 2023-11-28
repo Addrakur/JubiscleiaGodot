@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var y: float
 @export var limit: Area2D
 @export var idle_point: Marker2D
+@export var hover_offset: float
 
 @onready var attack_timer: Timer = $AttackTimer
 @onready var texture: Sprite2D = $Texture
@@ -21,6 +22,7 @@ extends CharacterBody2D
 
 var alive: bool = true
 var hover: bool = false
+var is_attacking: bool = false
 var player_on_limit: bool = false
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -39,6 +41,8 @@ func _process(_delta):
 
 func _physics_process(_delta):
 	move_and_slide()
+	if not hover and not is_attacking:
+		position.y = y
 
 func right():
 	texture.flip_h = true

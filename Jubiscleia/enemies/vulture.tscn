@@ -535,6 +535,7 @@ motion_mode = 1
 script = ExtResource("1_mfp7s")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
+hover_offset = 64.0
 
 [node name="FlyCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
@@ -593,7 +594,6 @@ animation = NodePath("../../Animations")
 script = ExtResource("12_d6sp6")
 vulture = NodePath("../..")
 animation = NodePath("../../Animations")
-hover_offset = 64.0
 
 [node name="VultureTransition" type="Node" parent="StateMachine" node_paths=PackedStringArray("vulture", "animation")]
 script = ExtResource("13_nopf8")

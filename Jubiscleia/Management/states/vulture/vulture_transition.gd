@@ -5,7 +5,7 @@ extends State
 @export var speed: float
 @export var animation: AnimationPlayer
 
-var transition_location: Vector2
+var transition_location: float
 
 func _ready():
 	set_physics_process(false)
@@ -18,12 +18,12 @@ func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(delta):
-	var direction: Vector2 = (transition_location-vulture.position).normalized()
+	if vulture.player_ref.position.x > vulture.position.x and vulture.position.x < vulture.hover_offset or vulture.player_ref.position.x < vulture.position.x and vulture.position.x > vulture.hover_offset:
+		vulture.direction = 1
+	else:
+		vulture.direction = -1
 	
-	vulture.velocity = direction * speed * delta
-	
-	if vulture.position.x > vulture.limit.limit_points[1].x or vulture.position.x < vulture.limit.limit_points[0].x:
-		vulture.fsm.change_state(vulture.fly_state)
+	vulture.velocity.x = vulture.direction * speed * delta
 	
 	if vulture.health_component.is_getting_hit:
 		vulture.fsm.change_state(vulture.hit_state)

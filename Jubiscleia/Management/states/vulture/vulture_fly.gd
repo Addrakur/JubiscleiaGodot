@@ -11,7 +11,6 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	animation.play("fly")
-	print("fly")
 
 func exit_state() -> void:
 	set_physics_process(false)
@@ -20,7 +19,7 @@ func _physics_process(_delta):
 	vulture.velocity.x = vulture.direction * speed
 	
 	if vulture.player_ref != null and PlayerVariables.player_alive and vulture.player_on_limit and vulture.player_ref.position.y > vulture.position.y:
-		vulture.fsm.change_state(vulture.hover_state)
+		vulture.fsm.change_state(vulture.transition_state)
 	
 	if vulture.position.x > vulture.limit.limit_points[1].x:
 		vulture.direction = -1

@@ -3,7 +3,6 @@ extends State
 
 @export var vulture: CharacterBody2D
 @export var animation: AnimationPlayer
-@export var hover_offset: float
 
 func _ready():
 	set_physics_process(false)
@@ -18,7 +17,7 @@ func exit_state() -> void:
 	vulture.hover = false
 
 func _physics_process(_delta):
-	go_to_hover_point()
+	stay_on_hover_point()
 	
 	if vulture.health_component.is_getting_hit:
 		vulture.fsm.change_state(vulture.hit_state)
@@ -41,12 +40,12 @@ func _physics_process(_delta):
 		print("attack")
 		vulture.attack_timer.start()
 
-func go_to_hover_point():
+func stay_on_hover_point():
 	if vulture.player_ref.position.x < vulture.position.x:
-		vulture.position.x = vulture.player_ref.position.x + hover_offset
+		vulture.position.x = vulture.player_ref.position.x + vulture.hover_offset
 		vulture.left()
 	elif vulture.player_ref.position.x > vulture.position.x:
-		vulture.position.x = vulture.player_ref.position.x - hover_offset
+		vulture.position.x = vulture.player_ref.position.x - vulture.hover_offset
 		vulture.right()
 
 func detect_area_body_exited(body):
