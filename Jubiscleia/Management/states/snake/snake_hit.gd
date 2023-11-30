@@ -7,7 +7,6 @@ extends State
 var knockup_force: float
 var knockback_force: float
 var direction: float
-var anim_finish: bool = false
 var hit_timer: float = 0.1
 
 func _ready():

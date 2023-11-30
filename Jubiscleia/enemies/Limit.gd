@@ -7,7 +7,6 @@ extends Area2D
 func _ready() -> void:
 	limit_area.polygon = limit_points
 
-
 func on_body_entered(body):
 	if body.is_in_group("player") && enemy != null:
 		enemy.player_on_limit = true

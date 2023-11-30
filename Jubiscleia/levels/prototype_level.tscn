@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://lqfqrp52dju2"]
+[gd_scene load_steps=10 format=3 uid="uid://lqfqrp52dju2"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_rdehp"]
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="2_oy7pp"]
@@ -6,19 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://cv8owgy7v2lhb" path="res://enemies/enemy_limit.tscn" id="3_v6kio"]
 [ext_resource type="PackedScene" uid="uid://bx4lmho2y840s" path="res://enemies/snake.tscn" id="4_jp6h7"]
 [ext_resource type="TileSet" uid="uid://dsjlo105wabro" path="res://assets/Tileset/Ground.tres" id="6_00r81"]
-[ext_resource type="PackedScene" uid="uid://dofww7w55i7it" path="res://Management/enemy_wall.tscn" id="6_m5w2o"]
 [ext_resource type="PackedScene" uid="uid://dujgxpnuckrha" path="res://Management/tween_area.tscn" id="8_k86fn"]
 [ext_resource type="PackedScene" uid="uid://cbkmdf5fph8mt" path="res://enemies/turret.tscn" id="8_rqbkd"]
 [ext_resource type="PackedScene" uid="uid://bolenc8px11st" path="res://Management/level_end.tscn" id="10_aso8h"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1u3jq"]
-size = Vector2(32, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ugbcf"]
-size = Vector2(1, 96)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_uq2h1"]
-size = Vector2(1, 64)
 
 [node name="PrototypeLevel" type="Node2D" node_paths=PackedStringArray("player")]
 process_mode = 1
@@ -27,7 +17,7 @@ player = NodePath("player")
 camera_limits = Array[int]([-64, 0, 4512, 736])
 
 [node name="player" parent="." instance=ExtResource("2_oy7pp")]
-position = Vector2(89, 338)
+position = Vector2(128, 344)
 
 [node name="Plataforms" type="Node2D" parent="."]
 
@@ -80,10 +70,10 @@ position = Vector2(3360, 128)
 
 [node name="Limit" parent="Enemies" node_paths=PackedStringArray("enemy") instance=ExtResource("3_v6kio")]
 enemy = NodePath("Enemy")
-limit_points = [Vector2(928, 64), Vector2(576, 64), Vector2(576, 256), Vector2(928, 256)]
+limit_points = [Vector2(576, 64), Vector2(928, 64), Vector2(928, 256), Vector2(576, 256)]
 
 [node name="Enemy" parent="Enemies/Limit" instance=ExtResource("4_jp6h7")]
-position = Vector2(704, 224)
+position = Vector2(776, 228)
 direction = -1.0
 
 [node name="Limit2" parent="Enemies" node_paths=PackedStringArray("enemy") instance=ExtResource("3_v6kio")]
@@ -125,26 +115,6 @@ limit_points = [Vector2(2048, 672), Vector2(2656, 672), Vector2(2656, 512), Vect
 [node name="Enemy" parent="Enemies/Limit6" instance=ExtResource("4_jp6h7")]
 position = Vector2(2336, 640)
 direction = 1.0
-
-[node name="Walls" type="Node2D" parent="Enemies"]
-
-[node name="EnemyWall" parent="Enemies/Walls" instance=ExtResource("6_m5w2o")]
-
-[node name="CS" type="CollisionShape2D" parent="Enemies/Walls/EnemyWall"]
-position = Vector2(560, 224)
-shape = SubResource("RectangleShape2D_1u3jq")
-
-[node name="EnemyWall2" parent="Enemies/Walls" instance=ExtResource("6_m5w2o")]
-
-[node name="CS" type="CollisionShape2D" parent="Enemies/Walls/EnemyWall2"]
-position = Vector2(2047.5, 592)
-shape = SubResource("RectangleShape2D_ugbcf")
-
-[node name="EnemyWall3" parent="Enemies/Walls" instance=ExtResource("6_m5w2o")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Walls/EnemyWall3"]
-position = Vector2(2047.5, 352)
-shape = SubResource("RectangleShape2D_uq2h1")
 
 [node name="TileMap" type="TileMap" parent="." groups=["terrain"]]
 texture_filter = 1
@@ -219,7 +189,7 @@ position = Vector2(4384, 608)
 [node name="Polygon2D" type="Polygon2D" parent="."]
 visible = false
 color = Color(1, 1, 1, 0.0980392)
-polygon = PackedVector2Array(0, -64, 4512, -64, 4512, 736, 0, 736)
+polygon = PackedVector2Array(576, 128, 928, 128, 928, 256, 576, 256)
 
 [node name="Label" type="Label" parent="."]
 offset_left = 96.0

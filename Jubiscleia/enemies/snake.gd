@@ -3,9 +3,9 @@ extends CharacterBody2D
 @export var health_component: Node2D
 @export var attack_area: Area2D
 @export var direction: float
-@export var limit: Area2D
 @export var gravity_mult: float
 
+@onready var limit: Area2D = get_parent()
 @onready var texture: Sprite2D = $Texture
 @onready var collision: CollisionShape2D = $Collision
 const C_POSITION: float = 2
@@ -41,7 +41,7 @@ func _ready():
 	pass
 
 func _process(_delta):
-	if !health_component.is_getting_hit:
+	if fsm.state == move_state or fsm.state == chase_state:
 		if velocity.x < 0:
 			left()
 		elif velocity.x > 0:

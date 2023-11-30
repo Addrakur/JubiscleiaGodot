@@ -29,19 +29,17 @@ polygon = PackedVector2Array(192, 256, 1088, 256, 1088, 448, 192, 448)
 enemy = NodePath("Snake2")
 limit_points = [Vector2(192, 384), Vector2(1088, 384), Vector2(1088, 448), Vector2(192, 448)]
 
-[node name="Snake2" parent="Limit2" node_paths=PackedStringArray("limit") instance=ExtResource("4_7k5dd")]
+[node name="Snake2" parent="Limit2" instance=ExtResource("4_7k5dd")]
 position = Vector2(704, 432)
 direction = 1.0
-limit = NodePath("..")
 
 [node name="Limit" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_l7r3x")]
 enemy = NodePath("Snake")
 limit_points = [Vector2(192, 384), Vector2(1088, 384), Vector2(1088, 448), Vector2(192, 448)]
 
-[node name="Snake" parent="Limit" node_paths=PackedStringArray("limit") instance=ExtResource("4_7k5dd")]
+[node name="Snake" parent="Limit" instance=ExtResource("4_7k5dd")]
 position = Vector2(384, 288)
 direction = -1.0
-limit = NodePath("..")
 
 [node name="Limit3" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_l7r3x")]
 enemy = NodePath("Vulture")

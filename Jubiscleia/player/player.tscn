@@ -1354,8 +1354,8 @@ script = ExtResource("28_xnw5g")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 damage = 5.0
-knockback_force = 500.0
-knockup_force = -100.0
+knockback_force = 150.0
+knockup_force = -30.0
 
 [node name="Skill2Attack1" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("30_rqjv3")
@@ -1374,8 +1374,8 @@ script = ExtResource("32_ik8y2")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 damage = 3.0
-knockback_force = 300.0
-knockup_force = -100.0
+knockback_force = 100.0
+knockup_force = -30.0
 
 [node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("23_j7sbs")
