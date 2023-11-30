@@ -18,10 +18,10 @@ func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(delta):
-	if vulture.player_ref.position.x > vulture.position.x and vulture.position.x < vulture.hover_offset or vulture.player_ref.position.x < vulture.position.x and vulture.position.x > vulture.hover_offset:
-		vulture.direction = 1
-	else:
-		vulture.direction = -1
+	#if vulture.player_ref.position.x > vulture.position.x and vulture.position.x < vulture.hover_offset or vulture.player_ref.position.x < vulture.position.x and vulture.position.x > vulture.hover_offset:
+	#	vulture.direction = 1
+	#else:
+	#	vulture.direction = -1
 	
 	vulture.velocity.x = vulture.direction * speed * delta
 	

@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var attack_area: Area2D
 @export var direction: float
 @export var limit: Area2D
+@export var gravity_mult: float
 
 @onready var texture: Sprite2D = $Texture
 @onready var collision: CollisionShape2D = $Collision
@@ -49,7 +50,7 @@ func _process(_delta):
 func _physics_process(delta):
 	move_and_slide()
 	if not is_on_floor():
-		velocity.y = gravity * delta
+		velocity.y = gravity * delta * gravity_mult
 
 func right():
 	texture.flip_h = true
