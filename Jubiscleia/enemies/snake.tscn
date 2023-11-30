@@ -475,8 +475,8 @@ script = ExtResource("13_gcars")
 snake = NodePath("../..")
 animation = NodePath("../../Animations")
 damage = 5.0
-knockback_force = 64.0
-knockup_force = -16.0
+knockback_force = 500.0
+knockup_force = -100.0
 
 [node name="SnakeHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
 script = ExtResource("13_k7h8k")
