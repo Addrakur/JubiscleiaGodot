@@ -10,13 +10,12 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	animation.play("dead")
-	snake.velocity.x = 0
 
 func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(_delta):
-	pass
+	snake.velocity.x = 0
 
 func _on_animation_finished(anim):
 	if anim == "dead":

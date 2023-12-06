@@ -5,7 +5,6 @@ extends CharacterBody2D
 @export var direction: float
 @export var y: float
 @export var limit: Area2D
-@export var idle_point: Marker2D
 @export var hover_offset: float
 
 @onready var attack_timer: Timer = $AttackTimer
@@ -14,6 +13,7 @@ extends CharacterBody2D
 
 @onready var fly_state: State = $StateMachine/VultureFly as VultureFly
 @onready var hover_state: State = $StateMachine/VultureHover as VultureHover
+@onready var attack_state: State = $StateMachine/VultureAttack as VultureAttack
 @onready var transition_state: State = $StateMachine/VultureTransition as VultureTransition
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine

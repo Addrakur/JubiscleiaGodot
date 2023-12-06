@@ -4,6 +4,8 @@ extends State
 @export var vulture: CharacterBody2D
 @export var animation: AnimationPlayer
 
+var side: String
+
 func _ready():
 	set_physics_process(false)
 
@@ -37,16 +39,23 @@ func _physics_process(_delta):
 	
 	
 	if vulture.attack_timer.is_stopped():
-		print("attack")
 		vulture.attack_timer.start()
+		vulture.attack_state.player_location = vulture.player_ref.position
+		if side == "left":
+			vulture.attack_state.end_location = Vector2(vulture.position.x + 128,vulture.y)
+		else:
+			vulture.attack_state.end_location = Vector2(vulture.position.x - 128,vulture.y)
+		vulture.fsm.change_state(vulture.attack_state)
 
 func stay_on_hover_point():
 	if vulture.player_ref.position.x < vulture.position.x:
 		vulture.position.x = vulture.player_ref.position.x + vulture.hover_offset
 		vulture.left()
+		side = "left"
 	elif vulture.player_ref.position.x > vulture.position.x:
 		vulture.position.x = vulture.player_ref.position.x - vulture.hover_offset
 		vulture.right()
+		side = "right"
 
 func detect_area_body_exited(body):
 	if body == vulture.player_ref:

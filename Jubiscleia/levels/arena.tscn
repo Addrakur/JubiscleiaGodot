@@ -45,12 +45,8 @@ direction = -1.0
 enemy = NodePath("Vulture")
 limit_points = [Vector2(192, 256), Vector2(1088, 256), Vector2(1088, 448), Vector2(192, 448)]
 
-[node name="Vulture" parent="Limit3" node_paths=PackedStringArray("limit", "idle_point") instance=ExtResource("6_nv4tq")]
+[node name="Vulture" parent="Limit3" node_paths=PackedStringArray("limit") instance=ExtResource("6_nv4tq")]
 position = Vector2(288, 288)
 direction = -1.0
 y = 288.0
 limit = NodePath("..")
-idle_point = NodePath("../IdleSpot")
-
-[node name="IdleSpot" type="Marker2D" parent="Limit3"]
-position = Vector2(1120, 384)

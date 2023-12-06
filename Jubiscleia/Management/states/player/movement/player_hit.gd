@@ -16,7 +16,7 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	animation.play("hit")
-	hit_timer = 0.1
+	#hit_timer = 0.1
 	if player.is_on_floor():
 		player.jump_count = 0
 
