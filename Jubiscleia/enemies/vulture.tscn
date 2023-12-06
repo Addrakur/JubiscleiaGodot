@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://gbawa3yjl13r"]
+[gd_scene load_steps=22 format=3 uid="uid://gbawa3yjl13r"]
 
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="1_b2ybq"]
 [ext_resource type="Script" path="res://enemies/vulture.gd" id="1_mfp7s"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" path="res://Management/states/vulture/vulture_fly.gd" id="10_fdy43"]
 [ext_resource type="Script" path="res://Management/states/vulture/vulture_hover.gd" id="12_d6sp6"]
 [ext_resource type="Script" path="res://Management/states/vulture/vulture_attack.gd" id="13_7day0"]
-[ext_resource type="Script" path="res://Management/states/vulture/vulture_transition.gd" id="13_nopf8"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8qb0c"]
 radius = 8.0
@@ -71,26 +70,14 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../FlyCollision:disabled")
+tracks/4/path = NodePath("../AttackArea/AttackArea:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../FlyCollision:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -2)]
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_efrtv"]
@@ -151,18 +138,6 @@ tracks/4/path = NodePath("../AttackArea/AttackArea:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../FlyCollision:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -391,7 +366,7 @@ height = 36.0
 
 [node name="Vulture" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area")]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_mfp7s")
 health_component = NodePath("HealthComponent")
@@ -429,12 +404,14 @@ shape = SubResource("RectangleShape2D_kmysj")
 
 [node name="AttackArea" parent="." instance=ExtResource("2_wmy3m")]
 collision_mask = 1
+target = "player"
 
 [node name="AttackArea" type="CollisionShape2D" parent="AttackArea"]
 modulate = Color(1, 0, 0, 1)
 position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_rx7tr")
+disabled = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("9_7u5y7")
@@ -451,17 +428,12 @@ script = ExtResource("12_d6sp6")
 vulture = NodePath("../..")
 animation = NodePath("../../Animations")
 
-[node name="VultureTransition" type="Node" parent="StateMachine" node_paths=PackedStringArray("vulture", "animation")]
-script = ExtResource("13_nopf8")
-vulture = NodePath("../..")
-speed = 3000.0
-animation = NodePath("../../Animations")
-
 [node name="VultureAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("vulture", "animation")]
 script = ExtResource("13_7day0")
 vulture = NodePath("../..")
 animation = NodePath("../../Animations")
 damage = 10.0
+duration = 0.5
 
 [connection signal="body_entered" from="DetectArea" to="StateMachine/VultureFly" method="detect_area_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="StateMachine/VultureHover" method="detect_area_body_exited"]

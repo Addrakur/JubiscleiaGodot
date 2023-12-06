@@ -14,7 +14,6 @@ extends CharacterBody2D
 @onready var fly_state: State = $StateMachine/VultureFly as VultureFly
 @onready var hover_state: State = $StateMachine/VultureHover as VultureHover
 @onready var attack_state: State = $StateMachine/VultureAttack as VultureAttack
-@onready var transition_state: State = $StateMachine/VultureTransition as VultureTransition
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 

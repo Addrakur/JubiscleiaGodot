@@ -42,9 +42,9 @@ func _physics_process(_delta):
 		vulture.attack_timer.start()
 		vulture.attack_state.player_location = vulture.player_ref.position
 		if side == "left":
-			vulture.attack_state.end_location = Vector2(vulture.position.x + 128,vulture.y)
-		else:
 			vulture.attack_state.end_location = Vector2(vulture.position.x - 128,vulture.y)
+		else:
+			vulture.attack_state.end_location = Vector2(vulture.position.x + 128,vulture.y)
 		vulture.fsm.change_state(vulture.attack_state)
 
 func stay_on_hover_point():

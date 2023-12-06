@@ -19,6 +19,7 @@ func _physics_process(_delta):
 	vulture.velocity.x = vulture.direction * speed
 	
 	if vulture.player_ref != null and PlayerVariables.player_alive and vulture.player_on_limit and vulture.player_ref.position.y > vulture.position.y:
+		vulture.attack_timer.start()
 		vulture.fsm.change_state(vulture.hover_state)
 	
 	if vulture.position.x > vulture.limit.limit_points[1].x:
