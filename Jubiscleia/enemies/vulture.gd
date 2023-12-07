@@ -14,11 +14,13 @@ extends CharacterBody2D
 @onready var fly_state: State = $StateMachine/VultureFly as VultureFly
 @onready var hover_state: State = $StateMachine/VultureHover as VultureHover
 @onready var attack_state: State = $StateMachine/VultureAttack as VultureAttack
+@onready var death_state: State = $StateMachine/VultureDeath as VultureDeath
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 
 @onready var player_ref: CharacterBody2D
 
+var hit_state: State = null
 var alive: bool = true
 var hover: bool = false
 var is_attacking: bool = false
@@ -37,6 +39,9 @@ func _process(_delta):
 			left()
 		elif velocity.x > 0:
 			right()
+	
+	if not PlayerVariables.player_alive:
+		player_ref = null
 
 func _physics_process(_delta):
 	move_and_slide()

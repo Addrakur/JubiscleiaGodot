@@ -1,7 +1,7 @@
-class_name PlayerDeath
+class_name VultureDeath
 extends State
 
-@export var player: CharacterBody2D
+@export var vulture: CharacterBody2D
 @export var animation: AnimationPlayer
 
 func _ready():
@@ -10,13 +10,10 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	animation.play("dead")
-	player.velocity.x = 0
-	PlayerVariables.player_alive = false
-	print(name)
-	player.texture.visible = false
 
 func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(_delta):
-	pass
+	vulture.queue_free()
+

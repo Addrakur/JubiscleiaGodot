@@ -56,8 +56,6 @@ func _ready():
 func _process(_delta):
 	if not health_component.is_getting_hit:
 		flip()
-	if not alive:
-		PlayerVariables.player_alive = false
 
 func _physics_process(delta):
 	if not is_on_floor():

@@ -1294,7 +1294,8 @@ player = NodePath("..")
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("9_6bxkt")]
-max_health = 40.0
+max_health = 1.0
+destroy_after_dead = true
 
 [node name="PauseMenu" parent="." instance=ExtResource("10_yhe3o")]
 process_mode = 3

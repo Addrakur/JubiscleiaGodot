@@ -38,7 +38,7 @@ enemy = NodePath("Snake")
 limit_points = [Vector2(192, 384), Vector2(1088, 384), Vector2(1088, 448), Vector2(192, 448)]
 
 [node name="Snake" parent="Limit" instance=ExtResource("4_7k5dd")]
-position = Vector2(384, 288)
+position = Vector2(371, 432)
 direction = -1.0
 
 [node name="Limit3" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_l7r3x")]

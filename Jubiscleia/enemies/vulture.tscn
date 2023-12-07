@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://gbawa3yjl13r"]
+[gd_scene load_steps=23 format=3 uid="uid://gbawa3yjl13r"]
 
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="1_b2ybq"]
 [ext_resource type="Script" path="res://enemies/vulture.gd" id="1_mfp7s"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Management/states/vulture/vulture_fly.gd" id="10_fdy43"]
 [ext_resource type="Script" path="res://Management/states/vulture/vulture_hover.gd" id="12_d6sp6"]
 [ext_resource type="Script" path="res://Management/states/vulture/vulture_attack.gd" id="13_7day0"]
+[ext_resource type="Script" path="res://Management/states/vulture/vulture_death.gd" id="13_qphav"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8qb0c"]
 radius = 8.0
@@ -79,6 +80,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../FlyCollision:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -2)]
+}
 
 [sub_resource type="Animation" id="Animation_efrtv"]
 resource_name = "attack"
@@ -142,81 +155,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_d2gjt"]
-resource_name = "death"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_6xvkj")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../FlyCollision:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../FlyCollision:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 8)]
 }
 
 [sub_resource type="Animation" id="Animation_472mi"]
@@ -324,11 +262,86 @@ tracks/3/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_d2gjt"]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_6xvkj")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../FlyCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../FlyCollision:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 8)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pogm0"]
 _data = {
 "RESET": SubResource("Animation_ks4cv"),
 "attack": SubResource("Animation_efrtv"),
-"death": SubResource("Animation_d2gjt"),
+"dead": SubResource("Animation_d2gjt"),
 "fly": SubResource("Animation_472mi"),
 "hit": SubResource("Animation_hfcfg")
 }
@@ -340,9 +353,8 @@ size = Vector2(192, 192)
 radius = 11.0
 height = 46.0
 
-[node name="Vulture" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area")]
+[node name="Vulture" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 collision_layer = 2
-collision_mask = 5
 motion_mode = 1
 script = ExtResource("1_mfp7s")
 health_component = NodePath("HealthComponent")
@@ -353,6 +365,7 @@ hover_offset = 64.0
 position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_8qb0c")
+one_way_collision = true
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("1_tixdc")
@@ -411,8 +424,14 @@ animation = NodePath("../../Animations")
 script = ExtResource("13_7day0")
 vulture = NodePath("../..")
 animation = NodePath("../../Animations")
-damage = 10.0
+speed = 150.0
 duration = 0.5
+damage = 10.0
+
+[node name="VultureDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("vulture", "animation")]
+script = ExtResource("13_qphav")
+vulture = NodePath("../..")
+animation = NodePath("../../Animations")
 
 [connection signal="body_entered" from="DetectArea" to="StateMachine/VultureFly" method="detect_area_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="StateMachine/VultureHover" method="detect_area_body_exited"]

@@ -21,9 +21,6 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	stay_on_hover_point()
 	
-	if vulture.health_component.is_getting_hit:
-		vulture.fsm.change_state(vulture.hit_state)
-	
 	if !vulture.alive:
 		vulture.fsm.change_state(vulture.death_state)
 

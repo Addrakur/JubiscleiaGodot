@@ -46,6 +46,9 @@ func _process(_delta):
 			left()
 		elif velocity.x > 0:
 			right()
+	
+	if not PlayerVariables.player_alive:
+		player_ref = null
 
 func _physics_process(delta):
 	move_and_slide()
