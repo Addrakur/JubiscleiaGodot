@@ -271,18 +271,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../FlyCollision:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_hfcfg"]
 resource_name = "hit"
@@ -335,18 +323,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [0, 1]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../FlyCollision:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pogm0"]
 _data = {
@@ -361,8 +337,8 @@ _data = {
 size = Vector2(192, 192)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rx7tr"]
-radius = 7.0
-height = 36.0
+radius = 11.0
+height = 46.0
 
 [node name="Vulture" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area")]
 collision_layer = 2
@@ -397,6 +373,7 @@ max_health = 1.0
 destroy_after_dead = true
 
 [node name="DetectArea" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="DetectArea" type="CollisionShape2D" parent="DetectArea"]
 position = Vector2(0, 64)
@@ -408,10 +385,12 @@ target = "player"
 
 [node name="AttackArea" type="CollisionShape2D" parent="AttackArea"]
 modulate = Color(1, 0, 0, 1)
+self_modulate = Color(0.490196, 0.760784, 1, 1)
 position = Vector2(0, -2)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_rx7tr")
 disabled = true
+debug_color = Color(0, 0.596078, 0.72549, 0.419608)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("9_7u5y7")
