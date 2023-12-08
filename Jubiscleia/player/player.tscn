@@ -223,7 +223,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-28.0379, 13, -28.0379, -11, -37.0069, -18, -30.031, -17, -23.0552, -14, -16.0793, -6, -16.0793, 13)]
+"values": [PackedVector2Array(-28.0379, 13, -28.0379, -11, -41.8552, -20, -32.8862, -21, -22.9207, -19, -12.9552, -6, -12.9552, 13)]
 }
 tracks/6/type = "method"
 tracks/6/imported = false
@@ -317,7 +317,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-28.0379, 8, -28.0379, -3, -13.0897, -3, -13.0897, 8)]
+"values": [PackedVector2Array(-28.0379, 8, -28.0379, -3, -8.96894, -3, -8.96894, 8)]
 }
 tracks/6/type = "method"
 tracks/6/imported = false
@@ -350,7 +350,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-28.0379, 13, -28.0379, -11, -37.0069, -18, -30.031, -17, -23.0552, -14, -16.0793, -6, -16.0793, 13)]
+"values": [PackedVector2Array(-28.0379, 13, -28.0379, -11, -41.8552, -20, -32.8862, -21, -22.9207, -19, -12.9552, -6, -12.9552, 13)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1011,7 +1011,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-26.0448, 2, -26.0448, -6, -6.97586, -6, -7.11034, 2)]
+"values": [PackedVector2Array(-26.0448, 2, -26.0448, -6, -3.98619, -6, -3.98619, 2)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1294,7 +1294,7 @@ player = NodePath("..")
 health_component = NodePath("../HealthComponent")
 
 [node name="HealthComponent" parent="." instance=ExtResource("9_6bxkt")]
-max_health = 1.0
+max_health = 40.0
 destroy_after_dead = true
 
 [node name="PauseMenu" parent="." instance=ExtResource("10_yhe3o")]
@@ -1348,13 +1348,13 @@ damage = 3.0
 script = ExtResource("27_gs7jn")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
-damage = 3.0
+damage = 4.0
 
 [node name="Skill1Attack3" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("28_xnw5g")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
-damage = 5.0
+damage = 6.0
 knockback_force = 300.0
 knockup_force = -50.0
 
@@ -1368,13 +1368,13 @@ damage = 2.0
 script = ExtResource("27_44dkp")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
-damage = 2.0
+damage = 3.0
 
 [node name="Skill2Attack3" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("32_ik8y2")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
-damage = 3.0
+damage = 4.0
 knockback_force = 200.0
 knockup_force = -100.0
 
