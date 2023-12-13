@@ -86,3 +86,9 @@ func can_combo_true() -> void:
 func move() -> void:
 	if direction != 0:
 		fsm.change_state(move_state)
+
+func toggle_move():
+	if PlayerVariables.move:
+		PlayerVariables.move = false
+	else:
+		PlayerVariables.move = true

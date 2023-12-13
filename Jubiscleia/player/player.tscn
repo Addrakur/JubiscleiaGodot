@@ -336,6 +336,23 @@ tracks/6/keys = {
 "method": &"move"
 }]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.0272346, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"toggle_move"
+}, {
+"args": [],
+"method": &"toggle_move"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_bowag"]
 resource_name = "axe_attack_3"
@@ -1343,6 +1360,8 @@ script = ExtResource("27_8o7pp")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 damage = 3.0
+knockback_force = 80.0
+knockup_force = -20.0
 
 [node name="Skill1Attack2" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("27_gs7jn")
@@ -1375,8 +1394,7 @@ script = ExtResource("32_ik8y2")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 damage = 4.0
-knockback_force = 200.0
-knockup_force = -100.0
+knockup_force = -500.0
 
 [node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("23_j7sbs")

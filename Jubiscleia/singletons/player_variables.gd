@@ -6,3 +6,7 @@ var player_alive: bool
 
 var skill_1: String = "axe" 
 var skill_2: String = "sword"
+
+var move: bool = false
+
+var axe_2_speed: float = 150
