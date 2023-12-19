@@ -34,6 +34,10 @@ func enter_state() -> void:
 			damage = 3
 			knockback_force = 0
 			knockup_force = 0
+		"spear":
+			damage = 4
+			knockback_force = 200
+			knockup_force = 0
 
 func exit_state() -> void:
 	set_physics_process(false)

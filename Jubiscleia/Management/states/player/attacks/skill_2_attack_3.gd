@@ -29,6 +29,12 @@ func enter_state() -> void:
 			damage = 4
 			knockback_force = 0
 			knockup_force = -500
+		"spear":
+			speed = PlayerVariables.spear_3_speed
+			direction = player.direction
+			damage = 0
+			knockback_force = 0
+			knockup_force = 0
 
 func exit_state() -> void:
 	set_physics_process(false)
@@ -36,6 +42,9 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	player.velocity.x = 0
 	player.direction = Input.get_axis("left","right")
+	
+	if PlayerVariables.move:
+		player.velocity.x = speed * direction
 	
 	if player.health_component.is_getting_hit:
 		player.fsm.change_state(player.hit_state)
