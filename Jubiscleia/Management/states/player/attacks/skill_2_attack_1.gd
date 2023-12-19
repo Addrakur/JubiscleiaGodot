@@ -7,6 +7,9 @@ extends State
 @export var knockback_force: float
 @export var knockup_force: float
 
+var speed: float
+var direction: float
+
 func _ready():
 	set_physics_process(false)
 
@@ -19,6 +22,19 @@ func enter_state() -> void:
 	player.can_combo = false
 	player.combo_1 = false
 	player.combo_2 = false
+	
+	match PlayerVariables.skill_2:
+		"axe":
+			damage = 3
+			knockback_force = 80
+			knockup_force = -20
+			
+		"sword":
+			speed = PlayerVariables.sword_1_speed
+			direction = player.direction
+			damage = 2
+			knockback_force = 0
+			knockup_force = 0
 
 func exit_state() -> void:
 	set_physics_process(false)
@@ -26,6 +42,9 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	player.velocity.x = 0
 	player.direction = Input.get_axis("left","right")
+	
+	if PlayerVariables.move:
+		player.velocity.x = speed * direction
 	
 	if Input.is_action_just_pressed("attack_button_1"):
 		player.combo_1 = true

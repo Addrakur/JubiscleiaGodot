@@ -7,6 +7,9 @@ extends State
 @export var knockback_force: float
 @export var knockup_force: float
 
+var speed: float
+var direction: float
+
 func _ready():
 	set_physics_process(false)
 
@@ -16,6 +19,16 @@ func enter_state() -> void:
 	player.attack_area.knockback_force = knockback_force
 	player.attack_area.knockup_force = knockup_force
 	animation.play(PlayerVariables.skill_2 + "_attack_3")
+
+	match PlayerVariables.skill_2:
+		"axe":
+			damage = 6
+			knockback_force = 300
+			knockup_force = -150
+		"sword":
+			damage = 4
+			knockback_force = 0
+			knockup_force = -500
 
 func exit_state() -> void:
 	set_physics_process(false)

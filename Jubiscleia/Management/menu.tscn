@@ -69,7 +69,85 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 37
 text = "Quit"
 
+[node name="w1text" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 32.0
+offset_right = -83.0
+offset_bottom = 58.0
+grow_horizontal = 0
+text = "Weapon 1"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -224.0
+offset_top = 64.0
+offset_right = -32.0
+offset_bottom = 96.0
+grow_horizontal = 0
+alignment = 1
+
+[node name="w1sword" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Sword"
+
+[node name="w1axe" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Axe"
+
+[node name="w1spear" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "Spear"
+
+[node name="w2text" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 128.0
+offset_right = -83.0
+offset_bottom = 154.0
+grow_horizontal = 0
+text = "Weapon 2"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -224.0
+offset_top = 160.0
+offset_right = -32.0
+offset_bottom = 192.0
+grow_horizontal = 0
+alignment = 1
+
+[node name="w2sword" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+text = "Sword"
+
+[node name="w2axe" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+text = "Axe"
+
+[node name="w2spear" type="Button" parent="HBoxContainer2"]
+layout_mode = 2
+text = "Spear"
+
 [connection signal="pressed" from="LoopBasico" to="." method="on_level1_pressed"]
 [connection signal="pressed" from="TesteInimigos" to="." method="on_level2_pressed"]
 [connection signal="pressed" from="Arena" to="." method="_on_arena_pressed"]
 [connection signal="pressed" from="Quit" to="." method="on_quit_pressed"]
+[connection signal="pressed" from="HBoxContainer/w1sword" to="." method="_on_w_1_sword_pressed"]
+[connection signal="pressed" from="HBoxContainer/w1axe" to="." method="_on_w_1_axe_pressed"]
+[connection signal="pressed" from="HBoxContainer/w1spear" to="." method="_on_w_1_spear_pressed"]
+[connection signal="pressed" from="HBoxContainer2/w2sword" to="." method="_on_w_2_sword_pressed"]
+[connection signal="pressed" from="HBoxContainer2/w2axe" to="." method="_on_w_2_axe_pressed"]
+[connection signal="pressed" from="HBoxContainer2/w2spear" to="." method="_on_w_2_spear_pressed"]
