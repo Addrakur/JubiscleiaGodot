@@ -26,7 +26,7 @@ func enter_state() -> void:
 	match PlayerVariables.skill_2:
 		"axe":
 			speed = PlayerVariables.axe_2_speed
-			direction = player.direction
+			direction = player.last_direction
 			damage = 4
 			knockback_force = 0
 			knockup_force = 0
@@ -38,7 +38,7 @@ func enter_state() -> void:
 		"spear":
 			damage = 5
 			knockback_force = 200
-			knockup_force = 0
+			knockup_force = -100
 
 func exit_state() -> void:
 	set_physics_process(false)

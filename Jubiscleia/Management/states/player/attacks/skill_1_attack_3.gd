@@ -31,7 +31,7 @@ func enter_state() -> void:
 			knockup_force = -500
 		"spear":
 			speed = PlayerVariables.spear_3_speed
-			direction = player.direction
+			direction = player.last_direction
 			damage = 5
 			knockback_force = 0
 			knockup_force = 0

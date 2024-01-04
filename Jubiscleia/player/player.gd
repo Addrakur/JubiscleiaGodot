@@ -42,6 +42,7 @@ var combo_2: bool
 var can_combo: bool
 
 var direction: float
+var last_direction: float = 1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -63,6 +64,10 @@ func _physics_process(delta):
 	get_gravity()
 	if alive:
 		move_and_slide()
+	
+	if direction != 0:
+		last_direction = direction
+	
 
 func get_gravity():
 	if velocity.y < 0:
@@ -92,3 +97,4 @@ func toggle_move():
 		PlayerVariables.move = false
 	else:
 		PlayerVariables.move = true
+	

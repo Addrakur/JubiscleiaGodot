@@ -11,4 +11,4 @@ var move: bool = false
 
 var axe_2_speed: float = 150
 var sword_1_speed: float = 250
-var spear_3_speed: float = 300
+var spear_3_speed: float = 400

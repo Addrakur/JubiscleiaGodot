@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=59 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="Script" path="res://player/Camera.gd" id="2_4f3vw"]
@@ -150,6 +150,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".:collision_mask")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
 }
 
 [sub_resource type="Animation" id="Animation_y7j0h"]
@@ -1136,7 +1148,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-26.9069, 8, -29.8965, -7, -6.97584, -20, 4.98278, 0, 0.996574, 15)]
+"values": [PackedVector2Array(-29.8965, 8, -29.8965, -7, -6.97584, -20, 4.98278, 0, 0.996574, 15)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1270,6 +1282,18 @@ tracks/6/keys = {
 "args": [],
 "method": &"toggle_move"
 }]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:collision_mask")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.45, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [4, 6]
 }
 
 [sub_resource type="Animation" id="Animation_aqrov"]
@@ -1565,12 +1589,20 @@ tracks/6/keys = {
 "values": []
 }
 
+[sub_resource type="Animation" id="Animation_w1xyu"]
+resource_name = "axe_jump_attack_down"
+
+[sub_resource type="Animation" id="Animation_f5y8h"]
+resource_name = "axe_jump_attack_side"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ofbi6"]
 _data = {
 "RESET": SubResource("Animation_8x3g8"),
 "axe_attack_1": SubResource("Animation_y7j0h"),
 "axe_attack_2": SubResource("Animation_fbgyi"),
 "axe_attack_3": SubResource("Animation_bowag"),
+"axe_jump_attack_down": SubResource("Animation_w1xyu"),
+"axe_jump_attack_side": SubResource("Animation_f5y8h"),
 "crouch": SubResource("Animation_4nan0"),
 "dead": SubResource("Animation_kx8rs"),
 "fall": SubResource("Animation_c2tqs"),
