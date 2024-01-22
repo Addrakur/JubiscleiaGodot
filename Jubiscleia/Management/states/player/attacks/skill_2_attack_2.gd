@@ -30,7 +30,6 @@ func enter_state() -> void:
 			damage = 4
 			knockback_force = 0
 			knockup_force = 0
-			
 		"sword":
 			damage = 3
 			knockback_force = 0

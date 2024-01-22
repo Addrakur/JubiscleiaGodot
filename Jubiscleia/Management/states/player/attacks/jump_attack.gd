@@ -1,4 +1,4 @@
-class_name PlayerSkill1Attack1
+class_name PlayerJumpAttack
 extends State
 
 @export var player: CharacterBody2D

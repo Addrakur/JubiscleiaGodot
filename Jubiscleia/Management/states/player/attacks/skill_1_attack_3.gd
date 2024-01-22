@@ -22,19 +22,19 @@ func enter_state() -> void:
 	
 	match PlayerVariables.skill_1:
 		"axe":
-			damage = 6
-			knockback_force = 300
-			knockup_force = -150
+			damage = PlayerVariables.axe_3_damage
+			knockback_force = PlayerVariables.axe_3_knockback
+			knockup_force = PlayerVariables.axe_3_knockup
 		"sword":
-			damage = 4
-			knockback_force = 0
-			knockup_force = -500
+			damage = PlayerVariables.sword_3_damage
+			knockback_force = PlayerVariables.sword_3_knockback
+			knockup_force = PlayerVariables.sword_3_knockup
 		"spear":
 			speed = PlayerVariables.spear_3_speed
 			direction = player.last_direction
-			damage = 5
-			knockback_force = 0
-			knockup_force = 0
+			damage = PlayerVariables.spear_3_damage
+			knockback_force = PlayerVariables.spear_3_knockback
+			knockup_force = PlayerVariables.spear_3_knockup
 
 func exit_state() -> void:
 	set_physics_process(false)

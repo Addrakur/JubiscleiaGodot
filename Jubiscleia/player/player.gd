@@ -97,4 +97,4 @@ func toggle_move():
 		PlayerVariables.move = false
 	else:
 		PlayerVariables.move = true
-	
+	print(PlayerVariables.move)
