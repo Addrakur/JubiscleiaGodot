@@ -19,7 +19,7 @@ func enter_state() -> void:
 	animation.play(PlayerVariables.current_skill + "_attack_2")
 	player.can_combo = false
 
-	match PlayerVariables.skill_1:
+	match PlayerVariables.current_skill:
 		"axe":
 			speed = PlayerVariables.axe_2_speed
 			direction = player.last_direction

@@ -19,7 +19,7 @@ func enter_state() -> void:
 	animation.play(PlayerVariables.current_skill + "_attack_3")
 	player.can_combo = false
 
-	match PlayerVariables.skill_1:
+	match PlayerVariables.current_skill:
 		"axe":
 			damage = PlayerVariables.axe_3_damage
 			knockback_force = PlayerVariables.axe_3_knockback
