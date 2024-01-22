@@ -1,11 +1,11 @@
-class_name PlayerSkill1Attack2
+class_name PlayerAttack2
 extends State
 
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
-@export var damage: float
-@export var knockback_force: float
-@export var knockup_force: float
+var damage: float
+var knockback_force: float
+var knockup_force: float
 
 var speed: float
 var direction: float
@@ -15,14 +15,10 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	player.attack_area.damage = damage
-	player.attack_area.knockback_force = knockback_force
-	player.attack_area.knockup_force = knockup_force
-	animation.play(PlayerVariables.skill_1 + "_attack_2")
+	PlayerVariables.last_skill = PlayerVariables.current_skill
+	animation.play(PlayerVariables.current_skill + "_attack_2")
 	player.can_combo = false
-	player.combo_1 = false
-	player.combo_2 = false
-	
+
 	match PlayerVariables.skill_1:
 		"axe":
 			speed = PlayerVariables.axe_2_speed
@@ -38,6 +34,12 @@ func enter_state() -> void:
 			damage = PlayerVariables.spear_2_damage
 			knockback_force = PlayerVariables.spear_2_knockback
 			knockup_force = PlayerVariables.spear_2_knockup
+	
+	player.attack_area.damage = damage
+	player.attack_area.knockback_force = knockback_force
+	player.attack_area.knockup_force = knockup_force
+	
+	PlayerVariables.current_skill = ""
 
 func exit_state() -> void:
 	set_physics_process(false)
@@ -50,18 +52,13 @@ func _physics_process(_delta):
 		player.velocity.x = speed * direction
 	
 	if Input.is_action_just_pressed("attack_button_1"):
-		player.combo_1 = true
-		player.combo_2 = false
+		PlayerVariables.current_skill = PlayerVariables.skill_1
 	
 	if Input.is_action_just_pressed("attack_button_2"):
-		player.combo_2 = true
-		player.combo_1 = false
+		PlayerVariables.current_skill = PlayerVariables.skill_2
 	
-	if player.can_combo:
-		if player.combo_1:
-			player.fsm.change_state(player.skill_1_attack_3_state)
-		elif player.combo_2:
-			player.fsm.change_state(player.skill_2_attack_3_state)
+	if player.can_combo and PlayerVariables.current_skill != "":
+		player.fsm.change_state(player.attack_3_state)
 	
 	if player.health_component.is_getting_hit:
 		player.fsm.change_state(player.hit_state)
@@ -70,5 +67,6 @@ func _physics_process(_delta):
 		player.fsm.change_state(player.death_state)
 
 func _on_animation_finished(anim):
-	if anim == PlayerVariables.skill_1 + "_attack_2":
+	if anim == PlayerVariables.last_skill + "_attack_1":
 		player.fsm.change_state(player.idle_state)
+ 

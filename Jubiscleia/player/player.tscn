@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=60 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="Script" path="res://player/Camera.gd" id="2_4f3vw"]
@@ -34,12 +34,9 @@
 [ext_resource type="Texture2D" uid="uid://doiyjielbdrd2" path="res://assets/player/banco_de_assets/player_sword_jump_attack.png" id="22_dgbyg"]
 [ext_resource type="Script" path="res://Management/states/player/movement/player_hit.gd" id="23_j7sbs"]
 [ext_resource type="Script" path="res://Management/states/player/movement/player_death.gd" id="25_wysx4"]
-[ext_resource type="Script" path="res://Management/states/player/attacks/skill_1_attack_1.gd" id="27_8o7pp"]
-[ext_resource type="Script" path="res://Management/states/player/attacks/skill_2_attack_2.gd" id="27_44dkp"]
-[ext_resource type="Script" path="res://Management/states/player/attacks/skill_1_attack_2.gd" id="27_gs7jn"]
-[ext_resource type="Script" path="res://Management/states/player/attacks/skill_1_attack_3.gd" id="28_xnw5g"]
-[ext_resource type="Script" path="res://Management/states/player/attacks/skill_2_attack_1.gd" id="30_rqjv3"]
-[ext_resource type="Script" path="res://Management/states/player/attacks/skill_2_attack_3.gd" id="32_ik8y2"]
+[ext_resource type="Script" path="res://Management/states/player/attacks/attack_1.gd" id="41_621kb"]
+[ext_resource type="Script" path="res://Management/states/player/attacks/attack_2.gd" id="42_ebned"]
+[ext_resource type="Script" path="res://Management/states/player/attacks/attack_3.gd" id="43_nthil"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttoyg"]
 size = Vector2(17, 28)
@@ -1942,47 +1939,6 @@ player = NodePath("../..")
 animation = NodePath("../../Animations")
 speed = 200.0
 
-[node name="Skill1Attack1" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
-script = ExtResource("27_8o7pp")
-player = NodePath("../..")
-animation = NodePath("../../Animations")
-damage = 3.0
-knockback_force = 80.0
-knockup_force = -20.0
-
-[node name="Skill1Attack2" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
-script = ExtResource("27_gs7jn")
-player = NodePath("../..")
-animation = NodePath("../../Animations")
-damage = 4.0
-
-[node name="Skill1Attack3" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
-script = ExtResource("28_xnw5g")
-player = NodePath("../..")
-animation = NodePath("../../Animations")
-damage = 6.0
-knockback_force = 300.0
-knockup_force = -50.0
-
-[node name="Skill2Attack1" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
-script = ExtResource("30_rqjv3")
-player = NodePath("../..")
-animation = NodePath("../../Animations")
-damage = 2.0
-
-[node name="Skill2Attack2" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
-script = ExtResource("27_44dkp")
-player = NodePath("../..")
-animation = NodePath("../../Animations")
-damage = 3.0
-
-[node name="Skill2Attack3" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
-script = ExtResource("32_ik8y2")
-player = NodePath("../..")
-animation = NodePath("../../Animations")
-damage = 4.0
-knockup_force = -500.0
-
 [node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("23_j7sbs")
 player = NodePath("../..")
@@ -1993,10 +1949,19 @@ script = ExtResource("25_wysx4")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 
-[connection signal="animation_finished" from="Animations" to="StateMachine/Skill1Attack1" method="_on_animation_finished"]
-[connection signal="animation_finished" from="Animations" to="StateMachine/Skill1Attack2" method="_on_animation_finished"]
-[connection signal="animation_finished" from="Animations" to="StateMachine/Skill1Attack3" method="_on_animation_finished"]
-[connection signal="animation_finished" from="Animations" to="StateMachine/Skill2Attack1" method="_on_animation_finished"]
-[connection signal="animation_finished" from="Animations" to="StateMachine/Skill2Attack2" method="_on_animation_finished"]
-[connection signal="animation_finished" from="Animations" to="StateMachine/Skill2Attack3" method="_on_animation_finished"]
+[node name="PlayerAttack1" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
+script = ExtResource("41_621kb")
+player = NodePath("../..")
+animation = NodePath("../../Animations")
+
+[node name="PlayerAttack2" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
+script = ExtResource("42_ebned")
+player = NodePath("../..")
+animation = NodePath("../../Animations")
+
+[node name="PlayerAttack3" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
+script = ExtResource("43_nthil")
+player = NodePath("../..")
+animation = NodePath("../../Animations")
+
 [connection signal="animation_finished" from="Animations" to="StateMachine/Hit" method="_on_animation_finished"]

@@ -19,12 +19,10 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var fall_state: State = $StateMachine/Fall as PlayerFall
 @onready var hit_state: State = $StateMachine/Hit as PlayerHit
 @onready var death_state: State = $StateMachine/Death as PlayerDeath
-@onready var skill_1_attack_1_state: State = $StateMachine/Skill1Attack1 as PlayerSkill1Attack1
-@onready var skill_1_attack_2_state: State = $StateMachine/Skill1Attack2 as PlayerSkill1Attack2
-@onready var skill_1_attack_3_state: State = $StateMachine/Skill1Attack3 as PlayerSkill1Attack3
-@onready var skill_2_attack_1_state: State = $StateMachine/Skill2Attack1 as PlayerSkill2Attack1
-@onready var skill_2_attack_2_state: State = $StateMachine/Skill2Attack2 as PlayerSkill2Attack2
-@onready var skill_2_attack_3_state: State = $StateMachine/Skill2Attack3 as PlayerSkill2Attack3
+
+@onready var attack_1_state: State = $StateMachine/PlayerAttack1 as PlayerAttack1
+@onready var attack_2_state: State = $StateMachine/PlayerAttack2 as PlayerAttack2
+@onready var attack_3_state: State = $StateMachine/PlayerAttack3 as PlayerAttack3
 
 @export_group("Jump Variables")
 @export var jump_height: float
@@ -37,8 +35,6 @@ var jump_gravity: float
 var fall_gravity: float
 
 var alive: bool = true
-var combo_1: bool
-var combo_2: bool
 var can_combo: bool
 
 var direction: float
