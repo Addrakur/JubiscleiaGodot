@@ -24,6 +24,7 @@ func enter_state() -> void:
 			damage = PlayerVariables.axe_jump_damage
 			knockback_force = PlayerVariables.axe_jump_knockback
 			knockup_force = PlayerVariables.axe_jump_knockup
+			player.velocity.x = 0
 		"sword":
 			damage = PlayerVariables.sword_jump_damage
 			knockback_force = PlayerVariables.sword_jump_knockback
@@ -57,9 +58,12 @@ func _physics_process(_delta):
 	match PlayerVariables.current_skill:
 		"axe":
 			player.velocity.y = 10
+	
+	if player.is_on_floor() and PlayerVariables.last_skill == "axe":
+		player.fsm.change_state(player.fall_state)
 
 func _on_animation_finished(anim):
-	if PlayerVariables.last_skill == "sword":
+	if PlayerVariables.last_skill == "sword" or PlayerVariables.last_skill == "spear":
 		if anim == PlayerVariables.last_skill + "_jump_attack":
 			player.fsm.change_state(player.fall_state)
  
