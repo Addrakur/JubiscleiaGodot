@@ -11,7 +11,7 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	animation.play("jump")
-	player.velocity.y = player.jump_velocity
+	player.velocity.y = player.jump_velocity * 0.8
 
 func exit_state() -> void:
 	set_physics_process(false)
@@ -28,3 +28,11 @@ func _physics_process(_delta):
 	
 	if not player.alive:
 		player.fsm.change_state(player.death_state)
+	
+	if Input.is_action_just_pressed("attack_button_1"):
+		PlayerVariables.current_skill = PlayerVariables.skill_1
+		player.fsm.change_state(player.jump_attack_state)
+	
+	if Input.is_action_just_pressed("attack_button_2"):
+		PlayerVariables.current_skill = PlayerVariables.skill_2
+		player.fsm.change_state(player.jump_attack_state)

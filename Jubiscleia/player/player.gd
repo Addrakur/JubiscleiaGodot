@@ -19,10 +19,10 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var fall_state: State = $StateMachine/Fall as PlayerFall
 @onready var hit_state: State = $StateMachine/Hit as PlayerHit
 @onready var death_state: State = $StateMachine/Death as PlayerDeath
-
 @onready var attack_1_state: State = $StateMachine/PlayerAttack1 as PlayerAttack1
 @onready var attack_2_state: State = $StateMachine/PlayerAttack2 as PlayerAttack2
 @onready var attack_3_state: State = $StateMachine/PlayerAttack3 as PlayerAttack3
+@onready var jump_attack_state: State = $StateMachine/PlayerJumpAttack as PlayerJumpAttack
 
 @export_group("Jump Variables")
 @export var jump_height: float

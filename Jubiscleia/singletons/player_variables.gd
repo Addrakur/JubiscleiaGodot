@@ -25,6 +25,10 @@ var axe_3_damage: float = 6
 var axe_3_knockback: float = 300
 var axe_3_knockup: float = -150
 
+var axe_jump_damage: float
+var axe_jump_knockback: float
+var axe_jump_knockup: float
+
 
 var sword_1_damage: float = 2
 var sword_1_knockback: float = 0
@@ -39,6 +43,10 @@ var sword_3_damage: float = 4
 var sword_3_knockback: float = 0
 var sword_3_knockup: float = -500
 
+var sword_jump_damage: float
+var sword_jump_knockback: float
+var sword_jump_knockup: float
+
 
 var spear_1_damage: float = 3
 var spear_1_knockback: float = 0
@@ -52,3 +60,7 @@ var spear_3_damage: float = 5
 var spear_3_knockback: float = 0
 var spear_3_knockup: float = 0
 var spear_3_speed: float = 400
+
+var spear_jump_damage: float
+var spear_jump_knockback: float
+var spear_jump_knockup: float

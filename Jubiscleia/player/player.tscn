@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=61 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="Script" path="res://player/Camera.gd" id="2_4f3vw"]
@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://doiyjielbdrd2" path="res://assets/player/banco_de_assets/player_sword_jump_attack.png" id="22_dgbyg"]
 [ext_resource type="Script" path="res://Management/states/player/movement/player_hit.gd" id="23_j7sbs"]
 [ext_resource type="Script" path="res://Management/states/player/movement/player_death.gd" id="25_wysx4"]
+[ext_resource type="Script" path="res://Management/states/player/attacks/jump_attack.gd" id="38_vuiip"]
 [ext_resource type="Script" path="res://Management/states/player/attacks/attack_1.gd" id="41_621kb"]
 [ext_resource type="Script" path="res://Management/states/player/attacks/attack_2.gd" id="42_ebned"]
 [ext_resource type="Script" path="res://Management/states/player/attacks/attack_3.gd" id="43_nthil"]
@@ -1964,4 +1965,13 @@ script = ExtResource("43_nthil")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 
+[node name="PlayerJumpAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
+script = ExtResource("38_vuiip")
+player = NodePath("../..")
+animation = NodePath("../../Animations")
+
 [connection signal="animation_finished" from="Animations" to="StateMachine/Hit" method="_on_animation_finished"]
+[connection signal="animation_finished" from="Animations" to="StateMachine/PlayerAttack1" method="_on_animation_finished"]
+[connection signal="animation_finished" from="Animations" to="StateMachine/PlayerAttack2" method="_on_animation_finished"]
+[connection signal="animation_finished" from="Animations" to="StateMachine/PlayerAttack3" method="_on_animation_finished"]
+[connection signal="animation_finished" from="Animations" to="StateMachine/PlayerJumpAttack" method="_on_animation_finished"]
