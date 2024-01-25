@@ -37,7 +37,6 @@ func enter_state() -> void:
 	player.attack_area.damage = damage
 	player.attack_area.knockback_force = knockback_force
 	player.attack_area.knockup_force = knockup_force
-	
 	PlayerVariables.current_skill = ""
 
 func exit_state() -> void:
