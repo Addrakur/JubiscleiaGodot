@@ -33,6 +33,7 @@ func enter_state() -> void:
 			damage = PlayerVariables.spear_jump_damage
 			knockback_force = PlayerVariables.spear_jump_knockback
 			knockup_force = PlayerVariables.spear_jump_knockup
+			player.my_knockup = true
 	
 	player.attack_area.damage = damage
 	player.attack_area.knockback_force = knockback_force
@@ -41,6 +42,7 @@ func enter_state() -> void:
 
 func exit_state() -> void:
 	set_physics_process(false)
+	player.my_knockup = false
 
 func _physics_process(_delta):
 	player.direction = Input.get_axis("left","right")

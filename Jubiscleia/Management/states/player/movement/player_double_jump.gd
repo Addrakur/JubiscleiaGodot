@@ -11,7 +11,7 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	animation.play("jump")
-	player.velocity.y = player.jump_velocity * 0.8
+	player.velocity.y = player.jump_velocity
 
 func exit_state() -> void:
 	set_physics_process(false)
