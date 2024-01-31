@@ -85,6 +85,8 @@ layer_0/tile_data = PackedInt32Array(983041, 65536, 2, 917505, 65536, 0, 983040,
 
 [node name="Player" parent="." instance=ExtResource("3_q1c72")]
 position = Vector2(26, 434)
+attack_area = null
+health_component = null
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 visible = false

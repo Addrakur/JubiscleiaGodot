@@ -26,8 +26,8 @@ var axe_3_knockback: float = 300
 var axe_3_knockup: float = -150
 
 var axe_jump_damage: float = 5
-var axe_jump_knockback: float = 80
-var axe_jump_knockup: float = -20
+var axe_jump_knockback: float = 300
+var axe_jump_knockup: float = -150
 
 
 var sword_1_damage: float = 2

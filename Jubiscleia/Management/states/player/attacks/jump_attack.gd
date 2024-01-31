@@ -3,6 +3,7 @@ extends State
 
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
+@export var move_speed: float
 var damage: float
 var knockback_force: float
 var knockup_force: float
@@ -34,6 +35,7 @@ func enter_state() -> void:
 			knockback_force = PlayerVariables.spear_jump_knockback
 			knockup_force = PlayerVariables.spear_jump_knockup
 			player.my_knockup = true
+			print(player.my_knockup)
 	
 	player.attack_area.damage = damage
 	player.attack_area.knockback_force = knockback_force
@@ -56,15 +58,19 @@ func _physics_process(_delta):
 	if not player.alive:
 		player.fsm.change_state(player.death_state)
 	
-	match PlayerVariables.current_skill:
+	match PlayerVariables.last_skill:
 		"axe":
-			player.velocity.y = 10
+			player.override_gravity = player.fall_gravity * 2
+		"spear":
+			player.velocity.x = player.direction * move_speed
+		"sword":
+			player.velocity.x = player.direction * move_speed
 	
 	if player.is_on_floor() and PlayerVariables.last_skill == "axe":
-		player.fsm.change_state(player.fall_state)
+		player.override_gravity = 0
+		animation.play("axe_jump_attack_finish")
 
 func _on_animation_finished(anim):
 	if PlayerVariables.last_skill == "sword" or PlayerVariables.last_skill == "spear":
 		if anim == PlayerVariables.last_skill + "_jump_attack":
 			player.fsm.change_state(player.fall_state)
- 

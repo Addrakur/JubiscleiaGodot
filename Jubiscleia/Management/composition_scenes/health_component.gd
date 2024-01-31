@@ -16,10 +16,7 @@ func _process(_delta):
 func update_health(value: float) -> void:
 	is_getting_hit = true
 	current_health -= value
-	if parent.name == "Player":
-		invulnerable = true
 
 func die() -> void:
 	if current_health <= 0:
 		parent.alive = false
-

@@ -18,6 +18,8 @@ camera_limits = Array[int]([-64, 0, 4512, 736])
 
 [node name="player" parent="." instance=ExtResource("2_oy7pp")]
 position = Vector2(128, 344)
+attack_area = null
+health_component = null
 
 [node name="Plataforms" type="Node2D" parent="."]
 

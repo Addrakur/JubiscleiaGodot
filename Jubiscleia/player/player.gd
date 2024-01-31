@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var animation: AnimationPlayer = $Animations
 @onready var texture: Sprite2D = $Texture
 @onready var camera: Camera2D = $Camera
-@onready var attack_area_polygon: CollisionPolygon2D = $AttackArea/Sword_Area_1
+@onready var attack_area_polygon: CollisionPolygon2D = $AttackArea/AttackArea
 const ATTACK_AREA_POSITION: float = 39
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
@@ -33,6 +33,7 @@ var jump_count: float = 0
 var jump_velocity: float
 var jump_gravity: float
 var fall_gravity: float
+var override_gravity: float = 0
 
 var alive: bool = true
 var can_combo: bool
@@ -57,8 +58,8 @@ func _process(_delta):
 
 func _physics_process(delta):
 	if not is_on_floor():
+		get_gravity()
 		velocity.y += gravity * delta
-	get_gravity()
 	if alive:
 		move_and_slide()
 	
@@ -67,10 +68,14 @@ func _physics_process(delta):
 	
 
 func get_gravity():
-	if velocity.y < 0:
-		gravity = jump_gravity
+	if override_gravity == 0:
+		if velocity.y < 0:
+			gravity = jump_gravity
+		else:
+			gravity = fall_gravity
 	else:
-		gravity = fall_gravity
+		gravity = override_gravity
+	
 
 func flip() -> void:
 	if velocity.x > 0:
