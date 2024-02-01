@@ -37,7 +37,6 @@ var override_gravity: float = 0
 
 var alive: bool = true
 var can_combo: bool
-var my_knockup: bool = false
 
 var direction: float
 var last_direction: float = 1

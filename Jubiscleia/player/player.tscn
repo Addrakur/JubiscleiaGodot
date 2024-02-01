@@ -1922,55 +1922,6 @@ jump_time_to_peak = 0.25
 jump_time_to_descent = 0.3
 max_jump_count = 2.0
 
-[node name="Texture" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(-2.98023e-07, -2.98023e-07)
-scale = Vector2(0.875, 0.875)
-texture = ExtResource("2_vct6e")
-hframes = 4
-
-[node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ttoyg")
-
-[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-drag_vertical_enabled = true
-drag_top_margin = 0.3
-drag_bottom_margin = 0.05
-editor_draw_limits = true
-script = ExtResource("2_4f3vw")
-player = NodePath("..")
-
-[node name="AttackArea" parent="." instance=ExtResource("2_tuo6g")]
-scale = Vector2(1.00346, 1)
-collision_mask = 2
-target = "enemy"
-
-[node name="AttackArea" type="CollisionPolygon2D" parent="AttackArea"]
-position = Vector2(38.8655, 0)
-polygon = PackedVector2Array(-28.0379, 13, -28.0379, -11, -37.0069, -18, -30.031, -17, -23.0552, -14, -16.0793, -6, -16.0793, 13)
-disabled = true
-
-[node name="Animations" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_ofbi6")
-}
-
-[node name="Interface" parent="." node_paths=PackedStringArray("player", "health_component") instance=ExtResource("9_181sd")]
-player = NodePath("..")
-health_component = NodePath("../HealthComponent")
-
-[node name="HealthComponent" parent="." instance=ExtResource("9_6bxkt")]
-max_health = 40.0
-destroy_after_dead = true
-
-[node name="PauseMenu" parent="." instance=ExtResource("10_yhe3o")]
-process_mode = 3
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(44, 2)
-
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("12_8y4yw")
 state = NodePath("Idle")
@@ -2039,6 +1990,55 @@ script = ExtResource("38_vuiip")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 move_speed = 200.0
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-2.98023e-07, -2.98023e-07)
+scale = Vector2(0.875, 0.875)
+texture = ExtResource("2_vct6e")
+hframes = 4
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ttoyg")
+
+[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+drag_vertical_enabled = true
+drag_top_margin = 0.3
+drag_bottom_margin = 0.05
+editor_draw_limits = true
+script = ExtResource("2_4f3vw")
+player = NodePath("..")
+
+[node name="AttackArea" parent="." instance=ExtResource("2_tuo6g")]
+scale = Vector2(1.00346, 1)
+collision_mask = 2
+target = "enemy"
+
+[node name="AttackArea" type="CollisionPolygon2D" parent="AttackArea"]
+position = Vector2(38.8655, 0)
+polygon = PackedVector2Array(-28.0379, 13, -28.0379, -11, -37.0069, -18, -30.031, -17, -23.0552, -14, -16.0793, -6, -16.0793, 13)
+disabled = true
+
+[node name="Animations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ofbi6")
+}
+
+[node name="Interface" parent="." node_paths=PackedStringArray("player", "health_component") instance=ExtResource("9_181sd")]
+player = NodePath("..")
+health_component = NodePath("../HealthComponent")
+
+[node name="PauseMenu" parent="." instance=ExtResource("10_yhe3o")]
+process_mode = 3
+
+[node name="SpearAttackPoint" type="Marker2D" parent="."]
+position = Vector2(44, 2)
+
+[node name="HealthComponent" parent="." instance=ExtResource("9_6bxkt")]
+max_health = 40.0
+destroy_after_dead = true
 
 [connection signal="animation_finished" from="Animations" to="StateMachine/Hit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/PlayerAttack1" method="_on_animation_finished"]

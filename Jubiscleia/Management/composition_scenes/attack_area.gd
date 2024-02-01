@@ -16,7 +16,7 @@ func on_body_entered(body):
 	if body.is_in_group(target) and not body.health_component.invulnerable:
 		body.health_component.update_health(damage)
 		if parent.name == "Player":
-			if parent.my_knockup == true:
+			if PlayerVariables.my_knockup == true:
 				parent.velocity.y = PlayerVariables.spear_jump_my_knockup
 		if body.hit_state != null:
 			body.hit_state.knockup_force = knockup_force

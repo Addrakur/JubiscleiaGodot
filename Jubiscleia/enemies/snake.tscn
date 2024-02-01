@@ -403,7 +403,7 @@ collision_mask = 13
 script = ExtResource("1_ep4bx")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
-gravity_mult = 10.0
+gravity_mult = 8.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(1.99999, 11.5)
@@ -456,7 +456,7 @@ debug_color = Color(0.890196, 0.682353, 0, 0.419608)
 
 [node name="HealthComponent" parent="." instance=ExtResource("7_0q0uj")]
 scale = Vector2(0.967821, 1)
-max_health = 7.0
+max_health = 10.0
 destroy_after_dead = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
@@ -468,6 +468,7 @@ script = ExtResource("12_31np0")
 snake = NodePath("../..")
 animation = NodePath("../../Animations")
 speed = 30.0
+limit_offset = 22.0
 
 [node name="SnakeAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
 script = ExtResource("13_gcars")

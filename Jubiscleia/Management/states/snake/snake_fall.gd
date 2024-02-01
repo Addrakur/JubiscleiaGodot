@@ -16,7 +16,7 @@ func exit_state() -> void:
 
 func _physics_process(_delta):
 	if snake.is_on_floor():
-		snake.fsm.change_state(snake.move_state)
+		snake.fsm.change_state(snake.idle_state)
 	
 	if not snake.alive:
 		snake.fsm.change_state(snake.death_state)

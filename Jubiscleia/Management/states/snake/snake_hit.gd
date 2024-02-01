@@ -8,6 +8,7 @@ var knockup_force: float
 var knockback_force: float
 var direction: float
 var hit_timer: float = 0.1
+var anim_finish: bool = false
 
 func _ready():
 	set_physics_process(false)
@@ -28,14 +29,16 @@ func _physics_process(delta):
 	hit_timer -= delta
 	if hit_timer > 0:
 		knockback()
-
-func _on_animation_finished(anim):
-	if anim == "hit" and snake.is_on_floor():
+	
+	if anim_finish and snake.is_on_floor():
 		snake.health_component.is_getting_hit = false
 		if snake.player_ref != null:
 			snake.fsm.change_state(snake.move_state)
 		else: 
 			snake.fsm.change_state(snake.chase_state)
+
+func _on_animation_finished(anim):
+	anim_finish = true
 
 func knockback():
 	snake.velocity = Vector2(knockback_force * direction, knockup_force)

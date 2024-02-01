@@ -10,7 +10,7 @@ var skill_1: String = "axe"
 var skill_2: String = "sword"
 
 var move: bool = false
-
+var my_knockup: bool = false
 
 var axe_1_damage: float = 3
 var axe_1_knockback: float = 80
@@ -41,7 +41,7 @@ var sword_2_knockup: float = 0
 
 var sword_3_damage: float = 4
 var sword_3_knockback: float = 0
-var sword_3_knockup: float = -500
+var sword_3_knockup: float = -1600
 
 var sword_jump_damage: float = 2
 var sword_jump_knockback: float = 0

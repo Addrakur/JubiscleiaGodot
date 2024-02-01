@@ -4,6 +4,7 @@ extends State
 @export var snake: CharacterBody2D
 @export var animation: AnimationPlayer
 @export var speed: float
+@export var limit_offset: float
 
 func _ready():
 	set_physics_process(false)
@@ -18,9 +19,9 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	snake.velocity.x = snake.direction * speed
 	
-	if snake.position.x > snake.limit.limit_points[1].x - 22:
+	if snake.position.x > snake.limit.limit_points[1].x - limit_offset:
 		snake.direction = -1
-	elif snake.position.x < snake.limit.limit_points[0].x + 22:
+	elif snake.position.x < snake.limit.limit_points[0].x + limit_offset:
 		snake.direction = 1
 	
 	if snake.health_component.is_getting_hit:
@@ -35,4 +36,3 @@ func _physics_process(_delta):
 func chase_area_entered(body):
 	if body.is_in_group("player"):
 		snake.player_ref = body
- 
