@@ -19,8 +19,8 @@ func on_body_entered(body):
 			if PlayerVariables.my_knockup == true:
 				parent.velocity.y = PlayerVariables.spear_jump_my_knockup
 		if body.hit_state != null:
-			body.hit_state.knockup_force = knockup_force
-			body.hit_state.knockback_force = knockback_force
+			body.hit_state.knockup_force = knockup_force * body.hit_state.knock_multi
+			body.hit_state.knockback_force = knockback_force * body.hit_state.knock_multi
 			body.hit_state.direction = 1 if body.position.x > parent.position.x else -1
 	elif body.is_in_group("terrain") and destroy_on_terrain:
 		parent.queue_free()

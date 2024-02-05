@@ -3,6 +3,7 @@ extends State
 
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
+@export var knock_multi: float
 
 var knockup_force: float
 var knockback_force: float

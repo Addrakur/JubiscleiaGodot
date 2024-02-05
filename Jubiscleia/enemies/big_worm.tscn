@@ -392,6 +392,7 @@ animation = NodePath("../../Animation")
 script = ExtResource("5_ux2og")
 big_worm = NodePath("../..")
 animation = NodePath("../../Animation")
+damage = 15.0
 knockback_force = 500.0
 knockup_force = -20.0
 

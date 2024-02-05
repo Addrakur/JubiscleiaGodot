@@ -18,6 +18,10 @@ func enter_state() -> void:
 	big_worm.attack_area.knockup_force = knockup_force
 	big_worm.is_attacking = true
 	big_worm.velocity.x = 0
+	if big_worm.player_ref.position.x > big_worm.position.x:
+		big_worm.right()
+	else:
+		big_worm.left()
 	animation.play("attack")
 
 func exit_state() -> void:

@@ -481,6 +481,7 @@ damage = 5.0
 script = ExtResource("13_k7h8k")
 snake = NodePath("../..")
 animation = NodePath("../../Animations")
+knock_multi = 1.0
 
 [node name="SnakeIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
 script = ExtResource("13_6axb0")

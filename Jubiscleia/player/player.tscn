@@ -1964,6 +1964,7 @@ speed = 200.0
 script = ExtResource("23_j7sbs")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
+knock_multi = 1.0
 
 [node name="Death" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("25_wysx4")

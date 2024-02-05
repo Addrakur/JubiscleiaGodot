@@ -18,9 +18,14 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	if big_worm.player_ref == null:
 		big_worm.fsm.change_state(big_worm.move_state)
+	elif big_worm.player_ref.position.x > big_worm.position.x:
+		big_worm.right()
+	else:
+		big_worm.left()
 	
 	if big_worm.player_ref != null and big_worm.attack_timer.is_stopped():
 		big_worm.fsm.change_state(big_worm.attack_state)
+	
 
 func can_attack_area_exited(body):
 	if body == big_worm.player_ref:
