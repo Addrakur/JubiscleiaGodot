@@ -420,6 +420,7 @@ position = Vector2(0, -8)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_avb4p")
 hframes = 4
+frame = 1
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 libraries = {

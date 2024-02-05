@@ -17,6 +17,7 @@ const CAA_POSITION: float = -5
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var move_state: State = $StateMachine/BigWormMove as BigWormMove
 @onready var idle_state: State = $StateMachine/BigWormIdle as BigWormIdle
+@onready var attack_state: State = $StateMachine/BigWormAttack as BigWormAttack
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player: bool = false

@@ -25,7 +25,10 @@ func _physics_process(_delta):
 		big_worm.direction = 1
 	
 	if big_worm.player_ref != null and PlayerVariables.player_alive and big_worm.player_on_limit:
-		big_worm.fsm.change_state(big_worm.idle_state)
+		if big_worm.attack_timer.is_stopped():
+			big_worm.fsm.change_state(big_worm.attack_state)
+		else:
+			big_worm.fsm.change_state(big_worm.idle_state)
 
 func can_attack_area_entered(body):
 	if body.is_in_group("player"):
