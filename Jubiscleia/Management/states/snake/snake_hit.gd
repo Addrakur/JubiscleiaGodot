@@ -39,7 +39,8 @@ func _physics_process(delta):
 			snake.fsm.change_state(snake.chase_state)
 
 func _on_animation_finished(anim):
-	anim_finish = true
+	if anim == "hit":
+		anim_finish = true
 
 func knockback():
 	snake.velocity = Vector2(knockback_force * direction, knockup_force)

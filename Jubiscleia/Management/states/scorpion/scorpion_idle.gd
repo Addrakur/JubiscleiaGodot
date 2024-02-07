@@ -1,21 +1,21 @@
-class_name PlayerDeath
+class_name ScorpionIdle
 extends State
 
-@export var player: CharacterBody2D
+@export var scorpion: CharacterBody2D
 @export var animation: AnimationPlayer
+@export var idle_timer: Timer
 
 func _ready():
 	set_physics_process(false)
 
 func enter_state() -> void:
+	idle_timer.start()
 	set_physics_process(true)
-	animation.play("dead")
-	player.velocity.x = 0
-	PlayerVariables.player_alive = false
-	player.texture.visible = false
+	animation.play("idle")
 
 func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(_delta):
-	pass
+	if idle_timer.is_stopped():
+		scorpion.fsm.change_state(scorpion.walk_state)

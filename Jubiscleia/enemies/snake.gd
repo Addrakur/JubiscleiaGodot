@@ -41,14 +41,15 @@ func _ready():
 	pass
 
 func _process(_delta):
-	if fsm.state == move_state or fsm.state == chase_state:
-		if velocity.x < 0:
-			left()
-		elif velocity.x > 0:
-			right()
-	
-	if not PlayerVariables.player_alive:
-		player_ref = null
+	if alive:
+		if fsm.state == move_state or fsm.state == chase_state:
+			if velocity.x < 0:
+				left()
+			elif velocity.x > 0:
+				right()
+		
+		if not PlayerVariables.player_alive:
+			player_ref = null
 
 func _physics_process(delta):
 	move_and_slide()

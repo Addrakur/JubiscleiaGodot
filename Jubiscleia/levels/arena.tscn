@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bx4lmho2y840s" path="res://enemies/snake.tscn" id="4_7k5dd"]
 [ext_resource type="PackedScene" uid="uid://cv8owgy7v2lhb" path="res://enemies/enemy_limit.tscn" id="4_l7r3x"]
 [ext_resource type="PackedScene" uid="uid://crkl2utufgcrd" path="res://enemies/big_worm.tscn" id="5_7f5b2"]
-[ext_resource type="PackedScene" uid="uid://gbawa3yjl13r" path="res://enemies/vulture.tscn" id="6_nv4tq"]
+[ext_resource type="PackedScene" uid="uid://bysdn4i581jjc" path="res://enemies/scorpion.tscn" id="5_uusmp"]
 
 [node name="Arena" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_5moen")
@@ -14,9 +14,8 @@ player = NodePath("Player")
 camera_limits = Array[int]([0, 0, 1280, 512])
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
-visible = false
 color = Color(1, 1, 1, 0.219608)
-polygon = PackedVector2Array(192, 256, 1088, 256, 1088, 448, 192, 448)
+polygon = PackedVector2Array(608, 352, 1088, 352, 1088, 448, 608, 448)
 
 [node name="Limit4" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_l7r3x")]
 enemy = NodePath("BigWorm")
@@ -43,14 +42,12 @@ position = Vector2(371, 432)
 direction = -1.0
 
 [node name="Limit3" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_l7r3x")]
-enemy = NodePath("Vulture")
-limit_points = [Vector2(192, 256), Vector2(1088, 256), Vector2(1088, 448), Vector2(192, 448)]
+enemy = NodePath("Scorpion")
+limit_points = [Vector2(608, 352), Vector2(1088, 352), Vector2(1088, 448), Vector2(608, 448)]
 
-[node name="Vulture" parent="Limit3" node_paths=PackedStringArray("limit") instance=ExtResource("6_nv4tq")]
-position = Vector2(288, 288)
-direction = -1.0
-y = 288.0
-limit = NodePath("..")
+[node name="Scorpion" parent="Limit3" instance=ExtResource("5_uusmp")]
+position = Vector2(844, 432)
+starting_x = 844.0
 
 [node name="Player" parent="." instance=ExtResource("3_2ic4t")]
 position = Vector2(96, 365)

@@ -415,6 +415,8 @@ wait_time = 5.0
 one_shot = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("7_0dtaf")]
+max_health = 25.0
+destroy_after_dead = true
 
 [node name="AttackArea" parent="." instance=ExtResource("8_iw5ih")]
 collision_mask = 1

@@ -1,53 +1,16 @@
-[gd_scene load_steps=14 format=3 uid="uid://bysdn4i581jjc"]
+[gd_scene load_steps=19 format=3 uid="uid://bysdn4i581jjc"]
 
 [ext_resource type="Script" path="res://Management/states/state_machine.gd" id="1_pjjdi"]
+[ext_resource type="Script" path="res://enemies/scorpion.gd" id="1_v6en7"]
 [ext_resource type="Texture2D" uid="uid://l0eall1fr7nk" path="res://assets/enemy/banco_de_assets/scorpion/scorpion_walk.png" id="2_hod70"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="2_w5574"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="3_14bc2"]
 [ext_resource type="Texture2D" uid="uid://bihe2t44tl0ru" path="res://assets/enemy/banco_de_assets/scorpion/scorpion_idle.png" id="3_lw4ab"]
+[ext_resource type="Script" path="res://Management/states/scorpion/scorpion_idle.gd" id="3_sbbdw"]
 [ext_resource type="Texture2D" uid="uid://pmihq7xcs4oy" path="res://assets/enemy/banco_de_assets/scorpion/scorpion_death.png" id="4_2pddl"]
+[ext_resource type="Script" path="res://Management/states/scorpion/scorpion_walk.gd" id="4_dirr7"]
 [ext_resource type="Texture2D" uid="uid://dp0x4yu0ktq2k" path="res://assets/enemy/banco_de_assets/scorpion/scorpion_hit.png" id="5_8a74g"]
-
-[sub_resource type="Animation" id="Animation_k435s"]
-resource_name = "walk"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_hod70")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
-}
+[ext_resource type="Script" path="res://Management/states/scorpion/scorpion_attack.gd" id="5_qr0hh"]
 
 [sub_resource type="Animation" id="Animation_h166x"]
 length = 0.001
@@ -86,47 +49,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
-}
-
-[sub_resource type="Animation" id="Animation_yohg2"]
-resource_name = "idle"
-length = 0.4
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_lw4ab")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_q6dpn"]
@@ -209,6 +131,88 @@ tracks/2/keys = {
 "values": [0, 1]
 }
 
+[sub_resource type="Animation" id="Animation_yohg2"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_lw4ab")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_k435s"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_hod70")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_putix"]
 _data = {
 "RESET": SubResource("Animation_h166x"),
@@ -218,10 +222,36 @@ _data = {
 "walk": SubResource("Animation_k435s")
 }
 
-[node name="Scorpion" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sujrj"]
+size = Vector2(31, 10)
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="Scorpion" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_v6en7")
+health_component = NodePath("HealthComponent")
+attack_area = NodePath("AttackArea")
+gravity_mult = 1.0
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("1_pjjdi")
+state = NodePath("ScorpionIdle")
+
+[node name="ScorpionIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("scorpion", "animation", "idle_timer")]
+script = ExtResource("3_sbbdw")
+scorpion = NodePath("../..")
+animation = NodePath("../../Animation")
+idle_timer = NodePath("../../IdleTimer")
+
+[node name="ScorpionWalk" type="Node" parent="StateMachine" node_paths=PackedStringArray("scorpion", "animation")]
+script = ExtResource("4_dirr7")
+scorpion = NodePath("../..")
+animation = NodePath("../../Animation")
+off_set_wander = 50.0
+speed = 300.0
+
+[node name="ScorpionAttack" type="Node" parent="StateMachine"]
+script = ExtResource("5_qr0hh")
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_hod70")
@@ -234,9 +264,19 @@ libraries = {
 }
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 11)
+shape = SubResource("RectangleShape2D_sujrj")
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_w5574")]
+max_health = 5.0
 
 [node name="AttackArea" parent="." instance=ExtResource("3_14bc2")]
+collision_mask = 1
+target = "player"
 
-[node name="AttackCollision" type="CollisionShape2D" parent="AttackArea"]
+[node name="AttackPolygon" type="CollisionPolygon2D" parent="AttackArea"]
+polygon = PackedVector2Array(-17, 16, 17, 16, 17, -2, 9, -7, 0, -7, 0, 2, 0, 5, -17, 5)
+
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
