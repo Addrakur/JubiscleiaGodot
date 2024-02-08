@@ -10,6 +10,7 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	animation.play("dead")
+	snake.limit.erase(snake)
 
 func exit_state() -> void:
 	set_physics_process(false)

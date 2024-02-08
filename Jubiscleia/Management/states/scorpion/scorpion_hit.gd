@@ -22,7 +22,7 @@ func enter_state() -> void:
 func exit_state() -> void:
 	set_physics_process(false)
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if not scorpion.alive:
 		scorpion.fsm.change_state(scorpion.death_state)
 	

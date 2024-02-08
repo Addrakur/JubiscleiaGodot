@@ -18,32 +18,22 @@ visible = false
 color = Color(1, 1, 1, 0.219608)
 polygon = PackedVector2Array(608, 352, 1088, 352, 1088, 448, 608, 448)
 
-[node name="Limit4" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_l7r3x")]
-enemy = NodePath("BigWorm")
+[node name="Limit4" parent="." instance=ExtResource("4_l7r3x")]
 limit_points = [Vector2(192, 384), Vector2(1088, 384), Vector2(1088, 448), Vector2(192, 448)]
 
 [node name="BigWorm" parent="Limit4" instance=ExtResource("5_7f5b2")]
 position = Vector2(576, 416)
 direction = -1.0
 
-[node name="Limit2" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_l7r3x")]
-enemy = NodePath("Snake2")
-limit_points = [Vector2(192, 384), Vector2(1088, 384), Vector2(1088, 448), Vector2(192, 448)]
-
-[node name="Snake2" parent="Limit2" instance=ExtResource("4_7k5dd")]
+[node name="Snake2" parent="Limit4" instance=ExtResource("4_7k5dd")]
 position = Vector2(704, 432)
 direction = 1.0
 
-[node name="Limit" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_l7r3x")]
-enemy = NodePath("Snake")
-limit_points = [Vector2(192, 384), Vector2(1088, 384), Vector2(1088, 448), Vector2(192, 448)]
-
-[node name="Snake" parent="Limit" instance=ExtResource("4_7k5dd")]
+[node name="Snake" parent="Limit4" instance=ExtResource("4_7k5dd")]
 position = Vector2(371, 432)
 direction = -1.0
 
-[node name="Limit3" parent="." node_paths=PackedStringArray("enemy") instance=ExtResource("4_l7r3x")]
-enemy = NodePath("Scorpion")
+[node name="Limit3" parent="." instance=ExtResource("4_l7r3x")]
 limit_points = [Vector2(608, 352), Vector2(1088, 352), Vector2(1088, 448), Vector2(608, 448)]
 
 [node name="Scorpion" parent="Limit3" instance=ExtResource("5_uusmp")]

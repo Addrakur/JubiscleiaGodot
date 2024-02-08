@@ -37,4 +37,3 @@ func _on_can_attack_area_body_exited(body):
 
 func _on_attack_timer_timeout():
 	pass
- 
