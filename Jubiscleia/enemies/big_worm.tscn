@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://crkl2utufgcrd"]
+[gd_scene load_steps=23 format=3 uid="uid://crkl2utufgcrd"]
 
 [ext_resource type="Texture2D" uid="uid://csffgyii1wdoc" path="res://assets/enemy/banco_de_assets/big_worm/big_worm_walk.png" id="1_5i8uh"]
 [ext_resource type="Script" path="res://enemies/big_worm.gd" id="1_ls3a1"]
@@ -9,7 +9,9 @@
 [ext_resource type="Script" path="res://Management/states/big_worm/big_worm_idle.gd" id="4_wavyi"]
 [ext_resource type="Script" path="res://Management/states/state_machine.gd" id="5_1jltg"]
 [ext_resource type="Script" path="res://Management/states/big_worm/big_worm_attack.gd" id="5_ux2og"]
+[ext_resource type="Script" path="res://Management/states/big_worm/big_worm_hit.gd" id="6_0lll1"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="7_0dtaf"]
+[ext_resource type="Script" path="res://Management/states/big_worm/big_worm_death.gd" id="7_cyfq4"]
 [ext_resource type="Texture2D" uid="uid://btmgn1pjl6ab7" path="res://assets/enemy/banco_de_assets/big_worm/big_worm_idle.png" id="8_f7rdg"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="8_iw5ih"]
 
@@ -74,6 +76,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Collision:polygon")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-48, 32, 51, 32, 51, -20, -10, -20, -10, -39, -48, -39)]
 }
 
 [sub_resource type="Animation" id="Animation_1gsxd"]
@@ -188,6 +202,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../Collision:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [PackedVector2Array(-48, 32, 51, 32, 51, -15, -29, -15, -39, -29, -65, -31, -66, -11), PackedVector2Array(-48, 32, 46, 32, 46, -2, -30, -2, -63, -10, -75, 0, -75, 17), PackedVector2Array(46, 32, 46, -2, -72, -2, -72, 32)]
 }
 
 [sub_resource type="Animation" id="Animation_qspdh"]
@@ -358,9 +384,6 @@ _data = {
 "walk": SubResource("Animation_6fthp")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ib1s8"]
-size = Vector2(94, 70)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_owbtl"]
 size = Vector2(143, 81)
 
@@ -396,6 +419,16 @@ damage = 15.0
 knockback_force = 500.0
 knockup_force = -20.0
 
+[node name="BigWormHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("big_worm", "animation")]
+script = ExtResource("6_0lll1")
+big_worm = NodePath("../..")
+animation = NodePath("../../Animation")
+
+[node name="BigWormDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("big_worm", "animation")]
+script = ExtResource("7_cyfq4")
+big_worm = NodePath("../..")
+animation = NodePath("../../Animation")
+
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("1_5i8uh")
 hframes = 4
@@ -406,9 +439,8 @@ libraries = {
 "": SubResource("AnimationLibrary_lxcon")
 }
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -3)
-shape = SubResource("RectangleShape2D_ib1s8")
+[node name="Collision" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-48, 32, 51, 32, 51, -20, -10, -20, -10, -39, -48, -39)
 
 [node name="AttackTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -416,9 +448,10 @@ one_shot = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("7_0dtaf")]
 max_health = 25.0
-destroy_after_dead = true
+knockback_imunity = true
 
 [node name="AttackArea" parent="." instance=ExtResource("8_iw5ih")]
+visible = false
 collision_mask = 1
 target = "player"
 
@@ -427,6 +460,7 @@ polygon = PackedVector2Array(-43, -49, -69, -32, -84, -4, -87, 32, -28, 32, -29,
 disabled = true
 
 [node name="CanAttackArea" type="Area2D" parent="."]
+visible = false
 
 [node name="CanAttackCollision" type="CollisionShape2D" parent="CanAttackArea"]
 position = Vector2(-5, -8)
@@ -434,5 +468,6 @@ shape = SubResource("RectangleShape2D_owbtl")
 debug_color = Color(1, 1, 1, 0.419608)
 
 [connection signal="animation_finished" from="Animation" to="StateMachine/BigWormAttack" method="_on_animation_finished"]
+[connection signal="animation_finished" from="Animation" to="StateMachine/BigWormHit" method="_on_animation_finished"]
 [connection signal="body_entered" from="CanAttackArea" to="StateMachine/BigWormMove" method="can_attack_area_entered"]
 [connection signal="body_exited" from="CanAttackArea" to="StateMachine/BigWormIdle" method="can_attack_area_exited"]

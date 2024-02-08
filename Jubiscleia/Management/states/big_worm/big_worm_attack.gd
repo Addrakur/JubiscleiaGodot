@@ -24,6 +24,10 @@ func enter_state() -> void:
 		big_worm.left()
 	animation.play("attack")
 
+func _physics_process(_delta):
+	if not big_worm.alive:
+		big_worm.fsm.change_state(big_worm.death_state)
+
 func exit_state() -> void:
 	set_physics_process(false)
 	big_worm.is_attacking = false

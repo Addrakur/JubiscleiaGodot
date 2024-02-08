@@ -26,6 +26,12 @@ func _physics_process(_delta):
 	if big_worm.player_ref != null and big_worm.attack_timer.is_stopped():
 		big_worm.fsm.change_state(big_worm.attack_state)
 	
+	if big_worm.health_component.is_getting_hit:
+		big_worm.fsm.change_state(big_worm.hit_state)
+	
+	if not big_worm.alive:
+		big_worm.fsm.change_state(big_worm.death_state)
+	
 
 func can_attack_area_exited(body):
 	if body == big_worm.player_ref:

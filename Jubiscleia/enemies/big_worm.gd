@@ -7,8 +7,7 @@ extends CharacterBody2D
 
 @onready var limit: Area2D = get_parent()
 @onready var texture: Sprite2D = $Texture
-@onready var collision: CollisionShape2D = $Collision
-const C_POSITION: float = -1
+@onready var collision: CollisionPolygon2D = $Collision
 @onready var attack_area_collision: CollisionPolygon2D = $AttackArea/AttackCollision
 @onready var can_attack_area: CollisionShape2D = $CanAttackArea/CanAttackCollision
 const CAA_POSITION: float = -5
@@ -18,6 +17,8 @@ const CAA_POSITION: float = -5
 @onready var move_state: State = $StateMachine/BigWormMove as BigWormMove
 @onready var idle_state: State = $StateMachine/BigWormIdle as BigWormIdle
 @onready var attack_state: State = $StateMachine/BigWormAttack as BigWormAttack
+@onready var hit_state: State = $StateMachine/BigWormHit as BigWormHit
+@onready var death_state: State = $StateMachine/BigWormDeath as BigWormDeath
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player: bool = false
@@ -48,12 +49,12 @@ func _physics_process(delta):
 
 func right():
 	texture.flip_h = true
-	collision.position.x = -C_POSITION
+	collision.scale.x = -1
 	attack_area_collision.scale.x = -1
 	can_attack_area.position.x = -CAA_POSITION
 
 func left():
 	texture.flip_h = false
-	collision.position.x = C_POSITION
+	collision.scale.x = 1
 	attack_area_collision.scale.x = 1
 	can_attack_area.position.x = CAA_POSITION

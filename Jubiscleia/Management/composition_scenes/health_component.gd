@@ -2,6 +2,7 @@ extends Node2D
 
 @export var max_health: float
 @export var destroy_after_dead: bool
+@export var knockback_imunity: bool
 @onready var parent: Node2D = get_parent()
 var current_health: float = 1
 var is_getting_hit: bool = false

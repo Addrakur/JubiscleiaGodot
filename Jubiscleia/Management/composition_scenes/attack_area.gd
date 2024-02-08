@@ -18,7 +18,7 @@ func on_body_entered(body):
 		if parent.name == "Player":
 			if PlayerVariables.my_knockup == true:
 				parent.velocity.y = PlayerVariables.spear_jump_my_knockup
-		if body.hit_state != null:
+		if not body.health_component.knockback_imunity:
 			body.hit_state.knockup_force = knockup_force * body.hit_state.knock_multi
 			body.hit_state.knockback_force = knockback_force * body.hit_state.knock_multi
 			body.hit_state.direction = 1 if body.position.x > parent.position.x else -1
