@@ -29,8 +29,10 @@ func _physics_process(_delta):
 		scorpion.velocity.x = direction * speed
 	
 	if scorpion.position.x > new_x and direction == 1 or scorpion.position.x < new_x and direction == -1:
-		scorpion.velocity.x = 0
 		scorpion.fsm.change_state(scorpion.idle_state)
+	
+	if scorpion.player_ref != null and scorpion.player_on_limit and scorpion.attack_timer.is_stopped():
+		scorpion.fsm.change_state(scorpion.attack_state)
 
 func new_position():
 	var chance: float

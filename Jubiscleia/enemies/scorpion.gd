@@ -10,6 +10,10 @@ extends CharacterBody2D
 @onready var texture: Sprite2D = $Texture
 @onready var collision: CollisionShape2D = $Collision
 @onready var attack_area_collision: CollisionPolygon2D = $AttackArea/AttackPolygon
+@onready var can_attack_area_collision: CollisionShape2D = $CanAttackArea/CanAttackCollision
+const CAA_POSITION: float = -53
+@onready var raycast: RayCast2D = $WallRaycast
+@onready var attack_timer: Timer = $AttackTimer
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var idle_state: State = $StateMachine/ScorpionIdle as ScorpionIdle
@@ -46,7 +50,19 @@ func _physics_process(delta):
 func right():
 	texture.flip_h = true
 	attack_area_collision.scale.x = -1
+	raycast.scale.x = -1
+	can_attack_area_collision.position.x = -CAA_POSITION
 
 func left():
 	texture.flip_h = false
 	attack_area_collision.scale.x = 1
+	raycast.scale.x = 1
+	can_attack_area_collision.position.x = CAA_POSITION
+
+func can_attack_area_entered(body):
+	if body.is_in_group("player"):
+		player_ref = body
+
+func can_attack_area_exited(body):
+	if body.is_in_group("player"):
+		player_ref = null
