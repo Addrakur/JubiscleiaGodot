@@ -41,7 +41,7 @@ func _ready():
 	pass
 
 func _process(_delta):
-	if alive:
+	if alive and not health_component.is_getting_hit:
 		if fsm.state == move_state or fsm.state == chase_state:
 			if velocity.x < 0:
 				left()
@@ -54,7 +54,7 @@ func _process(_delta):
 func _physics_process(delta):
 	move_and_slide()
 	if not is_on_floor():
-		velocity.y = gravity * delta * gravity_mult
+		velocity.y = GameSettings.default_gravity * delta * gravity_mult
 
 func right():
 	texture.flip_h = true

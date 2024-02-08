@@ -6,6 +6,8 @@ var level1: String = "res://levels/loop_basico.tscn"
 var level2: String = "res://levels/prototype_level.tscn"
 var arena: String = "res://levels/arena.tscn"
 
+var default_gravity: float
+
 func _input(event):
 	if event.is_action_pressed("pause"):
 		var current_value: bool = get_tree().paused

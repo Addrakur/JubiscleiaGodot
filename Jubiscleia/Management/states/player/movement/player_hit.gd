@@ -9,15 +9,13 @@ var knockup_force: float
 var knockback_force: float
 var direction: float
 
-var hit_timer: float = 0.1
-
 func _ready():
 	set_physics_process(false)
 
 func enter_state() -> void:
 	set_physics_process(true)
 	animation.play("hit")
-	#hit_timer = 0.1
+	knockback()
 	if player.is_on_floor():
 		player.jump_count = 0
 
@@ -28,9 +26,8 @@ func _physics_process(delta):
 	if not player.alive:
 		player.fsm.change_state(player.death_state)
 	
-	hit_timer -= delta
-	if hit_timer > 0:
-		knockback()
+	if player.velocity > Vector2(0,0):
+		player.velocity = Vector2(player.velocity.x - player.velocity.x * 0.05,player.velocity.y - player.velocity.y * 0.05)
 
 func _on_animation_finished(anim):
 	if anim == "hit" or player.is_on_floor():

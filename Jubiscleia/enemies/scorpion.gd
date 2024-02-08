@@ -19,6 +19,8 @@ const CAA_POSITION: float = -53
 @onready var idle_state: State = $StateMachine/ScorpionIdle as ScorpionIdle
 @onready var walk_state: State = $StateMachine/ScorpionWalk as ScorpionWalk
 @onready var attack_state: State = $StateMachine/ScorpionAttack as ScorpionAttack
+@onready var hit_state: State = $StateMachine/ScorpionHit as ScorpionHit
+@onready var death_state: State = $StateMachine/ScorpionDeath as ScorpionDeath
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player: bool = false
