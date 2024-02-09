@@ -19,9 +19,9 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	big_worm.velocity.x = big_worm.direction * speed
 	
-	if big_worm.position.x > big_worm.limit.limit_points[1].x - limit_offset:
+	if big_worm.position.x > big_worm.limit.limit_polygon.polygon[2].x - limit_offset:
 		big_worm.direction = -1
-	elif big_worm.position.x < big_worm.limit.limit_points[0].x + limit_offset:
+	elif big_worm.position.x < big_worm.limit.limit_polygon.polygon[0].x + limit_offset:
 		big_worm.direction = 1
 	
 	if big_worm.player_ref != null and PlayerVariables.player_alive and big_worm.player_on_limit:

@@ -443,7 +443,7 @@ libraries = {
 polygon = PackedVector2Array(-48, 32, 51, 32, 51, -20, -10, -20, -10, -39, -48, -39)
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 2.0
 one_shot = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("7_0dtaf")]

@@ -3,6 +3,9 @@ extends Control
 @onready var w1_text: Label = $w1text
 @onready var w2_text: Label = $w2text
 
+func on_tutorial_pressed():
+	GameSettings.change_scene(GameSettings.tutorial)
+
 func on_level1_pressed():
 	GameSettings.change_scene(GameSettings.level1)
 

@@ -21,7 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.501961, 0.658824, 1, 1)
 
-[node name="LoopBasico" type="Button" parent="."]
+[node name="Tutorial" type="Button" parent="."]
 process_mode = 3
 layout_mode = 2
 offset_left = 32.0
@@ -29,29 +29,18 @@ offset_top = 32.0
 offset_right = 96.0
 offset_bottom = 96.0
 theme_override_font_sizes/font_size = 37
-text = "1"
-
-[node name="TesteInimigos" type="Button" parent="."]
-layout_mode = 2
-offset_left = 128.0
-offset_top = 32.0
-offset_right = 192.0
-offset_bottom = 96.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 37
-text = "2"
+text = "Tutorial"
 
 [node name="Arena" type="Button" parent="."]
 layout_mode = 2
-offset_left = 224.0
+offset_left = 240.0
 offset_top = 32.0
-offset_right = 288.0
+offset_right = 353.0
 offset_bottom = 96.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 37
-text = "3"
+text = "Arena"
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 1
@@ -68,6 +57,28 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 37
 text = "Quit"
+
+[node name="Level1" type="Button" parent="."]
+layout_mode = 2
+offset_left = 32.0
+offset_top = 112.0
+offset_right = 96.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 37
+text = "1"
+
+[node name="Level2" type="Button" parent="."]
+layout_mode = 2
+offset_left = 117.0
+offset_top = 112.0
+offset_right = 181.0
+offset_bottom = 176.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 37
+text = "2"
 
 [node name="w1text" type="Label" parent="."]
 layout_mode = 1
@@ -141,10 +152,11 @@ text = "Axe"
 layout_mode = 2
 text = "Spear"
 
-[connection signal="pressed" from="LoopBasico" to="." method="on_level1_pressed"]
-[connection signal="pressed" from="TesteInimigos" to="." method="on_level2_pressed"]
+[connection signal="pressed" from="Tutorial" to="." method="on_tutorial_pressed"]
 [connection signal="pressed" from="Arena" to="." method="_on_arena_pressed"]
 [connection signal="pressed" from="Quit" to="." method="on_quit_pressed"]
+[connection signal="pressed" from="Level1" to="." method="on_level1_pressed"]
+[connection signal="pressed" from="Level2" to="." method="on_level2_pressed"]
 [connection signal="pressed" from="HBoxContainer/w1sword" to="." method="_on_w_1_sword_pressed"]
 [connection signal="pressed" from="HBoxContainer/w1axe" to="." method="_on_w_1_axe_pressed"]
 [connection signal="pressed" from="HBoxContainer/w1spear" to="." method="_on_w_1_spear_pressed"]

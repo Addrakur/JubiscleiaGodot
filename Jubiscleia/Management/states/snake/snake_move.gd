@@ -19,9 +19,9 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	snake.velocity.x = snake.direction * speed
 	
-	if snake.position.x > snake.limit.limit_points[1].x - limit_offset:
+	if snake.position.x > snake.limit.limit_polygon.polygon[2].x - limit_offset:
 		snake.direction = -1
-	elif snake.position.x < snake.limit.limit_points[0].x + limit_offset:
+	elif snake.position.x < snake.limit.limit_polygon.polygon[0].x + limit_offset:
 		snake.direction = 1
 	
 	if snake.health_component.is_getting_hit:

@@ -8,11 +8,11 @@ func _ready() -> void:
 func _process(_delta):
 	position = position.round()
 
-func change_limit(top_limit: int, left_limit: int, right_limit: int, bottom_limit: int) -> void:
-	limit_top = top_limit
-	limit_left = left_limit
-	limit_right = right_limit
-	limit_bottom = bottom_limit
+func change_limit_polygon(polygon: Polygon2D):
+	limit_top = polygon.polygon[0].y
+	limit_left = polygon.polygon[0].x
+	limit_right = polygon.polygon[2].x
+	limit_bottom = polygon.polygon[1].y
 
 func tween_up_and_down(camera_offset: float, tween_timer: float) -> void:
 	var tween = create_tween().set_parallel(true)

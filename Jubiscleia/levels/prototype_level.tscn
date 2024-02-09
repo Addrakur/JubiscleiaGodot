@@ -11,16 +11,16 @@
 [ext_resource type="PackedScene" uid="uid://cbkmdf5fph8mt" path="res://enemies/turret.tscn" id="8_rqbkd"]
 [ext_resource type="PackedScene" uid="uid://bolenc8px11st" path="res://Management/level_end.tscn" id="10_aso8h"]
 
-[node name="PrototypeLevel" type="Node2D" node_paths=PackedStringArray("player")]
+[node name="PrototypeLevel" type="Node2D" node_paths=PackedStringArray("player", "camera_polygon")]
 process_mode = 1
 script = ExtResource("1_rdehp")
 player = NodePath("Player")
-camera_limits = Array[int]([-64, 0, 4512, 736])
+camera_polygon = NodePath("CameraPolygon")
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="CameraPolygon" type="Polygon2D" parent="."]
 visible = false
 color = Color(1, 1, 1, 0.0980392)
-polygon = PackedVector2Array(3360, -64, 4096, -64, 4096, 128, 3360, 128)
+polygon = PackedVector2Array(0, -64, 0, 736, 4512, 736, 4512, -64)
 
 [node name="Plataforms" type="Node2D" parent="."]
 
@@ -82,22 +82,32 @@ position = Vector2(4384, 608)
 
 [node name="Enemies" type="Node2D" parent="."]
 
-[node name="Limit" parent="Enemies" instance=ExtResource("3_v6kio")]
-limit_points = [Vector2(576, 64), Vector2(928, 64), Vector2(928, 256), Vector2(576, 256)]
+[node name="Limit" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("3_v6kio")]
+limit_polygon = NodePath("Polygon2D")
 
 [node name="Enemy" parent="Enemies/Limit" instance=ExtResource("4_jp6h7")]
 position = Vector2(776, 228)
 direction = -1.0
 
-[node name="Limit2" parent="Enemies" instance=ExtResource("3_v6kio")]
-limit_points = [Vector2(1184, 544), Vector2(1376, 544), Vector2(1376, 640), Vector2(1184, 640)]
+[node name="Polygon2D" type="Polygon2D" parent="Enemies/Limit"]
+visible = false
+color = Color(1, 0, 0, 0.137255)
+polygon = PackedVector2Array(576, 256, 928, 256, 928, 160, 576, 160)
+
+[node name="Limit2" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("3_v6kio")]
+limit_polygon = NodePath("Polygon2D")
 
 [node name="Enemy" parent="Enemies/Limit2" instance=ExtResource("4_jp6h7")]
 position = Vector2(1280, 608)
 direction = -1.0
 
-[node name="Limit3" parent="Enemies" instance=ExtResource("3_v6kio")]
-limit_points = [Vector2(1440, 544), Vector2(2048, 544), Vector2(2048, 640), Vector2(1440, 640)]
+[node name="Polygon2D" type="Polygon2D" parent="Enemies/Limit2"]
+visible = false
+color = Color(1, 1, 1, 0.176471)
+polygon = PackedVector2Array(1184, 640, 1376, 640, 1376, 544, 1184, 544)
+
+[node name="Limit3" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("3_v6kio")]
+limit_polygon = NodePath("Polygon2D")
 
 [node name="Enemy" parent="Enemies/Limit3" instance=ExtResource("4_jp6h7")]
 position = Vector2(1600, 608)
@@ -107,8 +117,17 @@ direction = -1.0
 position = Vector2(1856, 608)
 direction = 1.0
 
-[node name="Limit4" parent="Enemies" instance=ExtResource("3_v6kio")]
-limit_points = [Vector2(2048, 256), Vector2(2624, 256), Vector2(2624, 384), Vector2(2048, 384)]
+[node name="Polygon2D" type="Polygon2D" parent="Enemies/Limit3"]
+visible = false
+color = Color(1, 1, 1, 0.109804)
+polygon = PackedVector2Array(1440, 640, 2048, 640, 2048, 544, 1440, 544)
+
+[node name="Snake" parent="Enemies/Limit3" instance=ExtResource("4_jp6h7")]
+position = Vector2(1744, 603)
+direction = 1.0
+
+[node name="Limit4" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("3_v6kio")]
+limit_polygon = NodePath("Polygon2D")
 
 [node name="Enemy" parent="Enemies/Limit4" instance=ExtResource("4_jp6h7")]
 position = Vector2(2400, 352)
@@ -118,19 +137,34 @@ direction = 1.0
 position = Vector2(2144, 352)
 direction = -1.0
 
-[node name="Limit6" parent="Enemies" instance=ExtResource("3_v6kio")]
-limit_points = [Vector2(2048, 672), Vector2(2656, 672), Vector2(2656, 512), Vector2(2048, 512)]
+[node name="Polygon2D" type="Polygon2D" parent="Enemies/Limit4"]
+visible = false
+color = Color(1, 1, 1, 0.262745)
+polygon = PackedVector2Array(2048, 384, 2624, 384, 2624, 288, 2048, 288)
+
+[node name="Limit6" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("3_v6kio")]
+limit_polygon = NodePath("Polygon2D")
 
 [node name="Enemy" parent="Enemies/Limit6" instance=ExtResource("4_jp6h7")]
 position = Vector2(2336, 640)
 direction = 1.0
 
-[node name="Limit5" parent="Enemies" instance=ExtResource("3_v6kio")]
-limit_points = [Vector2(3360, -64), Vector2(4096, -64), Vector2(4096, 128), Vector2(3360, 128)]
+[node name="Polygon2D" type="Polygon2D" parent="Enemies/Limit6"]
+visible = false
+color = Color(1, 1, 1, 0.294118)
+polygon = PackedVector2Array(2048, 672, 2656, 672, 2656, 576, 2048, 576)
+
+[node name="Limit5" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("3_v6kio")]
+limit_polygon = NodePath("Polygon2D")
 
 [node name="BigWorm" parent="Enemies/Limit5" instance=ExtResource("7_s86ml")]
 position = Vector2(3776, 96)
 direction = -1.0
+
+[node name="Polygon2D" type="Polygon2D" parent="Enemies/Limit5"]
+visible = false
+color = Color(1, 1, 1, 0.184314)
+polygon = PackedVector2Array(3360, 128, 4096, 128, 4096, 0, 3360, 0)
 
 [node name="TileMap" type="TileMap" parent="." groups=["terrain"]]
 texture_filter = 1
@@ -201,7 +235,7 @@ offset_top = 240.0
 offset_right = 279.0
 offset_bottom = 344.0
 text = "BATER:
-Botao esquerdo
-Z
-Quadrado"
+Arma 1: Botao esquerdo / quadrado
+Arma 2: Botao direito / triangulo
+"
 horizontal_alignment = 1

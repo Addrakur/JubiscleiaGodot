@@ -7,10 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cbkmdf5fph8mt" path="res://enemies/turret.tscn" id="5_qysfm"]
 [ext_resource type="PackedScene" uid="uid://bolenc8px11st" path="res://Management/level_end.tscn" id="6_ndssn"]
 
-[node name="LoopBasico" type="Node2D" node_paths=PackedStringArray("player")]
+[node name="LoopBasico" type="Node2D" node_paths=PackedStringArray("player", "camera_polygon")]
 script = ExtResource("1_7dotf")
 player = NodePath("Player")
-camera_limits = Array[int]([-64, 0, 3136, 512])
+camera_polygon = NodePath("CameraPolygon")
 
 [node name="Tutorial" type="Control" parent="."]
 layout_mode = 3
@@ -77,10 +77,10 @@ segure ABAIXAR
 aperte PULAR"
 horizontal_alignment = 1
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
+[node name="CameraPolygon" type="Polygon2D" parent="."]
 visible = false
 color = Color(1, 1, 1, 0.0980392)
-polygon = PackedVector2Array(0, -64, 3136, -64, 3136, 512, 0, 512)
+polygon = PackedVector2Array(0, -64, 0, 512, 3136, 512, 3136, -64)
 
 [node name="Plataforms" type="Node2D" parent="."]
 
