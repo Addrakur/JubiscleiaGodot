@@ -403,7 +403,7 @@ state = NodePath("BigWormMove")
 script = ExtResource("3_v8eoo")
 big_worm = NodePath("../..")
 animation = NodePath("../../Animation")
-speed = 15.0
+speed = 25.0
 limit_offset = 49.0
 
 [node name="BigWormIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("big_worm", "animation")]
@@ -451,7 +451,6 @@ max_health = 25.0
 knockback_imunity = true
 
 [node name="AttackArea" parent="." instance=ExtResource("8_iw5ih")]
-visible = false
 collision_mask = 1
 target = "player"
 
@@ -460,7 +459,6 @@ polygon = PackedVector2Array(-43, -49, -69, -32, -84, -4, -87, 32, -28, 32, -29,
 disabled = true
 
 [node name="CanAttackArea" type="Area2D" parent="."]
-visible = false
 
 [node name="CanAttackCollision" type="CollisionShape2D" parent="CanAttackArea"]
 position = Vector2(-5, -8)

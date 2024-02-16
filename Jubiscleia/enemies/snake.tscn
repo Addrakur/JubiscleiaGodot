@@ -476,7 +476,7 @@ limit_offset = 22.0
 script = ExtResource("13_gcars")
 snake = NodePath("../..")
 animation = NodePath("../../Animations")
-damage = 5.0
+damage = 8.0
 knockback_force = 50.0
 knockup_force = 10.0
 

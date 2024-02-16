@@ -13,6 +13,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
+	big_worm.health_component.invulnerable = true
 	big_worm.attack_area.damage = damage
 	big_worm.attack_area.knockback_force = knockback_force
 	big_worm.attack_area.knockup_force = knockup_force
@@ -31,6 +32,7 @@ func _physics_process(_delta):
 func exit_state() -> void:
 	set_physics_process(false)
 	big_worm.is_attacking = false
+	big_worm.health_component.invulnerable = false
 
 func _on_animation_finished(anim):
 	if anim == "attack":

@@ -44,11 +44,11 @@ func new_position():
 	var chance: float
 	chance = randf_range(0,10)
 	if chance > 5:
-		new_x = scorpion.starting_x + randf_range(20, off_set_wander)
+		new_x = scorpion.starting_x.position.x + randf_range(20, off_set_wander)
 	elif chance < 5:
-		new_x = scorpion.starting_x - randf_range(20, off_set_wander)
+		new_x = scorpion.starting_x.position.x - randf_range(20, off_set_wander)
 	else:
-		new_x = scorpion.starting_x
+		new_x = scorpion.starting_x.position.x
 	
 	if scorpion.position.x > new_x:
 		direction = -1

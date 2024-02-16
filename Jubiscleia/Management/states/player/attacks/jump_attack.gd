@@ -44,6 +44,7 @@ func enter_state() -> void:
 func exit_state() -> void:
 	set_physics_process(false)
 	PlayerVariables.my_knockup = false
+	PlayerVariables.last_skill = ""
 
 func _physics_process(_delta):
 	player.direction = Input.get_axis("left","right")

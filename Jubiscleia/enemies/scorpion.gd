@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var attack_area: Area2D
 @export var direction: float
 @export var gravity_mult: float
-@export var starting_x: float
+@export var starting_x: Marker2D
 
 @onready var limit: Area2D = get_parent()
 @onready var texture: Sprite2D = $Texture

@@ -45,3 +45,7 @@ func _physics_process(_delta):
 	
 	if not scorpion.alive:
 		scorpion.fsm.change_state(scorpion.death_state)
+
+func attack_area_entered(body):
+	if body.is_in_group(scorpion.attack_area.target):
+		scorpion.fsm.change_state(scorpion.idle_state)

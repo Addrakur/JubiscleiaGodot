@@ -66,6 +66,13 @@ func _physics_process(delta):
 	if direction != 0:
 		last_direction = direction
 	
+	#if PlayerVariables.current_skill != "":
+	#	print("current_skill: " + PlayerVariables.current_skill)
+	#if PlayerVariables.last_skill != "":
+	#	print("last_skill: " + PlayerVariables.last_skill)
+	#if PlayerVariables.move:
+	#	print("move")
+	
 
 func get_gravity():
 	if override_gravity == 0:
@@ -95,7 +102,4 @@ func move() -> void:
 		fsm.change_state(move_state)
 
 func toggle_move():
-	if PlayerVariables.move:
-		PlayerVariables.move = false
-	else:
-		PlayerVariables.move = true
+	PlayerVariables.move = !PlayerVariables.move

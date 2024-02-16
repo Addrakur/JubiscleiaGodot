@@ -41,14 +41,17 @@ polygon = PackedVector2Array(192, 352, 192, 448, 1088, 448, 1088, 352)
 [node name="Limit3" parent="." node_paths=PackedStringArray("limit_polygon") instance=ExtResource("4_l7r3x")]
 limit_polygon = NodePath("LimitPolygon")
 
-[node name="Scorpion" parent="Limit3" instance=ExtResource("5_uusmp")]
+[node name="Scorpion" parent="Limit3" node_paths=PackedStringArray("starting_x") instance=ExtResource("5_uusmp")]
 position = Vector2(844, 432)
-starting_x = 844.0
+starting_x = NodePath("../StartPoint")
 
 [node name="LimitPolygon" type="Polygon2D" parent="Limit3"]
 visible = false
 color = Color(1, 1, 1, 0.0352941)
 polygon = PackedVector2Array(608, 352, 608, 448, 1088, 448, 1088, 352)
+
+[node name="StartPoint" type="Marker2D" parent="Limit3"]
+position = Vector2(844, 432)
 
 [node name="Player" parent="." instance=ExtResource("3_2ic4t")]
 position = Vector2(96, 365)

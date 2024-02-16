@@ -43,6 +43,8 @@ func enter_state() -> void:
 
 func exit_state() -> void:
 	set_physics_process(false)
+	PlayerVariables.last_skill = ""
+	PlayerVariables.move = false
 
 func _physics_process(_delta):
 	player.velocity.x = 0
@@ -52,6 +54,7 @@ func _physics_process(_delta):
 		player.velocity.x = speed * direction
 	
 	if player.health_component.is_getting_hit:
+		PlayerVariables.current_skill = ""
 		player.fsm.change_state(player.hit_state)
 	
 	if not player.alive:
