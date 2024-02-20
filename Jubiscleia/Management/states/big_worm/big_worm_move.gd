@@ -11,7 +11,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	animation.play("walk")
+	animation.play(big_worm.normal_or_fire + "_walk")
 
 func exit_state() -> void:
 	set_physics_process(false)

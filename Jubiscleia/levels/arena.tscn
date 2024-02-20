@@ -24,6 +24,7 @@ limit_polygon = NodePath("LimitPolygon")
 [node name="BigWorm" parent="Limit4" instance=ExtResource("5_7f5b2")]
 position = Vector2(576, 416)
 direction = -1.0
+normal_or_fire = "fire"
 
 [node name="Snake2" parent="Limit4" instance=ExtResource("4_7k5dd")]
 position = Vector2(704, 432)
@@ -52,6 +53,14 @@ polygon = PackedVector2Array(608, 352, 608, 448, 1088, 448, 1088, 352)
 
 [node name="StartPoint" type="Marker2D" parent="Limit3"]
 position = Vector2(844, 432)
+
+[node name="Scorpion2" parent="Limit3" node_paths=PackedStringArray("starting_x") instance=ExtResource("5_uusmp")]
+position = Vector2(882, 423)
+starting_x = NodePath("../StartPoint")
+
+[node name="Scorpion3" parent="Limit3" node_paths=PackedStringArray("starting_x") instance=ExtResource("5_uusmp")]
+position = Vector2(799, 427)
+starting_x = NodePath("../StartPoint")
 
 [node name="Player" parent="." instance=ExtResource("3_2ic4t")]
 position = Vector2(96, 365)

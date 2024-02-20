@@ -23,7 +23,7 @@ func enter_state() -> void:
 		big_worm.right()
 	else:
 		big_worm.left()
-	animation.play("attack")
+	animation.play(big_worm.normal_or_fire + "_attack")
 
 func _physics_process(_delta):
 	if not big_worm.alive:
@@ -35,7 +35,7 @@ func exit_state() -> void:
 	big_worm.health_component.invulnerable = false
 
 func _on_animation_finished(anim):
-	if anim == "attack":
+	if anim == big_worm.normal_or_fire + "_attack":
 		big_worm.attack_timer.start()
 		if big_worm.can_attack_player:
 			big_worm.fsm.change_state(big_worm.idle_state)

@@ -47,10 +47,12 @@ limit_polygon = NodePath("LimitPolygon")
 [node name="BigWorm" parent="Enemies/Limit" instance=ExtResource("4_wpb6o")]
 position = Vector2(1568, 672)
 direction = 1.0
+normal_or_fire = "normal"
 
 [node name="BigWorm2" parent="Enemies/Limit" instance=ExtResource("4_wpb6o")]
 position = Vector2(1120, 672)
 direction = -1.0
+normal_or_fire = "normal"
 
 [node name="LimitPolygon" type="Polygon2D" parent="Enemies/Limit"]
 visible = false
@@ -68,6 +70,7 @@ polygon = PackedVector2Array(1472, 64, 1472, -96, 1824, -96, 1824, 64)
 [node name="BigWorm" parent="Enemies/Limit2" instance=ExtResource("4_wpb6o")]
 position = Vector2(1664, 32)
 direction = 1.0
+normal_or_fire = "fire"
 
 [node name="Limit3" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("4_p4y5h")]
 limit_polygon = NodePath("Polygon2D")
@@ -138,16 +141,20 @@ polygon = PackedVector2Array(2432, -256, 3392, -256, 3392, -384, 2432, -384)
 [node name="BigWorm" parent="Enemies/Limit6" instance=ExtResource("4_wpb6o")]
 position = Vector2(2752, -288)
 direction = 1.0
+normal_or_fire = "fire"
 
 [node name="BigWorm2" parent="Enemies/Limit6" instance=ExtResource("4_wpb6o")]
 position = Vector2(3232, -288)
 direction = -1.0
+normal_or_fire = "fire"
 
 [node name="BigWorm3" parent="Enemies/Limit6" instance=ExtResource("4_wpb6o")]
 position = Vector2(2976, -288)
 direction = 1.0
+normal_or_fire = "normal"
 
 [node name="Tweens" type="Node2D" parent="."]
+visible = false
 
 [node name="TweenArea" parent="Tweens" node_paths=PackedStringArray("player") instance=ExtResource("8_l3c61")]
 player = NodePath("../../Player")

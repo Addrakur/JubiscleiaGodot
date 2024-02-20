@@ -13,7 +13,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	animation.play("hit")
+	animation.play(big_worm.normal_or_fire + "_hit")
 	big_worm.velocity.x = 0
 
 func exit_state() -> void:
@@ -24,6 +24,6 @@ func _physics_process(_delta):
 		big_worm.fsm.change_state(big_worm.death_state)
 
 func _on_animation_finished(anim):
-	if anim == "hit":
+	if anim == big_worm.normal_or_fire + "_hit":
 		big_worm.health_component.is_getting_hit = false
 		big_worm.fsm.change_state(big_worm.idle_state)

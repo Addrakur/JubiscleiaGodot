@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var attack_area: Area2D
 @export var direction: float
 @export var gravity_mult: float
+@export var normal_or_fire: String
 
 @onready var limit: Area2D = get_parent()
 @onready var texture: Sprite2D = $Texture
@@ -30,7 +31,7 @@ var alive: bool = true
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	pass # Replace with function body.
+	pass
 
 func _process(_delta):
 	if fsm.state == move_state:

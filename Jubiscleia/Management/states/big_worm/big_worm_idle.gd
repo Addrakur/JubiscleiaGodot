@@ -9,7 +9,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	animation.play("idle")
+	animation.play(big_worm.normal_or_fire + "_idle")
 	big_worm.velocity.x = 0
 	
 func exit_state() -> void:
