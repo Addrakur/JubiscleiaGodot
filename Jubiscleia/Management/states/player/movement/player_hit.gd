@@ -14,6 +14,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
+	player.velocity = Vector2(0,0)
 	animation.play("hit")
 	knockback()
 	if player.is_on_floor():

@@ -430,7 +430,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="HealthComponent" parent="." instance=ExtResource("2_w5574")]
-max_health = 3.0
+max_health = 10.0
 destroy_after_dead = true
 
 [connection signal="animation_finished" from="Animation" to="StateMachine/ScorpionHit" method="_on_animation_finished"]

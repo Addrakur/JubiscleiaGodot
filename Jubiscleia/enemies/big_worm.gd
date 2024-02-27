@@ -12,6 +12,8 @@ extends CharacterBody2D
 @onready var attack_area_collision: CollisionPolygon2D = $AttackArea/AttackCollision
 @onready var can_attack_area: CollisionShape2D = $CanAttackArea/CanAttackCollision
 const CAA_POSITION: float = -5
+@onready var attack_area_fire_collision: CollisionShape2D = $AttackAreaFire/CollisionShape2D
+const AAFC_POSITION: float = 26
 @onready var attack_timer: Timer = $AttackTimer
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
@@ -53,9 +55,11 @@ func right():
 	collision.scale.x = -1
 	attack_area_collision.scale.x = -1
 	can_attack_area.position.x = -CAA_POSITION
+	attack_area_fire_collision.position.x = -AAFC_POSITION
 
 func left():
 	texture.flip_h = false
 	collision.scale.x = 1
 	attack_area_collision.scale.x = 1
 	can_attack_area.position.x = CAA_POSITION
+	attack_area_fire_collision.position.x = AAFC_POSITION

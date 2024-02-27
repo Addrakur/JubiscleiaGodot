@@ -40,9 +40,6 @@ position = Vector2(832, 352)
 [node name="Plataform7" parent="Plataforms" instance=ExtResource("3_ficbx")]
 position = Vector2(832, 256)
 
-[node name="Plataform8" parent="Plataforms" instance=ExtResource("3_ficbx")]
-position = Vector2(1344, 416)
-
 [node name="Plataform9" parent="Plataforms" instance=ExtResource("3_ficbx")]
 position = Vector2(1088, 416)
 
@@ -57,9 +54,6 @@ position = Vector2(832, 448)
 
 [node name="Plataform3" parent="Plataforms" instance=ExtResource("3_ficbx")]
 position = Vector2(832, 544)
-
-[node name="Plataform4" parent="Plataforms" instance=ExtResource("3_ficbx")]
-position = Vector2(1568, 416)
 
 [node name="Plataform5" parent="Plataforms" instance=ExtResource("3_ficbx")]
 position = Vector2(1696, 512)
