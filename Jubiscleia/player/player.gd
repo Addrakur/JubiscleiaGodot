@@ -9,6 +9,8 @@ extends CharacterBody2D
 @onready var camera: Camera2D = $Camera
 @onready var attack_area_polygon: CollisionPolygon2D = $AttackArea/AttackArea
 const ATTACK_AREA_POSITION: float = 39
+@onready var raycast_move_false: RayCast2D = $RayCastMoveFalse
+const RCMF_POSITION: float = 43
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var idle_state: State = $StateMachine/Idle as PlayerIdle
@@ -66,13 +68,8 @@ func _physics_process(delta):
 	if direction != 0:
 		last_direction = direction
 	
-	#if PlayerVariables.current_skill != "":
-	#	print("current_skill: " + PlayerVariables.current_skill)
-	#if PlayerVariables.last_skill != "":
-	#	print("last_skill: " + PlayerVariables.last_skill)
-	#if PlayerVariables.move:
-	#	print("move")
-	
+	if raycast_move_false.is_colliding():
+		move_false()
 
 func get_gravity():
 	if override_gravity == 0:
@@ -89,10 +86,12 @@ func flip() -> void:
 		texture.flip_h = false
 		attack_area_polygon.position.x = ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = 1
+		raycast_move_false.target_position.x = RCMF_POSITION
 	elif velocity.x < 0:
 		texture.flip_h = true
 		attack_area_polygon.position.x = -ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = -1
+		raycast_move_false.target_position.x = -RCMF_POSITION
 
 func can_combo_true() -> void:
 	can_combo = true
@@ -103,3 +102,9 @@ func move() -> void:
 
 func toggle_move():
 	PlayerVariables.move = !PlayerVariables.move
+
+func move_true():
+	PlayerVariables.move = true
+
+func move_false():
+	PlayerVariables.move = false

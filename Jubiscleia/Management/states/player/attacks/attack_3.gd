@@ -9,6 +9,7 @@ var knockup_force: float
 
 var speed: float
 var direction: float
+var last_direction: float
 
 func _ready():
 	set_physics_process(false)
@@ -49,6 +50,9 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	player.velocity.x = 0
 	player.direction = Input.get_axis("left","right")
+	
+	if direction != 0:
+		last_direction = direction
 	
 	if PlayerVariables.move:
 		player.velocity.x = speed * direction

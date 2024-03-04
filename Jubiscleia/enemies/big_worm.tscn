@@ -757,7 +757,7 @@ size = Vector2(36, 23)
 size = Vector2(143, 81)
 
 [node name="BigWorm" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
-collision_layer = 2
+collision_layer = 258
 collision_mask = 12
 script = ExtResource("1_ls3a1")
 health_component = NodePath("HealthComponent")
