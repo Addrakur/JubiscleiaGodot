@@ -402,6 +402,7 @@ knockback_imunity = true
 collision_layer = 0
 
 [node name="DetectArea" type="CollisionShape2D" parent="DetectArea"]
+visible = false
 position = Vector2(0, 64)
 shape = SubResource("RectangleShape2D_kmysj")
 
