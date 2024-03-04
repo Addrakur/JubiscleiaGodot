@@ -4,6 +4,7 @@ extends State
 @export var vulture: CharacterBody2D
 @export var speed: float
 @export var animation: AnimationPlayer
+@export var limit_offset: float
 
 func _ready():
 	set_physics_process(false)
@@ -22,9 +23,9 @@ func _physics_process(_delta):
 	#	vulture.attack_timer.start()
 	#	vulture.fsm.change_state(vulture.hover_state)
 	
-	if vulture.position.x > vulture.limit.limit_points[1].x:
+	if vulture.position.x > vulture.limit.limit_polygon.polygon[2].x - limit_offset:
 		vulture.direction = -1
-	elif vulture.position.x < vulture.limit.limit_points[0].x:
+	elif vulture.position.x < vulture.limit.limit_polygon.polygon[0].x + limit_offset:
 		vulture.direction = 1
 	
 	if!vulture.alive:

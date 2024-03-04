@@ -100,9 +100,6 @@ func move() -> void:
 	if direction != 0:
 		fsm.change_state(move_state)
 
-func toggle_move():
-	PlayerVariables.move = !PlayerVariables.move
-
 func move_true():
 	PlayerVariables.move = true
 
