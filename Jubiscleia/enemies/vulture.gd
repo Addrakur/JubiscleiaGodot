@@ -4,9 +4,9 @@ extends CharacterBody2D
 @export var attack_area: Area2D
 @export var direction: float
 @export var y: float
-@export var limit: Area2D
 @export var hover_offset: float
 
+@onready var limit: Area2D = get_parent()
 @onready var attack_timer: Timer = $AttackTimer
 @onready var texture: Sprite2D = $Texture
 @onready var detect_area: Area2D = $DetectArea

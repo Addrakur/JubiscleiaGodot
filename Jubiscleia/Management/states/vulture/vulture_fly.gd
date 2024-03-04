@@ -28,7 +28,7 @@ func _physics_process(_delta):
 	elif vulture.position.x < vulture.limit.limit_polygon.polygon[0].x + limit_offset:
 		vulture.direction = 1
 	
-	if!vulture.alive:
+	if vulture.health_component.is_getting_hit:
 		vulture.fsm.change_state(vulture.death_state)
 
 func detect_area_body_entered(body):

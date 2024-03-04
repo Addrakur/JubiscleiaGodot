@@ -9,6 +9,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
+	vulture.limit.erase(vulture)
 	animation.play("dead")
 
 func exit_state() -> void:

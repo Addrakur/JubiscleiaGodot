@@ -13,7 +13,8 @@ extends Area2D
 @export var destroy_on_terrain: bool = false
 
 func _ready():
-	print(parent.name + ": " + name + ": " + str(damage))
+	#print(parent.name + ": " + name + ": " + str(damage))
+	pass
 
 func on_body_entered(body):
 	if body.is_in_group(target) and not body.health_component.invulnerable:
