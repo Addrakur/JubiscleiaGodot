@@ -41,9 +41,4 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("attack_button_2"):
 		PlayerVariables.current_skill = PlayerVariables.skill_2
 		player.fsm.change_state(player.attack_1_state)
-	
-	if player.health_component.is_getting_hit:
-		player.fsm.change_state(player.hit_state)
-	
-	if not player.alive:
-		player.fsm.change_state(player.death_state)
+

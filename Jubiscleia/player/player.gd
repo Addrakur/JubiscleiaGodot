@@ -11,6 +11,7 @@ extends CharacterBody2D
 const ATTACK_AREA_POSITION: float = 39
 @onready var raycast_move_false: RayCast2D = $RayCastMoveFalse
 const RCMF_POSITION: float = 43
+@onready var dash_cooldown: Timer = $DashCooldown
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var idle_state: State = $StateMachine/Idle as PlayerIdle
@@ -25,6 +26,7 @@ const RCMF_POSITION: float = 43
 @onready var attack_2_state: State = $StateMachine/PlayerAttack2 as PlayerAttack2
 @onready var attack_3_state: State = $StateMachine/PlayerAttack3 as PlayerAttack3
 @onready var jump_attack_state: State = $StateMachine/PlayerJumpAttack as PlayerJumpAttack
+@onready var dash_state: State = $StateMachine/PlayerDash as PlayerDash
 
 @export_group("Jump Variables")
 @export var jump_height: float
@@ -52,11 +54,20 @@ func _ready():
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
 	jump_gravity = ((-2.0 * jump_height) / pow(jump_time_to_peak,2)) * -1
 	fall_gravity = ((-2.0 * jump_height) / pow(jump_time_to_descent,2)) * -1
-	GameSettings.default_gravity = fall_gravity
+	#GameSettings.default_gravity = fall_gravity
 	
 func _process(_delta):
 	if not health_component.is_getting_hit:
 		flip()
+	
+	if not alive:
+		fsm.change_state(death_state)
+	
+	if health_component.is_getting_hit:
+		fsm.change_state(hit_state)
+	
+	if Input.is_action_pressed("dash") and alive and not health_component.is_getting_hit and dash_cooldown.is_stopped():
+		fsm.change_state(dash_state)
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -64,12 +75,11 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	if alive:
 		move_and_slide()
-	
-	if direction != 0:
-		last_direction = direction
+		direction_fix()
 	
 	if raycast_move_false.is_colliding():
 		move_false()
+
 
 func get_gravity():
 	if override_gravity == 0:
@@ -93,10 +103,10 @@ func flip() -> void:
 		attack_area_polygon.scale.x = -1
 		raycast_move_false.target_position.x = -RCMF_POSITION
 
-func can_combo_true() -> void:
+func can_combo_true() -> void: #Vinculado aos ataques
 	can_combo = true
 
-func move() -> void:
+func move() -> void: #Vinculado aos ataques
 	if direction != 0:
 		fsm.change_state(move_state)
 
@@ -105,3 +115,12 @@ func move_true():
 
 func move_false():
 	PlayerVariables.move = false
+
+func direction_fix():
+	if direction > 0:
+		direction = 1
+	elif direction < 0:
+		direction = -1
+	
+	if direction != 0:
+		last_direction = direction

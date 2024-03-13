@@ -12,6 +12,9 @@ func on_level1_pressed():
 func on_level2_pressed():
 	GameSettings.change_scene(GameSettings.level2)
 
+func _on_level_3_pressed():
+	GameSettings.change_scene(GameSettings.level3)
+
 func _on_arena_pressed():
 	GameSettings.change_scene(GameSettings.arena)
 
@@ -45,4 +48,3 @@ func _on_w_2_spear_pressed():
 func _process(_delta):
 	w1_text.text = "Weapon 1 = " + PlayerVariables.skill_1
 	w2_text.text = "Weapon 2 = " + PlayerVariables.skill_2
-	

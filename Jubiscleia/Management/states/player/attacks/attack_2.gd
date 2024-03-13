@@ -64,10 +64,6 @@ func _physics_process(_delta):
 	
 	if player.health_component.is_getting_hit:
 		PlayerVariables.current_skill = ""
-		player.fsm.change_state(player.hit_state)
-	
-	if not player.alive:
-		player.fsm.change_state(player.death_state)
 
 func _on_animation_finished(anim):
 	if anim == PlayerVariables.last_skill + "_attack_1":

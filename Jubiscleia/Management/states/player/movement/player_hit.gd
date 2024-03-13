@@ -24,8 +24,6 @@ func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(_delta):
-	if not player.alive:
-		player.fsm.change_state(player.death_state)
 	
 	if player.velocity > Vector2(0,0):
 		player.velocity = Vector2(player.velocity.x - player.velocity.x * 0.05,player.velocity.y - player.velocity.y * 0.05)

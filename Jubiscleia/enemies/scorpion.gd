@@ -3,7 +3,6 @@ extends CharacterBody2D
 @export var health_component: Node2D
 @export var attack_area: Area2D
 @export var direction: float
-@export var gravity_mult: float
 @export var starting_x: Marker2D
 
 @onready var limit: Area2D = get_parent()
@@ -29,10 +28,12 @@ var is_attacking: bool = false
 
 var alive: bool = true
 
-var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity: float
+
+var gravity_mult: float = 4
 
 func _ready():
-	pass
+	gravity = GameSettings.default_gravity
 
 func _process(_delta):
 	if fsm.state == walk_state or fsm.state == attack_state:
@@ -47,7 +48,7 @@ func _process(_delta):
 func _physics_process(delta):
 	move_and_slide()
 	if not is_on_floor():
-		velocity.y = gravity * delta * gravity_mult
+		velocity.y = GameSettings.default_gravity * delta * gravity_mult
 
 func right():
 	texture.flip_h = true

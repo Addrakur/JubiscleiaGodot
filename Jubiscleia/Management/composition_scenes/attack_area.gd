@@ -34,4 +34,4 @@ func on_body_entered(body):
 	if one_hit_destroy:
 		parent.queue_free()
 	
-	print(body.name + " foi atacado por " + parent.name)
+	#print(body.name + " foi atacado por " + parent.name)

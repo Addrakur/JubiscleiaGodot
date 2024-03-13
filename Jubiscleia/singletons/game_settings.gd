@@ -5,6 +5,7 @@ var menu: String = "res://Management/menu.tscn"
 var tutorial: String = "res://levels/loop_basico.tscn"
 var level1: String = "res://levels/prototype_level.tscn"
 var level2: String = "res://levels/level_2.tscn"
+var level3: String = "res://levels/level_3.tscn"
 var arena: String = "res://levels/arena.tscn"
 
 var default_gravity: float

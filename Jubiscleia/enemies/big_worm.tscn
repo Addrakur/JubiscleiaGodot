@@ -831,7 +831,7 @@ disabled = true
 collision_mask = 1
 target = "player"
 damage = 3.0
-knockup_force = -100.0
+knockup_force = -300.0
 knockback_force = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackAreaFire"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bx4lmho2y840s"]
+[gd_scene load_steps=28 format=3 uid="uid://bx4lmho2y840s"]
 
 [ext_resource type="Script" path="res://enemies/snake.gd" id="1_ep4bx"]
 [ext_resource type="Texture2D" uid="uid://boe1qhplhi48e" path="res://assets/enemy/banco_de_assets/snake/snake_idle.png" id="2_avb4p"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://Management/states/snake/snake_attack.gd" id="13_gcars"]
 [ext_resource type="Script" path="res://Management/states/snake/snake_hit.gd" id="13_k7h8k"]
 [ext_resource type="Script" path="res://Management/states/snake/snake_death.gd" id="14_q5to3"]
-[ext_resource type="Script" path="res://Management/states/snake/snake_fall.gd" id="15_cx4gy"]
 [ext_resource type="Script" path="res://Management/states/snake/snake_chase.gd" id="16_yplpm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyy75"]
@@ -404,7 +403,6 @@ floor_constant_speed = true
 script = ExtResource("1_ep4bx")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
-gravity_mult = 5.0
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(1.99999, 11.5)
@@ -493,11 +491,6 @@ animation = NodePath("../../Animations")
 
 [node name="SnakeDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
 script = ExtResource("14_q5to3")
-snake = NodePath("../..")
-animation = NodePath("../../Animations")
-
-[node name="SnakeFall" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
-script = ExtResource("15_cx4gy")
 snake = NodePath("../..")
 animation = NodePath("../../Animations")
 

@@ -3,7 +3,6 @@ extends CharacterBody2D
 @export var health_component: Node2D
 @export var attack_area: Area2D
 @export var direction: float
-@export var gravity_mult: float
 
 @onready var limit: Area2D = get_parent()
 @onready var texture: Sprite2D = $Texture
@@ -25,7 +24,6 @@ const CCA_POSITION: float = -48
 @onready var hit_state: State = $StateMachine/SnakeHit as SnakeHit
 @onready var idle_state: State = $StateMachine/SnakeIdle as SnakeIdle
 @onready var death_state: State = $StateMachine/SnakeDeath as SnakeDeath
-@onready var fall_state: State = $StateMachine/SnakeFall as SnakeFall
 @onready var chase_state: State = $StateMachine/SnakeChase as SnakeChase
 
 @onready var player_ref: CharacterBody2D
@@ -33,9 +31,9 @@ var can_attack_player: bool = false
 var player_on_limit: bool = false
 var is_attacking: bool = false
 
-var alive: bool = true
+var alive: bool = true 
 
-var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity_mult: float = 4
 
 func _ready():
 	pass

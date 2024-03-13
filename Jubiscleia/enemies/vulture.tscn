@@ -429,7 +429,7 @@ state = NodePath("VultureFly")
 [node name="VultureFly" type="Node" parent="StateMachine" node_paths=PackedStringArray("vulture", "animation")]
 script = ExtResource("10_fdy43")
 vulture = NodePath("../..")
-speed = 50.0
+speed = 100.0
 animation = NodePath("../../Animations")
 limit_offset = 22.0
 

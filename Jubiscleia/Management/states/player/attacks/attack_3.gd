@@ -9,7 +9,6 @@ var knockup_force: float
 
 var speed: float
 var direction: float
-var last_direction: float
 
 func _ready():
 	set_physics_process(false)
@@ -51,18 +50,8 @@ func _physics_process(_delta):
 	player.velocity.x = 0
 	player.direction = Input.get_axis("left","right")
 	
-	if direction != 0:
-		last_direction = direction
-	
 	if PlayerVariables.move:
-		player.velocity.x = speed * direction
-	
-	if player.health_component.is_getting_hit:
-		PlayerVariables.current_skill = ""
-		player.fsm.change_state(player.hit_state)
-	
-	if not player.alive:
-		player.fsm.change_state(player.death_state)
+		player.velocity.x = speed * player.last_direction
 
 func _on_animation_finished(anim):
 	if anim == PlayerVariables.last_skill + "_attack_3":

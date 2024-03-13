@@ -52,12 +52,6 @@ func _physics_process(_delta):
 	if PlayerVariables.move:
 		player.velocity.x = speed * direction
 	
-	if player.health_component.is_getting_hit:
-		player.fsm.change_state(player.hit_state)
-	
-	if not player.alive:
-		player.fsm.change_state(player.death_state)
-	
 	match PlayerVariables.last_skill:
 		"axe":
 			player.override_gravity = player.fall_gravity * 2

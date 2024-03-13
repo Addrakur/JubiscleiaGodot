@@ -9,6 +9,8 @@ var knockup_force: float
 var knockback_force: float
 var direction: float
 
+var anim_finish: bool = false
+
 func _ready():
 	set_physics_process(false)
 
@@ -28,12 +30,15 @@ func _physics_process(_delta):
 	
 	if scorpion.velocity > Vector2(0,0):
 		scorpion.velocity = Vector2(scorpion.velocity.x - scorpion.velocity.x * 0.05,scorpion.velocity.y - scorpion.velocity.y * 0.05)
-
-func _on_animation_finished(anim):
-	if anim == "hit":
+	
+	if scorpion.velocity <= Vector2(50,50) and anim_finish:
 		if scorpion.is_on_floor():
 			scorpion.health_component.is_getting_hit = false
 			scorpion.fsm.change_state(scorpion.idle_state)
+	
+func _on_animation_finished(anim):
+	if anim == "hit":
+		anim_finish = true
 
 func knockback():
 	scorpion.velocity = Vector2(knockback_force * direction, knockup_force)
