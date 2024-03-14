@@ -2,15 +2,19 @@ extends Node
 
 var player_max_life: float = 10
 var player_current_life: float
+var corruption_level: int = 0
+var hit_amount: int
+
 var player_alive: bool
 
 var current_skill: String
 var last_skill: String
 var skill_1: String = "axe" 
-var skill_2: String = "sword"
+var skill_2: String = "spear"
 
 var move: bool = false
 var my_knockup: bool = false
+
 
 var axe_1_damage: float = 3
 var axe_1_knockback: float = 80

@@ -16,7 +16,10 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	PlayerVariables.last_skill = PlayerVariables.current_skill
-	animation.play(PlayerVariables.current_skill + "_attack_3")
+	if PlayerVariables.corruption_level == 3:
+		animation.play(PlayerVariables.current_skill + "_attack_3_corrupted")
+	else:
+		animation.play(PlayerVariables.current_skill + "_attack_3")
 	player.can_combo = false
 
 	match PlayerVariables.current_skill:
