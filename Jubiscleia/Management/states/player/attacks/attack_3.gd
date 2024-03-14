@@ -57,6 +57,6 @@ func _physics_process(_delta):
 		player.velocity.x = speed * player.last_direction
 
 func _on_animation_finished(anim):
-	if anim == PlayerVariables.last_skill + "_attack_3":
+	if anim == PlayerVariables.last_skill + "_attack_3" or anim == PlayerVariables.last_skill + "_attack_3_corrupted":
 		player.fsm.change_state(player.idle_state)
  

@@ -12,6 +12,7 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var raycast_move_false: RayCast2D = $RayCastMoveFalse
 const RCMF_POSITION: float = 43
 @onready var dash_cooldown: Timer = $DashCooldown
+@onready var hit_timer: Timer = $HitTimer
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var idle_state: State = $StateMachine/Idle as PlayerIdle
@@ -57,6 +58,9 @@ func _ready():
 	#GameSettings.default_gravity = fall_gravity
 	
 func _process(_delta):
+	
+	corruption_manager()
+	
 	if not health_component.is_getting_hit:
 		flip()
 	
@@ -124,3 +128,15 @@ func direction_fix():
 	
 	if direction != 0:
 		last_direction = direction
+
+func corruption_manager():
+	if PlayerVariables.hit_amount > 50:
+		PlayerVariables.corruption_level = 3
+	elif PlayerVariables.hit_amount > 30:
+		PlayerVariables.corruption_level = 2
+	elif PlayerVariables.hit_amount > 10:
+		PlayerVariables.corruption_level = 1
+
+func hit_timer_timeout():
+	PlayerVariables.hit_amount = 0
+	PlayerVariables.corruption_level = 0

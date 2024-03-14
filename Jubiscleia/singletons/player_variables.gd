@@ -2,8 +2,8 @@ extends Node
 
 var player_max_life: float = 10
 var player_current_life: float
-var corruption_level: int = 0
-var hit_amount: int
+var corruption_level: float = 0
+var hit_amount: float
 
 var player_alive: bool
 
