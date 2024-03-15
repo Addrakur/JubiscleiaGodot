@@ -51,6 +51,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
 	PlayerVariables.player_alive = true
+	PlayerVariables.player_max_life = health_component.max_health
 	
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
 	jump_gravity = ((-2.0 * jump_height) / pow(jump_time_to_peak,2)) * -1
@@ -58,7 +59,7 @@ func _ready():
 	#GameSettings.default_gravity = fall_gravity
 	
 func _process(_delta):
-	
+	PlayerVariables.player_current_life = health_component.current_health
 	corruption_manager()
 	
 	if not health_component.is_getting_hit:
@@ -139,4 +140,7 @@ func corruption_manager():
 
 func hit_timer_timeout():
 	PlayerVariables.hit_amount = 0
-	PlayerVariables.corruption_level = 0
+	if health_component.current_health < health_component.max_health * 0.2:
+		PlayerVariables.corruption_level = 1
+	else:
+		PlayerVariables.corruption_level = 0

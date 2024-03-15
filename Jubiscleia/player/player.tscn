@@ -3063,7 +3063,7 @@ destroy_after_dead = true
 scale = Vector2(0.975359, 0.959556)
 enabled = false
 target_position = Vector2(43, 0)
-collision_mask = 256
+collision_mask = 260
 hit_from_inside = true
 
 [node name="DashCooldown" type="Timer" parent="."]

@@ -43,6 +43,7 @@ func enter_state() -> void:
 
 func exit_state() -> void:
 	set_physics_process(false)
+	player.override_gravity = 0
 	PlayerVariables.my_knockup = false
 	PlayerVariables.last_skill = ""
 
