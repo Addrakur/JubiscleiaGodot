@@ -23,8 +23,7 @@ func _physics_process(_delta):
 	if player.direction == 0:
 		player.fsm.change_state(player.idle_state)
 	
-	if Input.is_action_pressed("jump"):
-		player.jump_count += 1
+	if Input.is_action_pressed("jump") and player.jump_count < player.max_jump_count:
 		player.fsm.change_state(player.jump_state)
 	
 	if player.velocity.y > 0:

@@ -10,6 +10,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
+	player.jump_count += 1
 	animation.play("jump")
 	player.velocity.y = player.jump_velocity
 
