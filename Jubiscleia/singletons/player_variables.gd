@@ -5,7 +5,7 @@ var player_current_life: float
 var corruption_level: float = 0
 var hit_amount: float
 
-var player_alive: bool
+var player_alive: bool = true
 
 var current_skill: String
 var last_skill: String

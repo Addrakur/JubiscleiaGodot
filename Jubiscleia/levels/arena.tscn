@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqp1060wjlhfn"]
+[gd_scene load_steps=9 format=3 uid="uid://cqp1060wjlhfn"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_5moen"]
 [ext_resource type="TileSet" uid="uid://dsjlo105wabro" path="res://assets/Tileset/Ground.tres" id="2_khbs8"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bx4lmho2y840s" path="res://enemies/snake.tscn" id="4_7k5dd"]
 [ext_resource type="PackedScene" uid="uid://cv8owgy7v2lhb" path="res://enemies/enemy_limit.tscn" id="4_l7r3x"]
 [ext_resource type="PackedScene" uid="uid://crkl2utufgcrd" path="res://enemies/big_worm.tscn" id="5_7f5b2"]
+[ext_resource type="PackedScene" uid="uid://dx23ctyg8spen" path="res://enemies/spear_skeleton.tscn" id="5_lrqnb"]
 [ext_resource type="PackedScene" uid="uid://bysdn4i581jjc" path="res://enemies/scorpion.tscn" id="5_uusmp"]
 
 [node name="Arena" type="Node2D" node_paths=PackedStringArray("player", "camera_polygon")]
@@ -38,6 +39,12 @@ direction = -1.0
 visible = false
 color = Color(1, 1, 1, 0.0588235)
 polygon = PackedVector2Array(192, 352, 192, 448, 1088, 448, 1088, 352)
+
+[node name="SpearSkeleton" parent="Limit4" instance=ExtResource("5_lrqnb")]
+position = Vector2(480, 416)
+
+[node name="SpearSkeleton2" parent="Limit4" instance=ExtResource("5_lrqnb")]
+position = Vector2(960, 416)
 
 [node name="Limit3" parent="." node_paths=PackedStringArray("limit_polygon") instance=ExtResource("4_l7r3x")]
 limit_polygon = NodePath("LimitPolygon")

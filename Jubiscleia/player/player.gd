@@ -52,6 +52,7 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	PlayerVariables.player_alive = true
 	PlayerVariables.player_max_life = health_component.max_health
+	PlayerVariables.player_current_life = health_component.current_health
 	
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
 	jump_gravity = ((-2.0 * jump_height) / pow(jump_time_to_peak,2)) * -1
