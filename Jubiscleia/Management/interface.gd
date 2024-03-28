@@ -5,7 +5,6 @@ extends CanvasLayer
 @onready var hp_bar: TextureProgressBar = $PlayerUI/HP
 @onready var corruption_control: Label =  $PlayerUI/CorruptionControl
 @onready var hit_counter: Label = $PlayerUI/HitCounter
-@onready var hit_timer: Label = $PlayerUI/HitTimer
 
 
 
@@ -15,9 +14,7 @@ func _ready() -> void:
 
 func _process(_delta):
 	hp_bar.value = health_component.current_health
-	var hit_text = "%.1f" % player.hit_timer.time_left
 	
 	corruption_control.text = "Corruption: " + str(PlayerVariables.corruption_level)
 	hit_counter.text = "Hit: " + str(PlayerVariables.hit_amount)
-	hit_timer.text = hit_text
 	

@@ -52,11 +52,3 @@ offset_top = 48.0
 offset_right = 202.0
 offset_bottom = 74.0
 text = "Hit: 0"
-
-[node name="HitTimer" type="Label" parent="PlayerUI"]
-layout_mode = 0
-offset_left = 144.0
-offset_top = 80.0
-offset_right = 184.0
-offset_bottom = 103.0
-text = "Time: "

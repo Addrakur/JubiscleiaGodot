@@ -92,9 +92,6 @@ position = Vector2(2304, 339)
 direction = 1.0
 normal_or_fire = "normal"
 
-[node name="SpearSkeleton" parent="Enemies/Limit4" instance=ExtResource("4_a4q24")]
-position = Vector2(2240, 640)
-
 [node name="Limit6" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("3_v6kio")]
 limit_polygon = NodePath("Polygon2D")
 
@@ -110,6 +107,9 @@ polygon = PackedVector2Array(2048, 672, 2656, 672, 2656, 576, 2048, 576)
 [node name="Snake" parent="Enemies/Limit6" instance=ExtResource("4_jp6h7")]
 position = Vector2(2464, 640)
 direction = 1.0
+
+[node name="SpearSkeleton" parent="Enemies/Limit6" instance=ExtResource("4_a4q24")]
+position = Vector2(2240, 640)
 
 [node name="Limit5" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("3_v6kio")]
 limit_polygon = NodePath("Polygon2D")

@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var health_component: Node2D
 
 @onready var animation: AnimationPlayer = $Animations
+@onready var corruption_animation: AnimationPlayer = $AuraAnimations
 @onready var texture: Sprite2D = $Texture
 @onready var camera: Camera2D = $Camera
 @onready var attack_area_polygon: CollisionPolygon2D = $AttackArea/AttackArea
@@ -132,16 +133,37 @@ func direction_fix():
 		last_direction = direction
 
 func corruption_manager():
-	if PlayerVariables.hit_amount > 50:
+	if PlayerVariables.hit_amount > 20:
 		PlayerVariables.corruption_level = 3
-	elif PlayerVariables.hit_amount > 30:
+	elif PlayerVariables.hit_amount > 15:
 		PlayerVariables.corruption_level = 2
 	elif PlayerVariables.hit_amount > 10:
 		PlayerVariables.corruption_level = 1
+	
+	if PlayerVariables.corruption_level == 3:
+		if hit_timer.time_left <= 4:
+			corruption_animation.play("losing_level_3")
+		else:
+			corruption_animation.play("corruption_level_3")
+		
+	elif PlayerVariables.corruption_level == 2 or PlayerVariables.corruption_level == 1:
+		if hit_timer.time_left <= 4:
+			corruption_animation.play("losing_level_" + str(PlayerVariables.corruption_level))
+		elif PlayerVariables.hit_amount >= PlayerVariables.get("corruption_" + str(PlayerVariables.corruption_level + 1) + "_requirement") - 3:
+			corruption_animation.play("level_up_" + str(PlayerVariables.corruption_level))
+		else:
+			corruption_animation.play("corruption_level_" + str(PlayerVariables.corruption_level))
+		
+	else:
+		if PlayerVariables.hit_amount >= PlayerVariables.corruption_1_requirement - 3:
+			corruption_animation.play("level_up_0")
+		else:
+			corruption_animation.play("corruption_level_0")
+		
 
 func hit_timer_timeout():
 	PlayerVariables.hit_amount = 0
-	if health_component.current_health < health_component.max_health * 0.2:
+	if health_component.current_health < health_component.max_health * 0.5:
 		PlayerVariables.corruption_level = 1
 	else:
 		PlayerVariables.corruption_level = 0
