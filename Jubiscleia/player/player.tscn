@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=103 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="Script" path="res://player/Camera.gd" id="2_4f3vw"]
@@ -56,6 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://cnnbsrt8vsfs6" path="res://assets/player/corruption_aura/leveling_aura_level_0_to_1.png" id="51_q7g3k"]
 [ext_resource type="Texture2D" uid="uid://bojqd4smwwf3q" path="res://assets/player/corruption_aura/leveling_aura_level_1_to_2.png" id="52_ca32i"]
 [ext_resource type="Texture2D" uid="uid://benkfmoun1eu5" path="res://assets/player/corruption_aura/leveling_aura_level_2_to_3.png" id="53_swf0x"]
+[ext_resource type="Script" path="res://player/CorruptionManager.gd" id="57_em6cc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttoyg"]
 size = Vector2(17, 28)
@@ -3575,20 +3576,23 @@ script = ExtResource("25_wysx4")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 
-[node name="PlayerAttack1" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
+[node name="PlayerAttack1" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation", "attack_area")]
 script = ExtResource("41_621kb")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
+attack_area = NodePath("../../AttackArea/AttackArea")
 
-[node name="PlayerAttack2" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
+[node name="PlayerAttack2" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation", "attack_area")]
 script = ExtResource("42_ebned")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
+attack_area = NodePath("../../AttackArea/AttackArea")
 
-[node name="PlayerAttack3" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
+[node name="PlayerAttack3" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation", "attack_area")]
 script = ExtResource("43_nthil")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
+attack_area = NodePath("../../AttackArea/AttackArea")
 
 [node name="PlayerJumpAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("38_vuiip")
@@ -3675,10 +3679,24 @@ one_shot = true
 wait_time = 10.0
 one_shot = true
 
+[node name="CorruptionManager" type="Node2D" parent="." node_paths=PackedStringArray("player", "hit_timer", "animation")]
+script = ExtResource("57_em6cc")
+player = NodePath("..")
+hit_timer = NodePath("../HitTimer")
+animation = NodePath("../AuraAnimations")
+max_level = 3.0
+hit_0_to_1 = 15.0
+hit_1_to_2 = 10.0
+hit_2_to_3 = 10.0
+sec_0 = 20.0
+sec_1 = 15.0
+sec_2 = 10.0
+sec_3 = 5.0
+
 [connection signal="animation_finished" from="Animations" to="StateMachine/Hit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/PlayerAttack1" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/PlayerAttack2" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/PlayerAttack3" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/PlayerJumpAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/PlayerDash" method="_on_animation_finished"]
-[connection signal="timeout" from="HitTimer" to="." method="hit_timer_timeout"]
+[connection signal="timeout" from="HitTimer" to="CorruptionManager" method="hit_timer_timeout"]

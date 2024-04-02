@@ -21,7 +21,7 @@ func on_body_entered(body):
 		body.health_component.update_health(damage)
 		if parent.name == "Player":
 			PlayerVariables.hit_amount += 1
-			parent.hit_timer.start()
+			parent.corruption_manager.hit_timer.start()
 				
 			if PlayerVariables.my_knockup == true:
 				parent.velocity.y = PlayerVariables.spear_jump_my_knockup
@@ -39,7 +39,6 @@ func on_body_entered(body):
 	
 	elif body.is_in_group("terrain") and destroy_on_terrain:
 		parent.queue_free()
-	
 	
 	if one_hit_destroy:
 		parent.queue_free()

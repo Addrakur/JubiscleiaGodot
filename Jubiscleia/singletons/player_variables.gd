@@ -5,10 +5,6 @@ var player_current_life: float
 var corruption_level: float = 0
 var hit_amount: float
 
-var corruption_1_requirement: float = 10
-var corruption_2_requirement: float = 15
-var corruption_3_requirement: float = 20
-
 var player_alive: bool = true
 
 var current_skill: String

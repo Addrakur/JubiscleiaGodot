@@ -126,7 +126,7 @@ direction = -1.0
 y = -656.0
 
 [node name="Player" parent="." instance=ExtResource("2_uw1h1")]
-position = Vector2(2496, -288)
+position = Vector2(-96, 0)
 
 [node name="Plataforms" type="Node2D" parent="."]
 

@@ -3,6 +3,7 @@ extends State
 
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
+@export var attack_area: CollisionPolygon2D
 var damage: float
 var knockback_force: float
 var knockup_force: float
@@ -48,6 +49,7 @@ func exit_state() -> void:
 	set_physics_process(false)
 	PlayerVariables.last_skill = ""
 	PlayerVariables.move = false
+	attack_area.disabled = true
 
 func _physics_process(_delta):
 	player.velocity.x = 0
