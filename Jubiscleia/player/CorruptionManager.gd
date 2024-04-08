@@ -29,7 +29,7 @@ func _process(_delta):
 	level_manager()
 	animation_manager()
 	
-	print(hit_timer.time_left)
+	#print(hit_timer.time_left)
 	
 
 func hit_timer_timeout():
@@ -50,7 +50,7 @@ func corruption_upgrade():
 	if PlayerVariables.corruption_level < max_level:
 		set_target_hit_count()
 	
-	print("upgrade")
+	#print("upgrade")
 
 func corruption_downgrade():
 	PlayerVariables.corruption_level -= 1
@@ -59,7 +59,7 @@ func corruption_downgrade():
 		set_target_hit_count()
 		hit_timer.start()
 	
-	print("downgrade")
+	#print("downgrade")
 
 func set_target_hit_count():
 	target_hit_count = PlayerVariables.hit_amount + get("hit_" + str(PlayerVariables.corruption_level) + "_to_" + str(PlayerVariables.corruption_level + 1))
