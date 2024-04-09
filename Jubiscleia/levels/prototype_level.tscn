@@ -46,6 +46,7 @@ position = Vector2(1280, 608)
 direction = -1.0
 
 [node name="Polygon2D" type="Polygon2D" parent="Enemies/Limit2"]
+visible = false
 color = Color(1, 1, 1, 0.176471)
 polygon = PackedVector2Array(1184, 544, 1184, 640, 1376, 640, 1376, 544)
 

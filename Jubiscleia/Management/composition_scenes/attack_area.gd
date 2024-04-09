@@ -19,7 +19,7 @@ func _ready():
 func on_body_entered(body):
 	if body.is_in_group(target) and not body.health_component.invulnerable and body.alive:
 		body.health_component.update_health(damage)
-		if parent.name == "Player":
+		if parent.is_in_group("player"):
 			PlayerVariables.hit_amount += 1
 			parent.corruption_manager.hit_timer.start()
 				
@@ -35,6 +35,9 @@ func on_body_entered(body):
 			body.fsm.change_state(body.idle_state)
 			body.fsm.change_state(body.hit_state)
 			
+		
+		if body.is_in_group("player"):
+			body.corruption_manager.time_penalty()
 	
 	
 	elif body.is_in_group("terrain") and destroy_on_terrain:

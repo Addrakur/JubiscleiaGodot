@@ -29,7 +29,7 @@ func _process(_delta):
 	level_manager()
 	animation_manager()
 	
-	#print(hit_timer.time_left)
+	#print(int(hit_timer.time_left))
 	
 
 func hit_timer_timeout():
@@ -66,6 +66,7 @@ func set_target_hit_count():
 
 func set_hit_timer():
 	hit_timer.wait_time = get("sec_" + str(PlayerVariables.corruption_level))
+	print(hit_timer.wait_time)
 
 func animation_manager():
 	if hit_timer.time_left <= 3 and PlayerVariables.corruption_level != base_level:
@@ -74,3 +75,11 @@ func animation_manager():
 		animation.play("level_up_" + str(PlayerVariables.corruption_level))
 	else:
 		animation.play("corruption_level_" + str(PlayerVariables.corruption_level))
+
+func time_penalty():
+	if hit_timer.time_left > 3:
+		hit_timer.wait_time = hit_timer.time_left - 3
+	else:
+		hit_timer.wait_time = 0.01
+	hit_timer.start()
+	set_hit_timer()
