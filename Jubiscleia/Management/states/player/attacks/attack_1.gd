@@ -16,11 +16,10 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
+	PlayerVariables.player_attacking = true
 	PlayerVariables.last_skill = PlayerVariables.current_skill
-	if PlayerVariables.corruption_level >= 1:
-		animation.play(PlayerVariables.current_skill + "_attack_1_corrupted")
-	else:
-		animation.play(PlayerVariables.current_skill + "_attack_1")
+	animation.play(PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_1")
+
 	player.can_combo = false
 
 	match PlayerVariables.current_skill:
@@ -47,6 +46,7 @@ func enter_state() -> void:
 
 func exit_state() -> void:
 	set_physics_process(false)
+	PlayerVariables.player_attacking = false
 	PlayerVariables.last_skill = ""
 	PlayerVariables.move = false
 	attack_area.disabled = true

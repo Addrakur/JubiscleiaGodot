@@ -16,11 +16,9 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
+	PlayerVariables.player_attacking = true
 	PlayerVariables.last_skill = PlayerVariables.current_skill
-	if PlayerVariables.corruption_level == 3:
-		animation.play(PlayerVariables.current_skill + "_attack_3_corrupted")
-	else:
-		animation.play(PlayerVariables.current_skill + "_attack_3")
+	animation.play(PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_3")
 	player.can_combo = false
 
 	match PlayerVariables.current_skill:
@@ -29,6 +27,8 @@ func enter_state() -> void:
 			knockback_force = PlayerVariables.axe_3_knockback
 			knockup_force = PlayerVariables.axe_3_knockup
 		"sword":
+			speed = PlayerVariables.sword_3_speed
+			direction = player.last_direction
 			damage = PlayerVariables.sword_3_damage
 			knockback_force = PlayerVariables.sword_3_knockback
 			knockup_force = PlayerVariables.sword_3_knockup
@@ -47,6 +47,7 @@ func enter_state() -> void:
 
 func exit_state() -> void:
 	set_physics_process(false)
+	PlayerVariables.player_attacking = false
 	PlayerVariables.last_skill = ""
 	PlayerVariables.move = false
 	attack_area.disabled = true

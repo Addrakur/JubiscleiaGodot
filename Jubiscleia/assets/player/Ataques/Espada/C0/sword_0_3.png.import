@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://610l1pkwwste"
-path="res://.godot/imported/player_attack.png-0af7dce842d1c697a05378aecb71f4af.ctex"
+uid="uid://qrwri5x1m2jj"
+path="res://.godot/imported/sword_0_3.png-fbaf3aff11715ea377681aad8cd8ec93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/player_attack.png"
-dest_files=["res://.godot/imported/player_attack.png-0af7dce842d1c697a05378aecb71f4af.ctex"]
+source_file="res://assets/player/Ataques/Espada/C0/sword_0_3.png"
+dest_files=["res://.godot/imported/sword_0_3.png-fbaf3aff11715ea377681aad8cd8ec93.ctex"]
 
 [params]
 

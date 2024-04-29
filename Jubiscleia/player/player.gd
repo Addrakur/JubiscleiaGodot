@@ -62,7 +62,7 @@ func _ready():
 func _process(_delta):
 	PlayerVariables.player_current_life = health_component.current_health
 	
-	if not health_component.is_getting_hit:
+	if not health_component.is_getting_hit and not PlayerVariables.player_attacking:
 		flip()
 	
 	if not alive:

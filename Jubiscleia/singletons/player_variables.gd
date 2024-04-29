@@ -6,10 +6,11 @@ var corruption_level: float = 0
 var hit_amount: float
 
 var player_alive: bool = true
+var player_attacking: bool = false
 
 var current_skill: String
 var last_skill: String
-var skill_1: String = "axe" 
+var skill_1: String = "sword" 
 var skill_2: String = "spear"
 
 var move: bool = false
@@ -37,15 +38,17 @@ var axe_jump_knockup: float = -150
 var sword_1_damage: float = 2
 var sword_1_knockback: float = 0
 var sword_1_knockup: float = 0
-var sword_1_speed: float = 250
+var sword_1_speed: float = 400
 
 var sword_2_damage: float = 3
 var sword_2_knockback: float = 0
 var sword_2_knockup: float = 0
+var sword_2_speed: float = -400
 
 var sword_3_damage: float = 4
 var sword_3_knockback: float = 0
-var sword_3_knockup: float = -1600
+var sword_3_knockup: float = 0
+var sword_3_speed: float = 400
 
 var sword_jump_damage: float = 2
 var sword_jump_knockback: float = 0
