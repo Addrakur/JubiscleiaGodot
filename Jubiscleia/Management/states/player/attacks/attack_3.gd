@@ -23,6 +23,8 @@ func enter_state() -> void:
 
 	match PlayerVariables.current_skill:
 		"axe":
+			speed = PlayerVariables.axe_3_speed
+			direction = player.last_direction
 			damage = PlayerVariables.axe_3_damage
 			knockback_force = PlayerVariables.axe_3_knockback
 			knockup_force = PlayerVariables.axe_3_knockup
