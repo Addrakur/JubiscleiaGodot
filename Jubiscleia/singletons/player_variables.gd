@@ -16,45 +16,119 @@ var skill_2: String = "axe"
 var move: bool = false
 var my_knockup: bool = false
 
-
-var axe_1_damage: float = 3
-var axe_1_knockback: float = 80
-var axe_1_knockup: float = -20
 var axe_1_speed: float = 400
-
-var axe_2_damage: float = 4
-var axe_2_knockback: float = 0
-var axe_2_knockup: float = 0
 var axe_2_speed: float = 400
-
-var axe_3_damage: float = 6
-var axe_3_knockback: float = 300
-var axe_3_knockup: float = -150
 var axe_3_speed: float = 400
+
+var axe_0_1_damage: float = 3
+var axe_0_1_knockback: float = 100
+var axe_0_1_knockup: float = -20
+
+var axe_0_2_damage: float = 4
+var axe_0_2_knockback: float = 100
+var axe_0_2_knockup: float = 0
+
+var axe_0_3_damage: float = 6
+var axe_0_3_knockback: float = 300
+var axe_0_3_knockup: float = -150
+
+var axe_1_1_damage: float = 4
+var axe_1_1_knockback: float = 80
+var axe_1_1_knockup: float = -20
+
+var axe_1_2_damage: float = 6
+var axe_1_2_knockback: float = 0
+var axe_1_2_knockup: float = 0
+
+var axe_1_3_damage: float = 8
+var axe_1_3_knockback: float = 300
+var axe_1_3_knockup: float = -150
+
+var axe_2_1_damage: float = 5
+var axe_2_1_knockback: float = 80
+var axe_2_1_knockup: float = -20
+
+var axe_2_2_damage: float = 8
+var axe_2_2_knockback: float = 0
+var axe_2_2_knockup: float = 0
+
+var axe_2_3_damage: float = 10
+var axe_2_3_knockback: float = 300
+var axe_2_3_knockup: float = -150
+
+var axe_3_1_damage: float = 6
+var axe_3_1_knockback: float = 80
+var axe_3_1_knockup: float = -20
+
+var axe_3_2_damage: float = 10
+var axe_3_2_knockback: float = 0
+var axe_3_2_knockup: float = 0
+
+var axe_3_3_damage: float = 12
+var axe_3_3_knockback: float = 300
+var axe_3_3_knockup: float = -150
 
 var axe_jump_damage: float = 5
 var axe_jump_knockback: float = 300
 var axe_jump_knockup: float = -150
 
 
-var sword_1_damage: float = 2
-var sword_1_knockback: float = 0
-var sword_1_knockup: float = 0
 var sword_1_speed: float = 400
-
-var sword_2_damage: float = 3
-var sword_2_knockback: float = 0
-var sword_2_knockup: float = 0
 var sword_2_speed: float = -400
-
-var sword_3_damage: float = 4
-var sword_3_knockback: float = 0
-var sword_3_knockup: float = 0
 var sword_3_speed: float = 400
+
+var sword_0_1_damage: float = 2
+var sword_0_1_knockback: float = 0
+var sword_0_1_knockup: float = 0
+
+var sword_0_2_damage: float = 3
+var sword_0_2_knockback: float = 0
+var sword_0_2_knockup: float = 0
+
+var sword_0_3_damage: float = 4
+var sword_0_3_knockback: float = 0
+var sword_0_3_knockup: float = 0
+
+var sword_1_1_damage: float = 2
+var sword_1_1_knockback: float = 0
+var sword_1_1_knockup: float = 0
+
+var sword_1_2_damage: float = 3
+var sword_1_2_knockback: float = 0
+var sword_1_2_knockup: float = 0
+
+var sword_1_3_damage: float = 4
+var sword_1_3_knockback: float = 0
+var sword_1_3_knockup: float = 0
+
+var sword_2_1_damage: float = 2
+var sword_2_1_knockback: float = 0
+var sword_2_1_knockup: float = 0
+
+var sword_2_2_damage: float = 3
+var sword_2_2_knockback: float = 0
+var sword_2_2_knockup: float = 0
+
+var sword_2_3_damage: float = 4
+var sword_2_3_knockback: float = 0
+var sword_2_3_knockup: float = 0
+
+var sword_3_1_damage: float = 2
+var sword_3_1_knockback: float = 0
+var sword_3_1_knockup: float = 0
+
+var sword_3_2_damage: float = 3
+var sword_3_2_knockback: float = 0
+var sword_3_2_knockup: float = 0
+
+var sword_3_3_damage: float = 4
+var sword_3_3_knockback: float = 0
+var sword_3_3_knockup: float = 0
 
 var sword_jump_damage: float = 2
 var sword_jump_knockback: float = 0
 var sword_jump_knockup: float = 0
+
 
 
 var spear_1_damage: float = 3

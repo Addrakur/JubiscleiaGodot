@@ -22,23 +22,11 @@ func enter_state() -> void:
 
 	player.can_combo = false
 
-	match PlayerVariables.current_skill:
-		"axe":
-			speed = PlayerVariables.axe_1_speed
-			direction = player.last_direction
-			damage = PlayerVariables.axe_1_damage
-			knockback_force = PlayerVariables.axe_1_knockback
-			knockup_force = PlayerVariables.axe_1_knockup
-		"sword":
-			speed = PlayerVariables.sword_1_speed
-			direction = player.last_direction
-			damage = PlayerVariables.sword_1_damage
-			knockback_force = PlayerVariables.sword_1_knockback
-			knockup_force = PlayerVariables.sword_1_knockup
-		"spear":
-			damage = PlayerVariables.spear_1_damage
-			knockback_force = PlayerVariables.spear_1_knockback
-			knockup_force = PlayerVariables.spear_1_knockup
+	direction = player.last_direction
+	speed = PlayerVariables.get(str(PlayerVariables.current_skill) + "_1_speed")
+	damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_1_damage")
+	knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_1_knockback")
+	knockup_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_1_knockup")
 	
 	player.attack_area.damage = damage
 	player.attack_area.knockback_force = knockback_force

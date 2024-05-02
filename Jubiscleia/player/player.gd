@@ -46,6 +46,8 @@ var can_combo: bool
 var direction: float
 var last_direction: float = 1
 
+var sword_projectile = preload("res://player/sword_projectile.tscn")
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 

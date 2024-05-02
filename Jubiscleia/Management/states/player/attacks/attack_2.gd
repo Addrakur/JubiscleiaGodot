@@ -21,23 +21,11 @@ func enter_state() -> void:
 	animation.play(PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_2")
 	player.can_combo = false
 
-	match PlayerVariables.current_skill:
-		"axe":
-			speed = PlayerVariables.axe_2_speed
-			direction = player.last_direction
-			damage = PlayerVariables.axe_2_damage
-			knockback_force = PlayerVariables.axe_2_knockback
-			knockup_force = PlayerVariables.axe_2_knockup
-		"sword":
-			speed = PlayerVariables.sword_2_speed
-			direction = player.last_direction
-			damage = PlayerVariables.sword_2_damage
-			knockback_force = PlayerVariables.sword_2_knockback
-			knockup_force = PlayerVariables.sword_2_knockup
-		"spear":
-			damage = PlayerVariables.spear_2_damage
-			knockback_force = PlayerVariables.spear_2_knockback
-			knockup_force = PlayerVariables.spear_2_knockup
+	direction = player.last_direction
+	speed = PlayerVariables.get(str(PlayerVariables.current_skill) + "_2_speed")
+	damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_2_damage")
+	knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_2_knockback")
+	knockup_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_2_knockup")
 	
 	player.attack_area.damage = damage
 	player.attack_area.knockback_force = knockback_force
