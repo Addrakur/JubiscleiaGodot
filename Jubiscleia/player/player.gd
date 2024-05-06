@@ -11,6 +11,8 @@ extends CharacterBody2D
 const ATTACK_AREA_POSITION: float = 39
 @onready var raycast_move_false: RayCast2D = $RayCastMoveFalse
 const RCMF_POSITION: float = 43
+@onready var sword_projectile_spawn_point: Marker2D = $SwordProjectileSpawnPoint
+const SPSP_POSITION: float = 42
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var corruption_manager: Node2D = $CorruptionManager
 
@@ -87,7 +89,6 @@ func _physics_process(delta):
 	if raycast_move_false.is_colliding():
 		move_false()
 
-
 func get_gravity():
 	if override_gravity == 0:
 		if velocity.y < 0:
@@ -99,16 +100,18 @@ func get_gravity():
 	
 
 func flip() -> void:
-	if velocity.x > 0:
+	if direction > 0:
 		texture.flip_h = false
 		attack_area_polygon.position.x = ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = 1
 		raycast_move_false.target_position.x = RCMF_POSITION
-	elif velocity.x < 0:
+		sword_projectile_spawn_point.position.x = SPSP_POSITION
+	elif direction < 0:
 		texture.flip_h = true
 		attack_area_polygon.position.x = -ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = -1
 		raycast_move_false.target_position.x = -RCMF_POSITION
+		sword_projectile_spawn_point.position.x = -SPSP_POSITION
 
 func can_combo_true() -> void: #Vinculado aos ataques
 	can_combo = true
@@ -131,3 +134,9 @@ func direction_fix():
 	
 	if direction != 0:
 		last_direction = direction
+
+func spawn_sword_projectile():
+	var proj_inst = sword_projectile.instantiate()
+	add_child(proj_inst)
+	proj_inst.position = sword_projectile_spawn_point.global_position
+	proj_inst.direction = last_direction

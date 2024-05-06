@@ -112,6 +112,7 @@ var sword_2_2_knockup: float = 0
 var sword_2_3_damage: float = 4
 var sword_2_3_knockback: float = 0
 var sword_2_3_knockup: float = 0
+var sword_2_3_Projectile_damage: float = 4
 
 var sword_3_1_damage: float = 2
 var sword_3_1_knockback: float = 0
@@ -124,6 +125,7 @@ var sword_3_2_knockup: float = 0
 var sword_3_3_damage: float = 4
 var sword_3_3_knockback: float = 0
 var sword_3_3_knockup: float = 0
+var sword_3_3_Projectile_damage: float = 4
 
 var sword_jump_damage: float = 2
 var sword_jump_knockback: float = 0

@@ -66,7 +66,7 @@ func set_target_hit_count():
 
 func set_hit_timer():
 	hit_timer.wait_time = get("sec_" + str(PlayerVariables.corruption_level))
-	print(hit_timer.wait_time)
+	#print(hit_timer.wait_time)
 
 func animation_manager():
 	if hit_timer.time_left <= 3 and PlayerVariables.corruption_level != base_level:
