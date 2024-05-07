@@ -48,7 +48,7 @@ var can_combo: bool
 var direction: float
 var last_direction: float = 1
 
-var sword_projectile = preload("res://player/sword_projectile.tscn")
+var projectile = preload("res://player/player_attack_projectile.tscn")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -135,8 +135,8 @@ func direction_fix():
 	if direction != 0:
 		last_direction = direction
 
-func spawn_sword_projectile():
-	var proj_inst = sword_projectile.instantiate()
-	add_child(proj_inst)
-	proj_inst.position = sword_projectile_spawn_point.global_position
-	proj_inst.direction = last_direction
+func spawn_attack_projectile():
+	var proj = projectile.instantiate()
+	add_child(proj)
+	proj.position = sword_projectile_spawn_point.global_position
+	proj.direction = last_direction

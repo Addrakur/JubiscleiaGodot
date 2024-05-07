@@ -19,6 +19,7 @@ func enter_state() -> void:
 	PlayerVariables.player_attacking = true
 	PlayerVariables.last_skill = PlayerVariables.current_skill
 	animation.play(PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_3")
+	PlayerVariables.current_attack = PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_3"
 	player.can_combo = false
 
 	direction = player.last_direction
@@ -48,6 +49,6 @@ func _physics_process(_delta):
 		player.velocity.x = speed * player.last_direction
 
 func _on_animation_finished(anim):
-	if anim == PlayerVariables.last_skill + "_attack_3" or anim == PlayerVariables.last_skill + "_attack_3_corrupted":
+	if anim == PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_3":
 		player.fsm.change_state(player.idle_state)
  

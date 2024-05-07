@@ -19,7 +19,7 @@ func enter_state() -> void:
 	PlayerVariables.player_attacking = true
 	PlayerVariables.last_skill = PlayerVariables.current_skill
 	animation.play(PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_1")
-
+	PlayerVariables.current_attack = PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_1"
 	player.can_combo = false
 
 	direction = player.last_direction
@@ -39,6 +39,7 @@ func exit_state() -> void:
 	PlayerVariables.player_attacking = false
 	PlayerVariables.last_skill = ""
 	PlayerVariables.move = false
+	PlayerVariables.current_attack = ""
 	attack_area.disabled = true
 
 func _physics_process(_delta):
@@ -61,6 +62,6 @@ func _physics_process(_delta):
 		PlayerVariables.current_skill = ""
 
 func _on_animation_finished(anim):
-	if anim == PlayerVariables.last_skill + "_attack_1" or anim == PlayerVariables.last_skill + "_attack_1_corrupted":
+	if anim == PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_1":
 		player.fsm.change_state(player.idle_state)
  
