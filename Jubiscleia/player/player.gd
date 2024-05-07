@@ -13,6 +13,8 @@ const ATTACK_AREA_POSITION: float = 39
 const RCMF_POSITION: float = 43
 @onready var sword_projectile_spawn_point: Marker2D = $SwordProjectileSpawnPoint
 const SPSP_POSITION: float = 42
+@onready var spear_burst_spawn_point = $SpearBurstSpawnPoint
+const SBSP_POSITION: float = 57
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var corruption_manager: Node2D = $CorruptionManager
 
@@ -49,6 +51,7 @@ var direction: float
 var last_direction: float = 1
 
 var projectile = preload("res://player/player_attack_projectile.tscn")
+var spear_burst = preload("res://player/player_spear_burst.tscn")
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -106,12 +109,14 @@ func flip() -> void:
 		attack_area_polygon.scale.x = 1
 		raycast_move_false.target_position.x = RCMF_POSITION
 		sword_projectile_spawn_point.position.x = SPSP_POSITION
+		spear_burst_spawn_point.position.x = SBSP_POSITION
 	elif direction < 0:
 		texture.flip_h = true
 		attack_area_polygon.position.x = -ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = -1
 		raycast_move_false.target_position.x = -RCMF_POSITION
 		sword_projectile_spawn_point.position.x = -SPSP_POSITION
+		spear_burst_spawn_point.position.x = -SBSP_POSITION
 
 func can_combo_true() -> void: #Vinculado aos ataques
 	can_combo = true
@@ -140,3 +145,9 @@ func spawn_attack_projectile():
 	add_child(proj)
 	proj.position = sword_projectile_spawn_point.global_position
 	proj.direction = last_direction
+
+func spawn_spear_burst():
+	var burst = spear_burst.instantiate()
+	add_child(burst)
+	burst.position = spear_burst_spawn_point.global_position
+	burst.direction = last_direction

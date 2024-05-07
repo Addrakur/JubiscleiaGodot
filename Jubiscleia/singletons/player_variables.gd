@@ -160,6 +160,7 @@ var spear_1_1_knockup: float = 0
 var spear_1_2_damage: float = 4
 var spear_1_2_knockback: float = 200
 var spear_1_2_knockup: float = -100
+var spear_1_2_burst_damage: float = 1
 
 var spear_1_3_damage: float = 5
 var spear_1_3_knockback: float = 0
@@ -174,6 +175,7 @@ var spear_2_1_knockup: float = 0
 var spear_2_2_damage: float = 4
 var spear_2_2_knockback: float = 200
 var spear_2_2_knockup: float = -100
+var spear_2_2_burst_damage: float = 3
 
 var spear_2_3_damage: float = 5
 var spear_2_3_knockback: float = 0
@@ -188,6 +190,7 @@ var spear_3_1_knockup: float = 0
 var spear_3_2_damage: float = 4
 var spear_3_2_knockback: float = 200
 var spear_3_2_knockup: float = -100
+var spear_3_2_burst_damage: float = 5
 
 var spear_3_3_damage: float = 5
 var spear_3_3_knockback: float = 0
