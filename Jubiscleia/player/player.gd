@@ -66,6 +66,8 @@ func _ready():
 	#GameSettings.default_gravity = fall_gravity
 	
 func _process(_delta):
+	direction = Input.get_axis("left","right")
+	
 	PlayerVariables.player_current_life = health_component.current_health
 	
 	if not health_component.is_getting_hit and not PlayerVariables.player_attacking:
@@ -86,7 +88,8 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	if alive:
 		move_and_slide()
-		direction_fix()
+		if not PlayerVariables.player_attacking:
+			direction_fix()
 	
 	if raycast_move_false.is_colliding():
 		move_false()

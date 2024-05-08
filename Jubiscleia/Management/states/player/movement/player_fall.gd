@@ -15,7 +15,6 @@ func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(_delta):
-	player.direction = Input.get_axis("left","right")
 	player.velocity.x = player.direction * speed
 	
 	if player.velocity.y > 0:
