@@ -12,7 +12,7 @@ func _ready():
 	attack_area.damage = PlayerVariables.get(PlayerVariables.current_attack + "_burst_damage")
 	anim_name = PlayerVariables.current_attack
 
-func _process(delta):
+func _process(_delta):
 	if direction == -1:
 		texture.flip_h = true
 		collision_area.scale.x = -1

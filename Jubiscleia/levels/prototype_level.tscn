@@ -33,7 +33,7 @@ limit_polygon = NodePath("Polygon2D")
 [node name="Polygon2D" type="Polygon2D" parent="Enemies/Limit"]
 visible = false
 color = Color(1, 0, 0, 0.137255)
-polygon = PackedVector2Array(576, 160, 576, 256, 928, 256, 928, 160)
+polygon = PackedVector2Array(608, 160, 608, 256, 928, 256, 928, 160)
 
 [node name="SpearSkeleton" parent="Enemies/Limit" instance=ExtResource("4_a4q24")]
 position = Vector2(736, 224)

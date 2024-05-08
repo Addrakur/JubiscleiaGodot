@@ -11,10 +11,9 @@ extends CharacterBody2D
 const ATTACK_AREA_POSITION: float = 39
 @onready var raycast_move_false: RayCast2D = $RayCastMoveFalse
 const RCMF_POSITION: float = 43
-@onready var sword_projectile_spawn_point: Marker2D = $SwordProjectileSpawnPoint
-const SPSP_POSITION: float = 42
-@onready var spear_burst_spawn_point = $SpearBurstSpawnPoint
-const SBSP_POSITION: float = 57
+@onready var attack_spawn_point = $AttackSpawnPoint
+
+
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var corruption_manager: Node2D = $CorruptionManager
 
@@ -108,15 +107,11 @@ func flip() -> void:
 		attack_area_polygon.position.x = ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = 1
 		raycast_move_false.target_position.x = RCMF_POSITION
-		sword_projectile_spawn_point.position.x = SPSP_POSITION
-		spear_burst_spawn_point.position.x = SBSP_POSITION
 	elif direction < 0:
 		texture.flip_h = true
 		attack_area_polygon.position.x = -ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = -1
 		raycast_move_false.target_position.x = -RCMF_POSITION
-		sword_projectile_spawn_point.position.x = -SPSP_POSITION
-		spear_burst_spawn_point.position.x = -SBSP_POSITION
 
 func can_combo_true() -> void: #Vinculado aos ataques
 	can_combo = true
@@ -143,11 +138,15 @@ func direction_fix():
 func spawn_attack_projectile():
 	var proj = projectile.instantiate()
 	add_child(proj)
-	proj.position = sword_projectile_spawn_point.global_position
+	proj.position = attack_spawn_point.global_position
 	proj.direction = last_direction
 
 func spawn_spear_burst():
 	var burst = spear_burst.instantiate()
 	add_child(burst)
-	burst.position = spear_burst_spawn_point.global_position
+	burst.position = attack_spawn_point.global_position
 	burst.direction = last_direction
+
+func spawn_point_location_change():
+	attack_spawn_point.position.x = PlayerVariables.get(PlayerVariables.current_attack + "_location").x * last_direction
+	attack_spawn_point.position.y = PlayerVariables.get(PlayerVariables.current_attack + "_location").y
