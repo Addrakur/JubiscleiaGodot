@@ -26,11 +26,11 @@ func exit_state() -> void:
 
 func _physics_process(_delta):
 	
-	if skeleton.velocity > Vector2(0,0):
-		skeleton.velocity = Vector2(skeleton.velocity.x - skeleton.velocity.x * 0.05,skeleton.velocity.y - skeleton.velocity.y * 0.05)
+	if not skeleton.velocity == Vector2(0,0):
+		skeleton.velocity = Vector2(skeleton.velocity.x - skeleton.velocity.x * 0.02,skeleton.velocity.y - skeleton.velocity.y * 0.02)
 	
-	if skeleton.velocity <= Vector2(50,50) and anim_finish:
-		if skeleton.is_on_floor():
+	if direction == 1 and skeleton.velocity <= Vector2(10 ,10) or direction == -1 and skeleton.velocity >= Vector2(-10 ,10):
+		if skeleton.is_on_floor() and anim_finish:
 			skeleton.fsm.change_state(skeleton.idle_state)
 
 func _on_animation_finished(anim):

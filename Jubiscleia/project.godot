@@ -92,6 +92,10 @@ dash={
 2d_physics/layer_2="enemy"
 2d_physics/layer_3="map"
 
+[physics]
+
+common/physics_ticks_per_second=165
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0

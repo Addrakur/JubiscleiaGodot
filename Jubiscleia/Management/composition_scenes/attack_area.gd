@@ -18,20 +18,20 @@ func _ready():
 
 func on_body_entered(body):
 	if body.is_in_group(target) and not body.health_component.invulnerable and body.alive:
-		body.health_component.update_health(damage)
-		if parent.is_in_group("player"):
+		body.health_component.update_health(damage) # Chama a função que aplica o dano no alvo
+		if parent.is_in_group("player"): # Verifica se quem bateu foi o jogador
 			PlayerVariables.hit_amount += 1
 			parent.corruption_manager.hit_timer.start()
 				
-			if PlayerVariables.my_knockup == true:
+			if PlayerVariables.my_knockup == true: # Verifica se o ataque do do jogador faz ele tomar knockup
 				parent.velocity.y = PlayerVariables.spear_jump_my_knockup
 				
-		if not body.health_component.knockback_imunity:
+		if not body.health_component.knockback_imunity: # Verifica se o alvo atingido é imune a knockback, se nao for ele aplica os efeitos
 			body.hit_state.knockup_force = knockup_force * body.hit_state.knock_multi
 			body.hit_state.knockback_force = knockback_force * body.hit_state.knock_multi
 			body.hit_state.direction = 1 if body.position.x > parent.position.x else -1
 			
-		if body.fsm.state == body.hit_state:
+		if body.fsm.state == body.hit_state: # Gambiarra que faz o alvo reiniciar o hit state
 			body.fsm.change_state(body.idle_state)
 			body.fsm.change_state(body.hit_state)
 			

@@ -12,7 +12,6 @@ extends CharacterBody2D
 @onready var can_attack_air: CollisionPolygon2D = $CanAttackAir/CanAttackAirArea
 @onready var attack_area_ground: CollisionPolygon2D = $AttackArea/AttackCollisionGround
 @onready var attack_area_air: CollisionPolygon2D = $AttackArea/AttackCollisionAir
-@onready var contact_damage_area: CollisionPolygon2D = $ContactDamage/ContactDamageCollision
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var walk_state: State = $StateMachine/SpearSkeletonWalk as SpearSkeletonWalk
@@ -66,7 +65,6 @@ func right():
 	can_attack_air.scale.x = 1
 	attack_area_ground.scale.x = 1
 	attack_area_air.scale.x = 1
-	contact_damage_area.scale.x = 1
 
 func left():
 	texture.flip_h = true
@@ -76,7 +74,6 @@ func left():
 	can_attack_air.scale.x = -1
 	attack_area_ground.scale.x = -1
 	attack_area_air.scale.x = -1
-	contact_damage_area.scale.x = -1
 
 func can_chase_area_body_entered(body):
 	if body.is_in_group("player"):
