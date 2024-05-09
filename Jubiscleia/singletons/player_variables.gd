@@ -26,7 +26,7 @@ var axe_0_1_knockback: float = 100
 var axe_0_1_knockup: float = -20
 
 var axe_0_2_damage: float = 4
-var axe_0_2_knockback: float = 0
+var axe_0_2_knockback: float = 75
 var axe_0_2_knockup: float = 0
 
 var axe_0_3_damage: float = 6

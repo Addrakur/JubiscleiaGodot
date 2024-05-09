@@ -4,6 +4,7 @@ extends State
 @export var skeleton: CharacterBody2D
 @export var animation: AnimationPlayer
 @export var knock_multi: float
+@export var hit_recover_limit: float
 
 var knockup_force: float
 var knockback_force: float
@@ -27,9 +28,9 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	
 	if not skeleton.velocity == Vector2(0,0):
-		skeleton.velocity = Vector2(skeleton.velocity.x - skeleton.velocity.x * 0.02,skeleton.velocity.y - skeleton.velocity.y * 0.02)
+		skeleton.velocity.x = skeleton.velocity.x - skeleton.velocity.x * 0.02
 	
-	if direction == 1 and skeleton.velocity <= Vector2(10 ,10) or direction == -1 and skeleton.velocity >= Vector2(-10 ,10):
+	if direction == 1 and skeleton.velocity.x <= hit_recover_limit or direction == -1 and skeleton.velocity.x >=-hit_recover_limit:
 		if skeleton.is_on_floor() and anim_finish:
 			skeleton.fsm.change_state(skeleton.idle_state)
 

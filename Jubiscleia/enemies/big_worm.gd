@@ -22,6 +22,7 @@ const AAFC_POSITION: float = 26
 @onready var attack_state: State = $StateMachine/BigWormAttack as BigWormAttack
 @onready var hit_state: State = $StateMachine/BigWormHit as BigWormHit
 @onready var death_state: State = $StateMachine/BigWormDeath as BigWormDeath
+@onready var state = $StateMachine/State as State
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player: bool = false

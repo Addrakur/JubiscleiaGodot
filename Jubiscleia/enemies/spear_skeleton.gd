@@ -20,6 +20,7 @@ extends CharacterBody2D
 @onready var attack_state: State = $StateMachine/SpearSkeletonAttack as SpearSkeletonAttack
 @onready var hit_state: State = $StateMachine/SpearSkeletonHit as SpearSkeletonHit
 @onready var death_state: State = $StateMachine/SpearSkeletonDeath as SpearSkeletonDeath
+@onready var state = $StateMachine/State as State
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player_air: bool = false
@@ -32,14 +33,15 @@ var alive: bool = true
 var gravity: float
 var gravity_mult: float = 4
 
+
 func _ready():
 	gravity = GameSettings.default_gravity
 
 func _process(_delta):
 	if not health_component.is_getting_hit and alive:
-		if velocity.x < 0:
+		if direction == -1:
 			left()
-		elif velocity.x > 0:
+		elif direction == 1:
 			right()
 	
 	if not PlayerVariables.player_alive:
@@ -48,7 +50,7 @@ func _process(_delta):
 	if not alive:
 		fsm.change_state(death_state)
 	
-	if health_component.is_getting_hit:
+	if health_component.is_getting_hit and not fsm.state == hit_state:
 		fsm.change_state(hit_state)
 	
 

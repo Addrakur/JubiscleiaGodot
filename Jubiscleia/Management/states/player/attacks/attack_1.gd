@@ -62,6 +62,6 @@ func _physics_process(_delta):
 		PlayerVariables.current_skill = ""
 
 func _on_animation_finished(anim):
-	if anim == PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_1":
+	if anim == PlayerVariables.last_skill + "_" + str(PlayerVariables.corruption_level) + "_1":
 		player.fsm.change_state(player.idle_state)
  

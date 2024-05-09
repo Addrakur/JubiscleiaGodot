@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=136 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="Script" path="res://player/Camera.gd" id="2_4f3vw"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Management/states/player/movement/player_move.gd" id="14_nnfso"]
 [ext_resource type="Script" path="res://Management/states/player/movement/player_dash.gd" id="15_6875b"]
 [ext_resource type="Script" path="res://Management/states/player/movement/player_jump.gd" id="15_dnbrn"]
+[ext_resource type="Script" path="res://Management/states/state.gd" id="16_hy8fg"]
 [ext_resource type="Script" path="res://Management/states/player/movement/player_fall.gd" id="16_xs1j5"]
 [ext_resource type="Texture2D" uid="uid://c6t14wadfcujm" path="res://assets/player/corruption_aura/complete_aura_level_1.png" id="17_7bh1j"]
 [ext_resource type="Script" path="res://Management/states/player/movement/player_double_jump.gd" id="17_ywk3g"]
@@ -5080,6 +5081,7 @@ script = ExtResource("23_j7sbs")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 knock_multi = 1.0
+hit_recover_limit = 50.0
 
 [node name="Death" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("25_wysx4")
@@ -5115,6 +5117,9 @@ script = ExtResource("15_6875b")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 speed = 500.0
+
+[node name="State" type="Node" parent="StateMachine"]
+script = ExtResource("16_hy8fg")
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture_filter = 1

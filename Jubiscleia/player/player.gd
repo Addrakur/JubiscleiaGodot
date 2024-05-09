@@ -31,6 +31,7 @@ const RCMF_POSITION: float = 43
 @onready var attack_3_state: State = $StateMachine/PlayerAttack3 as PlayerAttack3
 @onready var jump_attack_state: State = $StateMachine/PlayerJumpAttack as PlayerJumpAttack
 @onready var dash_state: State = $StateMachine/PlayerDash as PlayerDash
+@onready var state = $StateMachine/State as State
 
 @export_group("Jump Variables")
 @export var jump_height: float
@@ -76,7 +77,7 @@ func _process(_delta):
 	if not alive:
 		fsm.change_state(death_state)
 	
-	if health_component.is_getting_hit:
+	if health_component.is_getting_hit and not fsm.state == hit_state:
 		fsm.change_state(hit_state)
 	
 	if Input.is_action_pressed("dash") and alive and not health_component.is_getting_hit and dash_cooldown.is_stopped():

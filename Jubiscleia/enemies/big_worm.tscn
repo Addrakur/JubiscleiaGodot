@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://crkl2utufgcrd"]
+[gd_scene load_steps=35 format=3 uid="uid://crkl2utufgcrd"]
 
 [ext_resource type="Texture2D" uid="uid://csffgyii1wdoc" path="res://assets/enemy/banco_de_assets/big_worm/big_worm_walk.png" id="1_5i8uh"]
 [ext_resource type="Script" path="res://enemies/big_worm.gd" id="1_ls3a1"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Management/states/big_worm/big_worm_hit.gd" id="6_0lll1"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="7_0dtaf"]
 [ext_resource type="Script" path="res://Management/states/big_worm/big_worm_death.gd" id="7_cyfq4"]
+[ext_resource type="Script" path="res://Management/states/state.gd" id="8_dlgf0"]
 [ext_resource type="Texture2D" uid="uid://btmgn1pjl6ab7" path="res://assets/enemy/banco_de_assets/big_worm/big_worm_idle.png" id="8_f7rdg"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="8_iw5ih"]
 [ext_resource type="Texture2D" uid="uid://brmtc8aa8tykd" path="res://assets/enemy/banco_de_assets/big_worm/big_worm_fire_death.png" id="13_ejtmf"]
@@ -797,6 +798,9 @@ animation = NodePath("../../Animation")
 script = ExtResource("7_cyfq4")
 big_worm = NodePath("../..")
 animation = NodePath("../../Animation")
+
+[node name="State" type="Node" parent="StateMachine"]
+script = ExtResource("8_dlgf0")
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("1_5i8uh")

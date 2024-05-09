@@ -6,8 +6,6 @@ extends State
 @export var speed: float
 @export var attack_timer: Timer
 
-var direction: float
-
 func _ready():
 	set_physics_process(false)
 
@@ -23,7 +21,7 @@ func _physics_process(_delta):
 		skeleton.fsm.change_state(skeleton.idle_state)
 	else:
 		set_direction()
-		skeleton.velocity.x = speed * direction
+		skeleton.velocity.x = speed * skeleton.direction
 	
 	if skeleton.can_attack_player_ground or skeleton.can_attack_player_air:
 			if attack_timer.is_stopped():
@@ -33,6 +31,6 @@ func _physics_process(_delta):
 	
 func set_direction():
 	if skeleton.player_ref.position.x > skeleton.position.x:
-		direction = 1
+		skeleton.direction = 1
 	else:
-		direction = -1
+		skeleton.direction = -1

@@ -39,6 +39,7 @@ func exit_state() -> void:
 	PlayerVariables.player_attacking = false
 	PlayerVariables.last_skill = ""
 	PlayerVariables.move = false
+	PlayerVariables.current_attack = ""
 	attack_area.disabled = true
 
 func _physics_process(_delta):
@@ -61,6 +62,6 @@ func _physics_process(_delta):
 		PlayerVariables.current_skill = ""
 
 func _on_animation_finished(anim):
-	if anim == PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_2":
+	if anim == PlayerVariables.last_skill + "_" + str(PlayerVariables.corruption_level) + "_2":
 		player.fsm.change_state(player.idle_state)
  

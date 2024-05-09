@@ -7,8 +7,6 @@ extends State
 @export var wander_limit: float
 @export var attack_timer: Timer
 
-var direction: float
-
 var new_x: float
 
 func _ready():
@@ -23,13 +21,13 @@ func enter_state() -> void:
 func exit_state() -> void:
 	set_physics_process(false)
 	new_x = 0
-	direction = 0
+	skeleton.direction = 0
 
 func _physics_process(_delta):
-	if new_x != 0 and direction != 0:
-		skeleton.velocity.x = direction * speed
+	if new_x != 0 and skeleton.direction != 0:
+		skeleton.velocity.x = skeleton.direction * speed
 	
-	if skeleton.position.x > new_x and direction == 1 or skeleton.position.x < new_x and direction == -1:
+	if skeleton.position.x > new_x and skeleton.direction == 1 or skeleton.position.x < new_x and skeleton.direction == -1:
 		skeleton.fsm.change_state(skeleton.idle_state)
 	
 	if skeleton.player_ref != null and PlayerVariables.player_alive and skeleton.player_on_limit:
@@ -44,7 +42,7 @@ func new_position():
 	new_x = randf_range(skeleton.limit.limit_polygon.polygon[0].x + wander_limit, skeleton.limit.limit_polygon.polygon[2].x + wander_limit)
 	
 	if skeleton.position.x > new_x:
-		direction = -1
+		skeleton.direction = -1
 	else:
-		direction = 1
+		skeleton.direction = 1
 	

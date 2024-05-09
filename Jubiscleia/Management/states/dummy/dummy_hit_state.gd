@@ -4,6 +4,7 @@ extends State
 @export var dummy: CharacterBody2D
 @export var animation: AnimationPlayer
 @export var knock_multi: float
+@export var hit_recover_limit: float
 
 var knockup_force: float
 var knockback_force: float
@@ -16,6 +17,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
+	print("enter")
 	anim_finish = false
 	animation.play("hit")
 	dummy.velocity.x = 0
@@ -23,14 +25,15 @@ func enter_state() -> void:
 
 func exit_state() -> void:
 	set_physics_process(false)
+	print("exit")
 	dummy.health_component.is_getting_hit = false
 
 func _physics_process(_delta):
 	
 	if not dummy.velocity == Vector2(0,0):
-		dummy.velocity = Vector2(dummy.velocity.x - dummy.velocity.x * 0.02,dummy.velocity.y - dummy.velocity.y * 0.02)
+		dummy.velocity.x = dummy.velocity.x - dummy.velocity.x * 0.02
 	
-	if direction == 1 and dummy.velocity <= Vector2(10 ,10) or direction == -1 and dummy.velocity >= Vector2(-10 ,10):
+	if direction == 1 and dummy.velocity.x <= hit_recover_limit or direction == -1 and dummy.velocity.x >=-hit_recover_limit:
 		if dummy.is_on_floor() and anim_finish:
 			dummy.fsm.change_state(dummy.idle_state)
 
