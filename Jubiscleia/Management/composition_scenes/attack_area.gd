@@ -32,7 +32,7 @@ func on_body_entered(body):
 			body.hit_state.direction = 1 if body.position.x > parent.position.x else -1
 			
 		if body.fsm.state == body.hit_state: # Gambiarra que faz o alvo reiniciar o hit state
-			body.fsm.change_state(body.idle_state)
+			body.fsm.change_state(body.state)
 			body.fsm.change_state(body.hit_state)
 			
 		

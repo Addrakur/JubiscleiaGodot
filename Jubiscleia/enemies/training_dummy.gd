@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var fsm = $StateMachine as StateMachine
 @onready var idle_state = $StateMachine/DummyIdleState as DummyIdleState
 @onready var hit_state = $StateMachine/DummyHitState as DummyHitState
+@onready var state = $StateMachine/State as State
 
 var alive: bool = true
 

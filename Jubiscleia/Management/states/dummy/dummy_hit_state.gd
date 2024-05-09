@@ -9,20 +9,19 @@ var knockup_force: float
 var knockback_force: float
 var direction: float
 
-var anim_finish: bool = false
+var anim_finish: bool
 
 func _ready():
 	set_physics_process(false)
 
 func enter_state() -> void:
-	print("enter state")
 	set_physics_process(true)
+	anim_finish = false
 	animation.play("hit")
 	dummy.velocity.x = 0
 	knockback()
 
 func exit_state() -> void:
-	print("exit state")
 	set_physics_process(false)
 	dummy.health_component.is_getting_hit = false
 
