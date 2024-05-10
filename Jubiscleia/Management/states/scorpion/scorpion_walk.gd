@@ -33,12 +33,6 @@ func _physics_process(_delta):
 	
 	if scorpion.player_ref != null and scorpion.player_on_limit and scorpion.attack_timer.is_stopped():
 		scorpion.fsm.change_state(scorpion.attack_state)
-	
-	if scorpion.health_component.is_getting_hit:
-		scorpion.fsm.change_state(scorpion.hit_state)
-	
-	if not scorpion.alive:
-		scorpion.fsm.change_state(scorpion.death_state)
 
 func new_position():
 	var chance: float

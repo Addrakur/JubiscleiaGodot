@@ -29,11 +29,11 @@ direction = -1.0
 normal_or_fire = "fire"
 
 [node name="Snake2" parent="Limit4" instance=ExtResource("4_7k5dd")]
-position = Vector2(704, 432)
+position = Vector2(704, 416)
 direction = 1.0
 
 [node name="Snake" parent="Limit4" instance=ExtResource("4_7k5dd")]
-position = Vector2(371, 432)
+position = Vector2(380, 418)
 direction = -1.0
 
 [node name="LimitPolygon" type="Polygon2D" parent="Limit4"]

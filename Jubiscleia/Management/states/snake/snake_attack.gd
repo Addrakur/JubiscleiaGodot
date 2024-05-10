@@ -24,13 +24,6 @@ func exit_state() -> void:
 	set_physics_process(false)
 	snake.is_attacking = false
 
-func _physics_process(_delta):
-	if snake.health_component.is_getting_hit:
-		snake.fsm.change_state(snake.hit_state)
-	
-	if not snake.alive:
-		snake.fsm.change_state(snake.death_state)
-
 func _on_animation_finished(anim):
 	if anim == "attack":
 		snake.attack_timer.start()
@@ -39,6 +32,3 @@ func _on_animation_finished(anim):
 		else:
 			snake.fsm.change_state(snake.chase_state)
 
-func can_attack_area_exited(body):
-	if body == snake.player_ref:
-		snake.can_attack_player = false

@@ -45,6 +45,12 @@ func _process(_delta):
 	
 	if not PlayerVariables.player_alive:
 		player_ref = null
+	
+	if health_component.is_getting_hit and not fsm.state == hit_state:
+		fsm.change_state(hit_state)
+	
+	if not alive:
+		fsm.change_state(death_state)
 
 func _physics_process(delta):
 	move_and_slide()

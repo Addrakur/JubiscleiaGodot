@@ -24,15 +24,6 @@ func _physics_process(_delta):
 	elif snake.position.x < snake.limit.limit_polygon.polygon[0].x + limit_offset:
 		snake.direction = 1
 	
-	if snake.health_component.is_getting_hit:
-		snake.fsm.change_state(snake.hit_state)
-	
 	if snake.player_ref != null and PlayerVariables.player_alive and snake.player_on_limit:
 		snake.fsm.change_state(snake.chase_state)
 	
-	if!snake.alive:
-		snake.fsm.change_state(snake.death_state)
-
-func chase_area_entered(body):
-	if body.is_in_group("player"):
-		snake.player_ref = body

@@ -78,25 +78,25 @@ func left():
 	attack_area_air.scale.x = -1
 
 func can_chase_area_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and not body.is_in_group("projectile"):
 		player_ref = body
 
 func can_chase_area_body_exited(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and not body.is_in_group("projectile"):
 		player_ref = null
 
 func can_attack_ground_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and not body.is_in_group("projectile"):
 		can_attack_player_ground = true
 
 func can_attack_ground_body_exited(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and not body.is_in_group("projectile"):
 		can_attack_player_ground = false
 
 func can_attack_air_body_entered(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and not body.is_in_group("projectile"):
 		can_attack_player_air = true
 
 func can_attack_air_body_exited(body):
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and not body.is_in_group("projetile"):
 		can_attack_player_air = false

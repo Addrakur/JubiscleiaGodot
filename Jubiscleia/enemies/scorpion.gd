@@ -20,6 +20,7 @@ const CAA_POSITION: float = -53
 @onready var attack_state: State = $StateMachine/ScorpionAttack as ScorpionAttack
 @onready var hit_state: State = $StateMachine/ScorpionHit as ScorpionHit
 @onready var death_state: State = $StateMachine/ScorpionDeath as ScorpionDeath
+@onready var state = $StateMachine/State as State
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player: bool = false
@@ -44,6 +45,12 @@ func _process(_delta):
 	
 	if not PlayerVariables.player_alive:
 		player_ref = null
+	
+	if health_component.is_getting_hit and not fsm.state == hit_state:
+		fsm.change_state(hit_state)
+	
+	if not alive:
+		fsm.change_state(death_state)
 
 func _physics_process(delta):
 	move_and_slide()

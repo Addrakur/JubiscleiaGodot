@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bx4lmho2y840s"]
+[gd_scene load_steps=29 format=3 uid="uid://bx4lmho2y840s"]
 
 [ext_resource type="Script" path="res://enemies/snake.gd" id="1_ep4bx"]
 [ext_resource type="Texture2D" uid="uid://boe1qhplhi48e" path="res://assets/enemy/banco_de_assets/snake/snake_idle.png" id="2_avb4p"]
@@ -14,14 +14,15 @@
 [ext_resource type="Script" path="res://Management/states/snake/snake_attack.gd" id="13_gcars"]
 [ext_resource type="Script" path="res://Management/states/snake/snake_hit.gd" id="13_k7h8k"]
 [ext_resource type="Script" path="res://Management/states/snake/snake_death.gd" id="14_q5to3"]
+[ext_resource type="Script" path="res://Management/states/state.gd" id="16_go42g"]
 [ext_resource type="Script" path="res://Management/states/snake/snake_chase.gd" id="16_yplpm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyy75"]
-size = Vector2(9.00003, 38)
+size = Vector2(12, 50)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_loayh"]
 radius = 8.0
-height = 24.0
+height = 32.0
 
 [sub_resource type="Animation" id="Animation_fixrv"]
 length = 0.001
@@ -387,13 +388,13 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smh5j"]
-size = Vector2(288, 96)
+size = Vector2(288, 104)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n2j01"]
-size = Vector2(16, 32)
+size = Vector2(26, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_10i2g"]
-size = Vector2(18.5, 19.5)
+size = Vector2(33.625, 25.75)
 
 [node name="Snake" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 position = Vector2(0, -16)
@@ -405,21 +406,20 @@ health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(1.99999, 11.5)
+position = Vector2(3.00001, 18)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_cyy75")
 
 [node name="Collision2" type="CollisionShape2D" parent="."]
-position = Vector2(-13, 4)
+position = Vector2(-16, 8)
 shape = SubResource("CapsuleShape2D_loayh")
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -8)
-scale = Vector2(1.5, 1.5)
+scale = Vector2(2, 2)
 texture = ExtResource("2_avb4p")
 hframes = 4
-frame = 1
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 libraries = {
@@ -433,14 +433,14 @@ one_shot = true
 collision_layer = 0
 
 [node name="CanChaseArea" type="CollisionShape2D" parent="ChaseArea"]
-position = Vector2(-48, -32)
+position = Vector2(-48, -28)
 shape = SubResource("RectangleShape2D_smh5j")
 
 [node name="CanAttackArea" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CanAttackCollision" type="CollisionShape2D" parent="CanAttackArea"]
-position = Vector2(-33, 0)
+position = Vector2(-38, 4)
 shape = SubResource("RectangleShape2D_n2j01")
 debug_color = Color(0.831373, 0.305882, 0.317647, 0.419608)
 
@@ -449,7 +449,7 @@ collision_mask = 1
 target = "player"
 
 [node name="AttackCollision" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(-33, 5)
+position = Vector2(-41.8125, 8)
 shape = SubResource("RectangleShape2D_10i2g")
 disabled = true
 debug_color = Color(0.890196, 0.682353, 0, 0.419608)
@@ -468,7 +468,7 @@ script = ExtResource("12_31np0")
 snake = NodePath("../..")
 animation = NodePath("../../Animations")
 speed = 30.0
-limit_offset = 22.0
+limit_offset = 32.0
 
 [node name="SnakeAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
 script = ExtResource("13_gcars")
@@ -482,7 +482,8 @@ knockup_force = 10.0
 script = ExtResource("13_k7h8k")
 snake = NodePath("../..")
 animation = NodePath("../../Animations")
-knock_multi = 1.0
+knock_multi = 1.5
+hit_recover_limit = 10.0
 
 [node name="SnakeIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
 script = ExtResource("13_6axb0")
@@ -500,11 +501,13 @@ snake = NodePath("../..")
 animation = NodePath("../../Animations")
 speed = 100.0
 
+[node name="State" type="Node" parent="StateMachine"]
+script = ExtResource("16_go42g")
+
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeHit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeDeath" method="_on_animation_finished"]
-[connection signal="body_entered" from="ChaseArea" to="StateMachine/SnakeMove" method="chase_area_entered"]
-[connection signal="body_exited" from="ChaseArea" to="StateMachine/SnakeChase" method="chase_area_exited"]
-[connection signal="body_entered" from="CanAttackArea" to="StateMachine/SnakeChase" method="_on_can_attack_area_body_entered"]
-[connection signal="body_exited" from="CanAttackArea" to="StateMachine/SnakeAttack" method="can_attack_area_exited"]
-[connection signal="body_exited" from="CanAttackArea" to="StateMachine/SnakeIdle" method="_on_can_attack_area_body_exited"]
+[connection signal="body_entered" from="ChaseArea" to="." method="chase_area_entered"]
+[connection signal="body_exited" from="ChaseArea" to="." method="chase_area_exited"]
+[connection signal="body_entered" from="CanAttackArea" to="." method="_on_can_attack_area_body_entered"]
+[connection signal="body_exited" from="CanAttackArea" to="." method="can_attack_area_exited"]

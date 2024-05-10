@@ -4,38 +4,37 @@ extends State
 @export var scorpion: CharacterBody2D
 @export var animation: AnimationPlayer
 @export var knock_multi: float
+@export var hit_recover_limit: float
 
 var knockup_force: float
 var knockback_force: float
 var direction: float
 
-var anim_finish: bool = false
+var anim_finish: bool
 
 func _ready():
 	set_physics_process(false)
 
 func enter_state() -> void:
 	set_physics_process(true)
+	anim_finish = false
 	animation.play("hit")
 	scorpion.velocity.x = 0
 	knockback()
-	scorpion.attack_timer.start()
 
 func exit_state() -> void:
 	set_physics_process(false)
+	scorpion.health_component.is_getting_hit = false
 
 func _physics_process(_delta):
-	if not scorpion.alive:
-		scorpion.fsm.change_state(scorpion.death_state)
 	
-	if scorpion.velocity > Vector2(0,0):
-		scorpion.velocity = Vector2(scorpion.velocity.x - scorpion.velocity.x * 0.05,scorpion.velocity.y - scorpion.velocity.y * 0.05)
+	if not scorpion.velocity == Vector2(0,0):
+		scorpion.velocity.x = scorpion.velocity.x - scorpion.velocity.x * 0.02
 	
-	if scorpion.velocity <= Vector2(50,50) and anim_finish:
-		if scorpion.is_on_floor():
-			scorpion.health_component.is_getting_hit = false
+	if direction == 1 and scorpion.velocity.x <= hit_recover_limit or direction == -1 and scorpion.velocity.x >=-hit_recover_limit:
+		if scorpion.is_on_floor() and anim_finish:
 			scorpion.fsm.change_state(scorpion.idle_state)
-	
+
 func _on_animation_finished(anim):
 	if anim == "hit":
 		anim_finish = true

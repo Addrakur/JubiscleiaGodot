@@ -18,9 +18,6 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	snake.velocity.x = snake.direction * speed
 	
-	if snake.health_component.is_getting_hit:
-		snake.fsm.change_state(snake.hit_state)
-	
 	if snake.player_ref != null and PlayerVariables.player_alive and snake.player_on_limit:
 		if snake.player_ref.position.x > snake.position.x:
 			snake.direction = 1
@@ -34,14 +31,3 @@ func _physics_process(_delta):
 			snake.fsm.change_state(snake.attack_state)
 		else:
 			snake.fsm.change_state(snake.idle_state)
-	
-	if!snake.alive:
-		snake.fsm.change_state(snake.death_state)
-
-func _on_can_attack_area_body_entered(body):
-	if body == snake.player_ref:
-		snake.can_attack_player = true
-
-func chase_area_exited(body):
-	if body == snake.player_ref:
-		snake.player_ref = null

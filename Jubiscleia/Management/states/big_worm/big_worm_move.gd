@@ -30,11 +30,6 @@ func _physics_process(_delta):
 		else:
 			big_worm.fsm.change_state(big_worm.idle_state)
 	
-	if big_worm.health_component.is_getting_hit:
-		big_worm.fsm.change_state(big_worm.hit_state)
-	
-	if not big_worm.alive:
-		big_worm.fsm.change_state(big_worm.death_state)
 
 func can_attack_area_entered(body):
 	if body.is_in_group("player"):

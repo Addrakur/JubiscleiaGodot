@@ -793,6 +793,8 @@ knockup_force = -20.0
 script = ExtResource("6_0lll1")
 big_worm = NodePath("../..")
 animation = NodePath("../../Animation")
+knock_multi = 0.7
+hit_recover_limit = 20.0
 
 [node name="BigWormDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("big_worm", "animation")]
 script = ExtResource("7_cyfq4")

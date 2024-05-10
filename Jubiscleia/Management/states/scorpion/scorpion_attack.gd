@@ -34,8 +34,6 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	scorpion.velocity.x = direction * speed
 	
-	if scorpion.health_component.is_getting_hit:
-		scorpion.fsm.change_state(scorpion.hit_state)
 	
 	if scorpion.position.x > new_x and direction == 1 or scorpion.position.x < new_x and direction == -1 or scorpion.raycast.is_colliding():
 		scorpion.fsm.change_state(scorpion.idle_state)
@@ -43,8 +41,6 @@ func _physics_process(_delta):
 	if scorpion.player_ref == null:
 		scorpion.fsm.change_state(scorpion.idle_state)
 	
-	if not scorpion.alive:
-		scorpion.fsm.change_state(scorpion.death_state)
 
 func attack_area_entered(body):
 	if body.is_in_group(scorpion.attack_area.target):
