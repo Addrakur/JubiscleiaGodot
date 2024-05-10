@@ -17,7 +17,6 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	print("enter")
 	anim_finish = false
 	animation.play("hit")
 	dummy.velocity.x = 0
@@ -25,7 +24,6 @@ func enter_state() -> void:
 
 func exit_state() -> void:
 	set_physics_process(false)
-	print("exit")
 	dummy.health_component.is_getting_hit = false
 
 func _physics_process(_delta):

@@ -130,6 +130,9 @@ func move_true():
 func move_false():
 	PlayerVariables.move = false
 
+func anim_finish_true():
+	PlayerVariables.anim_finish = true
+
 func direction_fix():
 	if direction > 0:
 		direction = 1

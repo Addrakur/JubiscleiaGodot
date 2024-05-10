@@ -16,6 +16,9 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
+	
+	PlayerVariables.anim_finish = false
+	
 	PlayerVariables.player_attacking = true
 	PlayerVariables.last_skill = PlayerVariables.current_skill
 	animation.play(PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_3")
@@ -41,6 +44,8 @@ func exit_state() -> void:
 	PlayerVariables.move = false
 	PlayerVariables.current_attack = ""
 	attack_area.disabled = true
+	
+	PlayerVariables.anim_finish = false
 
 func _physics_process(_delta):
 	player.velocity.x = 0
@@ -48,8 +53,8 @@ func _physics_process(_delta):
 	
 	if PlayerVariables.move:
 		player.velocity.x = speed * player.last_direction
-
-func _on_animation_finished(anim):
-	if anim == PlayerVariables.last_skill + "_" + str(PlayerVariables.corruption_level) + "_3":
+	
+	if PlayerVariables.anim_finish:
 		player.fsm.change_state(player.idle_state)
+
  

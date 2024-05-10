@@ -269,7 +269,7 @@ _data = {
 "spear_3_2": SubResource("Animation_p0bm0")
 }
 
-[node name="spear_burst" type="Node2D" node_paths=PackedStringArray("animation", "texture", "collision_area", "attack_area")]
+[node name="spear_burst" type="Node2D" node_paths=PackedStringArray("animation", "texture", "collision_area", "attack_area") groups=["player", "projectile"]]
 top_level = true
 script = ExtResource("1_rts2k")
 animation = NodePath("Animation")
@@ -288,6 +288,8 @@ libraries = {
 }
 
 [node name="AttackArea" parent="." instance=ExtResource("4_qvyr3")]
+collision_mask = 6
+target = "enemy"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackArea"]
 polygon = PackedVector2Array(0, 0, 130, -1, 130, -20, 113, -50, 68, -63, 30, -59, 0, -27)

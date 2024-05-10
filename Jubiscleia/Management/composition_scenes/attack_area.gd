@@ -21,7 +21,8 @@ func on_body_entered(body):
 		body.health_component.update_health(damage) # Chama a função que aplica o dano no alvo
 		if parent.is_in_group("player"): # Verifica se quem bateu foi o jogador
 			PlayerVariables.hit_amount += 1
-			parent.corruption_manager.hit_timer.start()
+			if not parent.is_in_group("projectile"):
+				parent.corruption_manager.hit_timer.start()
 				
 			if PlayerVariables.my_knockup == true: # Verifica se o ataque do do jogador faz ele tomar knockup
 				parent.velocity.y = PlayerVariables.spear_jump_my_knockup
