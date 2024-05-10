@@ -26,7 +26,6 @@ limit_polygon = NodePath("LimitPolygon")
 [node name="BigWorm" parent="Limit4" instance=ExtResource("5_7f5b2")]
 position = Vector2(576, 416)
 direction = -1.0
-normal_or_fire = "fire"
 
 [node name="Snake2" parent="Limit4" instance=ExtResource("4_7k5dd")]
 position = Vector2(704, 416)

@@ -11,7 +11,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	animation.play(big_worm.normal_or_fire + "_walk")
+	animation.play("walk")
 
 func exit_state() -> void:
 	set_physics_process(false)
@@ -30,7 +30,3 @@ func _physics_process(_delta):
 		else:
 			big_worm.fsm.change_state(big_worm.idle_state)
 	
-
-func can_attack_area_entered(body):
-	if body.is_in_group("player"):
-		big_worm.player_ref = body

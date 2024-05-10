@@ -4,7 +4,6 @@ extends CharacterBody2D
 @export var attack_area: Area2D
 @export var direction: float
 @export var gravity_mult: float
-@export var normal_or_fire: String
 
 @onready var limit: Area2D = get_parent()
 @onready var texture: Sprite2D = $Texture
@@ -12,8 +11,6 @@ extends CharacterBody2D
 @onready var attack_area_collision: CollisionPolygon2D = $AttackArea/AttackCollision
 @onready var can_attack_area: CollisionShape2D = $CanAttackArea/CanAttackCollision
 const CAA_POSITION: float = -5
-@onready var attack_area_fire_collision: CollisionShape2D = $AttackAreaFire/CollisionShape2D
-const AAFC_POSITION: float = 26
 @onready var attack_timer: Timer = $AttackTimer
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
@@ -37,36 +34,44 @@ func _ready():
 	pass
 
 func _process(_delta):
-	if fsm.state == move_state:
-		if velocity.x < 0:
-			left()
-		elif velocity.x > 0:
-			right()
+	if alive and not health_component.is_getting_hit:
+		if fsm.state == move_state:
+			if velocity.x < 0:
+				left()
+			elif velocity.x > 0:
+				right()
+		
+		if not PlayerVariables.player_alive:
+			player_ref = null
 	
-	if not PlayerVariables.player_alive:
-		player_ref = null
-	
-	if health_component.is_getting_hit and not fsm.state == hit_state:
+	if not alive and not fsm.state == death_state:
+		fsm.change_state(death_state)
+	elif health_component.is_getting_hit and not fsm.state == hit_state:
 		fsm.change_state(hit_state)
 	
-	if not alive:
-		fsm.change_state(death_state)
 
 func _physics_process(delta):
 	move_and_slide()
 	if not is_on_floor():
 		velocity.y = gravity * delta * gravity_mult
+	
+
+func can_attack_area_entered(body):
+	if body.is_in_group("player") and not body.is_in_group("projectile"):
+		player_ref = body
+
+func can_attack_area_exited(body):
+	if body == player_ref:
+		player_ref = null
 
 func right():
 	texture.flip_h = true
 	collision.scale.x = -1
 	attack_area_collision.scale.x = -1
 	can_attack_area.position.x = -CAA_POSITION
-	attack_area_fire_collision.position.x = -AAFC_POSITION
 
 func left():
 	texture.flip_h = false
 	collision.scale.x = 1
 	attack_area_collision.scale.x = 1
 	can_attack_area.position.x = CAA_POSITION
-	attack_area_fire_collision.position.x = AAFC_POSITION

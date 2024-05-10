@@ -18,7 +18,7 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	anim_finish = false
-	animation.play(big_worm.normal_or_fire + "_hit")
+	animation.play("hit")
 	big_worm.velocity.x = 0
 	knockback()
 
@@ -32,10 +32,10 @@ func _physics_process(_delta):
 	
 	if direction == 1 and big_worm.velocity.x <= hit_recover_limit or direction == -1 and big_worm.velocity.x >=-hit_recover_limit:
 		if big_worm.is_on_floor() and anim_finish:
-			big_worm.fsm.change_state(big_worm.idle_state)
+			big_worm.fsm.change_state(big_worm.move_state)
 
 func _on_animation_finished(anim):
-	if anim == big_worm.normal_or_fire + "_hit":
+	if anim == "hit":
 		anim_finish = true
 
 func knockback():

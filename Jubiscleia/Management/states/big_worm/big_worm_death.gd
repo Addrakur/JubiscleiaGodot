@@ -9,15 +9,15 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	animation.play(big_worm.normal_or_fire + "_death")
+	print("enter")
+	big_worm.health_component.is_getting_hit = false
+	animation.play("death")
 	big_worm.limit.erase(big_worm)
 
 func exit_state() -> void:
 	set_physics_process(false)
+	print("exit")
 
 func _physics_process(_delta):
 	big_worm.velocity.x = 0
 
-func _on_animation_finished(anim):
-	if anim == big_worm.normal_or_fire + "_death":
-		big_worm.queue_free()
