@@ -1,5 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://radoy72pb50a"]
+[gd_scene load_steps=23 format=3 uid="uid://radoy72pb50a"]
 
+[ext_resource type="Script" path="res://enemies/kitsune.gd" id="1_3ptr8"]
 [ext_resource type="Texture2D" uid="uid://c4s8bcr5r7i73" path="res://assets/enemy/banco_de_assets/kitsune/Run.png" id="1_5gbqr"]
 [ext_resource type="Texture2D" uid="uid://dii2xja8loqsu" path="res://assets/enemy/banco_de_assets/kitsune/Walk.png" id="2_qsjel"]
 [ext_resource type="Texture2D" uid="uid://cu4f72aj3m0wa" path="res://assets/enemy/banco_de_assets/kitsune/Idle.png" id="3_oy4qb"]
@@ -10,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="8_vvqvp"]
 [ext_resource type="Script" path="res://Management/states/state_machine.gd" id="9_lnycy"]
 [ext_resource type="Script" path="res://Management/states/state.gd" id="10_tjit1"]
+[ext_resource type="Script" path="res://Management/states/kitsune/kitsune_idle.gd" id="12_cerjy"]
+[ext_resource type="Script" path="res://Management/states/kitsune/kitsune_walk.gd" id="13_dvkgu"]
+[ext_resource type="Script" path="res://Management/states/kitsune/kitsune_run.gd" id="14_8g0ga"]
 
 [sub_resource type="Animation" id="Animation_bocml"]
 length = 0.001
@@ -52,19 +56,19 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AttackArea/CollisionPolygon2D:disabled")
+tracks/3/path = NodePath("AttackArea/AttackCollision:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AttackArea/CollisionPolygon2D:polygon")
+tracks/4/path = NodePath("AttackArea/AttackCollision:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -115,7 +119,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AttackArea/CollisionPolygon2D:disabled")
+tracks/3/path = NodePath("AttackArea/AttackCollision:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -127,7 +131,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AttackArea/CollisionPolygon2D:polygon")
+tracks/4/path = NodePath("AttackArea/AttackCollision:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -256,6 +260,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackArea/AttackCollision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_725kd"]
 resource_name = "run"
@@ -338,6 +354,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackArea/AttackCollision:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5fyoy"]
 _data = {
@@ -350,7 +378,12 @@ _data = {
 "walk": SubResource("Animation_u16px")
 }
 
-[node name="Kitsune" type="CharacterBody2D"]
+[node name="Kitsune" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area")]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_3ptr8")
+health_component = NodePath("HealthComponent")
+attack_area = NodePath("AttackArea")
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("1_5gbqr")
@@ -369,13 +402,93 @@ max_health = 20.0
 destroy_after_dead = true
 
 [node name="AttackArea" parent="." instance=ExtResource("8_vvqvp")]
+collision_mask = 1
 target = "player"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackArea"]
+[node name="AttackCollision" type="CollisionPolygon2D" parent="AttackArea"]
 polygon = PackedVector2Array(31, 1, 31, 45, 65, 45, 65, 1)
+disabled = true
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("9_lnycy")
+state = NodePath("KitsuneIdle")
 
 [node name="State" type="Node" parent="StateMachine"]
 script = ExtResource("10_tjit1")
+
+[node name="KitsuneWalk" type="Node" parent="StateMachine" node_paths=PackedStringArray("kitsune", "animation")]
+script = ExtResource("13_dvkgu")
+kitsune = NodePath("../..")
+animation = NodePath("../../Animations")
+off_set_wander = 150.0
+min_wander = 70.0
+speed = 75.0
+
+[node name="KitsuneIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("kitsune", "animation", "idle_timer")]
+script = ExtResource("12_cerjy")
+kitsune = NodePath("../..")
+animation = NodePath("../../Animations")
+idle_timer = NodePath("../../Idle Timer")
+
+[node name="KitsuneRun" type="Node" parent="StateMachine" node_paths=PackedStringArray("kitsune", "animation", "run_timer")]
+script = ExtResource("14_8g0ga")
+kitsune = NodePath("../..")
+animation = NodePath("../../Animations")
+speed = 150.0
+run_timer = NodePath("../../Run Timer")
+
+[node name="CanAttackLong" type="Area2D" parent="."]
+visible = false
+
+[node name="LongCollision" type="CollisionPolygon2D" parent="CanAttackLong"]
+self_modulate = Color(0, 0.678431, 0.0666667, 1)
+polygon = PackedVector2Array(0, -21, 0, 45, 576, 45, 576, -21)
+
+[node name="CanAttackShort" type="Area2D" parent="."]
+visible = false
+
+[node name="ShortCollision" type="CollisionPolygon2D" parent="CanAttackShort"]
+modulate = Color(0.0431373, 0.0901961, 0.729412, 1)
+polygon = PackedVector2Array(0, 45, 320, 45, 320, -21, 0, -21)
+
+[node name="CanAttackMelee" type="Area2D" parent="."]
+visible = false
+
+[node name="MeleeCollision" type="CollisionPolygon2D" parent="CanAttackMelee"]
+self_modulate = Color(0, 1, 1, 1)
+polygon = PackedVector2Array(16, 45, 65, 45, 65, -23, 16, -23)
+
+[node name="RunArea" type="Area2D" parent="."]
+visible = false
+
+[node name="RunCollision" type="CollisionPolygon2D" parent="RunArea"]
+modulate = Color(0, 0, 0.670588, 1)
+polygon = PackedVector2Array(-9, 45, 147, 45, 147, -21, -8, -21)
+
+[node name="DetectArea" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectArea"]
+polygon = PackedVector2Array(574, 45, 574, -158, -574, -158, -574, 45)
+
+[node name="Idle Timer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 5.0
+one_shot = true
+
+[node name="Run Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="CantRunTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="WallSensor" type="RayCast2D" parent="."]
+target_position = Vector2(16, 0)
+collision_mask = 4
+
+[connection signal="body_entered" from="RunArea" to="." method="_on_run_area_body_entered"]
+[connection signal="body_exited" from="RunArea" to="." method="_on_run_area_body_exited"]
+[connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
+[connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]

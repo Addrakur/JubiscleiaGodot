@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqp1060wjlhfn"]
+[gd_scene load_steps=11 format=3 uid="uid://cqp1060wjlhfn"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_5moen"]
 [ext_resource type="TileSet" uid="uid://dsjlo105wabro" path="res://assets/Tileset/Ground.tres" id="2_khbs8"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://crkl2utufgcrd" path="res://enemies/big_worm.tscn" id="5_7f5b2"]
 [ext_resource type="PackedScene" uid="uid://dx23ctyg8spen" path="res://enemies/spear_skeleton.tscn" id="5_lrqnb"]
 [ext_resource type="PackedScene" uid="uid://bysdn4i581jjc" path="res://enemies/scorpion.tscn" id="5_uusmp"]
+[ext_resource type="PackedScene" uid="uid://radoy72pb50a" path="res://enemies/kitsune.tscn" id="7_wgrjh"]
 [ext_resource type="PackedScene" uid="uid://sdmdvsx1p41u" path="res://enemies/training_dummy.tscn" id="9_dgptr"]
 
 [node name="Arena" type="Node2D" node_paths=PackedStringArray("player", "camera_polygon")]
@@ -68,6 +69,21 @@ starting_x = NodePath("../StartPoint")
 [node name="Scorpion3" parent="Limit3" node_paths=PackedStringArray("starting_x") instance=ExtResource("5_uusmp")]
 position = Vector2(799, 427)
 starting_x = NodePath("../StartPoint")
+
+[node name="Limit" parent="." node_paths=PackedStringArray("limit_polygon") instance=ExtResource("4_l7r3x")]
+limit_polygon = NodePath("Polygon2D")
+
+[node name="Polygon2D" type="Polygon2D" parent="Limit"]
+visible = false
+modulate = Color(1, 1, 1, 0.239216)
+polygon = PackedVector2Array(-1216, 416, -64, 416, -64, 224, -1216, 224)
+
+[node name="Kitsune" parent="Limit" node_paths=PackedStringArray("starting_x") instance=ExtResource("7_wgrjh")]
+position = Vector2(-762, 371)
+starting_x = NodePath("../StartPoint")
+
+[node name="StartPoint" type="Marker2D" parent="Limit"]
+position = Vector2(-776, 416)
 
 [node name="Player" parent="." instance=ExtResource("3_2ic4t")]
 position = Vector2(-32, 320)
