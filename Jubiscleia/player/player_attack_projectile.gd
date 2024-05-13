@@ -7,13 +7,18 @@ var direction: float
 @export var collision_area: CollisionPolygon2D
 @export var attack_area: Area2D
 
+var can_destroy: bool = false
+
 func _ready():
 	animation.play(PlayerVariables.current_attack)
 	attack_area.damage = PlayerVariables.get(PlayerVariables.current_attack + "_projectile_damage")
 	speed = PlayerVariables.get(PlayerVariables.current_attack + "_projectile_speed")
 
-func _process(delta):
+func _physics_process(delta):
 	position.x += direction * speed * delta
 	if direction == -1:
 		texture.flip_h = true
 		collision_area.scale.x = -1
+	
+	if can_destroy:
+		queue_free()

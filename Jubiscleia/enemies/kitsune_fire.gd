@@ -5,6 +5,9 @@ extends Node2D
 @onready var animation = $Animation
 @onready var texture = $Texture
 
+var can_destroy: bool = false
+var base_anim_finish: bool = false
+
 var direction: float = 1
 
 func _ready():
@@ -12,14 +15,15 @@ func _ready():
 
 func _physics_process(delta):
 	position.x += direction * speed * delta
-
+	
+	if can_destroy:
+		animation.play(str(animation_level) + "_finish")
+	
 
 func _on_animation_finished(anim_name):
 	if anim_name == str(animation_level) + "_finish":
 		queue_free()
 	
 	if anim_name == str(animation_level):
-		finish(anim_name)
+		can_destroy = true
 
-func finish(anim: String):
-	animation.play(anim + "_finish")

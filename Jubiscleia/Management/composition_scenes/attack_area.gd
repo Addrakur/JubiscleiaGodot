@@ -43,8 +43,8 @@ func on_body_entered(body):
 	
 	
 	elif body.is_in_group("terrain") and destroy_on_terrain:
-		parent.queue_free()
+		parent.can_destroy = true
 	
 	if one_hit_destroy:
-		parent.queue_free()
+		parent.can_destroy = true
 	
