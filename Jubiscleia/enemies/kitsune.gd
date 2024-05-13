@@ -9,18 +9,31 @@ extends CharacterBody2D
 @onready var texture: Sprite2D = $Texture
 @onready var collision: CollisionPolygon2D = $Collision
 @onready var run_collision = $RunArea/RunCollision
+@onready var melee_collision = $CanAttackMelee/MeleeCollision
+@onready var short_collision = $CanAttackShort/ShortCollision
 @onready var cant_run_timer = $CantRunTimer
+@onready var attack_timer = $AttackTimer
 @onready var wall_sensor = $WallSensor
+@onready var trapped_sensor = $TrappedSensor
+@onready var attack_spawn_point = $AttackSpawnPoint
+const ASP_POSITION: float = 47
 
 @onready var fsm = $StateMachine as StateMachine
 @onready var state = $StateMachine/State as State
 @onready var idle_state = $StateMachine/KitsuneIdle as KitsuneIdle
 @onready var walk_state = $StateMachine/KitsuneWalk as KitsuneWalk
 @onready var run_state = $StateMachine/KitsuneRun as KitsuneRun
+@onready var death_state = $StateMachine/KitsuneDeath as KitsuneDeath
+@onready var hit_state = $StateMachine/KitsuneHit as KitsuneHit
+@onready var attack_state = $StateMachine/KitsuneAttack as KitsuneAttack
+@onready var warp_state = $StateMachine/KitsuneWarp
 
 @onready var player_ref: CharacterBody2D
 var player_on_limit: bool = false
 var player_on_run_area: bool = false
+var can_attack_melee: bool = false
+var can_attack_short_range: bool = false
+var can_attack_player: bool = false
 var is_attacking: bool = false
 
 var alive: bool = true 
@@ -42,11 +55,11 @@ func _process(_delta):
 	if not PlayerVariables.player_alive:
 		player_ref = null
 	
-#	if not alive:
-#		fsm.change_state(death_state)
-#
-#	if health_component.is_getting_hit and not fsm.state == hit_state:
-#		fsm.change_state(hit_state)
+	if not alive and not fsm.state == death_state:
+		fsm.change_state(death_state)
+	elif health_component.is_getting_hit and not fsm.state == hit_state:
+		fsm.change_state(hit_state)
+	
 	
 
 func _physics_process(delta):
@@ -58,13 +71,21 @@ func right():
 	texture.flip_h = false
 	collision.scale.x = 1
 	run_collision.scale.x = 1
+	melee_collision.scale.x = 1
+	short_collision.scale.x = 1
 	wall_sensor.scale.x = 1
+	trapped_sensor.scale.x = 1
+	attack_spawn_point.position.x = ASP_POSITION
 
 func left():
 	texture.flip_h = true
 	collision.scale.x = -1
 	run_collision.scale.x = -1
+	melee_collision.scale.x = -1
+	short_collision.scale.x = -1
 	wall_sensor.scale.x = -1
+	trapped_sensor.scale.x = -1
+	attack_spawn_point.position.x = -ASP_POSITION
 
 func _on_run_area_body_entered(body):
 	if body == player_ref:
@@ -81,3 +102,19 @@ func _on_detect_area_body_entered(body):
 func _on_detect_area_body_exited(body):
 	if body == player_ref:
 		player_ref = null
+
+func _on_can_attack_melee_body_entered(body):
+	if body == player_ref:
+		can_attack_melee = true
+
+func _on_can_attack_melee_body_exited(body):
+	if body == player_ref:
+		can_attack_melee = false
+
+func _on_can_attack_short_body_entered(body):
+	if body == player_ref:
+		can_attack_short_range = true
+
+func _on_can_attack_short_body_exited(body):
+	if body == player_ref:
+		can_attack_short_range = false

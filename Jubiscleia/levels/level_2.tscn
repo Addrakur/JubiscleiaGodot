@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bdh42hgehknwl"]
+[gd_scene load_steps=12 format=3 uid="uid://bdh42hgehknwl"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_e2h5m"]
 [ext_resource type="PackedScene" uid="uid://bi6cc6w3ecvyj" path="res://objects/plataform.tscn" id="2_om01v"]
@@ -6,6 +6,7 @@
 [ext_resource type="TileSet" uid="uid://dsjlo105wabro" path="res://assets/Tileset/Ground.tres" id="3_p8uvw"]
 [ext_resource type="PackedScene" uid="uid://cv8owgy7v2lhb" path="res://enemies/enemy_limit.tscn" id="4_p4y5h"]
 [ext_resource type="PackedScene" uid="uid://crkl2utufgcrd" path="res://enemies/big_worm.tscn" id="4_wpb6o"]
+[ext_resource type="PackedScene" uid="uid://radoy72pb50a" path="res://enemies/kitsune.tscn" id="6_6mn22"]
 [ext_resource type="PackedScene" uid="uid://bysdn4i581jjc" path="res://enemies/scorpion.tscn" id="6_46f5e"]
 [ext_resource type="PackedScene" uid="uid://bolenc8px11st" path="res://Management/level_end.tscn" id="7_6o7yj"]
 [ext_resource type="PackedScene" uid="uid://dujgxpnuckrha" path="res://Management/tween_area.tscn" id="8_l3c61"]
@@ -24,12 +25,10 @@ limit_polygon = NodePath("LimitPolygon")
 [node name="BigWorm" parent="Enemies/Limit" instance=ExtResource("4_wpb6o")]
 position = Vector2(1568, 672)
 direction = 1.0
-normal_or_fire = "normal"
 
 [node name="BigWorm2" parent="Enemies/Limit" instance=ExtResource("4_wpb6o")]
 position = Vector2(1120, 672)
 direction = -1.0
-normal_or_fire = "normal"
 
 [node name="LimitPolygon" type="Polygon2D" parent="Enemies/Limit"]
 visible = false
@@ -47,7 +46,6 @@ polygon = PackedVector2Array(1472, 64, 1472, -96, 1824, -96, 1824, 64)
 [node name="BigWorm" parent="Enemies/Limit2" instance=ExtResource("4_wpb6o")]
 position = Vector2(1664, 32)
 direction = 1.0
-normal_or_fire = "fire"
 
 [node name="Limit3" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("4_p4y5h")]
 limit_polygon = NodePath("Polygon2D")
@@ -125,8 +123,23 @@ position = Vector2(3087, -656)
 direction = -1.0
 y = -656.0
 
+[node name="Limit7" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("4_p4y5h")]
+limit_polygon = NodePath("Polygon2D")
+
+[node name="Polygon2D" type="Polygon2D" parent="Enemies/Limit7"]
+visible = false
+color = Color(1, 1, 1, 0.313726)
+polygon = PackedVector2Array(2432, -448, 2432, -256, 3392, -256, 3392, -448)
+
+[node name="Kitsune" parent="Enemies/Limit7" node_paths=PackedStringArray("starting_x") instance=ExtResource("6_6mn22")]
+position = Vector2(2912, -320)
+starting_x = NodePath("../Marker2D")
+
+[node name="Marker2D" type="Marker2D" parent="Enemies/Limit7"]
+position = Vector2(2912, -256)
+
 [node name="Player" parent="." instance=ExtResource("2_uw1h1")]
-position = Vector2(-96, 0)
+position = Vector2(2816, -288)
 
 [node name="Plataforms" type="Node2D" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://radoy72pb50a"]
+[gd_scene load_steps=32 format=3 uid="uid://radoy72pb50a"]
 
 [ext_resource type="Script" path="res://enemies/kitsune.gd" id="1_3ptr8"]
 [ext_resource type="Texture2D" uid="uid://c4s8bcr5r7i73" path="res://assets/enemy/banco_de_assets/kitsune/Run.png" id="1_5gbqr"]
@@ -8,12 +8,18 @@
 [ext_resource type="Texture2D" uid="uid://d08rhjtfvc0ap" path="res://assets/enemy/banco_de_assets/kitsune/Attack_1.png" id="5_l0swy"]
 [ext_resource type="Texture2D" uid="uid://cj463eeu0fmat" path="res://assets/enemy/banco_de_assets/kitsune/Attack_2.png" id="6_viafm"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="7_v7gb8"]
+[ext_resource type="Texture2D" uid="uid://doqt424m83x7d" path="res://assets/enemy/banco_de_assets/kitsune/Dead.png" id="8_7ednr"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="8_vvqvp"]
+[ext_resource type="Texture2D" uid="uid://bo81sxl7x7xrn" path="res://assets/enemy/banco_de_assets/kitsune/Warp.png" id="9_5g4sw"]
 [ext_resource type="Script" path="res://Management/states/state_machine.gd" id="9_lnycy"]
 [ext_resource type="Script" path="res://Management/states/state.gd" id="10_tjit1"]
 [ext_resource type="Script" path="res://Management/states/kitsune/kitsune_idle.gd" id="12_cerjy"]
 [ext_resource type="Script" path="res://Management/states/kitsune/kitsune_walk.gd" id="13_dvkgu"]
 [ext_resource type="Script" path="res://Management/states/kitsune/kitsune_run.gd" id="14_8g0ga"]
+[ext_resource type="Script" path="res://Management/states/kitsune/kitsune_death.gd" id="15_abxlf"]
+[ext_resource type="Script" path="res://Management/states/kitsune/kitsune_hit.gd" id="16_ks7uf"]
+[ext_resource type="Script" path="res://Management/states/kitsune/kitsune_attack.gd" id="18_kce21"]
+[ext_resource type="Script" path="res://Management/states/kitsune/kitsune_warp.gd" id="19_dtqgi"]
 
 [sub_resource type="Animation" id="Animation_bocml"]
 length = 0.001
@@ -77,9 +83,23 @@ tracks/4/keys = {
 "update": 1,
 "values": [PackedVector2Array(31, 1, 31, 45, 65, 45, 65, 1)]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Texture:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_svdek"]
 resource_name = "attack_1"
+length = 0.8
+step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -111,7 +131,7 @@ tracks/2/path = NodePath("Texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -123,7 +143,7 @@ tracks/3/path = NodePath("AttackArea/AttackCollision:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.7, 1),
+"times": PackedFloat32Array(0.56, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -135,10 +155,10 @@ tracks/4/path = NodePath("AttackArea/AttackCollision:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.7, 0.8, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.56, 0.64, 0.72),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [PackedVector2Array(31, 1, 31, 45, 65, 45, 65, 1), PackedVector2Array(45, -6, 45, 32, 72, 32, 72, -6), PackedVector2Array(62, -4, 62, 30, 81, 30, 81, -4)]
+"values": [PackedVector2Array(-1, -1, -1, 1, 1, 1, 1, -1), PackedVector2Array(31, 1, 31, 45, 65, 45, 65, 1), PackedVector2Array(45, -6, 45, 32, 72, 32, 72, -6), PackedVector2Array(62, -4, 62, 30, 81, 30, 81, -4)]
 }
 
 [sub_resource type="Animation" id="Animation_m5jre"]
@@ -178,6 +198,20 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StateMachine/KitsuneAttack")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_fireball"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_r1txw"]
@@ -367,18 +401,162 @@ tracks/3/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_aqjqg"]
+resource_name = "dead"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_7ednr")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+[sub_resource type="Animation" id="Animation_xpqv1"]
+resource_name = "warp_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_5g4sw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Texture:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_fj635"]
+resource_name = "warp_in"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_5g4sw")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [9, 8, 7, 6, 5, 4, 3, 2, 1, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Texture:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5fyoy"]
 _data = {
 "RESET": SubResource("Animation_bocml"),
 "attack_1": SubResource("Animation_svdek"),
 "attack_2": SubResource("Animation_m5jre"),
+"dead": SubResource("Animation_aqjqg"),
 "hit": SubResource("Animation_r1txw"),
 "idle": SubResource("Animation_m6e68"),
 "run": SubResource("Animation_725kd"),
-"walk": SubResource("Animation_u16px")
+"walk": SubResource("Animation_u16px"),
+"warp_in": SubResource("Animation_fj635"),
+"warp_out": SubResource("Animation_xpqv1")
 }
 
-[node name="Kitsune" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area")]
+[node name="Kitsune" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_3ptr8")
@@ -437,33 +615,49 @@ animation = NodePath("../../Animations")
 speed = 150.0
 run_timer = NodePath("../../Run Timer")
 
-[node name="CanAttackLong" type="Area2D" parent="."]
-visible = false
+[node name="KitsuneDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("kitsune", "animation")]
+script = ExtResource("15_abxlf")
+kitsune = NodePath("../..")
+animation = NodePath("../../Animations")
 
-[node name="LongCollision" type="CollisionPolygon2D" parent="CanAttackLong"]
-self_modulate = Color(0, 0.678431, 0.0666667, 1)
-polygon = PackedVector2Array(0, -21, 0, 45, 576, 45, 576, -21)
+[node name="KitsuneHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("kitsune", "animation")]
+script = ExtResource("16_ks7uf")
+kitsune = NodePath("../..")
+animation = NodePath("../../Animations")
+knock_multi = 1.0
+hit_recover_limit = 10.0
+
+[node name="KitsuneAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("kitsune", "animation", "attack_timer")]
+script = ExtResource("18_kce21")
+kitsune = NodePath("../..")
+animation = NodePath("../../Animations")
+attack_timer = NodePath("../../AttackTimer")
+
+[node name="KitsuneWarp" type="Node" parent="StateMachine" node_paths=PackedStringArray("kitsune", "animation")]
+script = ExtResource("19_dtqgi")
+kitsune = NodePath("../..")
+animation = NodePath("../../Animations")
 
 [node name="CanAttackShort" type="Area2D" parent="."]
 visible = false
 
 [node name="ShortCollision" type="CollisionPolygon2D" parent="CanAttackShort"]
 modulate = Color(0.0431373, 0.0901961, 0.729412, 1)
-polygon = PackedVector2Array(0, 45, 320, 45, 320, -21, 0, -21)
+polygon = PackedVector2Array(0, 45, 320, 45, 320, -158, 0, -158)
 
 [node name="CanAttackMelee" type="Area2D" parent="."]
 visible = false
 
 [node name="MeleeCollision" type="CollisionPolygon2D" parent="CanAttackMelee"]
 self_modulate = Color(0, 1, 1, 1)
-polygon = PackedVector2Array(16, 45, 65, 45, 65, -23, 16, -23)
+polygon = PackedVector2Array(16, 45, 65, 45, 65, -158, 16, -158)
 
 [node name="RunArea" type="Area2D" parent="."]
 visible = false
 
 [node name="RunCollision" type="CollisionPolygon2D" parent="RunArea"]
 modulate = Color(0, 0, 0.670588, 1)
-polygon = PackedVector2Array(-9, 45, 147, 45, 147, -21, -8, -21)
+polygon = PackedVector2Array(-9, 45, 147, 45, 147, -158, -9, -158)
 
 [node name="DetectArea" type="Area2D" parent="."]
 visible = false
@@ -488,6 +682,25 @@ one_shot = true
 target_position = Vector2(16, 0)
 collision_mask = 4
 
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="AttackSpawnPoint" type="Marker2D" parent="."]
+position = Vector2(47, 2)
+
+[node name="TrappedSensor" type="RayCast2D" parent="."]
+target_position = Vector2(-20, 0)
+collision_mask = 4
+
+[connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneDeath" method="_on_animation_finished"]
+[connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneHit" method="_on_animation_finished"]
+[connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneAttack" method="_on_animation_finished"]
+[connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneWarp" method="_on_animation_finished"]
+[connection signal="body_entered" from="CanAttackShort" to="." method="_on_can_attack_short_body_entered"]
+[connection signal="body_exited" from="CanAttackShort" to="." method="_on_can_attack_short_body_exited"]
+[connection signal="body_entered" from="CanAttackMelee" to="." method="_on_can_attack_melee_body_entered"]
+[connection signal="body_exited" from="CanAttackMelee" to="." method="_on_can_attack_melee_body_exited"]
 [connection signal="body_entered" from="RunArea" to="." method="_on_run_area_body_entered"]
 [connection signal="body_exited" from="RunArea" to="." method="_on_run_area_body_exited"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]

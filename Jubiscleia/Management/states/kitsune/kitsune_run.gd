@@ -24,7 +24,7 @@ func _physics_process(_delta):
 	
 	kitsune.velocity.x = kitsune.direction * speed
 	
-	if run_timer.is_stopped() or kitsune.wall_sensor.is_colliding():
+	if run_timer.is_stopped() or kitsune.wall_sensor.is_colliding() or kitsune.player_ref == null:
 		kitsune.fsm.change_state(kitsune.idle_state)
 
 func direction_fix():

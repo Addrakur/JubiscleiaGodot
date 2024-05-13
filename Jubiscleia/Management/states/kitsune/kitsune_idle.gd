@@ -23,6 +23,11 @@ func _physics_process(_delta):
 			kitsune.fsm.change_state(kitsune.walk_state)
 	else:
 		kitsune.direction = 1 if kitsune.position.x < kitsune.player_ref.position.x else -1
+		if kitsune.attack_timer.is_stopped():
+			kitsune.fsm.change_state(kitsune.attack_state)
 	
-	if kitsune.player_on_run_area and kitsune.cant_run_timer.is_stopped():
+	if kitsune.player_on_run_area and kitsune.cant_run_timer.is_stopped() and not kitsune.is_attacking:
 		kitsune.fsm.change_state(kitsune.run_state)
+	
+	if kitsune.trapped_sensor.is_colliding():
+		kitsune.fsm.change_state(kitsune.warp_state)
