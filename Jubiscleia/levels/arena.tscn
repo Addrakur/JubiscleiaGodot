@@ -78,9 +78,10 @@ visible = false
 modulate = Color(1, 1, 1, 0.239216)
 polygon = PackedVector2Array(-1216, 224, -1216, 416, -64, 416, -64, 224)
 
-[node name="Kitsune" parent="Limit" node_paths=PackedStringArray("starting_x") instance=ExtResource("7_wgrjh")]
+[node name="Kitsune" parent="Limit" node_paths=PackedStringArray("starting_x", "warp_area") instance=ExtResource("7_wgrjh")]
 position = Vector2(-1058, 358)
 starting_x = NodePath("../StartPoint")
+warp_area = NodePath("../Polygon2D")
 
 [node name="StartPoint" type="Marker2D" parent="Limit"]
 position = Vector2(-776, 416)

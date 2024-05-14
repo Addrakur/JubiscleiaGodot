@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://lqfqrp52dju2"]
+[gd_scene load_steps=14 format=3 uid="uid://lqfqrp52dju2"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_rdehp"]
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="2_oy7pp"]
@@ -7,10 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://dx23ctyg8spen" path="res://enemies/spear_skeleton.tscn" id="4_a4q24"]
 [ext_resource type="PackedScene" uid="uid://bx4lmho2y840s" path="res://enemies/snake.tscn" id="4_jp6h7"]
 [ext_resource type="TileSet" uid="uid://dsjlo105wabro" path="res://assets/Tileset/Ground.tres" id="6_00r81"]
+[ext_resource type="PackedScene" uid="uid://dofww7w55i7it" path="res://Management/enemy_wall.tscn" id="7_1bser"]
 [ext_resource type="PackedScene" uid="uid://crkl2utufgcrd" path="res://enemies/big_worm.tscn" id="7_s86ml"]
 [ext_resource type="PackedScene" uid="uid://dujgxpnuckrha" path="res://Management/tween_area.tscn" id="8_k86fn"]
 [ext_resource type="PackedScene" uid="uid://cbkmdf5fph8mt" path="res://enemies/turret.tscn" id="8_rqbkd"]
 [ext_resource type="PackedScene" uid="uid://bolenc8px11st" path="res://Management/level_end.tscn" id="10_aso8h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iauqf"]
+size = Vector2(1, 96)
 
 [node name="Level3" type="Node2D" node_paths=PackedStringArray("player", "camera_polygon")]
 process_mode = 1
@@ -60,7 +64,6 @@ direction = -1.0
 [node name="BigWorm" parent="Enemies/Limit3" instance=ExtResource("7_s86ml")]
 position = Vector2(1856, 608)
 direction = 1.0
-normal_or_fire = "normal"
 
 [node name="Polygon2D" type="Polygon2D" parent="Enemies/Limit3"]
 visible = false
@@ -90,7 +93,6 @@ polygon = PackedVector2Array(2048, 288, 2048, 384, 2624, 384, 2624, 288)
 [node name="BigWorm" parent="Enemies/Limit4" instance=ExtResource("7_s86ml")]
 position = Vector2(2304, 339)
 direction = 1.0
-normal_or_fire = "normal"
 
 [node name="Limit6" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("3_v6kio")]
 limit_polygon = NodePath("Polygon2D")
@@ -117,7 +119,6 @@ limit_polygon = NodePath("Polygon2D")
 [node name="BigWorm" parent="Enemies/Limit5" instance=ExtResource("7_s86ml")]
 position = Vector2(3776, 96)
 direction = -1.0
-normal_or_fire = "fire"
 
 [node name="Polygon2D" type="Polygon2D" parent="Enemies/Limit5"]
 visible = false
@@ -129,6 +130,35 @@ position = Vector2(3584, 96)
 
 [node name="SpearSkeleton2" parent="Enemies/Limit5" instance=ExtResource("4_a4q24")]
 position = Vector2(3936, 96)
+
+[node name="Walls" type="Node2D" parent="Enemies"]
+
+[node name="EnemyWall" parent="Enemies" instance=ExtResource("7_1bser")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/EnemyWall"]
+position = Vector2(2032, 336)
+shape = SubResource("RectangleShape2D_iauqf")
+
+[node name="EnemyWall2" parent="Enemies" instance=ExtResource("7_1bser")]
+position = Vector2(32, 256)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/EnemyWall2"]
+position = Vector2(2016.5, 336)
+shape = SubResource("RectangleShape2D_iauqf")
+
+[node name="EnemyWall3" parent="Enemies" instance=ExtResource("7_1bser")]
+position = Vector2(2080, -256)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/EnemyWall3"]
+position = Vector2(2016.5, 336)
+shape = SubResource("RectangleShape2D_iauqf")
+
+[node name="EnemyWall4" parent="Enemies" instance=ExtResource("7_1bser")]
+position = Vector2(1343, -256)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/EnemyWall4"]
+position = Vector2(2016.5, 336)
+shape = SubResource("RectangleShape2D_iauqf")
 
 [node name="Player" parent="." instance=ExtResource("2_oy7pp")]
 position = Vector2(96, 366)
@@ -243,6 +273,7 @@ modulate = Color(0, 1, 0.517647, 1)
 polygon = PackedVector2Array(832, 352, 992, 352, 992, 544, 1120, 544, 1120, 640, 832, 640)
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = 96.0
 offset_top = 240.0
 offset_right = 279.0

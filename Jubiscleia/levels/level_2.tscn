@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdh42hgehknwl"]
+[gd_scene load_steps=11 format=3 uid="uid://bdh42hgehknwl"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_e2h5m"]
 [ext_resource type="PackedScene" uid="uid://bi6cc6w3ecvyj" path="res://objects/plataform.tscn" id="2_om01v"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bysdn4i581jjc" path="res://enemies/scorpion.tscn" id="6_46f5e"]
 [ext_resource type="PackedScene" uid="uid://bolenc8px11st" path="res://Management/level_end.tscn" id="7_6o7yj"]
 [ext_resource type="PackedScene" uid="uid://dujgxpnuckrha" path="res://Management/tween_area.tscn" id="8_l3c61"]
-[ext_resource type="PackedScene" uid="uid://gbawa3yjl13r" path="res://enemies/vulture.tscn" id="9_8ce5m"]
 
 [node name="Level2" type="Node2D" node_paths=PackedStringArray("player", "camera_polygon")]
 script = ExtResource("1_e2h5m")
@@ -105,24 +104,6 @@ visible = false
 color = Color(1, 1, 1, 0.164706)
 polygon = PackedVector2Array(2016, 256, 2016, 352, 2208, 352, 2208, 256)
 
-[node name="Limit6" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("4_p4y5h")]
-limit_polygon = NodePath("Polygon2D")
-
-[node name="Polygon2D" type="Polygon2D" parent="Enemies/Limit6"]
-visible = false
-color = Color(1, 1, 1, 0.152941)
-polygon = PackedVector2Array(2944, -608, 2944, -800, 3232, -800, 3232, -608)
-
-[node name="Vulture" parent="Enemies/Limit6" instance=ExtResource("9_8ce5m")]
-position = Vector2(3087, -784)
-direction = 1.0
-y = -784.0
-
-[node name="Vulture2" parent="Enemies/Limit6" instance=ExtResource("9_8ce5m")]
-position = Vector2(3087, -656)
-direction = -1.0
-y = -656.0
-
 [node name="Limit7" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("4_p4y5h")]
 limit_polygon = NodePath("Polygon2D")
 
@@ -139,7 +120,7 @@ starting_x = NodePath("../Marker2D")
 position = Vector2(2912, -256)
 
 [node name="Player" parent="." instance=ExtResource("2_uw1h1")]
-position = Vector2(2816, -288)
+position = Vector2(-192, 0)
 
 [node name="Plataforms" type="Node2D" parent="."]
 

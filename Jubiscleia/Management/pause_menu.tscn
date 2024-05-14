@@ -8,8 +8,8 @@ script = ExtResource("1_5l843")
 [node name="PauseMenu" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 640.0
-offset_bottom = 360.0
+offset_right = 768.0
+offset_bottom = 432.0
 
 [node name="Panel" type="Panel" parent="PauseMenu"]
 layout_mode = 1

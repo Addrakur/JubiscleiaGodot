@@ -472,6 +472,5 @@ script = ExtResource("8_dlgf0")
 
 [connection signal="animation_finished" from="Animation" to="StateMachine/BigWormAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="StateMachine/BigWormHit" method="_on_animation_finished"]
-[connection signal="animation_finished" from="Animation" to="StateMachine/BigWormHit" method="_onanimation_finished"]
 [connection signal="body_entered" from="CanAttackArea" to="." method="can_attack_area_entered"]
 [connection signal="body_exited" from="CanAttackArea" to="." method="can_attack_area_exited"]

@@ -13,7 +13,7 @@ func enter_state() -> void:
 	set_physics_process(true)
 	kitsune.health_component.invulnerable = true
 	animation.play("warp_out")
-	warp_point = (kitsune.limit.limit_polygon.polygon[1].x + kitsune.limit.limit_polygon.polygon[2].x)/2
+	warp_point = (kitsune.warp_area.polygon[1].x + kitsune.warp_area.polygon[2].x)/2
 
 func exit_state() -> void:
 	set_physics_process(false)

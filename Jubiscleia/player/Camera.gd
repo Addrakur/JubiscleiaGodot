@@ -9,10 +9,10 @@ func _process(_delta):
 	position = position.round()
 
 func change_limit_polygon(polygon: Polygon2D):
-	limit_top = polygon.polygon[0].y
-	limit_left = polygon.polygon[0].x
-	limit_right = polygon.polygon[2].x
-	limit_bottom = polygon.polygon[1].y
+	limit_top = int(polygon.polygon[0].y)
+	limit_left = int(polygon.polygon[0].x)
+	limit_right = int(polygon.polygon[2].x)
+	limit_bottom = int(polygon.polygon[1].y)
 
 func tween_up_and_down(camera_offset: float, tween_timer: float) -> void:
 	var tween = create_tween().set_parallel(true)

@@ -3,8 +3,6 @@ extends State
 
 @export var kitsune: CharacterBody2D
 @export var animation: AnimationPlayer
-@export var off_set_wander: float
-@export var min_wander: float
 @export var speed: float
 
 var new_x: float
@@ -36,9 +34,9 @@ func new_position():
 	var chance: float
 	chance = randf_range(0,10)
 	if chance > 5:
-		new_x = kitsune.starting_x.position.x + randf_range(min_wander, off_set_wander)
+		new_x = kitsune.starting_x.position.x + randf_range(kitsune.min_wander, kitsune.off_set_wander)
 	elif chance < 5:
-		new_x = kitsune.starting_x.position.x - randf_range(min_wander, off_set_wander)
+		new_x = kitsune.starting_x.position.x - randf_range(kitsune.min_wander, kitsune.off_set_wander)
 	else:
 		new_x = kitsune.starting_x.position.x
 	

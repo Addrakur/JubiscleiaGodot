@@ -80,8 +80,9 @@ func _process(_delta):
 	if health_component.is_getting_hit and not fsm.state == hit_state:
 		fsm.change_state(hit_state)
 	
-	if Input.is_action_pressed("dash") and alive and not health_component.is_getting_hit and dash_cooldown.is_stopped():
-		fsm.change_state(dash_state)
+	if Input.is_action_pressed("dash") and alive and dash_cooldown.is_stopped():
+		if  not health_component.is_getting_hit:
+			fsm.change_state(dash_state)
 
 func _physics_process(delta):
 	if not is_on_floor():

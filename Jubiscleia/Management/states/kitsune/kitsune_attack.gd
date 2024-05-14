@@ -12,22 +12,19 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	kitsune.health_component.invulnerable = true
+	#kitsune.health_component.invulnerable = true
 	attack_timer.start()
 	kitsune.is_attacking = true
 	kitsune.velocity.x = 0
-	if kitsune.can_attack_melee:
-		animation.play("attack_1")
-	else:
-		animation.play("attack_2")
+	animation.play("attack_2")
 
 func exit_state() -> void:
 	set_physics_process(false)
-	kitsune.health_component.invulnerable = false
+	#kitsune.health_component.invulnerable = false
 	kitsune.is_attacking = false
 
 func _on_animation_finished(anim):
-	if anim == "attack_1" or anim == "attack_2":
+	if anim == "attack_2":
 		kitsune.fsm.change_state(kitsune.idle_state)
 
 func spawn_fireball():

@@ -13,9 +13,12 @@ func enter_state() -> void:
 	player.velocity.x = speed * player.direction
 	player.dash_cooldown.start()
 	animation.play("dash")
+	player.override_gravity = 0.1
+	player.velocity.y = 0
 
 func exit_state() -> void:
 	set_physics_process(false)
+	player.override_gravity = 0
 
 func _on_animation_finished(anim):
 	if anim == "dash":

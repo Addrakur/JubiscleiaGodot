@@ -20,7 +20,8 @@ func exit_state() -> void:
 	kitsune.cant_run_timer.start()
 
 func _physics_process(_delta):
-	direction_fix()
+	if kitsune.player_ref != null:
+		direction_fix()
 	
 	kitsune.velocity.x = kitsune.direction * speed
 	
