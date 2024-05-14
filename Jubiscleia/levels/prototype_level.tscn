@@ -273,7 +273,6 @@ modulate = Color(0, 1, 0.517647, 1)
 polygon = PackedVector2Array(832, 352, 992, 352, 992, 544, 1120, 544, 1120, 640, 832, 640)
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_left = 96.0
 offset_top = 240.0
 offset_right = 279.0
@@ -281,7 +280,7 @@ offset_bottom = 344.0
 text = "BATER:
 Arma 1: Botao esquerdo / quadrado
 Arma 2: Botao direito / triangulo
-"
+Experimente misturar os combos"
 horizontal_alignment = 1
 
 [node name="CameraPolygon" type="Polygon2D" parent="."]

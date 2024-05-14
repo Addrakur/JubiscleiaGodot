@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bdh42hgehknwl"]
+[gd_scene load_steps=14 format=3 uid="uid://bdh42hgehknwl"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_e2h5m"]
 [ext_resource type="PackedScene" uid="uid://bi6cc6w3ecvyj" path="res://objects/plataform.tscn" id="2_om01v"]
@@ -8,8 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://crkl2utufgcrd" path="res://enemies/big_worm.tscn" id="4_wpb6o"]
 [ext_resource type="PackedScene" uid="uid://radoy72pb50a" path="res://enemies/kitsune.tscn" id="6_6mn22"]
 [ext_resource type="PackedScene" uid="uid://bysdn4i581jjc" path="res://enemies/scorpion.tscn" id="6_46f5e"]
+[ext_resource type="PackedScene" uid="uid://dofww7w55i7it" path="res://Management/enemy_wall.tscn" id="6_xxqtp"]
+[ext_resource type="PackedScene" uid="uid://dx23ctyg8spen" path="res://enemies/spear_skeleton.tscn" id="6_yuruj"]
 [ext_resource type="PackedScene" uid="uid://bolenc8px11st" path="res://Management/level_end.tscn" id="7_6o7yj"]
 [ext_resource type="PackedScene" uid="uid://dujgxpnuckrha" path="res://Management/tween_area.tscn" id="8_l3c61"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ipc1e"]
+size = Vector2(32, 64)
 
 [node name="Level2" type="Node2D" node_paths=PackedStringArray("player", "camera_polygon")]
 script = ExtResource("1_e2h5m")
@@ -118,6 +123,39 @@ starting_x = NodePath("../Marker2D")
 
 [node name="Marker2D" type="Marker2D" parent="Enemies/Limit7"]
 position = Vector2(2912, -256)
+
+[node name="SpearSkeleton" parent="Enemies/Limit7" instance=ExtResource("6_yuruj")]
+position = Vector2(3104, -320)
+
+[node name="SpearSkeleton2" parent="Enemies/Limit7" instance=ExtResource("6_yuruj")]
+position = Vector2(2816, -320)
+
+[node name="Walls" type="Node2D" parent="Enemies"]
+
+[node name="EnemyWall" parent="Enemies/Walls" instance=ExtResource("6_xxqtp")]
+position = Vector2(2080, 512)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Walls/EnemyWall"]
+position = Vector2(16, 0)
+shape = SubResource("RectangleShape2D_ipc1e")
+
+[node name="EnemyWall2" parent="Enemies/Walls" instance=ExtResource("6_xxqtp")]
+position = Vector2(2208, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Walls/EnemyWall2"]
+position = Vector2(16, 0)
+shape = SubResource("RectangleShape2D_ipc1e")
+
+[node name="EnemyWall3" parent="Enemies/Walls" instance=ExtResource("6_xxqtp")]
+position = Vector2(1824, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/Walls/EnemyWall3"]
+position = Vector2(16, 0)
+shape = SubResource("RectangleShape2D_ipc1e")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Enemies/Walls/EnemyWall3"]
+position = Vector2(608, -320)
+shape = SubResource("RectangleShape2D_ipc1e")
 
 [node name="Player" parent="." instance=ExtResource("2_uw1h1")]
 position = Vector2(-192, 0)

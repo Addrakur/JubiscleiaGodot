@@ -51,7 +51,7 @@ polygon = PackedVector2Array(608, -1568, 1696, -1568, 1696, -1664, 608, -1664)
 
 [node name="TweenArea3" parent="Tweens" node_paths=PackedStringArray("player") instance=ExtResource("5_1opjf")]
 player = NodePath("../../Player")
-offset = -50.0
+offset = -75.0
 tween_timer = 1.5
 direction = "up"
 
