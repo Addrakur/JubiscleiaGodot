@@ -27,7 +27,6 @@ window/size/viewport_height=432
 window/size/mode=2
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
-window/vsync/vsync_mode=2
 
 [input]
 
