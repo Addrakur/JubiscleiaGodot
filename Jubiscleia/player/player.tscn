@@ -5286,7 +5286,7 @@ process_mode = 3
 position = Vector2(34, -15)
 
 [node name="HealthComponent" parent="." instance=ExtResource("9_6bxkt")]
-max_health = 500.0
+max_health = 150.0
 destroy_after_dead = true
 
 [node name="RayCastMoveFalse" type="RayCast2D" parent="."]
