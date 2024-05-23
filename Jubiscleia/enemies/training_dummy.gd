@@ -17,7 +17,7 @@ func _ready():
 func _process(_delta):
 	if health_component.is_getting_hit and not fsm.state == hit_state:
 		fsm.change_state(hit_state)
-	
+
 func _physics_process(delta):
 	move_and_slide()
 	if not is_on_floor():

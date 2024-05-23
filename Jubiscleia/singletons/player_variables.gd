@@ -76,8 +76,8 @@ var axe_jump_knockup: float = 0
 
 
 var sword_1_speed: float = 400
-var sword_2_speed: float = -300
-var sword_3_speed: float = 400
+var sword_2_speed: float = -0
+var sword_3_speed: float = 0
 
 var sword_0_1_damage: float = 2
 var sword_0_1_knockback: float = 0

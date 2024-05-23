@@ -33,8 +33,8 @@ func on_body_entered(body):
 				parent.velocity.y = PlayerVariables.spear_jump_my_knockup
 				
 			
-		if body.fsm.state == body.hit_state or body.fsm.state == body.state: # Gambiarra que faz o alvo reiniciar o hit state
-			body.fsm.change_state(body.state)
+		if body.fsm.state == body.hit_state: # Gambiarra que faz o alvo reiniciar o hit state
+			#body.fsm.change_state(body.state)
 			body.fsm.change_state(body.hit_state)
 			
 		
