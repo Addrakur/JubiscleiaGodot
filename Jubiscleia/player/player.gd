@@ -46,6 +46,7 @@ var override_gravity: float = 0
 
 var alive: bool = true
 var can_combo: bool
+var can_dash: bool = true
 
 var direction: float
 var last_direction: float = 1
@@ -80,9 +81,8 @@ func _process(_delta):
 	if health_component.is_getting_hit and not fsm.state == hit_state:
 		fsm.change_state(hit_state)
 	
-	if Input.is_action_pressed("dash") and alive and dash_cooldown.is_stopped():
-		if  not health_component.is_getting_hit:
-			fsm.change_state(dash_state)
+	if Input.is_action_pressed("dash") and can_dash:
+		fsm.change_state(dash_state)
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -123,6 +123,7 @@ func can_combo_true() -> void: #Vinculado aos ataques
 
 func move() -> void: #Vinculado aos ataques
 	if direction != 0:
+		can_dash = true
 		fsm.change_state(move_state)
 
 func move_true():
@@ -133,6 +134,12 @@ func move_false():
 
 func anim_finish_true():
 	PlayerVariables.anim_finish = true
+
+func can_dash_true():
+	can_dash = true
+
+func can_dash_false():
+	can_dash = false
 
 func direction_fix():
 	if direction > 0:
@@ -158,3 +165,6 @@ func spawn_spear_burst():
 func spawn_point_location_change():
 	attack_spawn_point.position.x = PlayerVariables.get(PlayerVariables.current_attack + "_location").x * last_direction
 	attack_spawn_point.position.y = PlayerVariables.get(PlayerVariables.current_attack + "_location").y
+
+func _on_dash_cooldown_timeout():
+	can_dash = true

@@ -9,6 +9,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
+	player.can_dash = false
 	animation.play("dead")
 	player.velocity.x = 0
 	PlayerVariables.player_alive = false

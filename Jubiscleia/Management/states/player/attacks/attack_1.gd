@@ -16,7 +16,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	
+	player.can_dash = false
 	PlayerVariables.anim_finish = false
 	
 	PlayerVariables.player_attacking = true
@@ -63,10 +63,11 @@ func _physics_process(_delta):
 	if player.can_combo and PlayerVariables.current_skill != "":
 		player.fsm.change_state(player.attack_2_state)
 	
-	if player.health_component.is_getting_hit:
+	if player.health_component.is_getting_hit: # Talvez precise tirar essa linha
 		PlayerVariables.current_skill = ""
 	
 	if PlayerVariables.anim_finish:
+		player.can_dash = true
 		player.fsm.change_state(player.idle_state)
 
  

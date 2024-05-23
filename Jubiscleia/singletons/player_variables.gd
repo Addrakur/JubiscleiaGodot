@@ -11,15 +11,15 @@ var player_attacking: bool = false
 var current_skill: String
 var current_attack: String
 var last_skill: String
-var skill_1: String = "sword" 
-var skill_2: String = "axe"
+var skill_1: String = "axe" 
+var skill_2: String = "sword"
 
 var move: bool = false
 var my_knockup: bool = false
 var anim_finish: bool = false
 
-var axe_1_speed: float = 400
-var axe_2_speed: float = 400
+var axe_1_speed: float = 0
+var axe_2_speed: float = 600
 var axe_3_speed: float = 400
 
 var axe_0_1_damage: float = 3
@@ -27,7 +27,7 @@ var axe_0_1_knockback: float = 100
 var axe_0_1_knockup: float = 0
 
 var axe_0_2_damage: float = 4
-var axe_0_2_knockback: float = 50
+var axe_0_2_knockback: float = 0
 var axe_0_2_knockup: float = 0
 
 var axe_0_3_damage: float = 6

@@ -9,6 +9,7 @@ func _ready():
 	set_physics_process(false)
 
 func enter_state() -> void:
+	player.can_dash = false
 	set_physics_process(true)
 	player.velocity.x = speed * player.direction
 	player.dash_cooldown.start()

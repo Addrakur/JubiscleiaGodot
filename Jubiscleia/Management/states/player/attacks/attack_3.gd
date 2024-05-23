@@ -16,7 +16,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	
+	player.can_dash = false
 	PlayerVariables.anim_finish = false
 	
 	PlayerVariables.player_attacking = true
@@ -55,6 +55,7 @@ func _physics_process(_delta):
 		player.velocity.x = speed * player.last_direction
 	
 	if PlayerVariables.anim_finish:
+		player.can_dash = true
 		player.fsm.change_state(player.idle_state)
 
  
