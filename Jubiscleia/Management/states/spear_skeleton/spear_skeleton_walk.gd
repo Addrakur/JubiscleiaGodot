@@ -39,7 +39,7 @@ func _physics_process(_delta):
 	
 
 func new_position():
-	new_x = randf_range(skeleton.limit.limit_polygon.polygon[0].x + wander_limit, skeleton.limit.limit_polygon.polygon[2].x + wander_limit)
+	new_x = randf_range(skeleton.limit.limit_polygon.polygon[0].x + wander_limit, skeleton.limit.limit_polygon.polygon[2].x - wander_limit)
 	
 	if skeleton.position.x > new_x:
 		skeleton.direction = -1
