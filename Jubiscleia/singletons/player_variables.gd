@@ -75,8 +75,8 @@ var axe_jump_knockback: float = 300
 var axe_jump_knockup: float = 0
 
 
-var sword_1_speed: float = 400
-var sword_2_speed: float = -0
+var sword_1_speed: float = 300
+var sword_2_speed: float = 0
 var sword_3_speed: float = 0
 
 var sword_0_1_damage: float = 2
@@ -84,7 +84,7 @@ var sword_0_1_knockback: float = 0
 var sword_0_1_knockup: float = 0
 
 var sword_0_2_damage: float = 3
-var sword_0_2_knockback: float = 0
+var sword_0_2_knockback: float = 50
 var sword_0_2_knockup: float = 0
 
 var sword_0_3_damage: float = 4
@@ -96,7 +96,7 @@ var sword_1_1_knockback: float = 0
 var sword_1_1_knockup: float = 0
 
 var sword_1_2_damage: float = 4
-var sword_1_2_knockback: float = 0
+var sword_1_2_knockback: float = 50
 var sword_1_2_knockup: float = 0
 
 var sword_1_3_damage: float = 5
@@ -108,30 +108,24 @@ var sword_2_1_knockback: float = 0
 var sword_2_1_knockup: float = 0
 
 var sword_2_2_damage: float = 5
-var sword_2_2_knockback: float = 0
+var sword_2_2_knockback: float = 50
 var sword_2_2_knockup: float = 0
 
 var sword_2_3_damage: float = 6
 var sword_2_3_knockback: float = 0
 var sword_2_3_knockup: float = 0
-var sword_2_3_projectile_damage: float = 4
-var sword_2_3_projectile_speed: float = 300
-var sword_2_3_location: Vector2 = Vector2 (42,-15)
 
 var sword_3_1_damage: float = 5
 var sword_3_1_knockback: float = 0
 var sword_3_1_knockup: float = 0
 
 var sword_3_2_damage: float = 6
-var sword_3_2_knockback: float = 0
+var sword_3_2_knockback: float = 50
 var sword_3_2_knockup: float = 0
 
 var sword_3_3_damage: float = 7
 var sword_3_3_knockback: float = 0
 var sword_3_3_knockup: float = 0
-var sword_3_3_projectile_damage: float = 6
-var sword_3_3_projectile_speed: float = 400
-var sword_3_3_location: Vector2 = Vector2 (42,-15)
 
 var sword_jump_damage: float = 2
 var sword_jump_knockback: float = 0

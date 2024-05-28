@@ -18,7 +18,7 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	player.can_dash = false
-	anim_finish = false
+	animation.stop()
 	animation.play("hit")
 	player.velocity.x = 0
 	knockback()
@@ -26,6 +26,7 @@ func enter_state() -> void:
 func exit_state() -> void:
 	set_physics_process(false)
 	player.health_component.is_getting_hit = false
+	anim_finish = false
 	player.can_dash = true
 
 func _physics_process(_delta):
