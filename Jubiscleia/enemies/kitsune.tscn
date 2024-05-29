@@ -612,7 +612,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="AttackSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(28, 45)
+position = Vector2(47, 10)
 
 [node name="TrappedSensor" type="RayCast2D" parent="."]
 position = Vector2(0, 21)

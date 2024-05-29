@@ -37,7 +37,7 @@ func spawn_fireball():
 		set_spawn_point(28 * kitsune.direction,45)
 	else:
 		proj.animation_level = 1
-		set_spawn_point(47 * kitsune.direction,2)
+		set_spawn_point(47 * kitsune.direction,10)
 	add_child(proj)
 	proj.position = kitsune.attack_spawn_point.global_position
 	proj.direction = kitsune.direction

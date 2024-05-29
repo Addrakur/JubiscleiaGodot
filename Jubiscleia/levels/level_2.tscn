@@ -110,16 +110,17 @@ color = Color(1, 1, 1, 0.164706)
 polygon = PackedVector2Array(2016, 256, 2016, 352, 2208, 352, 2208, 256)
 
 [node name="Limit7" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("4_p4y5h")]
-limit_polygon = NodePath("Polygon2D")
+limit_polygon = NodePath("Polygon7")
 
-[node name="Polygon2D" type="Polygon2D" parent="Enemies/Limit7"]
+[node name="Polygon7" type="Polygon2D" parent="Enemies/Limit7"]
 visible = false
 color = Color(1, 1, 1, 0.313726)
 polygon = PackedVector2Array(2432, -448, 2432, -256, 3392, -256, 3392, -448)
 
-[node name="Kitsune" parent="Enemies/Limit7" node_paths=PackedStringArray("starting_x") instance=ExtResource("6_6mn22")]
+[node name="Kitsune" parent="Enemies/Limit7" node_paths=PackedStringArray("starting_x", "warp_area") instance=ExtResource("6_6mn22")]
 position = Vector2(2912, -320)
 starting_x = NodePath("../Marker2D")
+warp_area = NodePath("../Polygon7")
 
 [node name="Marker2D" type="Marker2D" parent="Enemies/Limit7"]
 position = Vector2(2912, -256)

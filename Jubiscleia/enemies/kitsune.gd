@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 @export var health_component: Node2D
-@export var attack_area: Area2D
 @export var off_set_wander: float
 @export var min_wander: float
 @export var starting_x: Marker2D
