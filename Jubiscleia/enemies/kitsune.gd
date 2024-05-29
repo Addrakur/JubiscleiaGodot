@@ -17,7 +17,7 @@ extends CharacterBody2D
 @onready var wall_sensor = $WallSensor
 @onready var trapped_sensor = $TrappedSensor
 @onready var attack_spawn_point = $AttackSpawnPoint
-const ASP_POSITION: float = 47
+#const ASP_POSITION: float = 47
 
 @onready var fsm = $StateMachine as StateMachine
 @onready var state = $StateMachine/State as State
@@ -75,7 +75,7 @@ func right():
 	short_collision.scale.x = 1
 	wall_sensor.scale.x = 1
 	trapped_sensor.scale.x = 1
-	attack_spawn_point.position.x = ASP_POSITION
+	#attack_spawn_point.position.x = ASP_POSITION
 
 func left():
 	texture.flip_h = true
@@ -84,7 +84,7 @@ func left():
 	short_collision.scale.x = -1
 	wall_sensor.scale.x = -1
 	trapped_sensor.scale.x = -1
-	attack_spawn_point.position.x = -ASP_POSITION
+	#attack_spawn_point.position.x = -ASP_POSITION
 
 func _on_run_area_body_entered(body):
 	if body == player_ref:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://radoy72pb50a"]
+[gd_scene load_steps=31 format=3 uid="uid://radoy72pb50a"]
 
 [ext_resource type="Script" path="res://enemies/kitsune.gd" id="1_3ptr8"]
 [ext_resource type="Texture2D" uid="uid://c4s8bcr5r7i73" path="res://assets/enemy/banco_de_assets/kitsune/Run.png" id="1_5gbqr"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://cj463eeu0fmat" path="res://assets/enemy/banco_de_assets/kitsune/Attack_2.png" id="6_viafm"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="7_v7gb8"]
 [ext_resource type="Texture2D" uid="uid://doqt424m83x7d" path="res://assets/enemy/banco_de_assets/kitsune/Dead.png" id="8_7ednr"]
-[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="8_vvqvp"]
 [ext_resource type="Texture2D" uid="uid://bo81sxl7x7xrn" path="res://assets/enemy/banco_de_assets/kitsune/Warp.png" id="9_5g4sw"]
 [ext_resource type="Script" path="res://Management/states/state_machine.gd" id="9_lnycy"]
 [ext_resource type="Script" path="res://Management/states/state.gd" id="10_tjit1"]
@@ -62,7 +61,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AttackArea/AttackCollision:disabled")
+tracks/3/path = NodePath("Texture:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -71,34 +70,10 @@ tracks/3/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AttackArea/AttackCollision:polygon")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [PackedVector2Array(31, 1, 31, 45, 65, 45, 65, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Texture:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_svdek"]
 resource_name = "attack_1"
-length = 0.8
+length = 0.88
 step = 0.08
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -122,7 +97,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [10]
+"values": [11]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -131,34 +106,24 @@ tracks/2/path = NodePath("Texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AttackArea/AttackCollision:disabled")
+tracks/3/path = NodePath("StateMachine/KitsuneAttack")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.56, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AttackArea/AttackCollision:polygon")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.56, 0.64, 0.72),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [PackedVector2Array(-1, -1, -1, 1, 1, 1, 1, -1), PackedVector2Array(15, 1, 15, 45, 65, 45, 65, 1), PackedVector2Array(15, -6, 15, 45, 72, 45, 72, -6), PackedVector2Array(15, -4, 15, 45, 81, 45, 81, -4)]
+"times": PackedFloat32Array(0.56),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_fireball"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_m5jre"]
@@ -532,12 +497,12 @@ _data = {
 "warp_out": SubResource("Animation_xpqv1")
 }
 
-[node name="Kitsune" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
+[node name="Kitsune" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemy"]]
+z_index = -10
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_3ptr8")
 health_component = NodePath("HealthComponent")
-attack_area = NodePath("AttackArea")
 off_set_wander = 150.0
 min_wander = 75.0
 
@@ -556,17 +521,6 @@ polygon = PackedVector2Array(-8, 45, 13, 45, 13, -21, -8, -21)
 [node name="HealthComponent" parent="." instance=ExtResource("7_v7gb8")]
 max_health = 20.0
 destroy_after_dead = true
-
-[node name="AttackArea" parent="." instance=ExtResource("8_vvqvp")]
-collision_mask = 1
-target = "player"
-damage = 5.0
-knockup_force = -20.0
-knockback_force = 200.0
-
-[node name="AttackCollision" type="CollisionPolygon2D" parent="AttackArea"]
-polygon = PackedVector2Array(31, 1, 31, 45, 65, 45, 65, 1)
-disabled = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("9_lnycy")
@@ -618,14 +572,12 @@ kitsune = NodePath("../..")
 animation = NodePath("../../Animations")
 
 [node name="CanAttackShort" type="Area2D" parent="."]
-visible = false
 
 [node name="ShortCollision" type="CollisionPolygon2D" parent="CanAttackShort"]
 modulate = Color(0.0431373, 0.0901961, 0.729412, 1)
 polygon = PackedVector2Array(0, 45, 320, 45, 320, -158, 0, -158)
 
 [node name="RunArea" type="Area2D" parent="."]
-visible = false
 
 [node name="RunCollision" type="CollisionPolygon2D" parent="RunArea"]
 modulate = Color(0, 0, 0.670588, 1)
@@ -660,7 +612,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="AttackSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(47, 2)
+position = Vector2(28, 45)
 
 [node name="TrappedSensor" type="RayCast2D" parent="."]
 position = Vector2(0, 21)

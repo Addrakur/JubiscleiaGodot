@@ -136,7 +136,7 @@ position = Vector2(3936, 96)
 [node name="EnemyWall" parent="Enemies" instance=ExtResource("7_1bser")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemies/EnemyWall"]
-position = Vector2(2032, 336)
+position = Vector2(2048, 336)
 shape = SubResource("RectangleShape2D_iauqf")
 
 [node name="EnemyWall2" parent="Enemies" instance=ExtResource("7_1bser")]
