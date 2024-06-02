@@ -4,6 +4,7 @@ extends State
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
 @export var speed: float
+@export var terminal_velocity: float
 
 func _ready():
 	set_physics_process(false)
@@ -16,6 +17,9 @@ func exit_state() -> void:
 
 func _physics_process(_delta):
 	player.velocity.x = player.direction * speed
+	
+	if player.velocity.y > terminal_velocity:
+		player.velocity.y = terminal_velocity
 	
 	if player.velocity.y > 0:
 		animation.play("fall")

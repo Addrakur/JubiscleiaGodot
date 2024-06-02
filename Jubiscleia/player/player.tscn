@@ -5058,9 +5058,9 @@ floor_constant_speed = true
 script = ExtResource("1_5lux4")
 attack_area = NodePath("AttackArea")
 health_component = NodePath("HealthComponent")
-jump_height = 72.0
+jump_height = 73.0
 jump_time_to_peak = 0.35
-jump_time_to_descent = 0.3
+jump_time_to_descent = 0.27
 max_jump_count = 2.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
@@ -5100,6 +5100,7 @@ script = ExtResource("16_xs1j5")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 speed = 200.0
+terminal_velocity = 600.0
 
 [node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("23_j7sbs")

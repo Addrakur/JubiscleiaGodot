@@ -9,7 +9,7 @@ func _ready() -> void:
 	
 	for child in children:
 		if child.is_class("CharacterBody2D"):
-			enemy_list.append(child)
+			add(child)
 	
 	limit_area.polygon = limit_polygon.polygon
 
@@ -32,3 +32,6 @@ func on_body_exited(body):
 
 func erase(enemy: CharacterBody2D):
 	enemy_list.erase(enemy)
+
+func add(enemy: CharacterBody2D):
+	enemy_list.append(enemy)
