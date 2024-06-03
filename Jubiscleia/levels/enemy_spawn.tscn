@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://cdxfpuoofl54i" path="res://assets/enemy/Miniature/skeleton.png" id="6_2foh3"]
 [ext_resource type="Texture2D" uid="uid://b1r1tqfjpbbac" path="res://assets/enemy/Miniature/snake.png" id="7_5t47j"]
 
-[sub_resource type="Animation" id="Animation_m0hgs"]
-resource_name = "big_worm"
+[sub_resource type="Animation" id="Animation_j6t8w"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -23,8 +23,8 @@ tracks/0/keys = {
 "values": [ExtResource("3_pu6lx")]
 }
 
-[sub_resource type="Animation" id="Animation_j6t8w"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_m0hgs"]
+resource_name = "big_worm"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

@@ -29,4 +29,3 @@ func _on_animation_finished(anim_name):
 	
 	if anim_name == str(animation_level):
 		can_destroy = true
-

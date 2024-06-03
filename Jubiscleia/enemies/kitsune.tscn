@@ -572,12 +572,14 @@ kitsune = NodePath("../..")
 animation = NodePath("../../Animations")
 
 [node name="CanAttackShort" type="Area2D" parent="."]
+visible = false
 
 [node name="ShortCollision" type="CollisionPolygon2D" parent="CanAttackShort"]
 modulate = Color(0.0431373, 0.0901961, 0.729412, 1)
 polygon = PackedVector2Array(0, 45, 320, 45, 320, -158, 0, -158)
 
 [node name="RunArea" type="Area2D" parent="."]
+visible = false
 
 [node name="RunCollision" type="CollisionPolygon2D" parent="RunArea"]
 modulate = Color(0, 0, 0.670588, 1)

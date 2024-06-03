@@ -34,7 +34,7 @@ func spawn_fireball():
 	var proj = fireball.instantiate()
 	if kitsune.can_attack_short_range:
 		proj.animation_level = 2
-		set_spawn_point(28 * kitsune.direction,45)
+		set_spawn_point(28 * kitsune.direction,44)
 	else:
 		proj.animation_level = 1
 		set_spawn_point(47 * kitsune.direction,10)

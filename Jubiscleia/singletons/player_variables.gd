@@ -11,8 +11,8 @@ var player_attacking: bool = false
 var current_skill: String
 var current_attack: String
 var last_skill: String
-var skill_1: String = "axe" 
-var skill_2: String = "sword"
+var skill_1: String = "sword" 
+var skill_2: String = "axe"
 
 var move: bool = false
 var my_knockup: bool = false

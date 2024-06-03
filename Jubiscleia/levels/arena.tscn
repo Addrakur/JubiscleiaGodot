@@ -78,3 +78,10 @@ has_warp_area = true
 warp_area = NodePath("../Limit/Polygon2D")
 starting_x = NodePath("../Limit/Starting X")
 limit = NodePath("../Limit")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -572.0
+offset_top = 247.0
+offset_right = -327.0
+offset_bottom = 273.0
+text = "Aperte F para spawnar inimigos"
