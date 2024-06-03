@@ -136,8 +136,9 @@ _data = {
 "idle": SubResource("Animation_8b45t")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cr08w"]
-size = Vector2(14, 32)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3o0gp"]
+radius = 6.0
+height = 32.1721
 
 [node name="Training Dummy" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemy"]]
 collision_layer = 2
@@ -147,6 +148,7 @@ health_component = NodePath("HealthComponent")
 metadata/_edit_horizontal_guides_ = [-93.0]
 
 [node name="Texture" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
 texture = ExtResource("1_hqlgo")
 hframes = 4
 
@@ -160,8 +162,9 @@ max_health = 1000.0
 destroy_after_dead = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
 scale = Vector2(1, 0.994651)
-shape = SubResource("RectangleShape2D_cr08w")
+shape = SubResource("CapsuleShape2D_3o0gp")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("5_y00kf")
