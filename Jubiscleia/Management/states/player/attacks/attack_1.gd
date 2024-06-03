@@ -9,7 +9,6 @@ var knockback_force: float
 var knockup_force: float
 
 var speed: float
-var direction: float
 
 func _ready():
 	set_physics_process(false)
@@ -19,13 +18,11 @@ func enter_state() -> void:
 	player.can_dash = false
 	PlayerVariables.anim_finish = false
 	
-	PlayerVariables.player_attacking = true
 	PlayerVariables.last_skill = PlayerVariables.current_skill
 	animation.play(PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_1")
 	PlayerVariables.current_attack = PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_1"
 	player.can_combo = false
 
-	direction = player.last_direction
 	speed = PlayerVariables.get(str(PlayerVariables.current_skill) + "_1_speed")
 	damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_1_damage")
 	knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_1_knockback")
@@ -52,7 +49,7 @@ func _physics_process(_delta):
 	player.direction = Input.get_axis("left","right")
 	
 	if PlayerVariables.move:
-		player.velocity.x = speed * direction
+		player.velocity.x = speed * player.last_direction
 	
 	if Input.is_action_just_pressed("attack_button_1"):
 		PlayerVariables.current_skill = PlayerVariables.skill_1

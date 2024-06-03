@@ -305,6 +305,20 @@ tracks/6/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.45),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ym5yg"]
 resource_name = "axe_0_2"
@@ -405,6 +419,20 @@ tracks/6/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.45),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_ag2sp"]
 resource_name = "axe_0_3"
@@ -495,6 +523,20 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.675),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_sxfcj"]
@@ -589,6 +631,20 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.45),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ky8gy"]
@@ -690,6 +746,20 @@ tracks/6/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.45),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_1br35"]
 resource_name = "axe_1_3"
@@ -780,6 +850,20 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.675),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_300l2"]
@@ -874,6 +958,20 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.45),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_cx5y3"]
@@ -975,6 +1073,20 @@ tracks/6/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.45),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_aelqe"]
 resource_name = "axe_2_3"
@@ -1065,6 +1177,20 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.675),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_mk5u2"]
@@ -1159,6 +1285,20 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.45),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_jfqsk"]
@@ -1260,6 +1400,20 @@ tracks/6/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.45),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_fs1hc"]
 resource_name = "axe_3_3"
@@ -1350,6 +1504,20 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.675),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_w1xyu"]
@@ -3299,6 +3467,20 @@ tracks/6/keys = {
 "method": &"anim_finish_true"
 }]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_c8unn"]
 resource_name = "sword_0_2"
@@ -3396,6 +3578,20 @@ tracks/6/keys = {
 "method": &"anim_finish_true"
 }]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.225),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_6r0ew"]
 resource_name = "sword_0_3"
@@ -3480,9 +3676,12 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(1.05),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.05),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"player_attacking_true"
+}, {
 "args": [],
 "method": &"anim_finish_true"
 }]
@@ -3590,6 +3789,20 @@ tracks/6/keys = {
 "method": &"anim_finish_true"
 }]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_er31p"]
 resource_name = "sword_1_2"
@@ -3687,6 +3900,20 @@ tracks/6/keys = {
 "method": &"anim_finish_true"
 }]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.225),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_oklcw"]
 resource_name = "sword_1_3"
@@ -3771,9 +3998,12 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(1.05),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.05),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"player_attacking_true"
+}, {
 "args": [],
 "method": &"anim_finish_true"
 }]
@@ -3881,6 +4111,20 @@ tracks/6/keys = {
 "method": &"anim_finish_true"
 }]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_18fiq"]
 resource_name = "sword_2_2"
@@ -3978,6 +4222,20 @@ tracks/6/keys = {
 "method": &"anim_finish_true"
 }]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.225),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_b32eb"]
 resource_name = "sword_2_3"
@@ -4062,9 +4320,12 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(1.05),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.05),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"player_attacking_true"
+}, {
 "args": [],
 "method": &"anim_finish_true"
 }]
@@ -4172,6 +4433,20 @@ tracks/6/keys = {
 "method": &"anim_finish_true"
 }]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.05),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_rlaon"]
 resource_name = "sword_3_2"
@@ -4269,6 +4544,20 @@ tracks/6/keys = {
 "method": &"anim_finish_true"
 }]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.225),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_rb1kn"]
 resource_name = "sword_3_3"
@@ -4353,9 +4642,12 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(1.05),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.05),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"player_attacking_true"
+}, {
 "args": [],
 "method": &"anim_finish_true"
 }]

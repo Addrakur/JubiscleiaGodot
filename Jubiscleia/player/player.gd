@@ -141,6 +141,12 @@ func can_dash_true():
 func can_dash_false():
 	can_dash = false
 
+func player_attacking_true():
+	PlayerVariables.player_attacking = true
+
+func player_attacking_false():
+	PlayerVariables.player_attacking = false
+
 func direction_fix():
 	if direction > 0:
 		direction = 1
