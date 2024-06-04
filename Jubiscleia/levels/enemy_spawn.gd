@@ -60,4 +60,9 @@ func spawn_enemy():
 		enemy_inst.warp_area = limit.limit_polygon
 	
 	if has_set_direction:
-		enemy_inst.direction = -1
+		var chance: float
+		chance = randf()
+		if chance >= 0.5:
+			enemy_inst.direction = -1
+		else:
+			enemy_inst.direction = 1
