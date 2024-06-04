@@ -22,3 +22,6 @@ func _physics_process(delta):
 	
 	if can_destroy:
 		queue_free()
+
+func _on_animation_finished(anim):
+	can_destroy = true

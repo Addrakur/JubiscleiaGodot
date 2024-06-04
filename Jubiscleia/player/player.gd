@@ -156,11 +156,11 @@ func direction_fix():
 	if direction != 0:
 		last_direction = direction
 
-func spawn_attack_projectile():
+func spawn_attack_projectile(player_direction: bool):
 	var proj = projectile.instantiate()
 	add_child(proj)
-	proj.position = attack_spawn_point.global_position
-	proj.direction = last_direction
+	proj.position = global_position + PlayerVariables.get(PlayerVariables.current_attack + "_location")
+	proj.direction = last_direction if player_direction else -last_direction
 
 func spawn_spear_burst():
 	var burst = spear_burst.instantiate()
