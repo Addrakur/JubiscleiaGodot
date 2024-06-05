@@ -17,6 +17,7 @@ func enter_state() -> void:
 	set_physics_process(true)
 	player.can_dash = false
 	PlayerVariables.anim_finish = false
+	player.next_attack = 1
 	
 	#PlayerVariables.player_attacking = true
 	PlayerVariables.last_skill = PlayerVariables.current_skill

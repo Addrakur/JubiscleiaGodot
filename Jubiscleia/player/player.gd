@@ -12,7 +12,7 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var raycast_move_false: RayCast2D = $RayCastMoveFalse
 const RCMF_POSITION: float = 43
 @onready var attack_spawn_point = $AttackSpawnPoint
-
+@onready var combo_timer = $ComboTimer
 
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var corruption_manager: Node2D = $CorruptionManager
@@ -43,6 +43,7 @@ var jump_velocity: float
 var jump_gravity: float
 var fall_gravity: float
 var override_gravity: float = 0
+var next_attack: float = 1
 
 var alive: bool = true
 var can_combo: bool
@@ -174,3 +175,6 @@ func spawn_point_location_change():
 
 func _on_dash_cooldown_timeout():
 	can_dash = true
+
+func _on_combo_timer_timeout():
+	next_attack = 1
