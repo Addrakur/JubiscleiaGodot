@@ -16,4 +16,5 @@ func _input(event):
 		get_tree().paused = !current_value
 
 func change_scene(scene_name:String):
+	get_tree().set_pause(false)
 	get_tree().change_scene_to_file(scene_name)

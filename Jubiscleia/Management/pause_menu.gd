@@ -4,7 +4,7 @@ extends CanvasLayer
 var menu: String = "res://Management/menu.tscn"
 
 func _process(_delta):
-	if get_tree().paused:
+	if get_tree().is_paused():
 		pause_menu.show()
 	else:
 		pause_menu.hide()
@@ -14,9 +14,11 @@ func on_resume_pressed():
 
 func on_restart_pressed():
 	get_tree().reload_current_scene()
-	get_tree().paused = false
+	#get_tree().paused = false
+	get_tree().set_pause(false)
 
 
 func on_menu_pressed():
 	GameSettings.change_scene(menu)
-	get_tree().paused = false
+	#get_tree().paused = false
+
