@@ -1,7 +1,6 @@
-[gd_scene load_steps=136 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=135 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
-[ext_resource type="Script" path="res://player/Camera.gd" id="2_4f3vw"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_tuo6g"]
 [ext_resource type="Texture2D" uid="uid://r4fsrgiqahps" path="res://assets/player/banco_de_assets/player_idle.png" id="2_vct6e"]
 [ext_resource type="Texture2D" uid="uid://sdcuoq736vyl" path="res://assets/player/banco_de_assets/player_fall.png" id="5_bu6v8"]
@@ -5464,19 +5463,6 @@ texture = ExtResource("17_7bh1j")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_ttoyg")
-
-[node name="Camera" type="Camera2D" parent="." node_paths=PackedStringArray("player")]
-process_callback = 0
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
-drag_vertical_enabled = true
-drag_left_margin = 0.4
-drag_top_margin = 0.3
-drag_right_margin = 0.4
-drag_bottom_margin = 0.05
-editor_draw_limits = true
-script = ExtResource("2_4f3vw")
-player = NodePath("..")
 
 [node name="AttackArea" parent="." instance=ExtResource("2_tuo6g")]
 scale = Vector2(1.00346, 1)
