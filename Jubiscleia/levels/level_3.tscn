@@ -179,12 +179,12 @@ position = Vector2(2672, -864)
 shape = SubResource("RectangleShape2D_24vcy")
 
 [node name="PhantomCamera2D" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("8_uurxq")]
-position = Vector2(64.0165, -24.0119)
+position = Vector2(64, -24)
 follow_target = NodePath("../Player")
 limit_target = NodePath("../CameraBound/CollisionShape2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(82, -37)
+position = Vector2(64, -24)
 limit_left = -320
 limit_top = -1920
 limit_right = 5664

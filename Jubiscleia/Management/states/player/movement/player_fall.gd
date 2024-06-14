@@ -33,6 +33,7 @@ func _physics_process(_delta):
 			player.fsm.change_state(player.move_state)
 	
 	if Input.is_action_just_pressed("jump") and player.jump_count < player.max_jump_count:
+		player.coyote_time.stop()
 		player.fsm.change_state(player.double_jump_state)
 	
 	if Input.is_action_just_pressed("attack_button_1"):
@@ -42,3 +43,6 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("attack_button_2"):
 		PlayerVariables.current_skill = PlayerVariables.skill_2
 		player.fsm.change_state(player.jump_attack_state)
+
+func _on_coyote_time_timeout():
+	player.jump_count += 1

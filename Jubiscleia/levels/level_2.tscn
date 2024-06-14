@@ -187,7 +187,7 @@ polygon = PackedVector2Array(-224, -1600, -224, 736, 3392, 736, 3392, -1600)
 position = Vector2(928, -960)
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(128, -50)
+position = Vector2(128, 0)
 limit_left = -256
 limit_top = -1536
 limit_right = 3392
@@ -197,7 +197,7 @@ limit_bottom = 768
 script = ExtResource("12_uxsbj")
 
 [node name="PhantomCamera2D" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("13_8mkyx")]
-position = Vector2(128, -50)
+position = Vector2(128, 0)
 follow_target = NodePath("../Player")
 limit_target = NodePath("../CameraBound/CollisionShape2D")
 

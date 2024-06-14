@@ -13,6 +13,7 @@ const ATTACK_AREA_POSITION: float = 39
 const RCMF_POSITION: float = 43
 @onready var attack_spawn_point = $AttackSpawnPoint
 @onready var combo_timer = $ComboTimer
+@onready var coyote_time = $CoyoteTime
 
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var corruption_manager: Node2D = $CorruptionManager
