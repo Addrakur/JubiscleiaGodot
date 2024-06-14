@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cqp1060wjlhfn"]
+[gd_scene load_steps=12 format=3 uid="uid://cqp1060wjlhfn"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_5moen"]
 [ext_resource type="TileSet" uid="uid://dsjlo105wabro" path="res://assets/Tileset/Ground.tres" id="2_khbs8"]
@@ -10,12 +10,9 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_dny5v"]
 [ext_resource type="PackedScene" uid="uid://b7fccbrl06aa5" path="res://levels/enemy_spawn.tscn" id="11_14tdb"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fic6h"]
-size = Vector2(2560, 544)
-
 [sub_resource type="Curve2D" id="Curve2D_ldnnj"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1216, 288, 0, 0, 0, 0, 1152, 288)
+"points": PackedVector2Array(0, 0, 0, 0, -864, 288, 0, 0, 0, 0, 864, 288)
 }
 point_count = 2
 
@@ -41,7 +38,7 @@ polygon = PackedVector2Array(-256, 256, -256, 448, 1216, 448, 1216, 256)
 position = Vector2(608, 352)
 
 [node name="Player" parent="." instance=ExtResource("3_2ic4t")]
-position = Vector2(-867, 167)
+position = Vector2(864, 288)
 
 [node name="TileMap" type="TileMap" parent="." groups=["terrain"]]
 tile_set = ExtResource("2_khbs8")
@@ -99,31 +96,19 @@ offset_bottom = 273.0
 text = "Aperte F para spawnar inimigos"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-867, 288)
-limit_left = -1280
-limit_top = 0
-limit_right = 1280
-limit_bottom = 544
+position = Vector2(864, 288)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("7_qpd7n")
-
-[node name="CameraBound" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBound"]
-position = Vector2(0, 272)
-shape = SubResource("RectangleShape2D_fic6h")
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource("Curve2D_ldnnj")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
-position = Vector2(-867, 288)
+position = Vector2(864, 288)
 script = ExtResource("8_us7wb")
 follow_mode = 4
 follow_target = NodePath("../Player")
 follow_path = NodePath("../Path2D")
 tween_resource = SubResource("Resource_td1jt")
 draw_limits = true
-limit_target = NodePath("../CameraBound/CollisionShape2D")

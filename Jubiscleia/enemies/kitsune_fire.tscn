@@ -543,7 +543,7 @@ libraries = {
 }
 
 [node name="AttackArea" parent="." instance=ExtResource("1_y1jhn")]
-collision_mask = 9
+collision_mask = 17
 target = "player"
 damage = 5.0
 knockup_force = -50.0
