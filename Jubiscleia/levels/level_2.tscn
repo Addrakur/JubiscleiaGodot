@@ -162,9 +162,8 @@ shape = SubResource("RectangleShape2D_ipc1e")
 position = Vector2(608, -320)
 shape = SubResource("RectangleShape2D_ipc1e")
 
-[node name="Player" parent="." node_paths=PackedStringArray("player_camera") instance=ExtResource("2_uw1h1")]
+[node name="Player" parent="." instance=ExtResource("2_uw1h1")]
 position = Vector2(-192, 0)
-player_camera = NodePath("../PhantomCamera2D")
 
 [node name="Plataforms" type="Node2D" parent="."]
 

@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @export var attack_area: Area2D
 @export var health_component: Node2D
-@export var player_camera: PhantomCamera2D
+#@export var player_camera: PhantomCamera2D
 
 @onready var animation: AnimationPlayer = $Animations
 @onready var texture: Sprite2D = $Texture
@@ -89,9 +89,6 @@ func _physics_process(delta):
 	if not is_on_floor():
 		get_gravity()
 		velocity.y += gravity * delta
-		player_camera.dead_zone_height = 0.6
-	else:
-		player_camera.dead_zone_height = 0
 	if alive:
 		move_and_slide()
 		if not PlayerVariables.player_attacking:
@@ -116,13 +113,13 @@ func flip() -> void:
 		attack_area_polygon.position.x = ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = 1
 		raycast_move_false.target_position.x = RCMF_POSITION
-		player_camera.follow_offset.x = 0
+		#player_camera.follow_offset.x = 20
 	elif direction < 0:
 		texture.flip_h = true
 		attack_area_polygon.position.x = -ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = -1
 		raycast_move_false.target_position.x = -RCMF_POSITION
-		player_camera.follow_offset.x = 0
+		#player_camera.follow_offset.x = -20
 
 func can_combo_true() -> void: #Vinculado aos ataques
 	can_combo = true

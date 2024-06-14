@@ -1,26 +1,33 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqp1060wjlhfn"]
+[gd_scene load_steps=13 format=3 uid="uid://cqp1060wjlhfn"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_5moen"]
 [ext_resource type="TileSet" uid="uid://dsjlo105wabro" path="res://assets/Tileset/Ground.tres" id="2_khbs8"]
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="3_2ic4t"]
-[ext_resource type="PackedScene" uid="uid://diq4jvdx8wd0k" path="res://player/player_camera.tscn" id="4_am4hv"]
 [ext_resource type="PackedScene" uid="uid://cv8owgy7v2lhb" path="res://enemies/enemy_limit.tscn" id="4_l7r3x"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_qpd7n"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_us7wb"]
 [ext_resource type="PackedScene" uid="uid://sdmdvsx1p41u" path="res://enemies/training_dummy.tscn" id="9_dgptr"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_dny5v"]
 [ext_resource type="PackedScene" uid="uid://b7fccbrl06aa5" path="res://levels/enemy_spawn.tscn" id="11_14tdb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fic6h"]
 size = Vector2(2560, 544)
 
-[node name="Arena" type="Node2D" node_paths=PackedStringArray("player", "camera_polygon")]
+[sub_resource type="Curve2D" id="Curve2D_ldnnj"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1216, 288, 0, 0, 0, 0, 1152, 288)
+}
+point_count = 2
+
+[sub_resource type="Resource" id="Resource_td1jt"]
+script = ExtResource("9_dny5v")
+duration = 1.0
+transition = 0
+ease = 2
+
+[node name="Arena" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_5moen")
 player = NodePath("Player")
-camera_polygon = NodePath("CameraPolygon")
-
-[node name="CameraPolygon" type="Polygon2D" parent="."]
-visible = false
-color = Color(1, 1, 1, 0.219608)
-polygon = PackedVector2Array(-1280, 115, -1280, 544, 1280, 544, 1280, 115)
 
 [node name="Limit" parent="." node_paths=PackedStringArray("limit_polygon") instance=ExtResource("4_l7r3x")]
 limit_polygon = NodePath("Polygon2D")
@@ -33,9 +40,8 @@ polygon = PackedVector2Array(-256, 256, -256, 448, 1216, 448, 1216, 256)
 [node name="Starting X" type="Marker2D" parent="Limit"]
 position = Vector2(608, 352)
 
-[node name="Player" parent="." node_paths=PackedStringArray("player_camera") instance=ExtResource("3_2ic4t")]
-position = Vector2(-448, 256)
-player_camera = NodePath("../PlayerCamera")
+[node name="Player" parent="." instance=ExtResource("3_2ic4t")]
+position = Vector2(-867, 167)
 
 [node name="TileMap" type="TileMap" parent="." groups=["terrain"]]
 tile_set = ExtResource("2_khbs8")
@@ -93,7 +99,7 @@ offset_bottom = 273.0
 text = "Aperte F para spawnar inimigos"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-348, 216)
+position = Vector2(-867, 288)
 limit_left = -1280
 limit_top = 0
 limit_right = 1280
@@ -102,14 +108,22 @@ limit_bottom = 544
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("7_qpd7n")
 
-[node name="PlayerCamera" parent="." node_paths=PackedStringArray("follow_target") instance=ExtResource("4_am4hv")]
-position = Vector2(-348, 216)
-follow_target = NodePath("../Player")
-limit_target = NodePath("../TileMap")
-
 [node name="CameraBound" type="Area2D" parent="."]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBound"]
 position = Vector2(0, 272)
 shape = SubResource("RectangleShape2D_fic6h")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_ldnnj")
+
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
+position = Vector2(-867, 288)
+script = ExtResource("8_us7wb")
+follow_mode = 4
+follow_target = NodePath("../Player")
+follow_path = NodePath("../Path2D")
+tween_resource = SubResource("Resource_td1jt")
+draw_limits = true
+limit_target = NodePath("../CameraBound/CollisionShape2D")
