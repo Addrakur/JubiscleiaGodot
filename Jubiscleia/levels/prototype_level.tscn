@@ -85,6 +85,7 @@ polygon = PackedVector2Array(960, 544, 960, 640, 1376, 640, 1376, 544)
 limit_polygon = NodePath("Polygon2D")
 
 [node name="Polygon2D" type="Polygon2D" parent="Enemies/Limit3"]
+visible = false
 color = Color(1, 1, 1, 0.2)
 polygon = PackedVector2Array(2048, 320, 2048, 448, 2336, 448, 2336, 320)
 
@@ -221,7 +222,7 @@ camera = NodePath("../PC2")
 old_cameras = [NodePath("../PC1"), NodePath("../PC3")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CameraArea2"]
-polygon = PackedVector2Array(832, 256, 832, 640, 960, 640, 960, 416, 1472, 352, 1472, 256, 928, 256)
+polygon = PackedVector2Array(832, 256, 832, 640, 928, 544, 928, 384, 1472, 352, 1472, 256, 928, 256)
 
 [node name="Path2" type="Path2D" parent="CameraArea2"]
 curve = SubResource("Curve2D_yemnv")
@@ -232,7 +233,7 @@ camera = NodePath("../PC3")
 old_cameras = [NodePath("../PC1"), NodePath("../PC2")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CameraArea3"]
-polygon = PackedVector2Array(960, 640, 3424, 640, 3424, 416, 960, 416)
+polygon = PackedVector2Array(960, 672, 3424, 672, 3424, 416, 960, 416)
 
 [node name="Path3" type="Path2D" parent="CameraArea3"]
 curve = SubResource("Curve2D_52fhk")

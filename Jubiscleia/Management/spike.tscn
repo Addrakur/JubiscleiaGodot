@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://djqldg2hn5i3u"]
+
+[ext_resource type="Texture2D" uid="uid://cnmannxggs5cm" path="res://assets/Spikes.png" id="1_30gas"]
+[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_5hn2l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0hdm"]
+size = Vector2(32, 15)
+
+[node name="Spike" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_30gas")
+
+[node name="AttackArea" parent="." instance=ExtResource("2_5hn2l")]
+collision_mask = 1
+target = "player"
+damage = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(16, -7.5)
+shape = SubResource("RectangleShape2D_d0hdm")
