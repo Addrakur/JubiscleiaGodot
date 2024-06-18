@@ -12,8 +12,6 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	#kitsune.health_component.invulnerable = true
-	attack_timer.start()
 	kitsune.is_attacking = true
 	kitsune.velocity.x = 0
 	if kitsune.can_attack_short_range:
@@ -46,3 +44,6 @@ func spawn_fireball():
 
 func set_spawn_point(cord_x: float, cord_y:float):
 	kitsune.attack_spawn_point.position = Vector2(cord_x,cord_y)
+
+func attack_timer_start():
+	attack_timer.start()
