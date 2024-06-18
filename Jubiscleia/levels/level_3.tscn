@@ -15,6 +15,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dufck"]
 size = Vector2(1, 64)
 
+[sub_resource type="Resource" id="Resource_lqseo"]
+script = ExtResource("10_4ewab")
+duration = 1.0
+transition = 0
+ease = 2
+
 [sub_resource type="Curve2D" id="Curve2D_i3fdq"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 128, -128, 0, 0, 0, 0, 128, -1088)
@@ -44,12 +50,6 @@ _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 1760, -1216, 0, 0, 0, 0, 5248, -1216)
 }
 point_count = 2
-
-[sub_resource type="Resource" id="Resource_lqseo"]
-script = ExtResource("10_4ewab")
-duration = 1.0
-transition = 0
-ease = 2
 
 [node name="Level3" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_v0pp0")
@@ -260,62 +260,12 @@ position = Vector2(128, -128)
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("9_v3q6t")
 
-[node name="CameraArea1" parent="." node_paths=PackedStringArray("camera", "old_cameras") instance=ExtResource("10_2410k")]
-camera = NodePath("../PC1")
-old_cameras = [NodePath("../PC2"), NodePath("../PC3"), NodePath("../PC4"), NodePath("../PC5")]
-
-[node name="Path2D" type="Path2D" parent="CameraArea1"]
-curve = SubResource("Curve2D_i3fdq")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CameraArea1"]
-polygon = PackedVector2Array(192, -1216, -32, -1248, -192, -1248, -288, 96, 512, 96, 576, -1088, 224, -1184)
-
-[node name="CameraArea2" parent="." node_paths=PackedStringArray("camera", "old_cameras") instance=ExtResource("10_2410k")]
-camera = NodePath("../PC2")
-old_cameras = [NodePath("../PC1"), NodePath("../PC3"), NodePath("../PC4"), NodePath("../PC5")]
-
-[node name="Path2D" type="Path2D" parent="CameraArea2"]
-curve = SubResource("Curve2D_ewahq")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CameraArea2"]
-polygon = PackedVector2Array(288, -1184, 448, -1184, 480, -1664, 480, -1760, 416, -1760, 352, -1696)
-
-[node name="CameraArea3" parent="." node_paths=PackedStringArray("camera", "old_cameras") instance=ExtResource("10_2410k")]
-camera = NodePath("../PC3")
-old_cameras = [NodePath("../PC1"), NodePath("../PC2"), NodePath("../PC4"), NodePath("../PC5")]
-
-[node name="Path2D" type="Path2D" parent="CameraArea3"]
-curve = SubResource("Curve2D_pl3nd")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CameraArea3"]
-polygon = PackedVector2Array(544, -1760, 544, -1568, 1696, -1568, 1696, -1760)
-
-[node name="CameraArea4" parent="." node_paths=PackedStringArray("camera", "old_cameras") instance=ExtResource("10_2410k")]
-camera = NodePath("../PC4")
-old_cameras = [NodePath("../PC1"), NodePath("../PC2"), NodePath("../PC3"), NodePath("../PC5")]
-
-[node name="Path2D" type="Path2D" parent="CameraArea4"]
-curve = SubResource("Curve2D_pebo2")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CameraArea4"]
-polygon = PackedVector2Array(1536, -1568, 1536, -1024, 1792, -1024, 1792, -1216, 2048, -1760, 1696, -1760, 1696, -1568)
-
-[node name="CameraArea5" parent="." node_paths=PackedStringArray("camera", "old_cameras") instance=ExtResource("10_2410k")]
-camera = NodePath("../PC5")
-old_cameras = [NodePath("../PC1"), NodePath("../PC2"), NodePath("../PC3"), NodePath("../PC4")]
-
-[node name="Path2D" type="Path2D" parent="CameraArea5"]
-curve = SubResource("Curve2D_5nt12")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CameraArea5"]
-polygon = PackedVector2Array(1856, -1024, 1856, -1184, 1952, -1440, 5632, -1440, 5632, -1024)
-
 [node name="PC1" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
 position = Vector2(128, -128)
 script = ExtResource("9_qomd1")
 follow_mode = 4
 follow_target = NodePath("../Player")
-follow_path = NodePath("../CameraArea1/Path2D")
+follow_path = NodePath("../Cameras/CameraArea1/Path2D")
 tween_resource = SubResource("Resource_lqseo")
 draw_limits = true
 
@@ -324,7 +274,7 @@ position = Vector2(384, -1088)
 script = ExtResource("9_qomd1")
 follow_mode = 4
 follow_target = NodePath("../Player")
-follow_path = NodePath("../CameraArea2/Path2D")
+follow_path = NodePath("../Cameras/CameraArea2/Path2D")
 tween_resource = SubResource("Resource_lqseo")
 draw_limits = true
 
@@ -333,7 +283,7 @@ position = Vector2(384, -1696)
 script = ExtResource("9_qomd1")
 follow_mode = 4
 follow_target = NodePath("../Player")
-follow_path = NodePath("../CameraArea3/Path2D")
+follow_path = NodePath("../Cameras/CameraArea3/Path2D")
 tween_resource = SubResource("Resource_lqseo")
 draw_limits = true
 
@@ -342,7 +292,7 @@ position = Vector2(1760, -1216)
 script = ExtResource("9_qomd1")
 follow_mode = 4
 follow_target = NodePath("../Player")
-follow_path = NodePath("../CameraArea4/Path2D")
+follow_path = NodePath("../Cameras/CameraArea4/Path2D")
 tween_resource = SubResource("Resource_lqseo")
 draw_limits = true
 
@@ -351,6 +301,59 @@ position = Vector2(1760, -1216)
 script = ExtResource("9_qomd1")
 follow_mode = 4
 follow_target = NodePath("../Player")
-follow_path = NodePath("../CameraArea5/Path2D")
+follow_path = NodePath("../Cameras/CameraArea5/Path2D")
 tween_resource = SubResource("Resource_lqseo")
 draw_limits = true
+
+[node name="Cameras" type="Node2D" parent="."]
+visible = false
+
+[node name="CameraArea1" parent="Cameras" node_paths=PackedStringArray("camera", "old_cameras") instance=ExtResource("10_2410k")]
+camera = NodePath("../../PC1")
+old_cameras = [NodePath("../../PC2"), NodePath("../../PC3"), NodePath("../../PC4"), NodePath("../../PC5")]
+
+[node name="Path2D" type="Path2D" parent="Cameras/CameraArea1"]
+curve = SubResource("Curve2D_i3fdq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cameras/CameraArea1"]
+polygon = PackedVector2Array(192, -1216, -32, -1248, -192, -1248, -288, 96, 512, 96, 576, -1088, 224, -1184)
+
+[node name="CameraArea2" parent="Cameras" node_paths=PackedStringArray("camera", "old_cameras") instance=ExtResource("10_2410k")]
+camera = NodePath("../../PC2")
+old_cameras = [NodePath("../../PC1"), NodePath("../../PC3"), NodePath("../../PC4"), NodePath("../../PC5")]
+
+[node name="Path2D" type="Path2D" parent="Cameras/CameraArea2"]
+curve = SubResource("Curve2D_ewahq")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cameras/CameraArea2"]
+polygon = PackedVector2Array(288, -1184, 448, -1184, 480, -1664, 480, -1760, 416, -1760, 352, -1696)
+
+[node name="CameraArea3" parent="Cameras" node_paths=PackedStringArray("camera", "old_cameras") instance=ExtResource("10_2410k")]
+camera = NodePath("../../PC3")
+old_cameras = [NodePath("../../PC1"), NodePath("../../PC2"), NodePath("../../PC4"), NodePath("../../PC5")]
+
+[node name="Path2D" type="Path2D" parent="Cameras/CameraArea3"]
+curve = SubResource("Curve2D_pl3nd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cameras/CameraArea3"]
+polygon = PackedVector2Array(544, -1760, 544, -1568, 1696, -1568, 1696, -1760)
+
+[node name="CameraArea4" parent="Cameras" node_paths=PackedStringArray("camera", "old_cameras") instance=ExtResource("10_2410k")]
+camera = NodePath("../../PC4")
+old_cameras = [NodePath("../../PC1"), NodePath("../../PC2"), NodePath("../../PC3"), NodePath("../../PC5")]
+
+[node name="Path2D" type="Path2D" parent="Cameras/CameraArea4"]
+curve = SubResource("Curve2D_pebo2")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cameras/CameraArea4"]
+polygon = PackedVector2Array(1536, -1568, 1536, -1024, 1792, -1024, 1792, -1216, 2048, -1760, 1696, -1760, 1696, -1568)
+
+[node name="CameraArea5" parent="Cameras" node_paths=PackedStringArray("camera", "old_cameras") instance=ExtResource("10_2410k")]
+camera = NodePath("../../PC5")
+old_cameras = [NodePath("../../PC1"), NodePath("../../PC2"), NodePath("../../PC3"), NodePath("../../PC4")]
+
+[node name="Path2D" type="Path2D" parent="Cameras/CameraArea5"]
+curve = SubResource("Curve2D_5nt12")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cameras/CameraArea5"]
+polygon = PackedVector2Array(1856, -1024, 1856, -1184, 1952, -1440, 5632, -1440, 5632, -1024)

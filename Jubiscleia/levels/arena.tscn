@@ -38,7 +38,7 @@ polygon = PackedVector2Array(-256, 256, -256, 448, 1216, 448, 1216, 256)
 position = Vector2(608, 352)
 
 [node name="Player" parent="." instance=ExtResource("3_2ic4t")]
-position = Vector2(864, 288)
+position = Vector2(-1056, 416)
 
 [node name="TileMap" type="TileMap" parent="." groups=["terrain"]]
 tile_set = ExtResource("2_khbs8")
@@ -96,7 +96,7 @@ offset_bottom = 273.0
 text = "Aperte F para spawnar inimigos"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(864, 288)
+position = Vector2(-864, 288)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("7_qpd7n")
@@ -105,7 +105,7 @@ script = ExtResource("7_qpd7n")
 curve = SubResource("Curve2D_ldnnj")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
-position = Vector2(864, 288)
+position = Vector2(-864, 288)
 script = ExtResource("8_us7wb")
 follow_mode = 4
 follow_target = NodePath("../Player")
