@@ -4,6 +4,7 @@ extends Node2D
 @export var speed: float
 var direction: float
 var can_destroy: bool = false
+@onready var texture = $Texture
 
 func _process(delta):
 	position.x += direction * speed * delta

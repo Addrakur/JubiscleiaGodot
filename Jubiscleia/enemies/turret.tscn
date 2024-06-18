@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://law62h0uiqjx" path="res://assets/enemy/turret/turret.png" id="2_kataa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1p62m"]
-size = Vector2(26, 32)
+size = Vector2(20, 32)
 
 [node name="Turret" type="StaticBody2D"]
 collision_layer = 4
@@ -16,7 +16,6 @@ cooldown = 1.5
 texture = ExtResource("2_kataa")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(3, 0)
 shape = SubResource("RectangleShape2D_1p62m")
 
 [node name="Timer" type="Timer" parent="."]
@@ -24,6 +23,6 @@ one_shot = true
 autostart = true
 
 [node name="SpawnPoint" type="Node2D" parent="."]
-position = Vector2(-19, -9)
+position = Vector2(-17, -9)
 
 [connection signal="timeout" from="Timer" to="." method="on_timer_timeout"]

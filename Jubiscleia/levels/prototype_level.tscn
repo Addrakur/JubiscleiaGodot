@@ -143,7 +143,7 @@ position = Vector2(31.5, 0)
 shape = SubResource("RectangleShape2D_trfcx")
 
 [node name="Player" parent="." instance=ExtResource("2_oy7pp")]
-position = Vector2(96, 288)
+position = Vector2(1346, 218)
 
 [node name="Plataforms" type="Node2D" parent="."]
 
@@ -154,7 +154,7 @@ position = Vector2(832, 352)
 position = Vector2(1280, 256)
 
 [node name="Turret" parent="." instance=ExtResource("8_rqbkd")]
-position = Vector2(1456, 336)
+position = Vector2(1462, 336)
 direction = -1.0
 
 [node name="LevelEnd" parent="." instance=ExtResource("10_aso8h")]
@@ -172,13 +172,13 @@ Experimente misturar os combos"
 horizontal_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(416, 160)
+position = Vector2(1152, 160)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("12_m5rni")
 
 [node name="PC1" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
-position = Vector2(416, 160)
+position = Vector2(1152, 160)
 script = ExtResource("13_o2d8p")
 priority = 10
 follow_mode = 4
@@ -188,7 +188,7 @@ tween_resource = SubResource("Resource_uo4o3")
 draw_limits = true
 
 [node name="PC2" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
-position = Vector2(1152, 288)
+position = Vector2(1152, 218)
 script = ExtResource("13_o2d8p")
 follow_mode = 4
 follow_target = NodePath("../Player")
@@ -197,7 +197,7 @@ tween_resource = SubResource("Resource_uo4o3")
 draw_limits = true
 
 [node name="PC3" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
-position = Vector2(1152, 480)
+position = Vector2(1346, 480)
 script = ExtResource("13_o2d8p")
 follow_mode = 4
 follow_target = NodePath("../Player")

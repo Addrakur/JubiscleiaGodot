@@ -1,4 +1,4 @@
-[gd_scene load_steps=135 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=136 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_tuo6g"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://sdcuoq736vyl" path="res://assets/player/banco_de_assets/player_fall.png" id="5_bu6v8"]
 [ext_resource type="Texture2D" uid="uid://kqbay724xnxt" path="res://assets/player/banco_de_assets/player_hit.png" id="6_buhst"]
 [ext_resource type="Texture2D" uid="uid://cxvbg3g0m8q4w" path="res://assets/player/banco_de_assets/player_jump.png" id="6_lipvx"]
-[ext_resource type="Texture2D" uid="uid://faq8jlbp1s6k" path="res://assets/player/banco_de_assets/player_run.png" id="7_o1qml"]
 [ext_resource type="Texture2D" uid="uid://cx4qr4fmcpqgh" path="res://assets/player/banco_de_assets/player_axe_jump_attack.png" id="8_l70gp"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="9_6bxkt"]
 [ext_resource type="PackedScene" uid="uid://dig4ptur76dp0" path="res://Management/interface.tscn" id="9_181sd"]
@@ -29,7 +28,9 @@
 [ext_resource type="Script" path="res://Management/states/player/movement/player_death.gd" id="25_wysx4"]
 [ext_resource type="Texture2D" uid="uid://n0anihxnfkqq" path="res://assets/player/banco_de_assets/player_dash.png" id="37_hyyk8"]
 [ext_resource type="Script" path="res://Management/states/player/attacks/jump_attack.gd" id="38_vuiip"]
+[ext_resource type="Texture2D" uid="uid://c6v311lo5jggt" path="res://assets/player/movimentcoes/player_idle.png" id="39_gjx6q"]
 [ext_resource type="Script" path="res://Management/states/player/attacks/attack_1.gd" id="41_621kb"]
+[ext_resource type="Texture2D" uid="uid://dboexykbv3xkm" path="res://assets/player/movimentcoes/player_run.png" id="41_atgjq"]
 [ext_resource type="Script" path="res://Management/states/player/attacks/attack_2.gd" id="42_ebned"]
 [ext_resource type="Script" path="res://Management/states/player/attacks/attack_3.gd" id="43_nthil"]
 [ext_resource type="Texture2D" uid="uid://cq8jutrwen08y" path="res://assets/player/Ataques/Espada/C0/sword_0_1.png" id="49_26le7"]
@@ -2030,7 +2031,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_bna6s"]
 resource_name = "idle"
-length = 0.4
+length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2042,7 +2043,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_vct6e")]
+"values": [ExtResource("39_gjx6q")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -2054,7 +2055,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [5]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -2071,38 +2072,38 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Texture:frame")
+tracks/3/path = NodePath("Collision:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Collision:position")
+tracks/4/path = NodePath("Collision:shape:size")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
+"values": [Vector2(17, 28)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Collision:shape:size")
+tracks/5/path = NodePath("Texture:frame")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(17, 28)]
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_0jgjf"]
@@ -2195,7 +2196,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_o1qml")]
+"values": [ExtResource("41_atgjq")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
