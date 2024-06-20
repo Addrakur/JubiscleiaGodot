@@ -19,7 +19,6 @@ func enter_state() -> void:
 	PlayerVariables.anim_finish = false
 	player.next_attack = 1
 	
-	#PlayerVariables.player_attacking = true
 	PlayerVariables.last_skill = PlayerVariables.current_skill
 	animation.play(PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_3")
 	PlayerVariables.current_attack = PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_3"

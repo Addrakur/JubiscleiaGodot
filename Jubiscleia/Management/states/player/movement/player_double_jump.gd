@@ -5,22 +5,33 @@ extends State
 @export var animation: AnimationPlayer
 @export var speed: float
 
+@export_group("Jump Variables")
+@export var jump_height: float
+@export var jump_time_to_peak: float
+
+var jump_velocity: float
+var jump_gravity: float
+
 func _ready():
 	set_physics_process(false)
+	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
+	jump_gravity = ((-2.0 * jump_height) / pow(jump_time_to_peak,2)) * -1
 
 func enter_state() -> void:
 	set_physics_process(true)
 	player.jump_count += 1
 	animation.play("jump")
-	player.velocity.y = player.jump_velocity
+	player.velocity.y = jump_velocity
+	player.override_gravity = jump_gravity
 
 func exit_state() -> void:
 	set_physics_process(false)
+	player.override_gravity = 0
 
 func _physics_process(_delta):
 	player.velocity.x = player.direction * speed
 	
-	if player.velocity.y < 0 or player.is_on_ceiling():
+	if player.velocity.y > 0 or player.is_on_ceiling() or Input.is_action_just_released("jump"):
 		player.fsm.change_state(player.fall_state)
 	
 	if Input.is_action_just_pressed("attack_button_1"):

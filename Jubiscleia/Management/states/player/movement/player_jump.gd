@@ -20,11 +20,11 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	player.velocity.x = player.direction * speed
 	
-	if player.velocity.y < 0 or player.is_on_ceiling():
+	if player.velocity.y > 0 or player.is_on_ceiling() or Input.is_action_just_released("jump"):
 		player.fsm.change_state(player.fall_state)
 	
-	if Input.is_action_just_pressed("jump") and player.jump_count < player.max_jump_count:
-		player.fsm.change_state(player.double_jump_state)
+	#if Input.is_action_just_pressed("jump") and player.jump_count < player.max_jump_count:
+	#	player.fsm.change_state(player.double_jump_state)
 	
 	if Input.is_action_just_pressed("attack_button_1"):
 		PlayerVariables.current_skill = PlayerVariables.skill_1

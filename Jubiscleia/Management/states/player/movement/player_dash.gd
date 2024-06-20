@@ -26,4 +26,7 @@ func exit_state() -> void:
 
 func _on_animation_finished(anim):
 	if anim == "dash":
-		player.fsm.change_state(player.idle_state)
+		if player.is_on_floor():
+			player.fsm.change_state(player.idle_state)
+		else:
+			player.fsm.change_state(player.fall_state)

@@ -9,12 +9,11 @@ extends CharacterBody2D
 @onready var texture: Sprite2D = $Texture
 @onready var attack_area_polygon: CollisionPolygon2D = $AttackArea/AttackArea
 const ATTACK_AREA_POSITION: float = 39
-@onready var raycast_move_false: RayCast2D = $RayCastMoveFalse
-const RCMF_POSITION: float = 43
 @onready var attack_spawn_point = $AttackSpawnPoint
 @onready var combo_timer = $ComboTimer
 @onready var coyote_time = $CoyoteTime
 @onready var inv_timer = $InvTimer
+@onready var wall_grab_ray_cast = $WallGrab
 
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var corruption_manager: Node2D = $CorruptionManager
@@ -33,6 +32,7 @@ const RCMF_POSITION: float = 43
 @onready var attack_3_state: State = $StateMachine/PlayerAttack3 as PlayerAttack3
 @onready var jump_attack_state: State = $StateMachine/PlayerJumpAttack as PlayerJumpAttack
 @onready var dash_state: State = $StateMachine/PlayerDash as PlayerDash
+@onready var wall_grab_state = $StateMachine/PlayerWallGrab
 @onready var state = $StateMachine/State as State
 
 @export_group("Jump Variables")
@@ -86,6 +86,7 @@ func _process(_delta):
 	
 	if Input.is_action_pressed("dash") and can_dash:
 		fsm.change_state(dash_state)
+	
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -96,10 +97,6 @@ func _physics_process(delta):
 		if not PlayerVariables.player_attacking:
 			direction_fix()
 	
-	if raycast_move_false.is_colliding():
-		move_false()
-	
-
 func get_gravity():
 	if override_gravity == 0:
 		if velocity.y < 0:
@@ -115,14 +112,12 @@ func flip() -> void:
 		texture.flip_h = false
 		attack_area_polygon.position.x = ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = 1
-		raycast_move_false.target_position.x = RCMF_POSITION
-		#player_camera.follow_offset.x = 20
+		wall_grab_ray_cast.scale.x = 1
 	elif direction < 0:
 		texture.flip_h = true
 		attack_area_polygon.position.x = -ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = -1
-		raycast_move_false.target_position.x = -RCMF_POSITION
-		#player_camera.follow_offset.x = -20
+		wall_grab_ray_cast.scale.x = -1
 
 func can_combo_true() -> void: #Vinculado aos ataques
 	can_combo = true

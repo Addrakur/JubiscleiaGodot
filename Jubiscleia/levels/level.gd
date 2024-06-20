@@ -6,3 +6,4 @@ func _ready():
 	
 	GameSettings.player = player
 	GameSettings.default_gravity = player.fall_gravity
+	

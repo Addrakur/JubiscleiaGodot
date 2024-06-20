@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=139 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_tuo6g"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Management/states/state.gd" id="16_hy8fg"]
 [ext_resource type="Script" path="res://Management/states/player/movement/player_fall.gd" id="16_xs1j5"]
 [ext_resource type="Texture2D" uid="uid://c6t14wadfcujm" path="res://assets/player/corruption_aura/complete_aura_level_1.png" id="17_7bh1j"]
+[ext_resource type="Script" path="res://Management/states/player/movement/player_wall_grab.gd" id="17_dwjry"]
 [ext_resource type="Script" path="res://Management/states/player/movement/player_double_jump.gd" id="17_ywk3g"]
 [ext_resource type="Script" path="res://Management/states/player/movement/player_crouch.gd" id="18_ia5tc"]
 [ext_resource type="Texture2D" uid="uid://doiyjielbdrd2" path="res://assets/player/banco_de_assets/player_sword_jump_attack.png" id="22_dgbyg"]
@@ -73,6 +74,7 @@
 [ext_resource type="Texture2D" uid="uid://wnlgcdplb6f0" path="res://assets/player/Ataques/Lanca/C0/Lanca_0_3.png" id="61_ep0d2"]
 [ext_resource type="Texture2D" uid="uid://d4i84dalbuqja" path="res://assets/player/Ataques/Lanca/C2/Lanca_2_3.png" id="62_evqdm"]
 [ext_resource type="Texture2D" uid="uid://b1vn1ujwfbef8" path="res://assets/player/Ataques/Lanca/C3/Lanca_3_3.png" id="63_xpdb6"]
+[ext_resource type="Texture2D" uid="uid://dibnd7fwvxjue" path="res://assets/player/movimentcoes/player_wall_slide.png" id="66_rkive"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ttoyg"]
 size = Vector2(17, 28)
@@ -190,22 +192,10 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("RayCastMoveFalse:enabled")
+tracks/9/path = NodePath("Collision:shape:size")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Collision:shape:size")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -4742,6 +4732,45 @@ tracks/5/keys = {
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_3n55v"]
+resource_name = "wall_grab"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("66_rkive")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Collision:shape:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(16, 28)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ofbi6"]
 _data = {
 "RESET": SubResource("Animation_8x3g8"),
@@ -4791,7 +4820,8 @@ _data = {
 "sword_3_1": SubResource("Animation_eq2ep"),
 "sword_3_2": SubResource("Animation_rlaon"),
 "sword_3_3": SubResource("Animation_ivy6y"),
-"sword_jump_attack": SubResource("Animation_m8dvd")
+"sword_jump_attack": SubResource("Animation_m8dvd"),
+"wall_grab": SubResource("Animation_3n55v")
 }
 
 [sub_resource type="Animation" id="Animation_b2rpp"]
@@ -5362,9 +5392,9 @@ floor_constant_speed = true
 script = ExtResource("1_5lux4")
 attack_area = NodePath("AttackArea")
 health_component = NodePath("HealthComponent")
-jump_height = 73.0
-jump_time_to_peak = 0.35
-jump_time_to_descent = 0.27
+jump_height = 100.0
+jump_time_to_peak = 0.4
+jump_time_to_descent = 0.35
 max_jump_count = 2.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
@@ -5398,13 +5428,15 @@ script = ExtResource("17_ywk3g")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 speed = 200.0
+jump_height = 40.0
+jump_time_to_peak = 0.4
 
 [node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("16_xs1j5")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 speed = 200.0
-terminal_velocity = 600.0
+terminal_velocity = 450.0
 
 [node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("23_j7sbs")
@@ -5450,6 +5482,13 @@ speed = 400.0
 
 [node name="State" type="Node" parent="StateMachine"]
 script = ExtResource("16_hy8fg")
+
+[node name="PlayerWallGrab" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
+script = ExtResource("17_dwjry")
+player = NodePath("../..")
+animation = NodePath("../../Animations")
+gravity = 2000.0
+out_force = 3000.0
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -5499,12 +5538,10 @@ position = Vector2(0, 13)
 max_health = 150.0
 destroy_after_dead = true
 
-[node name="RayCastMoveFalse" type="RayCast2D" parent="."]
-scale = Vector2(0.975359, 0.959556)
-enabled = false
-target_position = Vector2(43, 0)
-collision_mask = 260
-hit_from_inside = true
+[node name="WallGrab" type="RayCast2D" parent="."]
+target_position = Vector2(9, 0)
+collision_mask = 4
+collide_with_areas = true
 
 [node name="DashCooldown" type="Timer" parent="."]
 one_shot = true
@@ -5517,7 +5554,7 @@ one_shot = true
 one_shot = true
 
 [node name="CoyoteTime" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.15
 one_shot = true
 
 [node name="InvTimer" type="Timer" parent="."]
