@@ -5487,7 +5487,7 @@ script = ExtResource("16_hy8fg")
 script = ExtResource("17_dwjry")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
-gravity = 2000.0
+gravity = 130.0
 out_force = 3000.0
 
 [node name="Texture" type="Sprite2D" parent="."]

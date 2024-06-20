@@ -85,6 +85,8 @@ func _process(_delta):
 		fsm.change_state(hit_state)
 	
 	if Input.is_action_pressed("dash") and can_dash:
+		if fsm.state == wall_grab_state:
+			direction = -wall_grab_ray_cast.scale.x
 		fsm.change_state(dash_state)
 	
 

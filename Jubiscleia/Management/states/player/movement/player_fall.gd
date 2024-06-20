@@ -11,7 +11,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	player.velocity.y = -1
+	player.velocity.y = 1
 
 func exit_state() -> void:
 	set_physics_process(false)

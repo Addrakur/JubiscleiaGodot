@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b3xa4xiengywm"]
+[gd_scene load_steps=13 format=3 uid="uid://b3xa4xiengywm"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_7dotf"]
 [ext_resource type="TileSet" uid="uid://dsjlo105wabro" path="res://assets/Tileset/Ground.tres" id="1_brmny"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_jq4m8"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_rt00j"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_da2ds"]
+[ext_resource type="PackedScene" uid="uid://bgtm18yxrdsdx" path="res://Management/camera_area.tscn" id="10_0vrld"]
 
 [sub_resource type="Resource" id="Resource_a3tg3"]
 script = ExtResource("9_da2ds")
@@ -137,9 +138,17 @@ position = Vector2(352, 288)
 script = ExtResource("8_rt00j")
 follow_mode = 4
 follow_target = NodePath("../Player")
-follow_path = NodePath("../Path2D")
+follow_path = NodePath("../CameraArea/Path2D")
 tween_resource = SubResource("Resource_a3tg3")
 draw_limits = true
 
-[node name="Path2D" type="Path2D" parent="."]
+[node name="CameraArea" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("10_0vrld")]
+visible = false
+horizontal = true
+camera = NodePath("../PhantomCamera2D")
+
+[node name="Path2D" type="Path2D" parent="CameraArea"]
 curve = SubResource("Curve2D_25204")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CameraArea"]
+polygon = PackedVector2Array(-64, 0, -64, 448, 3072, 448, 3072, 0)
