@@ -125,7 +125,6 @@ text = "Axe"
 
 [node name="w1spear" type="Button" parent="HBoxContainer"]
 layout_mode = 2
-disabled = true
 text = "Spear"
 
 [node name="w2text" type="Label" parent="."]
@@ -162,7 +161,6 @@ text = "Axe"
 
 [node name="w2spear" type="Button" parent="HBoxContainer2"]
 layout_mode = 2
-disabled = true
 text = "Spear"
 
 [connection signal="pressed" from="Tutorial" to="." method="on_tutorial_pressed"]

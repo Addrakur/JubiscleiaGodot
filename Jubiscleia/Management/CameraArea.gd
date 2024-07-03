@@ -9,7 +9,7 @@ func _ready():
 	if horizontal:
 		camera.follow_damping_value.x = 0.2
 	else:
-		camera.follow_damping_value.x = 0.25
+		camera.follow_damping_value.y = 0.25
 
 func _on_body_entered(body):
 	if body == GameSettings.player:

@@ -23,7 +23,6 @@ func _physics_process(delta):
 	
 	if direction == -1:
 		texture.flip_h = true
-		collision_area.scale.x = -1
 	
 	if can_destroy:
 		animation.play(attack + "_finish")

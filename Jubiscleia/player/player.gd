@@ -164,12 +164,14 @@ func spawn_attack_projectile(player_direction: bool):
 	add_child(proj)
 	proj.position = global_position + PlayerVariables.get(PlayerVariables.current_attack + "_location")
 	proj.direction = last_direction if player_direction else -last_direction
+	proj.collision_area.scale.x = proj.direction
+	proj.texture.flip_h = true if proj.direction == -1 else false
 
-func spawn_spear_burst():
+func spawn_spear_burst(player_direction: bool):
 	var burst = spear_burst.instantiate()
 	add_child(burst)
-	burst.position = attack_spawn_point.global_position
-	burst.direction = last_direction
+	burst.position = global_position + PlayerVariables.get(PlayerVariables.current_attack + "_location")
+	burst.direction = last_direction if player_direction else -last_direction
 
 func spawn_point_location_change():
 	attack_spawn_point.position.x = PlayerVariables.get(PlayerVariables.current_attack + "_location").x * last_direction

@@ -7,7 +7,7 @@
 size = Vector2(64, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ap64h"]
-size = Vector2(54, 2)
+size = Vector2(52, 2)
 
 [node name="LevelEnd" type="StaticBody2D"]
 collision_layer = 3
@@ -15,7 +15,7 @@ collision_mask = 3
 script = ExtResource("1_lhwiu")
 
 [node name="Texture" type="Sprite2D" parent="."]
-position = Vector2(0, -16)
+position = Vector2(0, -32)
 texture = ExtResource("1_taxsd")
 
 [node name="Collision" type="CollisionShape2D" parent="."]

@@ -9,6 +9,7 @@ func _ready():
 	set_physics_process(false)
 
 func enter_state() -> void:
+	player.floor_snap_length = 0
 	player.can_dash = false
 	set_physics_process(true)
 	if player.direction != 0:
@@ -23,6 +24,7 @@ func enter_state() -> void:
 func exit_state() -> void:
 	set_physics_process(false)
 	player.override_gravity = 0
+	player.floor_snap_length = 5
 
 func _on_animation_finished(anim):
 	if anim == "dash":

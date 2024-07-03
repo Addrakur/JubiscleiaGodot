@@ -152,72 +152,81 @@ var spear_1_speed: float = 0
 var spear_2_speed: float = -300
 var spear_3_speed: float = 0
 
-var spear_0_1_damage: float = 3
+var spear_0_1_damage: float = 2
 var spear_0_1_knockback: float = 0
 var spear_0_1_knockup: float = 0
 
-var spear_0_2_damage: float = 4
+var spear_0_2_damage: float = 2
 var spear_0_2_knockback: float = 0
 var spear_0_2_knockup: float = 0
+var spear_0_2_burst_damage: float = 0
+var spear_0_2_burst_knockback: float = 0
+var spear_0_2_location: Vector2 = Vector2 (8,9)
 
-var spear_0_3_damage: float = 5
+var spear_0_3_damage: float = 0
 var spear_0_3_knockback: float = 0
 var spear_0_3_knockup: float = 0
-var spear_0_3_projectile_damage: float = 2
+var spear_0_3_projectile_damage: float = 3
 var spear_0_3_projectile_speed: float = 250
-var spear_0_3_location: Vector2 = Vector2 (34,-15)
+var spear_0_3_projectile_knockback: float = 0
+var spear_0_3_location: Vector2 = Vector2 (9,-6)
 
-var spear_1_1_damage: float = 4
+var spear_1_1_damage: float = 3
 var spear_1_1_knockback: float = 0
 var spear_1_1_knockup: float = 0
 
-var spear_1_2_damage: float = 5
+var spear_1_2_damage: float = 3
 var spear_1_2_knockback: float = 0
 var spear_1_2_knockup: float = 0
-var spear_1_2_burst_damage: float = 1
-var spear_1_2_location: Vector2 = Vector2 (58,14)
+var spear_1_2_burst_damage: float = 0
+var spear_1_2_burst_knockback: float = 0
+var spear_1_2_location: Vector2 = Vector2 (4,10)
 
-var spear_1_3_damage: float = 6
+var spear_1_3_damage: float = 0
 var spear_1_3_knockback: float = 0
 var spear_1_3_knockup: float = 0
-var spear_1_3_projectile_damage: float = 3
-var spear_1_3_projectile_speed: float = 300
-var spear_1_3_location: Vector2 = Vector2 (34,-15)
+var spear_1_3_projectile_damage: float = 4
+var spear_1_3_projectile_speed: float = 250
+var spear_1_3_projectile_knockback: float = 0
+var spear_1_3_location: Vector2 = Vector2 (9,-6)
 
-var spear_2_1_damage: float = 5
+var spear_2_1_damage: float = 4
 var spear_2_1_knockback: float = 0
 var spear_2_1_knockup: float = 0
 
-var spear_2_2_damage: float = 6
+var spear_2_2_damage: float = 4
 var spear_2_2_knockback: float = 0
 var spear_2_2_knockup: float = 0
-var spear_2_2_burst_damage: float = 3
-var spear_2_2_location: Vector2 = Vector2 (58,14)
+var spear_2_2_burst_damage: float = 0
+var spear_2_2_burst_knockback: float = 0
+var spear_2_2_location: Vector2 = Vector2 (5,10)
 
-var spear_2_3_damage: float = 7
+var spear_2_3_damage: float = 5
 var spear_2_3_knockback: float = 0
 var spear_2_3_knockup: float = 0
 var spear_2_3_projectile_damage: float = 5
-var spear_2_3_projectile_speed: float = 450
-var spear_2_3_location: Vector2 = Vector2 (34,-15)
+var spear_2_3_projectile_speed: float = 250
+var spear_2_3_projectile_knockback: float = 0
+var spear_2_3_location: Vector2 = Vector2 (9,-6)
 
-var spear_3_1_damage: float = 6
+var spear_3_1_damage: float = 5
 var spear_3_1_knockback: float = 0
 var spear_3_1_knockup: float = 0
 
-var spear_3_2_damage: float = 7
+var spear_3_2_damage: float = 5
 var spear_3_2_knockback: float = 0
 var spear_3_2_knockup: float = 0
-var spear_3_2_burst_damage: float = 5
-var spear_3_2_location: Vector2 = Vector2 (58,14)
+var spear_3_2_burst_damage: float = 0
+var spear_3_2_burst_knockback: float = 0
+var spear_3_2_location: Vector2 = Vector2 (4,10)
 
-var spear_3_3_damage: float = 8
+var spear_3_3_damage: float = 0
 var spear_3_3_knockback: float = 0
 var spear_3_3_knockup: float = 0
 var spear_3_3_projectile_damage: float = 7
-var spear_3_3_projectile_speed: float = 600
-var spear_3_3_location: Vector2 = Vector2 (34,-15)
-
+var spear_3_3_projectile_speed: float = 250
+var spear_3_3_projectile_knockback: float = 0
+var spear_3_3_location: Vector2 = Vector2 (9,-6)
 
 var spear_jump_damage: float = 3
 var spear_jump_knockback: float = 0

@@ -1,17 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://bi6cc6w3ecvyj"]
+[gd_scene load_steps=4 format=3 uid="uid://bi6cc6w3ecvyj"]
 
+[ext_resource type="Script" path="res://objects/plataform.gd" id="1_2hs1y"]
 [ext_resource type="Texture2D" uid="uid://jacfmdm25k4l" path="res://assets/Plataforma.png" id="1_6x0hf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0mc3m"]
-size = Vector2(96, 8)
+size = Vector2(96, 3)
 
 [node name="Plataform" type="StaticBody2D" groups=["plataform"]]
 texture_filter = 1
 collision_layer = 4
 collision_mask = 3
+script = ExtResource("1_2hs1y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(48, 4)
+position = Vector2(48, 1.5)
 shape = SubResource("RectangleShape2D_0mc3m")
 one_way_collision = true
 
