@@ -3,7 +3,6 @@ extends CharacterBody2D
 
 @export var attack_area: Area2D
 @export var health_component: Node2D
-#@export var player_camera: PhantomCamera2D
 
 @onready var animation: AnimationPlayer = $Animations
 @onready var texture: Sprite2D = $Texture
@@ -34,6 +33,7 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var dash_state: State = $StateMachine/PlayerDash as PlayerDash
 @onready var wall_grab_state = $StateMachine/PlayerWallGrab
 @onready var state = $StateMachine/State as State
+@onready var interface = $Interface
 
 @export_group("Jump Variables")
 @export var jump_height: float

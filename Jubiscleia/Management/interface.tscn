@@ -1,8 +1,150 @@
-[gd_scene load_steps=4 format=3 uid="uid://dig4ptur76dp0"]
+[gd_scene load_steps=20 format=3 uid="uid://dig4ptur76dp0"]
 
 [ext_resource type="Script" path="res://Management/interface.gd" id="1_eph77"]
 [ext_resource type="Texture2D" uid="uid://crsh1ujf8cohx" path="res://assets/player/life_bar_under.png" id="2_5se83"]
 [ext_resource type="Texture2D" uid="uid://dq37r74cyg4tn" path="res://assets/player/life_bar_over.png" id="3_70njx"]
+[ext_resource type="Texture2D" uid="uid://bu7vc6e5msmh8" path="res://assets/player/spear_1.png" id="4_78eoq"]
+[ext_resource type="Texture2D" uid="uid://chkbjnsjrax07" path="res://assets/player/life_bar_progress.png" id="4_b7pk7"]
+[ext_resource type="Texture2D" uid="uid://06akw4qokdsm" path="res://assets/player/axe_1.png" id="5_lwd1g"]
+[ext_resource type="Texture2D" uid="uid://mkynrk6rt2yn" path="res://assets/player/axe_2.png" id="6_7hyyx"]
+[ext_resource type="Script" path="res://Management/weapon_texture_change.gd" id="6_rt343"]
+[ext_resource type="Texture2D" uid="uid://cnp6vltt0x06k" path="res://assets/player/sword_1.png" id="8_emdjm"]
+[ext_resource type="Texture2D" uid="uid://dm0dnkoi8077y" path="res://assets/player/spear_2.png" id="8_lppqw"]
+[ext_resource type="Texture2D" uid="uid://n386rxxp1ule" path="res://assets/player/sword_2.png" id="9_1d1sw"]
+
+[sub_resource type="Animation" id="Animation_ugsmb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skill_1:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_lwd1g")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("skill_2:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_7hyyx")]
+}
+
+[sub_resource type="Animation" id="Animation_smxjy"]
+resource_name = "axe_1"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skill_1:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_lwd1g")]
+}
+
+[sub_resource type="Animation" id="Animation_hhuuh"]
+resource_name = "axe_2"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skill_2:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_7hyyx")]
+}
+
+[sub_resource type="Animation" id="Animation_fhtdm"]
+resource_name = "spear_1"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skill_1:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_78eoq")]
+}
+
+[sub_resource type="Animation" id="Animation_3dsra"]
+resource_name = "spear_2"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skill_2:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_lppqw")]
+}
+
+[sub_resource type="Animation" id="Animation_pn3vd"]
+resource_name = "sword_1"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skill_1:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_emdjm")]
+}
+
+[sub_resource type="Animation" id="Animation_3u3q0"]
+resource_name = "sword_2"
+length = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("skill_2:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_1d1sw")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s0x3m"]
+_data = {
+"RESET": SubResource("Animation_ugsmb"),
+"axe_1": SubResource("Animation_smxjy"),
+"axe_2": SubResource("Animation_hhuuh"),
+"spear_1": SubResource("Animation_fhtdm"),
+"spear_2": SubResource("Animation_3dsra"),
+"sword_1": SubResource("Animation_pn3vd"),
+"sword_2": SubResource("Animation_3u3q0")
+}
 
 [node name="Interface" type="CanvasLayer"]
 script = ExtResource("1_eph77")
@@ -18,37 +160,43 @@ metadata/_edit_use_anchors_ = true
 
 [node name="HP" type="TextureProgressBar" parent="PlayerUI"]
 texture_filter = 1
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 offset_left = 16.0
 offset_top = 16.0
-offset_right = 256.0
-offset_bottom = 32.0
+offset_right = 339.0
+offset_bottom = 88.0
 max_value = 5.0
-nine_patch_stretch = true
 stretch_margin_left = 3
 stretch_margin_top = 3
 stretch_margin_right = 3
 stretch_margin_bottom = 3
 texture_under = ExtResource("2_5se83")
 texture_over = ExtResource("3_70njx")
-texture_progress = ExtResource("2_5se83")
-tint_under = Color(0.296875, 0.296875, 0.296875, 1)
-tint_over = Color(0, 0, 0, 1)
-tint_progress = Color(0.160784, 1, 0.172549, 1)
+texture_progress = ExtResource("4_b7pk7")
 metadata/_edit_use_anchors_ = true
 
-[node name="CorruptionControl" type="Label" parent="PlayerUI"]
-layout_mode = 1
-offset_left = 16.0
-offset_top = 48.0
-offset_right = 132.0
-offset_bottom = 74.0
-text = "Corruption: 0"
-
-[node name="HitCounter" type="Label" parent="PlayerUI"]
+[node name="skill_1" type="TextureRect" parent="PlayerUI"]
 layout_mode = 0
-offset_left = 145.0
-offset_top = 48.0
-offset_right = 202.0
-offset_bottom = 74.0
-text = "Hit: 0"
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 86.0
+offset_bottom = 86.0
+texture = ExtResource("5_lwd1g")
+script = ExtResource("6_rt343")
+textures = Array[Texture2D]([ExtResource("5_lwd1g"), ExtResource("4_78eoq"), ExtResource("8_emdjm")])
+
+[node name="skill_2" type="TextureRect" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 86.0
+offset_bottom = 86.0
+texture = ExtResource("6_7hyyx")
+script = ExtResource("6_rt343")
+textures = Array[Texture2D]([ExtResource("6_7hyyx"), ExtResource("8_lppqw"), ExtResource("9_1d1sw")])
+
+[node name="TextureChange" type="AnimationPlayer" parent="PlayerUI"]
+libraries = {
+"": SubResource("AnimationLibrary_s0x3m")
+}
