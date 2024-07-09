@@ -48,7 +48,6 @@ func exit_state() -> void:
 	PlayerVariables.last_skill = ""
 
 func _physics_process(_delta):
-	player.direction = Input.get_axis("left","right")
 	
 	if PlayerVariables.move:
 		player.velocity.x = speed * direction

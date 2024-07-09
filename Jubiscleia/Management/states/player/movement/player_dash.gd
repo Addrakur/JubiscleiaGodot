@@ -15,7 +15,7 @@ func enter_state() -> void:
 	if player.direction != 0:
 		player.velocity.x = speed * player.direction
 	else:
-		player.velocity.x = speed * player.last_direction
+		player.velocity.x = speed * -player.last_direction
 	player.dash_cooldown.start()
 	animation.play("dash")
 	player.override_gravity = 0.1
