@@ -7,6 +7,7 @@ extends State
 var damage: float
 var knockback_force: float
 var knockup_force: float
+@onready var attack_area = $"../../AttackArea/AttackArea"
 
 var speed: float
 var direction: float
@@ -16,29 +17,28 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
+	player.can_dash = false
+	PlayerVariables.anim_finish = false
+	
 	PlayerVariables.last_skill = PlayerVariables.current_skill
-	animation.play(PlayerVariables.current_skill + "_jump_attack")
+	animation.play(PlayerVariables.current_skill + "_jump_" + str(PlayerVariables.corruption_level))
+	PlayerVariables.current_attack = PlayerVariables.current_skill + "_jump_" + str(PlayerVariables.corruption_level)
 	player.can_combo = false
-
-	match PlayerVariables.current_skill:
-		"axe":
-			damage = PlayerVariables.axe_jump_damage
-			knockback_force = PlayerVariables.axe_jump_knockback
-			knockup_force = PlayerVariables.axe_jump_knockup
-			player.velocity.x = 0
-		"sword":
-			damage = PlayerVariables.sword_jump_damage
-			knockback_force = PlayerVariables.sword_jump_knockback
-			knockup_force = PlayerVariables.sword_jump_knockup
-		"spear":
-			damage = PlayerVariables.spear_jump_damage
-			knockback_force = PlayerVariables.spear_jump_knockback
-			knockup_force = PlayerVariables.spear_jump_knockup
-			PlayerVariables.my_knockup = true
+	
+	speed = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_speed")
+	damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_" + str(PlayerVariables.corruption_level) + "_damage")
+	knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_" + str(PlayerVariables.corruption_level) + "_knockback")
+	knockup_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_" + str(PlayerVariables.corruption_level) + "_knockup")
+	player.override_gravity = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_gravity")
 	
 	player.attack_area.damage = damage
 	player.attack_area.knockback_force = knockback_force
 	player.attack_area.knockup_force = knockup_force
+	
+	match PlayerVariables.current_skill:
+		"axe":
+			player.velocity.x = 0
+	
 	PlayerVariables.current_skill = ""
 
 func exit_state() -> void:
@@ -46,25 +46,35 @@ func exit_state() -> void:
 	player.override_gravity = 0
 	PlayerVariables.my_knockup = false
 	PlayerVariables.last_skill = ""
+	PlayerVariables.player_attacking = false
+	PlayerVariables.move = false
+	PlayerVariables.current_attack = ""
+	attack_area.disabled = true
+	
+	PlayerVariables.anim_finish = false
+	
+	player.combo_timer.start()
 
 func _physics_process(_delta):
 	
 	if PlayerVariables.move:
 		player.velocity.x = speed * direction
 	
-	match PlayerVariables.last_skill:
-		"axe":
-			player.override_gravity = player.fall_gravity * 2
-		"spear":
-			player.velocity.x = player.direction * move_speed
-		"sword":
-			player.velocity.x = player.direction * move_speed
+	if PlayerVariables.anim_finish: #Sai do estado de ataque
+		player.can_dash = true
+		player.fsm.change_state(player.idle_state)
 	
-	if player.is_on_floor() and PlayerVariables.last_skill == "axe":
-		player.override_gravity = 0
-		animation.play("axe_jump_attack_finish")
+	if PlayerVariables.last_skill == "axe" and player.is_on_floor():
+		_play_animation("axe_jump_wind_down_" + str(PlayerVariables.corruption_level))
 
 func _on_animation_finished(anim):
-	if PlayerVariables.last_skill == "sword" or PlayerVariables.last_skill == "spear":
-		if anim == PlayerVariables.last_skill + "_jump_attack":
-			player.fsm.change_state(player.fall_state)
+	pass
+
+func _play_animation(anim_name: String) -> void:
+	animation.play(anim_name)
+
+func set_gravity_override(value: float):
+	if value != 0:
+		player.override_gravity = value
+	else:
+		player.override_gravity = PlayerVariables.get(str(PlayerVariables.last_skill) + "_jump_gravity")

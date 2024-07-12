@@ -61,6 +61,7 @@ var spear_burst = preload("res://player/player_spear_burst.tscn")
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
+	PlayerVariables.player = self
 	PlayerVariables.player_alive = true
 	PlayerVariables.player_max_life = health_component.max_health
 	PlayerVariables.player_current_life = health_component.current_health

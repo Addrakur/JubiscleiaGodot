@@ -1,5 +1,6 @@
 extends Node
 
+@onready var player: CharacterBody2D
 var player_max_life: float = 10
 var player_current_life: float
 var corruption_level: float = 0
@@ -21,6 +22,8 @@ var anim_finish: bool = false
 var axe_1_speed: float = 0
 var axe_2_speed: float = 600
 var axe_3_speed: float = 400
+var axe_jump_speed: float = 0
+var axe_jump_gravity: float = 1000
 
 var axe_0_1_damage: float = 3
 var axe_0_1_knockback: float = 100
@@ -70,9 +73,9 @@ var axe_3_3_damage: float = 12
 var axe_3_3_knockback: float = 500
 var axe_3_3_knockup: float = 0
 
-var axe_jump_damage: float = 5
-var axe_jump_knockback: float = 300
-var axe_jump_knockup: float = 0
+var axe_jump_0_damage: float = 5
+var axe_jump_0_knockback: float = 300
+var axe_jump_0_knockup: float = 0
 
 
 var sword_1_speed: float = 300
