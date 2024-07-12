@@ -12,12 +12,15 @@ var knockup_force: float
 var speed: float
 var direction: float
 
+var next_attack_sustain: float
+
 func _ready():
 	set_physics_process(false)
 
 func enter_state() -> void:
 	set_physics_process(true)
 	player.can_dash = false
+	next_attack_sustain = player.next_attack
 	PlayerVariables.anim_finish = false
 	
 	PlayerVariables.last_skill = PlayerVariables.current_skill
@@ -53,6 +56,7 @@ func exit_state() -> void:
 	
 	PlayerVariables.anim_finish = false
 	
+	player.next_attack = next_attack_sustain
 	player.combo_timer.start()
 
 func _physics_process(_delta):

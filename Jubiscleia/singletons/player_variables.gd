@@ -73,8 +73,8 @@ var axe_3_3_damage: float = 12
 var axe_3_3_knockback: float = 500
 var axe_3_3_knockup: float = 0
 
-var axe_jump_0_damage: float = 5
-var axe_jump_0_knockback: float = 300
+var axe_jump_0_damage: float = 4
+var axe_jump_0_knockback: float = 200
 var axe_jump_0_knockup: float = 0
 
 
