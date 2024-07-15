@@ -82,3 +82,6 @@ func set_gravity_override(value: float):
 		player.override_gravity = value
 	else:
 		player.override_gravity = PlayerVariables.get(str(PlayerVariables.last_skill) + "_jump_gravity")
+
+func _set_velocity_y(value: float):
+	player.velocity.y = value

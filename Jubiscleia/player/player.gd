@@ -186,3 +186,4 @@ func _on_combo_timer_timeout():
 
 func _on_inv_timer_timeout():
 	health_component.invulnerable = false
+
