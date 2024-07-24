@@ -151,6 +151,12 @@ func player_attacking_true():
 func player_attacking_false():
 	PlayerVariables.player_attacking = false
 
+func player_inv_true():
+	health_component.invulnerable = true
+
+func player_inv_false():
+	health_component.invulnerable = false
+
 func direction_fix():
 	if direction > 0:
 		direction = 1

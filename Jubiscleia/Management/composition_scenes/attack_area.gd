@@ -40,11 +40,11 @@ func on_body_entered(body):
 		
 		if body.is_in_group("player"):
 			body.corruption_manager.time_penalty()
+		
+		if one_hit_destroy:
+			parent.can_destroy = true
 	
 	
 	elif body.is_in_group("terrain") and destroy_on_terrain:
-		parent.can_destroy = true
-	
-	if one_hit_destroy:
 		parent.can_destroy = true
 	

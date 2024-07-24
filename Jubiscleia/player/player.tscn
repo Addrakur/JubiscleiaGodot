@@ -28,7 +28,6 @@
 [ext_resource type="Texture2D" uid="uid://rpagcg4joje8" path="res://assets/player/Ataques/Machado/C0/air_attack/axe_air_wind_up_0.png" id="18_oa50r"]
 [ext_resource type="Texture2D" uid="uid://b1vn1ujwfbef8" path="res://assets/player/Ataques/Lanca/C3/Lanca_3_3.png" id="18_s1dq2"]
 [ext_resource type="Texture2D" uid="uid://dw65thc4lpru" path="res://assets/player/Ataques/Lanca/C1/Lanca_1_3.png" id="18_vs7ii"]
-[ext_resource type="Texture2D" uid="uid://doiyjielbdrd2" path="res://assets/player/banco_de_assets/player_sword_jump_attack.png" id="22_dgbyg"]
 [ext_resource type="Script" path="res://Management/states/player/movement/player_hit.gd" id="23_j7sbs"]
 [ext_resource type="Script" path="res://Management/states/player/movement/player_death.gd" id="25_wysx4"]
 [ext_resource type="Texture2D" uid="uid://n0anihxnfkqq" path="res://assets/player/banco_de_assets/player_dash.png" id="37_hyyk8"]
@@ -76,6 +75,7 @@
 [ext_resource type="Texture2D" uid="uid://dibnd7fwvxjue" path="res://assets/player/movimentcoes/player_wall_slide.png" id="66_rkive"]
 [ext_resource type="Texture2D" uid="uid://d4i84dalbuqja" path="res://assets/player/Ataques/Lanca/C2/Lanca_2_3.png" id="67_uf81i"]
 [ext_resource type="Texture2D" uid="uid://bhov6ej4l1t6r" path="res://assets/player/Ataques/Machado/C0/air_attack/axe_air_loop_0.png" id="68_4uou0"]
+[ext_resource type="Texture2D" uid="uid://dkc1h6xbcge1d" path="res://assets/player/Ataques/Espada/C0/sword_air_0.png" id="68_iqspv"]
 [ext_resource type="Texture2D" uid="uid://jttbrn378kor" path="res://assets/player/Ataques/Machado/C0/air_attack/axe_air_wind_down_0.png" id="69_puoao"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3l0ci"]
@@ -143,6 +143,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Texture:vframes")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
 }
 
 [sub_resource type="Animation" id="Animation_ohm05"]
@@ -1524,17 +1536,17 @@ tracks/5/path = NodePath("StateMachine/PlayerJumpAttack")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.0108817, 0.375, 0.75),
+"times": PackedFloat32Array(0, 0.375, 0.6, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
-"args": [0.0],
-"method": &"_set_velocity_y"
-}, {
 "args": [0.1],
 "method": &"set_gravity_override"
 }, {
 "args": [0.0],
 "method": &"set_gravity_override"
+}, {
+"args": [],
+"method": &"stop_false"
 }, {
 "args": ["axe_jump_loop_0"],
 "method": &"_play_animation"
@@ -1768,6 +1780,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_6pvof"]
 resource_name = "dash"
 length = 0.2
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1815,6 +1828,40 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [ExtResource("37_hyyk8")]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"move_true"
+}, {
+"args": [],
+"method": &"move_false"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"player_inv_true"
+}, {
+"args": [],
+"method": &"player_inv_false"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_kx8rs"]
@@ -4596,83 +4643,6 @@ tracks/6/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_m8dvd"]
-resource_name = "sword_jump_attack"
-length = 0.2
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [0, 1, 2]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Texture:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Texture:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Texture:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("22_dgbyg")]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [PackedVector2Array(-30.8931, -15, -51.8207, -24, -51.8207, -27, -32.8862, -25, -16.9414, -12, -14.9483, 14, -29.8965, 14)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("AttackArea/AttackArea:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.05, 0.15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
 [sub_resource type="Animation" id="Animation_3n55v"]
 resource_name = "wall_grab"
 tracks/0/type = "value"
@@ -4698,6 +4668,114 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [ExtResource("66_rkive")]
+}
+
+[sub_resource type="Animation" id="Animation_kckst"]
+resource_name = "sword_jump_0"
+length = 0.35
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("68_iqspv")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Texture:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-25.9103, 12, -47.8345, -48, -17.9379, -45, -1.99308, -36, 5.97933, -16, 7.97243, 11, 0.996574, 25)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AttackArea/AttackArea:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
+}, {
+"args": [],
+"method": &"anim_finish_true"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("StateMachine/PlayerJumpAttack")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.1],
+"method": &"set_gravity_override"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ofbi6"]
@@ -4750,7 +4828,7 @@ _data = {
 "sword_3_1": SubResource("Animation_eq2ep"),
 "sword_3_2": SubResource("Animation_rlaon"),
 "sword_3_3": SubResource("Animation_ivy6y"),
-"sword_jump_attack": SubResource("Animation_m8dvd"),
+"sword_jump_0": SubResource("Animation_kckst"),
 "wall_grab": SubResource("Animation_3n55v")
 }
 
@@ -5317,7 +5395,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("attack_area", "health_component") groups=["player"]]
-collision_mask = 6
+collision_mask = 38
 floor_constant_speed = true
 floor_max_angle = 0.802851
 floor_snap_length = 5.0
@@ -5496,7 +5574,6 @@ script = ExtResource("57_em6cc")
 player = NodePath("..")
 hit_timer = NodePath("../HitTimer")
 animation = NodePath("../AuraAnimations")
-max_level = 3.0
 hit_0_to_1 = 15.0
 hit_1_to_2 = 10.0
 hit_2_to_3 = 10.0

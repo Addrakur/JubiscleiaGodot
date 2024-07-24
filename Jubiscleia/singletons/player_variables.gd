@@ -81,6 +81,8 @@ var axe_jump_0_knockup: float = 0
 var sword_1_speed: float = 300
 var sword_2_speed: float = 0
 var sword_3_speed: float = 0
+var sword_jump_speed: float = 0
+var sword_jump_gravity: float = 1000
 
 var sword_0_1_damage: float = 2
 var sword_0_1_knockback: float = 0
@@ -146,9 +148,9 @@ var sword_3_3_projectile_speed: float = 175
 var sword_3_3_projectile_knockback: float = 50
 var sword_3_3_location: Vector2 = Vector2 (0,14)
 
-var sword_jump_damage: float = 2
-var sword_jump_knockback: float = 0
-var sword_jump_knockup: float = 0
+var sword_jump_0_damage: float = 2
+var sword_jump_0_knockback: float = 0
+var sword_jump_0_knockup: float = 0
 
 
 var spear_1_speed: float = 0

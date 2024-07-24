@@ -14,11 +14,14 @@ var direction: float
 
 var next_attack_sustain: float
 
+var stop: bool = true
+
 func _ready():
 	set_physics_process(false)
 
 func enter_state() -> void:
 	set_physics_process(true)
+	stop = true
 	player.can_dash = false
 	next_attack_sustain = player.next_attack
 	PlayerVariables.anim_finish = false
@@ -41,6 +44,8 @@ func enter_state() -> void:
 	match PlayerVariables.current_skill:
 		"axe":
 			player.velocity.x = 0
+		"sword":
+			player.velocity.x = 0
 	
 	PlayerVariables.current_skill = ""
 
@@ -53,6 +58,7 @@ func exit_state() -> void:
 	PlayerVariables.move = false
 	PlayerVariables.current_attack = ""
 	attack_area.disabled = true
+	stop = false
 	
 	PlayerVariables.anim_finish = false
 	
@@ -60,6 +66,8 @@ func exit_state() -> void:
 	player.combo_timer.start()
 
 func _physics_process(_delta):
+	if stop:
+		player.velocity.y = player.velocity.y - player.velocity.y * 0.05
 	
 	if PlayerVariables.move:
 		player.velocity.x = speed * direction
@@ -73,6 +81,9 @@ func _physics_process(_delta):
 
 func _on_animation_finished(anim):
 	pass
+
+func stop_false() -> void:
+	stop = false
 
 func _play_animation(anim_name: String) -> void:
 	animation.play(anim_name)
