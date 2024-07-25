@@ -30,7 +30,10 @@ func on_body_entered(body):
 				parent.corruption_manager.hit_timer.start()
 				
 			if PlayerVariables.my_knockup == true: # Verifica se o ataque do do jogador faz ele tomar knockup
-				parent.velocity.y = PlayerVariables.spear_jump_my_knockup
+				parent.jump_attack_state.stop_false()
+				#parent.velocity.y = PlayerVariables.spear_jump_my_knockup
+				parent.jump_attack_state.get_out_of_state()
+				parent.fsm.change_state(parent.jump_state)
 				
 			
 		if body.fsm.state == body.hit_state: # Gambiarra que faz o alvo reiniciar o hit state

@@ -41,11 +41,12 @@ func enter_state() -> void:
 	player.attack_area.knockback_force = knockback_force
 	player.attack_area.knockup_force = knockup_force
 	
+	PlayerVariables.my_knockup = true
+	
+	player.velocity.x = 0
 	match PlayerVariables.current_skill:
-		"axe":
-			player.velocity.x = 0
-		"sword":
-			player.velocity.x = 0
+		"spear":
+			PlayerVariables.can_move_during_attack = true
 	
 	PlayerVariables.current_skill = ""
 
@@ -57,7 +58,7 @@ func exit_state() -> void:
 	PlayerVariables.player_attacking = false
 	PlayerVariables.move = false
 	PlayerVariables.current_attack = ""
-	attack_area.disabled = true
+	PlayerVariables.can_move_during_attack = false
 	stop = false
 	
 	PlayerVariables.anim_finish = false
@@ -69,12 +70,14 @@ func _physics_process(_delta):
 	if stop:
 		player.velocity.y = player.velocity.y - player.velocity.y * 0.05
 	
+	if PlayerVariables.can_move_during_attack:
+		player.velocity.x = player.direction * player.jump_state.speed
+	
 	if PlayerVariables.move:
 		player.velocity.x = speed * direction
 	
 	if PlayerVariables.anim_finish: #Sai do estado de ataque
-		player.can_dash = true
-		player.fsm.change_state(player.idle_state)
+		get_out_of_state()
 	
 	if PlayerVariables.last_skill == "axe" and player.is_on_floor():
 		_play_animation("axe_jump_wind_down_" + str(PlayerVariables.corruption_level))
@@ -84,6 +87,9 @@ func _on_animation_finished(anim):
 
 func stop_false() -> void:
 	stop = false
+
+func my_knockup_true():
+	PlayerVariables.my_knockup = true
 
 func _play_animation(anim_name: String) -> void:
 	animation.play(anim_name)
@@ -96,3 +102,7 @@ func set_gravity_override(value: float):
 
 func _set_velocity_y(value: float):
 	player.velocity.y = value
+
+func get_out_of_state():
+	player.can_dash = true
+	player.fsm.change_state(player.fall_state)

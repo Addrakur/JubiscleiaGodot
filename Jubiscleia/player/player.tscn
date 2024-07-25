@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=144 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_tuo6g"]
@@ -76,6 +76,7 @@
 [ext_resource type="Texture2D" uid="uid://d4i84dalbuqja" path="res://assets/player/Ataques/Lanca/C2/Lanca_2_3.png" id="67_uf81i"]
 [ext_resource type="Texture2D" uid="uid://bhov6ej4l1t6r" path="res://assets/player/Ataques/Machado/C0/air_attack/axe_air_loop_0.png" id="68_4uou0"]
 [ext_resource type="Texture2D" uid="uid://dkc1h6xbcge1d" path="res://assets/player/Ataques/Espada/C0/sword_air_0.png" id="68_iqspv"]
+[ext_resource type="Texture2D" uid="uid://djom01m3vvh8k" path="res://assets/player/Ataques/Lanca/C0/lanca_air_0.png" id="69_n23u4"]
 [ext_resource type="Texture2D" uid="uid://jttbrn378kor" path="res://assets/player/Ataques/Machado/C0/air_attack/axe_air_wind_down_0.png" id="69_puoao"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3l0ci"]
@@ -94,7 +95,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-29.8965, 0, -29.8965, -12, 27.9035, -12, 27.9035, 0)]
+"values": [PackedVector2Array(-39.8621, 1, -39.8621, -1, -37.8689, -1, -37.8689, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -216,10 +217,10 @@ tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.525),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-29.8965, 14, -29.8965, -14, -72.7483, -44, -63.7793, -47, -39.8621, -50, -17.9379, -43, -4.98274, -32, 1.99313, -12, 1.99313, 14), PackedVector2Array(-29.8965, 14, -29.8965, -7, -7.97239, -22, 9.96554, -7, 9.96554, 6, 1.99313, 14)]
+"values": [PackedVector2Array(-29.8965, 14, -29.8965, -14, -72.7483, -44, -63.7793, -47, -39.8621, -50, -17.9379, -43, -4.98274, -32, 1.99313, -12, 1.99313, 14)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -438,10 +439,10 @@ tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.75),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-29.8965, 14, -29.8965, -14, -72.7483, -44, -63.7793, -47, -39.8621, -50, -17.9379, -43, -4.98274, -32, 1.99313, -12, 1.99313, 14), PackedVector2Array(-29.8965, 14, -29.8965, -7, -7.97239, -22, 9.96554, -7, 9.96554, 6, 1.99313, 14)]
+"values": [PackedVector2Array(-29.8965, 14, -29.8965, -14, -72.7483, -44, -63.7793, -47, -39.8621, -50, -17.9379, -43, -4.98274, -32, 1.99313, -12, 1.99313, 14)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -543,10 +544,10 @@ tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.525),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-29.8965, 14, -29.8965, -14, -72.7483, -44, -63.7793, -47, -39.8621, -50, -17.9379, -43, -4.98274, -32, 1.99313, -12, 1.99313, 14), PackedVector2Array(-29.8965, 14, -29.8965, -7, -7.97239, -22, 9.96554, -7, 9.96554, 6, 1.99313, 14)]
+"values": [PackedVector2Array(-29.8965, 14, -29.8965, -14, -72.7483, -44, -63.7793, -47, -39.8621, -50, -17.9379, -43, -4.98274, -32, 1.99313, -12, 1.99313, 14)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -765,10 +766,10 @@ tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.75),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-29.8965, 14, -29.8965, -14, -72.7483, -44, -63.7793, -47, -39.8621, -50, -17.9379, -43, -4.98274, -32, 1.99313, -12, 1.99313, 14), PackedVector2Array(-29.8965, 14, -29.8965, -7, -7.97239, -22, 9.96554, -7, 9.96554, 6, 1.99313, 14)]
+"values": [PackedVector2Array(-29.8965, 14, -29.8965, -14, -72.7483, -44, -63.7793, -47, -39.8621, -50, -17.9379, -43, -4.98274, -32, 1.99313, -12, 1.99313, 14)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -870,10 +871,10 @@ tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.525),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-29.8965, 14, -29.8965, -14, -72.7483, -44, -63.7793, -47, -39.8621, -50, -17.9379, -43, -4.98274, -32, 1.99313, -12, 1.99313, 14), PackedVector2Array(-29.8965, 14, -29.8965, -7, -7.97239, -22, 9.96554, -7, 9.96554, 6, 1.99313, 14)]
+"values": [PackedVector2Array(-29.8965, 14, -29.8965, -14, -72.7483, -44, -63.7793, -47, -39.8621, -50, -17.9379, -43, -4.98274, -32, 1.99313, -12, 1.99313, 14)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1092,10 +1093,10 @@ tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.75),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-29.8965, 14, -29.8965, -14, -72.7483, -44, -63.7793, -47, -39.8621, -50, -17.9379, -43, -4.98274, -32, 1.99313, -12, 1.99313, 14), PackedVector2Array(-29.8965, 14, -29.8965, -7, -7.97239, -22, 9.96554, -7, 9.96554, 6, 1.99313, 14)]
+"values": [PackedVector2Array(-29.8965, 14, -29.8965, -14, -72.7483, -44, -63.7793, -47, -39.8621, -50, -17.9379, -43, -4.98274, -32, 1.99313, -12, 1.99313, 14)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1197,10 +1198,10 @@ tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.525),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-29.8965, 14, -29.8965, -14, -72.7483, -44, -63.7793, -47, -39.8621, -50, -17.9379, -43, -4.98274, -32, 1.99313, -12, 1.99313, 14), PackedVector2Array(-29.8965, 14, -29.8965, -7, -7.97239, -22, 9.96554, -7, 9.96554, 6, 1.99313, 14)]
+"values": [PackedVector2Array(-29.8965, 14, -29.8965, -14, -72.7483, -44, -63.7793, -47, -39.8621, -50, -17.9379, -43, -4.98274, -32, 1.99313, -12, 1.99313, 14)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1419,10 +1420,10 @@ tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.75),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-29.8965, 14, -29.8965, -14, -72.7483, -44, -63.7793, -47, -39.8621, -50, -17.9379, -43, -4.98274, -32, 1.99313, -12, 1.99313, 14), PackedVector2Array(-29.8965, 14, -29.8965, -7, -7.97239, -22, 9.96554, -7, 9.96554, 6, 1.99313, 14)]
+"values": [PackedVector2Array(-29.8965, 14, -29.8965, -14, -72.7483, -44, -63.7793, -47, -39.8621, -50, -17.9379, -43, -4.98274, -32, 1.99313, -12, 1.99313, 14)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -1776,6 +1777,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ExtResource("11_3e18o")]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-39.8621, 1, -39.8621, -1, -37.8689, -1, -37.8689, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_6pvof"]
 resource_name = "dash"
@@ -1863,6 +1876,18 @@ tracks/5/keys = {
 "method": &"player_inv_false"
 }]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AttackArea/AttackArea:polygon")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-39.8621, 1, -39.8621, -1, -37.8689, -1, -37.8689, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_kx8rs"]
 resource_name = "dead"
@@ -1915,6 +1940,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ExtResource("12_sohuu")]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-39.8621, 1, -39.8621, -1, -37.8689, -1, -37.8689, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_c2tqs"]
 resource_name = "fall"
@@ -1966,6 +2003,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [ExtResource("5_bu6v8")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-39.8621, 1, -39.8621, -1, -37.8689, -1, -37.8689, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_xqvro"]
@@ -2020,6 +2069,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ExtResource("6_buhst")]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-39.8621, 1, -39.8621, -1, -37.8689, -1, -37.8689, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_bna6s"]
 resource_name = "idle"
@@ -2073,6 +2134,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [ExtResource("39_gjx6q")]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-39.8621, 1, -39.8621, -1, -37.8689, -1, -37.8689, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_0jgjf"]
 resource_name = "jump"
@@ -2124,6 +2197,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [ExtResource("6_lipvx")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-39.8621, 1, -39.8621, -1, -37.8689, -1, -37.8689, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_sjlee"]
@@ -2178,6 +2263,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [ExtResource("41_atgjq")]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-39.8621, 1, -39.8621, -1, -37.8689, -1, -37.8689, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_cjftq"]
@@ -4643,33 +4740,6 @@ tracks/6/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_3n55v"]
-resource_name = "wall_grab"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:hframes")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Texture:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("66_rkive")]
-}
-
 [sub_resource type="Animation" id="Animation_kckst"]
 resource_name = "sword_jump_0"
 length = 0.35
@@ -4778,6 +4848,126 @@ tracks/7/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_3n55v"]
+resource_name = "wall_grab"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("66_rkive")]
+}
+
+[sub_resource type="Animation" id="Animation_5g2vm"]
+resource_name = "spear_jump_0"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("69_n23u4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [1, 2, 3, 4, 5, 6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackArea/AttackArea:polygon")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [PackedVector2Array(-42.8517, 39, -42.8517, 13, -31.8896, 13, -31.8896, 39)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/AttackArea:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"anim_finish_true"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("StateMachine/PlayerJumpAttack")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"my_knockup_true"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ofbi6"]
 _data = {
 "RESET": SubResource("Animation_115di"),
@@ -4816,6 +5006,7 @@ _data = {
 "spear_3_1": SubResource("Animation_vyk1j"),
 "spear_3_2": SubResource("Animation_pn4bp"),
 "spear_3_3": SubResource("Animation_g5150"),
+"spear_jump_0": SubResource("Animation_5g2vm"),
 "sword_0_1": SubResource("Animation_6cwyw"),
 "sword_0_2": SubResource("Animation_c8unn"),
 "sword_0_3": SubResource("Animation_6r0ew"),
@@ -5521,7 +5712,7 @@ target = "enemy"
 
 [node name="AttackArea" type="CollisionPolygon2D" parent="AttackArea"]
 position = Vector2(38.8655, 0)
-polygon = PackedVector2Array(-29.8965, 0, -29.8965, -12, 27.9035, -12, 27.9035, 0)
+polygon = PackedVector2Array(-39.8621, 1, -39.8621, -1, -37.8689, -1, -37.8689, 1)
 disabled = true
 
 [node name="Animations" type="AnimationPlayer" parent="."]
