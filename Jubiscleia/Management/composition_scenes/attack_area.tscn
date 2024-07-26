@@ -8,3 +8,4 @@ collision_mask = 0
 script = ExtResource("1_6qt2u")
 
 [connection signal="body_entered" from="." to="." method="on_body_entered"]
+[connection signal="body_exited" from="." to="." method="on_body_exited"]

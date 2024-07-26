@@ -6,7 +6,6 @@ extends StaticBody2D
 
 @export var cooldown: float
 @export var direction: float
-var bee = preload("res://enemies/bee.tscn")
 var can_shoot: bool = true
 
 func _ready():
@@ -20,7 +19,7 @@ func _process(_delta):
 		shoot()
 
 func shoot():
-	var bee_inst = bee.instantiate()
+	var bee_inst = Paths.bee.instantiate()
 	add_child(bee_inst)
 	bee_inst.position = spawn_point.position
 	bee_inst.direction = direction

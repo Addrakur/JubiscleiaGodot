@@ -11,12 +11,28 @@ extends Area2D
 @export_group("Bools")
 @export var one_hit_destroy: bool = false
 @export var destroy_on_terrain: bool = false
+@export var single_hit_per_enemy: bool = true
+
+var body_ref: Node2D
 
 func _ready():
 	#print(parent.name + ": " + name + ": " + str(damage))
 	pass
 
-func on_body_entered(body):
+func _physics_process(_delta):
+	if body_ref != null:
+		hit_func(body_ref)
+		print(parent.name + " hit " + body_ref.name)
+		if single_hit_per_enemy:
+			body_ref = null
+
+func on_body_entered(ref):
+	body_ref = ref
+
+func on_body_exited(body):
+	body_ref = null
+
+func hit_func(body: Node2D):
 	if body.is_in_group(target) and not body.health_component.invulnerable and body.alive:
 		body.health_component.update_health(damage) # Chama a função que aplica o dano no alvo
 		
@@ -50,4 +66,3 @@ func on_body_entered(body):
 	
 	elif body.is_in_group("terrain") and destroy_on_terrain:
 		parent.can_destroy = true
-	

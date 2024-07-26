@@ -41,11 +41,11 @@ func enter_state() -> void:
 	player.attack_area.knockback_force = knockback_force
 	player.attack_area.knockup_force = knockup_force
 	
-	PlayerVariables.my_knockup = true
-	
 	player.velocity.x = 0
+	
 	match PlayerVariables.current_skill:
 		"spear":
+			PlayerVariables.my_knockup = true
 			PlayerVariables.can_move_during_attack = true
 	
 	PlayerVariables.current_skill = ""

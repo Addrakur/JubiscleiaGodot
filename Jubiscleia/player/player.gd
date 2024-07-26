@@ -54,8 +54,7 @@ var can_dash: bool = true
 var direction: float
 var last_direction: float = 1
 
-var projectile = preload("res://player/player_attack_projectile.tscn")
-var spear_burst = preload("res://player/player_spear_burst.tscn")
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -167,7 +166,7 @@ func direction_fix():
 		last_direction = direction
 
 func spawn_attack_projectile(player_direction: bool):
-	var proj = projectile.instantiate()
+	var proj = Paths.projectile.instantiate()
 	add_child(proj)
 	proj.position = global_position + PlayerVariables.get(PlayerVariables.current_attack + "_location")
 	proj.direction = last_direction if player_direction else -last_direction
@@ -175,7 +174,7 @@ func spawn_attack_projectile(player_direction: bool):
 	proj.texture.flip_h = true if proj.direction == -1 else false
 
 func spawn_spear_burst(player_direction: bool):
-	var burst = spear_burst.instantiate()
+	var burst = Paths.spear_burst.instantiate()
 	add_child(burst)
 	burst.position = global_position + PlayerVariables.get(PlayerVariables.current_attack + "_location")
 	burst.direction = last_direction if player_direction else -last_direction

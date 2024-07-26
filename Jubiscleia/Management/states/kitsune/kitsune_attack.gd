@@ -5,7 +5,7 @@ extends State
 @export var animation: AnimationPlayer
 @export var attack_timer: Timer
 
-var fireball = preload("res://enemies/kitsune_fire.tscn")
+
 
 func _ready():
 	set_physics_process(false)
@@ -29,7 +29,7 @@ func _on_animation_finished(anim):
 		kitsune.fsm.change_state(kitsune.idle_state)
 
 func spawn_fireball():
-	var proj = fireball.instantiate()
+	var proj = Paths.fireball.instantiate()
 	if kitsune.can_attack_short_range:
 		proj.animation_level = 2
 		set_spawn_point(28 * kitsune.direction,44)
