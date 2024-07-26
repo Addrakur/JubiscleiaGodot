@@ -34,7 +34,7 @@ func on_body_exited(body):
 
 func hit_func(body: Node2D):
 	if body.is_in_group(target) and not body.health_component.invulnerable and body.alive:
-		body.health_component.update_health(damage) # Chama a função que aplica o dano no alvo
+		body.health_component.update_health(damage, single_hit_per_enemy) # Chama a função que aplica o dano no alvo
 		
 		body.hit_state.knockup_force = knockup_force * body.hit_state.knock_multi # Aplica a força do knockback
 		body.hit_state.knockback_force = knockback_force * body.hit_state.knock_multi # Aplica a força do knockup

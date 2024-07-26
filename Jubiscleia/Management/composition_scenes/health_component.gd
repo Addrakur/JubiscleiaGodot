@@ -13,7 +13,7 @@ func _ready() -> void:
 func _process(_delta):
 	die()
 
-func update_health(value: float) -> void:
+func update_health(value: float, single_hit_attack: bool) -> void:
 	is_getting_hit = true
 	current_health -= value
 
