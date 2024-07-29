@@ -30,6 +30,7 @@ func exit_state() -> void:
 	anim_finish = false
 	player.can_dash = true
 	player.inv_timer.start()
+	player.health_component.last_attack = ""
 
 func _physics_process(_delta):
 	
@@ -43,7 +44,6 @@ func _physics_process(_delta):
 func _on_animation_finished(anim):
 	if anim == "hit":
 		anim_finish = true
-		player.health_component.last_attack = ""
 
 func knockback():
 	player.velocity = Vector2(knockback_force * direction, knockup_force)

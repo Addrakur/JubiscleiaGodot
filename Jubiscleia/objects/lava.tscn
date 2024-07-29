@@ -77,6 +77,7 @@ collision_mask = 1
 target = "player"
 knockup_force = -30.0
 knockback_force = 500.0
+attack_name = "lava"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(8, -8)
@@ -86,4 +87,4 @@ shape = SubResource("RectangleShape2D_7pjg0")
 position = Vector2(8, -8)
 sprite_frames = SubResource("SpriteFrames_1s8vs")
 autoplay = "default"
-frame_progress = 0.987323
+frame_progress = 0.878811

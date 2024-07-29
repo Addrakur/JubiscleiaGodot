@@ -26,6 +26,7 @@ func exit_state() -> void:
 	set_physics_process(false)
 	big_worm.health_component.is_getting_hit = false
 	anim_finish = false
+	big_worm.health_component.last_attack = ""
 
 func _physics_process(_delta):
 	if not big_worm.velocity == Vector2(0,0):
@@ -38,7 +39,6 @@ func _physics_process(_delta):
 func _on_animation_finished(anim):
 	if anim == "hit":
 		anim_finish = true
-		big_worm.health_component.last_attack = ""
 
 func knockback():
 	big_worm.velocity = Vector2(knockback_force * direction, knockup_force)

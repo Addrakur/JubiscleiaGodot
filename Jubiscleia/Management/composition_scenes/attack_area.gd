@@ -34,7 +34,8 @@ func on_body_entered(ref):
 		body_ref = ref
 
 func on_body_exited(body):
-	body_ref = null
+	if body == body_ref:
+		body_ref = null
 
 func hit_func(body: Node2D):
 	if body.is_in_group(target) and not body.health_component.invulnerable and body.alive:

@@ -82,9 +82,6 @@ func _physics_process(_delta):
 	if PlayerVariables.last_skill == "axe" and player.is_on_floor():
 		_play_animation("axe_jump_wind_down_" + str(PlayerVariables.corruption_level))
 
-func _on_animation_finished(anim):
-	pass
-
 func stop_false() -> void:
 	stop = false
 
