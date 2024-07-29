@@ -11,6 +11,8 @@ func _ready():
 	animation.play(PlayerVariables.current_attack)
 	attack_area.damage = PlayerVariables.get(PlayerVariables.current_attack + "_burst_damage")
 	anim_name = PlayerVariables.current_attack
+	
+	attack_area.attack_name = anim_name + "_burst"
 
 func _process(_delta):
 	if direction == -1:
