@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://crkl2utufgcrd"]
+[gd_scene load_steps=25 format=3 uid="uid://crkl2utufgcrd"]
 
 [ext_resource type="Texture2D" uid="uid://csffgyii1wdoc" path="res://assets/enemy/banco_de_assets/big_worm/big_worm_walk.png" id="1_5i8uh"]
 [ext_resource type="Script" path="res://enemies/big_worm.gd" id="1_ls3a1"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Management/states/state.gd" id="8_dlgf0"]
 [ext_resource type="Texture2D" uid="uid://btmgn1pjl6ab7" path="res://assets/enemy/banco_de_assets/big_worm/big_worm_idle.png" id="8_f7rdg"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="8_iw5ih"]
+[ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="16_mp118"]
 
 [sub_resource type="Animation" id="Animation_g3fvp"]
 length = 0.001
@@ -469,6 +470,9 @@ animation = NodePath("../../Animation")
 
 [node name="State" type="Node" parent="StateMachine"]
 script = ExtResource("8_dlgf0")
+
+[node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("16_mp118")]
+parent = NodePath("..")
 
 [connection signal="animation_finished" from="Animation" to="StateMachine/BigWormAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="StateMachine/BigWormHit" method="_on_animation_finished"]

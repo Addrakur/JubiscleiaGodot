@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bysdn4i581jjc"]
+[gd_scene load_steps=26 format=3 uid="uid://bysdn4i581jjc"]
 
 [ext_resource type="Script" path="res://Management/states/state_machine.gd" id="1_pjjdi"]
 [ext_resource type="Script" path="res://enemies/scorpion.gd" id="1_v6en7"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Management/states/scorpion/scorpion_death.gd" id="7_wrwk7"]
 [ext_resource type="Script" path="res://Management/states/state.gd" id="8_frrsh"]
 [ext_resource type="Texture2D" uid="uid://c7hfwkunooka2" path="res://assets/enemy/banco_de_assets/scorpion/scorpion_attack.png" id="10_nox61"]
+[ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="16_msgvx"]
 
 [sub_resource type="Animation" id="Animation_h166x"]
 length = 0.001
@@ -439,6 +440,9 @@ one_shot = true
 [node name="HealthComponent" parent="." instance=ExtResource("2_w5574")]
 max_health = 10.0
 destroy_after_dead = true
+
+[node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("16_msgvx")]
+parent = NodePath("..")
 
 [connection signal="animation_finished" from="Animation" to="StateMachine/ScorpionHit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="StateMachine/ScorpionDeath" method="_on_animation_finished"]

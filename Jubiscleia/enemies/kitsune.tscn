@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://radoy72pb50a"]
+[gd_scene load_steps=32 format=3 uid="uid://radoy72pb50a"]
 
 [ext_resource type="Script" path="res://enemies/kitsune.gd" id="1_3ptr8"]
 [ext_resource type="Texture2D" uid="uid://c4s8bcr5r7i73" path="res://assets/enemy/banco_de_assets/kitsune/Run.png" id="1_5gbqr"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Management/states/kitsune/kitsune_hit.gd" id="16_ks7uf"]
 [ext_resource type="Script" path="res://Management/states/kitsune/kitsune_attack.gd" id="18_kce21"]
 [ext_resource type="Script" path="res://Management/states/kitsune/kitsune_warp.gd" id="19_dtqgi"]
+[ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="20_06pfj"]
 
 [sub_resource type="Animation" id="Animation_bocml"]
 length = 0.001
@@ -648,6 +649,9 @@ position = Vector2(20, 45)
 position = Vector2(0, 21)
 target_position = Vector2(-20, 0)
 collision_mask = 12
+
+[node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("20_06pfj")]
+parent = NodePath("..")
 
 [connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneDeath" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneHit" method="_on_animation_finished"]

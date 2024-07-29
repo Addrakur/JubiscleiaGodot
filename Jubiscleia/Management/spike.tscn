@@ -20,6 +20,7 @@ collision_mask = 1
 target = "player"
 damage = 5.0
 single_hit_per_enemy = false
+attack_name = "spike"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(16, -7.5)

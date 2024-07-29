@@ -22,6 +22,7 @@ func enter_state() -> void:
 	PlayerVariables.last_skill = PlayerVariables.current_skill
 	animation.play(PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_3")
 	PlayerVariables.current_attack = PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_3"
+	player.attack_area.attack_name = PlayerVariables.current_attack
 	player.can_combo = false
 
 	speed = PlayerVariables.get(str(PlayerVariables.current_skill) + "_3_speed")

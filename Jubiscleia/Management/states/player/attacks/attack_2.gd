@@ -23,6 +23,7 @@ func enter_state() -> void:
 	PlayerVariables.last_skill = PlayerVariables.current_skill
 	animation.play(PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_2")
 	PlayerVariables.current_attack = PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_2"
+	player.attack_area.attack_name = PlayerVariables.current_attack
 	player.can_combo = false
 
 	speed = PlayerVariables.get(str(PlayerVariables.current_skill) + "_2_speed")
@@ -54,6 +55,9 @@ func _physics_process(_delta):
 	
 	if PlayerVariables.move:
 		player.velocity.x = speed * player.last_direction
+	
+	if Input.is_action_just_pressed("dash"):
+		PlayerVariables.current_skill = ""
 	
 	if Input.is_action_just_pressed("attack_button_1"):
 		PlayerVariables.current_skill = PlayerVariables.skill_1

@@ -35,7 +35,7 @@ var gravity_mult: float = 4
 
 
 func _ready():
-	gravity = GameSettings.default_gravity
+	attack_area.attack_name = name + "hit"
 
 func _process(_delta):
 	if not health_component.is_getting_hit and alive:

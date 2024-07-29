@@ -31,7 +31,7 @@ var alive: bool = true
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	pass
+	attack_area.attack_name = name + "_attack"
 
 func _process(_delta):
 	if alive and not health_component.is_getting_hit:

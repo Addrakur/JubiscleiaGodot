@@ -34,7 +34,8 @@ var gravity: float
 var gravity_mult: float = 4
 
 func _ready():
-	gravity = GameSettings.default_gravity
+	attack_area.attack_name = name + "hit"
+	
 
 func _process(_delta):
 	if fsm.state == walk_state or fsm.state == attack_state:

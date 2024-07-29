@@ -39,6 +39,7 @@ func _physics_process(_delta):
 func _on_animation_finished(anim):
 	if anim == "hit":
 		anim_finish = true
+		kitsune.health_component.last_attack = ""
 
 func knockback():
 	kitsune.velocity = Vector2(knockback_force * direction, knockup_force)

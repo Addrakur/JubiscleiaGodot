@@ -6,6 +6,7 @@ extends Node2D
 @onready var animation = $Animation
 @onready var texture = $Texture
 @onready var collision = $AttackArea/CollisionPolygon2D
+@onready var attack_area = $AttackArea
 
 var can_destroy: bool = false
 var base_anim_finish: bool = false
@@ -14,6 +15,7 @@ var direction: float = 1
 
 func _ready():
 	animation.play(str(animation_level))
+	attack_area.attack_name = "kitsune + " + str(animation_level)
 
 func _physics_process(delta):
 	if move:

@@ -126,7 +126,6 @@ func can_combo_true() -> void: #Vinculado aos ataques
 
 func move() -> void: #Vinculado aos ataques
 	if direction != 0:
-		can_dash = true
 		fsm.change_state(move_state)
 
 func move_true():

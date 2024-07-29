@@ -16,6 +16,8 @@ func _ready():
 	attack_area.damage = PlayerVariables.get(attack + "_projectile_damage")
 	attack_area.knockback_force = PlayerVariables.get(attack + "_projectile_knockback")
 	speed = PlayerVariables.get(attack + "_projectile_speed")
+	
+	attack_area.attack_name = attack + "_projectile"
 
 func _physics_process(delta):
 	if move:

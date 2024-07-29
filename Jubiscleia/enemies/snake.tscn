@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bx4lmho2y840s"]
+[gd_scene load_steps=30 format=3 uid="uid://bx4lmho2y840s"]
 
 [ext_resource type="Script" path="res://enemies/snake.gd" id="1_ep4bx"]
 [ext_resource type="Texture2D" uid="uid://boe1qhplhi48e" path="res://assets/enemy/banco_de_assets/snake/snake_idle.png" id="2_avb4p"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://Management/states/snake/snake_death.gd" id="14_q5to3"]
 [ext_resource type="Script" path="res://Management/states/state.gd" id="16_go42g"]
 [ext_resource type="Script" path="res://Management/states/snake/snake_chase.gd" id="16_yplpm"]
+[ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="17_0tqgs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cyy75"]
 size = Vector2(12, 50)
@@ -517,6 +518,9 @@ speed = 100.0
 
 [node name="State" type="Node" parent="StateMachine"]
 script = ExtResource("16_go42g")
+
+[node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("17_0tqgs")]
+parent = NodePath("..")
 
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeHit" method="_on_animation_finished"]
