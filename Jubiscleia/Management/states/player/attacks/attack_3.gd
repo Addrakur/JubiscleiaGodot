@@ -43,6 +43,7 @@ func exit_state() -> void:
 	PlayerVariables.move = false
 	PlayerVariables.current_attack = ""
 	attack_area.disabled = true
+	player.can_dash = true
 	
 	PlayerVariables.anim_finish = false
 
@@ -54,7 +55,6 @@ func _physics_process(_delta):
 		player.velocity.x = speed * player.last_direction
 	
 	if PlayerVariables.anim_finish:
-		player.can_dash = true
 		player.fsm.change_state(player.idle_state)
 
  

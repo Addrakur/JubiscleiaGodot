@@ -5690,7 +5690,7 @@ script = ExtResource("17_dwjry")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 gravity = 130.0
-out_force = 3000.0
+out_force = 2500.0
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture_filter = 1

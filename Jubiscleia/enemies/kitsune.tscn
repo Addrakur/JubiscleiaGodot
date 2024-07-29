@@ -548,7 +548,7 @@ libraries = {
 polygon = PackedVector2Array(-8, 45, 13, 45, 13, -21, -8, -21)
 
 [node name="HealthComponent" parent="." instance=ExtResource("7_v7gb8")]
-max_health = 20.0
+max_health = 10.0
 destroy_after_dead = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]

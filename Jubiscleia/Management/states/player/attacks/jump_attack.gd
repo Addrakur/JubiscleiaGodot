@@ -29,6 +29,7 @@ func enter_state() -> void:
 	PlayerVariables.last_skill = PlayerVariables.current_skill
 	animation.play(PlayerVariables.current_skill + "_jump_" + str(PlayerVariables.corruption_level))
 	PlayerVariables.current_attack = PlayerVariables.current_skill + "_jump_" + str(PlayerVariables.corruption_level)
+	player.attack_area.attack_name = PlayerVariables.current_attack
 	player.can_combo = false
 	
 	speed = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_speed")
@@ -60,6 +61,7 @@ func exit_state() -> void:
 	PlayerVariables.current_attack = ""
 	PlayerVariables.can_move_during_attack = false
 	stop = false
+	player.can_dash = true
 	
 	PlayerVariables.anim_finish = false
 	
@@ -101,5 +103,4 @@ func _set_velocity_y(value: float):
 	player.velocity.y = value
 
 func get_out_of_state():
-	player.can_dash = true
 	player.fsm.change_state(player.fall_state)
