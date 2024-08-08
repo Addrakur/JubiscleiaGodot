@@ -28,6 +28,7 @@ func _physics_process(delta):
 	
 	if can_destroy:
 		animation.play(attack + "_finish")
+		attack_area.attack_name = name + "_finish"
 
 func _on_animation_finished(anim):
 	if anim == attack + "_finish":

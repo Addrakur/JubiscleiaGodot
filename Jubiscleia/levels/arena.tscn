@@ -1,8 +1,9 @@
-[gd_scene load_steps=14 format=3 uid="uid://cqp1060wjlhfn"]
+[gd_scene load_steps=15 format=3 uid="uid://cqp1060wjlhfn"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_5moen"]
 [ext_resource type="TileSet" uid="uid://dsjlo105wabro" path="res://assets/Tileset/Ground.tres" id="2_khbs8"]
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="3_2ic4t"]
+[ext_resource type="PackedScene" uid="uid://c33bx5e2javr1" path="res://levels/BG.tscn" id="3_48sx8"]
 [ext_resource type="PackedScene" uid="uid://cv8owgy7v2lhb" path="res://enemies/enemy_limit.tscn" id="4_l7r3x"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_qpd7n"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_us7wb"]
@@ -27,6 +28,14 @@ point_count = 2
 [node name="Arena" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_5moen")
 player = NodePath("Player")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-864, 288)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("7_qpd7n")
+
+[node name="BG" parent="Camera2D" instance=ExtResource("3_48sx8")]
 
 [node name="Limit" parent="." node_paths=PackedStringArray("limit_polygon") instance=ExtResource("4_l7r3x")]
 limit_polygon = NodePath("Polygon2D")
@@ -96,12 +105,6 @@ offset_top = 247.0
 offset_right = -327.0
 offset_bottom = 273.0
 text = "Aperte F para spawnar inimigos"
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(-864, 288)
-
-[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
-script = ExtResource("7_qpd7n")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
 position = Vector2(-864, 288)

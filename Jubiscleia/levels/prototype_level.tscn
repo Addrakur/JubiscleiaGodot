@@ -1,8 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://lqfqrp52dju2"]
+[gd_scene load_steps=22 format=3 uid="uid://lqfqrp52dju2"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_rdehp"]
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="2_oy7pp"]
 [ext_resource type="PackedScene" uid="uid://bi6cc6w3ecvyj" path="res://objects/plataform.tscn" id="3_ficbx"]
+[ext_resource type="PackedScene" uid="uid://c33bx5e2javr1" path="res://levels/BG.tscn" id="3_tiga8"]
 [ext_resource type="PackedScene" uid="uid://cv8owgy7v2lhb" path="res://enemies/enemy_limit.tscn" id="3_v6kio"]
 [ext_resource type="PackedScene" uid="uid://dx23ctyg8spen" path="res://enemies/spear_skeleton.tscn" id="4_a4q24"]
 [ext_resource type="PackedScene" uid="uid://bx4lmho2y840s" path="res://enemies/snake.tscn" id="4_jp6h7"]
@@ -47,6 +48,14 @@ point_count = 2
 process_mode = 1
 script = ExtResource("1_rdehp")
 player = NodePath("Player")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(416, 160)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("12_m5rni")
+
+[node name="BG" parent="Camera2D" instance=ExtResource("3_tiga8")]
 
 [node name="TileMap" type="TileMap" parent="." groups=["terrain"]]
 texture_filter = 1
@@ -169,12 +178,6 @@ Arma 1: Botao esquerdo / quadrado
 Arma 2: Botao direito / triangulo
 Experimente misturar os combos"
 horizontal_alignment = 1
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(416, 160)
-
-[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
-script = ExtResource("12_m5rni")
 
 [node name="PC1" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
 position = Vector2(416, 160)

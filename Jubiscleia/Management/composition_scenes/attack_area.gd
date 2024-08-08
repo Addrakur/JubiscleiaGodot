@@ -48,7 +48,6 @@ func hit_func(body: Node2D):
 				
 			if PlayerVariables.my_knockup == true: # Verifica se o ataque do do jogador faz ele tomar knockup
 				parent.jump_attack_state.stop_false()
-				#parent.velocity.y = PlayerVariables.spear_jump_my_knockup
 				parent.jump_attack_state.get_out_of_state()
 				parent.fsm.change_state(parent.jump_state)
 				

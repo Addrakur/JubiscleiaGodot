@@ -22,7 +22,7 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	stop = true
-	player.can_dash = false
+	#player.can_dash = false
 	next_attack_sustain = player.next_attack
 	PlayerVariables.anim_finish = false
 	
@@ -60,6 +60,7 @@ func exit_state() -> void:
 	PlayerVariables.move = false
 	PlayerVariables.current_attack = ""
 	PlayerVariables.can_move_during_attack = false
+	attack_area.disabled = true
 	stop = false
 	player.can_dash = true
 	

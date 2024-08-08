@@ -17,8 +17,10 @@ func enter_state() -> void:
 	set_physics_process(true)
 	if player.direction != 0:
 		direction = player.direction
-	else:
+	elif player.is_on_floor():
 		direction = -player.last_direction
+	else:
+		direction = player.last_direction
 	player.dash_cooldown.start()
 	animation.play("dash")
 	player.override_gravity = 0.1

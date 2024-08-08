@@ -15,7 +15,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	player.can_dash = false
+	#player.can_dash = false
 	PlayerVariables.anim_finish = false
 	player.next_attack = 1
 	
@@ -49,7 +49,9 @@ func exit_state() -> void:
 
 func _physics_process(_delta):
 	player.velocity.x = 0
-	player.direction = Input.get_axis("left","right")
+	
+	if Input.is_action_just_pressed("jump"):
+		player.fsm.change_state(player.jump_state)
 	
 	if PlayerVariables.move:
 		player.velocity.x = speed * player.last_direction
