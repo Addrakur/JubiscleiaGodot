@@ -31,9 +31,9 @@ func update_health(value: float, knockup: float, knockback: float, direction: fl
 		if parent.is_in_group("player"):
 			parent.corruption_manager.time_penalty()
 		
-		print("tomou dano de " + last_attack_name)
+		#print("tomou dano de " + last_attack_name)
 	else:
-		print("nao tomou dano de " + last_attack_name)
+		#print("nao tomou dano de " + last_attack_name)
 		pass
 
 func die() -> void:

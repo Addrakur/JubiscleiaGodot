@@ -41,8 +41,6 @@ func level_manager():
 	if PlayerVariables.corruption_level < max_level:
 		if PlayerVariables.hit_amount >= target_hit_count:
 			corruption_upgrade()
-	else:
-		pass
 
 func corruption_upgrade():
 	PlayerVariables.corruption_level += 1
@@ -50,7 +48,6 @@ func corruption_upgrade():
 	if PlayerVariables.corruption_level < max_level:
 		set_target_hit_count()
 	
-	#print("upgrade")
 
 func corruption_downgrade():
 	PlayerVariables.corruption_level -= 1
@@ -59,14 +56,12 @@ func corruption_downgrade():
 		set_target_hit_count()
 		hit_timer.start()
 	
-	#print("downgrade")
 
 func set_target_hit_count():
 	target_hit_count = PlayerVariables.hit_amount + get("hit_" + str(PlayerVariables.corruption_level) + "_to_" + str(PlayerVariables.corruption_level + 1))
 
 func set_hit_timer():
 	hit_timer.wait_time = get("sec_" + str(PlayerVariables.corruption_level))
-	#print(hit_timer.wait_time)
 
 func animation_manager():
 	if hit_timer.time_left <= 3 and PlayerVariables.corruption_level != base_level:

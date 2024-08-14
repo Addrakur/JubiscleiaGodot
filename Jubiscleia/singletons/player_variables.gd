@@ -78,6 +78,18 @@ var axe_jump_0_damage: float = 4
 var axe_jump_0_knockback: float = 200
 var axe_jump_0_knockup: float = 0
 
+var axe_jump_1_damage: float = 5
+var axe_jump_1_knockback: float = 250
+var axe_jump_1_knockup: float = 0
+
+var axe_jump_2_damage: float = 6
+var axe_jump_2_knockback: float = 300
+var axe_jump_2_knockup: float = 0
+
+var axe_jump_3_damage: float = 7
+var axe_jump_3_knockback: float = 400
+var axe_jump_3_knockup: float = 0
+
 
 var sword_1_speed: float = 300
 var sword_2_speed: float = 0
@@ -152,6 +164,18 @@ var sword_3_3_location: Vector2 = Vector2 (0,14)
 var sword_jump_0_damage: float = 2
 var sword_jump_0_knockback: float = 0
 var sword_jump_0_knockup: float = 0
+
+var sword_jump_1_damage: float = 3
+var sword_jump_1_knockback: float = 0
+var sword_jump_1_knockup: float = 0
+
+var sword_jump_2_damage: float = 4
+var sword_jump_2_knockback: float = 0
+var sword_jump_2_knockup: float = 0
+
+var sword_jump_3_damage: float = 5
+var sword_jump_3_knockback: float = 0
+var sword_jump_3_knockup: float = 0
 
 
 var spear_1_speed: float = 0
@@ -240,3 +264,15 @@ var spear_3_3_location: Vector2 = Vector2 (9,-6)
 var spear_jump_0_damage: float = 2
 var spear_jump_0_knockback: float = 0
 var spear_jump_0_knockup: float = 0
+
+var spear_jump_1_damage: float = 3
+var spear_jump_1_knockback: float = 0
+var spear_jump_1_knockup: float = 0
+
+var spear_jump_2_damage: float = 4
+var spear_jump_2_knockback: float = 0
+var spear_jump_2_knockup: float = 0
+
+var spear_jump_3_damage: float = 5
+var spear_jump_3_knockback: float = 0
+var spear_jump_3_knockup: float = 0

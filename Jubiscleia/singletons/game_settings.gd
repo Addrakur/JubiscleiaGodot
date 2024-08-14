@@ -11,7 +11,8 @@ var arena: String = "res://levels/arena.tscn"
 var default_gravity: float
 
 func _ready():
-	Engine.max_fps = 165
+	#Engine.max_fps = 60
+	pass
 
 func _input(event):
 	if event.is_action_pressed("pause") or not PlayerVariables.player_alive:

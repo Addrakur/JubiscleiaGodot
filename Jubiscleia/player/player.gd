@@ -13,6 +13,7 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var coyote_time = $CoyoteTime
 @onready var inv_timer = $InvTimer
 @onready var wall_grab_ray_cast = $WallGrab
+@onready var direction_0 = $Direction0
 
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var corruption_manager: Node2D = $CorruptionManager

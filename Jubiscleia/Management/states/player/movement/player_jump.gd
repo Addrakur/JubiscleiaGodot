@@ -5,6 +5,8 @@ extends State
 @export var animation: AnimationPlayer
 @export var speed: float
 
+var can_move: bool = true
+
 func _ready():
 	set_physics_process(false)
 
@@ -16,9 +18,11 @@ func enter_state() -> void:
 
 func exit_state() -> void:
 	set_physics_process(false)
+	can_move = true
 
 func _physics_process(_delta):
-	player.velocity.x = player.direction * speed
+	if can_move:
+		player.velocity.x = player.direction * speed
 	
 	if player.velocity.y > 0 or player.is_on_ceiling() or Input.is_action_just_released("jump"):
 		player.fsm.change_state(player.fall_state)
@@ -33,3 +37,8 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("attack_button_2"):
 		PlayerVariables.current_skill = PlayerVariables.skill_2
 		player.fsm.change_state(player.jump_attack_state)
+
+func _on_direction_0_timeout():
+	pass
+	#player.fsm.change_state(player.fall_state)
+	can_move = true

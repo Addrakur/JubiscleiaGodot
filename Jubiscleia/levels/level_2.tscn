@@ -80,7 +80,7 @@ script = ExtResource("1_e2h5m")
 player = NodePath("Player")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(416, -64)
+position = Vector2(160, -64)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("12_uxsbj")
@@ -156,7 +156,7 @@ position = Vector2(2176, 672)
 direction = 1.0
 
 [node name="Player" parent="." instance=ExtResource("2_uw1h1")]
-position = Vector2(736, 512)
+position = Vector2(-224, 0)
 
 [node name="Plataforms" type="Node2D" parent="."]
 
@@ -188,7 +188,7 @@ old_cameras = [NodePath("../../PC1"), NodePath("../../PC3")]
 curve = SubResource("Curve2D_ne54a")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cameras/CameraArea2"]
-polygon = PackedVector2Array(-32, -992, 256, -160, 256, 192, 576, 192, 704, -992)
+polygon = PackedVector2Array(0, -672, 256, -160, 256, 192, 576, 192, 704, -160, 736, -160, 832, -1472, 32, -1472)
 
 [node name="CameraArea3" parent="Cameras" node_paths=PackedStringArray("camera", "old_cameras") instance=ExtResource("13_jig2v")]
 horizontal = true
@@ -254,7 +254,7 @@ curve = SubResource("Curve2D_wnv47")
 polygon = PackedVector2Array(2752, -800, 2752, -1120, 864, -1120, 864, -800)
 
 [node name="PC1" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
-position = Vector2(416, -64)
+position = Vector2(160, -64)
 script = ExtResource("14_nee6w")
 follow_mode = 4
 follow_target = NodePath("../Player")
@@ -281,7 +281,7 @@ tween_resource = SubResource("Resource_4jh6p")
 draw_limits = true
 
 [node name="PC4" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
-position = Vector2(3072, 512)
+position = Vector2(3072, 0)
 script = ExtResource("14_nee6w")
 follow_mode = 4
 follow_target = NodePath("../Player")
@@ -290,7 +290,7 @@ tween_resource = SubResource("Resource_4jh6p")
 draw_limits = true
 
 [node name="PC5" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
-position = Vector2(1792, 512)
+position = Vector2(1792, -0.055882)
 script = ExtResource("14_nee6w")
 follow_mode = 4
 follow_target = NodePath("../Player")

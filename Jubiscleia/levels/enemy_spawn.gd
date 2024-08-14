@@ -18,19 +18,15 @@ extends Node2D
 var can_spawn: bool = false
 var inside_area: bool = false
 
-var big_worm = preload("res://enemies/big_worm.tscn")
-var kitsune = preload("res://enemies/kitsune.tscn")
-var scorpion = preload("res://enemies/scorpion.tscn")
-var skeleton = preload("res://enemies/spear_skeleton.tscn")
-var snake = preload("res://enemies/snake.tscn")
-
 func _ready():
 	animation.play(Enemy)
+	
 
 func _input(event):
 	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_F and can_spawn:
+		if event.pressed and event.keycode == KEY_F and can_spawn and not animation.is_playing():
 			can_spawn = false
+			animation.play("cooldown")
 			spawn_enemy()
 		
 		if event.is_released() and event.keycode == KEY_F and inside_area:
@@ -47,7 +43,7 @@ func _on_area_exited(body):
 		can_spawn = false
 
 func spawn_enemy():
-	var enemy_inst = get(Enemy).instantiate()
+	var enemy_inst = Paths.get(Enemy).instantiate()
 	enemy_inst.position = starting_x.position
 	limit.add_child(enemy_inst)
 	limit.add(enemy_inst)

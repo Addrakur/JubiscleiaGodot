@@ -5,6 +5,8 @@ extends State
 @export var animation: AnimationPlayer
 @export var gravity: float
 @export var out_force: float
+@export var wait_time_min: float
+@export var wait_time_max: float
 
 func _ready():
 	set_physics_process(false)
@@ -28,9 +30,13 @@ func _physics_process(_delta):
 	
 	if not player.wall_grab_ray_cast.is_colliding():
 		player.fsm.change_state(player.fall_state)
+		player.jump_count = player.max_jump_count
 	
 	if Input.is_action_just_pressed("jump"):
 		player.velocity.x = out_force * -player.wall_grab_ray_cast.scale.x
+		player.direction_0.wait_time = wait_time_min if player.direction != 0 else wait_time_max
+		player.direction_0.start()
+		player.jump_state.can_move = false
 		player.fsm.change_state(player.jump_state)
 	
 	if player.is_on_floor():
