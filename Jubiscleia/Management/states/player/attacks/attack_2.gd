@@ -70,4 +70,3 @@ func _physics_process(_delta):
 	
 	if PlayerVariables.anim_finish:
 		player.fsm.change_state(player.idle_state)
-

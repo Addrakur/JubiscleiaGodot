@@ -15,6 +15,7 @@ func _ready():
 	animation.play(attack)
 	attack_area.damage = PlayerVariables.get(attack + "_projectile_damage")
 	attack_area.knockback_force = PlayerVariables.get(attack + "_projectile_knockback")
+	attack_area.poise_damage = PlayerVariables.get(attack + "_projectile_poise")
 	speed = PlayerVariables.get(attack + "_projectile_speed")
 	
 	attack_area.attack_name = name

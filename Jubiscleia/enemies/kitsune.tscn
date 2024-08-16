@@ -526,6 +526,21 @@ _data = {
 "warp_out": SubResource("Animation_xpqv1")
 }
 
+[sub_resource type="Animation" id="Animation_100ro"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_1qj3w"]
 resource_name = "hit"
 length = 0.45
@@ -541,21 +556,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(128.498, 0, 0, 1), Color(1, 1, 1, 1), Color(128.498, 0, 0, 1), Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_100ro"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_io2th"]
@@ -590,11 +590,12 @@ libraries = {
 [node name="Collision" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-8, 45, 13, 45, 13, -21, -8, -21)
 
-[node name="HealthComponent" parent="." instance=ExtResource("7_v7gb8")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("7_v7gb8")]
 max_health = 15.0
 max_poise = 10.0
 poise_recovery_timer = 5.0
 destroy_after_dead = true
+attack_timer = NodePath("../AttackTimer")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("9_lnycy")

@@ -7,6 +7,8 @@ extends Area2D
 @export var damage: float
 @export var knockup_force: float
 @export var knockback_force: float
+@export var poise_damage: float
+@export var attack_name: String
 
 @export_group("Bools")
 @export var one_hit_destroy: bool = false
@@ -15,9 +17,6 @@ extends Area2D
 
 var body_ref: Node2D
 
-@export var attack_name: String
-
-var poise_damage: float
 
 func _ready():
 	#print(parent.name + ": " + name + ": " + str(damage))

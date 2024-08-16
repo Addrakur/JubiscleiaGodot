@@ -94,14 +94,14 @@ func _process(_delta):
 
 func _physics_process(delta):
 	if not is_on_floor():
-		get_gravity()
+		set_gravity()
 		velocity.y += gravity * delta
 	if alive:
 		move_and_slide()
 		if not PlayerVariables.player_attacking:
 			direction_fix()
 	
-func get_gravity():
+func set_gravity():
 	if override_gravity == 0:
 		if velocity.y < 0:
 			gravity = jump_gravity

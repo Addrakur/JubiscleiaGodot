@@ -10,6 +10,7 @@ var anim_name: String
 func _ready():
 	animation.play(PlayerVariables.current_attack)
 	attack_area.damage = PlayerVariables.get(PlayerVariables.current_attack + "_burst_damage")
+	attack_area.poise_damage = PlayerVariables.get(PlayerVariables.current_attack + "_burst_poise")
 	anim_name = PlayerVariables.current_attack
 	
 	attack_area.attack_name = anim_name + "_burst"
