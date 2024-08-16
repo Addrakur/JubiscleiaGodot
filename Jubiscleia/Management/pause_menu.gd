@@ -21,4 +21,3 @@ func on_menu_pressed():
 	get_tree().paused = false
 	GameSettings.change_scene(menu)
 	#get_tree().paused = false
-
