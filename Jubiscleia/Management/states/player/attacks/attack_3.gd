@@ -4,9 +4,6 @@ extends State
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
 @export var attack_area: CollisionPolygon2D
-var damage: float
-var knockback_force: float
-var knockup_force: float
 
 var speed: float
 
@@ -26,13 +23,10 @@ func enter_state() -> void:
 	player.can_combo = false
 
 	speed = PlayerVariables.get(str(PlayerVariables.current_skill) + "_3_speed")
-	damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_3_damage")
-	knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_3_knockback")
-	knockup_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_3_knockup")
-	
-	player.attack_area.damage = damage
-	player.attack_area.knockback_force = knockback_force
-	player.attack_area.knockup_force = knockup_force
+	player.attack_area.damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_3_damage")
+	player.attack_area.knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_3_knockback")
+	player.attack_area.knockup_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_3_knockup")
+	player.attack_area.poise_damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_3_poise")
 	
 	PlayerVariables.current_skill = ""
 
@@ -42,7 +36,7 @@ func exit_state() -> void:
 	PlayerVariables.last_skill = ""
 	PlayerVariables.move = false
 	PlayerVariables.current_attack = ""
-	attack_area.disabled = true
+	#attack_area.disabled = true
 	player.can_dash = true
 	
 	PlayerVariables.anim_finish = false

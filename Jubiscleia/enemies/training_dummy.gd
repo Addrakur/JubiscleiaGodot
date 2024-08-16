@@ -5,6 +5,8 @@ extends CharacterBody2D
 @onready var idle_state = $StateMachine/DummyIdleState as DummyIdleState
 @onready var hit_state = $StateMachine/DummyHitState as DummyHitState
 @onready var state = $StateMachine/State as State
+@onready var hit_modulate = $HitModulate
+@onready var poise_timer = $PoiseTimer
 
 var alive: bool = true
 
@@ -22,3 +24,9 @@ func _physics_process(delta):
 	move_and_slide()
 	if not is_on_floor():
 		velocity.y = GameSettings.default_gravity * delta * gravity_mult
+
+func _on_hit_modulate_animation_finished(_anim_name):
+	health_component.last_attack = ""
+
+func _on_poise_timer_timeout():
+	health_component.current_poise = health_component.max_poise

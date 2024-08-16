@@ -16,6 +16,7 @@ var direction: float = 1
 func _ready():
 	animation.play(str(animation_level))
 	attack_area.attack_name = "kitsune + " + str(animation_level)
+	attack_area.poise_damage = 5
 
 func _physics_process(delta):
 	if move:

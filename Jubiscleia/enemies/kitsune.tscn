@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://radoy72pb50a"]
+[gd_scene load_steps=35 format=3 uid="uid://radoy72pb50a"]
 
 [ext_resource type="Script" path="res://enemies/kitsune.gd" id="1_3ptr8"]
 [ext_resource type="Texture2D" uid="uid://c4s8bcr5r7i73" path="res://assets/enemy/banco_de_assets/kitsune/Run.png" id="1_5gbqr"]
@@ -526,6 +526,44 @@ _data = {
 "warp_out": SubResource("Animation_xpqv1")
 }
 
+[sub_resource type="Animation" id="Animation_1qj3w"]
+resource_name = "hit"
+length = 0.45
+step = 0.075
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(128.498, 0, 0, 1), Color(1, 1, 1, 1), Color(128.498, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_100ro"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_io2th"]
+_data = {
+"RESET": SubResource("Animation_100ro"),
+"hit": SubResource("Animation_1qj3w")
+}
+
 [node name="Kitsune" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemy"]]
 z_index = -10
 collision_layer = 2
@@ -544,11 +582,18 @@ libraries = {
 "": SubResource("AnimationLibrary_5fyoy")
 }
 
+[node name="HitModulate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_io2th")
+}
+
 [node name="Collision" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-8, 45, 13, 45, 13, -21, -8, -21)
 
 [node name="HealthComponent" parent="." instance=ExtResource("7_v7gb8")]
-max_health = 10.0
+max_health = 15.0
+max_poise = 10.0
+poise_recovery_timer = 5.0
 destroy_after_dead = true
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
@@ -653,13 +698,18 @@ collision_mask = 12
 [node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("20_06pfj")]
 parent = NodePath("..")
 
+[node name="PoiseTimer" type="Timer" parent="."]
+one_shot = true
+
 [connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneDeath" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneHit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneWarp" method="_on_animation_finished"]
+[connection signal="animation_finished" from="HitModulate" to="." method="_on_hit_modulate_animation_finished"]
 [connection signal="body_entered" from="CanAttackShort" to="." method="_on_can_attack_short_body_entered"]
 [connection signal="body_exited" from="CanAttackShort" to="." method="_on_can_attack_short_body_exited"]
 [connection signal="body_entered" from="RunArea" to="." method="_on_run_area_body_entered"]
 [connection signal="body_exited" from="RunArea" to="." method="_on_run_area_body_exited"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
+[connection signal="timeout" from="PoiseTimer" to="." method="_on_poise_timer_timeout"]

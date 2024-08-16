@@ -1,4 +1,4 @@
-[gd_scene load_steps=175 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=178 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_tuo6g"]
@@ -7008,6 +7008,44 @@ _data = {
 "losing_level_3": SubResource("Animation_8xva2")
 }
 
+[sub_resource type="Animation" id="Animation_3qir1"]
+resource_name = "hit"
+length = 0.45
+step = 0.075
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(128.498, 0, 0, 1), Color(1, 1, 1, 1), Color(128.498, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_se0ya"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w1rpo"]
+_data = {
+"RESET": SubResource("Animation_se0ya"),
+"hit": SubResource("Animation_3qir1")
+}
+
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("attack_area", "health_component") groups=["player"]]
 collision_mask = 38
 floor_constant_speed = true
@@ -7150,6 +7188,11 @@ libraries = {
 "": SubResource("AnimationLibrary_vrfuq")
 }
 
+[node name="HitModulate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_w1rpo")
+}
+
 [node name="Interface" parent="." node_paths=PackedStringArray("player", "health_component") instance=ExtResource("9_181sd")]
 player = NodePath("..")
 health_component = NodePath("../HealthComponent")
@@ -7162,6 +7205,8 @@ position = Vector2(4, 10)
 
 [node name="HealthComponent" parent="." instance=ExtResource("9_6bxkt")]
 max_health = 100.0
+max_poise = 5.0
+poise_recovery_timer = 5.0
 destroy_after_dead = true
 
 [node name="WallGrab" type="RayCast2D" parent="."]
@@ -7191,12 +7236,14 @@ process_callback = 0
 wait_time = 0.1
 one_shot = true
 
+[node name="PoiseTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="CorruptionManager" type="Node2D" parent="." node_paths=PackedStringArray("player", "hit_timer", "animation")]
 script = ExtResource("57_em6cc")
 player = NodePath("..")
 hit_timer = NodePath("../HitTimer")
 animation = NodePath("../AuraAnimations")
-max_level = 3.0
 hit_0_to_1 = 15.0
 hit_1_to_2 = 10.0
 hit_2_to_3 = 10.0
@@ -7211,9 +7258,11 @@ parent = NodePath("..")
 [connection signal="animation_finished" from="Animations" to="StateMachine/Hit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/PlayerJumpAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/PlayerDash" method="_on_animation_finished"]
+[connection signal="animation_finished" from="HitModulate" to="." method="hit_modulate_animation_finished"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="HitTimer" to="CorruptionManager" method="hit_timer_timeout"]
 [connection signal="timeout" from="ComboTimer" to="." method="_on_combo_timer_timeout"]
 [connection signal="timeout" from="CoyoteTime" to="StateMachine/Fall" method="_on_coyote_time_timeout"]
 [connection signal="timeout" from="InvTimer" to="." method="_on_inv_timer_timeout"]
 [connection signal="timeout" from="Direction0" to="StateMachine/Jump" method="_on_direction_0_timeout"]
+[connection signal="timeout" from="PoiseTimer" to="." method="_on_poise_timer_timeout"]

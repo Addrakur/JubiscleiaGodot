@@ -12,6 +12,10 @@ extends CharacterBody2D
 @onready var can_attack_air: CollisionPolygon2D = $CanAttackAir/CanAttackAirArea
 @onready var attack_area_ground: CollisionPolygon2D = $AttackArea/AttackCollisionGround
 @onready var attack_area_air: CollisionPolygon2D = $AttackArea/AttackCollisionAir
+@onready var hit_modulate = $HitModulate
+@onready var poise_timer = $PoiseTimer
+@onready var attack_collision_air = $AttackArea/AttackCollisionAir
+@onready var attack_collision_ground = $AttackArea/AttackCollisionGround
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var walk_state: State = $StateMachine/SpearSkeletonWalk as SpearSkeletonWalk
@@ -36,6 +40,7 @@ var gravity_mult: float = 4
 
 func _ready():
 	attack_area.attack_name = name + "hit"
+	attack_area.poise_damage = attack_state.poise_damage
 
 func _process(_delta):
 	if not health_component.is_getting_hit and alive:
@@ -50,9 +55,9 @@ func _process(_delta):
 	if not alive:
 		fsm.change_state(death_state)
 	
-	if health_component.is_getting_hit and not fsm.state == hit_state:
-		fsm.change_state(hit_state)
-	
+	if not is_attacking:
+		attack_collision_air.disabled = true
+		attack_collision_ground.disabled = true
 
 func _physics_process(delta):
 	move_and_slide()
@@ -100,3 +105,9 @@ func can_attack_air_body_entered(body):
 func can_attack_air_body_exited(body):
 	if body.is_in_group("player") and not body.is_in_group("projetile"):
 		can_attack_player_air = false
+
+func _on_hit_modulate_animation_finished(_anim_name):
+	health_component.last_attack = ""
+
+func _on_poise_timer_timeout():
+	health_component.current_poise = health_component.max_poise

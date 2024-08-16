@@ -14,6 +14,8 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var inv_timer = $InvTimer
 @onready var wall_grab_ray_cast = $WallGrab
 @onready var direction_0 = $Direction0
+@onready var hit_modulate = $HitModulate
+@onready var poise_timer = $PoiseTimer
 
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var corruption_manager: Node2D = $CorruptionManager
@@ -74,6 +76,9 @@ func _ready():
 func _process(_delta):
 	direction = Input.get_axis("left","right")
 	
+	if not PlayerVariables.player_attacking:
+		attack_area_polygon.disabled = true
+	
 	PlayerVariables.player_current_life = health_component.current_health
 	
 	if not health_component.is_getting_hit and not PlayerVariables.player_attacking:
@@ -82,14 +87,10 @@ func _process(_delta):
 	if not alive:
 		fsm.change_state(death_state)
 	
-	if health_component.is_getting_hit and not fsm.state == hit_state:
-		fsm.change_state(hit_state)
-	
 	if Input.is_action_pressed("dash") and can_dash:
 		if fsm.state == wall_grab_state:
 			direction = -wall_grab_ray_cast.scale.x
 		fsm.change_state(dash_state)
-	
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -192,3 +193,8 @@ func _on_combo_timer_timeout():
 func _on_inv_timer_timeout():
 	health_component.invulnerable = false
 
+func hit_modulate_animation_finished(_anim_name):
+	health_component.last_attack = ""
+
+func _on_poise_timer_timeout():
+	health_component.current_poise = health_component.max_poise

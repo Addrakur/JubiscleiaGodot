@@ -16,6 +16,9 @@ extends CharacterBody2D
 @onready var wall_sensor = $WallSensor
 @onready var trapped_sensor = $TrappedSensor
 @onready var attack_spawn_point = $AttackSpawnPoint
+@onready var hit_modulate = $HitModulate
+@onready var poise_timer = $PoiseTimer
+
 #const ASP_POSITION: float = 47
 
 @onready var fsm = $StateMachine as StateMachine
@@ -108,3 +111,9 @@ func _on_can_attack_short_body_entered(body):
 func _on_can_attack_short_body_exited(body):
 	if body == player_ref:
 		can_attack_short_range = false
+
+func _on_hit_modulate_animation_finished(_anim_name):
+	health_component.last_attack = ""
+
+func _on_poise_timer_timeout():
+	health_component.current_poise = health_component.max_poise

@@ -12,6 +12,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
+	can_move = true if player.direction_0.is_stopped() else false
 	player.jump_count += 1
 	animation.play("jump")
 	player.velocity.y = player.jump_velocity
@@ -26,6 +27,9 @@ func _physics_process(_delta):
 	
 	if player.velocity.y > 0 or player.is_on_ceiling() or Input.is_action_just_released("jump"):
 		player.fsm.change_state(player.fall_state)
+	
+	if player.velocity.x > 0 and Input.is_action_just_pressed("left") or player.velocity.x < 0 and Input.is_action_just_pressed("right"):
+		can_move = true
 	
 	#if Input.is_action_just_pressed("jump") and player.jump_count < player.max_jump_count:
 	#	player.fsm.change_state(player.double_jump_state)

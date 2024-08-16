@@ -17,9 +17,9 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
+	player.health_component.is_getting_hit = true
 	player.health_component.invulnerable = true
 	player.can_dash = false
-	animation.stop()
 	animation.play("hit")
 	player.velocity.x = 0
 	knockback()

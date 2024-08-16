@@ -17,6 +17,8 @@ var body_ref: Node2D
 
 @export var attack_name: String
 
+var poise_damage: float
+
 func _ready():
 	#print(parent.name + ": " + name + ": " + str(damage))
 	pass
@@ -39,7 +41,7 @@ func on_body_exited(body):
 
 func hit_func(body: Node2D):
 	if body.is_in_group(target) and not body.health_component.invulnerable and body.alive:
-		body.health_component.update_health(damage, knockup_force, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name) # Chama a função que aplica o dano no alvo
+		body.health_component.update_health(damage, knockup_force, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage) # Chama a função que aplica o dano no alvo
 		
 		if parent.is_in_group("player"): # Verifica se quem bateu foi o jogador
 			PlayerVariables.hit_amount += 1

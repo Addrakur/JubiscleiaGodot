@@ -1,9 +1,12 @@
 extends Node2D
 
 @export var max_health: float
+@export var max_poise: float
+@export var poise_recovery_timer: float
 @export var destroy_after_dead: bool
 @onready var parent: Node2D = get_parent()
 var current_health: float = 100
+var current_poise: float = 1000
 var is_getting_hit: bool = false
 var invulnerable: bool = false
 
@@ -11,22 +14,28 @@ var last_attack: String
 
 func _ready() -> void:
 	current_health = max_health
+	current_poise = max_poise
 
 func _process(_delta):
 	die()
 
-func update_health(value: float, knockup: float, knockback: float, direction: float, last_attack_name: String) -> void:
+func update_health(health_damage: float, knockup: float, knockback: float, direction: float, last_attack_name: String, poise_damage: float) -> void:
 	if last_attack_name != last_attack:
 		last_attack = last_attack_name
-		is_getting_hit = true
-		current_health -= value
+		current_health -= health_damage
+		current_poise -= poise_damage
 		
-		parent.hit_state.knockup_force = knockup * parent.hit_state.knock_multi # Aplica a força do knockback
-		parent.hit_state.knockback_force = knockback * parent.hit_state.knock_multi # Aplica a força do knockup
-		parent.hit_state.direction = direction
+		if current_poise <= 0:
+			parent.hit_state.knockup_force = knockup * parent.hit_state.knock_multi # Aplica a força do knockback
+			parent.hit_state.knockback_force = knockback * parent.hit_state.knock_multi # Aplica a força do knockup
+			parent.hit_state.direction = direction
 		
-		if parent.fsm.state == parent.hit_state: # Gambiarra que faz o alvo reiniciar o hit state
+			#if parent.fsm.state == parent.hit_state: # Gambiarra que faz o alvo reiniciar o hit state
 			parent.fsm.change_state(parent.hit_state)
+			current_poise = max_poise
+		else:
+			parent.hit_modulate.play("hit")
+			parent.poise_timer.start(poise_recovery_timer)
 		
 		if parent.is_in_group("player"):
 			parent.corruption_manager.time_penalty()

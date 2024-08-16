@@ -36,7 +36,6 @@ func _physics_process(_delta):
 		player.velocity.x = out_force * -player.wall_grab_ray_cast.scale.x
 		player.direction_0.wait_time = wait_time_min if player.direction != 0 else wait_time_max
 		player.direction_0.start()
-		player.jump_state.can_move = false
 		player.fsm.change_state(player.jump_state)
 	
 	if player.is_on_floor():
