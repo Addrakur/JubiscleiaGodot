@@ -17,6 +17,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
+	big_worm.health_component.is_getting_hit = true
 	animation.stop()
 	animation.play("hit")
 	big_worm.velocity.x = 0

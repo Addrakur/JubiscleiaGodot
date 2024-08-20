@@ -17,7 +17,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	animation.stop()
+	snake.health_component.is_getting_hit = true
 	animation.play("hit")
 	snake.velocity.x = 0
 	knockback()

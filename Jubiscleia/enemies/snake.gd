@@ -26,6 +26,8 @@ const CCA_POSITION: float = -48
 @onready var death_state: State = $StateMachine/SnakeDeath as SnakeDeath
 @onready var chase_state: State = $StateMachine/SnakeChase as SnakeChase
 @onready var state = $StateMachine/State as State
+@onready var hit_modulate: AnimationPlayer = $HitModulate
+@onready var poise_timer: Timer = $PoiseTimer
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player: bool = false
@@ -50,11 +52,11 @@ func _process(_delta):
 		if not PlayerVariables.player_alive:
 			player_ref = null
 	
-	if health_component.is_getting_hit and not fsm.state == hit_state:
-		fsm.change_state(hit_state)
-	
 	if not alive:
 		fsm.change_state(death_state)
+	
+	if not is_attacking:
+		attack_area_collision.disabled = true
 
 func _physics_process(delta):
 	move_and_slide()
@@ -92,3 +94,9 @@ func chase_area_exited(body):
 func _on_can_attack_area_body_entered(body):
 	if body == player_ref:
 		can_attack_player = true
+
+func _on_hit_modulate_animation_finished(_anim_name):
+	health_component.last_attack = ""
+
+func _on_poise_timer_timeout():
+	health_component.current_poise = health_component.max_poise

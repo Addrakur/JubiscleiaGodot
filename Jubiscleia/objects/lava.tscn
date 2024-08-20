@@ -78,6 +78,7 @@ target = "player"
 damage = 5.0
 knockup_force = -30.0
 knockback_force = 500.0
+poise_damage = 50.0
 attack_name = "lava"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]

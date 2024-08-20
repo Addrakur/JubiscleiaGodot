@@ -34,7 +34,7 @@ func _physics_process(_delta):
 		else:
 			player.fsm.change_state(player.move_state)
 	
-	if player.wall_grab_ray_cast.is_colliding() and player.direction == player.wall_grab_ray_cast.scale.x:
+	if player.wall_grab_ray_cast.is_colliding(): #and player.direction == player.wall_grab_ray_cast.scale.x:
 		player.fsm.change_state(player.wall_grab_state)
 	
 	if Input.is_action_just_pressed("jump") and player.jump_count < player.max_jump_count:

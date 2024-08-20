@@ -40,7 +40,6 @@ var gravity_mult: float = 4
 
 func _ready():
 	attack_area.attack_name = name + "hit"
-	attack_area.poise_damage = attack_state.poise_damage
 
 func _process(_delta):
 	if not health_component.is_getting_hit and alive:

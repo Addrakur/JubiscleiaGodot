@@ -625,7 +625,7 @@ libraries = {
 polygon = PackedVector2Array(8, 32, -10, 32, -10, -33, 8, -33)
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("8_i2y1x")]
-max_health = 20.0
+max_health = 25.0
 max_poise = 20.0
 poise_recovery_timer = 3.0
 attack_timer = NodePath("../AttackTimer")
@@ -636,6 +636,7 @@ target = "player"
 damage = 10.0
 knockup_force = -50.0
 knockback_force = 500.0
+poise_damage = 10.0
 
 [node name="AttackCollisionAir" type="CollisionPolygon2D" parent="AttackArea"]
 self_modulate = Color(0, 0, 0, 1)
@@ -696,7 +697,6 @@ attack_timer = NodePath("../../AttackTimer")
 
 [node name="SpearSkeletonAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("skeleton", "animation", "attack_timer")]
 script = ExtResource("15_0mwoe")
-poise_damage = 10.0
 skeleton = NodePath("../..")
 animation = NodePath("../../Animations")
 attack_timer = NodePath("../../AttackTimer")
@@ -726,6 +726,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="PoiseTimer" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("19_82j6j")]

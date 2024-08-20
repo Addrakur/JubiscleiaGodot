@@ -35,6 +35,12 @@ window/vsync/vsync_mode=2
 
 enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
 
+[global_group]
+
+player=""
+enemy=""
+terrain=""
+
 [input]
 
 right={

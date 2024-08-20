@@ -1,7 +1,6 @@
 class_name SpearSkeletonAttack
 extends State
 
-@export var poise_damage: float
 @export var skeleton: CharacterBody2D
 @export var animation: AnimationPlayer
 @export var attack_timer: Timer

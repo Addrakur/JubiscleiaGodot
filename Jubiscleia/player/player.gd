@@ -112,12 +112,12 @@ func set_gravity():
 	
 
 func flip() -> void:
-	if direction > 0:
+	if velocity.x > 0:
 		texture.flip_h = false
 		attack_area_polygon.position.x = ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = 1
 		wall_grab_ray_cast.scale.x = 1
-	elif direction < 0:
+	elif velocity.x < 0:
 		texture.flip_h = true
 		attack_area_polygon.position.x = -ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = -1
