@@ -7047,6 +7047,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("attack_area", "health_component") groups=["player"]]
+scale = Vector2(1.0639, 0.99811)
 collision_mask = 38
 floor_constant_speed = true
 floor_max_angle = 0.802851

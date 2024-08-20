@@ -15,12 +15,12 @@ extends CharacterBody2D
 @onready var animations: AnimationPlayer = $Animations
 
 @onready var fsm: StateMachine = $StateMachine
-@onready var walk_state: SwordSkeletonWalk = $StateMachine/SwordSkeletonWalk as SwordSkeletonWalk
-@onready var idle_state: SwordSkeletonIdle = $StateMachine/SwordSkeletonIdle as SwordSkeletonIdle
-@onready var run_state: SwordSkeletonRun = $StateMachine/SwordSkeletonRun as SwordSkeletonRun
-@onready var attack_state: SwordSkeletonAttack = $StateMachine/SwordSkeletonAttack as SwordSkeletonAttack
-@onready var hit_state: SwordSkeletonHit = $StateMachine/SwordSkeletonHit as SwordSkeletonHit
-@onready var death_state: State
+@onready var walk_state: State = $StateMachine/SwordSkeletonWalk as SwordSkeletonWalk
+@onready var idle_state: State = $StateMachine/SwordSkeletonIdle as SwordSkeletonIdle
+@onready var run_state: State = $StateMachine/SwordSkeletonRun as SwordSkeletonRun
+@onready var attack_state: State = $StateMachine/SwordSkeletonAttack as SwordSkeletonAttack
+@onready var hit_state: State = $StateMachine/SwordSkeletonHit as SwordSkeletonHit
+@onready var death_state: SwordSkeletonDeath = $StateMachine/SwordSkeletonDeath
 @onready var protect_state: State
 @onready var state = $StateMachine/State as State
 
@@ -33,7 +33,6 @@ var alive: bool = true
 
 var gravity: float
 var gravity_mult: float = 4
-
 
 func _ready():
 	pass
@@ -94,3 +93,7 @@ func _on_can_attack_area_body_entered(body: Node2D) -> void:
 func _on_can_attack_area_body_exited(body: Node2D) -> void:
 	if body == player_ref:
 		can_attack_player = false
+
+
+func _on_animation_finished(anim_name: StringName) -> void:
+	pass # Replace with function body.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://3f7lr15bhlyx"]
+[gd_scene load_steps=39 format=3 uid="uid://3f7lr15bhlyx"]
 
 [ext_resource type="Texture2D" uid="uid://cb0yftlo5iyws" path="res://assets/enemy/banco_de_assets/sword_skeleton/Idle.png" id="1_4i5gc"]
 [ext_resource type="Script" path="res://enemies/sword_skeleton.gd" id="1_gupx0"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_walk.gd" id="18_nijjx"]
 [ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_run.gd" id="18_s3ijb"]
 [ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_attack.gd" id="20_famnf"]
+[ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_death.gd" id="21_ikto8"]
 
 [sub_resource type="Animation" id="Animation_fp2sw"]
 length = 0.001
@@ -735,8 +736,9 @@ position = Vector2(0, -32)
 shape = SubResource("CapsuleShape2D_d52rv")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("1_uam10")]
+scale = Vector2(0.95, 1)
 max_health = 30.0
-max_poise = 20.0
+max_poise = 10.0
 poise_recovery_timer = 3.0
 attack_timer = NodePath("../AttackTimer")
 
@@ -798,9 +800,6 @@ animation = NodePath("../../Animations")
 speed = 130.0
 attack_timer = NodePath("../../AttackTimer")
 
-[node name="State" type="Node" parent="StateMachine"]
-script = ExtResource("16_p3k75")
-
 [node name="SwordSkeletonAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("skeleton", "animation", "attack_timer")]
 script = ExtResource("20_famnf")
 skeleton = NodePath("../..")
@@ -808,22 +807,35 @@ animation = NodePath("../../Animations")
 attack_timer = NodePath("../../AttackTimer")
 speed = 100.0
 
+[node name="SwordSkeletonDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("skeleton", "animation")]
+script = ExtResource("21_ikto8")
+skeleton = NodePath("../..")
+animation = NodePath("../../Animations")
+
+[node name="State" type="Node" parent="StateMachine"]
+script = ExtResource("16_p3k75")
+
 [node name="IdleTimer" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]
+wait_time = 6.0
 one_shot = true
 
 [node name="PoiseTimer" type="Timer" parent="."]
 one_shot = true
 
 [node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("4_x53xa")]
-offset_top = -302.0
-offset_bottom = -279.0
+offset_left = -19.0
+offset_top = -111.0
+offset_right = 21.0
+offset_bottom = -88.0
 parent = NodePath("..")
 
+[connection signal="animation_finished" from="Animations" to="StateMachine/SwordSkeletonHit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/SwordSkeletonAttack" method="_on_animation_finished"]
+[connection signal="animation_finished" from="Animations" to="StateMachine/SwordSkeletonDeath" method="_on_animation_finished"]
 [connection signal="animation_finished" from="HitModulate" to="." method="_on_hit_modulate_animation_finished"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
