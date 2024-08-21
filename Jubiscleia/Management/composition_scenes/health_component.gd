@@ -27,7 +27,6 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 		if not defending:
 			current_health -= health_damage
 			current_poise -= poise_damage
-			parent.hit_modulate.play("defending")
 		
 		if current_poise <= 0:
 			parent.hit_state.knockup_force = knockup * parent.hit_state.knock_multi # Aplica a força do knockback
@@ -40,9 +39,11 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 			if attack_timer != null:
 				attack_timer.stop()
 		else:
-			parent.hit_modulate.play("hit")
-			parent.poise_timer.start(poise_recovery_timer)
-
+			if not defending:
+				parent.hit_modulate.play("hit")
+				parent.poise_timer.start(poise_recovery_timer)
+			else:
+				parent.hit_modulate.play("defending")
 		
 		if parent.is_in_group("player"):
 			parent.corruption_manager.time_penalty()
