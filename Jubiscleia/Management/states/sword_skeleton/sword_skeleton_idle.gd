@@ -22,9 +22,10 @@ func _physics_process(_delta):
 	
 	if skeleton.player_ref != null and PlayerVariables.player_alive and skeleton.player_on_limit:
 		if skeleton.can_attack_player:
-			if skeleton.health_component.current_poise == skeleton.health_component.max_poise and skeleton.protect_cooldown.is_stopped():
+			if skeleton.health_component.current_poise == skeleton.health_component.max_poise and skeleton.can_protect:
 				skeleton.fsm.change_state(skeleton.protect_state)
 			elif attack_timer.is_stopped():
+				print(str(skeleton.health_component.current_poise) + str(skeleton.can_protect))
 				skeleton.attack_state.attack = "attack_1"
 				skeleton.fsm.change_state(skeleton.attack_state)
 		else:

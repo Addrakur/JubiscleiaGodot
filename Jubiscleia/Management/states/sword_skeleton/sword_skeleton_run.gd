@@ -24,7 +24,7 @@ func _physics_process(_delta):
 		skeleton.velocity.x = speed * skeleton.direction
 	
 	if skeleton.can_attack_player:
-		if skeleton.health_component.current_poise == skeleton.health_component.max_poise and skeleton.protect_cooldown.is_stopped():
+		if skeleton.health_component.current_poise == skeleton.health_component.max_poise and skeleton.can_protect:
 			skeleton.fsm.change_state(skeleton.protect_state)
 		elif attack_timer.is_stopped():
 			skeleton.attack_state.attack = "run_attack"

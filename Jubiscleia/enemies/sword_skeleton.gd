@@ -27,6 +27,7 @@ extends CharacterBody2D
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player: bool = false
+var can_protect: bool = true
 var player_on_limit: bool = false
 var is_attacking: bool = false
 
@@ -94,3 +95,6 @@ func _on_can_attack_area_body_entered(body: Node2D) -> void:
 func _on_can_attack_area_body_exited(body: Node2D) -> void:
 	if body == player_ref:
 		can_attack_player = false
+
+func _on_protect_cooldown_timeout() -> void:
+	can_protect = true
