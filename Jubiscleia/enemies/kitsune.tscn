@@ -661,7 +661,7 @@ polygon = PackedVector2Array(-9, 45, 214, 45, 214, -158, -9, -158)
 [node name="DetectArea" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectArea"]
-polygon = PackedVector2Array(574, 45, 574, -158, -574, -158, -574, 45)
+polygon = PackedVector2Array(448, 45, 448, -160, -224, -160, -224, 45)
 
 [node name="Idle Timer" type="Timer" parent="."]
 process_callback = 0

@@ -653,7 +653,7 @@ collision_layer = 0
 [node name="CanChaseArea" type="CollisionPolygon2D" parent="CanChaseArea"]
 modulate = Color(1, 1, 1, 0.2)
 self_modulate = Color(0.952941, 0.847059, 0.847059, 1)
-polygon = PackedVector2Array(-128, -96, -128, 32, 384, 32, 384, -96)
+polygon = PackedVector2Array(-128, -96, -128, 32, 320, 32, 320, -96)
 
 [node name="CanAttackGround" type="Area2D" parent="."]
 collision_layer = 0
