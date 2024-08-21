@@ -17,7 +17,6 @@ extends Area2D
 
 var body_ref: Node2D
 
-
 func _ready():
 	#print(parent.name + ": " + name + ": " + str(damage))
 	pass

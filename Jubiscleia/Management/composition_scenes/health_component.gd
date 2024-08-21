@@ -10,6 +10,7 @@ var current_health: float = 100
 var current_poise: float = 1000
 var is_getting_hit: bool = false
 var invulnerable: bool = false
+var defending: bool = false
 
 var last_attack: String
 
@@ -23,8 +24,10 @@ func _process(_delta):
 func update_health(health_damage: float, knockup: float, knockback: float, direction: float, last_attack_name: String, poise_damage: float) -> void:
 	if last_attack_name != last_attack:
 		last_attack = last_attack_name
-		current_health -= health_damage
-		current_poise -= poise_damage
+		if not defending:
+			current_health -= health_damage
+			current_poise -= poise_damage
+			parent.hit_modulate.play("defending")
 		
 		if current_poise <= 0:
 			parent.hit_state.knockup_force = knockup * parent.hit_state.knock_multi # Aplica a força do knockback
@@ -39,6 +42,7 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 		else:
 			parent.hit_modulate.play("hit")
 			parent.poise_timer.start(poise_recovery_timer)
+
 		
 		if parent.is_in_group("player"):
 			parent.corruption_manager.time_penalty()

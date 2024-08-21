@@ -13,6 +13,7 @@ extends CharacterBody2D
 @onready var detect_collision: CollisionPolygon2D = $DetectArea/DetectCollision
 @onready var can_attack_collision: CollisionPolygon2D = $CanAttackArea/CanAttackCollision
 @onready var animations: AnimationPlayer = $Animations
+@onready var protect_cooldown: Timer = $ProtectCooldown
 
 @onready var fsm: StateMachine = $StateMachine
 @onready var walk_state: State = $StateMachine/SwordSkeletonWalk as SwordSkeletonWalk
@@ -20,8 +21,8 @@ extends CharacterBody2D
 @onready var run_state: State = $StateMachine/SwordSkeletonRun as SwordSkeletonRun
 @onready var attack_state: State = $StateMachine/SwordSkeletonAttack as SwordSkeletonAttack
 @onready var hit_state: State = $StateMachine/SwordSkeletonHit as SwordSkeletonHit
-@onready var death_state: SwordSkeletonDeath = $StateMachine/SwordSkeletonDeath
-@onready var protect_state: State
+@onready var death_state: State = $StateMachine/SwordSkeletonDeath as SwordSkeletonDeath
+@onready var protect_state: State = $StateMachine/SwordSkeletonProtect as SwordSkeletonProtect
 @onready var state = $StateMachine/State as State
 
 @onready var player_ref: CharacterBody2D
@@ -85,7 +86,7 @@ func _on_hit_modulate_animation_finished(_anim_name):
 
 func _on_poise_timer_timeout():
 	health_component.current_poise = health_component.max_poise
-
+  
 func _on_can_attack_area_body_entered(body: Node2D) -> void:
 	if body == player_ref:
 		can_attack_player = true
@@ -93,7 +94,3 @@ func _on_can_attack_area_body_entered(body: Node2D) -> void:
 func _on_can_attack_area_body_exited(body: Node2D) -> void:
 	if body == player_ref:
 		can_attack_player = false
-
-
-func _on_animation_finished(anim_name: StringName) -> void:
-	pass # Replace with function body.

@@ -25,7 +25,7 @@ func exit_state() -> void:
 	skeleton.is_attacking = false
 	attack_timer.start()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if move:
 		skeleton.velocity.x = skeleton.direction * speed
 	else:

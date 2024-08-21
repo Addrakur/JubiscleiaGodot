@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://3f7lr15bhlyx"]
+[gd_scene load_steps=41 format=3 uid="uid://3f7lr15bhlyx"]
 
 [ext_resource type="Texture2D" uid="uid://cb0yftlo5iyws" path="res://assets/enemy/banco_de_assets/sword_skeleton/Idle.png" id="1_4i5gc"]
 [ext_resource type="Script" path="res://enemies/sword_skeleton.gd" id="1_gupx0"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_run.gd" id="18_s3ijb"]
 [ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_attack.gd" id="20_famnf"]
 [ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_death.gd" id="21_ikto8"]
+[ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_protect.gd" id="22_j1eg1"]
 
 [sub_resource type="Animation" id="Animation_fp2sw"]
 length = 0.001
@@ -148,7 +149,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [PackedVector2Array(-23, 0, 32, 0, 32, -77, -23, -77)]
+"values": [PackedVector2Array(13, 0, 70, 0, 70, -78, 13, -78)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -213,7 +214,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [PackedVector2Array(-23, 0, 32, 0, 32, -77, -23, -77)]
+"values": [PackedVector2Array(14, 0, 64, 0, 64, -77, 14, -77)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -292,10 +293,10 @@ tracks/3/path = NodePath("AttackArea/AttackCollision:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [PackedVector2Array(-23, -28, 32, -28, 32, -77, -23, -77)]
+"values": [PackedVector2Array(9, 0, 78, 0, 78, -76, 9, -76), PackedVector2Array(10, -20, 65, -20, 65, -79, 10, -79)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -579,7 +580,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [PackedVector2Array(-23, 0, 32, 0, 32, -38, -23, -38)]
+"values": [PackedVector2Array(13, 0, 64, 0, 64, -38, 13, -38)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -685,7 +686,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ecgxx"]
 resource_name = "hit"
-length = 0.45
+length = 0.15
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -694,15 +695,33 @@ tracks/0/path = NodePath("Texture:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(128.498, 0, 0, 1), Color(1, 1, 1, 1), Color(128.498, 0, 0, 1), Color(1, 1, 1, 1)]
+"values": [Color(128.498, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gg2rm"]
+resource_name = "defending"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(100, 100, 100, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xijdb"]
 _data = {
 "RESET": SubResource("Animation_0x2dl"),
+"defending": SubResource("Animation_gg2rm"),
 "hit": SubResource("Animation_ecgxx")
 }
 
@@ -716,10 +735,6 @@ collision_mask = 13
 script = ExtResource("1_gupx0")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
-
-[node name="Texture" type="Sprite2D" parent="."]
-texture = ExtResource("1_4i5gc")
-hframes = 7
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 libraries = {
@@ -739,7 +754,7 @@ shape = SubResource("CapsuleShape2D_d52rv")
 scale = Vector2(0.95, 1)
 max_health = 30.0
 max_poise = 10.0
-poise_recovery_timer = 3.0
+poise_recovery_timer = 10.0
 attack_timer = NodePath("../AttackTimer")
 
 [node name="DetectArea" type="Area2D" parent="."]
@@ -756,7 +771,6 @@ knockback_force = 300.0
 poise_damage = 5.0
 
 [node name="AttackCollision" type="CollisionPolygon2D" parent="AttackArea"]
-position = Vector2(38, 0)
 polygon = PackedVector2Array(-23, 0, 32, 0, 32, -77, -23, -77)
 disabled = true
 
@@ -766,6 +780,10 @@ collision_layer = 0
 [node name="CanAttackCollision" type="CollisionPolygon2D" parent="CanAttackArea"]
 modulate = Color(0, 1, 0.560784, 1)
 polygon = PackedVector2Array(0, 0, 63, 0, 63, -64, 0, -64)
+
+[node name="Texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_4i5gc")
+hframes = 7
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("3_ogvwr")
@@ -812,6 +830,12 @@ script = ExtResource("21_ikto8")
 skeleton = NodePath("../..")
 animation = NodePath("../../Animations")
 
+[node name="SwordSkeletonProtect" type="Node" parent="StateMachine" node_paths=PackedStringArray("skeleton", "animation", "protect_duration")]
+script = ExtResource("22_j1eg1")
+skeleton = NodePath("../..")
+animation = NodePath("../../Animations")
+protect_duration = NodePath("../../ProtectDuration")
+
 [node name="State" type="Node" parent="StateMachine"]
 script = ExtResource("16_p3k75")
 
@@ -820,10 +844,19 @@ wait_time = 3.0
 one_shot = true
 
 [node name="AttackTimer" type="Timer" parent="."]
-wait_time = 6.0
+wait_time = 3.0
 one_shot = true
 
 [node name="PoiseTimer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="ProtectDuration" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="ProtectCooldown" type="Timer" parent="."]
+wait_time = 4.0
 one_shot = true
 
 [node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("4_x53xa")]
@@ -842,3 +875,4 @@ parent = NodePath("..")
 [connection signal="body_entered" from="CanAttackArea" to="." method="_on_can_attack_area_body_entered"]
 [connection signal="body_exited" from="CanAttackArea" to="." method="_on_can_attack_area_body_exited"]
 [connection signal="timeout" from="PoiseTimer" to="." method="_on_poise_timer_timeout"]
+[connection signal="timeout" from="ProtectDuration" to="StateMachine/SwordSkeletonProtect" method="_on_protect_duration_timeout"]

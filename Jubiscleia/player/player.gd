@@ -82,7 +82,10 @@ func _process(_delta):
 	PlayerVariables.player_current_life = health_component.current_health
 	
 	if not health_component.is_getting_hit and not PlayerVariables.player_attacking:
-		flip()
+		if is_on_floor() and fsm.state == dash_state:
+			pass
+		else:
+			flip()
 	
 	if not alive:
 		fsm.change_state(death_state)
