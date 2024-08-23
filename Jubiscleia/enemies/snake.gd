@@ -7,9 +7,7 @@ extends CharacterBody2D
 @onready var limit: Area2D = get_parent()
 @onready var texture: Sprite2D = $Texture
 @onready var collision: CollisionShape2D = $Collision
-const C_POSITION: float = 3
-@onready var collision_2: CollisionShape2D = $Collision2
-const C_2_POSITION: float = -16
+const C_POSITION: float = -9
 @onready var attack_area_collision: CollisionShape2D = $AttackArea/AttackCollision
 const AAC_POSITION: float = -41.812
 @onready var can_attack_area_1: CollisionShape2D = $CanAttackArea/CanAttackCollision
@@ -66,7 +64,6 @@ func _physics_process(delta):
 func right():
 	texture.flip_h = true
 	collision.position.x = -C_POSITION
-	collision_2.position.x = -C_2_POSITION
 	attack_area_collision.position.x = -AAC_POSITION
 	can_attack_area_1.position.x = -CAA_POSITION
 	can_chase_area.position.x = -CCA_POSITION
@@ -74,7 +71,6 @@ func right():
 func left():
 	texture.flip_h = false
 	collision.position.x = C_POSITION
-	collision_2.position.x = C_2_POSITION
 	attack_area_collision.position.x = AAC_POSITION
 	can_attack_area_1.position.x = CAA_POSITION
 	can_chase_area.position.x = CCA_POSITION

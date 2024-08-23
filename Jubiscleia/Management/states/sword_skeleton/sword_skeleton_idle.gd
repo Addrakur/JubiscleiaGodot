@@ -25,7 +25,6 @@ func _physics_process(_delta):
 			if skeleton.health_component.current_poise == skeleton.health_component.max_poise and skeleton.can_protect:
 				skeleton.fsm.change_state(skeleton.protect_state)
 			elif attack_timer.is_stopped():
-				print(str(skeleton.health_component.current_poise) + str(skeleton.can_protect))
 				skeleton.attack_state.attack = "attack_1"
 				skeleton.fsm.change_state(skeleton.attack_state)
 		else:

@@ -69,26 +69,24 @@ text = "1"
 
 [node name="Level2" type="Button" parent="."]
 layout_mode = 2
-offset_left = 128.0
-offset_top = 112.0
-offset_right = 192.0
-offset_bottom = 176.0
+offset_left = 32.0
+offset_top = 192.0
+offset_right = 96.0
+offset_bottom = 256.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 37
-disabled = true
 text = "2"
 
 [node name="Level3" type="Button" parent="."]
 layout_mode = 2
-offset_left = 224.0
-offset_top = 112.0
-offset_right = 288.0
-offset_bottom = 176.0
+offset_left = 32.0
+offset_top = 272.0
+offset_right = 96.0
+offset_bottom = 336.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 37
-disabled = true
 text = "3"
 
 [node name="w1text" type="Label" parent="."]

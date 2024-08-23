@@ -95,9 +95,8 @@
 [ext_resource type="Texture2D" uid="uid://fabkw0snbnml" path="res://assets/player/Ataques/Lanca/C2/lanca_air_2.png" id="83_q1mdv"]
 [ext_resource type="Texture2D" uid="uid://dbfg2kntv3eyf" path="res://assets/player/Ataques/Lanca/C3/lanca_air_3.png" id="84_f126j"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3l0ci"]
-radius = 8.0
-height = 28.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ar5uo"]
+size = Vector2(11.2793, 28.053)
 
 [sub_resource type="Animation" id="Animation_115di"]
 length = 0.001
@@ -7050,8 +7049,9 @@ _data = {
 scale = Vector2(1.0639, 0.99811)
 collision_mask = 38
 floor_constant_speed = true
-floor_max_angle = 0.802851
+floor_max_angle = 1.22173
 floor_snap_length = 5.0
+safe_margin = 0.001
 script = ExtResource("1_5lux4")
 attack_area = NodePath("AttackArea")
 health_component = NodePath("HealthComponent")
@@ -7151,9 +7151,9 @@ script = ExtResource("17_dwjry")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 gravity = 130.0
-out_force = 250.0
+out_force = 260.0
 wait_time_min = 0.08
-wait_time_max = 0.25
+wait_time_max = 0.3
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -7167,7 +7167,8 @@ visible = false
 texture = ExtResource("17_7bh1j")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_3l0ci")
+position = Vector2(0, 4.7774e-07)
+shape = SubResource("RectangleShape2D_ar5uo")
 
 [node name="AttackArea" parent="." instance=ExtResource("2_tuo6g")]
 scale = Vector2(1.00346, 1)
@@ -7234,7 +7235,7 @@ wait_time = 0.8
 
 [node name="Direction0" type="Timer" parent="."]
 process_callback = 0
-wait_time = 0.1
+wait_time = 0.15
 one_shot = true
 
 [node name="PoiseTimer" type="Timer" parent="."]

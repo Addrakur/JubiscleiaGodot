@@ -13,12 +13,12 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	player.jump_count = 0
-	collision.shape.height = 17
+	collision.shape.size.y = 17
 	collision.position.y = 5.5
 
 func exit_state() -> void:
 	set_physics_process(false)
-	collision.shape.height = 28
+	collision.shape.size.y = 28
 	collision.position.y = 0
 
 func _physics_process(_delta):

@@ -27,7 +27,7 @@ func _physics_process(_delta):
 	if kitsune.position.x > new_x and kitsune.direction == 1 or kitsune.position.x < new_x and kitsune.direction == -1:
 		kitsune.fsm.change_state(kitsune.idle_state)
 	
-	if kitsune.player_on_run_area and kitsune.cant_run_timer.is_stopped():
+	if kitsune.player_on_run_area and kitsune.cant_run_timer.is_stopped() and not kitsune.is_attacking and kitsune.player_on_limit:
 		kitsune.fsm.change_state(kitsune.run_state)
 
 func new_position():

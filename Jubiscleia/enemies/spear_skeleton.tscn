@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dx23ctyg8spen"]
+[gd_scene load_steps=33 format=3 uid="uid://dx23ctyg8spen"]
 
 [ext_resource type="Texture2D" uid="uid://c13582svml54y" path="res://assets/enemy/banco_de_assets/spear_skeleton/Walk.png" id="1_pnfn2"]
 [ext_resource type="Script" path="res://enemies/spear_skeleton.gd" id="1_vyemi"]
@@ -111,34 +111,22 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../SkeletonCollision:polygon")
+tracks/4/path = NodePath("../AttackArea/AttackCollisionGround:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(8, 32, -10, 32, -10, -33, 8, -33)]
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../AttackArea/AttackCollisionGround:disabled")
+tracks/5/path = NodePath(".:self_modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".:self_modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -447,22 +435,10 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../SkeletonCollision:polygon")
+tracks/3/path = NodePath(".:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [PackedVector2Array(8, 32, -10, 32, -10, -33, 8, -33)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:self_modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -565,22 +541,10 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../SkeletonCollision:polygon")
+tracks/3/path = NodePath(".:self_modulate")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [PackedVector2Array(8, 32, -10, 32, -10, -33, 8, -33)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:self_modulate")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -598,6 +562,9 @@ _data = {
 "run": SubResource("Animation_iwg2f"),
 "walk": SubResource("Animation_w4sv0")
 }
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yv5ip"]
+height = 64.0
 
 [node name="SpearSkeleton" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 collision_layer = 2
@@ -621,8 +588,8 @@ libraries = {
 "": SubResource("AnimationLibrary_opfwi")
 }
 
-[node name="SkeletonCollision" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(8, 32, -10, 32, -10, -33, 8, -33)
+[node name="Collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_yv5ip")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("8_i2y1x")]
 max_health = 25.0

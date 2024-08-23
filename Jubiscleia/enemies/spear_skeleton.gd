@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 @onready var limit: Area2D = get_parent()
 @onready var texture: Sprite2D = $Texture
-@onready var collision: CollisionPolygon2D = $SkeletonCollision
+@onready var collision: CollisionShape2D = $Collision
 @onready var chase_area: CollisionPolygon2D = $CanChaseArea/CanChaseArea
 @onready var can_attack_ground: CollisionPolygon2D = $CanAttackGround/CanAttackGroundArea
 @onready var can_attack_air: CollisionPolygon2D = $CanAttackAir/CanAttackAirArea
@@ -65,7 +65,6 @@ func _physics_process(delta):
 
 func right():
 	texture.flip_h = false
-	collision.scale.x = 1
 	chase_area.scale.x = 1
 	can_attack_ground.scale.x = 1
 	can_attack_air.scale.x = 1
@@ -74,7 +73,6 @@ func right():
 
 func left():
 	texture.flip_h = true
-	collision.scale.x = -1
 	chase_area.scale.x = -1
 	can_attack_ground.scale.x = -1
 	can_attack_air.scale.x = -1

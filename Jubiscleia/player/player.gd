@@ -63,6 +63,7 @@ var last_direction: float = 1
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
+	last_direction = 1
 	PlayerVariables.player = self
 	PlayerVariables.player_alive = true
 	PlayerVariables.player_max_life = health_component.max_health

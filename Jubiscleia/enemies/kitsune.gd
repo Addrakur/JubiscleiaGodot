@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 @onready var limit: Area2D = get_parent()
 @onready var texture: Sprite2D = $Texture
-@onready var collision: CollisionPolygon2D = $Collision
+@onready var collision: CollisionShape2D = $Collision
 @onready var run_collision = $RunArea/RunCollision
 @onready var short_collision = $CanAttackShort/ShortCollision
 @onready var cant_run_timer = $CantRunTimer
@@ -72,7 +72,6 @@ func _physics_process(_delta):
 
 func right():
 	texture.flip_h = false
-	collision.scale.x = 1
 	run_collision.scale.x = 1
 	short_collision.scale.x = 1
 	wall_sensor.scale.x = 1
@@ -81,7 +80,6 @@ func right():
 
 func left():
 	texture.flip_h = true
-	collision.scale.x = -1
 	run_collision.scale.x = -1
 	short_collision.scale.x = -1
 	wall_sensor.scale.x = -1

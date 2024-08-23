@@ -758,12 +758,14 @@ poise_recovery_timer = 5.0
 attack_timer = NodePath("../AttackTimer")
 
 [node name="DetectArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="DetectCollision" type="CollisionPolygon2D" parent="DetectArea"]
 polygon = PackedVector2Array(320, 0, 320, -128, -128, -128, -128, 0)
 
 [node name="AttackArea" parent="." instance=ExtResource("2_3g66j")]
+visible = false
 collision_mask = 1
 target = "player"
 damage = 10.0
@@ -775,6 +777,7 @@ polygon = PackedVector2Array(-23, 0, 32, 0, 32, -77, -23, -77)
 disabled = true
 
 [node name="CanAttackArea" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="CanAttackCollision" type="CollisionPolygon2D" parent="CanAttackArea"]

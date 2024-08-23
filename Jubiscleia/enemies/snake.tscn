@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bx4lmho2y840s"]
+[gd_scene load_steps=32 format=3 uid="uid://bx4lmho2y840s"]
 
 [ext_resource type="Script" path="res://enemies/snake.gd" id="1_ep4bx"]
 [ext_resource type="Texture2D" uid="uid://boe1qhplhi48e" path="res://assets/enemy/banco_de_assets/snake/snake_idle.png" id="2_avb4p"]
@@ -18,12 +18,8 @@
 [ext_resource type="Script" path="res://Management/states/snake/snake_chase.gd" id="16_yplpm"]
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="17_0tqgs"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyy75"]
-size = Vector2(12, 50)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_loayh"]
-radius = 8.0
-height = 32.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_utiwq"]
+radius = 18.0
 
 [sub_resource type="Animation" id="Animation_fixrv"]
 length = 0.001
@@ -459,13 +455,8 @@ health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(3.00001, 18)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_cyy75")
-
-[node name="Collision2" type="CollisionShape2D" parent="."]
-position = Vector2(-16, 8)
-shape = SubResource("CapsuleShape2D_loayh")
+position = Vector2(-9, 6)
+shape = SubResource("CircleShape2D_utiwq")
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -522,7 +513,7 @@ debug_color = Color(0.890196, 0.682353, 0, 0.419608)
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("7_0q0uj")]
 scale = Vector2(0.967821, 1)
 max_health = 15.0
-max_poise = 15.0
+max_poise = 5.0
 poise_recovery_timer = 4.0
 destroy_after_dead = true
 attack_timer = NodePath("../AttackTimer")

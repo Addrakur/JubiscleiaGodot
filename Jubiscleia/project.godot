@@ -110,7 +110,6 @@ spawn_enemy={
 2d_physics/layer_4="enemy_wall"
 2d_physics/layer_5="enemy_projectile_wall"
 2d_physics/layer_6="enemy_attack"
-2d_physics/layer_7="player_hit"
 
 [physics]
 

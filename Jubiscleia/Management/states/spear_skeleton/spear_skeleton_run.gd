@@ -30,7 +30,7 @@ func _physics_process(_delta):
 				skeleton.fsm.change_state(skeleton.idle_state)
 	
 func set_direction():
-	if skeleton.player_ref.position.x > skeleton.position.x:
+	if skeleton.player_ref.position.x > skeleton.position.x - 10:
 		skeleton.direction = 1
-	else:
+	elif skeleton.player_ref.position.x < skeleton.position.x + 10:
 		skeleton.direction = -1

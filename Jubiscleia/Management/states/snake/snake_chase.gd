@@ -19,9 +19,9 @@ func _physics_process(_delta):
 	snake.velocity.x = snake.direction * speed
 	
 	if snake.player_ref != null and PlayerVariables.player_alive and snake.player_on_limit:
-		if snake.player_ref.position.x > snake.position.x:
+		if snake.player_ref.position.x > snake.position.x - 10:
 			snake.direction = 1
-		else:
+		elif snake.player_ref.position.x < snake.position.x + 10:
 			snake.direction = -1
 	else:
 		snake.fsm.change_state(snake.move_state)

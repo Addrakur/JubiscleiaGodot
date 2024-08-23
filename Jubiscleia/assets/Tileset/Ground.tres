@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://kqqrqxtmdb03" path="res://assets/Chao.png" id="1_yn7ug"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nbnpc"]
+resource_name = "Grama"
 texture = ExtResource("1_yn7ug")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
@@ -85,6 +86,7 @@ texture_region_size = Vector2i(32, 32)
 3:0/0/terrain_set = 0
 3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(16, -16, 16, 16, -16, 16)
 4:0/0 = 0
+4:0/0/terrain_set = 0
 4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, 16, -16, 16)
 4:1/0 = 0
 4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -192,7 +194,7 @@ texture_region_size = Vector2i(32, 32)
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 4
-physics_layer_0/collision_mask = 3
+physics_layer_0/collision_mask = 7
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Terrain 0"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
