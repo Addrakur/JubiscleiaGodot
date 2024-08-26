@@ -53,6 +53,7 @@ var next_attack: float = 1
 var alive: bool = true
 var can_combo: bool
 var can_dash: bool = true
+var can_flip: bool = true
 
 var direction: float
 var last_direction: float = 1
@@ -82,11 +83,8 @@ func _process(_delta):
 	
 	PlayerVariables.player_current_life = health_component.current_health
 	
-	if not health_component.is_getting_hit and not PlayerVariables.player_attacking:
-		if is_on_floor() and fsm.state == dash_state:
-			pass
-		else:
-			flip()
+	if can_flip:
+		flip()
 	
 	if not alive:
 		fsm.change_state(death_state)
@@ -95,6 +93,7 @@ func _process(_delta):
 		if fsm.state == wall_grab_state:
 			direction = -wall_grab_ray_cast.scale.x
 		fsm.change_state(dash_state)
+	
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -114,14 +113,13 @@ func set_gravity():
 	else:
 		gravity = override_gravity
 	
-
 func flip() -> void:
-	if velocity.x > 0:
+	if PlayerVariables.current_attack == "" and velocity.x > 0 or not PlayerVariables.current_attack == "" and direction == 1:
 		texture.flip_h = false
 		attack_area_polygon.position.x = ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = 1
 		wall_grab_ray_cast.scale.x = 1
-	elif velocity.x < 0:
+	elif PlayerVariables.current_attack == "" and velocity.x < 0 or not PlayerVariables.current_attack == "" and direction == -1:
 		texture.flip_h = true
 		attack_area_polygon.position.x = -ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = -1
@@ -151,6 +149,7 @@ func can_dash_false():
 
 func player_attacking_true():
 	PlayerVariables.player_attacking = true
+	can_flip = false
 
 func player_attacking_false():
 	PlayerVariables.player_attacking = false

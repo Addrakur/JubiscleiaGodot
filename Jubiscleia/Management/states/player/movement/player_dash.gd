@@ -11,9 +11,10 @@ func _ready():
 	set_physics_process(false)
 
 func enter_state() -> void:
-	player.set_collision_mask_value(7,false)
 	player.floor_snap_length = 0
 	player.can_dash = false
+	if player.is_on_floor():
+		player.can_flip = false
 	set_physics_process(true)
 	if player.direction != 0:
 		direction = player.direction
@@ -30,7 +31,7 @@ func exit_state() -> void:
 	set_physics_process(false)
 	player.override_gravity = 0
 	player.floor_snap_length = 5
-	player.set_collision_mask_value(7,true)
+	player.can_flip = true
 
 func _physics_process(_delta):
 	if PlayerVariables.move:

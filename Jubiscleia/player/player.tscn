@@ -3261,7 +3261,7 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.45, 0.525, 0.75, 0.825, 0.9),
+"times": PackedFloat32Array(0.375, 0.45, 0.525, 0.75, 0.825, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -3290,7 +3290,7 @@ tracks/7/path = NodePath(".")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.45),
+"times": PackedFloat32Array(0.375),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -3357,20 +3357,31 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.525, 0.6, 0.975),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.525, 0.6, 0.975),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
 "method": &"spawn_point_location_change"
-}, {
-"args": [],
-"method": &"player_attacking_true"
 }, {
 "args": [true],
 "method": &"spawn_attack_projectile"
 }, {
 "args": [],
 "method": &"anim_finish_true"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.525),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
 }]
 }
 
@@ -3551,7 +3562,7 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.45, 0.525, 0.75, 0.825, 0.9),
+"times": PackedFloat32Array(0.375, 0.45, 0.525, 0.75, 0.825, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -3580,7 +3591,7 @@ tracks/7/path = NodePath(".")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.45),
+"times": PackedFloat32Array(0.375),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -3647,20 +3658,31 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.525, 0.6, 0.975),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.525, 0.6, 0.975),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
 "method": &"spawn_point_location_change"
-}, {
-"args": [],
-"method": &"player_attacking_true"
 }, {
 "args": [true],
 "method": &"spawn_attack_projectile"
 }, {
 "args": [],
 "method": &"anim_finish_true"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.525),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
 }]
 }
 
@@ -3841,7 +3863,7 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.45, 0.525, 0.75, 0.825, 0.9),
+"times": PackedFloat32Array(0.375, 0.45, 0.525, 0.75, 0.825, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -3870,7 +3892,7 @@ tracks/7/path = NodePath(".")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.45),
+"times": PackedFloat32Array(0.375),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -3937,20 +3959,31 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.525, 0.6, 0.975),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.525, 0.6, 0.975),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
 "method": &"spawn_point_location_change"
-}, {
-"args": [],
-"method": &"player_attacking_true"
 }, {
 "args": [true],
 "method": &"spawn_attack_projectile"
 }, {
 "args": [],
 "method": &"anim_finish_true"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.525),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
 }]
 }
 
@@ -4131,7 +4164,7 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.45, 0.525, 0.75, 0.825, 0.9),
+"times": PackedFloat32Array(0.375, 0.45, 0.525, 0.75, 0.825, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -4160,7 +4193,7 @@ tracks/7/path = NodePath(".")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.45),
+"times": PackedFloat32Array(0.375),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -4227,20 +4260,31 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.525, 0.6, 0.975),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0.525, 0.6, 0.975),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
 "method": &"spawn_point_location_change"
-}, {
-"args": [],
-"method": &"player_attacking_true"
 }, {
 "args": [true],
 "method": &"spawn_attack_projectile"
 }, {
 "args": [],
 "method": &"anim_finish_true"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.525),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"player_attacking_true"
 }]
 }
 

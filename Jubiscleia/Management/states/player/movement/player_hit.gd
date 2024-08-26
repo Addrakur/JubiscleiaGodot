@@ -17,6 +17,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
+	player.can_flip = false
 	player.health_component.is_getting_hit = true
 	player.health_component.invulnerable = true
 	player.can_dash = false
@@ -29,6 +30,7 @@ func exit_state() -> void:
 	player.health_component.is_getting_hit = false
 	anim_finish = false
 	player.can_dash = true
+	player.can_flip = true
 	player.inv_timer.start()
 	player.health_component.last_attack = ""
 

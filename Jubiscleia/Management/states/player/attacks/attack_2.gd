@@ -37,7 +37,7 @@ func exit_state() -> void:
 	PlayerVariables.last_skill = ""
 	PlayerVariables.move = false
 	PlayerVariables.current_attack = ""
-	#attack_area.disabled = true
+	player.can_flip = true
 	player.can_dash = true
 	
 	PlayerVariables.anim_finish = false
