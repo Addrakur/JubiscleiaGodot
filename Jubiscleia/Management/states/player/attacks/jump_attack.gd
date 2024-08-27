@@ -55,7 +55,7 @@ func exit_state() -> void:
 	PlayerVariables.move = false
 	PlayerVariables.current_attack = ""
 	PlayerVariables.can_move_during_attack = false
-	#attack_area.disabled = true
+	player.can_flip = true
 	stop = false
 	player.can_dash = true
 	

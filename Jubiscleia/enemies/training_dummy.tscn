@@ -203,7 +203,7 @@ libraries = {
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_oll5j")]
 max_health = 1000.0
-max_poise = 20.0
+max_poise = 1000.0
 poise_recovery_timer = 5.0
 destroy_after_dead = true
 

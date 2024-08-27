@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var control: Control
 @export_enum("big_worm","kitsune","scorpion","spear_skeleton","sword_skeleton","snake") var Enemy: String
 
 @export_group("Bools")
