@@ -546,4 +546,5 @@ direction = -1.0
 
 [node name="Turret3" parent="." instance=ExtResource("16_03nfs")]
 position = Vector2(4086, -944)
+cooldown = 3.0
 direction = -1.0
