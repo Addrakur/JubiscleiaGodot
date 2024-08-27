@@ -11,6 +11,9 @@ func _ready():
 	set_physics_process(false)
 
 func enter_state() -> void:
+	player.set_collision_mask_value(2,false)
+	player.set_collision_layer_value(1,false)
+	player.collision.shape.size = Vector2(10,10)
 	player.floor_snap_length = 0
 	player.can_dash = false
 	if player.is_on_floor():
@@ -29,6 +32,9 @@ func enter_state() -> void:
 
 func exit_state() -> void:
 	set_physics_process(false)
+	player.set_collision_mask_value(2,true)
+	player.set_collision_layer_value(1,true)
+	player.collision.shape.size = Vector2(15,28)
 	player.override_gravity = 0
 	player.floor_snap_length = 5
 	player.can_flip = true

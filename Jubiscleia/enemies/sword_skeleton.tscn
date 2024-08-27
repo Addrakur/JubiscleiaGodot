@@ -84,7 +84,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [PackedVector2Array(-23, 0, 32, 0, 32, -77, -23, -77)]
+"values": [PackedVector2Array(0, -32, 0, -32, 0, -32, 0, -32)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -293,10 +293,10 @@ tracks/3/path = NodePath("AttackArea/AttackCollision:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [PackedVector2Array(9, 0, 78, 0, 78, -76, 9, -76), PackedVector2Array(10, -20, 65, -20, 65, -79, 10, -79)]
+"values": [PackedVector2Array(10, -20, 65, -20, 65, -79, 10, -79)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -758,14 +758,12 @@ poise_recovery_timer = 5.0
 attack_timer = NodePath("../AttackTimer")
 
 [node name="DetectArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="DetectCollision" type="CollisionPolygon2D" parent="DetectArea"]
 polygon = PackedVector2Array(320, 0, 320, -128, -128, -128, -128, 0)
 
 [node name="AttackArea" parent="." instance=ExtResource("2_3g66j")]
-visible = false
 collision_mask = 1
 target = "player"
 damage = 10.0
@@ -773,11 +771,10 @@ knockback_force = 300.0
 poise_damage = 5.0
 
 [node name="AttackCollision" type="CollisionPolygon2D" parent="AttackArea"]
-polygon = PackedVector2Array(-23, 0, 32, 0, 32, -77, -23, -77)
+polygon = PackedVector2Array(0, -32, 0, -32, 0, -32, 0, -32)
 disabled = true
 
 [node name="CanAttackArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 0
 
 [node name="CanAttackCollision" type="CollisionPolygon2D" parent="CanAttackArea"]

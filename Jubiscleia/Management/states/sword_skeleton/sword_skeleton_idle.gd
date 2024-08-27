@@ -19,8 +19,8 @@ func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(_delta):
-	
 	if skeleton.player_ref != null and PlayerVariables.player_alive and skeleton.player_on_limit:
+		set_direction()
 		if skeleton.can_attack_player:
 			if skeleton.health_component.current_poise == skeleton.health_component.max_poise and skeleton.can_protect:
 				skeleton.fsm.change_state(skeleton.protect_state)
@@ -32,3 +32,9 @@ func _physics_process(_delta):
 	else:
 		if idle_timer.is_stopped():
 			skeleton.fsm.change_state(skeleton.walk_state)
+
+func set_direction():
+	if skeleton.player_ref.position.x > skeleton.position.x - 10:
+		skeleton.direction = 1
+	elif skeleton.player_ref.position.x < skeleton.position.x + 10:
+		skeleton.direction = -1

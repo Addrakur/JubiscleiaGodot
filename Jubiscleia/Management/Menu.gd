@@ -24,25 +24,43 @@ func on_quit_pressed():
 func _on_w_1_sword_pressed():
 	if PlayerVariables.skill_2 != "sword":
 		PlayerVariables.skill_1 = "sword"
+	else:
+		PlayerVariables.skill_2 = "axe"
+		PlayerVariables.skill_1 = "sword"
 
 func _on_w_1_axe_pressed():
 	if PlayerVariables.skill_2 != "axe":
+		PlayerVariables.skill_1 = "axe"
+	else:
+		PlayerVariables.skill_2 = "sword"
 		PlayerVariables.skill_1 = "axe"
 
 func _on_w_1_spear_pressed():
 	if PlayerVariables.skill_2 != "spear":
 		PlayerVariables.skill_1 = "spear"
+	else:
+		PlayerVariables.skill_2 = "sword"
+		PlayerVariables.skill_1 = "spear"
 
 func _on_w_2_sword_pressed():
 	if PlayerVariables.skill_1 != "sword":
+		PlayerVariables.skill_2 = "sword"
+	else:
+		PlayerVariables.skill_1 = "axe"
 		PlayerVariables.skill_2 = "sword"
 
 func _on_w_2_axe_pressed():
 	if PlayerVariables.skill_1 != "axe":
 		PlayerVariables.skill_2 = "axe"
+	else:
+		PlayerVariables.skill_1 = "sword"
+		PlayerVariables.skill_2 = "axe"
 
 func _on_w_2_spear_pressed():
 	if PlayerVariables.skill_1 != "spear":
+		PlayerVariables.skill_2 = "spear"
+	else:
+		PlayerVariables.skill_1 = "sword"
 		PlayerVariables.skill_2 = "spear"
 
 func _process(_delta):

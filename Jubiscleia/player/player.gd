@@ -16,6 +16,7 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var direction_0 = $Direction0
 @onready var hit_modulate = $HitModulate
 @onready var poise_timer = $PoiseTimer
+@onready var collision: CollisionShape2D = $Collision
 
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var corruption_manager: Node2D = $CorruptionManager
@@ -74,6 +75,7 @@ func _ready():
 	jump_gravity = ((-2.0 * jump_height) / pow(jump_time_to_peak,2)) * -1
 	fall_gravity = ((-2.0 * jump_height) / pow(jump_time_to_descent,2)) * -1
 	#GameSettings.default_gravity = fall_gravity
+	
 	
 func _process(_delta):
 	direction = Input.get_axis("left","right")
