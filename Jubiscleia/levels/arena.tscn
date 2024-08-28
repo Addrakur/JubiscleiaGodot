@@ -66,7 +66,7 @@ polygon = PackedVector2Array(-256, 256, -256, 480, 1216, 480, 1216, 256)
 position = Vector2(608, 384)
 
 [node name="Player" parent="." instance=ExtResource("3_2ic4t")]
-position = Vector2(-1024, 448)
+position = Vector2(-1056, 448)
 
 [node name="Training Dummy" parent="." instance=ExtResource("9_dgptr")]
 position = Vector2(-864, 480)
@@ -156,7 +156,7 @@ old_cameras = [NodePath("../PhantomCamera2D")]
 polygon = PackedVector2Array(-224, 832, -224, 608, 480, 608, 480, 832)
 
 [node name="Spike" parent="." instance=ExtResource("11_davmh")]
-position = Vector2(-1152, 512)
+position = Vector2(-1152, 96)
 
 [node name="Spike2" parent="." instance=ExtResource("11_davmh")]
-position = Vector2(-1184, 512)
+position = Vector2(-1184, 96)
