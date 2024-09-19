@@ -282,8 +282,9 @@ position = Vector2(2624, 608)
 [node name="enemy_kill_wall2" parent="Enemies/Limit8/Walls" instance=ExtResource("9_dexst")]
 position = Vector2(2688, 544)
 
-[node name="player" parent="." instance=ExtResource("2_uw1h1")]
+[node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_uw1h1")]
 position = Vector2(0.00012207, 1152)
+camera = NodePath("../Camera2D")
 
 [node name="Plataforms" type="Node2D" parent="."]
 

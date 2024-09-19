@@ -1,7 +1,7 @@
 class_name PlayerAttack1
 extends State
 
-@export var player: CharacterBody2D
+@export var player: Player
 @export var animation: AnimationPlayer
 @export var attack_area: CollisionPolygon2D
 
@@ -37,6 +37,7 @@ func exit_state() -> void:
 	PlayerVariables.move = false
 	PlayerVariables.current_attack = ""
 	player.can_flip = true
+	player.camera_methods.weapon_shake_false()
 	
 	PlayerVariables.anim_finish = false
 	

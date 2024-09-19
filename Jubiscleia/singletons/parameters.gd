@@ -103,7 +103,7 @@ var sword_skeleton_protect_cooldown: float = 4
 
 #Kitsune Variables
 
-var kitsune_max_health: float = 15
+var kitsune_max_health: float = 8
 var kitsune_max_poise: float = 3
 var kitsune_poise_recover_time: float = 5
 var kitsune_knockback_mult: float = 2

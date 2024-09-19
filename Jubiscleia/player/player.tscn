@@ -1,4 +1,4 @@
-[gd_scene load_steps=179 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=180 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_tuo6g"]
@@ -94,6 +94,7 @@
 [ext_resource type="Texture2D" uid="uid://devm8aq2nrmd7" path="res://assets/player/Ataques/Lanca/C1/lanca_air_1.png" id="82_elj5s"]
 [ext_resource type="Texture2D" uid="uid://fabkw0snbnml" path="res://assets/player/Ataques/Lanca/C2/lanca_air_2.png" id="83_q1mdv"]
 [ext_resource type="Texture2D" uid="uid://dbfg2kntv3eyf" path="res://assets/player/Ataques/Lanca/C3/lanca_air_3.png" id="84_f126j"]
+[ext_resource type="Script" path="res://player/camera.gd" id="95_v1sao"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ar5uo"]
 size = Vector2(15, 28)
@@ -287,6 +288,23 @@ tracks/7/keys = {
 "values": [{
 "args": [],
 "method": &"player_attacking_true"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("camera_methods")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.450008, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"weapon_shake_true"
+}, {
+"args": [],
+"method": &"weapon_shake_false"
 }]
 }
 
@@ -509,6 +527,23 @@ tracks/7/keys = {
 "values": [{
 "args": [],
 "method": &"player_attacking_true"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("camera_methods")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.675, 0.825),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"weapon_shake_true"
+}, {
+"args": [],
+"method": &"weapon_shake_false"
 }]
 }
 
@@ -2306,6 +2341,23 @@ tracks/5/keys = {
 "values": [{
 "args": [],
 "method": &"anim_finish_true"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("camera_methods")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"weapon_shake_true"
+}, {
+"args": [],
+"method": &"weapon_shake_false"
 }]
 }
 
@@ -5023,6 +5075,23 @@ tracks/6/keys = {
 "method": &"anim_finish_true"
 }]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("camera_methods")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"weapon_shake_true"
+}, {
+"args": [],
+"method": &"weapon_shake_false"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_hpq0q"]
 resource_name = "sword_1_1"
@@ -7344,6 +7413,10 @@ sec_2 = 10.0
 sec_3 = 10.0
 
 [node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("79_cj1s4")]
+parent = NodePath("..")
+
+[node name="camera_methods" type="Node2D" parent="." node_paths=PackedStringArray("parent")]
+script = ExtResource("95_v1sao")
 parent = NodePath("..")
 
 [connection signal="body_entered" from="DashCollision" to="StateMachine/PlayerDash" method="_on_dash_collision_body_entered"]

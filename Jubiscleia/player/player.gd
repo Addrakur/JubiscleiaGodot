@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 @export var attack_area: Area2D
 @export var health_component: HealthComponent
+@export var camera: Camera2D
 
 @onready var animation: AnimationPlayer = $Animations
 @onready var texture: Sprite2D = $Texture
@@ -17,6 +18,7 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var hit_modulate = $HitModulate
 @onready var poise_timer = $PoiseTimer
 @onready var collision: CollisionShape2D = $Collision
+@onready var camera_methods: CameraMethods = $camera_methods
 
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var corruption_manager: Node2D = $CorruptionManager

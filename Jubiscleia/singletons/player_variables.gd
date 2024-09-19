@@ -30,6 +30,7 @@ var axe_0_1_damage: float = 3
 var axe_0_1_knockback: float = 300
 var axe_0_1_knockup: float = 0
 var axe_0_1_poise: float = 5
+var axe_0_1_shake: float = 1
 
 var axe_0_2_damage: float = 4
 var axe_0_2_knockback: float = 300
@@ -40,6 +41,7 @@ var axe_0_3_damage: float = 6
 var axe_0_3_knockback: float = 300
 var axe_0_3_knockup: float = 0
 var axe_0_3_poise: float = 10
+var axe_0_3_shake: float = 2
 
 var axe_1_1_damage: float = 4
 var axe_1_1_knockback: float = 350
@@ -90,6 +92,7 @@ var axe_jump_0_damage: float = 4
 var axe_jump_0_knockback: float = 200
 var axe_jump_0_knockup: float = 0
 var axe_jump_0_poise: float = 10
+var axe_jump_0_shake: float = 3
 
 var axe_jump_1_damage: float = 5
 var axe_jump_1_knockback: float = 250
@@ -132,6 +135,7 @@ var sword_0_3_projectile_knockback: float = 100
 var sword_0_3_projectile_poise: float = 3
 var sword_0_3_location: Vector2 = Vector2 (0,0)
 var sword_0_3_poise: float = 0
+var sword_0_3_shake: float = 0.5
 
 var sword_1_1_damage: float = 4
 var sword_1_1_knockback: float = 120
