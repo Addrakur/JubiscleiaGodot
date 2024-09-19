@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dx23ctyg8spen"]
+[gd_scene load_steps=34 format=3 uid="uid://dx23ctyg8spen"]
 
 [ext_resource type="Texture2D" uid="uid://c13582svml54y" path="res://assets/enemy/banco_de_assets/spear_skeleton/Walk.png" id="1_pnfn2"]
 [ext_resource type="Script" path="res://enemies/spear_skeleton.gd" id="1_vyemi"]
@@ -566,12 +566,17 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yv5ip"]
 height = 64.0
 
-[node name="SpearSkeleton" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_arf5m"]
+radius = 7.0
+height = 14.0
+
+[node name="SpearSkeleton" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area", "contact_damage") groups=["enemy"]]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_vyemi")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
+contact_damage = NodePath("ContactDamage")
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("1_pnfn2")
@@ -592,18 +597,13 @@ libraries = {
 shape = SubResource("CapsuleShape2D_yv5ip")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("8_i2y1x")]
-max_health = 25.0
-max_poise = 20.0
-poise_recovery_timer = 3.0
+has_parameter_slider = true
+variable_name = "spear_skeleton"
 attack_timer = NodePath("../AttackTimer")
 
 [node name="AttackArea" parent="." instance=ExtResource("9_dw2nc")]
 collision_mask = 1
 target = "player"
-damage = 10.0
-knockup_force = -50.0
-knockback_force = 500.0
-poise_damage = 10.0
 
 [node name="AttackCollisionAir" type="CollisionPolygon2D" parent="AttackArea"]
 self_modulate = Color(0, 0, 0, 1)
@@ -614,12 +614,23 @@ disabled = true
 polygon = PackedVector2Array(22, 14, 77, 14, 77, -1, 22, -1)
 disabled = true
 
+[node name="ContactDamage" parent="." instance=ExtResource("9_dw2nc")]
+collision_mask = 1
+target = "player"
+attack_name = "skeletonheaddamage"
+
+[node name="contact_area" type="CollisionShape2D" parent="ContactDamage"]
+position = Vector2(0, -26)
+shape = SubResource("CapsuleShape2D_arf5m")
+debug_color = Color(0.994583, 0, 0.219729, 0.42)
+
 [node name="CanChaseArea" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="CanChaseArea" type="CollisionPolygon2D" parent="CanChaseArea"]
 modulate = Color(1, 1, 1, 0.2)
 self_modulate = Color(0.952941, 0.847059, 0.847059, 1)
+position = Vector2(0, 1)
 polygon = PackedVector2Array(-128, -96, -128, 32, 320, 32, 320, -96)
 
 [node name="CanAttackGround" type="Area2D" parent="."]
@@ -644,8 +655,6 @@ state = NodePath("SpearSkeletonIdle")
 script = ExtResource("12_icexi")
 skeleton = NodePath("../..")
 animation = NodePath("../../Animations")
-speed = 30.0
-wander_limit = 20.0
 attack_timer = NodePath("../../AttackTimer")
 
 [node name="SpearSkeletonIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("skeleton", "animation", "idle_timer", "attack_timer")]
@@ -659,7 +668,6 @@ attack_timer = NodePath("../../AttackTimer")
 script = ExtResource("14_sihf1")
 skeleton = NodePath("../..")
 animation = NodePath("../../Animations")
-speed = 100.0
 attack_timer = NodePath("../../AttackTimer")
 
 [node name="SpearSkeletonAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("skeleton", "animation", "attack_timer")]

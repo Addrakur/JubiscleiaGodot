@@ -19,7 +19,7 @@ func exit_state() -> void:
 
 func _physics_process(_delta):
 	
-	if player.direction != 0 && player.is_on_floor():
+	if player.direction != 0 and player.is_on_floor():
 		player.fsm.change_state(player.move_state)
 	
 	if Input.is_action_just_pressed("jump"):
@@ -39,4 +39,3 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("attack_button_2"):
 		PlayerVariables.current_skill = PlayerVariables.skill_2
 		player.fsm.change_state(player.get("attack_" + str(player.next_attack) + "_state"))
-

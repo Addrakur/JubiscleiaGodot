@@ -50,7 +50,7 @@ alignment = 1
 
 [node name="Resume" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
 layout_mode = 2
-text = "Resume"
+text = "Continuar"
 
 [node name="Restart" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
 layout_mode = 2
@@ -58,7 +58,7 @@ text = "Restart"
 
 [node name="Menu" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
 layout_mode = 2
-text = "Go to Menu"
+text = "Ir para o Menu"
 
 [connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Resume" to="." method="on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Restart" to="." method="on_restart_pressed"]

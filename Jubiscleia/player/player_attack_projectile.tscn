@@ -1549,7 +1549,7 @@ _data = {
 "sword_3_3_finish": SubResource("Animation_y7kqs")
 }
 
-[node name="player_attack_projectile" type="Node2D" node_paths=PackedStringArray("animation", "texture", "collision_area", "attack_area") groups=["player", "projectile"]]
+[node name="player_attack_projectile" type="Node2D" node_paths=PackedStringArray("animation", "texture", "collision_area", "attack_area") groups=["player_object", "projectile"]]
 top_level = true
 script = ExtResource("1_c1jhh")
 move = true

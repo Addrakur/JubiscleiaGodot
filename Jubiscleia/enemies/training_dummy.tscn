@@ -202,9 +202,11 @@ libraries = {
 }
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_oll5j")]
+has_parameter_slider = true
+variable_name = "dummy"
 max_health = 1000.0
-max_poise = 1000.0
-poise_recovery_timer = 5.0
+max_poise = 10.0
+poise_recover_timer = 3.0
 destroy_after_dead = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -225,8 +227,6 @@ animation = NodePath("../../AnimationPlayer")
 script = ExtResource("7_gb8br")
 dummy = NodePath("../..")
 animation = NodePath("../../AnimationPlayer")
-knock_multi = 1.0
-hit_recover_limit = 10.0
 
 [node name="State" type="Node" parent="StateMachine"]
 script = ExtResource("8_psoes")

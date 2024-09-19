@@ -9,6 +9,7 @@ var new_x: float
 
 func _ready():
 	set_physics_process(false)
+	speed = Parameters.kitsune_walk_speed
 
 func enter_state() -> void:
 	set_physics_process(true)

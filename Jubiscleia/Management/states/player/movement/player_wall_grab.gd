@@ -3,13 +3,17 @@ extends State
 
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
-@export var gravity: float
-@export var out_force: float
-@export var wait_time_min: float
-@export var wait_time_max: float
+var gravity: float
+var out_force: float
+var wait_time_min: float
+var wait_time_max: float
 
 func _ready():
 	set_physics_process(false)
+	gravity = Parameters.player_wall_grab_gravity
+	out_force = Parameters.player_wall_grab_out_force
+	wait_time_min = Parameters.player_wall_grab_min_wait_time
+	wait_time_max = Parameters.player_wall_grab_max_wait_time
 
 func enter_state() -> void:
 	set_physics_process(true)

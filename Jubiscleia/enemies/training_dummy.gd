@@ -14,6 +14,7 @@ var gravity: float
 var gravity_mult: float = 4
 
 func _ready():
+	set_parameters()
 	gravity = GameSettings.default_gravity
 
 func _process(_delta):
@@ -29,4 +30,8 @@ func _on_hit_modulate_animation_finished(_anim_name):
 	health_component.last_attack = ""
 
 func _on_poise_timer_timeout():
-	health_component.current_poise = health_component.max_poise
+	health_component.current_poise = health_component.true_max_poise
+
+func set_parameters():
+	health_component.true_max_health = Parameters.dummy_max_health #player_max_health
+	health_component.true_max_poise = Parameters.dummy_max_poise #player_max_poise

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://3f7lr15bhlyx"]
+[gd_scene load_steps=42 format=3 uid="uid://3f7lr15bhlyx"]
 
 [ext_resource type="Texture2D" uid="uid://cb0yftlo5iyws" path="res://assets/enemy/banco_de_assets/sword_skeleton/Idle.png" id="1_4i5gc"]
 [ext_resource type="Script" path="res://enemies/sword_skeleton.gd" id="1_gupx0"]
@@ -729,12 +729,16 @@ _data = {
 radius = 13.0
 height = 64.0
 
-[node name="SwordSkeleton" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_mkyu1"]
+radius = 8.0
+
+[node name="SwordSkeleton" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area", "contact_damage") groups=["enemy"]]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_gupx0")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
+contact_damage = NodePath("ContactDamage")
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 libraries = {
@@ -752,9 +756,8 @@ shape = SubResource("CapsuleShape2D_d52rv")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("1_uam10")]
 scale = Vector2(0.95, 1)
-max_health = 30.0
-max_poise = 10.0
-poise_recovery_timer = 5.0
+has_parameter_slider = true
+variable_name = "sword_skeleton"
 attack_timer = NodePath("../AttackTimer")
 
 [node name="DetectArea" type="Area2D" parent="."]
@@ -773,6 +776,20 @@ poise_damage = 5.0
 [node name="AttackCollision" type="CollisionPolygon2D" parent="AttackArea"]
 polygon = PackedVector2Array(0, -32, 0, -32, 0, -32, 0, -32)
 disabled = true
+
+[node name="ContactDamage" parent="." instance=ExtResource("2_3g66j")]
+collision_mask = 1
+target = "player"
+damage = 2.0
+knockup_force = -100.0
+knockback_force = 300.0
+poise_damage = 20.0
+attack_name = "skeletonheaddamage"
+
+[node name="contact_area" type="CollisionShape2D" parent="ContactDamage"]
+position = Vector2(0, -57)
+shape = SubResource("CircleShape2D_mkyu1")
+debug_color = Color(0.984227, 0, 0.345588, 0.42)
 
 [node name="CanAttackArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -860,10 +877,8 @@ wait_time = 4.0
 one_shot = true
 
 [node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("4_x53xa")]
-offset_left = -19.0
-offset_top = -111.0
-offset_right = 21.0
-offset_bottom = -88.0
+offset_top = -86.0
+offset_bottom = -63.0
 parent = NodePath("..")
 
 [connection signal="animation_finished" from="Animations" to="StateMachine/SwordSkeletonHit" method="_on_animation_finished"]

@@ -16,6 +16,7 @@ func enter_state() -> void:
 	PlayerVariables.anim_finish = false
 	player.next_attack = 1
 	
+	#PlayerVariables.player_attacking = true
 	PlayerVariables.last_skill = PlayerVariables.current_skill
 	animation.play(PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_3")
 	PlayerVariables.current_attack = PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_3"
@@ -40,6 +41,8 @@ func exit_state() -> void:
 	player.can_dash = true
 	
 	PlayerVariables.anim_finish = false
+	
+	player.combo_timer.start()
 
 func _physics_process(_delta):
 	player.velocity.x = 0
@@ -50,7 +53,20 @@ func _physics_process(_delta):
 	if PlayerVariables.move:
 		player.velocity.x = speed * player.last_direction
 	
+	if Input.is_action_just_pressed("dash"):
+		PlayerVariables.current_skill = ""
+	
+	if Input.is_action_just_pressed("attack_button_1"):
+		PlayerVariables.current_skill = PlayerVariables.skill_1
+	
+	if Input.is_action_just_pressed("attack_button_2"):
+		PlayerVariables.current_skill = PlayerVariables.skill_2
+	
+	if player.can_combo and PlayerVariables.current_skill != "":
+		player.fsm.change_state(player.attack_1_state)
+	
+	if player.health_component.is_getting_hit: # Talvez precise tirar essa linha
+		PlayerVariables.current_skill = ""
+	
 	if PlayerVariables.anim_finish:
 		player.fsm.change_state(player.idle_state)
-
- 

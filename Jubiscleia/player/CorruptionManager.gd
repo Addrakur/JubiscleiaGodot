@@ -20,6 +20,7 @@ extends Node2D
 var target_hit_count: float
 
 func _ready():
+	set_parameters()
 	PlayerVariables.hit_amount = 0
 	PlayerVariables.corruption_level = base_level
 	set_target_hit_count()
@@ -78,3 +79,13 @@ func time_penalty():
 		hit_timer.wait_time = 0.01
 	hit_timer.start()
 	set_hit_timer()
+
+func set_parameters():
+	hit_0_to_1 = Parameters.player_hits_0_1
+	hit_1_to_2 = Parameters.player_hits_1_2
+	hit_2_to_3 = Parameters.player_hits_2_3
+
+	sec_0 = Parameters.player_0_timer
+	sec_1 = Parameters.player_1_timer
+	sec_2 = Parameters.player_2_timer
+	sec_3 = Parameters.player_3_timer

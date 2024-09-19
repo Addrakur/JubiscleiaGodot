@@ -76,19 +76,19 @@ func left():
 	can_chase_area.position.x = CCA_POSITION
 
 func can_attack_area_exited(body):
-	if body == player_ref:
+	if body.is_in_group("player"):
 		can_attack_player = false
 
 func chase_area_entered(body):
-	if body.is_in_group("player") and not body.is_in_group("projectile"):
+	if body.is_in_group("player"):
 		player_ref = body
 
 func chase_area_exited(body):
-	if body == player_ref:
+	if body.is_in_group("player"):
 		player_ref = null
 
 func _on_can_attack_area_body_entered(body):
-	if body == player_ref:
+	if body.is_in_group("player"):
 		can_attack_player = true
 
 func _on_hit_modulate_animation_finished(_anim_name):

@@ -7,6 +7,7 @@ extends State
 
 func _ready():
 	set_physics_process(false)
+	attack_timer.wait_time = Parameters.spear_skeleton_attack_cooldown
 
 func enter_state() -> void:
 	set_physics_process(true)

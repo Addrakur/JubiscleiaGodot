@@ -1,8 +1,14 @@
+class_name HealthComponent
 extends Node2D
 
+@export var has_parameter_slider: bool
+var true_max_health: float = 1000
+var true_max_poise: float = 1000
+var true_poise_recover_time: float
+@export var variable_name: String
 @export var max_health: float
 @export var max_poise: float
-@export var poise_recovery_timer: float
+@export var poise_recover_timer: float
 @export var destroy_after_dead: bool
 @export var attack_timer: Timer
 @onready var parent: Node2D = get_parent()
@@ -15,8 +21,16 @@ var defending: bool = false
 var last_attack: String
 
 func _ready() -> void:
-	current_health = max_health
-	current_poise = max_poise
+	if not has_parameter_slider:
+		current_health = max_health
+		current_poise = max_poise
+	else:
+		true_max_health = Parameters.get(variable_name + "_max_health")
+		true_max_poise = Parameters.get(variable_name + "_max_poise")
+		true_poise_recover_time = Parameters.get(variable_name + "_poise_recover_time")
+		current_health = true_max_health
+		current_poise = true_max_poise
+	
 
 func _process(_delta):
 	die()
@@ -35,13 +49,13 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 		
 			#if parent.fsm.state == parent.hit_state: # Gambiarra que faz o alvo reiniciar o hit state
 			parent.fsm.change_state(parent.hit_state)
-			current_poise = max_poise
+			current_poise = max_poise if not has_parameter_slider else true_max_poise # Arrumar depois
 			if attack_timer != null:
 				attack_timer.stop()
 		else:
 			if not defending:
 				parent.hit_modulate.play("hit")
-				parent.poise_timer.start(poise_recovery_timer)
+				parent.poise_timer.start(poise_recover_timer if not has_parameter_slider else true_poise_recover_time) # Arrumar depois
 			else:
 				parent.hit_modulate.play("defending")
 		

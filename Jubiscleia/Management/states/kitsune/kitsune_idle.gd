@@ -7,6 +7,7 @@ extends State
 
 func _ready():
 	set_physics_process(false)
+	idle_timer.wait_time = Parameters.kitsune_idle_time
 
 func enter_state() -> void:
 	idle_timer.start()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dn10gfkuuxcqc"
-path="res://.godot/imported/level_end.png-c7cf67613d6d7da2b89cc38df04af199.ctex"
+uid="uid://lgqcy4vjii4"
+path="res://.godot/imported/Tree_2_trunk.png-324aaede5ebb479a4ed3e425e126364f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/level_end.png"
-dest_files=["res://.godot/imported/level_end.png-c7cf67613d6d7da2b89cc38df04af199.ctex"]
+source_file="res://assets/Trees/Tree_2_trunk.png"
+dest_files=["res://.godot/imported/Tree_2_trunk.png-324aaede5ebb479a4ed3e425e126364f.ctex"]
 
 [params]
 

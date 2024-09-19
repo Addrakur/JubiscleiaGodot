@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 @export var health_component: Node2D
-@export var attack_area: Area2D
+@export var attack_area: AttackArea
 @export var direction: float
+@export var contact_damage: AttackArea
 
 @onready var limit: Area2D = get_parent()
 @onready var texture: Sprite2D = $Texture
@@ -16,6 +17,7 @@ extends CharacterBody2D
 @onready var poise_timer = $PoiseTimer
 @onready var attack_collision_air = $AttackArea/AttackCollisionAir
 @onready var attack_collision_ground = $AttackArea/AttackCollisionGround
+@onready var contact_area: CollisionShape2D = $ContactDamage/contact_area
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var walk_state: State = $StateMachine/SpearSkeletonWalk as SpearSkeletonWalk
@@ -39,6 +41,7 @@ var gravity_mult: float = 4
 
 
 func _ready():
+	set_parameters()
 	attack_area.attack_name = name + "hit"
 
 func _process(_delta):
@@ -80,27 +83,27 @@ func left():
 	attack_area_air.scale.x = -1
 
 func can_chase_area_body_entered(body):
-	if body.is_in_group("player") and not body.is_in_group("projectile"):
+	if body.is_in_group("player"):
 		player_ref = body
 
 func can_chase_area_body_exited(body):
-	if body.is_in_group("player") and not body.is_in_group("projectile"):
+	if body.is_in_group("player"):
 		player_ref = null
 
 func can_attack_ground_body_entered(body):
-	if body.is_in_group("player") and not body.is_in_group("projectile"):
+	if body.is_in_group("player"):
 		can_attack_player_ground = true
 
 func can_attack_ground_body_exited(body):
-	if body.is_in_group("player") and not body.is_in_group("projectile"):
+	if body.is_in_group("player"):
 		can_attack_player_ground = false
 
 func can_attack_air_body_entered(body):
-	if body.is_in_group("player") and not body.is_in_group("projectile"):
+	if body.is_in_group("player"):
 		can_attack_player_air = true
 
 func can_attack_air_body_exited(body):
-	if body.is_in_group("player") and not body.is_in_group("projetile"):
+	if body.is_in_group("player"):
 		can_attack_player_air = false
 
 func _on_hit_modulate_animation_finished(_anim_name):
@@ -108,3 +111,15 @@ func _on_hit_modulate_animation_finished(_anim_name):
 
 func _on_poise_timer_timeout():
 	health_component.current_poise = health_component.max_poise
+
+func set_parameters():
+	attack_area.damage = Parameters.spear_skeleton_attack_damage
+	attack_area.knockback_force =  Parameters.spear_skeleton_attack_knockback
+	attack_area.knockup_force = Parameters.spear_skeleton_attack_knockup
+	attack_area.poise_damage = Parameters.spear_skeleton_attack_poise_damage
+
+	contact_area.disabled = false if Parameters.spear_skeleton_contact_damage_bool == 1 else true
+	contact_damage.damage = Parameters.spear_skeleton_contact_damage
+	contact_damage.knockback_force = Parameters.spear_skeleton_contact_knockback
+	contact_damage.knockup_force = Parameters.spear_skeleton_contact_knockup
+	contact_damage.poise_damage = Parameters.spear_skeleton_contact_poise_damage

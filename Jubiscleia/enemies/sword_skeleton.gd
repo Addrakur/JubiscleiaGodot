@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
 @export var health_component: Node2D
-@export var attack_area: Area2D
+@export var attack_area: AttackArea
 @export var direction: float
+@export var contact_damage: AttackArea
 
 @onready var limit: Area2D = get_parent()
 @onready var texture: Sprite2D = $Texture
@@ -14,6 +15,9 @@ extends CharacterBody2D
 @onready var can_attack_collision: CollisionPolygon2D = $CanAttackArea/CanAttackCollision
 @onready var animations: AnimationPlayer = $Animations
 @onready var protect_cooldown: Timer = $ProtectCooldown
+@onready var protect_duration: Timer = $ProtectDuration
+@onready var contact_area: CollisionShape2D = $ContactDamage/contact_area
+@onready var attack_timer: Timer = $AttackTimer
 
 @onready var fsm: StateMachine = $StateMachine
 @onready var walk_state: State = $StateMachine/SwordSkeletonWalk as SwordSkeletonWalk
@@ -37,7 +41,7 @@ var gravity: float
 var gravity_mult: float = 4
 
 func _ready():
-	pass
+	set_parameters()
 
 func _process(_delta):
 	if not health_component.is_getting_hit and alive:
@@ -75,11 +79,11 @@ func left():
 	detect_collision.scale.x = -1
 
 func _on_detect_area_body_entered(body):
-	if body.is_in_group("player") and not body.is_in_group("projectile"):
+	if body.is_in_group("player"):
 		player_ref = body
 
 func _on_detect_area_body_exited(body):
-	if body.is_in_group("player") and not body.is_in_group("projectile"):
+	if body.is_in_group("player"):
 		player_ref = null
 
 func _on_hit_modulate_animation_finished(_anim_name):
@@ -89,12 +93,29 @@ func _on_poise_timer_timeout():
 	health_component.current_poise = health_component.max_poise
   
 func _on_can_attack_area_body_entered(body: Node2D) -> void:
-	if body == player_ref:
+	if body.is_in_group("player"):
 		can_attack_player = true
 
 func _on_can_attack_area_body_exited(body: Node2D) -> void:
-	if body == player_ref:
+	if body.is_in_group("player"):
 		can_attack_player = false
 
 func _on_protect_cooldown_timeout() -> void:
 	can_protect = true
+
+func set_parameters():
+	attack_timer.wait_time = Parameters.sword_skeleton_attack_cooldown
+
+	attack_area.damage = Parameters.sword_skeleton_attack_damage
+	attack_area.knockback_force = Parameters.sword_skeleton_attack_knockback
+	attack_area.knockup_force = Parameters.sword_skeleton_attack_knockup
+	attack_area.poise_damage = Parameters.sword_skeleton_attack_poise_damage
+
+	contact_area.disabled = false if Parameters.sword_skeleton_contact_damage_bool == 1 else true
+	contact_damage.damage = Parameters.sword_skeleton_contact_damage
+	contact_damage.knockback_force = Parameters.sword_skeleton_contact_knockback
+	contact_damage.knockup_force = Parameters.sword_skeleton_contact_knockup
+	contact_damage.poise_damage = Parameters.sword_skeleton_contact_poise_damage
+
+	protect_duration.wait_time = Parameters.sword_skeleton_protect_duration
+	protect_cooldown.wait_time = Parameters.sword_skeleton_protect_cooldown

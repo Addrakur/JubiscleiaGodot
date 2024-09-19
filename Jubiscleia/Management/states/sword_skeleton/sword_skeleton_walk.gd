@@ -11,6 +11,8 @@ var new_x: float
 
 func _ready():
 	set_physics_process(false)
+	speed = Parameters.sword_skeleton_walk_speed
+	wander_limit = Parameters.sword_skeleton_wander_limit
 
 func enter_state() -> void:
 	set_physics_process(true)

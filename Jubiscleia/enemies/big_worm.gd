@@ -57,11 +57,11 @@ func _physics_process(delta):
 	
 
 func can_attack_area_entered(body):
-	if body.is_in_group("player") and not body.is_in_group("projectile"):
+	if body.is_in_group("player"):
 		player_ref = body
 
 func can_attack_area_exited(body):
-	if body == player_ref:
+	if body.is_in_group("player"):
 		player_ref = null
 
 func right():

@@ -8,6 +8,7 @@ extends State
 
 func _ready():
 	set_physics_process(false)
+	speed = Parameters.sword_skeleton_run_speed
 
 func enter_state() -> void:
 	set_physics_process(true)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=178 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=179 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_tuo6g"]
@@ -98,6 +98,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ar5uo"]
 size = Vector2(15, 28)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v34mu"]
+size = Vector2(14.5, 10)
+
 [sub_resource type="Animation" id="Animation_115di"]
 length = 0.001
 tracks/0/type = "value"
@@ -134,7 +137,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("18_oa50r")]
+"values": [ExtResource("39_gjx6q")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -146,7 +149,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [10]
+"values": [5]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -484,9 +487,12 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(1.125),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.975, 1.125),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"can_combo_true"
+}, {
 "args": [],
 "method": &"anim_finish_true"
 }]
@@ -811,9 +817,12 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(1.125),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.975, 1.125),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"can_combo_true"
+}, {
 "args": [],
 "method": &"anim_finish_true"
 }]
@@ -1138,9 +1147,12 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(1.125),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.975, 1.125),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"can_combo_true"
+}, {
 "args": [],
 "method": &"anim_finish_true"
 }]
@@ -1465,9 +1477,12 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(1.125),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.975, 1.125),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"can_combo_true"
+}, {
 "args": [],
 "method": &"anim_finish_true"
 }]
@@ -3083,8 +3098,8 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_cjftq"]
 resource_name = "spear_0_1"
-length = 0.825
-step = 0.075
+length = 0.55
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3092,7 +3107,7 @@ tracks/0/path = NodePath("Texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -3143,7 +3158,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-27.9034, 0, -27.9034, -11, 27.9035, -11, 27.9035, 0)]
+"values": [PackedVector2Array(-27.9034, 0, -27.9034, -11, 40.7537, -11.0473, 40.7537, -0.0265102)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -3152,7 +3167,7 @@ tracks/5/path = NodePath("AttackArea/AttackArea:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.45, 0.525),
+"times": PackedFloat32Array(0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -3164,7 +3179,7 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.45, 0.75, 0.825),
+"times": PackedFloat32Array(0.3, 0.5, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [],
@@ -3180,8 +3195,8 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_cobig"]
 resource_name = "spear_0_2"
-length = 0.9
-step = 0.075
+length = 0.6
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3189,7 +3204,7 @@ tracks/0/path = NodePath("Texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75, 0.825),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
@@ -3240,7 +3255,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-29.8965, 0, -29.8965, -12, 27.9035, -12, 27.9035, 0)]
+"values": [PackedVector2Array(-29.8965, 0, -29.8965, -12, 40.7537, -12.0492, 40.7537, -0.0265102)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -3249,7 +3264,7 @@ tracks/5/path = NodePath("AttackArea/AttackArea:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.45, 0.525),
+"times": PackedFloat32Array(0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -3261,7 +3276,7 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.375, 0.45, 0.525, 0.75, 0.825, 0.9),
+"times": PackedFloat32Array(0.25, 0.3, 0.35, 0.5, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -3290,7 +3305,7 @@ tracks/7/path = NodePath(".")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.375),
+"times": PackedFloat32Array(0.25),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -3300,8 +3315,8 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_h28ms"]
 resource_name = "spear_0_3"
-length = 0.975
-step = 0.075
+length = 0.65
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3309,7 +3324,7 @@ tracks/0/path = NodePath("Texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75, 0.825, 0.9),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -3357,14 +3372,17 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.525, 0.6, 0.975),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.35, 0.4, 0.6, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"spawn_point_location_change"
 }, {
 "args": [true],
 "method": &"spawn_attack_projectile"
+}, {
+"args": [],
+"method": &"can_combo_true"
 }, {
 "args": [],
 "method": &"anim_finish_true"
@@ -3377,7 +3395,7 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.525),
+"times": PackedFloat32Array(0.35),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -3387,8 +3405,8 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_nveuq"]
 resource_name = "spear_1_1"
-length = 0.825
-step = 0.075
+length = 0.55
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3396,7 +3414,7 @@ tracks/0/path = NodePath("Texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -3444,10 +3462,10 @@ tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.45),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-27.9034, 0, -27.9034, -11, 27.9035, -11, 27.9035, 0), PackedVector2Array(-27.9034, 0, -27.9034, -11, 41.8552, -11, 41.8552, 0)]
+"values": [PackedVector2Array(-27.9034, 0, -27.9034, -11, 54.8042, -11.0473, 54.8042, -0.0265102)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -3456,7 +3474,7 @@ tracks/5/path = NodePath("AttackArea/AttackArea:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.45, 0.525),
+"times": PackedFloat32Array(0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -3468,9 +3486,12 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.75, 0.825),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.3, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
+"args": [],
+"method": &"player_attacking_true"
+}, {
 "args": [],
 "method": &"can_combo_true"
 }, {
@@ -3481,8 +3502,8 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_g7fdy"]
 resource_name = "spear_1_2"
-length = 0.9
-step = 0.075
+length = 0.6
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3490,7 +3511,7 @@ tracks/0/path = NodePath("Texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75, 0.825),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
@@ -3541,7 +3562,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-29.8965, 0, -29.8965, -12, 41.8552, -12, 41.8552, 0)]
+"values": [PackedVector2Array(-30.4352, -0.0265102, -30.4352, -12.0492, 54.8042, -12.0492, 54.8042, -0.0265102)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -3550,7 +3571,7 @@ tracks/5/path = NodePath("AttackArea/AttackArea:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.45, 0.525),
+"times": PackedFloat32Array(0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -3562,7 +3583,7 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.375, 0.45, 0.525, 0.75, 0.825, 0.9),
+"times": PackedFloat32Array(0.25, 0.3, 0.35, 0.5, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -3591,7 +3612,7 @@ tracks/7/path = NodePath(".")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.375),
+"times": PackedFloat32Array(0.25),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -3601,8 +3622,8 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_578ap"]
 resource_name = "spear_1_3"
-length = 0.975
-step = 0.075
+length = 0.65
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3610,7 +3631,7 @@ tracks/0/path = NodePath("Texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75, 0.825, 0.9),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -3658,14 +3679,17 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.525, 0.6, 0.975),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.35, 0.4, 0.6, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"spawn_point_location_change"
 }, {
 "args": [true],
 "method": &"spawn_attack_projectile"
+}, {
+"args": [],
+"method": &"can_combo_true"
 }, {
 "args": [],
 "method": &"anim_finish_true"
@@ -3678,7 +3702,7 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.525),
+"times": PackedFloat32Array(0.35),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -3688,8 +3712,8 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_ym2uj"]
 resource_name = "spear_2_1"
-length = 0.825
-step = 0.075
+length = 0.55
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3697,7 +3721,7 @@ tracks/0/path = NodePath("Texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -3748,7 +3772,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-27.9034, 0, -27.9034, -11, 55.8069, -11, 55.8069, 0)]
+"values": [PackedVector2Array(-27.9034, 0, -27.9034, -11, 68.8546, -11.0473, 68.8546, -0.0265102)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -3757,7 +3781,7 @@ tracks/5/path = NodePath("AttackArea/AttackArea:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.45, 0.525),
+"times": PackedFloat32Array(0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -3769,9 +3793,12 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.75, 0.825),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.3, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
+"args": [],
+"method": &"player_attacking_true"
+}, {
 "args": [],
 "method": &"can_combo_true"
 }, {
@@ -3782,8 +3809,8 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_vsuew"]
 resource_name = "spear_2_2"
-length = 0.9
-step = 0.075
+length = 0.6
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3791,7 +3818,7 @@ tracks/0/path = NodePath("Texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75, 0.825),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
@@ -3842,7 +3869,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-29.8965, 0, -29.8965, -12, 55.8069, -12, 55.8069, 0)]
+"values": [PackedVector2Array(-29.4985, 0.975384, -29.4985, -14.053, 68.8546, -14.053, 68.8546, 0.975384)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -3851,7 +3878,7 @@ tracks/5/path = NodePath("AttackArea/AttackArea:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.45, 0.525),
+"times": PackedFloat32Array(0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -3863,7 +3890,7 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.375, 0.45, 0.525, 0.75, 0.825, 0.9),
+"times": PackedFloat32Array(0.25, 0.3, 0.35, 0.5, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -3892,7 +3919,7 @@ tracks/7/path = NodePath(".")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.375),
+"times": PackedFloat32Array(0.25),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -3902,8 +3929,8 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_k0aff"]
 resource_name = "spear_2_3"
-length = 0.975
-step = 0.075
+length = 0.65
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3911,7 +3938,7 @@ tracks/0/path = NodePath("Texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75, 0.825, 0.9),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -3959,14 +3986,17 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.525, 0.6, 0.975),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.35, 0.4, 0.6, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"spawn_point_location_change"
 }, {
 "args": [true],
 "method": &"spawn_attack_projectile"
+}, {
+"args": [],
+"method": &"can_combo_true"
 }, {
 "args": [],
 "method": &"anim_finish_true"
@@ -3979,7 +4009,7 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.525),
+"times": PackedFloat32Array(0.35),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -3989,8 +4019,8 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_vyk1j"]
 resource_name = "spear_3_1"
-length = 0.825
-step = 0.075
+length = 0.55
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -3998,7 +4028,7 @@ tracks/0/path = NodePath("Texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -4049,7 +4079,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-27.9034, 0, -27.9034, -11, 69.7587, -11, 69.7587, 0)]
+"values": [PackedVector2Array(-27.9034, 0, -27.9034, -11, 82.9051, -11.0473, 82.9051, -0.0265102)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -4058,7 +4088,7 @@ tracks/5/path = NodePath("AttackArea/AttackArea:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.45, 0.525),
+"times": PackedFloat32Array(0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -4070,9 +4100,12 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.75, 0.825),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.3, 0.5, 0.55),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
+"args": [],
+"method": &"player_attacking_true"
+}, {
 "args": [],
 "method": &"can_combo_true"
 }, {
@@ -4083,8 +4116,8 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_pn4bp"]
 resource_name = "spear_3_2"
-length = 0.9
-step = 0.075
+length = 0.6
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -4092,7 +4125,7 @@ tracks/0/path = NodePath("Texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75, 0.825),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
@@ -4143,7 +4176,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-29.8965, 0, -29.8965, -12, 69.7587, -12, 69.7587, 0)]
+"values": [PackedVector2Array(-30.4352, 0.975384, -30.4352, -14.053, 82.9051, -14.053, 82.9051, 0.975384)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -4152,7 +4185,7 @@ tracks/5/path = NodePath("AttackArea/AttackArea:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.45, 0.525),
+"times": PackedFloat32Array(0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -4164,7 +4197,7 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.375, 0.45, 0.525, 0.75, 0.825, 0.9),
+"times": PackedFloat32Array(0.25, 0.3, 0.35, 0.5, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
@@ -4193,7 +4226,7 @@ tracks/7/path = NodePath(".")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.375),
+"times": PackedFloat32Array(0.25),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -4203,8 +4236,8 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_g5150"]
 resource_name = "spear_3_3"
-length = 0.975
-step = 0.075
+length = 0.65
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -4212,7 +4245,7 @@ tracks/0/path = NodePath("Texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75, 0.825, 0.9),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -4260,14 +4293,17 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.525, 0.6, 0.975),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.35, 0.4, 0.6, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"spawn_point_location_change"
 }, {
 "args": [true],
 "method": &"spawn_attack_projectile"
+}, {
+"args": [],
+"method": &"can_combo_true"
 }, {
 "args": [],
 "method": &"anim_finish_true"
@@ -4280,7 +4316,7 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.525),
+"times": PackedFloat32Array(0.35),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -4890,8 +4926,8 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_6r0ew"]
 resource_name = "sword_0_3"
-length = 0.9
-step = 0.075
+length = 0.6
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -4935,7 +4971,7 @@ tracks/3/path = NodePath("Texture:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75, 0.825),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
@@ -4959,7 +4995,7 @@ tracks/5/path = NodePath("AttackArea/AttackArea:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.45, 0.525),
+"times": PackedFloat32Array(0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -4971,14 +5007,17 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.075, 0.45, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.05, 0.3, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"player_attacking_true"
 }, {
 "args": [true],
 "method": &"spawn_attack_projectile"
+}, {
+"args": [],
+"method": &"can_combo_true"
 }, {
 "args": [],
 "method": &"anim_finish_true"
@@ -5215,8 +5254,8 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_3wwlx"]
 resource_name = "sword_1_3"
-length = 0.9
-step = 0.075
+length = 0.6
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -5260,7 +5299,7 @@ tracks/3/path = NodePath("Texture:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75, 0.825),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
@@ -5284,7 +5323,7 @@ tracks/5/path = NodePath("AttackArea/AttackArea:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.45, 0.525),
+"times": PackedFloat32Array(0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -5296,14 +5335,17 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.075, 0.45, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.05, 0.3, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"player_attacking_true"
 }, {
 "args": [true],
 "method": &"spawn_attack_projectile"
+}, {
+"args": [],
+"method": &"can_combo_true"
 }, {
 "args": [],
 "method": &"anim_finish_true"
@@ -5540,8 +5582,8 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_ktriq"]
 resource_name = "sword_2_3"
-length = 0.9
-step = 0.075
+length = 0.6
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -5585,7 +5627,7 @@ tracks/3/path = NodePath("Texture:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75, 0.825),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
@@ -5609,7 +5651,7 @@ tracks/5/path = NodePath("AttackArea/AttackArea:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.45, 0.525),
+"times": PackedFloat32Array(0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -5621,14 +5663,17 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.075, 0.45, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.05, 0.3, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"player_attacking_true"
 }, {
 "args": [true],
 "method": &"spawn_attack_projectile"
+}, {
+"args": [],
+"method": &"can_combo_true"
 }, {
 "args": [],
 "method": &"anim_finish_true"
@@ -5865,8 +5910,8 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_ivy6y"]
 resource_name = "sword_3_3"
-length = 0.9
-step = 0.075
+length = 0.6
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -5910,7 +5955,7 @@ tracks/3/path = NodePath("Texture:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675, 0.75, 0.825),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
@@ -5934,7 +5979,7 @@ tracks/5/path = NodePath("AttackArea/AttackArea:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.45, 0.525),
+"times": PackedFloat32Array(0.3, 0.35),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -5946,14 +5991,17 @@ tracks/6/path = NodePath(".")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.075, 0.45, 0.9),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.05, 0.3, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"player_attacking_true"
 }, {
 "args": [true],
 "method": &"spawn_attack_projectile"
+}, {
+"args": [],
+"method": &"can_combo_true"
 }, {
 "args": [],
 "method": &"anim_finish_true"
@@ -7089,10 +7137,10 @@ _data = {
 "hit": SubResource("Animation_3qir1")
 }
 
-[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("attack_area", "health_component") groups=["player"]]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("attack_area", "health_component") groups=["player"]]
 scale = Vector2(1.0639, 0.99811)
 collision_layer = 32769
-collision_mask = 16390
+collision_mask = 81926
 floor_constant_speed = true
 floor_max_angle = 1.22173
 floor_snap_length = 5.0
@@ -7100,10 +7148,6 @@ safe_margin = 0.001
 script = ExtResource("1_5lux4")
 attack_area = NodePath("AttackArea")
 health_component = NodePath("HealthComponent")
-jump_height = 110.0
-jump_time_to_peak = 0.4
-jump_time_to_descent = 0.35
-max_jump_count = 2.0
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("12_8y4yw")
@@ -7118,7 +7162,6 @@ animation = NodePath("../../Animations")
 script = ExtResource("14_nnfso")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
-speed = 200.0
 
 [node name="Crouch" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("18_ia5tc")
@@ -7129,29 +7172,21 @@ animation = NodePath("../../Animations")
 script = ExtResource("15_dnbrn")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
-speed = 200.0
 
 [node name="DoubleJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("17_ywk3g")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
-speed = 200.0
-jump_height = 40.0
-jump_time_to_peak = 0.4
 
 [node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("16_xs1j5")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
-speed = 200.0
-terminal_velocity = 450.0
 
 [node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("23_j7sbs")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
-knock_multi = 1.0
-hit_recover_limit = 50.0
 
 [node name="Death" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("25_wysx4")
@@ -7186,7 +7221,6 @@ move_speed = 200.0
 script = ExtResource("15_6875b")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
-speed = 450.0
 
 [node name="State" type="Node" parent="StateMachine"]
 script = ExtResource("16_hy8fg")
@@ -7195,27 +7229,35 @@ script = ExtResource("16_hy8fg")
 script = ExtResource("17_dwjry")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
-gravity = 130.0
-out_force = 260.0
-wait_time_min = 0.08
-wait_time_max = 0.3
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-4.17233e-07, -2.98023e-07)
+position = Vector2(-4.17233e-07, -14)
 scale = Vector2(0.875, 0.875)
-texture = ExtResource("18_oa50r")
-hframes = 10
+texture = ExtResource("39_gjx6q")
+hframes = 5
 
 [node name="Aura" type="Sprite2D" parent="."]
 visible = false
+position = Vector2(0, -14)
 texture = ExtResource("17_7bh1j")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(-1.12049e-07, 4.7774e-07)
+position = Vector2(7.10543e-15, -14.0265)
 shape = SubResource("RectangleShape2D_ar5uo")
 
+[node name="DashCollision" type="Area2D" parent="."]
+position = Vector2(0, -14)
+collision_layer = 0
+collision_mask = 6
+
+[node name="DashCollision" type="CollisionShape2D" parent="DashCollision"]
+position = Vector2(-2.80123e-08, 0)
+shape = SubResource("RectangleShape2D_v34mu")
+debug_color = Color(0.944279, 7.79718e-06, 0.597798, 0.42)
+
 [node name="AttackArea" parent="." instance=ExtResource("2_tuo6g")]
+position = Vector2(0, -14)
 scale = Vector2(1.00346, 1)
 collision_mask = 2
 target = "enemy"
@@ -7248,15 +7290,16 @@ health_component = NodePath("../HealthComponent")
 process_mode = 3
 
 [node name="AttackSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(4, 10)
 
 [node name="HealthComponent" parent="." instance=ExtResource("9_6bxkt")]
+has_parameter_slider = true
+variable_name = "player"
 max_health = 100.0
 max_poise = 5.0
-poise_recovery_timer = 5.0
 destroy_after_dead = true
 
 [node name="WallGrab" type="RayCast2D" parent="."]
+position = Vector2(0, -14)
 target_position = Vector2(9, 0)
 collision_mask = 4
 collide_with_areas = true
@@ -7303,6 +7346,8 @@ sec_3 = 10.0
 [node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("79_cj1s4")]
 parent = NodePath("..")
 
+[connection signal="body_entered" from="DashCollision" to="StateMachine/PlayerDash" method="_on_dash_collision_body_entered"]
+[connection signal="body_exited" from="DashCollision" to="StateMachine/PlayerDash" method="_on_dash_collision_body_exited"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/Hit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/PlayerJumpAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/PlayerDash" method="_on_animation_finished"]

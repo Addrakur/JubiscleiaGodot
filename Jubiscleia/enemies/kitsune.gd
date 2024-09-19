@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var min_wander: float
 @export var starting_x: Marker2D
 @export var warp_area: Polygon2D
+@export var contact_damage: AttackArea
 
 @onready var limit: Area2D = get_parent()
 @onready var texture: Sprite2D = $Texture
@@ -18,6 +19,7 @@ extends CharacterBody2D
 @onready var attack_spawn_point = $AttackSpawnPoint
 @onready var hit_modulate = $HitModulate
 @onready var poise_timer = $PoiseTimer
+@onready var contact_area: CollisionShape2D = $ContactDamage/contact_area
 
 #const ASP_POSITION: float = 47
 
@@ -46,6 +48,7 @@ var gravity_mult: float = 0.18
 
 
 func _ready():
+	set_parameters()
 	gravity = GameSettings.default_gravity
 
 func _process(_delta):
@@ -87,27 +90,27 @@ func left():
 	#attack_spawn_point.position.x = -ASP_POSITION
 
 func _on_run_area_body_entered(body):
-	if body == player_ref:
+	if body.is_in_group("player"):
 		player_on_run_area = true
 
 func _on_run_area_body_exited(body):
-	if body == player_ref:
+	if body.is_in_group("player"):
 		player_on_run_area = false
 
 func _on_detect_area_body_entered(body):
-	if body.is_in_group("player") and not body.is_in_group("projectile"):
+	if body.is_in_group("player"):
 		player_ref = body
 
 func _on_detect_area_body_exited(body):
-	if body == player_ref:
+	if body.is_in_group("player"):
 		player_ref = null
 
 func _on_can_attack_short_body_entered(body):
-	if body == player_ref:
+	if body.is_in_group("player"):
 		can_attack_short_range = true
 
 func _on_can_attack_short_body_exited(body):
-	if body == player_ref:
+	if body.is_in_group("player"):
 		can_attack_short_range = false
 
 func _on_hit_modulate_animation_finished(_anim_name):
@@ -115,3 +118,14 @@ func _on_hit_modulate_animation_finished(_anim_name):
 
 func _on_poise_timer_timeout():
 	health_component.current_poise = health_component.max_poise
+
+func set_parameters():
+	cant_run_timer.wait_time = Parameters.kitsune_run_cooldown
+	
+	attack_timer.wait_time = Parameters.kitsune_attack_cooldown
+	
+	contact_area.disabled = false if Parameters.kitsune_contact_damage_bool == 1 else true
+	contact_damage.damage = Parameters.kitsune_contact_damage
+	contact_damage.knockback_force = Parameters.kitsune_contact_knockback
+	contact_damage.knockup_force = Parameters.kitsune_contact_knockup
+	contact_damage.poise_damage = Parameters.kitsune_contact_poise_damage
