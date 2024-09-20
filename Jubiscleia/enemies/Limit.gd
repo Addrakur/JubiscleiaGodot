@@ -3,7 +3,6 @@ extends Area2D
 @onready var limit_area: CollisionPolygon2D = $LimitArea
 @export var limit_polygon: Polygon2D
 var enemy_list: Array
-var enemy_kill_wall: Array[StaticBody2D]
 
 var can_finish: bool = false
 
@@ -13,11 +12,6 @@ func _ready() -> void:
 	for child in children:
 		if child.is_class("CharacterBody2D"):
 			enemy_list.append(child)
-		elif child.name == "Walls":
-			var walls = child.get_children()
-			for wall in walls:
-				if wall.is_class("StaticBody2D"):
-					enemy_kill_wall.append(wall)
 	
 	limit_area.polygon = limit_polygon.polygon
 	
@@ -45,9 +39,3 @@ func erase(enemy: CharacterBody2D):
 
 func add(enemy: CharacterBody2D):
 	enemy_list.append(enemy)
-
-func _process(_delta: float) -> void:
-	if enemy_list.is_empty():
-		for item in enemy_kill_wall:
-			if item != null:
-				item.queue_free()

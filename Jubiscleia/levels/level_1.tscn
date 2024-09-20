@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://lqfqrp52dju2"]
+[gd_scene load_steps=29 format=4 uid="uid://lqfqrp52dju2"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_6ujk3"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_btaha"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="19_8ysb2"]
 [ext_resource type="PackedScene" uid="uid://enns3weeg1g0" path="res://objects/lava.tscn" id="20_audrw"]
 [ext_resource type="PackedScene" uid="uid://byicvodrsjcwk" path="res://Management/enemy_kill_wall.tscn" id="22_lt1fj"]
+[ext_resource type="Script" path="res://enemy_kill_wall_manager.gd" id="23_njla2"]
 
 [sub_resource type="Resource" id="Resource_uo4o3"]
 script = ExtResource("12_u2j2b")
@@ -546,20 +547,6 @@ polygon = PackedVector2Array(1760, 320, 1760, 416, 2048, 416, 2048, 320)
 [node name="SpearSkeleton" parent="Enemies/Limit2" instance=ExtResource("17_oyuc7")]
 position = Vector2(1856, 384)
 
-[node name="Walls" type="Node2D" parent="Enemies/Limit2"]
-
-[node name="enemy_kill_wall3" parent="Enemies/Limit2/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(2464, 288)
-
-[node name="enemy_kill_wall4" parent="Enemies/Limit2/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(2464, 256)
-
-[node name="enemy_kill_wall5" parent="Enemies/Limit2/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(2464, 224)
-
-[node name="enemy_kill_wall6" parent="Enemies/Limit2/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(2464, 192)
-
 [node name="Limit3" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("16_xav30")]
 limit_polygon = NodePath("Limit3")
 
@@ -574,18 +561,6 @@ position = Vector2(1824, 608)
 [node name="SwordSkeleton2" parent="Enemies/Limit3" instance=ExtResource("18_l0pc0")]
 position = Vector2(2208, 608)
 
-[node name="Walls" type="Node2D" parent="Enemies/Limit3"]
-position = Vector2(96, 0)
-
-[node name="enemy_kill_wall3" parent="Enemies/Limit3/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(2464, 288)
-
-[node name="enemy_kill_wall4" parent="Enemies/Limit3/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(2464, 256)
-
-[node name="enemy_kill_wall5" parent="Enemies/Limit3/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(2464, 224)
-
 [node name="Limit4" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("16_xav30")]
 limit_polygon = NodePath("Limit4")
 
@@ -597,26 +572,6 @@ polygon = PackedVector2Array(3744, 384, 3744, 480, 3936, 480, 3936, 384)
 [node name="SpearSkeleton" parent="Enemies/Limit4" instance=ExtResource("17_oyuc7")]
 position = Vector2(3840, 448)
 
-[node name="Walls" type="Node2D" parent="Enemies/Limit4"]
-
-[node name="enemy_kill_wall" parent="Enemies/Limit4/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(3968, 352)
-
-[node name="enemy_kill_wall2" parent="Enemies/Limit4/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(3968, 320)
-
-[node name="enemy_kill_wall3" parent="Enemies/Limit4/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(3968, 288)
-
-[node name="enemy_kill_wall4" parent="Enemies/Limit4/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(3968, 256)
-
-[node name="enemy_kill_wall5" parent="Enemies/Limit4/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(3968, 224)
-
-[node name="enemy_kill_wall6" parent="Enemies/Limit4/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(3968, 192)
-
 [node name="Limit6" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("16_xav30")]
 limit_polygon = NodePath("Limit6")
 
@@ -627,44 +582,6 @@ polygon = PackedVector2Array(-960, 384, -960, 512, -192, 512, -192, 384)
 
 [node name="SpearSkeleton" parent="Enemies/Limit6" instance=ExtResource("17_oyuc7")]
 position = Vector2(-640, 480)
-
-[node name="Walls" type="Node2D" parent="Enemies/Limit6"]
-
-[node name="enemy_kill_wall" parent="Enemies/Limit6/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(-192, 512)
-
-[node name="enemy_kill_wall2" parent="Enemies/Limit6/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(-192, 480)
-
-[node name="enemy_kill_wall3" parent="Enemies/Limit6/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(-192, 448)
-
-[node name="enemy_kill_wall4" parent="Enemies/Limit6/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(-192, 416)
-
-[node name="enemy_kill_wall5" parent="Enemies/Limit6/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(-192, 384)
-
-[node name="enemy_kill_wall6" parent="Enemies/Limit6/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(-192, 352)
-
-[node name="enemy_kill_wall7" parent="Enemies/Limit6/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(-192, 320)
-
-[node name="enemy_kill_wall8" parent="Enemies/Limit6/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(-192, 288)
-
-[node name="enemy_kill_wall9" parent="Enemies/Limit6/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(-192, 256)
-
-[node name="enemy_kill_wall10" parent="Enemies/Limit6/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(-192, 224)
-
-[node name="enemy_kill_wall11" parent="Enemies/Limit6/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(-192, 192)
-
-[node name="enemy_kill_wall12" parent="Enemies/Limit6/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(-192, 160)
 
 [node name="Limit5" parent="Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("16_xav30")]
 limit_polygon = NodePath("Limit5")
@@ -679,17 +596,6 @@ position = Vector2(3904, 96)
 
 [node name="SpearSkeleton" parent="Enemies/Limit5" instance=ExtResource("17_oyuc7")]
 position = Vector2(4064, 64)
-
-[node name="Walls" type="Node2D" parent="Enemies/Limit5"]
-
-[node name="enemy_kill_wall4" parent="Enemies/Limit5/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(3744, 0)
-
-[node name="enemy_kill_wall5" parent="Enemies/Limit5/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(3744, -32)
-
-[node name="enemy_kill_wall6" parent="Enemies/Limit5/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(3744, -64)
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("19_8ysb2")]
 position = Vector2(-2784, 576)
@@ -738,3 +644,106 @@ position = Vector2(4096, 576)
 
 [node name="Lava2" parent="Lava" instance=ExtResource("20_audrw")]
 position = Vector2(704, 576)
+
+[node name="EnemyKillWallManager" type="Node2D" parent="." node_paths=PackedStringArray("enemies", "wall_folder")]
+script = ExtResource("23_njla2")
+enemies = [NodePath("../Enemies/Limit6/SpearSkeleton")]
+wall_folder = NodePath("Walls")
+
+[node name="Walls" type="Node2D" parent="EnemyKillWallManager"]
+
+[node name="enemy_kill_wall" parent="EnemyKillWallManager/Walls" instance=ExtResource("22_lt1fj")]
+position = Vector2(-192, 512)
+
+[node name="enemy_kill_wall2" parent="EnemyKillWallManager/Walls" instance=ExtResource("22_lt1fj")]
+position = Vector2(-192, 480)
+
+[node name="enemy_kill_wall3" parent="EnemyKillWallManager/Walls" instance=ExtResource("22_lt1fj")]
+position = Vector2(-192, 448)
+
+[node name="enemy_kill_wall4" parent="EnemyKillWallManager/Walls" instance=ExtResource("22_lt1fj")]
+position = Vector2(-192, 416)
+
+[node name="enemy_kill_wall5" parent="EnemyKillWallManager/Walls" instance=ExtResource("22_lt1fj")]
+position = Vector2(-192, 384)
+
+[node name="enemy_kill_wall6" parent="EnemyKillWallManager/Walls" instance=ExtResource("22_lt1fj")]
+position = Vector2(-192, 352)
+
+[node name="enemy_kill_wall7" parent="EnemyKillWallManager/Walls" instance=ExtResource("22_lt1fj")]
+position = Vector2(-192, 320)
+
+[node name="enemy_kill_wall8" parent="EnemyKillWallManager/Walls" instance=ExtResource("22_lt1fj")]
+position = Vector2(-192, 288)
+
+[node name="enemy_kill_wall9" parent="EnemyKillWallManager/Walls" instance=ExtResource("22_lt1fj")]
+position = Vector2(-192, 256)
+
+[node name="enemy_kill_wall10" parent="EnemyKillWallManager/Walls" instance=ExtResource("22_lt1fj")]
+position = Vector2(-192, 224)
+
+[node name="enemy_kill_wall11" parent="EnemyKillWallManager/Walls" instance=ExtResource("22_lt1fj")]
+position = Vector2(-192, 192)
+
+[node name="enemy_kill_wall12" parent="EnemyKillWallManager/Walls" instance=ExtResource("22_lt1fj")]
+position = Vector2(-192, 160)
+
+[node name="EnemyKillWallManager2" type="Node2D" parent="." node_paths=PackedStringArray("enemies", "wall_folder")]
+script = ExtResource("23_njla2")
+enemies = [NodePath("../Enemies/Limit2/SpearSkeleton"), NodePath("../Enemies/Limit3/SwordSkeleton"), NodePath("../Enemies/Limit3/SwordSkeleton2")]
+wall_folder = NodePath("Walls")
+
+[node name="Walls" type="Node2D" parent="EnemyKillWallManager2"]
+
+[node name="enemy_kill_wall3" parent="EnemyKillWallManager2/Walls" instance=ExtResource("22_lt1fj")]
+position = Vector2(2464, 288)
+
+[node name="enemy_kill_wall4" parent="EnemyKillWallManager2/Walls" instance=ExtResource("22_lt1fj")]
+position = Vector2(2464, 256)
+
+[node name="enemy_kill_wall5" parent="EnemyKillWallManager2/Walls" instance=ExtResource("22_lt1fj")]
+position = Vector2(2464, 224)
+
+[node name="enemy_kill_wall6" parent="EnemyKillWallManager2/Walls" instance=ExtResource("22_lt1fj")]
+position = Vector2(2464, 192)
+
+[node name="EnemyKillWallManager3" type="Node2D" parent="." node_paths=PackedStringArray("enemies", "wall_folder")]
+script = ExtResource("23_njla2")
+enemies = [NodePath("../Enemies/Limit4/SpearSkeleton")]
+wall_folder = NodePath("Walls4")
+
+[node name="Walls4" type="Node2D" parent="EnemyKillWallManager3"]
+
+[node name="enemy_kill_wall" parent="EnemyKillWallManager3/Walls4" instance=ExtResource("22_lt1fj")]
+position = Vector2(3968, 352)
+
+[node name="enemy_kill_wall2" parent="EnemyKillWallManager3/Walls4" instance=ExtResource("22_lt1fj")]
+position = Vector2(3968, 320)
+
+[node name="enemy_kill_wall3" parent="EnemyKillWallManager3/Walls4" instance=ExtResource("22_lt1fj")]
+position = Vector2(3968, 288)
+
+[node name="enemy_kill_wall4" parent="EnemyKillWallManager3/Walls4" instance=ExtResource("22_lt1fj")]
+position = Vector2(3968, 256)
+
+[node name="enemy_kill_wall5" parent="EnemyKillWallManager3/Walls4" instance=ExtResource("22_lt1fj")]
+position = Vector2(3968, 224)
+
+[node name="enemy_kill_wall6" parent="EnemyKillWallManager3/Walls4" instance=ExtResource("22_lt1fj")]
+position = Vector2(3968, 192)
+
+[node name="EnemyKillWallManager4" type="Node2D" parent="." node_paths=PackedStringArray("enemies", "wall_folder")]
+script = ExtResource("23_njla2")
+enemies = [NodePath("../Enemies/Limit5/SwordSkeleton"), NodePath("../Enemies/Limit5/SpearSkeleton")]
+wall_folder = NodePath("Walls2")
+
+[node name="Walls2" type="Node2D" parent="EnemyKillWallManager4"]
+
+[node name="enemy_kill_wall4" parent="EnemyKillWallManager4/Walls2" instance=ExtResource("22_lt1fj")]
+position = Vector2(3744, 0)
+
+[node name="enemy_kill_wall5" parent="EnemyKillWallManager4/Walls2" instance=ExtResource("22_lt1fj")]
+position = Vector2(3744, -32)
+
+[node name="enemy_kill_wall6" parent="EnemyKillWallManager4/Walls2" instance=ExtResource("22_lt1fj")]
+position = Vector2(3744, -64)
