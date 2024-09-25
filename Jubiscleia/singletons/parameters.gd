@@ -13,8 +13,8 @@ var player_coyote_time: float = 0.15
 var player_run_speed: float = 200
 
 var player_first_jump_height: float = 110
-var player_first_jump_time_to_peak: float = 0.4
-var player_first_jump_time_to_descend: float = 0.35
+var player_first_jump_time_to_peak: float = 0.45
+var player_first_jump_time_to_descend: float = 0.4
 var player_first_jump_move_speed: float = 200
 
 var player_double_jump_height: float = 40

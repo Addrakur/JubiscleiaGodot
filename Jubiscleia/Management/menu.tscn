@@ -641,10 +641,10 @@ text = "Padrao"
 layout_mode = 2
 theme_override_constants/separation = 25
 script = ExtResource("3_vq8mx")
-default_value = 0.4
+default_value = 0.45
 slider_min = 0.1
 slider_max = 1.0
-slider_step = 0.1
+slider_step = 0.01
 
 [node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_time_to_peak"]
 layout_mode = 2
@@ -679,10 +679,10 @@ text = "Padrao"
 layout_mode = 2
 theme_override_constants/separation = 25
 script = ExtResource("3_vq8mx")
-default_value = 0.35
+default_value = 0.4
 slider_min = 0.1
 slider_max = 1.0
-slider_step = 0.1
+slider_step = 0.01
 
 [node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_time_to_descend"]
 layout_mode = 2

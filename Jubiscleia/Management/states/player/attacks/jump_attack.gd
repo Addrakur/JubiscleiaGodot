@@ -1,7 +1,7 @@
 class_name PlayerJumpAttack
 extends State
 
-@export var player: CharacterBody2D
+@export var player: Player
 @export var animation: AnimationPlayer
 @export var move_speed: float
 @onready var attack_area = $"../../AttackArea/AttackArea"
@@ -58,6 +58,7 @@ func exit_state() -> void:
 	player.can_flip = true
 	stop = false
 	player.can_dash = true
+	player.camera_methods.weapon_shake_false()
 	
 	PlayerVariables.anim_finish = false
 	

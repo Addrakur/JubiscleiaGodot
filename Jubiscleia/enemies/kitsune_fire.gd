@@ -18,7 +18,7 @@ func _ready():
 	attack_area.knockback_force = Parameters.kitsune_attack_knockback
 	attack_area.knockup_force = Parameters.kitsune_attack_knockup
 	attack_area.poise_damage = Parameters.kitsune_attack_poise_damage
-	speed = Parameters.kitsune_attack_speed
+	speed = Parameters.kitsune_attack_speed if animation_level == 2 else Parameters.kitsune_attack_speed * 1.5
 	animation.play(str(animation_level))
 	attack_area.attack_name = "kitsune + " + str(animation_level)
 

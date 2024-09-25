@@ -631,7 +631,7 @@ collision_layer = 0
 modulate = Color(1, 1, 1, 0.2)
 self_modulate = Color(0.952941, 0.847059, 0.847059, 1)
 position = Vector2(0, 1)
-polygon = PackedVector2Array(-128, -96, -128, 32, 320, 32, 320, -96)
+polygon = PackedVector2Array(-320, -129, -320, 31, 320, 31, 320, -129)
 
 [node name="CanAttackGround" type="Area2D" parent="."]
 collision_layer = 0

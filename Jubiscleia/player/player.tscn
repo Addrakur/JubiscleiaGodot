@@ -7572,6 +7572,13 @@ parent = NodePath("..")
 script = ExtResource("95_v1sao")
 parent = NodePath("..")
 
+[node name="AttackNumber" type="Label" parent="."]
+offset_left = -19.7387
+offset_top = -34.0644
+offset_right = 20.2613
+offset_bottom = -11.0644
+text = "1"
+
 [connection signal="body_entered" from="DashCollision" to="StateMachine/PlayerDash" method="_on_dash_collision_body_entered"]
 [connection signal="body_exited" from="DashCollision" to="StateMachine/PlayerDash" method="_on_dash_collision_body_exited"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/Hit" method="_on_animation_finished"]

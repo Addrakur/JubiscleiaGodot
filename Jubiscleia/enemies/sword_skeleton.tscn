@@ -764,7 +764,7 @@ attack_timer = NodePath("../AttackTimer")
 collision_layer = 0
 
 [node name="DetectCollision" type="CollisionPolygon2D" parent="DetectArea"]
-polygon = PackedVector2Array(320, 0, 320, -128, -128, -128, -128, 0)
+polygon = PackedVector2Array(320, 0, 320, -160, -320, -160, -320, 0)
 
 [node name="AttackArea" parent="." instance=ExtResource("2_3g66j")]
 collision_mask = 1

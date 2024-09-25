@@ -19,6 +19,7 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var poise_timer = $PoiseTimer
 @onready var collision: CollisionShape2D = $Collision
 @onready var camera_methods: CameraMethods = $camera_methods
+@onready var attack_number: Label = $AttackNumber
 
 @onready var dash_cooldown: Timer = $DashCooldown
 @onready var corruption_manager: Node2D = $CorruptionManager
@@ -94,7 +95,6 @@ func _process(_delta):
 		if fsm.state == wall_grab_state:
 			direction = -wall_grab_ray_cast.scale.x
 		fsm.change_state(dash_state)
-	
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -196,6 +196,7 @@ func _on_dash_cooldown_timeout():
 
 func _on_combo_timer_timeout():
 	next_attack = 1
+	attack_number.text = "1"
 
 func _on_inv_timer_timeout():
 	health_component.invulnerable = false
@@ -247,3 +248,6 @@ func set_parameters():
 	#player_2_timer Ja foi
 	#player_3_timer Ja foi
 	
+func combo_timer_start():
+	combo_timer.wait_time = Parameters.player_combo_memory_time
+	combo_timer.start()

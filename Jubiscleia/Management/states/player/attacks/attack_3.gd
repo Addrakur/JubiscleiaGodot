@@ -12,9 +12,10 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	#player.can_dash = false
 	PlayerVariables.anim_finish = false
 	player.next_attack = 1
+	player.attack_number.text = "1"
+	player.combo_timer.stop()
 	
 	#PlayerVariables.player_attacking = true
 	PlayerVariables.last_skill = PlayerVariables.current_skill
@@ -43,7 +44,7 @@ func exit_state() -> void:
 	
 	PlayerVariables.anim_finish = false
 	
-	player.combo_timer.start()
+	player.combo_timer_start()
 
 func _physics_process(_delta):
 	player.velocity.x = 0

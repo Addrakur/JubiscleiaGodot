@@ -679,7 +679,7 @@ collision_layer = 0
 
 [node name="ShortCollision" type="CollisionPolygon2D" parent="CanAttackShort"]
 modulate = Color(0.0431373, 0.0901961, 0.729412, 1)
-polygon = PackedVector2Array(0, 45, 320, 45, 320, -179, 0, -179)
+polygon = PackedVector2Array(0, 45, 320, 45, 320, -115, 0, -115)
 
 [node name="RunArea" type="Area2D" parent="."]
 position = Vector2(0, -45)
@@ -687,14 +687,14 @@ collision_layer = 0
 
 [node name="RunCollision" type="CollisionPolygon2D" parent="RunArea"]
 modulate = Color(0, 0, 0.670588, 1)
-polygon = PackedVector2Array(-16, 45, 192, 45, 192, -179, -16, -179)
+polygon = PackedVector2Array(-16, 45, 192, 45, 192, -115, -16, -115)
 
 [node name="DetectArea" type="Area2D" parent="."]
 position = Vector2(0, -45)
 collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectArea"]
-polygon = PackedVector2Array(512, 45, 512, -179, -288, -179, -288, 45)
+polygon = PackedVector2Array(576, 45, 576, -115, -384, -115, -384, 45)
 
 [node name="Idle Timer" type="Timer" parent="."]
 process_callback = 0
