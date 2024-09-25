@@ -428,10 +428,8 @@ shape = SubResource("RectangleShape2D_4xtsj")
 position = Vector2(406, 400)
 direction = -1.0
 
-[node name="EnemyKillWallManager" type="Node2D" parent="." node_paths=PackedStringArray("enemies", "wall_folder")]
+[node name="EnemyKillWallManager" type="Node2D" parent="."]
 script = ExtResource("20_a6s01")
-enemies = [NodePath("../Enemies/Limit/SpearSkeleton"), NodePath("../Enemies/Limit/SpearSkeleton2")]
-wall_folder = NodePath("Walls")
 
 [node name="Walls" type="Node2D" parent="EnemyKillWallManager"]
 
@@ -447,10 +445,8 @@ position = Vector2(352, 1216)
 [node name="enemy_kill_wall4" parent="EnemyKillWallManager/Walls" instance=ExtResource("9_dexst")]
 position = Vector2(352, 1248)
 
-[node name="EnemyKillWallManager2" type="Node2D" parent="." node_paths=PackedStringArray("enemies", "wall_folder")]
+[node name="EnemyKillWallManager2" type="Node2D" parent="."]
 script = ExtResource("20_a6s01")
-enemies = [NodePath("../Enemies/Limit2/SpearSkeleton"), NodePath("../Enemies/Limit2/Kitsune"), NodePath("../Enemies/Limit3/SwordSkeleton")]
-wall_folder = NodePath("Walls")
 
 [node name="Walls" type="Node2D" parent="EnemyKillWallManager2"]
 
@@ -460,10 +456,8 @@ position = Vector2(-32, 480)
 [node name="enemy_kill_wall4" parent="EnemyKillWallManager2/Walls" instance=ExtResource("9_dexst")]
 position = Vector2(0, 480)
 
-[node name="EnemyKillWallManager3" type="Node2D" parent="." node_paths=PackedStringArray("enemies", "wall_folder")]
+[node name="EnemyKillWallManager3" type="Node2D" parent="."]
 script = ExtResource("20_a6s01")
-enemies = [NodePath("../Enemies/Limit4/Kitsune"), NodePath("../Enemies/Limit4/SwordSkeleton")]
-wall_folder = NodePath("Walls")
 
 [node name="Walls" type="Node2D" parent="EnemyKillWallManager3"]
 
@@ -482,10 +476,8 @@ position = Vector2(1312, 352)
 [node name="enemy_kill_wall5" parent="EnemyKillWallManager3/Walls" instance=ExtResource("9_dexst")]
 position = Vector2(1312, 320)
 
-[node name="EnemyKillWallManager4" type="Node2D" parent="." node_paths=PackedStringArray("enemies", "wall_folder")]
+[node name="EnemyKillWallManager4" type="Node2D" parent="."]
 script = ExtResource("20_a6s01")
-enemies = [NodePath("../Enemies/Limit5/SwordSkeleton"), NodePath("../Enemies/Limit6/Kitsune"), NodePath("../Enemies/Limit8/SpearSkeleton")]
-wall_folder = NodePath("Walls")
 
 [node name="Walls" type="Node2D" parent="EnemyKillWallManager4"]
 
@@ -498,10 +490,8 @@ position = Vector2(2656, 480)
 [node name="enemy_kill_wall3" parent="EnemyKillWallManager4/Walls" instance=ExtResource("9_dexst")]
 position = Vector2(2656, 512)
 
-[node name="EnemyKillWallManager5" type="Node2D" parent="." node_paths=PackedStringArray("enemies", "wall_folder")]
+[node name="EnemyKillWallManager5" type="Node2D" parent="."]
 script = ExtResource("20_a6s01")
-enemies = [NodePath("../Enemies/Limit7/Kitsune")]
-wall_folder = NodePath("Walls")
 
 [node name="Walls" type="Node2D" parent="EnemyKillWallManager5"]
 

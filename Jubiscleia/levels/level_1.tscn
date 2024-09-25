@@ -683,70 +683,10 @@ position = Vector2(4096, 576)
 [node name="Lava2" parent="Lava" instance=ExtResource("20_audrw")]
 position = Vector2(704, 576)
 
-[node name="EnemyKillWallManager2" type="Node2D" parent="." node_paths=PackedStringArray("enemies", "wall_folder")]
-script = ExtResource("23_njla2")
-enemies = [NodePath("../Enemies/Limit2/SpearSkeleton"), NodePath("../Enemies/Limit3/SwordSkeleton"), NodePath("../Enemies/Limit3/Kitsune")]
-wall_folder = NodePath("Walls")
-
-[node name="Walls" type="Node2D" parent="EnemyKillWallManager2"]
-
-[node name="enemy_kill_wall3" parent="EnemyKillWallManager2/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(2464, 288)
-
-[node name="enemy_kill_wall4" parent="EnemyKillWallManager2/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(2464, 256)
-
-[node name="enemy_kill_wall5" parent="EnemyKillWallManager2/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(2464, 224)
-
-[node name="enemy_kill_wall6" parent="EnemyKillWallManager2/Walls" instance=ExtResource("22_lt1fj")]
-position = Vector2(2464, 192)
-
-[node name="EnemyKillWallManager3" type="Node2D" parent="." node_paths=PackedStringArray("enemies", "wall_folder")]
-script = ExtResource("23_njla2")
-enemies = [NodePath("../Enemies/Limit4/SpearSkeleton")]
-wall_folder = NodePath("Walls4")
-
-[node name="Walls4" type="Node2D" parent="EnemyKillWallManager3"]
-
-[node name="enemy_kill_wall" parent="EnemyKillWallManager3/Walls4" instance=ExtResource("22_lt1fj")]
-position = Vector2(3968, 352)
-
-[node name="enemy_kill_wall2" parent="EnemyKillWallManager3/Walls4" instance=ExtResource("22_lt1fj")]
-position = Vector2(3968, 320)
-
-[node name="enemy_kill_wall3" parent="EnemyKillWallManager3/Walls4" instance=ExtResource("22_lt1fj")]
-position = Vector2(3968, 288)
-
-[node name="enemy_kill_wall4" parent="EnemyKillWallManager3/Walls4" instance=ExtResource("22_lt1fj")]
-position = Vector2(3968, 256)
-
-[node name="enemy_kill_wall5" parent="EnemyKillWallManager3/Walls4" instance=ExtResource("22_lt1fj")]
-position = Vector2(3968, 224)
-
-[node name="enemy_kill_wall6" parent="EnemyKillWallManager3/Walls4" instance=ExtResource("22_lt1fj")]
-position = Vector2(3968, 192)
-
-[node name="EnemyKillWallManager4" type="Node2D" parent="." node_paths=PackedStringArray("enemies", "wall_folder")]
-script = ExtResource("23_njla2")
-enemies = [NodePath("../Enemies/Limit5/SwordSkeleton"), NodePath("../Enemies/Limit5/SpearSkeleton")]
-wall_folder = NodePath("Walls2")
-
-[node name="Walls2" type="Node2D" parent="EnemyKillWallManager4"]
-
-[node name="enemy_kill_wall4" parent="EnemyKillWallManager4/Walls2" instance=ExtResource("22_lt1fj")]
-position = Vector2(3744, 0)
-
-[node name="enemy_kill_wall5" parent="EnemyKillWallManager4/Walls2" instance=ExtResource("22_lt1fj")]
-position = Vector2(3744, -32)
-
-[node name="enemy_kill_wall6" parent="EnemyKillWallManager4/Walls2" instance=ExtResource("22_lt1fj")]
-position = Vector2(3744, -64)
-
 [node name="arena_manager" parent="." node_paths=PackedStringArray("waves", "wall_manager", "close_region", "interval_label") instance=ExtResource("25_yi7as")]
-waves = [NodePath("Wave1"), NodePath("Wave2"), NodePath("Wave3")]
-interval_time = 5.9
-max_waves = 3.0
+waves = [NodePath("1"), NodePath("2"), NodePath("3"), NodePath("4")]
+interval_time = 1.9
+max_waves = 4.0
 wall_manager = NodePath("EnemyKillWallManager")
 close_region = NodePath("CloseRegion")
 interval_label = NodePath("Label")
@@ -760,10 +700,10 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EnemyKillWallManager" type="Node2D" parent="arena_manager" node_paths=PackedStringArray("enemies", "wall_folder")]
+[node name="EnemyKillWallManager" type="Node2D" parent="arena_manager" node_paths=PackedStringArray("exit_walls", "entrance_walls")]
 script = ExtResource("23_njla2")
-enemies = [null]
-wall_folder = NodePath("ExitWalls")
+exit_walls = NodePath("ExitWalls")
+entrance_walls = NodePath("EnterWalls")
 
 [node name="ExitWalls" type="Node2D" parent="arena_manager/EnemyKillWallManager"]
 
@@ -777,56 +717,75 @@ position = Vector2(-288, 480)
 position = Vector2(-288, 448)
 
 [node name="EnterWalls" type="Node2D" parent="arena_manager/EnemyKillWallManager"]
-
-[node name="enemy_kill_wall13" parent="arena_manager/EnemyKillWallManager/EnterWalls" instance=ExtResource("22_lt1fj")]
 position = Vector2(-1216, 416)
 
+[node name="enemy_kill_wall13" parent="arena_manager/EnemyKillWallManager/EnterWalls" instance=ExtResource("22_lt1fj")]
+position = Vector2(0, 96)
+collision_layer = 0
+
 [node name="enemy_kill_wall14" parent="arena_manager/EnemyKillWallManager/EnterWalls" instance=ExtResource("22_lt1fj")]
-position = Vector2(-1216, 384)
+position = Vector2(0, 64)
+collision_layer = 0
 
 [node name="enemy_kill_wall15" parent="arena_manager/EnemyKillWallManager/EnterWalls" instance=ExtResource("22_lt1fj")]
-position = Vector2(-1216, 352)
+position = Vector2(0, 32)
+collision_layer = 0
 
 [node name="CloseRegion" type="Area2D" parent="arena_manager"]
 
 [node name="CloseRegion" type="CollisionPolygon2D" parent="arena_manager/CloseRegion"]
-polygon = PackedVector2Array(-1120, 512, -1184, 512, -1184, 608, -288, 608, -288, 128, -1152, 128)
+polygon = PackedVector2Array(-1120, 512, -1184, 544, -1184, 608, -288, 608, -288, 128, -1152, 128)
 
-[node name="Wave1" type="Node" parent="arena_manager" node_paths=PackedStringArray("enemy_spawn")]
+[node name="1" type="Node" parent="arena_manager" node_paths=PackedStringArray("enemy_spawn")]
 script = ExtResource("26_yykwe")
 enemy_spawn = [NodePath("WaveEnemySpawn")]
 
-[node name="WaveEnemySpawn" type="Node" parent="arena_manager/Wave1" node_paths=PackedStringArray("limit", "spawn_point")]
+[node name="WaveEnemySpawn" type="Node" parent="arena_manager/1" node_paths=PackedStringArray("limit", "spawn_point")]
 script = ExtResource("26_ipub1")
 enemy = "spear_skeleton"
 limit = NodePath("../../ArenaObjs/Limit6")
 spawn_point = NodePath("../../ArenaObjs/Spawn1")
 
-[node name="Wave2" type="Node" parent="arena_manager" node_paths=PackedStringArray("enemy_spawn")]
+[node name="2" type="Node" parent="arena_manager" node_paths=PackedStringArray("enemy_spawn")]
 script = ExtResource("26_yykwe")
 enemy_spawn = [NodePath("WaveEnemySpawn")]
 
-[node name="WaveEnemySpawn" type="Node" parent="arena_manager/Wave2" node_paths=PackedStringArray("limit", "spawn_point")]
+[node name="WaveEnemySpawn" type="Node" parent="arena_manager/2" node_paths=PackedStringArray("limit", "spawn_point")]
 script = ExtResource("26_ipub1")
 enemy = "sword_skeleton"
 limit = NodePath("../../ArenaObjs/Limit6")
 spawn_point = NodePath("../../ArenaObjs/Spawn1")
 
-[node name="Wave3" type="Node" parent="arena_manager" node_paths=PackedStringArray("enemy_spawn")]
+[node name="3" type="Node" parent="arena_manager" node_paths=PackedStringArray("enemy_spawn")]
 script = ExtResource("26_yykwe")
 enemy_spawn = [NodePath("WaveEnemySpawn"), NodePath("WaveEnemySpawn2")]
 
-[node name="WaveEnemySpawn" type="Node" parent="arena_manager/Wave3" node_paths=PackedStringArray("limit", "spawn_point")]
+[node name="WaveEnemySpawn" type="Node" parent="arena_manager/3" node_paths=PackedStringArray("limit", "spawn_point")]
 script = ExtResource("26_ipub1")
 enemy = "spear_skeleton"
 limit = NodePath("../../ArenaObjs/Limit6")
 spawn_point = NodePath("../../ArenaObjs/Spawn2")
 
-[node name="WaveEnemySpawn2" type="Node" parent="arena_manager/Wave3" node_paths=PackedStringArray("limit", "spawn_point")]
+[node name="WaveEnemySpawn2" type="Node" parent="arena_manager/3" node_paths=PackedStringArray("limit", "spawn_point")]
 script = ExtResource("26_ipub1")
 enemy = "sword_skeleton"
 limit = NodePath("../../ArenaObjs/Limit6")
 spawn_point = NodePath("../../ArenaObjs/Spawn3")
+
+[node name="4" type="Node" parent="arena_manager"]
+script = ExtResource("26_yykwe")
+
+[node name="WaveEnemySpawn" type="Node" parent="arena_manager/4" node_paths=PackedStringArray("limit", "spawn_point")]
+script = ExtResource("26_ipub1")
+enemy = "spear_skeleton"
+limit = NodePath("../../ArenaObjs/Limit6")
+spawn_point = NodePath("../../ArenaObjs/Spawn3")
+
+[node name="WaveEnemySpawn2" type="Node" parent="arena_manager/4" node_paths=PackedStringArray("limit", "spawn_point")]
+script = ExtResource("26_ipub1")
+enemy = "spear_skeleton"
+limit = NodePath("../../ArenaObjs/Limit6")
+spawn_point = NodePath("../../ArenaObjs/Spawn1")
 
 [node name="ArenaObjs" type="Node2D" parent="arena_manager"]
 
