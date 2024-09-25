@@ -1,3 +1,4 @@
+class_name EnemyLimit
 extends Area2D
 
 @onready var limit_area: CollisionPolygon2D = $LimitArea

@@ -579,6 +579,7 @@ attack_area = NodePath("AttackArea")
 contact_damage = NodePath("ContactDamage")
 
 [node name="Texture" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
 texture = ExtResource("1_pnfn2")
 hframes = 7
 
@@ -594,6 +595,7 @@ libraries = {
 }
 
 [node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
 shape = SubResource("CapsuleShape2D_yv5ip")
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("8_i2y1x")]
@@ -602,6 +604,7 @@ variable_name = "spear_skeleton"
 attack_timer = NodePath("../AttackTimer")
 
 [node name="AttackArea" parent="." instance=ExtResource("9_dw2nc")]
+position = Vector2(0, -32)
 collision_mask = 1
 target = "player"
 
@@ -615,6 +618,7 @@ polygon = PackedVector2Array(22, 14, 77, 14, 77, -1, 22, -1)
 disabled = true
 
 [node name="ContactDamage" parent="." instance=ExtResource("9_dw2nc")]
+position = Vector2(0, -32)
 collision_mask = 1
 target = "player"
 attack_name = "skeletonheaddamage"
@@ -625,6 +629,7 @@ shape = SubResource("CapsuleShape2D_arf5m")
 debug_color = Color(0.994583, 0, 0.219729, 0.42)
 
 [node name="CanChaseArea" type="Area2D" parent="."]
+position = Vector2(0, -32)
 collision_layer = 0
 
 [node name="CanChaseArea" type="CollisionPolygon2D" parent="CanChaseArea"]
@@ -634,6 +639,7 @@ position = Vector2(0, 1)
 polygon = PackedVector2Array(-320, -129, -320, 31, 320, 31, 320, -129)
 
 [node name="CanAttackGround" type="Area2D" parent="."]
+position = Vector2(0, -32)
 collision_layer = 0
 
 [node name="CanAttackGroundArea" type="CollisionPolygon2D" parent="CanAttackGround"]
@@ -642,6 +648,7 @@ self_modulate = Color(0, 1, 0.831373, 1)
 polygon = PackedVector2Array(20, -1, 60, -1, 60, 32, 20, 32)
 
 [node name="CanAttackAir" type="Area2D" parent="."]
+position = Vector2(0, -32)
 collision_layer = 0
 
 [node name="CanAttackAirArea" type="CollisionPolygon2D" parent="CanAttackAir"]
@@ -705,6 +712,8 @@ wait_time = 2.0
 one_shot = true
 
 [node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("19_82j6j")]
+offset_top = -88.0
+offset_bottom = -65.0
 parent = NodePath("..")
 
 [connection signal="animation_finished" from="HitModulate" to="." method="_on_hit_modulate_animation_finished"]
