@@ -67,7 +67,7 @@ polygon = PackedVector2Array(-256, 256, -256, 480, 1280, 480, 1280, 256)
 position = Vector2(608, 384)
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_2ic4t")]
-position = Vector2(-960, 416)
+position = Vector2(-768, 480)
 camera = NodePath("../Camera2D")
 
 [node name="Training Dummy" parent="." instance=ExtResource("9_dgptr")]

@@ -7,16 +7,16 @@ extends Node2D
 
 @export_group("Objects")
 @export var wall_manager: EnemyKillWallManager
-@export var close_region: Area2D
+@export var close_polygon: Polygon2D
 @export var interval_label: Label
 
+@onready var close_region: CollisionPolygon2D = $CloseRegion/CloseRegion
 @onready var wave_interval: Timer = $WaveInterval
 
 var current_wave: int = 1
 
 func _ready() -> void:
-	close_region.body_entered.connect(start_arena.bind())
-
+	close_region.polygon = close_polygon.polygon
 
 func wave_start():
 	var new_wave: Wave = waves[current_wave - 1] #Arrumar isso aqui, não sei o que está dando errado
@@ -42,7 +42,7 @@ func start_arena(body: CharacterBody2D):
 	wave_interval.start(interval_time)
 	close_region.queue_free()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if wave_interval.time_left != 0:
 		interval_label.visible = true
 		interval_label.text = str(int(wave_interval.time_left))

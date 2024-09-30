@@ -9,4 +9,9 @@ script = ExtResource("1_263b0")
 wait_time = 5.99
 one_shot = true
 
+[node name="CloseRegion" type="Area2D" parent="."]
+
+[node name="CloseRegion" type="CollisionPolygon2D" parent="CloseRegion"]
+
 [connection signal="timeout" from="WaveInterval" to="." method="_on_wave_interval_timeout"]
+[connection signal="body_entered" from="CloseRegion" to="." method="start_arena"]

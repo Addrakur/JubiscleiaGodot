@@ -23,13 +23,14 @@ func spawn_enemy():
 	limit.add(enemy_inst)
 	parent.enemies.append(enemy_inst)
 	enemy_inst.limit = limit
-	enemy_inst.player_on_limit = true
+	if limit.player_inside_limit:
+		enemy_inst.player_on_limit = true
 	
 	if has_starting_x:
 		enemy_inst.starting_x = starting_x
 	
 	if has_warp_area:
-		enemy_inst.warp_area = warp_area.limit_polygon
+		enemy_inst.warp_area = warp_area
 	
 	if has_set_direction:
 		var chance: float
