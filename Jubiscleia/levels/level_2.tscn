@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://bdh42hgehknwl"]
+[gd_scene load_steps=25 format=4 uid="uid://bdh42hgehknwl"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_e2h5m"]
 [ext_resource type="PackedScene" uid="uid://bi6cc6w3ecvyj" path="res://objects/plataform.tscn" id="2_om01v"]
@@ -12,14 +12,12 @@
 [ext_resource type="PackedScene" uid="uid://bolenc8px11st" path="res://Management/level_end.tscn" id="7_6o7yj"]
 [ext_resource type="PackedScene" uid="uid://radoy72pb50a" path="res://enemies/kitsune.tscn" id="8_ngglg"]
 [ext_resource type="PackedScene" uid="uid://3f7lr15bhlyx" path="res://enemies/sword_skeleton.tscn" id="9_6afgh"]
-[ext_resource type="PackedScene" uid="uid://byicvodrsjcwk" path="res://Management/enemy_kill_wall.tscn" id="9_dexst"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="12_uxsbj"]
 [ext_resource type="PackedScene" uid="uid://bgtm18yxrdsdx" path="res://Management/camera_area.tscn" id="13_jig2v"]
 [ext_resource type="PackedScene" uid="uid://djqldg2hn5i3u" path="res://Management/spike.tscn" id="13_wfuhg"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="14_nee6w"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="15_6soip"]
 [ext_resource type="PackedScene" uid="uid://cbkmdf5fph8mt" path="res://enemies/turret.tscn" id="16_rcq25"]
-[ext_resource type="Script" path="res://enemy_kill_wall_manager.gd" id="20_a6s01"]
 
 [sub_resource type="Curve2D" id="Curve2D_j45al"]
 _data = {
@@ -57,6 +55,7 @@ size = Vector2(2, 64)
 [node name="Level2" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_e2h5m")
 player = NodePath("player")
+free_spawn = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
@@ -427,82 +426,3 @@ shape = SubResource("RectangleShape2D_4xtsj")
 [node name="Turret" parent="." instance=ExtResource("16_rcq25")]
 position = Vector2(406, 400)
 direction = -1.0
-
-[node name="EnemyKillWallManager" type="Node2D" parent="."]
-script = ExtResource("20_a6s01")
-
-[node name="Walls" type="Node2D" parent="EnemyKillWallManager"]
-
-[node name="enemy_kill_wall" parent="EnemyKillWallManager/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(-384, 1216)
-
-[node name="enemy_kill_wall2" parent="EnemyKillWallManager/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(-384, 1248)
-
-[node name="enemy_kill_wall3" parent="EnemyKillWallManager/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(352, 1216)
-
-[node name="enemy_kill_wall4" parent="EnemyKillWallManager/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(352, 1248)
-
-[node name="EnemyKillWallManager2" type="Node2D" parent="."]
-script = ExtResource("20_a6s01")
-
-[node name="Walls" type="Node2D" parent="EnemyKillWallManager2"]
-
-[node name="enemy_kill_wall3" parent="EnemyKillWallManager2/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(-32, 480)
-
-[node name="enemy_kill_wall4" parent="EnemyKillWallManager2/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(0, 480)
-
-[node name="EnemyKillWallManager3" type="Node2D" parent="."]
-script = ExtResource("20_a6s01")
-
-[node name="Walls" type="Node2D" parent="EnemyKillWallManager3"]
-
-[node name="enemy_kill_wall" parent="EnemyKillWallManager3/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(1312, 448)
-
-[node name="enemy_kill_wall2" parent="EnemyKillWallManager3/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(1312, 416)
-
-[node name="enemy_kill_wall3" parent="EnemyKillWallManager3/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(1312, 384)
-
-[node name="enemy_kill_wall4" parent="EnemyKillWallManager3/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(1312, 352)
-
-[node name="enemy_kill_wall5" parent="EnemyKillWallManager3/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(1312, 320)
-
-[node name="EnemyKillWallManager4" type="Node2D" parent="."]
-script = ExtResource("20_a6s01")
-
-[node name="Walls" type="Node2D" parent="EnemyKillWallManager4"]
-
-[node name="enemy_kill_wall" parent="EnemyKillWallManager4/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(2656, 448)
-
-[node name="enemy_kill_wall2" parent="EnemyKillWallManager4/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(2656, 480)
-
-[node name="enemy_kill_wall3" parent="EnemyKillWallManager4/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(2656, 512)
-
-[node name="EnemyKillWallManager5" type="Node2D" parent="."]
-script = ExtResource("20_a6s01")
-
-[node name="Walls" type="Node2D" parent="EnemyKillWallManager5"]
-
-[node name="enemy_kill_wall" parent="EnemyKillWallManager5/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(3296, 480)
-
-[node name="enemy_kill_wall2" parent="EnemyKillWallManager5/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(3296, 512)
-
-[node name="enemy_kill_wall3" parent="EnemyKillWallManager5/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(3296, 416)
-
-[node name="enemy_kill_wall4" parent="EnemyKillWallManager5/Walls" instance=ExtResource("9_dexst")]
-position = Vector2(3296, 448)

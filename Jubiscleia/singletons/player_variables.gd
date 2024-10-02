@@ -1,6 +1,6 @@
 extends Node
 
-@onready var player: CharacterBody2D
+@onready var player: Player
 var player_max_life: float = 10
 var player_current_life: float
 var corruption_level: float = 0
@@ -19,6 +19,7 @@ var move: bool = false
 var my_knockup: bool = false
 var anim_finish: bool = false
 var can_move_during_attack: bool = false
+var can_attack: bool = true
 
 var axe_1_speed: float = 0
 var axe_2_speed: float = 600

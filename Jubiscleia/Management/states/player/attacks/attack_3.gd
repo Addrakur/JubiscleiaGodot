@@ -58,10 +58,10 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("dash"):
 		PlayerVariables.current_skill = ""
 	
-	if Input.is_action_just_pressed("attack_button_1"):
+	if Input.is_action_just_pressed("attack_button_1") and PlayerVariables.can_attack:
 		PlayerVariables.current_skill = PlayerVariables.skill_1
 	
-	if Input.is_action_just_pressed("attack_button_2"):
+	if Input.is_action_just_pressed("attack_button_2") and PlayerVariables.can_attack:
 		PlayerVariables.current_skill = PlayerVariables.skill_2
 	
 	if player.can_combo and PlayerVariables.current_skill != "":

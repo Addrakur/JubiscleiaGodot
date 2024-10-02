@@ -86,6 +86,7 @@ offset_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 37
+disabled = true
 text = "2"
 
 [node name="Level3" type="Button" parent="."]

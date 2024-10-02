@@ -4,9 +4,9 @@
 [ext_resource type="Script" path="res://enemies/spear_skeleton.gd" id="1_vyemi"]
 [ext_resource type="Texture2D" uid="uid://d0fgor0on4gro" path="res://assets/enemy/banco_de_assets/spear_skeleton/Run.png" id="2_4j6l1"]
 [ext_resource type="Texture2D" uid="uid://cdlkofs0cu7c0" path="res://assets/enemy/banco_de_assets/spear_skeleton/Idle.png" id="3_ds0tf"]
+[ext_resource type="Texture2D" uid="uid://iwqmnrb2quhk" path="res://assets/enemy/banco_de_assets/spear_skeleton/Attack_air.png" id="3_swvfd"]
 [ext_resource type="Texture2D" uid="uid://86843x10nx3g" path="res://assets/enemy/banco_de_assets/spear_skeleton/Hit.png" id="4_v3ryo"]
 [ext_resource type="Texture2D" uid="uid://ba0178kxbp85x" path="res://assets/enemy/banco_de_assets/spear_skeleton/Death.png" id="5_kswlo"]
-[ext_resource type="Texture2D" uid="uid://btkjg6uasql6v" path="res://assets/enemy/banco_de_assets/spear_skeleton/Attack_2.png" id="6_kwilb"]
 [ext_resource type="Texture2D" uid="uid://d0nkqgvuw5l4q" path="res://assets/enemy/banco_de_assets/spear_skeleton/Attack_1.png" id="7_yknha"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="8_i2y1x"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="9_dw2nc"]
@@ -135,6 +135,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_oymb6"]
 resource_name = "attack_air"
+length = 0.7
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -146,7 +147,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_kwilb")]
+"values": [ExtResource("3_swvfd")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -158,7 +159,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [5]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -167,10 +168,10 @@ tracks/2/path = NodePath(".:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.3, 0.6, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4]
+"values": [0, 1, 2, 3]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -179,36 +180,21 @@ tracks/3/path = NodePath("../AttackArea/AttackCollisionAir:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.25, 0.3),
+"times": PackedFloat32Array(0.6, 0.65),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/4/type = "value"
+tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:self_modulate")
+tracks/4/path = NodePath("../StateMachine/SpearSkeletonAttack")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../StateMachine/SpearSkeletonAttack")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.25),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"attack_timer_start"
-}]
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_h1h2r"]
@@ -281,12 +267,9 @@ tracks/5/path = NodePath("../StateMachine/SpearSkeletonAttack")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.5),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"attack_timer_start"
-}]
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 
 [sub_resource type="Animation" id="Animation_v5gs7"]
@@ -610,11 +593,11 @@ target = "player"
 
 [node name="AttackCollisionAir" type="CollisionPolygon2D" parent="AttackArea"]
 self_modulate = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(22, 1, 75, -17, 79, -7, 25, 11)
+polygon = PackedVector2Array(-70, -53, -45, -69, -15, -77, 13, -75, 36, -66, 59, -50, 73, -30, 83, -1, 88, 32, 11, 32, 7, -60, -32, -61)
 disabled = true
 
 [node name="AttackCollisionGround" type="CollisionPolygon2D" parent="AttackArea"]
-polygon = PackedVector2Array(22, 14, 77, 14, 77, -1, 22, -1)
+polygon = PackedVector2Array(22, 14, 79, 14, 79, -1, 22, -1)
 disabled = true
 
 [node name="ContactDamage" parent="." instance=ExtResource("9_dw2nc")]
@@ -645,14 +628,14 @@ collision_layer = 0
 [node name="CanAttackGroundArea" type="CollisionPolygon2D" parent="CanAttackGround"]
 modulate = Color(0.0901961, 0.262745, 0.541176, 1)
 self_modulate = Color(0, 1, 0.831373, 1)
-polygon = PackedVector2Array(20, -1, 60, -1, 60, 32, 20, 32)
+polygon = PackedVector2Array(20, -1, 76, -1, 76, 32, 20, 32)
 
 [node name="CanAttackAir" type="Area2D" parent="."]
 position = Vector2(0, -32)
 collision_layer = 0
 
 [node name="CanAttackAirArea" type="CollisionPolygon2D" parent="CanAttackAir"]
-polygon = PackedVector2Array(60, -1, 20, -1, 20, -11, 74, -22)
+polygon = PackedVector2Array(79, -1, 20, -1, 0, -33, 0, -78, 32, -68, 60, -50)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("11_jpuhj")

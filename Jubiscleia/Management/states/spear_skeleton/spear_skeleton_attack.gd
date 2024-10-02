@@ -21,10 +21,8 @@ func enter_state() -> void:
 func exit_state() -> void:
 	set_physics_process(false)
 	skeleton.is_attacking = false
+	attack_timer.start()
 
 func _on_animation_finished(anim):
 	if anim == "attack_ground" or anim == "attack_air":
 		skeleton.fsm.change_state(skeleton.idle_state)
-
-func attack_timer_start():
-	attack_timer.start()

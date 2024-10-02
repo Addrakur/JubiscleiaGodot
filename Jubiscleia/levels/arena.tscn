@@ -32,7 +32,7 @@ _data = {
 }
 point_count = 2
 
-[node name="Arena" type="Node2D" node_paths=PackedStringArray("player")]
+[node name="arena" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_5moen")
 player = NodePath("player")
 
