@@ -17,6 +17,8 @@ func _ready():
 	speed = Parameters.player_dash_speed
 
 func enter_state() -> void:
+	if player.is_on_floor():
+		player.dash_cooldown.start()
 	player.set_collision_mask_value(2,false)
 	player.set_collision_layer_value(1,false)
 	player.collision.shape.size = Vector2(15,10)
@@ -29,10 +31,10 @@ func enter_state() -> void:
 		direction = player.direction
 	else:
 		direction = player.last_direction
-	player.dash_cooldown.start()
 	animation.play("dash")
 	player.override_gravity = 0.1
 	player.velocity.y = 0
+	
 
 func exit_state() -> void:
 	set_physics_process(false)
@@ -47,6 +49,7 @@ func exit_state() -> void:
 	anim_finish = false
 	passed_enemy = false
 	enemy.clear()
+	
 
 func _physics_process(_delta):
 	if PlayerVariables.move:

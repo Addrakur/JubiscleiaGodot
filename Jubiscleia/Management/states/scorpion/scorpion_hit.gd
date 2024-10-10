@@ -18,7 +18,7 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	scorpion.health_component.is_getting_hit = true
-	animation.play("hit")
+	animation.play.call_deferred("hit")
 	scorpion.velocity.x = 0
 	knockback()
 

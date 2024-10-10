@@ -49,7 +49,7 @@ func _on_spear_2_pressed() -> void:
 		PlayerVariables.skill_1 = "sword"
 		PlayerVariables.skill_2 = "spear"
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not visible:
 		return
 	

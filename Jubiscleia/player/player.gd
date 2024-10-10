@@ -92,7 +92,7 @@ func _process(_delta):
 	if not alive:
 		fsm.change_state(death_state)
 	
-	if Input.is_action_pressed("dash") and can_dash:
+	if Input.is_action_just_pressed("dash") and can_dash:
 		if fsm.state == wall_grab_state:
 			direction = -wall_grab_ray_cast.scale.x
 		fsm.change_state(dash_state)
@@ -175,11 +175,12 @@ func spawn_attack_projectile(player_direction: bool):
 	var proj = Paths.projectile.instantiate()
 	add_child(proj)
 	proj.position = global_position + PlayerVariables.get(PlayerVariables.current_attack + "_location")
+	proj.starting_pos = proj.position #Usado pra medir o range do ataque
 	proj.direction = last_direction if player_direction else -last_direction
 	proj.collision_area.scale.x = proj.direction
 	proj.texture.flip_h = true if proj.direction == -1 else false
 
-func spawn_spear_burst(player_direction: bool):
+func spawn_spear_burst():
 	var burst = Paths.spear_burst.instantiate()
 	add_child(burst)
 	#burst.position = global_position + PlayerVariables.get(PlayerVariables.current_attack + "_location")
@@ -209,46 +210,12 @@ func _on_poise_timer_timeout():
 	health_component.current_poise = health_component.max_poise
 
 func set_parameters():
-	#player_max_health Ja foi
-	#player_max_poise Ja foi
-	#player_poise_recover_time Ja foi
-	#player_knockback_mult Ja foi
-	#player_hit_recover_limit Ja foi
-#
 	coyote_time.wait_time = Parameters.player_coyote_time #player_coyote_time
-#
-	#player_run_speed Ja foi
-#
 	jump_height = Parameters.player_first_jump_height #player_first_jump_height
 	jump_time_to_peak = Parameters.player_first_jump_time_to_peak #player_first_jump_time_to_peak
 	jump_time_to_descent = Parameters.player_first_jump_time_to_descend #player_first_jump_time_to_descend
-	#player_first_jump_move_speed Ja foi
-#
-	#player_double_jump_height Ja foi
-	#player_double_jump_time_to_peak Ja foi
-	#player_double_jump_move_speed Ja foi
-#
-	#player_fall_terminal_velocity Ja foi
-	#player_fall_move_speed Ja foi
-#
-	#player_dash_speed Ja foi
 	dash_cooldown.wait_time = Parameters.player_dash_cd #player_dash_cd
-#
-	#player_wall_grab_gravity Ja foi
-	#player_wall_grab_out_force Ja foi
-	#player_wall_grab_min_wait_time Ja foi
-	#player_wall_grab_max_wait_time Ja foi
-#
 	combo_timer.wait_time = Parameters.player_combo_memory_time #player_combo_memory_time
-	#player_hits_0_1 Ja foi
-	#player_hits_1_2 Ja foi
-	#player_hits_2_3 Ja foi
-#
-	#player_0_timer Ja foi
-	#player_1_timer Ja foi
-	#player_2_timer Ja foi
-	#player_3_timer Ja foi
-	
 func combo_timer_start():
 	combo_timer.wait_time = Parameters.player_combo_memory_time
 	combo_timer.start()

@@ -2306,7 +2306,7 @@ text = "Padrao"
 layout_mode = 2
 theme_override_constants/separation = 25
 script = ExtResource("3_vq8mx")
-default_value = 500.0
+default_value = 300.0
 slider_min = 50.0
 slider_max = 1000.0
 slider_step = 50.0
@@ -2326,7 +2326,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 5
-text = "500"
+text = "300"
 
 [node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_knockback"]
 layout_mode = 2
@@ -2345,7 +2345,7 @@ text = "Padrao"
 layout_mode = 2
 theme_override_constants/separation = 25
 script = ExtResource("3_vq8mx")
-default_value = -50.0
+default_value = -100.0
 slider_min = -300.0
 slider_step = 10.0
 
@@ -2364,7 +2364,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 5
-text = "-50"
+text = "-100"
 
 [node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_knockup"]
 layout_mode = 2
@@ -2382,9 +2382,9 @@ text = "Padrao"
 layout_mode = 2
 theme_override_constants/separation = 25
 script = ExtResource("3_vq8mx")
-default_value = 10.0
+default_value = 20.0
 slider_min = 1.0
-slider_max = 20.0
+slider_max = 50.0
 slider_step = 1.0
 
 [node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_poise_damage"]
@@ -2402,7 +2402,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 5
-text = "10"
+text = "20"
 
 [node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_poise_damage"]
 layout_mode = 2
@@ -3171,7 +3171,7 @@ text = "Padrao"
 layout_mode = 2
 theme_override_constants/separation = 25
 script = ExtResource("3_vq8mx")
-default_value = 500.0
+default_value = 300.0
 slider_min = 50.0
 slider_max = 1000.0
 slider_step = 50.0
@@ -3191,7 +3191,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 5
-text = "500"
+text = "300"
 
 [node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_knockback"]
 layout_mode = 2
@@ -3210,7 +3210,7 @@ text = "Padrao"
 layout_mode = 2
 theme_override_constants/separation = 25
 script = ExtResource("3_vq8mx")
-default_value = -50.0
+default_value = -100.0
 slider_min = -300.0
 slider_step = 10.0
 
@@ -3229,7 +3229,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 5
-text = "-50"
+text = "-100"
 
 [node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_knockup"]
 layout_mode = 2
@@ -3247,9 +3247,9 @@ text = "Padrao"
 layout_mode = 2
 theme_override_constants/separation = 25
 script = ExtResource("3_vq8mx")
-default_value = 10.0
+default_value = 20.0
 slider_min = 1.0
-slider_max = 20.0
+slider_max = 50.0
 slider_step = 1.0
 
 [node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_poise_damage"]
@@ -4226,7 +4226,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 5
-text = "500"
+text = "300"
 
 [node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_knockback"]
 layout_mode = 2
@@ -4264,7 +4264,7 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_offset_x = 2
 theme_override_constants/shadow_offset_y = 2
 theme_override_constants/outline_size = 5
-text = "-50"
+text = "-100"
 
 [node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_knockup"]
 layout_mode = 2
@@ -4284,7 +4284,7 @@ theme_override_constants/separation = 25
 script = ExtResource("3_vq8mx")
 default_value = 20.0
 slider_min = 1.0
-slider_max = 30.0
+slider_max = 50.0
 slider_step = 1.0
 
 [node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_poise_damage"]

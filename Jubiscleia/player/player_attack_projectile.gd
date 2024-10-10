@@ -11,6 +11,8 @@ var direction: float
 var can_destroy: bool = false
 var attack: String = PlayerVariables.current_attack
 
+var starting_pos: Vector2
+
 func _ready():
 	animation.play(attack)
 	attack_area.damage = PlayerVariables.get(attack + "_projectile_damage")
@@ -33,6 +35,7 @@ func _physics_process(delta):
 
 func _on_animation_finished(anim):
 	if anim == attack + "_finish":
+		print(starting_pos.distance_to(global_position)/16)
 		queue_free()
 	
 	if anim == attack:

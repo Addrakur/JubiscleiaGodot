@@ -23,7 +23,7 @@ func enter_state() -> void:
 	player.health_component.is_getting_hit = true
 	player.health_component.invulnerable = true
 	player.can_dash = false
-	animation.play("hit")
+	animation.play.call_deferred("hit")
 	player.velocity.x = 0
 	knockback()
 

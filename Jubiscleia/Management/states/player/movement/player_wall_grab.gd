@@ -1,7 +1,7 @@
 class_name PlayerWallGrab
 extends State
 
-@export var player: CharacterBody2D
+@export var player: Player
 @export var animation: AnimationPlayer
 var gravity: float
 var out_force: float
@@ -22,6 +22,7 @@ func enter_state() -> void:
 	player.velocity.y = 1 if player.velocity.y > 0 else player.velocity.y
 	player.override_gravity = 1
 	player.jump_count = player.max_jump_count - 1
+	player.can_dash = true
 
 func exit_state() -> void:
 	set_physics_process(false)

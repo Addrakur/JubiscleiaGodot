@@ -1,7 +1,7 @@
 class_name PlayerFall
 extends State
 
-@export var player: CharacterBody2D
+@export var player: Player
 @export var animation: AnimationPlayer
 var speed: float
 var terminal_velocity: float
@@ -35,6 +35,8 @@ func _physics_process(_delta):
 			player.fsm.change_state(player.idle_state)
 		else:
 			player.fsm.change_state(player.move_state)
+		if player.dash_cooldown.is_stopped():
+			player.can_dash = true
 	
 	if player.wall_grab_ray_cast.is_colliding(): #and player.direction == player.wall_grab_ray_cast.scale.x:
 		player.fsm.change_state(player.wall_grab_state)

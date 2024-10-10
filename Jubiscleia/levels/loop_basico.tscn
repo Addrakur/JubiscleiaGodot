@@ -26,9 +26,10 @@ _data = {
 }
 point_count = 2
 
-[node name="LoopBasico" type="Node2D" node_paths=PackedStringArray("player")]
+[node name="tutorial" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_7dotf")
 player = NodePath("Player")
+free_spawn = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
@@ -61,7 +62,7 @@ direction = -1.0
 position = Vector2(2752, 480)
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_q1c72")]
-position = Vector2(32, 320)
+position = Vector2(32, 416)
 camera = NodePath("../Camera2D")
 
 [node name="Ground" type="TileMapLayer" parent="." groups=["terrain"]]
