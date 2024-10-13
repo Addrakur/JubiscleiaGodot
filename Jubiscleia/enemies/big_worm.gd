@@ -12,6 +12,8 @@ extends CharacterBody2D
 @onready var can_attack_area: CollisionShape2D = $CanAttackArea/CanAttackCollision
 const CAA_POSITION: float = -5
 @onready var attack_timer: Timer = $AttackTimer
+@onready var hit_modulate: AnimationPlayer = $HitModulate
+@onready var poise_timer: Timer = $PoiseTimer
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var move_state: State = $StateMachine/BigWormMove as BigWormMove
@@ -31,7 +33,7 @@ var alive: bool = true
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	pass
+	attack_area.attack_name = name + "_attack"
 
 func _process(_delta):
 	if alive and not health_component.is_getting_hit:
@@ -46,8 +48,6 @@ func _process(_delta):
 	
 	if not alive and not fsm.state == death_state:
 		fsm.change_state(death_state)
-	elif health_component.is_getting_hit and not fsm.state == hit_state:
-		fsm.change_state(hit_state)
 	
 
 func _physics_process(delta):
@@ -57,11 +57,11 @@ func _physics_process(delta):
 	
 
 func can_attack_area_entered(body):
-	if body.is_in_group("player") and not body.is_in_group("projectile"):
+	if body.is_in_group("player"):
 		player_ref = body
 
 func can_attack_area_exited(body):
-	if body == player_ref:
+	if body.is_in_group("player"):
 		player_ref = null
 
 func right():
@@ -75,3 +75,9 @@ func left():
 	collision.scale.x = 1
 	attack_area_collision.scale.x = 1
 	can_attack_area.position.x = CAA_POSITION
+
+func _on_hit_modulate_animation_finished(_anim_name):
+	health_component.last_attack = ""
+
+func _on_poise_timer_timeout():
+	health_component.current_poise = health_component.max_poise

@@ -19,6 +19,9 @@ texture = ExtResource("1_30gas")
 collision_mask = 1
 target = "player"
 damage = 5.0
+knockup_force = -300.0
+poise_damage = 10.0
+attack_name = "spike"
 single_hit_per_enemy = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]

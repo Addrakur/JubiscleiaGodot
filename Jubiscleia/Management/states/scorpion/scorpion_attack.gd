@@ -6,9 +6,6 @@ extends State
 
 @export var attack_distance: float
 @export var speed: float
-@export var damage: float
-@export var knockback_force: float
-@export var knockup_force: float
 
 var direction: float
 var new_x: float
@@ -18,9 +15,6 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	scorpion.attack_area.damage = damage
-	scorpion.attack_area.knockback_force = knockback_force
-	scorpion.attack_area.knockup_force = knockup_force
 	scorpion.is_attacking = true
 	new_x = scorpion.player_ref.position.x - attack_distance if scorpion.player_ref.position.x < scorpion.position.x else scorpion.player_ref.position.x + attack_distance
 	direction = 1 if new_x > scorpion.position.x else -1

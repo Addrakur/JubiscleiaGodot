@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bx4lmho2y840s"]
+[gd_scene load_steps=32 format=3 uid="uid://bx4lmho2y840s"]
 
 [ext_resource type="Script" path="res://enemies/snake.gd" id="1_ep4bx"]
 [ext_resource type="Texture2D" uid="uid://boe1qhplhi48e" path="res://assets/enemy/banco_de_assets/snake/snake_idle.png" id="2_avb4p"]
@@ -16,13 +16,10 @@
 [ext_resource type="Script" path="res://Management/states/snake/snake_death.gd" id="14_q5to3"]
 [ext_resource type="Script" path="res://Management/states/state.gd" id="16_go42g"]
 [ext_resource type="Script" path="res://Management/states/snake/snake_chase.gd" id="16_yplpm"]
+[ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="17_0tqgs"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cyy75"]
-size = Vector2(12, 50)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_loayh"]
-radius = 8.0
-height = 32.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_utiwq"]
+radius = 18.0
 
 [sub_resource type="Animation" id="Animation_fixrv"]
 length = 0.001
@@ -401,6 +398,44 @@ _data = {
 "run": SubResource("Animation_xk164")
 }
 
+[sub_resource type="Animation" id="Animation_084i1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_jsre7"]
+resource_name = "hit"
+length = 0.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(128.498, 0, 0, 1), Color(1, 1, 1, 1), Color(128.498, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gkepf"]
+_data = {
+"RESET": SubResource("Animation_084i1"),
+"hit": SubResource("Animation_jsre7")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smh5j"]
 size = Vector2(288, 104)
 
@@ -411,7 +446,6 @@ size = Vector2(26, 40)
 size = Vector2(33.625, 25.75)
 
 [node name="Snake" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
-position = Vector2(0, -16)
 collision_layer = 2
 collision_mask = 13
 floor_constant_speed = true
@@ -420,17 +454,12 @@ health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(3.00001, 18)
-rotation = 1.5708
-shape = SubResource("RectangleShape2D_cyy75")
-
-[node name="Collision2" type="CollisionShape2D" parent="."]
-position = Vector2(-16, 8)
-shape = SubResource("CapsuleShape2D_loayh")
+position = Vector2(-9, -18)
+shape = SubResource("CircleShape2D_utiwq")
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(0, -8)
+position = Vector2(0, -32)
 scale = Vector2(2, 2)
 texture = ExtResource("2_avb4p")
 hframes = 4
@@ -440,10 +469,20 @@ libraries = {
 "": SubResource("AnimationLibrary_p3sgm")
 }
 
+[node name="HitModulate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gkepf")
+}
+
 [node name="AttackTimer" type="Timer" parent="."]
 one_shot = true
 
+[node name="PoiseTimer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
 [node name="ChaseArea" type="Area2D" parent="."]
+position = Vector2(0, -24)
 collision_layer = 0
 
 [node name="CanChaseArea" type="CollisionShape2D" parent="ChaseArea"]
@@ -451,6 +490,7 @@ position = Vector2(-48, -28)
 shape = SubResource("RectangleShape2D_smh5j")
 
 [node name="CanAttackArea" type="Area2D" parent="."]
+position = Vector2(0, -24)
 collision_layer = 0
 
 [node name="CanAttackCollision" type="CollisionShape2D" parent="CanAttackArea"]
@@ -459,8 +499,12 @@ shape = SubResource("RectangleShape2D_n2j01")
 debug_color = Color(0.831373, 0.305882, 0.317647, 0.419608)
 
 [node name="AttackArea" parent="." instance=ExtResource("6_krml7")]
+position = Vector2(0, -24)
 collision_mask = 1
 target = "player"
+damage = 8.0
+knockup_force = 10.0
+knockback_force = 50.0
 
 [node name="AttackCollision" type="CollisionShape2D" parent="AttackArea"]
 position = Vector2(-41.8125, 8)
@@ -468,10 +512,12 @@ shape = SubResource("RectangleShape2D_10i2g")
 disabled = true
 debug_color = Color(0.890196, 0.682353, 0, 0.419608)
 
-[node name="HealthComponent" parent="." instance=ExtResource("7_0q0uj")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("7_0q0uj")]
 scale = Vector2(0.967821, 1)
-max_health = 10.0
+max_health = 8.0
+max_poise = 5.0
 destroy_after_dead = true
+attack_timer = NodePath("../AttackTimer")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("11_svs25")
@@ -488,9 +534,6 @@ limit_offset = 32.0
 script = ExtResource("13_gcars")
 snake = NodePath("../..")
 animation = NodePath("../../Animations")
-damage = 8.0
-knockback_force = 50.0
-knockup_force = 10.0
 
 [node name="SnakeHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
 script = ExtResource("13_k7h8k")
@@ -518,9 +561,16 @@ speed = 100.0
 [node name="State" type="Node" parent="StateMachine"]
 script = ExtResource("16_go42g")
 
+[node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("17_0tqgs")]
+offset_top = -80.0
+offset_bottom = -57.0
+parent = NodePath("..")
+
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeHit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/SnakeDeath" method="_on_animation_finished"]
+[connection signal="animation_finished" from="HitModulate" to="." method="_on_hit_modulate_animation_finished"]
+[connection signal="timeout" from="PoiseTimer" to="." method="_on_poise_timer_timeout"]
 [connection signal="body_entered" from="ChaseArea" to="." method="chase_area_entered"]
 [connection signal="body_exited" from="ChaseArea" to="." method="chase_area_exited"]
 [connection signal="body_entered" from="CanAttackArea" to="." method="_on_can_attack_area_body_entered"]

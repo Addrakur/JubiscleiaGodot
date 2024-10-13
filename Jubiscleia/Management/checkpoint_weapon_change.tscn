@@ -1,0 +1,120 @@
+[gd_scene load_steps=2 format=3 uid="uid://7xqtkvl73d56"]
+
+[ext_resource type="Script" path="res://Management/checkpoint_weapon_change.gd" id="1_lyxpg"]
+
+[node name="checkpoint_weapon_change" type="CanvasLayer"]
+script = ExtResource("1_lyxpg")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 192.0
+offset_top = 128.0
+offset_right = -192.0
+offset_bottom = -124.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sword_1" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = -400.0
+offset_bottom = -177.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sword"
+
+[node name="Sword_2" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 80.0
+offset_top = 208.0
+offset_right = -400.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Sword"
+
+[node name="Axe_1" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 240.0
+offset_top = 80.0
+offset_right = -240.0
+offset_bottom = -177.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Axe"
+
+[node name="Axe_2" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 240.0
+offset_top = 208.0
+offset_right = -240.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Axe"
+
+[node name="Spear_1" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 400.0
+offset_top = 80.0
+offset_right = -80.0
+offset_bottom = -177.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Spear"
+
+[node name="Spear_2" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 400.0
+offset_top = 208.0
+offset_right = -80.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Spear"
+
+[node name="W1Label" type="Label" parent="."]
+offset_left = 400.0
+offset_top = 160.0
+offset_right = 560.0
+offset_bottom = 192.0
+text = "Arma 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="W2Label" type="Label" parent="."]
+offset_left = 400.0
+offset_top = 288.0
+offset_right = 560.0
+offset_bottom = 320.0
+text = "Arma 2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Panel/Sword_1" to="." method="_on_sword_1_pressed"]
+[connection signal="pressed" from="Panel/Sword_2" to="." method="_on_sword_2_pressed"]
+[connection signal="pressed" from="Panel/Axe_1" to="." method="_on_axe_1_pressed"]
+[connection signal="pressed" from="Panel/Axe_2" to="." method="_on_axe_2_pressed"]
+[connection signal="pressed" from="Panel/Spear_1" to="." method="_on_spear_1_pressed"]
+[connection signal="pressed" from="Panel/Spear_2" to="." method="_on_spear_2_pressed"]

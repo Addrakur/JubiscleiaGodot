@@ -1,12 +1,9 @@
 class_name PlayerJumpAttack
 extends State
 
-@export var player: CharacterBody2D
+@export var player: Player
 @export var animation: AnimationPlayer
 @export var move_speed: float
-var damage: float
-var knockback_force: float
-var knockup_force: float
 @onready var attack_area = $"../../AttackArea/AttackArea"
 
 var speed: float
@@ -22,24 +19,23 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	stop = true
-	player.can_dash = false
+	#player.can_dash = false
 	next_attack_sustain = player.next_attack
 	PlayerVariables.anim_finish = false
 	
 	PlayerVariables.last_skill = PlayerVariables.current_skill
 	animation.play(PlayerVariables.current_skill + "_jump_" + str(PlayerVariables.corruption_level))
 	PlayerVariables.current_attack = PlayerVariables.current_skill + "_jump_" + str(PlayerVariables.corruption_level)
+	player.attack_area.attack_name = PlayerVariables.current_attack
 	player.can_combo = false
 	
 	speed = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_speed")
-	damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_" + str(PlayerVariables.corruption_level) + "_damage")
-	knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_" + str(PlayerVariables.corruption_level) + "_knockback")
-	knockup_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_" + str(PlayerVariables.corruption_level) + "_knockup")
 	player.override_gravity = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_gravity")
 	
-	player.attack_area.damage = damage
-	player.attack_area.knockback_force = knockback_force
-	player.attack_area.knockup_force = knockup_force
+	player.attack_area.damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_" + str(PlayerVariables.corruption_level) + "_damage")
+	player.attack_area.knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_" + str(PlayerVariables.corruption_level) + "_knockback")
+	player.attack_area.knockup_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_" + str(PlayerVariables.corruption_level) + "_knockup")
+	player.attack_area.poise_damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_" + str(PlayerVariables.corruption_level) + "_poise")
 	
 	player.velocity.x = 0
 	
@@ -59,7 +55,10 @@ func exit_state() -> void:
 	PlayerVariables.move = false
 	PlayerVariables.current_attack = ""
 	PlayerVariables.can_move_during_attack = false
+	player.can_flip = true
 	stop = false
+	player.can_dash = true
+	player.camera_methods.weapon_shake_false()
 	
 	PlayerVariables.anim_finish = false
 	
@@ -82,9 +81,6 @@ func _physics_process(_delta):
 	if PlayerVariables.last_skill == "axe" and player.is_on_floor():
 		_play_animation("axe_jump_wind_down_" + str(PlayerVariables.corruption_level))
 
-func _on_animation_finished(anim):
-	pass
-
 func stop_false() -> void:
 	stop = false
 
@@ -104,5 +100,4 @@ func _set_velocity_y(value: float):
 	player.velocity.y = value
 
 func get_out_of_state():
-	player.can_dash = true
 	player.fsm.change_state(player.fall_state)

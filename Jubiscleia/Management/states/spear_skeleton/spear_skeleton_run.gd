@@ -3,11 +3,12 @@ extends State
 
 @export var skeleton: CharacterBody2D
 @export var animation: AnimationPlayer
-@export var speed: float
+var speed: float
 @export var attack_timer: Timer
 
 func _ready():
 	set_physics_process(false)
+	speed = Parameters.spear_skeleton_run_speed
 
 func enter_state() -> void:
 	set_physics_process(true)
@@ -30,7 +31,7 @@ func _physics_process(_delta):
 				skeleton.fsm.change_state(skeleton.idle_state)
 	
 func set_direction():
-	if skeleton.player_ref.position.x > skeleton.position.x:
+	if skeleton.player_ref.position.x > skeleton.position.x - 10:
 		skeleton.direction = 1
-	else:
+	elif skeleton.player_ref.position.x < skeleton.position.x + 10:
 		skeleton.direction = -1

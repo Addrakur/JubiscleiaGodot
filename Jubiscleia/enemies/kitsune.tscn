@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://radoy72pb50a"]
+[gd_scene load_steps=38 format=3 uid="uid://radoy72pb50a"]
 
 [ext_resource type="Script" path="res://enemies/kitsune.gd" id="1_3ptr8"]
 [ext_resource type="Texture2D" uid="uid://c4s8bcr5r7i73" path="res://assets/enemy/banco_de_assets/kitsune/Run.png" id="1_5gbqr"]
@@ -19,6 +19,8 @@
 [ext_resource type="Script" path="res://Management/states/kitsune/kitsune_hit.gd" id="16_ks7uf"]
 [ext_resource type="Script" path="res://Management/states/kitsune/kitsune_attack.gd" id="18_kce21"]
 [ext_resource type="Script" path="res://Management/states/kitsune/kitsune_warp.gd" id="19_dtqgi"]
+[ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="20_06pfj"]
+[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="20_r3x23"]
 
 [sub_resource type="Animation" id="Animation_bocml"]
 length = 0.001
@@ -525,7 +527,52 @@ _data = {
 "warp_out": SubResource("Animation_xpqv1")
 }
 
-[node name="Kitsune" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemy"]]
+[sub_resource type="Animation" id="Animation_100ro"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1qj3w"]
+resource_name = "hit"
+length = 0.45
+step = 0.075
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(128.498, 0, 0, 1), Color(1, 1, 1, 1), Color(128.498, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_io2th"]
+_data = {
+"RESET": SubResource("Animation_100ro"),
+"hit": SubResource("Animation_1qj3w")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7t3rs"]
+radius = 12.0
+height = 68.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qugsr"]
+radius = 9.0
+
+[node name="Kitsune" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "contact_damage") groups=["enemy"]]
 z_index = -10
 collision_layer = 2
 collision_mask = 13
@@ -533,8 +580,10 @@ script = ExtResource("1_3ptr8")
 health_component = NodePath("HealthComponent")
 off_set_wander = 150.0
 min_wander = 75.0
+contact_damage = NodePath("ContactDamage")
 
 [node name="Texture" type="Sprite2D" parent="."]
+position = Vector2(0, -45)
 texture = ExtResource("1_5gbqr")
 hframes = 8
 
@@ -543,12 +592,22 @@ libraries = {
 "": SubResource("AnimationLibrary_5fyoy")
 }
 
-[node name="Collision" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-8, 45, 13, 45, 13, -21, -8, -21)
+[node name="HitModulate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_io2th")
+}
 
-[node name="HealthComponent" parent="." instance=ExtResource("7_v7gb8")]
-max_health = 20.0
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -34)
+shape = SubResource("CapsuleShape2D_7t3rs")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("7_v7gb8")]
+has_parameter_slider = true
+variable_name = "kitsune"
+max_health = 15.0
+max_poise = 10.0
 destroy_after_dead = true
+attack_timer = NodePath("../AttackTimer")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("9_lnycy")
@@ -599,25 +658,43 @@ script = ExtResource("19_dtqgi")
 kitsune = NodePath("../..")
 animation = NodePath("../../Animations")
 
+[node name="ContactDamage" parent="." instance=ExtResource("20_r3x23")]
+position = Vector2(0, -45)
+collision_mask = 1
+target = "player"
+damage = 2.0
+knockup_force = -100.0
+knockback_force = 300.0
+poise_damage = 20.0
+attack_name = "headdamage"
+
+[node name="contact_area" type="CollisionShape2D" parent="ContactDamage"]
+position = Vector2(0, -15)
+shape = SubResource("CircleShape2D_qugsr")
+debug_color = Color(0.971705, 0.00786716, 0.440871, 0.42)
+
 [node name="CanAttackShort" type="Area2D" parent="."]
-visible = false
+position = Vector2(0, -45)
+collision_layer = 0
 
 [node name="ShortCollision" type="CollisionPolygon2D" parent="CanAttackShort"]
 modulate = Color(0.0431373, 0.0901961, 0.729412, 1)
-polygon = PackedVector2Array(0, 45, 320, 45, 320, -158, 0, -158)
+polygon = PackedVector2Array(0, 45, 320, 45, 320, -115, 0, -115)
 
 [node name="RunArea" type="Area2D" parent="."]
-visible = false
+position = Vector2(0, -45)
+collision_layer = 0
 
 [node name="RunCollision" type="CollisionPolygon2D" parent="RunArea"]
 modulate = Color(0, 0, 0.670588, 1)
-polygon = PackedVector2Array(-9, 45, 214, 45, 214, -158, -9, -158)
+polygon = PackedVector2Array(-16, 45, 192, 45, 192, -115, -16, -115)
 
 [node name="DetectArea" type="Area2D" parent="."]
-visible = false
+position = Vector2(0, -45)
+collision_layer = 0
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="DetectArea"]
-polygon = PackedVector2Array(574, 45, 574, -158, -574, -158, -574, 45)
+polygon = PackedVector2Array(576, 45, 576, -115, -384, -115, -384, 45)
 
 [node name="Idle Timer" type="Timer" parent="."]
 process_callback = 0
@@ -633,7 +710,7 @@ wait_time = 3.0
 one_shot = true
 
 [node name="WallSensor" type="RayCast2D" parent="."]
-position = Vector2(0, 21)
+position = Vector2(0, -24)
 target_position = Vector2(16, 0)
 collision_mask = 12
 
@@ -642,20 +719,32 @@ wait_time = 3.0
 one_shot = true
 
 [node name="AttackSpawnPoint" type="Marker2D" parent="."]
-position = Vector2(20, 45)
+position = Vector2(20, 0)
 
 [node name="TrappedSensor" type="RayCast2D" parent="."]
-position = Vector2(0, 21)
+position = Vector2(0, -24)
 target_position = Vector2(-20, 0)
 collision_mask = 12
+
+[node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("20_06pfj")]
+offset_top = -101.0
+offset_bottom = -78.0
+parent = NodePath("..")
+metadata/_edit_use_anchors_ = true
+
+[node name="PoiseTimer" type="Timer" parent="."]
+wait_time = 4.0
+one_shot = true
 
 [connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneDeath" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneHit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneWarp" method="_on_animation_finished"]
+[connection signal="animation_finished" from="HitModulate" to="." method="_on_hit_modulate_animation_finished"]
 [connection signal="body_entered" from="CanAttackShort" to="." method="_on_can_attack_short_body_entered"]
 [connection signal="body_exited" from="CanAttackShort" to="." method="_on_can_attack_short_body_exited"]
 [connection signal="body_entered" from="RunArea" to="." method="_on_run_area_body_entered"]
 [connection signal="body_exited" from="RunArea" to="." method="_on_run_area_body_exited"]
 [connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
+[connection signal="timeout" from="PoiseTimer" to="." method="_on_poise_timer_timeout"]

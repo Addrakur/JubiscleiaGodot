@@ -3,14 +3,16 @@ extends State
 
 @export var skeleton: CharacterBody2D
 @export var animation: AnimationPlayer
-@export var speed: float
-@export var wander_limit: float
+var speed: float
+var wander_limit: float
 @export var attack_timer: Timer
 
 var new_x: float
 
 func _ready():
 	set_physics_process(false)
+	speed = Parameters.spear_skeleton_walk_speed
+	wander_limit = Parameters.spear_skeleton_wander_limit
 
 func enter_state() -> void:
 	set_physics_process(true)

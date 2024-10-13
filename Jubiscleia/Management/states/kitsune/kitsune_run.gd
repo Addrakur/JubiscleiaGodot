@@ -8,6 +8,8 @@ extends State
 
 func _ready():
 	set_physics_process(false)
+	speed = Parameters.kitsune_run_speed
+	run_timer.wait_time = Parameters.kitsune_run_duration
 
 func enter_state() -> void:
 	run_timer.start()

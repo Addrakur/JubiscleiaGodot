@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bysdn4i581jjc"]
+[gd_scene load_steps=29 format=3 uid="uid://bysdn4i581jjc"]
 
 [ext_resource type="Script" path="res://Management/states/state_machine.gd" id="1_pjjdi"]
 [ext_resource type="Script" path="res://enemies/scorpion.gd" id="1_v6en7"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Management/states/scorpion/scorpion_death.gd" id="7_wrwk7"]
 [ext_resource type="Script" path="res://Management/states/state.gd" id="8_frrsh"]
 [ext_resource type="Texture2D" uid="uid://c7hfwkunooka2" path="res://assets/enemy/banco_de_assets/scorpion/scorpion_attack.png" id="10_nox61"]
+[ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="16_msgvx"]
 
 [sub_resource type="Animation" id="Animation_h166x"]
 length = 0.001
@@ -339,8 +340,46 @@ _data = {
 "walk": SubResource("Animation_k435s")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sujrj"]
-size = Vector2(46, 18)
+[sub_resource type="Animation" id="Animation_rs1bu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ylykx"]
+resource_name = "hit"
+length = 0.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(128.498, 0, 0, 1), Color(1, 1, 1, 1), Color(128.498, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o15vl"]
+_data = {
+"RESET": SubResource("Animation_rs1bu"),
+"hit": SubResource("Animation_ylykx")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8hil8"]
+radius = 17.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khbgp"]
 size = Vector2(178, 53)
@@ -374,9 +413,7 @@ script = ExtResource("5_qr0hh")
 scorpion = NodePath("../..")
 animation = NodePath("../../Animation")
 attack_distance = 10.0
-speed = 300.0
-damage = 4.0
-knockback_force = 200.0
+speed = 200.0
 
 [node name="ScorpionHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("scorpion", "animation")]
 script = ExtResource("6_e18mf")
@@ -394,6 +431,7 @@ animation = NodePath("../../Animation")
 script = ExtResource("8_frrsh")
 
 [node name="Texture" type="Sprite2D" parent="."]
+position = Vector2(0, -24)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_hod70")
 hframes = 4
@@ -404,19 +442,30 @@ libraries = {
 "": SubResource("AnimationLibrary_putix")
 }
 
+[node name="HitModulate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_o15vl")
+}
+
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, 15)
-shape = SubResource("RectangleShape2D_sujrj")
+position = Vector2(0, -17)
+shape = SubResource("CircleShape2D_8hil8")
 
 [node name="AttackArea" parent="." instance=ExtResource("3_14bc2")]
+position = Vector2(0, -24)
 collision_mask = 1
 target = "player"
+damage = 4.0
+knockup_force = 10.0
+knockback_force = 200.0
+poise_damage = 5.0
 
 [node name="AttackPolygon" type="CollisionPolygon2D" parent="AttackArea"]
 polygon = PackedVector2Array(-24, 24, 24, 24, 24, -3, 14, -11, 8, -11, 0, -8, 0, 2, 0, 5, -24, 5)
 disabled = true
 
 [node name="CanAttackArea" type="Area2D" parent="."]
+position = Vector2(0, -24)
 
 [node name="CanAttackCollision" type="CollisionShape2D" parent="CanAttackArea"]
 position = Vector2(-53, -2.5)
@@ -427,8 +476,11 @@ process_callback = 0
 wait_time = 2.0
 one_shot = true
 
+[node name="PoiseTimer" type="Timer" parent="."]
+one_shot = true
+
 [node name="WallRaycast" type="RayCast2D" parent="."]
-position = Vector2(0, 13)
+position = Vector2(0, -11)
 target_position = Vector2(-26, 0)
 collision_mask = 4
 
@@ -436,12 +488,21 @@ collision_mask = 4
 wait_time = 3.0
 one_shot = true
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_w5574")]
-max_health = 10.0
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("2_w5574")]
+max_health = 5.0
+max_poise = 3.0
 destroy_after_dead = true
+attack_timer = NodePath("../AttackTimer")
+
+[node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("16_msgvx")]
+offset_top = -80.0
+offset_bottom = -57.0
+parent = NodePath("..")
 
 [connection signal="animation_finished" from="Animation" to="StateMachine/ScorpionHit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="StateMachine/ScorpionDeath" method="_on_animation_finished"]
+[connection signal="animation_finished" from="HitModulate" to="." method="_on_hit_modulate_animation_finished"]
 [connection signal="body_entered" from="AttackArea" to="StateMachine/ScorpionAttack" method="attack_area_entered"]
 [connection signal="body_entered" from="CanAttackArea" to="." method="can_attack_area_entered"]
 [connection signal="body_exited" from="CanAttackArea" to="." method="can_attack_area_exited"]
+[connection signal="timeout" from="PoiseTimer" to="." method="_on_poise_timer_timeout"]

@@ -116,7 +116,8 @@ tracks/7/keys = {
 
 [sub_resource type="Animation" id="Animation_7twia"]
 resource_name = "spear_0_3"
-step = 0.02
+length = 0.6
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -916,10 +917,10 @@ tracks/3/path = NodePath("AttackArea/CollisionArea:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(0, -1, 4, -1, 4, -4, 0, -4), PackedVector2Array(0, -1, 10, -1, 10, -11, 0, -11), PackedVector2Array(0, -1, 16, -1, 16, -22, 0, -22), PackedVector2Array(0, -1, 19, -1, 19, -31, 0, -31), PackedVector2Array(-3, -1, 21, -1, 21, -36, -3, -36)]
+"values": [PackedVector2Array(-3, -1, 21, -1, 21, -36, -3, -36)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1037,6 +1038,7 @@ tracks/5/keys = {
 [sub_resource type="Animation" id="Animation_r1cj6"]
 resource_name = "sword_1_3"
 length = 0.8
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1080,10 +1082,10 @@ tracks/3/path = NodePath("AttackArea/CollisionArea:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(0, 0, 5, 0, 5, -5, 0, -5), PackedVector2Array(0, 0, 13, 0, 13, -14, 0, -14), PackedVector2Array(0, 0, 21, 0, 21, -29, 0, -29), PackedVector2Array(0, 0, 25, 0, 25, -41, 0, -41), PackedVector2Array(-4, 0, 27, 0, 27, -45, -4, -45)]
+"values": [PackedVector2Array(-4, -1, 27, -1, 27, -45, -4, -45)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1201,6 +1203,7 @@ tracks/5/keys = {
 [sub_resource type="Animation" id="Animation_d4mgt"]
 resource_name = "sword_2_3"
 length = 0.8
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1244,10 +1247,10 @@ tracks/3/path = NodePath("AttackArea/CollisionArea:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(0, 0, 7, 0, 7, -7, 0, -7), PackedVector2Array(0, 0, 16, 0, 16, -18, 0, -18), PackedVector2Array(0, 0, 26, 0, 26, -36, 0, -36), PackedVector2Array(0, 0, 31, 0, 31, -50, 0, -50), PackedVector2Array(-4, 0, 34, 0, 34, -60, -4, -60)]
+"values": [PackedVector2Array(-4, -1, 34, -1, 34, -60, -4, -60)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1408,10 +1411,10 @@ tracks/3/path = NodePath("AttackArea/CollisionArea:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(0, 0, 8, 0, 8, -8, 0, -8), PackedVector2Array(0, 0, 20, 0, 20, -22, 0, -22), PackedVector2Array(0, 0, 32, 0, 32, -44, 0, -44), PackedVector2Array(0, 0, 38, 0, 38, -62, 0, -62), PackedVector2Array(-6, 0, 42, 0, 42, -70, -6, -70)]
+"values": [PackedVector2Array(-6, -1, 42, -1, 42, -70, -6, -70)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1547,7 +1550,7 @@ _data = {
 "sword_3_3_finish": SubResource("Animation_y7kqs")
 }
 
-[node name="player_attack_projectile" type="Node2D" node_paths=PackedStringArray("animation", "texture", "collision_area", "attack_area") groups=["player", "projectile"]]
+[node name="player_attack_projectile" type="Node2D" node_paths=PackedStringArray("animation", "texture", "collision_area", "attack_area") groups=["player_object", "projectile"]]
 top_level = true
 script = ExtResource("1_c1jhh")
 move = true

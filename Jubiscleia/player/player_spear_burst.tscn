@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://btrcejwrif42t"]
+[gd_scene load_steps=12 format=3 uid="uid://btrcejwrif42t"]
 
 [ext_resource type="Script" path="res://player/player_spear_burst.gd" id="1_rts2k"]
 [ext_resource type="Texture2D" uid="uid://5nx7isr8eqbc" path="res://assets/player/Ataques/Lanca/C1/burst_1_2.png" id="3_1l4px"]
 [ext_resource type="Texture2D" uid="uid://cmxdc3jl8oivb" path="res://assets/player/Ataques/Lanca/C2/burst_2_2.png" id="4_7dl57"]
-[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="4_qvyr3"]
 [ext_resource type="Texture2D" uid="uid://bk4yfmxpyjjoc" path="res://assets/player/Ataques/Lanca/C0/Lanca_0_2_burst.png" id="5_qrgs6"]
 [ext_resource type="Texture2D" uid="uid://dnlep1rcxcw2f" path="res://assets/player/Ataques/Lanca/C3/burst_3_2.png" id="5_tnewr"]
 
@@ -32,30 +31,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../AttackArea/CollisionPolygon2D:polygon")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [PackedVector2Array(0, 0, 130, -1, 130, -20, 113, -50, 68, -63, 30, -59, 0, -27)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../AttackArea/CollisionPolygon2D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_25id6"]
@@ -98,30 +73,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../AttackArea/CollisionPolygon2D:polygon")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [PackedVector2Array(-1, 1, 1, 1, 1, -1, -1, -1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../AttackArea/CollisionPolygon2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_555qu"]
 resource_name = "spear_1_2"
@@ -162,30 +113,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../AttackArea/CollisionPolygon2D:polygon")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [PackedVector2Array(-1, 1, 1, 1, 1, -1, -1, -1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../AttackArea/CollisionPolygon2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_3ntxy"]
@@ -228,30 +155,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../AttackArea/CollisionPolygon2D:polygon")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [PackedVector2Array(-1, 1, 1, 1, 1, -1, -1, -1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../AttackArea/CollisionPolygon2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_uii6v"]
 resource_name = "spear_3_2"
@@ -293,30 +196,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../AttackArea/CollisionPolygon2D:polygon")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [PackedVector2Array(-1, 1, 1, 1, 1, -1, -1, -1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../AttackArea/CollisionPolygon2D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6np2i"]
 _data = {
@@ -327,13 +206,11 @@ _data = {
 "spear_3_2": SubResource("Animation_uii6v")
 }
 
-[node name="spear_burst" type="Node2D" node_paths=PackedStringArray("animation", "texture", "collision_area", "attack_area") groups=["player", "projectile"]]
+[node name="spear_burst" type="Node2D" node_paths=PackedStringArray("animation", "texture") groups=["player_object"]]
 top_level = true
 script = ExtResource("1_rts2k")
 animation = NodePath("Animation")
 texture = NodePath("Texture")
-collision_area = NodePath("AttackArea/CollisionPolygon2D")
-attack_area = NodePath("AttackArea")
 
 [node name="Texture" type="Sprite2D" parent="."]
 hframes = 3
@@ -343,15 +220,5 @@ root_node = NodePath("../Texture")
 libraries = {
 "": SubResource("AnimationLibrary_6np2i")
 }
-
-[node name="AttackArea" parent="." instance=ExtResource("4_qvyr3")]
-collision_mask = 6
-target = "enemy"
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackArea"]
-polygon = PackedVector2Array(0, 0, 130, -1, 130, -20, 113, -50, 68, -63, 30, -59, 0, -27)
-
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(13, -9)
 
 [connection signal="animation_finished" from="Animation" to="." method="on_animation_finished"]

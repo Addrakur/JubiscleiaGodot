@@ -3,8 +3,8 @@ extends State
 
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
-@export var knock_multi: float
-@export var hit_recover_limit: float
+var knock_multi: float
+var hit_recover_limit: float
 
 var knockup_force: float
 var knockback_force: float
@@ -14,13 +14,16 @@ var anim_finish: bool
 
 func _ready():
 	set_physics_process(false)
+	knock_multi = Parameters.player_knockback_mult
+	hit_recover_limit = Parameters.player_hit_recover_limit
 
 func enter_state() -> void:
 	set_physics_process(true)
+	player.can_flip = false
+	player.health_component.is_getting_hit = true
 	player.health_component.invulnerable = true
 	player.can_dash = false
-	animation.stop()
-	animation.play("hit")
+	animation.play.call_deferred("hit")
 	player.velocity.x = 0
 	knockback()
 
@@ -29,7 +32,9 @@ func exit_state() -> void:
 	player.health_component.is_getting_hit = false
 	anim_finish = false
 	player.can_dash = true
+	player.can_flip = true
 	player.inv_timer.start()
+	player.health_component.last_attack = ""
 
 func _physics_process(_delta):
 	

@@ -147,6 +147,7 @@ _data = {
 }
 
 [node name="Interface" type="CanvasLayer"]
+visible = false
 script = ExtResource("1_eph77")
 
 [node name="PlayerUI" type="Control" parent="."]

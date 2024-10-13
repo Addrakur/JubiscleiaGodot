@@ -13,6 +13,8 @@ extends CharacterBody2D
 const CAA_POSITION: float = -53
 @onready var raycast: RayCast2D = $WallRaycast
 @onready var attack_timer: Timer = $AttackTimer
+@onready var poise_timer: Timer = $PoiseTimer
+@onready var hit_modulate: AnimationPlayer = $HitModulate
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var idle_state: State = $StateMachine/ScorpionIdle as ScorpionIdle
@@ -34,7 +36,8 @@ var gravity: float
 var gravity_mult: float = 4
 
 func _ready():
-	gravity = GameSettings.default_gravity
+	attack_area.attack_name = name + "hit"
+	
 
 func _process(_delta):
 	if fsm.state == walk_state or fsm.state == attack_state:
@@ -45,9 +48,6 @@ func _process(_delta):
 	
 	if not PlayerVariables.player_alive:
 		player_ref = null
-	
-	if health_component.is_getting_hit and not fsm.state == hit_state:
-		fsm.change_state(hit_state)
 	
 	if not alive:
 		fsm.change_state(death_state)
@@ -76,3 +76,9 @@ func can_attack_area_entered(body):
 func can_attack_area_exited(body):
 	if body.is_in_group("player"):
 		player_ref = null
+
+func _on_hit_modulate_animation_finished(_anim_name):
+	health_component.last_attack = ""
+
+func _on_poise_timer_timeout():
+	health_component.current_poise = health_component.max_poise

@@ -8,6 +8,7 @@ extends State
 
 func _ready():
 	set_physics_process(false)
+	idle_timer.wait_time = Parameters.spear_skeleton_idle_time
 
 func enter_state() -> void:
 	idle_timer.start()
@@ -19,8 +20,8 @@ func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(_delta):
-	
 	if skeleton.player_ref != null and PlayerVariables.player_alive and skeleton.player_on_limit:
+		set_direction()
 		if skeleton.can_attack_player_ground or skeleton.can_attack_player_air:
 			if attack_timer.is_stopped():
 				skeleton.fsm.change_state(skeleton.attack_state)
@@ -29,3 +30,9 @@ func _physics_process(_delta):
 	else:
 		if idle_timer.is_stopped():
 			skeleton.fsm.change_state(skeleton.walk_state)
+	
+func set_direction():
+	if skeleton.player_ref.position.x > skeleton.position.x - 10:
+		skeleton.direction = 1
+	elif skeleton.player_ref.position.x < skeleton.position.x + 10:
+		skeleton.direction = -1

@@ -4,11 +4,10 @@ extends State
 @export var skeleton: CharacterBody2D
 @export var animation: AnimationPlayer
 @export var attack_timer: Timer
-@onready var attack_collision_air = $"../../AttackArea/AttackCollisionAir"
-@onready var attack_collision_ground = $"../../AttackArea/AttackCollisionGround"
 
 func _ready():
 	set_physics_process(false)
+	attack_timer.wait_time = Parameters.spear_skeleton_attack_cooldown
 
 func enter_state() -> void:
 	set_physics_process(true)
@@ -22,12 +21,8 @@ func enter_state() -> void:
 func exit_state() -> void:
 	set_physics_process(false)
 	skeleton.is_attacking = false
-	attack_collision_air.disabled = true
-	attack_collision_ground.disabled = true
+	attack_timer.start()
 
 func _on_animation_finished(anim):
 	if anim == "attack_ground" or anim == "attack_air":
 		skeleton.fsm.change_state(skeleton.idle_state)
-
-func attack_timer_start():
-	attack_timer.start()

@@ -1,0 +1,772 @@
+[gd_scene load_steps=36 format=3 uid="uid://3f7lr15bhlyx"]
+
+[ext_resource type="Texture2D" uid="uid://cb0yftlo5iyws" path="res://assets/enemy/banco_de_assets/sword_skeleton/Idle.png" id="1_4i5gc"]
+[ext_resource type="Script" path="res://enemies/sword_skeleton.gd" id="1_gupx0"]
+[ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="1_uam10"]
+[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_3g66j"]
+[ext_resource type="Texture2D" uid="uid://c8570meofudqi" path="res://assets/enemy/banco_de_assets/sword_skeleton/Walk.png" id="2_gfhu8"]
+[ext_resource type="Script" path="res://Management/states/state_machine.gd" id="3_ogvwr"]
+[ext_resource type="Texture2D" uid="uid://p314w11fsjgd" path="res://assets/enemy/banco_de_assets/sword_skeleton/run.png" id="3_rgime"]
+[ext_resource type="Texture2D" uid="uid://bkma344oyl2ch" path="res://assets/enemy/banco_de_assets/sword_skeleton/run_attack.png" id="4_cg1yv"]
+[ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="4_x53xa"]
+[ext_resource type="Texture2D" uid="uid://bjp4o8gx87s07" path="res://assets/enemy/banco_de_assets/sword_skeleton/Dead.png" id="5_k0xkl"]
+[ext_resource type="Texture2D" uid="uid://t3gxai6fqisy" path="res://assets/enemy/banco_de_assets/sword_skeleton/Hurt.png" id="6_0auqa"]
+[ext_resource type="Texture2D" uid="uid://d3qgex3tdnkek" path="res://assets/enemy/banco_de_assets/sword_skeleton/Protect.png" id="7_h73wf"]
+[ext_resource type="Texture2D" uid="uid://c8oi0rubryrr3" path="res://assets/enemy/banco_de_assets/sword_skeleton/Attack_1.png" id="8_yay3t"]
+[ext_resource type="Texture2D" uid="uid://chxa2or8ubawm" path="res://assets/enemy/banco_de_assets/sword_skeleton/Attack_2.png" id="9_aonpa"]
+[ext_resource type="Texture2D" uid="uid://brgf7bpvvbsxe" path="res://assets/enemy/banco_de_assets/sword_skeleton/Attack_3.png" id="10_p3uu5"]
+[ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_hit.gd" id="15_urcig"]
+[ext_resource type="Script" path="res://Management/states/state.gd" id="16_p3k75"]
+[ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_idle.gd" id="17_shncf"]
+[ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_walk.gd" id="18_nijjx"]
+
+[sub_resource type="Animation" id="Animation_lidb7"]
+resource_name = "idle"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_4i5gc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_fp2sw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_4i5gc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Texture:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/AttackCollision:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-23, 0, 32, 0, 32, -77, -23, -77)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AttackArea/AttackCollision:disabled")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_ghpta"]
+resource_name = "walk"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_gfhu8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_43e6k"]
+resource_name = "run"
+length = 0.7
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_rgime")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_2eypl"]
+resource_name = "run_attack"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_cg1yv")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackArea/AttackCollision:polygon")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-23, 0, 32, 0, 32, -38, -23, -38)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/AttackCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_728dh"]
+resource_name = "dead"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_k0xkl")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_u2721"]
+resource_name = "hit"
+length = 0.4
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_0auqa")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Texture:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(128.498, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_aa8ry"]
+resource_name = "protect"
+length = 0.1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_h73wf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_fnrbp"]
+resource_name = "attack_1"
+length = 0.8
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_yay3t")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackArea/AttackCollision:polygon")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-23, 0, 32, 0, 32, -77, -23, -77)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/AttackCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_shm3s"]
+resource_name = "attack_2"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_aonpa")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackArea/AttackCollision:polygon")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-23, 0, 32, 0, 32, -77, -23, -77)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/AttackCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_gwcyk"]
+resource_name = "attack_3"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_p3uu5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 3, 4, 5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackArea/AttackCollision:polygon")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-23, -28, 32, -28, 32, -77, -23, -77)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/AttackCollision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rre1u"]
+_data = {
+"RESET": SubResource("Animation_fp2sw"),
+"attack_1": SubResource("Animation_fnrbp"),
+"attack_2": SubResource("Animation_shm3s"),
+"attack_3": SubResource("Animation_gwcyk"),
+"dead": SubResource("Animation_728dh"),
+"hit": SubResource("Animation_u2721"),
+"idle": SubResource("Animation_lidb7"),
+"protect": SubResource("Animation_aa8ry"),
+"run": SubResource("Animation_43e6k"),
+"run_attack": SubResource("Animation_2eypl"),
+"walk": SubResource("Animation_ghpta")
+}
+
+[sub_resource type="Animation" id="Animation_ecgxx"]
+resource_name = "hit"
+length = 0.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(128.498, 0, 0, 1), Color(1, 1, 1, 1), Color(128.498, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0x2dl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(128.498, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xijdb"]
+_data = {
+"RESET": SubResource("Animation_0x2dl"),
+"hit": SubResource("Animation_ecgxx")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d52rv"]
+radius = 13.0
+height = 64.0
+
+[node name="SwordSkeleton" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area")]
+script = ExtResource("1_gupx0")
+health_component = NodePath("HealthComponent")
+attack_area = NodePath("AttackArea")
+
+[node name="Texture" type="Sprite2D" parent="."]
+modulate = Color(128.498, 0, 0, 1)
+texture = ExtResource("1_4i5gc")
+hframes = 7
+
+[node name="Animations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rre1u")
+}
+
+[node name="HitModulate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xijdb")
+}
+
+[node name="SkeletonCollision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -32)
+shape = SubResource("CapsuleShape2D_d52rv")
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("1_uam10")]
+max_health = 30.0
+max_poise = 20.0
+poise_recovery_timer = 3.0
+attack_timer = NodePath("../AttackTimer")
+
+[node name="DetectArea" type="Area2D" parent="."]
+
+[node name="DetectCollision" type="CollisionPolygon2D" parent="DetectArea"]
+polygon = PackedVector2Array(96, 0, 352, -128, -96, -128, -96, 0)
+
+[node name="AttackArea" parent="." instance=ExtResource("2_3g66j")]
+target = "player"
+
+[node name="AttackCollision" type="CollisionPolygon2D" parent="AttackArea"]
+position = Vector2(38, 0)
+polygon = PackedVector2Array(-23, 0, 32, 0, 32, -77, -23, -77)
+
+[node name="CanAttackArea" type="Area2D" parent="."]
+
+[node name="CanAttackCollision" type="CollisionPolygon2D" parent="CanAttackArea"]
+modulate = Color(0, 1, 0.560784, 1)
+polygon = PackedVector2Array(0, 0, 63, 0, 63, -64, 0, -64)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("3_ogvwr")
+state = NodePath("SwordSkeletonIdle")
+
+[node name="SwordSkeletonIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("skeleton", "animation", "idle_timer", "attack_timer")]
+script = ExtResource("17_shncf")
+skeleton = NodePath("../..")
+animation = NodePath("../../Animations")
+idle_timer = NodePath("../../IdleTimer")
+attack_timer = NodePath("../../AttackTimer")
+
+[node name="SwordSkeletonHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("skeleton", "animation")]
+script = ExtResource("15_urcig")
+skeleton = NodePath("../..")
+animation = NodePath("../../Animations")
+knock_multi = 1.0
+hit_recover_limit = 10.0
+
+[node name="SwordSkeletonWalk" type="Node" parent="StateMachine" node_paths=PackedStringArray("skeleton", "animation", "attack_timer")]
+script = ExtResource("18_nijjx")
+skeleton = NodePath("../..")
+animation = NodePath("../../Animations")
+speed = 50.0
+wander_limit = 40.0
+attack_timer = NodePath("../../AttackTimer")
+
+[node name="State" type="Node" parent="StateMachine"]
+script = ExtResource("16_p3k75")
+
+[node name="IdleTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AttackTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="PoiseTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("4_x53xa")]
+offset_top = -302.0
+offset_bottom = -279.0
+parent = NodePath("..")
+
+[connection signal="animation_finished" from="HitModulate" to="." method="_on_hit_modulate_animation_finished"]
+[connection signal="body_entered" from="DetectArea" to="." method="_on_detect_area_body_entered"]
+[connection signal="body_exited" from="DetectArea" to="." method="_on_detect_area_body_exited"]
+[connection signal="body_entered" from="CanAttackArea" to="." method="_on_can_attack_area_body_entered"]
+[connection signal="body_exited" from="CanAttackArea" to="." method="_on_can_attack_area_body_exited"]
+[connection signal="timeout" from="PoiseTimer" to="." method="_on_poise_timer_timeout"]

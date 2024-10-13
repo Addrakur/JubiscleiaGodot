@@ -7,6 +7,7 @@ extends State
 
 func _ready():
 	set_physics_process(false)
+	idle_timer.wait_time = Parameters.kitsune_idle_time
 
 func enter_state() -> void:
 	idle_timer.start()
@@ -18,7 +19,7 @@ func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(_delta):
-	if kitsune.player_ref == null:
+	if kitsune.player_ref == null or not kitsune.player_on_limit:
 		if idle_timer.is_stopped():
 			kitsune.fsm.change_state(kitsune.walk_state)
 	else:
@@ -26,7 +27,7 @@ func _physics_process(_delta):
 		if kitsune.attack_timer.is_stopped():
 			kitsune.fsm.change_state(kitsune.attack_state)
 	
-	if kitsune.player_on_run_area and kitsune.cant_run_timer.is_stopped() and not kitsune.is_attacking:
+	if kitsune.player_on_run_area and kitsune.cant_run_timer.is_stopped() and not kitsune.is_attacking and kitsune.player_on_limit:
 		kitsune.fsm.change_state(kitsune.run_state)
 	
 	if kitsune.trapped_sensor.is_colliding():

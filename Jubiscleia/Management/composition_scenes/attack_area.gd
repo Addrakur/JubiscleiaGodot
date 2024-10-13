@@ -1,3 +1,4 @@
+class_name AttackArea
 extends Area2D
 
 @onready var parent: Node2D = get_parent()
@@ -7,6 +8,8 @@ extends Area2D
 @export var damage: float
 @export var knockup_force: float
 @export var knockback_force: float
+@export var poise_damage: float
+@export var attack_name: String
 
 @export_group("Bools")
 @export var one_hit_destroy: bool = false
@@ -22,23 +25,22 @@ func _ready():
 func _physics_process(_delta):
 	if body_ref != null:
 		hit_func(body_ref)
-		print(parent.name + " hit " + body_ref.name)
-		if single_hit_per_enemy:
-			body_ref = null
+		#print(parent.name + " hit " + body_ref.name)
 
 func on_body_entered(ref):
-	body_ref = ref
+	if single_hit_per_enemy:
+		hit_func(ref)
+		#print(parent.name + " hit " + ref.name)
+	else:
+		body_ref = ref
 
 func on_body_exited(body):
-	body_ref = null
+	if body == body_ref:
+		body_ref = null
 
 func hit_func(body: Node2D):
 	if body.is_in_group(target) and not body.health_component.invulnerable and body.alive:
-		body.health_component.update_health(damage, single_hit_per_enemy) # Chama a função que aplica o dano no alvo
-		
-		body.hit_state.knockup_force = knockup_force * body.hit_state.knock_multi # Aplica a força do knockback
-		body.hit_state.knockback_force = knockback_force * body.hit_state.knock_multi # Aplica a força do knockup
-		body.hit_state.direction = 1 if body.position.x > parent.position.x else -1 # Indica a direção que vai ser o knockback
+		body.health_component.update_health(damage, knockup_force, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage) # Chama a função que aplica o dano no alvo
 		
 		if parent.is_in_group("player"): # Verifica se quem bateu foi o jogador
 			PlayerVariables.hit_amount += 1
@@ -47,19 +49,9 @@ func hit_func(body: Node2D):
 				
 			if PlayerVariables.my_knockup == true: # Verifica se o ataque do do jogador faz ele tomar knockup
 				parent.jump_attack_state.stop_false()
-				#parent.velocity.y = PlayerVariables.spear_jump_my_knockup
 				parent.jump_attack_state.get_out_of_state()
 				parent.fsm.change_state(parent.jump_state)
 				
-			
-		if body.fsm.state == body.hit_state: # Gambiarra que faz o alvo reiniciar o hit state
-			#body.fsm.change_state(body.state)
-			body.fsm.change_state(body.hit_state)
-			
-		
-		if body.is_in_group("player"):
-			body.corruption_manager.time_penalty()
-		
 		if one_hit_destroy:
 			parent.can_destroy = true
 	

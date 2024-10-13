@@ -7,9 +7,11 @@ script = ExtResource("1_5l843")
 
 [node name="PauseMenu" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 768.0
-offset_bottom = 432.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Panel" type="Panel" parent="PauseMenu"]
 layout_mode = 1
@@ -24,6 +26,12 @@ offset_right = 128.0
 offset_bottom = 140.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="PauseMenu/Panel"]
+layout_mode = 0
+offset_right = 256.0
+offset_bottom = 272.0
+color = Color(0, 0.0795, 0.53, 1)
 
 [node name="Title" type="Label" parent="PauseMenu/Panel"]
 layout_mode = 2
@@ -48,7 +56,7 @@ alignment = 1
 
 [node name="Resume" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
 layout_mode = 2
-text = "Resume"
+text = "Continuar"
 
 [node name="Restart" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
 layout_mode = 2
@@ -56,7 +64,7 @@ text = "Restart"
 
 [node name="Menu" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
 layout_mode = 2
-text = "Go to Menu"
+text = "Ir para o Menu"
 
 [connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Resume" to="." method="on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Restart" to="." method="on_restart_pressed"]

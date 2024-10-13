@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://enns3weeg1g0"]
+
+[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="1_2ie45"]
+[ext_resource type="Texture2D" uid="uid://c365axc5oq0gd" path="res://assets/lava_placeholder.png" id="2_4htoa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7pjg0"]
+size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft35a"]
+atlas = ExtResource("2_4htoa")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yod1j"]
+atlas = ExtResource("2_4htoa")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww0br"]
+atlas = ExtResource("2_4htoa")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p6wad"]
+atlas = ExtResource("2_4htoa")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w78m6"]
+atlas = ExtResource("2_4htoa")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slwga"]
+atlas = ExtResource("2_4htoa")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4neyb"]
+atlas = ExtResource("2_4htoa")
+region = Rect2(96, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wveop"]
+atlas = ExtResource("2_4htoa")
+region = Rect2(112, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1s8vs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft35a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yod1j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww0br")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p6wad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w78m6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slwga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4neyb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wveop")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Lava" type="Node2D"]
+
+[node name="AttackArea" parent="." instance=ExtResource("1_2ie45")]
+collision_mask = 1
+target = "player"
+damage = 5.0
+knockup_force = -30.0
+knockback_force = 500.0
+poise_damage = 50.0
+attack_name = "lava"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(8, -8)
+shape = SubResource("RectangleShape2D_7pjg0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(8, -8)
+sprite_frames = SubResource("SpriteFrames_1s8vs")
+autoplay = "default"
+frame_progress = 0.878811

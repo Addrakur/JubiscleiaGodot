@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://crkl2utufgcrd"]
+[gd_scene load_steps=28 format=3 uid="uid://crkl2utufgcrd"]
 
 [ext_resource type="Texture2D" uid="uid://csffgyii1wdoc" path="res://assets/enemy/banco_de_assets/big_worm/big_worm_walk.png" id="1_5i8uh"]
 [ext_resource type="Script" path="res://enemies/big_worm.gd" id="1_ls3a1"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Management/states/state.gd" id="8_dlgf0"]
 [ext_resource type="Texture2D" uid="uid://btmgn1pjl6ab7" path="res://assets/enemy/banco_de_assets/big_worm/big_worm_idle.png" id="8_f7rdg"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="8_iw5ih"]
+[ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="16_mp118"]
 
 [sub_resource type="Animation" id="Animation_g3fvp"]
 length = 0.001
@@ -385,11 +386,49 @@ _data = {
 "walk": SubResource("Animation_6fthp")
 }
 
+[sub_resource type="Animation" id="Animation_7xdyv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_aia7n"]
+resource_name = "hit"
+length = 0.45
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(128.498, 0, 0, 1), Color(1, 1, 1, 1), Color(128.498, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ochh1"]
+_data = {
+"RESET": SubResource("Animation_7xdyv"),
+"hit": SubResource("Animation_aia7n")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_owbtl"]
 size = Vector2(143, 81)
 
 [node name="BigWorm" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
-collision_layer = 258
+collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_ls3a1")
 health_component = NodePath("HealthComponent")
@@ -406,6 +445,11 @@ libraries = {
 "": SubResource("AnimationLibrary_lxcon")
 }
 
+[node name="HitModulate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ochh1")
+}
+
 [node name="Collision" type="CollisionPolygon2D" parent="."]
 polygon = PackedVector2Array(-48, 32, 51, 32, 51, -20, -10, -20, -10, -39, -48, -39)
 
@@ -413,12 +457,22 @@ polygon = PackedVector2Array(-48, 32, 51, 32, 51, -20, -10, -20, -10, -39, -48, 
 wait_time = 3.5
 one_shot = true
 
-[node name="HealthComponent" parent="." instance=ExtResource("7_0dtaf")]
-max_health = 25.0
+[node name="PoiseTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("7_0dtaf")]
+max_health = 50.0
+max_poise = 30.0
+attack_timer = NodePath("../AttackTimer")
 
 [node name="AttackArea" parent="." instance=ExtResource("8_iw5ih")]
 collision_mask = 1
 target = "player"
+damage = 20.0
+knockup_force = -20.0
+knockback_force = 500.0
+poise_damage = 20.0
+attack_name = "big_worm"
 
 [node name="AttackCollision" type="CollisionPolygon2D" parent="AttackArea"]
 polygon = PackedVector2Array(-43, -49, -69, -32, -84, -4, -87, 32, -28, 32, -29, -49)
@@ -451,9 +505,6 @@ animation = NodePath("../../Animation")
 script = ExtResource("5_ux2og")
 big_worm = NodePath("../..")
 animation = NodePath("../../Animation")
-damage = 15.0
-knockback_force = 500.0
-knockup_force = -20.0
 
 [node name="BigWormHit" type="Node" parent="StateMachine" node_paths=PackedStringArray("big_worm", "animation")]
 script = ExtResource("6_0lll1")
@@ -470,7 +521,12 @@ animation = NodePath("../../Animation")
 [node name="State" type="Node" parent="StateMachine"]
 script = ExtResource("8_dlgf0")
 
+[node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("16_mp118")]
+parent = NodePath("..")
+
 [connection signal="animation_finished" from="Animation" to="StateMachine/BigWormAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="StateMachine/BigWormHit" method="_on_animation_finished"]
+[connection signal="animation_finished" from="HitModulate" to="." method="_on_hit_modulate_animation_finished"]
+[connection signal="timeout" from="PoiseTimer" to="." method="_on_poise_timer_timeout"]
 [connection signal="body_entered" from="CanAttackArea" to="." method="can_attack_area_entered"]
 [connection signal="body_exited" from="CanAttackArea" to="." method="can_attack_area_exited"]

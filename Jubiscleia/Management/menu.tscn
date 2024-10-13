@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://drbjtfhmgpum0"]
+[gd_scene load_steps=3 format=3 uid="uid://drbjtfhmgpum0"]
 
 [ext_resource type="Script" path="res://Management/Menu.gd" id="1_slu8i"]
+[ext_resource type="Script" path="res://Management/parametro_linha_update.gd" id="3_vq8mx"]
 
 [node name="Menu" type="Control"]
 process_mode = 3
@@ -44,19 +45,26 @@ text = "Arena"
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -288.0
-offset_top = 92.0
-offset_right = -203.0
-offset_bottom = 156.0
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -92.0
+offset_right = 117.0
+offset_bottom = -28.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 37
-text = "Quit"
+text = "Sair"
+
+[node name="Settings" type="Button" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 193.0
+offset_right = 249.0
+offset_bottom = 252.0
+theme_override_font_sizes/font_size = 37
+text = "Parametros"
 
 [node name="Level1" type="Button" parent="."]
 layout_mode = 2
@@ -78,17 +86,19 @@ offset_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 37
+disabled = true
 text = "2"
 
 [node name="Level3" type="Button" parent="."]
 layout_mode = 2
-offset_left = 224.0
+offset_left = 223.0
 offset_top = 112.0
-offset_right = 288.0
+offset_right = 287.0
 offset_bottom = 176.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 37
+disabled = true
 text = "3"
 
 [node name="w1text" type="Label" parent="."]
@@ -96,12 +106,13 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -160.0
+offset_left = -206.0
 offset_top = 32.0
-offset_right = -83.0
+offset_right = -48.0
 offset_bottom = 58.0
 grow_horizontal = 0
-text = "Weapon 1"
+text = "Arma 1"
+horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -132,12 +143,13 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -160.0
+offset_left = -206.0
 offset_top = 128.0
-offset_right = -83.0
+offset_right = -51.0
 offset_bottom = 154.0
 grow_horizontal = 0
-text = "Weapon 2"
+text = "Arma 2"
+horizontal_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -163,9 +175,4410 @@ text = "Axe"
 layout_mode = 2
 text = "Spear"
 
+[node name="ParameterSettings" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="ColorRect" parent="ParameterSettings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0754792, 0.256713, 0.353015, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ParameterSettings/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 70
+
+[node name="TabContainer" type="TabContainer" parent="ParameterSettings/Panel/MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0.25, 0.25, 0.25, 1)
+theme_override_colors/font_unselected_color = Color(0.190762, 0.190762, 0.190762, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 20
+current_tab = 0
+
+[node name="Player" type="ScrollContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer"]
+layout_mode = 2
+follow_focus = true
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="HSeparator7" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Vida"
+horizontal_alignment = 1
+
+[node name="HSeparator5" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="player_max_health" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+script = ExtResource("3_vq8mx")
+default_value = 100.0
+slider_min = 10.0
+slider_max = 500.0
+slider_step = 10.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_max_health"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Vida Máxima"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_max_health"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "0"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_max_health"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 500.0
+value = 100.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_max_health"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_max_poise" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 5.0
+slider_min = 1.0
+slider_max = 50.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_max_poise"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Postura Máxima"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_max_poise"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "5"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_max_poise"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 50.0
+value = 5.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_max_poise"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_poise_recover_time" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 5.0
+slider_min = 1.0
+slider_max = 20.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_poise_recover_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Tempo de Recuperação de Postura"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_poise_recover_time"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "5"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_poise_recover_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 20.645
+value = 5.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_poise_recover_time"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_knockback_mult" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 1.0
+slider_max = 3.0
+slider_step = 0.1
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_knockback_mult"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Multiplicador de Knockback
+"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_knockback_mult"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "1"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_knockback_mult"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 5.0
+value = 1.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_knockback_mult"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_hit_recover_limit" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 50.0
+slider_min = 5.0
+slider_max = 150.0
+slider_step = 5.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_hit_recover_limit"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade de Recuperação de Hit"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_hit_recover_limit"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "50"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_hit_recover_limit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 5.0
+max_value = 150.0
+value = 50.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_hit_recover_limit"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator6" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Movimentação"
+horizontal_alignment = 1
+
+[node name="HSeparator8" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="player_coyote_time" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 0.15
+slider_min = 0.05
+slider_max = 0.5
+slider_step = 0.05
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_coyote_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Coyote Time"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_coyote_time"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "0.15"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_coyote_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 15.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_coyote_time"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator9" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Corrida:"
+
+[node name="player_run_speed" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 200.0
+slider_min = 10.0
+slider_max = 500.0
+slider_step = 5.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_run_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_run_speed"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "200"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_run_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 500.0
+value = 200.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_run_speed"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator11" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Primeiro Pulo:"
+
+[node name="player_first_jump_move_speed" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 200.0
+slider_min = 10.0
+slider_max = 500.0
+slider_step = 5.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_move_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade de Movimentação"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_move_speed"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "200"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_move_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 500.0
+value = 200.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_move_speed"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_first_jump_height" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 110.0
+slider_min = 10.0
+slider_max = 300.0
+slider_step = 5.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_height"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "Altura"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_height"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+text = "110"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_height"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 300.0
+value = 110.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_height"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_first_jump_time_to_peak" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 0.45
+slider_min = 0.1
+slider_max = 1.0
+slider_step = 0.01
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_time_to_peak"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Tempo até Subir"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_time_to_peak"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "0.4"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_time_to_peak"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 64.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_time_to_peak"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_first_jump_time_to_descend" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 0.4
+slider_min = 0.1
+slider_max = 1.0
+slider_step = 0.01
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_time_to_descend"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Tempo até Descer"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_time_to_descend"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "0.35"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_time_to_descend"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 35.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_first_jump_time_to_descend"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator16" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Segundo Pulo:"
+
+[node name="player_double_jump_move_speed" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 200.0
+slider_min = 5.0
+slider_max = 500.0
+slider_step = 5.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_double_jump_move_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade de Movimentação"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_double_jump_move_speed"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "200"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_double_jump_move_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 500.0
+value = 200.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_double_jump_move_speed"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_double_jump_height" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 40.0
+slider_min = 10.0
+slider_max = 300.0
+slider_step = 5.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_double_jump_height"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Altura"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_double_jump_height"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "40"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_double_jump_height"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 300.0
+value = 40.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_double_jump_height"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_double_jump_time_to_peak" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 0.4
+slider_min = 0.1
+slider_max = 1.0
+slider_step = 0.1
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_double_jump_time_to_peak"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Tempo até Subir"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_double_jump_time_to_peak"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "0.4"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_double_jump_time_to_peak"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 40.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_double_jump_time_to_peak"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator20" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label6" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Queda:"
+
+[node name="player_fall_move_speed" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 200.0
+slider_min = 5.0
+slider_max = 500.0
+slider_step = 5.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_fall_move_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade de Movimentação"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_fall_move_speed"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "200"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_fall_move_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 500.0
+value = 200.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_fall_move_speed"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_fall_terminal_velocity" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 450.0
+slider_min = 100.0
+slider_max = 1000.0
+slider_step = 50.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_fall_terminal_velocity"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade Terminal"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_fall_terminal_velocity"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "450"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_fall_terminal_velocity"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 1000.0
+value = 450.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_fall_terminal_velocity"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator22" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label7" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Dash:"
+
+[node name="player_dash_speed" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 450.0
+slider_min = 100.0
+slider_max = 1000.0
+slider_step = 20.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_dash_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_dash_speed"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "450"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_dash_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 1000.0
+value = 450.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_dash_speed"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_dash_cd" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 1.0
+slider_min = 0.5
+slider_max = 3.0
+slider_step = 0.1
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_dash_cd"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Tempo de Recarga"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_dash_cd"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "1"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_dash_cd"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 30.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_dash_cd"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator14" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label8" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Wall Grab:"
+
+[node name="player_wall_grab_gravity" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 130.0
+slider_min = 50.0
+slider_max = 300.0
+slider_step = 10.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_wall_grab_gravity"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Gravidade"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_wall_grab_gravity"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "130"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_wall_grab_gravity"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 300.0
+value = 130.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_wall_grab_gravity"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_wall_grab_out_force" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 260.0
+slider_min = 50.0
+slider_max = 500.0
+slider_step = 10.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_wall_grab_out_force"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Força de saída"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_wall_grab_out_force"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "260"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_wall_grab_out_force"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 500.0
+value = 260.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_wall_grab_out_force"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_wall_grab_min_wait_time" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 0.08
+slider_min = 0.01
+slider_max = 0.2
+slider_step = 0.01
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_wall_grab_min_wait_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Menor Tempo de espera"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_wall_grab_min_wait_time"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "0.08"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_wall_grab_min_wait_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 20.0
+value = 8.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_wall_grab_min_wait_time"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_wall_grab_max_wait_time" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 0.3
+slider_min = 0.2
+slider_max = 0.6
+slider_step = 0.01
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_wall_grab_max_wait_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Maior Tempo de espera"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_wall_grab_max_wait_time"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "0.3"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_wall_grab_max_wait_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 60.0
+value = 30.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_wall_grab_max_wait_time"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator18" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label9" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Combate"
+horizontal_alignment = 1
+
+[node name="HSeparator19" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="player_combo_memory_time" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 1.0
+slider_min = 0.1
+slider_max = 5.0
+slider_step = 0.1
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_combo_memory_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Tempo de Memória de Combo"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_combo_memory_time"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "1"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_combo_memory_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 30.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_combo_memory_time"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator23" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label10" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Corrupção:"
+
+[node name="player_hits_0_1" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 15.0
+slider_min = 1.0
+slider_max = 50.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_hits_0_1"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Quantidade de Hits Nivel 0 -> 1"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_hits_0_1"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "15"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_hits_0_1"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 50.0
+value = 15.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_hits_0_1"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_hits_1_2" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 10.0
+slider_min = 1.0
+slider_max = 50.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_hits_1_2"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Quantidade de Hits Nivel 1 -> 2"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_hits_1_2"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_hits_1_2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 30.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_hits_1_2"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_hits_2_3" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 10.0
+slider_min = 1.0
+slider_max = 50.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_hits_2_3"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Quantidade de Hits Nivel 2 -> 3"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_hits_2_3"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_hits_2_3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 30.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_hits_2_3"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator25" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label11" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Duração da Contagem:"
+
+[node name="player_0_timer" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 20.0
+slider_min = 1.0
+slider_max = 30.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_0_timer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Duração da Contagem Nivel 0
+"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_0_timer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "20"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_0_timer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 30.0
+value = 20.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_0_timer"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_1_timer" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 15.0
+slider_min = 1.0
+slider_max = 30.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_1_timer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Duração da Contagem Nivel 1"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_1_timer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "15"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_1_timer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 30.0
+value = 15.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_1_timer"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_2_timer" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 10.0
+slider_min = 1.0
+slider_max = 30.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_2_timer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Duração da Contagem Nivel 2"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_2_timer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_2_timer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 30.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_2_timer"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="player_3_timer" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 10.0
+slider_min = 1.0
+slider_max = 30.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_3_timer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Duração da Contagem Nivel 3"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_3_timer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_3_timer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 30.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Player/MarginContainer/VBoxContainer/player_3_timer"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="Spear Skeleton" type="ScrollContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="HSeparator7" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Vida"
+horizontal_alignment = 1
+
+[node name="HSeparator5" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="spear_skeleton_max_health" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+script = ExtResource("3_vq8mx")
+default_value = 12.0
+slider_min = 1.0
+slider_max = 100.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_max_health"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Vida Máxima"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_max_health"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "25"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_max_health"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 25.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_max_health"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="spear_skeleton_max_poise" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 6.0
+slider_min = 1.0
+slider_max = 50.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_max_poise"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Postura Máxima"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_max_poise"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "20"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_max_poise"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 50.0
+value = 20.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_max_poise"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="spear_skeleton_poise_recover_time" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 2.0
+slider_min = 1.0
+slider_max = 10.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_poise_recover_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Tempo de Recuperação de Postura"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_poise_recover_time"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "3"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_poise_recover_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 10.0
+value = 3.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_poise_recover_time"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="spear_skeleton_knockback_mult" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 1.0
+slider_min = 1.0
+slider_max = 3.0
+slider_step = 0.1
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_knockback_mult"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Multiplicador de Knockback
+"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_knockback_mult"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "1"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_knockback_mult"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 300.0
+step = 10.0
+value = 100.0
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_knockback_mult"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="spear_skeleton_hit_recover_limit" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 20.0
+slider_min = 5.0
+slider_max = 50.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_hit_recover_limit"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade de Recuperação de Hit"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_hit_recover_limit"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_hit_recover_limit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 5.0
+max_value = 50.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_hit_recover_limit"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator6" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Movimentação"
+horizontal_alignment = 1
+
+[node name="HSeparator8" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Caminhada:"
+
+[node name="spear_skeleton_walk_speed" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 30.0
+slider_min = 1.0
+slider_max = 100.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_walk_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_walk_speed"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "30"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_walk_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 30.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_walk_speed"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="spear_skeleton_wander_limit" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 20.0
+slider_min = 1.0
+slider_max = 100.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_wander_limit"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Distância Máxima de Movimentação"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_wander_limit"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "20"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_wander_limit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 20.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_wander_limit"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator9" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Ocioso:"
+
+[node name="spear_skeleton_idle_time" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 4.0
+slider_min = 1.0
+slider_max = 10.0
+slider_step = 0.5
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_idle_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Duração"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_idle_time"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "4"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_idle_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 10.0
+value = 4.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_idle_time"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator10" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Corrida:"
+
+[node name="spear_skeleton_run_speed" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 100.0
+slider_min = 10.0
+slider_max = 300.0
+slider_step = 10.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_run_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_run_speed"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "100"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_run_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 300.0
+value = 100.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_run_speed"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator11" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label6" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Combate"
+horizontal_alignment = 1
+
+[node name="HSeparator12" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="spear_skeleton_attack_cooldown" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 3.0
+slider_min = 1.0
+slider_max = 10.0
+slider_step = 0.5
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_cooldown"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Tempo de Recarga"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_cooldown"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "3"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_cooldown"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 10.0
+value = 3.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_cooldown"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator13" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label7" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Ataques:"
+
+[node name="spear_skeleton_attack_damage" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 10.0
+slider_min = 1.0
+slider_max = 30.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Dano"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_damage"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 30.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_damage"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="spear_skeleton_attack_knockback" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 500.0
+slider_min = 50.0
+slider_max = 1000.0
+slider_step = 50.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_knockback"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Knockback"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_knockback"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "500"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_knockback"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 1000.0
+value = 500.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_knockback"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="spear_skeleton_attack_knockup" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = -50.0
+slider_min = -300.0
+slider_step = 10.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_knockup"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Knockup"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_knockup"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "-50"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_knockup"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 50.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_knockup"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="spear_skeleton_attack_poise_damage" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 10.0
+slider_min = 1.0
+slider_max = 20.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_poise_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Dano de Postura"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_poise_damage"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_poise_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 20.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_attack_poise_damage"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator14" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label8" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Contato:"
+
+[node name="spear_skeleton_contact_damage_bool" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 1.0
+slider_max = 1.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_damage_bool"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Ativar Dano de Contato"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_damage_bool"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_damage_bool"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 30.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_damage_bool"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="spear_skeleton_contact_damage" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 2.0
+slider_max = 30.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Dano"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_damage"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 30.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_damage"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="spear_skeleton_contact_knockback" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 300.0
+slider_min = 50.0
+slider_max = 1000.0
+slider_step = 50.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_knockback"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Knockback"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_knockback"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "300"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_knockback"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 1000.0
+value = 500.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_knockback"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="spear_skeleton_contact_knockup" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = -100.0
+slider_min = -300.0
+slider_step = 10.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_knockup"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Knockup"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_knockup"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "-100"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_knockup"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 50.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_knockup"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="spear_skeleton_contact_poise_damage" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 20.0
+slider_min = 1.0
+slider_max = 50.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_poise_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Dano de Postura"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_poise_damage"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "20"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_poise_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 20.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Spear Skeleton/MarginContainer/VBoxContainer/spear_skeleton_contact_poise_damage"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="Sword Skeleton" type="ScrollContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="HSeparator7" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Vida"
+horizontal_alignment = 1
+
+[node name="HSeparator5" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="sword_skeleton_max_health" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+script = ExtResource("3_vq8mx")
+default_value = 10.0
+slider_min = 1.0
+slider_max = 100.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_max_health"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Vida Máxima"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_max_health"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "25"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_max_health"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 25.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_max_health"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="sword_skeleton_max_poise" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 5.0
+slider_min = 1.0
+slider_max = 50.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_max_poise"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Postura Máxima"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_max_poise"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "20"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_max_poise"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 50.0
+value = 20.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_max_poise"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="sword_skeleton_poise_recover_time" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 2.0
+slider_min = 1.0
+slider_max = 10.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_poise_recover_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Tempo de Recuperação de Postura"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_poise_recover_time"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "3"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_poise_recover_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 10.0
+value = 3.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_poise_recover_time"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="sword_skeleton_knockback_mult" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 1.5
+slider_min = 1.0
+slider_max = 3.0
+slider_step = 0.1
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_knockback_mult"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Multiplicador de Knockback
+"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_knockback_mult"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "1"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_knockback_mult"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 300.0
+step = 10.0
+value = 100.0
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_knockback_mult"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="sword_skeleton_hit_recover_limit" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 10.0
+slider_min = 5.0
+slider_max = 50.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_hit_recover_limit"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade de Recuperação de Hit"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_hit_recover_limit"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_hit_recover_limit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 5.0
+max_value = 50.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_hit_recover_limit"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator16" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Movimentação"
+horizontal_alignment = 1
+
+[node name="HSeparator8" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Caminhada:"
+
+[node name="sword_skeleton_walk_speed" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 50.0
+slider_min = 1.0
+slider_max = 100.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_walk_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_walk_speed"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "30"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_walk_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 30.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_walk_speed"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="sword_skeleton_wander_limit" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 40.0
+slider_min = 1.0
+slider_max = 100.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_wander_limit"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Distância Máxima de Movimentação"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_wander_limit"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "20"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_wander_limit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 20.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_wander_limit"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator9" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Ocioso:"
+
+[node name="sword_skeleton_idle_time" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 3.0
+slider_min = 1.0
+slider_max = 10.0
+slider_step = 0.5
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_idle_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Duração"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_idle_time"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "4"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_idle_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 10.0
+value = 4.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_idle_time"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator10" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Corrida:"
+
+[node name="sword_skeleton_run_speed" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 130.0
+slider_min = 10.0
+slider_max = 300.0
+slider_step = 10.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_run_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_run_speed"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "100"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_run_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 300.0
+value = 100.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_run_speed"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator11" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label6" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Combate"
+horizontal_alignment = 1
+
+[node name="HSeparator12" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="sword_skeleton_attack_cooldown" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 3.0
+slider_min = 1.0
+slider_max = 10.0
+slider_step = 0.5
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_cooldown"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Tempo de Recarga"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_cooldown"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "3"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_cooldown"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 10.0
+value = 3.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_cooldown"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator13" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label7" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Ataques:"
+
+[node name="sword_skeleton_attack_damage" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 10.0
+slider_min = 1.0
+slider_max = 30.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Dano"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_damage"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 30.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_damage"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="sword_skeleton_attack_knockback" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 300.0
+slider_min = 50.0
+slider_max = 1000.0
+slider_step = 50.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_knockback"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Knockback"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_knockback"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "500"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_knockback"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 1000.0
+value = 500.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_knockback"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="sword_skeleton_attack_knockup" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+slider_min = -300.0
+slider_step = 10.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_knockup"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Knockup"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_knockup"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "-50"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_knockup"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 50.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_knockup"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="sword_skeleton_attack_poise_damage" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 5.0
+slider_min = 1.0
+slider_max = 20.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_poise_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Dano de Postura"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_poise_damage"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_poise_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 20.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_attack_poise_damage"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator14" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label8" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Contato:"
+
+[node name="sword_skeleton_contact_damage_bool" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 1.0
+slider_max = 1.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_damage_bool"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Ativar Dano de Contato"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_damage_bool"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_damage_bool"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 30.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_damage_bool"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="sword_skeleton_contact_damage" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 2.0
+slider_max = 30.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Dano"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_damage"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 30.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_damage"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="sword_skeleton_contact_knockback" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 300.0
+slider_min = 50.0
+slider_max = 1000.0
+slider_step = 50.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_knockback"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Knockback"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_knockback"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "300"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_knockback"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 1000.0
+value = 500.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_knockback"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="sword_skeleton_contact_knockup" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = -100.0
+slider_min = -300.0
+slider_step = 10.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_knockup"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Knockup"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_knockup"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "-100"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_knockup"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 50.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_knockup"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="sword_skeleton_contact_poise_damage" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 20.0
+slider_min = 1.0
+slider_max = 50.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_poise_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Dano de Postura"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_poise_damage"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_poise_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 20.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_contact_poise_damage"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator15" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label9" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Defesa:"
+
+[node name="sword_skeleton_protect_duration" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 3.0
+slider_min = 1.0
+slider_max = 10.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_protect_duration"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Duração"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_protect_duration"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "3"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_protect_duration"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 10.0
+value = 3.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_protect_duration"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="sword_skeleton_protect_cooldown" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 4.0
+slider_min = 1.0
+slider_max = 10.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_protect_cooldown"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Tempo de Recarga"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_protect_cooldown"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "4"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_protect_cooldown"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 10.0
+value = 4.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Sword Skeleton/MarginContainer/VBoxContainer/sword_skeleton_protect_cooldown"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="Kitsune" type="ScrollContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="HSeparator7" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Vida"
+horizontal_alignment = 1
+
+[node name="HSeparator5" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="kitsune_max_health" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+script = ExtResource("3_vq8mx")
+default_value = 8.0
+slider_min = 1.0
+slider_max = 100.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_max_health"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Vida Máxima"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_max_health"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "25"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_max_health"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 25.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_max_health"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="kitsune_max_poise" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 3.0
+slider_min = 1.0
+slider_max = 50.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_max_poise"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Postura Máxima"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_max_poise"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "20"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_max_poise"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 50.0
+value = 20.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_max_poise"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="kitsune_poise_recover_time" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 5.0
+slider_min = 1.0
+slider_max = 10.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_poise_recover_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Tempo de Recuperação de Postura"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_poise_recover_time"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "3"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_poise_recover_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 10.0
+value = 3.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_poise_recover_time"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="kitsune_knockback_mult" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 2.0
+slider_max = 3.0
+slider_step = 0.1
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_knockback_mult"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Multiplicador de Knockback
+"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_knockback_mult"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "1"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_knockback_mult"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 300.0
+step = 10.0
+value = 100.0
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_knockback_mult"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="kitsune_hit_recover_limit" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 10.0
+slider_min = 5.0
+slider_max = 50.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_hit_recover_limit"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade de Recuperação de Hit"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_hit_recover_limit"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_hit_recover_limit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 5.0
+max_value = 50.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_hit_recover_limit"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator6" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Movimentação"
+horizontal_alignment = 1
+
+[node name="HSeparator8" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Caminhada:"
+
+[node name="kitsune_walk_speed" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 75.0
+slider_min = 10.0
+slider_max = 150.0
+slider_step = 5.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_walk_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_walk_speed"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "75
+"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_walk_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 150.0
+value = 75.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_walk_speed"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator9" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Ocioso:"
+
+[node name="kitsune_idle_time" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 5.0
+slider_min = 0.5
+slider_max = 10.0
+slider_step = 0.5
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_idle_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Duração"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_idle_time"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "5"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_idle_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 10.0
+value = 5.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_idle_time"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator10" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label5" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Corrida:"
+
+[node name="kitsune_run_speed" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 150.0
+slider_min = 10.0
+slider_max = 300.0
+slider_step = 10.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_run_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_run_speed"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "150"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_run_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 300.0
+value = 150.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_run_speed"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="kitsune_run_duration" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 2.0
+slider_min = 0.5
+slider_max = 10.0
+slider_step = 0.5
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_run_duration"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Duração"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_run_duration"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "2"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_run_duration"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 10.0
+value = 2.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_run_duration"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="kitsune_run_cooldown" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 3.0
+slider_min = 0.5
+slider_max = 10.0
+slider_step = 0.5
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_run_cooldown"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Tempo de Recarga"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_run_cooldown"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "3"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_run_cooldown"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 10.0
+value = 3.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_run_cooldown"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator11" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label6" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Combate"
+horizontal_alignment = 1
+
+[node name="HSeparator12" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="kitsune_attack_cooldown" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 3.0
+slider_min = 0.5
+slider_max = 5.0
+slider_step = 0.5
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_cooldown"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Tempo de Recarga"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_cooldown"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "3"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_cooldown"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 10.0
+value = 3.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_cooldown"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator13" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label7" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Ataques:"
+
+[node name="kitsune_attack_damage" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 5.0
+slider_min = 1.0
+slider_max = 15.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Dano"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_damage"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "5
+"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 20.0
+value = 5.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_damage"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="kitsune_attack_knockback" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 150.0
+slider_max = 300.0
+slider_step = 10.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_knockback"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Knockback"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_knockback"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "150"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_knockback"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 300.0
+value = 150.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_knockback"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="kitsune_attack_knockup" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = -50.0
+slider_min = -100.0
+slider_step = 10.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_knockup"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Knockup"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_knockup"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "-50"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_knockup"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+value = 50.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_knockup"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="kitsune_attack_poise_damage" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 5.0
+slider_min = 1.0
+slider_max = 20.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_poise_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Dano de Postura"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_poise_damage"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "5"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_poise_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 20.0
+value = 5.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_poise_damage"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="kitsune_attack_speed" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 150.0
+slider_max = 300.0
+slider_step = 10.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_speed"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "150"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_speed"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 300.0
+value = 150.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_attack_speed"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="HSeparator14" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label8" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.533333, 1, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 25
+text = "Contato:"
+
+[node name="kitsune_contact_damage_bool" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 1.0
+slider_max = 1.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_damage_bool"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Ativar Dano de Contato"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_damage_bool"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_damage_bool"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 30.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_damage_bool"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="kitsune_contact_damage" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 2.0
+slider_max = 30.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Dano"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_damage"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 30.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_damage"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="kitsune_contact_knockback" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 300.0
+slider_min = 50.0
+slider_max = 1000.0
+slider_step = 50.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_knockback"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Knockback"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_knockback"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "300"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_knockback"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 1000.0
+value = 500.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_knockback"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="kitsune_contact_knockup" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = -100.0
+slider_min = -300.0
+slider_step = 10.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_knockup"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Knockup"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_knockup"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "-100"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_knockup"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 50.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_knockup"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="kitsune_contact_poise_damage" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 20.0
+slider_min = 1.0
+slider_max = 50.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_poise_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Dano de Postura"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_poise_damage"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_poise_damage"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 20.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Kitsune/MarginContainer/VBoxContainer/kitsune_contact_poise_damage"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="Dummy" type="ScrollContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 4
+
+[node name="MarginContainer" type="MarginContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="HSeparator7" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_colors/font_color = Color(1, 0.3, 0.3, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 30
+text = "Vida"
+horizontal_alignment = 1
+
+[node name="HSeparator5" type="HSeparator" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="dummy_max_health" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+script = ExtResource("3_vq8mx")
+default_value = 1000.0
+slider_min = 10.0
+slider_max = 1000.0
+slider_step = 10.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_max_health"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Vida Máxima"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_max_health"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "15"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_max_health"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+value = 15.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_max_health"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="dummy_max_poise" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 10.0
+slider_min = 1.0
+slider_max = 50.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_max_poise"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Postura Máxima"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_max_poise"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_max_poise"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 50.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_max_poise"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="dummy_poise_recover_time" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 3.0
+slider_min = 1.0
+slider_max = 20.0
+slider_step = 1.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_poise_recover_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Tempo de Recuperação de Postura"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_poise_recover_time"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "3"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_poise_recover_time"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 1.0
+max_value = 10.0
+value = 5.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_poise_recover_time"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="dummy_knockback_mult" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 1.0
+slider_max = 3.0
+slider_step = 0.1
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_knockback_mult"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Multiplicador de Knockback
+"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_knockback_mult"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "1"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_knockback_mult"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 5.0
+value = 1.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_knockback_mult"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="dummy_hit_recover_limit" type="HBoxContainer" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 25
+script = ExtResource("3_vq8mx")
+default_value = 10.0
+slider_min = 5.0
+slider_max = 150.0
+slider_step = 5.0
+
+[node name="Label" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_hit_recover_limit"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "Velocidade de Recuperação de Hit"
+
+[node name="number" type="Label" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_hit_recover_limit"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 2
+theme_override_constants/shadow_offset_y = 2
+theme_override_constants/outline_size = 5
+text = "10"
+
+[node name="slider" type="HSlider" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_hit_recover_limit"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+min_value = 5.0
+max_value = 50.0
+value = 10.0
+rounded = true
+
+[node name="button" type="Button" parent="ParameterSettings/Panel/MarginContainer/TabContainer/Dummy/MarginContainer/VBoxContainer/dummy_hit_recover_limit"]
+layout_mode = 2
+text = "Padrao"
+
+[node name="Button2" type="Button" parent="ParameterSettings/Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -112.0
+offset_top = -60.0
+offset_right = -30.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/outline_size = 10
+text = "Padrao"
+
+[node name="Button" type="Button" parent="ParameterSettings/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = -60.0
+offset_right = 113.0
+offset_bottom = -16.0
+theme_override_constants/outline_size = 10
+text = "Voltar"
+
 [connection signal="pressed" from="Tutorial" to="." method="on_tutorial_pressed"]
 [connection signal="pressed" from="Arena" to="." method="_on_arena_pressed"]
 [connection signal="pressed" from="Quit" to="." method="on_quit_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="Level1" to="." method="on_level1_pressed"]
 [connection signal="pressed" from="Level2" to="." method="on_level2_pressed"]
 [connection signal="pressed" from="Level3" to="." method="_on_level_3_pressed"]
@@ -175,3 +4588,4 @@ text = "Spear"
 [connection signal="pressed" from="HBoxContainer2/w2sword" to="." method="_on_w_2_sword_pressed"]
 [connection signal="pressed" from="HBoxContainer2/w2axe" to="." method="_on_w_2_axe_pressed"]
 [connection signal="pressed" from="HBoxContainer2/w2spear" to="." method="_on_w_2_spear_pressed"]
+[connection signal="pressed" from="ParameterSettings/Panel/Button" to="." method="_on_back_pressed"]

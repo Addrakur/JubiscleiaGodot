@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://sdmdvsx1p41u"]
+[gd_scene load_steps=18 format=3 uid="uid://sdmdvsx1p41u"]
 
 [ext_resource type="Texture2D" uid="uid://d0p48v5hp6sq" path="res://assets/enemy/Training_Dummy/idle.png" id="1_hqlgo"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="1_oll5j"]
@@ -8,6 +8,45 @@
 [ext_resource type="Script" path="res://Management/states/dummy/dummy_idle_state.gd" id="6_lym3a"]
 [ext_resource type="Script" path="res://Management/states/dummy/dummy_hit_state.gd" id="7_gb8br"]
 [ext_resource type="Script" path="res://Management/states/state.gd" id="8_psoes"]
+[ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="9_kohpx"]
+
+[sub_resource type="Animation" id="Animation_s2a12"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_h3ndm"]
+resource_name = "hit"
+length = 0.45
+step = 0.075
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(128.498, 0, 0, 1), Color(1, 1, 1, 1), Color(128.498, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u1g37"]
+_data = {
+"RESET": SubResource("Animation_s2a12"),
+"hit": SubResource("Animation_h3ndm")
+}
 
 [sub_resource type="Animation" id="Animation_eyvg0"]
 length = 0.001
@@ -152,13 +191,22 @@ position = Vector2(0, -16)
 texture = ExtResource("1_hqlgo")
 hframes = 4
 
+[node name="HitModulate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_u1g37")
+}
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_3wacu")
 }
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_oll5j")]
+has_parameter_slider = true
+variable_name = "dummy"
 max_health = 1000.0
+max_poise = 10.0
+poise_recover_timer = 3.0
 destroy_after_dead = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -179,10 +227,15 @@ animation = NodePath("../../AnimationPlayer")
 script = ExtResource("7_gb8br")
 dummy = NodePath("../..")
 animation = NodePath("../../AnimationPlayer")
-knock_multi = 1.0
-hit_recover_limit = 10.0
 
 [node name="State" type="Node" parent="StateMachine"]
 script = ExtResource("8_psoes")
 
+[node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("9_kohpx")]
+parent = NodePath("..")
+
+[node name="PoiseTimer" type="Timer" parent="."]
+
+[connection signal="animation_finished" from="HitModulate" to="." method="_on_hit_modulate_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/DummyHitState" method="_on_animation_finished"]
+[connection signal="timeout" from="PoiseTimer" to="." method="_on_poise_timer_timeout"]

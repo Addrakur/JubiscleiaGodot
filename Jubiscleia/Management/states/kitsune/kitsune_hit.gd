@@ -17,7 +17,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	animation.stop()
+	kitsune.health_component.is_getting_hit = true
 	animation.play("hit")
 	kitsune.velocity.x = 0
 	knockback()
@@ -26,6 +26,7 @@ func exit_state() -> void:
 	set_physics_process(false)
 	kitsune.health_component.is_getting_hit = false
 	anim_finish = false
+	kitsune.health_component.last_attack = ""
 
 func _physics_process(_delta):
 	
