@@ -55,7 +55,7 @@ func _physics_process(_delta):
 	if PlayerVariables.move:
 		player.velocity.x = speed * direction
 	
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and not passed_enemy:
 		player.fsm.change_state(player.jump_state)
 	
 	if anim_finish and not passed_enemy or passed_enemy and enemy.is_empty():
@@ -75,10 +75,8 @@ func _on_dash_collision_body_entered(body: Node2D) -> void:
 		enemy.append(body)
 	
 	if body.is_in_group("terrain"):
-		if player.is_on_floor():
-			player.fsm.change_state(player.idle_state)
-		else:
-			player.fsm.change_state(player.fall_state)
+		player.fsm.change_state(player.idle_state)
+		player.fsm.change_state(player.fall_state)
 	
 
 func _on_dash_collision_body_exited(body: Node2D) -> void:
