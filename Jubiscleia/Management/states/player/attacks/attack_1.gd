@@ -18,7 +18,7 @@ func enter_state() -> void:
 	player.combo_timer.stop()
 	
 	PlayerVariables.last_skill = PlayerVariables.current_skill
-	animation.play(PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_1")
+	animation.play(PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_1",-1,PlayerVariables.attack_speed,false)
 	PlayerVariables.current_attack = PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_1"
 	player.attack_area.attack_name = PlayerVariables.current_attack
 	player.can_combo = false

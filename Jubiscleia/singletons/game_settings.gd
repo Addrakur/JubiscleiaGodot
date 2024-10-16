@@ -14,7 +14,7 @@ func _input(event):
 
 func change_scene(scene_name:String):
 	get_tree().set_pause(false)
-	get_tree().change_scene_to_file(scene_name)
+	get_tree().change_scene_to_file.call_deferred(scene_name)
 
 var arena_spawn_point: Vector2 = Vector2(-768,480)
 var level_1_spawn_point: Vector2 = Vector2(-3456,576)
