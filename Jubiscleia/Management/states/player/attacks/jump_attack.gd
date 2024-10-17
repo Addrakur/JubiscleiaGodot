@@ -39,11 +39,6 @@ func enter_state() -> void:
 	
 	player.velocity.x = 0
 	
-	match PlayerVariables.current_skill:
-		"spear":
-			PlayerVariables.my_knockup = true
-			PlayerVariables.can_move_during_attack = true
-	
 	PlayerVariables.current_skill = ""
 
 func exit_state() -> void:

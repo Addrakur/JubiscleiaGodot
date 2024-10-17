@@ -1,7 +1,7 @@
 class_name SwordSkeletonIdle
 extends State
 
-@export var skeleton: CharacterBody2D
+@export var skeleton: SwordSkeleton
 @export var animation: AnimationPlayer
 @export var idle_timer: Timer
 @export var attack_timer: Timer
@@ -23,7 +23,7 @@ func _physics_process(_delta):
 	if skeleton.player_ref != null and PlayerVariables.player_alive and skeleton.player_on_limit:
 		set_direction()
 		if skeleton.can_attack_player:
-			if skeleton.health_component.current_poise == skeleton.health_component.max_poise and skeleton.can_protect:
+			if skeleton.health_component.current_poise == skeleton.health_component.true_max_poise and skeleton.can_protect:
 				skeleton.fsm.change_state(skeleton.protect_state)
 			elif attack_timer.is_stopped():
 				skeleton.attack_state.attack = "attack_1"

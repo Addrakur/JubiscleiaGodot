@@ -1,6 +1,7 @@
+class_name SwordSkeleton
 extends CharacterBody2D
 
-@export var health_component: Node2D
+@export var health_component: HealthComponent
 @export var attack_area: AttackArea
 @export var direction: float
 @export var contact_damage: AttackArea
