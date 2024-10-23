@@ -1,0 +1,379 @@
+[gd_scene load_steps=19 format=3 uid="uid://daabvpmmaefaf"]
+
+[ext_resource type="Texture2D" uid="uid://cfk40b7vx8e7h" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_walk.png" id="1_j8oj4"]
+[ext_resource type="Script" path="res://enemies/spike_shield_enemy.gd" id="1_jys8c"]
+[ext_resource type="Texture2D" uid="uid://bpmiq3wodevxo" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_idle.png" id="2_grvos"]
+[ext_resource type="Texture2D" uid="uid://bsx046yhihnx0" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_attack.png" id="3_mdd8t"]
+[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="4_6roo1"]
+[ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_walk.gd" id="4_begci"]
+[ext_resource type="Script" path="res://Management/states/state_machine.gd" id="6_e5n3x"]
+[ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="7_7f32w"]
+[ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_idle.gd" id="7_h2e6f"]
+
+[sub_resource type="Animation" id="Animation_tdskv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_j8oj4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackArea/shield_collision:polygon")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-38, -59, -38, 0, -7, 0, -7, -59)]
+}
+
+[sub_resource type="Animation" id="Animation_7negd"]
+resource_name = "attack"
+length = 1.66668
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_mdd8t")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.416667, 0.833333, 1.16667, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackArea/shield_collision:polygon")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.408195, 0.416667, 0.824861, 0.833333, 1.15928, 1.16667, 1.24226, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [PackedVector2Array(-38, -59, -38, 0, -7, 0, -7, -59), PackedVector2Array(-38, -59, -38, 0, -7, 0, -7, -59), PackedVector2Array(-28, -59, -28, 0, -7, 0, -7, -59), PackedVector2Array(-28, -59, -28, 0, -7, 0, -7, -59), PackedVector2Array(-18, -59, -18, 0, -7, 0, -7, -59), PackedVector2Array(-18, -59, -18, 0, -7, 0, -7, -59), PackedVector2Array(-56, -59, -56, 0, -7, 0, -7, -59), PackedVector2Array(-56, -59, -56, 0, -7, 0, -7, -59), PackedVector2Array(-50, -59, -50, 0, -7, 0, -7, -59)]
+}
+
+[sub_resource type="Animation" id="Animation_re4ci"]
+resource_name = "idle"
+length = 1.25001
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_grvos")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_4xin1"]
+resource_name = "walk"
+length = 2.00001
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_j8oj4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.333333, 0.5, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.33333, 1.5, 1.66667, 1.75, 1.83333, 1.91667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("StateMachine/SpikeShieldEnemyWalk")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.666667, 1, 1.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"move_false"
+}, {
+"args": [],
+"method": &"move_true"
+}, {
+"args": [],
+"method": &"move_false"
+}, {
+"args": [],
+"method": &"move_true"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_db5ga"]
+_data = {
+"RESET": SubResource("Animation_tdskv"),
+"attack": SubResource("Animation_7negd"),
+"idle": SubResource("Animation_re4ci"),
+"walk": SubResource("Animation_4xin1")
+}
+
+[sub_resource type="Animation" id="Animation_vaxkp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xjmkf"]
+resource_name = "hit"
+length = 0.150005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(100, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_gpl13"]
+resource_name = "protect"
+length = 0.150005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(100, 100, 100, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xov44"]
+_data = {
+"RESET": SubResource("Animation_vaxkp"),
+"hit": SubResource("Animation_xjmkf"),
+"protect": SubResource("Animation_gpl13")
+}
+
+[node name="spike_shield_enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area")]
+collision_layer = 2
+collision_mask = 13
+script = ExtResource("1_jys8c")
+health_component = NodePath("HealthComponent")
+attack_area = NodePath("AttackArea")
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
+script = ExtResource("6_e5n3x")
+state = NodePath("SpikeShieldEnemyIdle")
+
+[node name="SpikeShieldEnemyIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "idle_timer", "animation")]
+script = ExtResource("7_h2e6f")
+parent = NodePath("../..")
+idle_timer = NodePath("../../idle_timer")
+animation = NodePath("../../animation")
+
+[node name="SpikeShieldEnemyWalk" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "animation", "attack_timer")]
+script = ExtResource("4_begci")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+speed = 55.0
+wander_limit = 40.0
+attack_timer = NodePath("../../attack_timer")
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_db5ga")
+}
+
+[node name="hit_modulate" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xov44")
+}
+
+[node name="collision" type="CollisionPolygon2D" parent="."]
+modulate = Color(0.0666666, 1, 0, 1)
+position = Vector2(12, -29)
+polygon = PackedVector2Array(-19, 29, -19, -30, -1, -30, 18, -16, 18, 29)
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("7_7f32w")]
+max_health = 15.0
+max_poise = 50.0
+poise_recover_timer = 1.0
+destroy_after_dead = true
+attack_timer = NodePath("../attack_timer")
+
+[node name="AttackArea" parent="." instance=ExtResource("4_6roo1")]
+collision_mask = 1
+target = "player"
+damage = 10.0
+knockup_force = -10.0
+knockback_force = 500.0
+poise_damage = 30.0
+attack_name = "spike_shield"
+
+[node name="shield_collision" type="CollisionPolygon2D" parent="AttackArea"]
+polygon = PackedVector2Array(-38, -59, -38, 0, -7, 0, -7, -59)
+
+[node name="detect_area" type="Area2D" parent="."]
+
+[node name="detect_collision" type="CollisionPolygon2D" parent="detect_area"]
+polygon = PackedVector2Array(-384, 0, 128, 0, 128, -128, -384, -128)
+
+[node name="can_attack_area" type="Area2D" parent="."]
+
+[node name="can_attack_collision" type="CollisionPolygon2D" parent="can_attack_area"]
+modulate = Color(85.946, 55.676, 0, 1)
+polygon = PackedVector2Array(-51, -59, -51, 0, -38, 0, -38, -59)
+
+[node name="texture" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("1_j8oj4")
+hframes = 18
+
+[node name="idle_timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="poise_timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="animation_finished" from="hit_modulate" to="." method="_on_hit_modulate_animation_finished"]
+[connection signal="body_entered" from="detect_area" to="." method="_on_detect_area_body_entered"]
+[connection signal="body_exited" from="detect_area" to="." method="_on_detect_area_body_exited"]
+[connection signal="body_entered" from="can_attack_area" to="." method="_on_can_attack_area_body_entered"]
+[connection signal="body_exited" from="can_attack_area" to="." method="_on_can_attack_area_body_exited"]
+[connection signal="timeout" from="poise_timer" to="." method="_on_poise_timer_timeout"]

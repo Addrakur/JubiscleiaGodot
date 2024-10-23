@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cqp1060wjlhfn"]
+[gd_scene load_steps=18 format=4 uid="uid://cqp1060wjlhfn"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_5moen"]
 [ext_resource type="TileSet" uid="uid://dsjlo105wabro" path="res://assets/Tileset/Ground.tres" id="2_khbs8"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bgtm18yxrdsdx" path="res://Management/camera_area.tscn" id="10_h6txr"]
 [ext_resource type="PackedScene" uid="uid://b7fccbrl06aa5" path="res://levels/enemy_spawn.tscn" id="11_14tdb"]
 [ext_resource type="PackedScene" uid="uid://djqldg2hn5i3u" path="res://Management/spike.tscn" id="11_davmh"]
+[ext_resource type="PackedScene" uid="uid://daabvpmmaefaf" path="res://enemies/spike_shield_enemy.tscn" id="14_1sd7a"]
 
 [sub_resource type="Resource" id="Resource_td1jt"]
 script = ExtResource("9_dny5v")
@@ -35,10 +36,11 @@ point_count = 2
 [node name="arena" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_5moen")
 player = NodePath("player")
+free_spawn = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(-768, 288)
+position = Vector2(-208, 288)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("7_qpd7n")
@@ -66,8 +68,11 @@ polygon = PackedVector2Array(-256, 256, -256, 480, 1280, 480, 1280, 256)
 [node name="Starting X" type="Marker2D" parent="Limit"]
 position = Vector2(608, 384)
 
+[node name="spike_shield_enemy" parent="Limit" instance=ExtResource("14_1sd7a")]
+position = Vector2(160, 480)
+
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_2ic4t")]
-position = Vector2(-880, 480)
+position = Vector2(-208, 480)
 camera = NodePath("../Camera2D")
 
 [node name="Training Dummy" parent="." instance=ExtResource("9_dgptr")]
@@ -121,7 +126,7 @@ starting_x = NodePath("../Limit/Starting X")
 limit = NodePath("../Limit")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
-position = Vector2(-768, 288)
+position = Vector2(-208, 288)
 script = ExtResource("8_us7wb")
 follow_mode = 4
 follow_target = NodePath("../player")
