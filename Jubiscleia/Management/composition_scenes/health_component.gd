@@ -16,7 +16,8 @@ var current_health: float = 100
 var current_poise: float = 1000
 var is_getting_hit: bool = false
 var invulnerable: bool = false
-var defending: bool = false
+@export var defending: bool = false
+@export var left: bool
 
 var last_attack: String
 
@@ -35,30 +36,29 @@ func _ready() -> void:
 func _process(_delta):
 	die()
 
-func update_health(health_damage: float, knockup: float, knockback: float, direction: float, last_attack_name: String, poise_damage: float) -> void:
+func update_health(health_damage: float, knockup: float, knockback: float, direction: float, last_attack_name: String, poise_damage: float, attack_position: float) -> void:
 	if last_attack_name != last_attack:
 		last_attack = last_attack_name
-		if not defending:
+		if can_recieve_damage(attack_position):
 			current_health -= health_damage
 			current_poise -= poise_damage
-		
-		if current_poise <= 0:
-			parent.hit_state.knockup_force = knockup * parent.hit_state.knock_multi # Aplica a força do knockback
-			parent.hit_state.knockback_force = knockback * parent.hit_state.knock_multi # Aplica a força do knockup
-			parent.hit_state.direction = direction
-		
-			#if parent.fsm.state == parent.hit_state: # Gambiarra que faz o alvo reiniciar o hit state
-			parent.fsm.change_state(parent.hit_state)
-			current_poise = max_poise if not has_parameter_slider else true_max_poise # Arrumar depois
-			if attack_timer != null:
-				attack_timer.stop()
-		else:
-			if not defending:
-				parent.hit_modulate.play("hit")
-				parent.poise_timer.start(poise_recover_timer if not has_parameter_slider else true_poise_recover_time) # Arrumar depois
+			
+			if current_poise <= 0:
+				parent.hit_state.knockup_force = knockup * parent.hit_state.knock_multi # Aplica a força do knockback
+				parent.hit_state.knockback_force = knockback * parent.hit_state.knock_multi # Aplica a força do knockup
+				parent.hit_state.direction = direction
+			
+				parent.fsm.change_state(parent.hit_state)
+				current_poise = max_poise if not has_parameter_slider else true_max_poise # Arrumar depois
+				if attack_timer != null:
+					attack_timer.stop()
+			
 			else:
-				parent.hit_modulate.play("defending")
-		
+				parent.hit_modulate.play("hit")
+				
+		else:
+			parent.hit_modulate.play("defending")
+
 		if parent.is_in_group("player"):
 			parent.corruption_manager.time_penalty()
 		
@@ -70,3 +70,18 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 func die() -> void:
 	if current_health <= 0:
 		parent.alive = false
+
+func can_recieve_damage(attack_position: float) -> bool:
+	if defending:
+		if left:
+			if parent.position.x > attack_position and parent.texture.flip_h or parent.position.x < attack_position and not parent.texture.flip_h:
+				return true
+			else:
+				return false
+		else:
+			if parent.position.x > attack_position and not parent.texture.flip_h or parent.position.x < attack_position and parent.texture.flip_h:
+				return true
+			else:
+				return false
+	else:
+		return true

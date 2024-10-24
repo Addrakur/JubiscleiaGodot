@@ -26,7 +26,7 @@ func exit_state() -> void:
 	skeleton.health_component.defending = false
 
 func _physics_process(_delta: float) -> void:
-	if timeout or not skeleton.can_attack_player or skeleton.player_ref == null:
+	if timeout or skeleton.player_ref == null:
 		skeleton.fsm.change_state(skeleton.idle_state)
 
 func _on_protect_duration_timeout() -> void:

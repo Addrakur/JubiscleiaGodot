@@ -42,6 +42,7 @@ enemy=""
 terrain=""
 projectile=""
 player_object=""
+shield_enemy=""
 
 [input]
 

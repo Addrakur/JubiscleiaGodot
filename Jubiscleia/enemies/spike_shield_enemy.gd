@@ -21,6 +21,7 @@ var direction: float
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var idle_state: SpikeShieldEnemyIdle = $StateMachine/SpikeShieldEnemyIdle
 @onready var walk_state: SpikeShieldEnemyWalk = $StateMachine/SpikeShieldEnemyWalk
+@onready var attack_state: SpikeShieldEnemyAttack = $StateMachine/SpikeShieldEnemyAttack
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player: bool = false
@@ -80,7 +81,7 @@ func _on_poise_timer_timeout(): # Deixar
 	health_component.current_poise = health_component.max_poise
   
 func _on_can_attack_area_body_entered(body: Node2D) -> void: # Deixar
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and player_on_limit:
 		can_attack_player = true
 
 func _on_can_attack_area_body_exited(body: Node2D) -> void: # Deixar

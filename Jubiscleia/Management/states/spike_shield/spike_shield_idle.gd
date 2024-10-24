@@ -18,7 +18,10 @@ func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(_delta):
-	if idle_timer.is_stopped():
+	if parent.can_attack_player:
+		if parent.attack_timer.is_stopped():
+			parent.fsm.change_state(parent.attack_state)
+	elif idle_timer.is_stopped():
 		parent.fsm.change_state(parent.walk_state)
 
 func set_direction():

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://daabvpmmaefaf"]
+[gd_scene load_steps=20 format=3 uid="uid://daabvpmmaefaf"]
 
 [ext_resource type="Texture2D" uid="uid://cfk40b7vx8e7h" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_walk.png" id="1_j8oj4"]
 [ext_resource type="Script" path="res://enemies/spike_shield_enemy.gd" id="1_jys8c"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://bsx046yhihnx0" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_attack.png" id="3_mdd8t"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="4_6roo1"]
 [ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_walk.gd" id="4_begci"]
+[ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_attack.gd" id="5_8ncuv"]
 [ext_resource type="Script" path="res://Management/states/state_machine.gd" id="6_e5n3x"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="7_7f32w"]
 [ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_idle.gd" id="7_h2e6f"]
@@ -262,7 +263,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_gpl13"]
-resource_name = "protect"
+resource_name = "defending"
 length = 0.150005
 step = 0.05
 tracks/0/type = "value"
@@ -281,11 +282,11 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xov44"]
 _data = {
 "RESET": SubResource("Animation_vaxkp"),
-"hit": SubResource("Animation_xjmkf"),
-"protect": SubResource("Animation_gpl13")
+"defending": SubResource("Animation_gpl13"),
+"hit": SubResource("Animation_xjmkf")
 }
 
-[node name="spike_shield_enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area")]
+[node name="spike_shield_enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy", "shield_enemy"]]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_jys8c")
@@ -310,6 +311,12 @@ speed = 55.0
 wander_limit = 40.0
 attack_timer = NodePath("../../attack_timer")
 
+[node name="SpikeShieldEnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "animation", "attack_timer")]
+script = ExtResource("5_8ncuv")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+attack_timer = NodePath("../../attack_timer")
+
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_db5ga")
@@ -322,8 +329,7 @@ libraries = {
 
 [node name="collision" type="CollisionPolygon2D" parent="."]
 modulate = Color(0.0666666, 1, 0, 1)
-position = Vector2(12, -29)
-polygon = PackedVector2Array(-19, 29, -19, -30, -1, -30, 18, -16, 18, 29)
+polygon = PackedVector2Array(-38, 0, -38, -58, 13, -58, 30, -43, 30, 0)
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("7_7f32w")]
 max_health = 15.0
@@ -331,6 +337,8 @@ max_poise = 50.0
 poise_recover_timer = 1.0
 destroy_after_dead = true
 attack_timer = NodePath("../attack_timer")
+defending = true
+left = true
 
 [node name="AttackArea" parent="." instance=ExtResource("4_6roo1")]
 collision_mask = 1
@@ -345,11 +353,13 @@ attack_name = "spike_shield"
 polygon = PackedVector2Array(-38, -59, -38, 0, -7, 0, -7, -59)
 
 [node name="detect_area" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="detect_collision" type="CollisionPolygon2D" parent="detect_area"]
-polygon = PackedVector2Array(-384, 0, 128, 0, 128, -128, -384, -128)
+polygon = PackedVector2Array(-448, 0, 128, 0, 128, -128, -448, -128)
 
 [node name="can_attack_area" type="Area2D" parent="."]
+collision_layer = 0
 
 [node name="can_attack_collision" type="CollisionPolygon2D" parent="can_attack_area"]
 modulate = Color(85.946, 55.676, 0, 1)
@@ -371,6 +381,7 @@ one_shot = true
 [node name="poise_timer" type="Timer" parent="."]
 one_shot = true
 
+[connection signal="animation_finished" from="animation" to="StateMachine/SpikeShieldEnemyAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="hit_modulate" to="." method="_on_hit_modulate_animation_finished"]
 [connection signal="body_entered" from="detect_area" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="detect_area" to="." method="_on_detect_area_body_exited"]

@@ -34,9 +34,17 @@ func _physics_process(_delta):
 	if parent.position.x > new_x and parent.direction == 1 or parent.position.x < new_x and parent.direction == -1:
 		parent.fsm.change_state(parent.idle_state)
 	
+	if parent.can_attack_player:
+		if parent.attack_timer.is_stopped():
+			parent.fsm.change_state(parent.attack_state)
+		else:
+			parent.fsm.change_state(parent.idle_state)
 
 func new_position():
-	new_x = randf_range(parent.limit.limit_polygon.polygon[0].x + wander_limit, parent.limit.limit_polygon.polygon[2].x - wander_limit)
+	if parent.player_ref == null:
+		new_x = randf_range(parent.limit.limit_polygon.polygon[0].x + wander_limit, parent.limit.limit_polygon.polygon[2].x - wander_limit)
+	else:
+		new_x = parent.player_ref.position.x
 	
 	if parent.position.x > new_x:
 		parent.direction = -1

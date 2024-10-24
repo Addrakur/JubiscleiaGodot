@@ -1567,7 +1567,7 @@ libraries = {
 }
 
 [node name="AttackArea" parent="." instance=ExtResource("4_6h2qd")]
-collision_mask = 6
+collision_mask = 65542
 target = "enemy"
 one_hit_destroy = true
 destroy_on_terrain = true

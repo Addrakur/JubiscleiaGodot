@@ -40,7 +40,7 @@ func on_body_exited(body):
 
 func hit_func(body: Node2D):
 	if body.is_in_group(target) and not body.health_component.invulnerable and body.alive:
-		body.health_component.update_health(damage, knockup_force, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage) # Chama a função que aplica o dano no alvo
+		body.health_component.update_health(damage, knockup_force, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage, parent.position.x) # Chama a função que aplica o dano no alvo
 		
 		if parent.is_in_group("player"): # Verifica se quem bateu foi o jogador
 			PlayerVariables.hit_amount += 1
@@ -54,7 +54,9 @@ func hit_func(body: Node2D):
 				
 		if one_hit_destroy:
 			parent.can_destroy = true
-	
+		
+		if body.is_in_group("shield_enemy") and parent.is_in_group("player_object"):
+			parent.can_destroy = true
 	
 	elif body.is_in_group("terrain") and destroy_on_terrain:
 		parent.can_destroy = true
