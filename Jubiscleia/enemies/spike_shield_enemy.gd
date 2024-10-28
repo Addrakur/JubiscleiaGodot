@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var health_component: Node2D
 @export var attack_area: Area2D
 
-var direction: float
+var direction: float = -1
 
 @onready var limit: Area2D = get_parent()
 @onready var animation: AnimationPlayer = $animation
@@ -22,6 +22,7 @@ var direction: float
 @onready var idle_state: SpikeShieldEnemyIdle = $StateMachine/SpikeShieldEnemyIdle
 @onready var walk_state: SpikeShieldEnemyWalk = $StateMachine/SpikeShieldEnemyWalk
 @onready var attack_state: SpikeShieldEnemyAttack = $StateMachine/SpikeShieldEnemyAttack
+@onready var turn_state: SpikeShieldEnemyTurn = $StateMachine/SpikeShieldEnemyTurn
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player: bool = false
@@ -65,6 +66,15 @@ func left():
 	shield_collision.scale.x = 1
 	detect_collision.scale.x = 1
 	can_attack_collision.scale.x = 1
+
+func player_behind(parent: SpikeShieldEnemy) -> bool:
+	if parent.player_ref != null:
+		if parent.direction == 1 and parent.player_ref.position.x < parent.position.x or parent.direction == -1 and parent.player_ref.position.x > parent.position.x:
+			return true
+		else:
+			return false
+	else:
+		return false
 
 func _on_detect_area_body_entered(body): # Deixar
 	if body.is_in_group("player"):

@@ -100,7 +100,7 @@
 size = Vector2(15, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v34mu"]
-size = Vector2(14.5, 10)
+size = Vector2(16.9189, 10)
 
 [sub_resource type="Animation" id="Animation_115di"]
 length = 0.001
@@ -7450,10 +7450,10 @@ shape = SubResource("RectangleShape2D_ar5uo")
 [node name="DashCollision" type="Area2D" parent="."]
 position = Vector2(0, -14)
 collision_layer = 0
-collision_mask = 6
+collision_mask = 65542
 
 [node name="DashCollision" type="CollisionShape2D" parent="DashCollision"]
-position = Vector2(-2.80123e-08, 0)
+position = Vector2(1.12049e-07, 0)
 shape = SubResource("RectangleShape2D_v34mu")
 debug_color = Color(0.944279, 7.79718e-06, 0.597798, 0.42)
 

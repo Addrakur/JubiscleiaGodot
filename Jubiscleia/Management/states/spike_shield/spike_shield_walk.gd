@@ -23,7 +23,6 @@ func enter_state() -> void:
 func exit_state() -> void:
 	set_physics_process(false)
 	new_x = 0
-	parent.direction = 0
 
 func _physics_process(_delta):
 	if new_x != 0 and parent.direction != 0 and move:
@@ -32,6 +31,9 @@ func _physics_process(_delta):
 		parent.velocity.x = 0
 	
 	if parent.position.x > new_x and parent.direction == 1 or parent.position.x < new_x and parent.direction == -1:
+		parent.fsm.change_state(parent.idle_state)
+	
+	if parent.player_behind(parent):
 		parent.fsm.change_state(parent.idle_state)
 	
 	if parent.can_attack_player:

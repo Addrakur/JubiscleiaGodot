@@ -10,9 +10,9 @@ func _ready():
 
 func enter_state() -> void:
 	idle_timer.start()
-	set_physics_process(true)
 	animation.play("idle")
 	parent.velocity.x = 0
+	set_physics_process(true)
 
 func exit_state() -> void:
 	set_physics_process(false)
@@ -22,7 +22,10 @@ func _physics_process(_delta):
 		if parent.attack_timer.is_stopped():
 			parent.fsm.change_state(parent.attack_state)
 	elif idle_timer.is_stopped():
-		parent.fsm.change_state(parent.walk_state)
+		if parent.player_behind(parent):
+			parent.fsm.change_state(parent.turn_state)
+		else:
+			parent.fsm.change_state(parent.walk_state)
 
 func set_direction():
 	if parent.player_ref.position.x > parent.position.x - 10:

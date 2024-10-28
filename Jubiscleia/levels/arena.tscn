@@ -40,7 +40,7 @@ free_spawn = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(-127.999, 288)
+position = Vector2(384, 288)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("7_qpd7n")
@@ -72,7 +72,7 @@ position = Vector2(608, 384)
 position = Vector2(560, 480)
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_2ic4t")]
-position = Vector2(-128, 480)
+position = Vector2(384, 480)
 camera = NodePath("../Camera2D")
 
 [node name="Training Dummy" parent="." instance=ExtResource("9_dgptr")]
@@ -126,7 +126,7 @@ starting_x = NodePath("../Limit/Starting X")
 limit = NodePath("../Limit")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
-position = Vector2(-127.999, 288)
+position = Vector2(384, 288)
 script = ExtResource("8_us7wb")
 follow_mode = 4
 follow_target = NodePath("../player")
