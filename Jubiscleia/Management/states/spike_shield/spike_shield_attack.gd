@@ -14,10 +14,12 @@ func _enter() -> void:
 	parent.velocity.x = 0
 	animation.play("attack")
 	parent.attack_area.attack_name = parent.name + attack
+	print("enter " + name)
 
 func _exit() -> void:
 	parent.is_attacking = false
 	attack_timer.start()
+	print("exit " + name)
 
 func _on_animation_finished(anim):
 	if anim == "attack":

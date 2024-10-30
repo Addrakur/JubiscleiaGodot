@@ -8,16 +8,25 @@ extends LimboState
 var attack: String
 
 func _enter() -> void:
-	set_physics_process(true)
-	animation.play("turn")
+	print("enter " + name)
+	if parent.turn_attack:
+		animation.play("turn_attack")
+	else:
+		animation.play("turn")
 	parent.velocity.x = 0
 
 func _on_animation_finished(anim):
-	if anim == "turn" or anim == "turn_attack":
+	if anim == "turn":
 		dispatch("turn_to_walk")
+	elif anim == "turn_attack":
+		dispatch("turn_to_idle")
 
 func turn():
 	if parent.direction == 1:
 		parent.left()
 	else:
 		parent.right()
+	parent.set_direction()
+
+func _exit():
+	print("exit " + name)

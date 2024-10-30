@@ -68,8 +68,9 @@ polygon = PackedVector2Array(-256, 256, -256, 480, 1280, 480, 1280, 256)
 [node name="Starting X" type="Marker2D" parent="Limit"]
 position = Vector2(608, 384)
 
-[node name="spike_shield_enemy" parent="Limit" instance=ExtResource("14_1sd7a")]
+[node name="spike_shield_enemy" parent="Limit" node_paths=PackedStringArray("starting_x") instance=ExtResource("14_1sd7a")]
 position = Vector2(560, 480)
+starting_x = NodePath("../Starting X")
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_2ic4t")]
 position = Vector2(384, 480)
