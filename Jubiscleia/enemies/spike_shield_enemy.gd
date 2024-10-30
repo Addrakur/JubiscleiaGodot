@@ -26,6 +26,7 @@ var direction: float = -1
 @onready var walk_state: SpikeShieldEnemyWalk = $HSM/SpikeShieldEnemyWalk
 @onready var turn_state: SpikeShieldEnemyTurn = $HSM/SpikeShieldEnemyTurn
 @onready var attack_state: SpikeShieldEnemyAttack = $HSM/SpikeShieldEnemyAttack
+@onready var hit_state: SpikeShieldEnemyHit = $HSM/SpikeShieldEnemyHit
 
 
 @onready var player_ref: CharacterBody2D
@@ -131,12 +132,18 @@ func init_state_machine():
 	
 	hsm.add_transition(attack_state,idle_state, &"attack_to_idle")
 	
+	hsm.add_transition(hsm.ANYSTATE, hit_state, &"apply_knockback")
+	hsm.add_transition(hit_state,idle_state, &"hit_to_idle")
+	
 	hsm.initial_state = idle_state
 	hsm.initialize(self)
 	hsm.set_active(true)
 
 func new_position():
-	move_position = randf_range(starting_x.global_position.x + walk_state.wander_limit, starting_x.global_position.x - walk_state.wander_limit)
+	if player_ref == null:
+		move_position = randf_range(starting_x.global_position.x + walk_state.wander_limit, starting_x.global_position.x - walk_state.wander_limit)
+	else:
+		move_position = player_ref.global_position.x
 	print(move_position, "           current position: ", global_position.x)
 
 func set_direction():

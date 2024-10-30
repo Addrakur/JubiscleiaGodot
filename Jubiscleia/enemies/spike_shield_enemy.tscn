@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://daabvpmmaefaf"]
+[gd_scene load_steps=28 format=3 uid="uid://daabvpmmaefaf"]
 
 [ext_resource type="Texture2D" uid="uid://cfk40b7vx8e7h" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_walk.png" id="1_j8oj4"]
 [ext_resource type="Script" path="res://enemies/spike_shield_enemy.gd" id="1_jys8c"]
@@ -10,8 +10,10 @@
 [ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_turn.gd" id="6_v2cu5"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="7_7f32w"]
 [ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_idle.gd" id="7_h2e6f"]
+[ext_resource type="Texture2D" uid="uid://t0rbfgr0bg02" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_hit.png" id="7_v4sg3"]
 [ext_resource type="Texture2D" uid="uid://b34413yxf1760" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_turn.png" id="10_wy2kl"]
 [ext_resource type="Texture2D" uid="uid://d4dcheggmc7xu" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_turn_attack.png" id="11_qkqfi"]
+[ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_hit.gd" id="13_hpytp"]
 
 [sub_resource type="Animation" id="Animation_tdskv"]
 length = 0.001
@@ -469,10 +471,52 @@ tracks/5/keys = {
 "values": [PackedVector2Array(-61, -58, -61, -1, -38, 0, -38, -58), PackedVector2Array(-61, -58, -61, -1, -38, 0, -38, -58), PackedVector2Array(-51, -58, -51, -1, -28, 0, -28, -58), PackedVector2Array(-51, -58, -51, -1, -28, 0, -28, -58), PackedVector2Array(-41, -61, -41, -4, -18, -3, -18, -61), PackedVector2Array(-41, -61, -41, -4, -18, -3, -18, -61), PackedVector2Array(-24, -62, -24, -3, 24, -3, 24, -62), PackedVector2Array(-24, -62, -24, -3, 24, -3, 24, -62), PackedVector2Array(-41, -61, -41, -4, -18, -3, -18, -61), PackedVector2Array(-41, -61, -41, -4, -18, -3, -18, -61), PackedVector2Array(-80, -62, -80, -5, -18, -3, -18, -61), PackedVector2Array(-80, -62, -80, -5, -18, -3, -18, -61), PackedVector2Array(-80, -62, -80, -5, -57, -4, -57, -62), PackedVector2Array(-80, -62, -80, -5, -57, -4, -57, -62), PackedVector2Array(-74, -58, -74, -1, -51, 0, -51, -58)]
 }
 
+[sub_resource type="Animation" id="Animation_00gt0"]
+resource_name = "hit"
+length = 1.33334
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_v4sg3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333, 1, 1.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_db5ga"]
 _data = {
 "RESET": SubResource("Animation_tdskv"),
 "attack": SubResource("Animation_7negd"),
+"hit": SubResource("Animation_00gt0"),
 "idle": SubResource("Animation_re4ci"),
 "turn": SubResource("Animation_7afq0"),
 "turn_attack": SubResource("Animation_fisxc"),
@@ -557,9 +601,9 @@ libraries = {
 }
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("7_7f32w")]
-max_health = 15.0
-max_poise = 50.0
-poise_recover_timer = 1.0
+max_health = 25.0
+max_poise = 1.0
+poise_recover_timer = 2.0
 destroy_after_dead = true
 attack_timer = NodePath("../attack_timer")
 defending = true
@@ -582,7 +626,7 @@ collision_layer = 0
 
 [node name="detect_collision" type="CollisionPolygon2D" parent="detect_area"]
 position = Vector2(-17, 1)
-polygon = PackedVector2Array(-303, -1, 145, -1, 145, -129, -303, -129)
+polygon = PackedVector2Array(-239, -1, 145, -1, 145, -129, -239, -129)
 
 [node name="can_attack_area" type="Area2D" parent="."]
 collision_layer = 0
@@ -650,8 +694,16 @@ parent = NodePath("../..")
 animation = NodePath("../../animation")
 attack_timer = NodePath("../../attack_timer")
 
+[node name="SpikeShieldEnemyHit" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("13_hpytp")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+knock_multi = 0.2
+hit_recover_limit = 30.0
+
 [connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyTurn" method="_on_animation_finished"]
 [connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyAttack" method="_on_animation_finished"]
+[connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyHit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="hit_modulate" to="." method="_on_hit_modulate_animation_finished"]
 [connection signal="body_entered" from="detect_area" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="detect_area" to="." method="_on_detect_area_body_exited"]

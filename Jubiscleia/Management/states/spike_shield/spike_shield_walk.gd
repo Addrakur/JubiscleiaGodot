@@ -20,7 +20,7 @@ func _exit() -> void:
 
 func _update(_delta):
 	if parent.player_ref != null:
-		parent.move_position = parent.player_ref.global_position.x
+		parent.new_position()
 	
 	if parent.move_position_behind() or parent.can_attack_player:
 		dispatch("walk_to_idle")

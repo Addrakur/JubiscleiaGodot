@@ -48,7 +48,11 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 				parent.hit_state.knockback_force = knockback * parent.hit_state.knock_multi # Aplica a força do knockup
 				parent.hit_state.direction = direction
 			
-				parent.fsm.change_state(parent.hit_state)
+				if parent.get("fsm") != null:
+					parent.fsm.change_state(parent.hit_state)
+				else:
+					parent.hsm.dispatch("apply_knockback")
+				
 				current_poise = max_poise if not has_parameter_slider else true_max_poise # Arrumar depois
 				if attack_timer != null:
 					attack_timer.stop()
