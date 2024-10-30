@@ -1,5 +1,5 @@
 class_name SpikeShieldEnemyAttack
-extends State
+extends LimboState
 
 @export var parent: SpikeShieldEnemy
 @export var animation: AnimationPlayer
@@ -9,24 +9,16 @@ var attack: String
 
 var move: bool = false
 
-func _ready():
-	set_physics_process(false)
-
-func enter_state() -> void:
-	set_physics_process(true)
+func _enter() -> void:
 	parent.is_attacking = true
 	parent.velocity.x = 0
 	animation.play("attack")
 	parent.attack_area.attack_name = parent.name + attack
 
-func exit_state() -> void:
-	set_physics_process(false)
+func _exit() -> void:
 	parent.is_attacking = false
 	attack_timer.start()
 
-func _physics_process(_delta: float) -> void:
-	pass
-
 func _on_animation_finished(anim):
 	if anim == "attack":
-		parent.fsm.change_state(parent.idle_state)
+		dispatch("attack_to_idle")

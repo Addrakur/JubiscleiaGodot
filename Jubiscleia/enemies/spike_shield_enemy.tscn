@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="4_6roo1"]
 [ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_walk.gd" id="4_begci"]
 [ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_attack.gd" id="5_8ncuv"]
-[ext_resource type="Script" path="res://Management/states/state_machine.gd" id="6_e5n3x"]
 [ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_turn.gd" id="6_v2cu5"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="7_7f32w"]
 [ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_idle.gd" id="7_h2e6f"]
@@ -62,7 +61,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [PackedVector2Array(-38, -59, -38, 0, -7, 0, -7, -59)]
+"values": [PackedVector2Array(-52, -59, -52, 0, -29, 0, -29, -59)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -74,7 +73,19 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [PackedVector2Array(-38, 0, -38, -58, 13, -58, 30, -43, 30, 0)]
+"values": [PackedVector2Array(-51, 0, -51, -58, -12, -58, 6, -43, 6, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("shield_shape_collision:polygon")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-51, -58, -51, 0, -28, 0, -28, -58)]
 }
 
 [sub_resource type="Animation" id="Animation_7negd"]
@@ -103,7 +114,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [5]
+"values": [6]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -112,10 +123,10 @@ tracks/2/path = NodePath("texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.416667, 0.833333, 1.16667, 1.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.416667, 0.833333, 1.16667, 1.25, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4]
+"values": [0, 1, 2, 3, 4, 5]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -124,22 +135,22 @@ tracks/3/path = NodePath("AttackArea/shield_collision:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.408195, 0.416667, 0.824861, 0.833333, 1.15928, 1.16667, 1.24226, 1.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.396499, 0.416667, 0.813166, 0.833333, 1.1465, 1.16667, 1.23072, 1.25, 1.47983, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [PackedVector2Array(-38, -59, -38, 0, -7, 0, -7, -59), PackedVector2Array(-38, -59, -38, 0, -7, 0, -7, -59), PackedVector2Array(-28, -59, -28, 0, -7, 0, -7, -59), PackedVector2Array(-28, -59, -28, 0, -7, 0, -7, -59), PackedVector2Array(-18, -59, -18, 0, -7, 0, -7, -59), PackedVector2Array(-18, -59, -18, 0, -7, 0, -7, -59), PackedVector2Array(-56, -59, -56, 0, -7, 0, -7, -59), PackedVector2Array(-56, -59, -56, 0, -7, 0, -7, -59), PackedVector2Array(-50, -59, -50, 0, -7, 0, -7, -59)]
+"values": [PackedVector2Array(-62, -59, -62, 0, -39, 0, -39, -59), PackedVector2Array(-62, -59, -62, 0, -39, 0, -39, -59), PackedVector2Array(-52, -59, -52, 0, -29, 0, -29, -59), PackedVector2Array(-52, -59, -52, 0, -29, 0, -29, -59), PackedVector2Array(-42, -62, -42, -3, -19, -3, -19, -62), PackedVector2Array(-42, -62, -42, -3, -19, -3, -19, -62), PackedVector2Array(-81, -63, -81, -4, -19, -3, -19, -62), PackedVector2Array(-81, -63, -81, -4, -19, -3, -19, -62), PackedVector2Array(-81, -63, -81, -4, -58, -4, -58, -63), PackedVector2Array(-81, -63, -81, -4, -58, -4, -58, -63), PackedVector2Array(-75, -59, -75, 0, -52, 0, -52, -59)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("collision:polygon")
+tracks/4/path = NodePath("shield_shape_collision:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.399372, 0.416667, 0.821157, 0.833333, 1.15329, 1.16667, 1.31833, 1.33333, 1.48134, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [PackedVector2Array(-37, 0, -37, -58, 13, -58, 30, -43, 30, 0)]
+"values": [PackedVector2Array(-61, -58, -61, -1, -38, 0, -38, -58), PackedVector2Array(-61, -58, -61, -1, -38, 0, -38, -58), PackedVector2Array(-51, -58, -51, -1, -28, 0, -28, -58), PackedVector2Array(-51, -58, -51, -1, -28, 0, -28, -58), PackedVector2Array(-41, -61, -41, -4, -18, -3, -18, -61), PackedVector2Array(-41, -61, -41, -4, -18, -3, -18, -61), PackedVector2Array(-80, -62, -80, -5, -18, -3, -18, -61), PackedVector2Array(-80, -62, -80, -5, -18, -3, -18, -61), PackedVector2Array(-80, -62, -80, -5, -57, -4, -57, -62), PackedVector2Array(-80, -62, -80, -5, -57, -4, -57, -62), PackedVector2Array(-74, -58, -74, -1, -51, 0, -51, -58)]
 }
 
 [sub_resource type="Animation" id="Animation_re4ci"]
@@ -193,19 +204,19 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [PackedVector2Array(-38, -59, -38, 0, -7, 0, -7, -59)]
+"values": [PackedVector2Array(-62, -59, -62, 0, -39, 0, -39, -59)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("collision:polygon")
+tracks/4/path = NodePath("shield_shape_collision:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [PackedVector2Array(-37, 0, -37, -58, 13, -58, 30, -43, 30, 0)]
+"values": [PackedVector2Array(-61, -58, -61, -1, -38, 0, -38, -58)]
 }
 
 [sub_resource type="Animation" id="Animation_7afq0"]
@@ -248,17 +259,19 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("collision:polygon")
+tracks/3/path = NodePath("HSM/SpikeShieldEnemyTurn")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.00314822, 0.166667, 0.25, 0.416667, 0.5, 0.666667, 0.75, 0.916667, 1, 1.16667, 1.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [PackedVector2Array(-37, 0, -37, -58, 13, -58, 30, -43, 30, 0), PackedVector2Array(-38, 0, -38, -58, 13, -58, 30, -43, 30, 0), PackedVector2Array(-37, 0, -37, -58, 13, -58, 30, -43, 30, 0), PackedVector2Array(-27, 0, -27, -58, 13, -58, 30, -43, 30, 0), PackedVector2Array(-27, 0, -27, -58, 13, -58, 30, -43, 30, 0), PackedVector2Array(-17, 0, -17, -62, 18, -62, 35, -47, 35, 0), PackedVector2Array(-17, 0, -17, -62, 18, -62, 35, -47, 35, 0), PackedVector2Array(1, 0, 1, -62, 49, -62, 49, 0), PackedVector2Array(1, 0, 1, -62, 49, -62, 49, 0), PackedVector2Array(14, 0, 14, -47, 32, -61, 66, -61, 66, 0), PackedVector2Array(14, 0, 14, -47, 32, -61, 66, -61, 66, 0), PackedVector2Array(19, 0, 19, -43, 36, -58, 86, -58, 86, 0)]
+"times": PackedFloat32Array(0.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"turn"
+}]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -267,10 +280,22 @@ tracks/4/path = NodePath("AttackArea/shield_collision:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.166667, 0.25, 0.416667, 0.5, 0.666667, 0.75, 0.916667, 1, 1.16667, 1.25),
+"times": PackedFloat32Array(0, 0.236363, 0.25, 0.486989, 0.5, 0.74169, 0.75, 0.992317, 1, 1.23887, 1.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [PackedVector2Array(-38, -59, -38, 0, -7, 0, -7, -59), PackedVector2Array(-38, -59, -38, 0, -7, 0, -7, -59), PackedVector2Array(-28, -59, -28, 0, -7, 0, -7, -59), PackedVector2Array(-28, -59, -28, 0, -7, 0, -7, -59), PackedVector2Array(-18, -62, -18, -3, 5, -3, 5, -62), PackedVector2Array(-18, -62, -18, -3, 5, -3, 5, -62), PackedVector2Array(0, -63, 0, 0, 50, 0, 50, -63), PackedVector2Array(0, -63, 0, 0, 50, 0, 50, -63), PackedVector2Array(43, -62, 43, -3, 67, -3, 67, -62), PackedVector2Array(43, -62, 43, -3, 67, -3, 67, -62), PackedVector2Array(62, -59, 62, 0, 87, 0, 87, -59)]
+"values": [PackedVector2Array(-62, -59, -62, 0, -39, 0, -39, -59), PackedVector2Array(-62, -59, -62, 0, -39, 0, -39, -59), PackedVector2Array(-52, -59, -52, 0, -29, 0, -29, -59), PackedVector2Array(-52, -59, -52, 0, -29, 0, -29, -59), PackedVector2Array(-42, -62, -42, -3, -19, -3, -19, -62), PackedVector2Array(-42, -62, -42, -3, -19, -3, -19, -62), PackedVector2Array(-23, -61, -23, -4, 23, -4, 23, -61), PackedVector2Array(-23, -61, -23, -4, 23, -4, 23, -61), PackedVector2Array(-42, -62, -42, -3, -19, -3, -19, -62), PackedVector2Array(-42, -62, -42, -3, -19, -3, -19, -62), PackedVector2Array(-52, -59, -52, 0, -29, 0, -29, -59)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("shield_shape_collision:polygon")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.236363, 0.25, 0.486989, 0.5, 0.74169, 0.75, 0.992317, 1, 1.23887, 1.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [PackedVector2Array(-61, -58, -61, -1, -38, 0, -38, -58), PackedVector2Array(-61, -58, -61, -1, -38, 0, -38, -58), PackedVector2Array(-51, -58, -51, -1, -28, 0, -28, -58), PackedVector2Array(-51, -58, -51, -1, -28, 0, -28, -58), PackedVector2Array(-41, -61, -41, -4, -18, -3, -18, -61), PackedVector2Array(-41, -61, -41, -4, -18, -3, -18, -61), PackedVector2Array(-24, -62, -24, -3, 24, -3, 24, -62), PackedVector2Array(-24, -62, -24, -3, 24, -3, 24, -62), PackedVector2Array(-41, -61, -41, -4, -18, -3, -18, -61), PackedVector2Array(-41, -61, -41, -4, -18, -3, -18, -61), PackedVector2Array(-51, -58, -51, -1, -28, 0, -28, -58)]
 }
 
 [sub_resource type="Animation" id="Animation_i2mls"]
@@ -379,15 +404,27 @@ tracks/2/keys = {
 "update": 1,
 "values": [2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
 }
-tracks/3/type = "method"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("StateMachine/SpikeShieldEnemyWalk")
+tracks/3/path = NodePath("AttackArea/shield_collision:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.666667, 1, 1.66667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-62, -59, -62, 0, -39, 0, -39, -59)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HSM/SpikeShieldEnemyWalk")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.666667, 1, 1.6525, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"move_false"
@@ -400,31 +437,22 @@ tracks/3/keys = {
 }, {
 "args": [],
 "method": &"move_true"
+}, {
+"args": [],
+"method": &"move_false"
 }]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("collision:polygon")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [PackedVector2Array(-37, 0, -37, -58, 13, -58, 30, -43, 30, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AttackArea/shield_collision:polygon")
+tracks/5/path = NodePath("shield_shape_collision:polygon")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [PackedVector2Array(-38, -59, -38, 0, -7, 0, -7, -59)]
+"values": [PackedVector2Array(-61, -58, -61, -1, -38, 0, -38, -58)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_db5ga"]
@@ -493,42 +521,16 @@ _data = {
 "hit": SubResource("Animation_xjmkf")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_blwuh"]
+radius = 17.0
+height = 58.0
+
 [node name="spike_shield_enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy", "shield_enemy"]]
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_jys8c")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
-
-[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
-script = ExtResource("6_e5n3x")
-state = NodePath("SpikeShieldEnemyIdle")
-
-[node name="SpikeShieldEnemyIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "idle_timer", "animation")]
-script = ExtResource("7_h2e6f")
-parent = NodePath("../..")
-idle_timer = NodePath("../../idle_timer")
-animation = NodePath("../../animation")
-
-[node name="SpikeShieldEnemyWalk" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "animation", "attack_timer")]
-script = ExtResource("4_begci")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-speed = 55.0
-wander_limit = 40.0
-attack_timer = NodePath("../../attack_timer")
-
-[node name="SpikeShieldEnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "animation", "attack_timer")]
-script = ExtResource("5_8ncuv")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-attack_timer = NodePath("../../attack_timer")
-
-[node name="SpikeShieldEnemyTurn" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "animation", "attack_timer")]
-script = ExtResource("6_v2cu5")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-attack_timer = NodePath("../../attack_timer")
 
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -539,10 +541,6 @@ libraries = {
 libraries = {
 "": SubResource("AnimationLibrary_xov44")
 }
-
-[node name="collision" type="CollisionPolygon2D" parent="."]
-modulate = Color(0.0666666, 1, 0, 1)
-polygon = PackedVector2Array(-38, 0, -38, -58, 13, -58, 30, -43, 30, 0)
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("7_7f32w")]
 max_health = 15.0
@@ -563,26 +561,36 @@ poise_damage = 30.0
 attack_name = "spike_shield"
 
 [node name="shield_collision" type="CollisionPolygon2D" parent="AttackArea"]
-polygon = PackedVector2Array(-38, -59, -38, 0, -7, 0, -7, -59)
+polygon = PackedVector2Array(-52, -59, -52, 0, -29, 0, -29, -59)
 
 [node name="detect_area" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 
 [node name="detect_collision" type="CollisionPolygon2D" parent="detect_area"]
-position = Vector2(4, 0)
-polygon = PackedVector2Array(-448, 0, 448, 0, 448, -176, -448, -176)
+position = Vector2(-17, 1)
+polygon = PackedVector2Array(-239, -1, 209, -1, 209, -177, -239, -177)
 
 [node name="can_attack_area" type="Area2D" parent="."]
 collision_layer = 0
 
 [node name="can_attack_collision" type="CollisionPolygon2D" parent="can_attack_area"]
 modulate = Color(85.946, 55.676, 0, 1)
-polygon = PackedVector2Array(-51, -59, -51, 0, -38, 0, -38, -59)
+polygon = PackedVector2Array(-75, -59, -75, 0, -62, 0, -62, -59)
 
 [node name="texture" type="Sprite2D" parent="."]
 position = Vector2(0, -32)
 texture = ExtResource("1_j8oj4")
 hframes = 18
+
+[node name="collision" type="CollisionShape2D" parent="."]
+modulate = Color(0.0666666, 1, 0, 1)
+position = Vector2(-12, -29)
+shape = SubResource("CapsuleShape2D_blwuh")
+
+[node name="shield_shape_collision" type="CollisionPolygon2D" parent="."]
+modulate = Color(62.162, 65.406, 71.892, 1)
+polygon = PackedVector2Array(-51, -58, -51, 0, -28, 0, -28, -58)
 
 [node name="idle_timer" type="Timer" parent="."]
 wait_time = 3.0
@@ -595,11 +603,36 @@ one_shot = true
 [node name="poise_timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(49, 0)
+[node name="HSM" type="LimboHSM" parent="."]
 
-[connection signal="animation_finished" from="animation" to="StateMachine/SpikeShieldEnemyAttack" method="_on_animation_finished"]
-[connection signal="animation_finished" from="animation" to="StateMachine/SpikeShieldEnemyTurn" method="_on_animation_finished"]
+[node name="SpikeShieldEnemyIdle" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "idle_timer", "animation")]
+script = ExtResource("7_h2e6f")
+parent = NodePath("../..")
+idle_timer = NodePath("../../idle_timer")
+animation = NodePath("../../animation")
+
+[node name="SpikeShieldEnemyWalk" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation", "attack_timer")]
+script = ExtResource("4_begci")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+speed = 55.0
+wander_limit = 10.0
+attack_timer = NodePath("../../attack_timer")
+
+[node name="SpikeShieldEnemyTurn" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation", "attack_timer")]
+script = ExtResource("6_v2cu5")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+attack_timer = NodePath("../../attack_timer")
+
+[node name="SpikeShieldEnemyAttack" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation", "attack_timer")]
+script = ExtResource("5_8ncuv")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+attack_timer = NodePath("../../attack_timer")
+
+[connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyTurn" method="_on_animation_finished"]
+[connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="hit_modulate" to="." method="_on_hit_modulate_animation_finished"]
 [connection signal="body_entered" from="detect_area" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="detect_area" to="." method="_on_detect_area_body_exited"]

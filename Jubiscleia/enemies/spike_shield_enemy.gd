@@ -13,16 +13,19 @@ var direction: float = -1
 @onready var idle_timer: Timer = $idle_timer
 @onready var hit_modulate: AnimationPlayer = $hit_modulate
 @onready var texture: Sprite2D = $texture
-@onready var collision: CollisionPolygon2D = $collision
+@onready var collision: CollisionShape2D = $collision
 @onready var shield_collision: CollisionPolygon2D = $AttackArea/shield_collision
 @onready var detect_collision: CollisionPolygon2D = $detect_area/detect_collision
 @onready var can_attack_collision: CollisionPolygon2D = $can_attack_area/can_attack_collision
+@onready var shield_shape_collision: CollisionPolygon2D = $shield_shape_collision
 
-@onready var fsm: StateMachine = $StateMachine as StateMachine
-@onready var idle_state: SpikeShieldEnemyIdle = $StateMachine/SpikeShieldEnemyIdle
-@onready var walk_state: SpikeShieldEnemyWalk = $StateMachine/SpikeShieldEnemyWalk
-@onready var attack_state: SpikeShieldEnemyAttack = $StateMachine/SpikeShieldEnemyAttack
-@onready var turn_state: SpikeShieldEnemyTurn = $StateMachine/SpikeShieldEnemyTurn
+
+@onready var hsm: LimboHSM = $HSM
+@onready var idle_state: SpikeShieldEnemyIdle = $HSM/SpikeShieldEnemyIdle
+@onready var walk_state: SpikeShieldEnemyWalk = $HSM/SpikeShieldEnemyWalk
+@onready var turn_state: SpikeShieldEnemyTurn = $HSM/SpikeShieldEnemyTurn
+@onready var attack_state: SpikeShieldEnemyAttack = $HSM/SpikeShieldEnemyAttack
+
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player: bool = false
@@ -35,11 +38,14 @@ var gravity: float
 
 var gravity_mult: float = 4
 
+func _ready() -> void:
+	init_state_machine()
+
 func _process(_delta):
 	if not health_component.is_getting_hit and alive:
-		if direction == -1:
+		if velocity.x < 0:
 			left()
-		elif direction == 1:
+		elif velocity.x > 0:
 			right()
 	
 	if not PlayerVariables.player_alive:
@@ -49,27 +55,29 @@ func _process(_delta):
 	#	fsm.change_state(death_state)
 
 func _physics_process(delta):
-	move_and_slide()
 	if not is_on_floor():
 		velocity.y = GameSettings.default_gravity * delta * gravity_mult
+	move_and_slide()
 
 func right():
 	texture.flip_h = true
-	collision.scale.x = -1
+	collision.position.x = 12
 	shield_collision.scale.x = -1
+	shield_shape_collision.scale.x = -1
 	detect_collision.scale.x = -1
 	can_attack_collision.scale.x = -1
 
 func left():
 	texture.flip_h = false
-	collision.scale.x = 1
+	collision.position.x = -12
 	shield_collision.scale.x = 1
+	shield_shape_collision.scale.x = 1
 	detect_collision.scale.x = 1
 	can_attack_collision.scale.x = 1
 
 func player_behind(parent: SpikeShieldEnemy) -> bool:
 	if parent.player_ref != null:
-		if parent.direction == 1 and parent.player_ref.position.x < parent.position.x or parent.direction == -1 and parent.player_ref.position.x > parent.position.x:
+		if parent.direction == 1 and parent.global_position.x > parent.player_ref.global_position.x or parent.direction == -1 and parent.global_position.x < parent.player_ref.global_position.x:
 			return true
 		else:
 			return false
@@ -97,3 +105,18 @@ func _on_can_attack_area_body_entered(body: Node2D) -> void: # Deixar
 func _on_can_attack_area_body_exited(body: Node2D) -> void: # Deixar
 	if body.is_in_group("player"):
 		can_attack_player = false
+
+func init_state_machine():
+	hsm.add_transition(idle_state,walk_state, &"idle_to_walk")
+	hsm.add_transition(idle_state,turn_state, &"idle_to_turn")
+	hsm.add_transition(idle_state,attack_state, &"idle_to_attack")
+	
+	hsm.add_transition(walk_state,idle_state, &"walk_to_idle")
+	
+	hsm.add_transition(turn_state,walk_state, &"turn_to_walk")
+	
+	hsm.add_transition(attack_state,idle_state, &"attack_to_idle")
+	
+	hsm.initial_state = idle_state
+	hsm.initialize(self)
+	hsm.set_active(true)
