@@ -14,10 +14,10 @@ func on_resume_pressed():
 
 func on_restart_pressed():
 	get_tree().paused = false
-	get_tree().reload_current_scene()
+	get_tree().reload_current_scene.call_deferred()
 	#get_tree().paused = false
 
 func on_menu_pressed():
 	get_tree().paused = false
-	GameSettings.change_scene(menu)
+	GameSettings.change_scene.call_deferred(menu)
 	#get_tree().paused = false

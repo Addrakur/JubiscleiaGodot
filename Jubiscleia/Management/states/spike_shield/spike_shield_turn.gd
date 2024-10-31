@@ -8,12 +8,12 @@ extends LimboState
 var attack: String
 
 func _enter() -> void:
+	parent.velocity.x = 0
 	print("enter " + name)
 	if parent.turn_attack:
 		animation.play("turn_attack")
 	else:
 		animation.play("turn")
-	parent.velocity.x = 0
 
 func _on_animation_finished(anim):
 	if anim == "turn":

@@ -27,6 +27,7 @@ var direction: float = -1
 @onready var turn_state: SpikeShieldEnemyTurn = $HSM/SpikeShieldEnemyTurn
 @onready var attack_state: SpikeShieldEnemyAttack = $HSM/SpikeShieldEnemyAttack
 @onready var hit_state: SpikeShieldEnemyHit = $HSM/SpikeShieldEnemyHit
+@onready var death_state: SpikeShieldEnemyDeath = $HSM/SpikeShieldEnemyDeath
 
 
 @onready var player_ref: CharacterBody2D
@@ -62,6 +63,10 @@ func _process(_delta):
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y = GameSettings.default_gravity * delta * gravity_mult
+	
+	if not alive:
+		hsm.dispatch("die")
+	
 	move_and_slide()
 
 func right():
@@ -134,6 +139,8 @@ func init_state_machine():
 	
 	hsm.add_transition(hsm.ANYSTATE, hit_state, &"apply_knockback")
 	hsm.add_transition(hit_state,idle_state, &"hit_to_idle")
+	
+	hsm.add_transition(hsm.ANYSTATE, death_state, &"die")
 	
 	hsm.initial_state = idle_state
 	hsm.initialize(self)

@@ -612,7 +612,7 @@ position = Vector2(3296, 448)
 level = NodePath("..")
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("19_8ysb2")]
-position = Vector2(-3456, 576)
+position = Vector2(-3360, 576)
 camera = NodePath("../Camera2D")
 
 [node name="Lava" type="Node2D" parent="."]
@@ -735,9 +735,11 @@ starting_x = NodePath("../../ArenaObjs/Right")
 limit = NodePath("../../ArenaObjs/Limit")
 spawn_point = NodePath("../../ArenaObjs/Right")
 
-[node name="SpearSkeletonCenter" type="Node" parent="arena_manager/4" node_paths=PackedStringArray("limit", "spawn_point")]
+[node name="Spike_Shield_Enemy_Center" type="Node" parent="arena_manager/4" node_paths=PackedStringArray("starting_x", "limit", "spawn_point")]
 script = ExtResource("26_ipub1")
-enemy = "spear_skeleton"
+enemy = "spike_shield_enemy"
+has_starting_x = true
+starting_x = NodePath("../../ArenaObjs/Center")
 limit = NodePath("../../ArenaObjs/Limit")
 spawn_point = NodePath("../../ArenaObjs/Center")
 
