@@ -1,0 +1,280 @@
+[gd_scene load_steps=15 format=3 uid="uid://dxjdburda31pb"]
+
+[ext_resource type="Texture2D" uid="uid://bekgllyv8sjt7" path="res://assets/enemy/aereal_suicide_enemy/aereal_suicide_enemy_patrol.png" id="1_2xoor"]
+[ext_resource type="Script" path="res://enemies/aereal_suicide_enemy.gd" id="1_3p8xi"]
+[ext_resource type="Texture2D" uid="uid://dido8xafea2gu" path="res://assets/enemy/aereal_suicide_enemy/aereal_suicide_enemy_explosion.png" id="2_bprug"]
+[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="3_1xumv"]
+[ext_resource type="Script" path="res://Management/states/aereal_suicide_enemy/aereal_suicide_enemy_patrol.gd" id="5_6j5sj"]
+[ext_resource type="Script" path="res://Management/states/aereal_suicide_enemy/aereal_suicide_enemy_attack.gd" id="6_a2rqk"]
+[ext_resource type="Script" path="res://Management/states/aereal_suicide_enemy/aereal_suicide_enemy_explode.gd" id="7_15ntw"]
+
+[sub_resource type="Animation" id="Animation_in4ny"]
+resource_name = "patrol"
+length = 0.0333367
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_2xoor")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../explosion_area/explosion_collision:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.0]
+}
+
+[sub_resource type="Animation" id="Animation_1pn60"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_2xoor")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../explosion_area/explosion_collision:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [21.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../explosion_area/explosion_collision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_nwl2x"]
+resource_name = "explode"
+length = 0.583342
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_bprug")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../explosion_area/explosion_collision:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [21.0, 38.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../explosion_area/explosion_collision:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_le3gb"]
+_data = {
+"RESET": SubResource("Animation_1pn60"),
+"explode": SubResource("Animation_nwl2x"),
+"patrol": SubResource("Animation_in4ny")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kgv6s"]
+radius = 12.0416
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jmmsl"]
+radius = 21.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d5dgb"]
+radius = 9.0
+
+[node name="aereal_suicide_enemy" type="CharacterBody2D" node_paths=PackedStringArray("attack_area")]
+collision_layer = 2
+collision_mask = 5
+motion_mode = 1
+script = ExtResource("1_3p8xi")
+attack_area = NodePath("explosion_area")
+
+[node name="animation" type="AnimationPlayer" parent="."]
+root_node = NodePath("../texture")
+libraries = {
+"": SubResource("AnimationLibrary_le3gb")
+}
+
+[node name="trigger_area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32773
+
+[node name="trigger_collision" type="CollisionShape2D" parent="trigger_area"]
+shape = SubResource("CircleShape2D_kgv6s")
+
+[node name="explosion_area" parent="." instance=ExtResource("3_1xumv")]
+collision_mask = 1
+target = "player"
+damage = 20.0
+knockup_force = -10.0
+knockback_force = 300.0
+poise_damage = 20.0
+attack_name = "exp"
+one_hit_destroy = true
+destroy_on_terrain = true
+
+[node name="explosion_collision" type="CollisionShape2D" parent="explosion_area"]
+modulate = Color(1, 0.966667, 0, 1)
+shape = SubResource("CircleShape2D_jmmsl")
+disabled = true
+
+[node name="texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_2xoor")
+
+[node name="HSM" type="LimboHSM" parent="."]
+
+[node name="AerealSuicideEnemyPatrol" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation", "raycast")]
+script = ExtResource("5_6j5sj")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+raycast = NodePath("../../RayCast2D")
+speed = 100.0
+tolerance = 10.0
+
+[node name="AerealSuicideEnemyAttack" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "timer")]
+script = ExtResource("6_a2rqk")
+parent = NodePath("../..")
+timer = NodePath("../../Timer")
+
+[node name="AerealSuicideEnemyExplode" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("7_15ntw")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 384)
+collision_mask = 32769
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_d5dgb")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[connection signal="animation_finished" from="animation" to="." method="_on_animation_finished"]
+[connection signal="body_entered" from="trigger_area" to="." method="_on_trigger_area_body_entered"]
+[connection signal="timeout" from="Timer" to="HSM/AerealSuicideEnemyAttack" method="_on_timer_timeout"]
