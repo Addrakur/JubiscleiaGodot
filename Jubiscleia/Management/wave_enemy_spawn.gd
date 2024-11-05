@@ -1,18 +1,22 @@
 class_name WaveEnemySpawn
 extends Node
 
-@export_enum("big_worm","kitsune","scorpion","spear_skeleton","sword_skeleton","snake","spike_shield_enemy") var enemy: String
+@export_enum("big_worm","kitsune","scorpion","spear_skeleton","sword_skeleton","snake","spike_shield_enemy","aereal_suicide_enemy") var enemy: String
 
 @export_group("Bools")
 @export var has_starting_x: bool
 @export var has_warp_area: bool
 @export var has_set_direction: bool
+@export var has_left_and_right_points: bool
 
 @export_group("Refs")
+@export var set_direction: float
 @export var warp_area: Polygon2D
 @export var starting_x: Marker2D
 @export var limit: EnemyLimit
 @export var spawn_point: Marker2D
+@export var point_left: Marker2D
+@export var point_right: Marker2D
 
 @onready var parent: Wave = get_parent()
 
@@ -33,9 +37,9 @@ func spawn_enemy():
 		enemy_inst.warp_area = warp_area
 	
 	if has_set_direction:
-		var chance: float
-		chance = randf()
-		if chance >= 0.5:
-			enemy_inst.direction = -1
-		else:
-			enemy_inst.direction = 1
+		enemy_inst.direction = set_direction
+
+	
+	if has_left_and_right_points:
+		enemy_inst.point_left = point_left
+		enemy_inst.point_right = point_right

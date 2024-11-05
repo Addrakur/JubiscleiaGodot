@@ -8,8 +8,8 @@ extends LimboState
 
 func _enter() -> void:
 	idle_timer.start()
-	animation.play("idle")
 	parent.velocity.x = 0
+	animation.play("idle")
 	print("enter " + name)
 
 func _update(_delta: float):

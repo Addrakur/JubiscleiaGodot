@@ -5,5 +5,6 @@ extends LimboState
 @export var animation: AnimationPlayer
 
 func _enter():
+	parent.velocity.y = 0
 	parent.velocity.x = 0
 	animation.play("explode")

@@ -12,6 +12,7 @@ func _enter() -> void:
 	print("enter " + name)
 	if parent.turn_attack:
 		animation.play("turn_attack")
+		attack_timer.start()
 	else:
 		animation.play("turn")
 

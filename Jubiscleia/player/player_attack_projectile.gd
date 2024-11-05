@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var speed: float
-@export var move: bool
+var speed: float
+var move: bool = true
 var direction: float
 @export var animation: AnimationPlayer
 @export var texture: Sprite2D
@@ -13,8 +13,11 @@ var attack: String = PlayerVariables.current_attack
 
 var starting_pos: Vector2
 
+var max_distance: float
+
 func _ready():
 	animation.play(attack)
+	max_distance = PlayerVariables.get(attack + "_projectile_max_distance")
 	attack_area.damage = PlayerVariables.get(attack + "_projectile_damage")
 	attack_area.knockback_force = PlayerVariables.get(attack + "_projectile_knockback")
 	attack_area.poise_damage = PlayerVariables.get(attack + "_projectile_poise")
@@ -32,11 +35,14 @@ func _physics_process(delta):
 	if can_destroy:
 		animation.play(attack + "_finish")
 		attack_area.attack_name = name + "_finish"
+	
+	if abs(global_position.x - starting_pos.x) > max_distance:
+		can_destroy = true
 
 func _on_animation_finished(anim):
 	if anim == attack + "_finish":
 		print(starting_pos.distance_to(global_position)/16)
 		queue_free()
 	
-	if anim == attack:
-		can_destroy = true
+	#if anim == attack:
+		#can_destroy = true

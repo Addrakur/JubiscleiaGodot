@@ -16,7 +16,7 @@ func _enter() -> void:
 	print(parent.direction)
 
 func _exit() -> void:
-	print("exit " + name)
+	move = false
 
 func _update(_delta):
 	if parent.player_ref != null:

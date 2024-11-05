@@ -4,12 +4,13 @@ extends CharacterBody2D
 @export var attack_area: AttackArea
 @export var point_left: Marker2D
 @export var point_right: Marker2D
-@export var fixed_y: float
+@export var direction: float
 
 @onready var limit: Area2D = get_parent()
 @onready var player_ref: CharacterBody2D
 var player_on_limit: bool = false
 var can_destroy: bool = false
+var fixed_y: float
 
 @onready var hsm: LimboHSM = $HSM
 @onready var patrol_state: AerealSuicideEnemyPatrol = $HSM/AerealSuicideEnemyPatrol
@@ -17,6 +18,7 @@ var can_destroy: bool = false
 @onready var explode_state: AerealSuicideEnemyExplode = $HSM/AerealSuicideEnemyExplode
 
 func _ready() -> void:
+	fixed_y = position.y
 	init_state_machine()
 
 func _physics_process(_delta: float) -> void:

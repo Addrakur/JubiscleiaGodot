@@ -682,7 +682,7 @@ libraries = {
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("7_7f32w")]
 max_health = 25.0
-max_poise = 1.0
+max_poise = 30.0
 poise_recover_timer = 2.0
 destroy_after_dead = true
 attack_timer = NodePath("../attack_timer")
@@ -720,11 +720,6 @@ polygon = PackedVector2Array(-75, -59, -75, 0, -62, 0, -62, -59)
 [node name="turn_attack_collision" type="CollisionPolygon2D" parent="turn_attack_area"]
 polygon = PackedVector2Array(5, -59, 5, 0, 64, 0, 64, -59)
 
-[node name="texture" type="Sprite2D" parent="."]
-position = Vector2(0, -32)
-texture = ExtResource("1_j8oj4")
-hframes = 18
-
 [node name="collision" type="CollisionShape2D" parent="."]
 modulate = Color(0.0666666, 1, 0, 1)
 position = Vector2(-12, -29)
@@ -735,7 +730,7 @@ modulate = Color(62.162, 65.406, 71.892, 1)
 polygon = PackedVector2Array(-51, -58, -51, 0, -28, 0, -28, -58)
 
 [node name="idle_timer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 5.0
 one_shot = true
 
 [node name="attack_timer" type="Timer" parent="."]
@@ -785,6 +780,11 @@ hit_recover_limit = 30.0
 script = ExtResource("15_w4p7o")
 parent = NodePath("../..")
 animation = NodePath("../../animation")
+
+[node name="texture" type="Sprite2D" parent="."]
+position = Vector2(0, -32)
+texture = ExtResource("1_j8oj4")
+hframes = 18
 
 [connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyTurn" method="_on_animation_finished"]
 [connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyAttack" method="_on_animation_finished"]

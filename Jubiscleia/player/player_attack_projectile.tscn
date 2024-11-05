@@ -1553,7 +1553,6 @@ _data = {
 [node name="player_attack_projectile" type="Node2D" node_paths=PackedStringArray("animation", "texture", "collision_area", "attack_area") groups=["player_object", "projectile"]]
 top_level = true
 script = ExtResource("1_c1jhh")
-move = true
 animation = NodePath("Animations")
 texture = NodePath("Texture")
 collision_area = NodePath("AttackArea/CollisionArea")

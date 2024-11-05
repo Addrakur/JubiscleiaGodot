@@ -95,11 +95,11 @@ func move_position_behind() -> bool:
 			return false
 
 func _on_detect_area_body_entered(body): # Deixar
-	if body.is_in_group("player"):
+	if body == GameSettings.player:
 		player_ref = body
 
 func _on_detect_area_body_exited(body): # Deixar
-	if body.is_in_group("player"):
+	if body == GameSettings.player:
 		player_ref = null
 
 func _on_hit_modulate_animation_finished(_anim_name): # Deixar
