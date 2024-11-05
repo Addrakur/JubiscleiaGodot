@@ -6,7 +6,8 @@ extends LimboState
 @export var raycast: RayCast2D
 
 func _enter():
-	print("enter idle")
+	#print("enter idle")
+	pass
 
 func _update(_delta: float):
 	if parent.player_ref == null:
@@ -20,3 +21,7 @@ func _update(_delta: float):
 
 func get_player():
 	parent.player_ref = GameSettings.player
+
+func _input(_event: InputEvent) -> void:
+	if Input.is_physical_key_pressed(KEY_1):
+		dispatch("idle_to_attack")

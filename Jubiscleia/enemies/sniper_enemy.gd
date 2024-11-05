@@ -10,6 +10,7 @@ var direction: float
 
 @onready var hsm: LimboHSM = $HSM
 @onready var idle_state: SniperEnemyIdle = $HSM/SniperEnemyIdle
+@onready var attack_state: SniperEnemyAttack = $HSM/SniperEnemyAttack
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player: bool = false
@@ -24,11 +25,13 @@ var gravity_mult: float = 4
 func _ready() -> void:
 	init_state_machine()
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	set_direction()
 	flip_body()
 
 func init_state_machine():
+	hsm.add_transition(idle_state, attack_state, &"idle_to_attack")
+	hsm.add_transition(attack_state,idle_state, &"attack_to_idle")
 	
 	hsm.initial_state = idle_state
 	hsm.initialize(self)

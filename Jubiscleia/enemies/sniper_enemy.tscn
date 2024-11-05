@@ -1,17 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpsjpptboyfvh"]
+[gd_scene load_steps=8 format=3 uid="uid://bpsjpptboyfvh"]
 
 [ext_resource type="Script" path="res://enemies/sniper_enemy.gd" id="1_78735"]
 [ext_resource type="Texture2D" uid="uid://b2djyk3otuq3i" path="res://assets/enemy/sniper_enemy/sniper_enemy_idle_body.png" id="1_rd4f2"]
 [ext_resource type="Texture2D" uid="uid://d3wwf5081vt31" path="res://assets/enemy/sniper_enemy/sniper_enemy_idle_arm.png" id="2_ookx4"]
 [ext_resource type="Script" path="res://Management/composition_scenes/health_component.gd" id="3_vrj2e"]
 [ext_resource type="Script" path="res://Management/states/sniper_enemy/sniper_enemy_idle.gd" id="5_6fqx2"]
+[ext_resource type="Script" path="res://Management/states/sniper_enemy/sniper_enemy_attack.gd" id="6_ut57s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8gqt6"]
 radius = 5.0
 height = 50.0
 
 [node name="sniper_enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component")]
-rotation = -0.00244369
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_78735")
@@ -34,16 +34,24 @@ round_precision = 1
 
 [node name="arm_texture" type="Sprite2D" parent="."]
 position = Vector2(0, -32)
-rotation = -6.28319
+rotation = -6.28318
 scale = Vector2(-1, 1)
 texture = ExtResource("2_ookx4")
 
 [node name="RayCast2D" type="RayCast2D" parent="arm_texture"]
-position = Vector2(-0.0781975, 9.53674e-05)
-target_position = Vector2(-1152, 2.81513)
+target_position = Vector2(-1152, -0.0102348)
 collision_mask = 32773
 
+[node name="proj_spawn" type="Marker2D" parent="arm_texture"]
+position = Vector2(-32, 5.72205e-06)
+rotation = 3.14159
+scale = Vector2(1, -1)
+
+[node name="target_position" type="Marker2D" parent="arm_texture"]
+position = Vector2(-1152, -0.0102367)
+
 [node name="attack_timer" type="Timer" parent="."]
+one_shot = true
 
 [node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("attack_timer")]
 script = ExtResource("3_vrj2e")
@@ -59,5 +67,10 @@ parent = NodePath("../..")
 laser = NodePath("../../laser")
 raycast = NodePath("../../arm_texture/RayCast2D")
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(113.218, -144.724)
+[node name="SniperEnemyAttack" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "proj_spawn", "target_position")]
+script = ExtResource("6_ut57s")
+parent = NodePath("../..")
+proj_speed = 10.0
+proj_spawn = NodePath("../../arm_texture/proj_spawn")
+target_position = NodePath("../../arm_texture/target_position")
+proj_tween_duration = 10.0
