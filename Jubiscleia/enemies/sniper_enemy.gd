@@ -9,12 +9,12 @@ var direction: float
 @onready var arm_texture: Sprite2D = $arm_texture
 @onready var laser: Line2D = $laser
 @onready var raycast: RayCast2D = $arm_texture/RayCast
-
-
+@onready var hit_modulate: AnimationPlayer = $hit_modulate
 
 @onready var hsm: LimboHSM = $HSM
 @onready var idle_state: SniperEnemyIdle = $HSM/SniperEnemyIdle
 @onready var attack_state: SniperEnemyAttack = $HSM/SniperEnemyAttack
+@onready var death_state: SniperEnemyDeath = $HSM/SniperEnemyDeath
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player: bool = false
@@ -31,16 +31,20 @@ func _ready() -> void:
 
 func _physics_process(_delta: float) -> void:
 	if not alive:
-		return
+		hsm.dispatch("die")
 	
 	set_direction()
 	flip_body()
 	rotate_arm()
 	
+	if not PlayerVariables.player_alive:
+		player_ref = null
+	
 
 func init_state_machine():
 	hsm.add_transition(idle_state, attack_state, &"idle_to_attack")
 	hsm.add_transition(attack_state,idle_state, &"attack_to_idle")
+	hsm.add_transition(hsm.ANYSTATE,death_state, &"die")
 	
 	hsm.initial_state = idle_state
 	hsm.initialize(self)
@@ -65,3 +69,6 @@ func rotate_arm():
 	if raycast.is_colliding():
 		var collision_point: Vector2 = raycast.get_collision_point()
 		laser.points[1] = collision_point - global_position + Vector2(0,16)
+
+func _on_hit_modulate_animation_finished(_anim_name): # Deixar
+	health_component.last_attack = ""
