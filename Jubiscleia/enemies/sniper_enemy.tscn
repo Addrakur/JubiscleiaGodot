@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpsjpptboyfvh"]
+[gd_scene load_steps=12 format=3 uid="uid://bpsjpptboyfvh"]
 
 [ext_resource type="Script" path="res://enemies/sniper_enemy.gd" id="1_78735"]
 [ext_resource type="Texture2D" uid="uid://b2djyk3otuq3i" path="res://assets/enemy/sniper_enemy/sniper_enemy_idle_body.png" id="1_rd4f2"]
@@ -10,6 +10,96 @@
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8gqt6"]
 radius = 5.0
 height = 50.0
+
+[sub_resource type="Animation" id="Animation_j67xn"]
+resource_name = "attack_prep"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("laser:default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.156863), Color(1, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("laser:width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [12.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_dgjpk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("laser:default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.156863)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("laser:width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_wdlal"]
+resource_name = "idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("laser:default_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 0, 0, 0.156863)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("laser:width")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [12.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_og8hr"]
+_data = {
+"RESET": SubResource("Animation_dgjpk"),
+"attack_prep": SubResource("Animation_j67xn"),
+"idle": SubResource("Animation_wdlal")
+}
 
 [node name="sniper_enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component")]
 collision_layer = 2
@@ -29,7 +119,7 @@ texture = ExtResource("1_rd4f2")
 position = Vector2(-0.0630628, -18.261)
 points = PackedVector2Array(0.141261, -13.7389, -159.858, -14.1299)
 width = 1.0
-default_color = Color(1, 0, 0, 1)
+default_color = Color(1, 0, 0, 0.156863)
 round_precision = 1
 
 [node name="arm_texture" type="Sprite2D" parent="."]
@@ -38,8 +128,8 @@ rotation = -6.28318
 scale = Vector2(-1, 1)
 texture = ExtResource("2_ookx4")
 
-[node name="RayCast2D" type="RayCast2D" parent="arm_texture"]
-target_position = Vector2(-1152, -0.0102348)
+[node name="RayCast" type="RayCast2D" parent="arm_texture"]
+target_position = Vector2(-2304, -0.0204697)
 collision_mask = 32773
 
 [node name="proj_spawn" type="Marker2D" parent="arm_texture"]
@@ -48,9 +138,10 @@ rotation = 3.14159
 scale = Vector2(1, -1)
 
 [node name="target_position" type="Marker2D" parent="arm_texture"]
-position = Vector2(-1152, -0.0102367)
+position = Vector2(-2304, -0.0204723)
 
 [node name="attack_timer" type="Timer" parent="."]
+wait_time = 5.0
 one_shot = true
 
 [node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("attack_timer")]
@@ -61,16 +152,27 @@ attack_timer = NodePath("../attack_timer")
 
 [node name="HSM" type="LimboHSM" parent="."]
 
-[node name="SniperEnemyIdle" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "laser", "raycast")]
+[node name="SniperEnemyIdle" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "laser", "raycast", "attack_timer", "animation")]
 script = ExtResource("5_6fqx2")
 parent = NodePath("../..")
 laser = NodePath("../../laser")
-raycast = NodePath("../../arm_texture/RayCast2D")
+raycast = NodePath("../../arm_texture/RayCast")
+attack_timer = NodePath("../../attack_timer")
+animation = NodePath("../../animation")
 
-[node name="SniperEnemyAttack" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "proj_spawn", "target_position")]
+[node name="SniperEnemyAttack" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "proj_spawn", "target_position", "animation", "attack_timer")]
 script = ExtResource("6_ut57s")
 parent = NodePath("../..")
 proj_speed = 10.0
 proj_spawn = NodePath("../../arm_texture/proj_spawn")
 target_position = NodePath("../../arm_texture/target_position")
-proj_tween_duration = 10.0
+proj_tween_duration = 20.0
+animation = NodePath("../../animation")
+attack_timer = NodePath("../../attack_timer")
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_og8hr")
+}
+
+[connection signal="animation_finished" from="animation" to="HSM/SniperEnemyAttack" method="_on_animation_finished"]

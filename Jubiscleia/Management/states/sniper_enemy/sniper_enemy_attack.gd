@@ -6,13 +6,14 @@ extends LimboState
 @export var proj_spawn: Marker2D
 @export var target_position: Marker2D
 @export var proj_tween_duration: float
+@export var animation: AnimationPlayer
+@export var attack_timer: Timer
 
 func _enter():
-	#print("enter attack")
-	spawn_projectile()
+	animation.play("attack_prep")
 
 func _exit():
-	pass
+	attack_timer.start()
 
 func _update(_delta: float) -> void:
 	pass
@@ -23,5 +24,9 @@ func spawn_projectile():
 	proj.global_position = proj_spawn.global_position
 	proj.target_position = target_position.global_position
 	proj.tween_duration = proj_tween_duration
-	
-	dispatch("attack_to_idle")
+
+
+func _on_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "attack_prep":
+		spawn_projectile()
+		dispatch("attack_to_idle")
