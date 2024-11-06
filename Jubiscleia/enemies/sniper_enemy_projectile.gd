@@ -11,7 +11,7 @@ var target_position: Vector2
 
 var tween_duration: float
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property(self, "global_position", target_position,tween_duration)
 	

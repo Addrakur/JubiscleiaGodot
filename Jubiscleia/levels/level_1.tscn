@@ -764,18 +764,36 @@ enemy = "sword_skeleton"
 limit = NodePath("../../ArenaObjs/LimitArena1")
 spawn_point = NodePath("../../ArenaObjs/Right")
 
+[node name="SuicideLeft" type="Node" parent="arena_manager/3" node_paths=PackedStringArray("limit", "spawn_point", "point_left", "point_right")]
+script = ExtResource("26_ipub1")
+enemy = "aereal_suicide_enemy"
+has_set_direction = true
+has_left_and_right_points = true
+set_direction = 1.0
+limit = NodePath("../../ArenaObjs/LimitArena1")
+spawn_point = NodePath("../../ArenaObjs/Point_left")
+point_left = NodePath("../../ArenaObjs/Point_left")
+point_right = NodePath("../../ArenaObjs/Point_right")
+
+[node name="SuicideRight" type="Node" parent="arena_manager/3" node_paths=PackedStringArray("limit", "spawn_point", "point_left", "point_right")]
+script = ExtResource("26_ipub1")
+enemy = "aereal_suicide_enemy"
+has_set_direction = true
+has_left_and_right_points = true
+set_direction = -1.0
+limit = NodePath("../../ArenaObjs/LimitArena1")
+spawn_point = NodePath("../../ArenaObjs/Point_right")
+point_left = NodePath("../../ArenaObjs/Point_left")
+point_right = NodePath("../../ArenaObjs/Point_right")
+
 [node name="4" type="Node" parent="arena_manager"]
 script = ExtResource("26_yykwe")
 
-[node name="KitsuneRight" type="Node" parent="arena_manager/4" node_paths=PackedStringArray("warp_area", "starting_x", "limit", "spawn_point")]
+[node name="SniperFarRight" type="Node" parent="arena_manager/4" node_paths=PackedStringArray("limit", "spawn_point")]
 script = ExtResource("26_ipub1")
-enemy = "kitsune"
-has_starting_x = true
-has_warp_area = true
-warp_area = NodePath("../../ArenaObjs/LimitArena1/Limit")
-starting_x = NodePath("../../ArenaObjs/Right")
+enemy = "sniper_enemy"
 limit = NodePath("../../ArenaObjs/LimitArena1")
-spawn_point = NodePath("../../ArenaObjs/Right")
+spawn_point = NodePath("../../ArenaObjs/FarRight")
 
 [node name="Spike_Shield_Enemy_Center" type="Node" parent="arena_manager/4" node_paths=PackedStringArray("starting_x", "limit", "spawn_point")]
 script = ExtResource("26_ipub1")
@@ -803,6 +821,9 @@ position = Vector2(-960, 608)
 
 [node name="Right" type="Marker2D" parent="arena_manager/ArenaObjs"]
 position = Vector2(-512, 608)
+
+[node name="FarRight" type="Marker2D" parent="arena_manager/ArenaObjs"]
+position = Vector2(-320, 608)
 
 [node name="Point_left" type="Marker2D" parent="arena_manager/ArenaObjs"]
 position = Vector2(-1152, 416)

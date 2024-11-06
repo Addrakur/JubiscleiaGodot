@@ -11,9 +11,6 @@ var move: bool = false
 
 func _enter() -> void:
 	animation.play("walk",-1,0.9)
-	
-	print("enter " + name)
-	print(parent.direction)
 
 func _exit() -> void:
 	move = false

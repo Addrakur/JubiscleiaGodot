@@ -24,6 +24,7 @@ func spawn_projectile():
 	proj.global_position = proj_spawn.global_position
 	proj.target_position = target_position.global_position
 	proj.tween_duration = proj_tween_duration
+	proj.rotation = parent.arm_texture.rotation
 
 
 func _on_animation_finished(anim_name: StringName) -> void:

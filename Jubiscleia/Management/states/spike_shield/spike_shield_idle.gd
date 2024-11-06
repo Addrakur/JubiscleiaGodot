@@ -10,7 +10,6 @@ func _enter() -> void:
 	idle_timer.start()
 	parent.velocity.x = 0
 	animation.play("idle")
-	print("enter " + name)
 
 func _update(_delta: float):
 	if attack_timer.is_stopped():
@@ -18,9 +17,6 @@ func _update(_delta: float):
 			dispatch("idle_to_attack")
 		elif parent.turn_attack:
 			dispatch("idle_to_turn")
-
-func _exit():
-	print("exit " + name)
 
 func _on_idle_timer_timeout() -> void:
 	if parent.hsm.get_active_state() == self:

@@ -9,7 +9,6 @@ var attack: String
 
 func _enter() -> void:
 	parent.velocity.x = 0
-	print("enter " + name)
 	if parent.turn_attack:
 		animation.play("turn_attack")
 		attack_timer.start()
@@ -28,6 +27,3 @@ func turn():
 	else:
 		parent.right()
 	parent.set_direction()
-
-func _exit():
-	print("exit " + name)

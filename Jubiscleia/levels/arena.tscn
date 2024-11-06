@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cqp1060wjlhfn"]
+[gd_scene load_steps=20 format=4 uid="uid://cqp1060wjlhfn"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_5moen"]
 [ext_resource type="TileSet" uid="uid://dsjlo105wabro" path="res://assets/Tileset/Ground.tres" id="2_khbs8"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_us7wb"]
 [ext_resource type="PackedScene" uid="uid://sdmdvsx1p41u" path="res://enemies/training_dummy.tscn" id="9_dgptr"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_dny5v"]
+[ext_resource type="PackedScene" uid="uid://daabvpmmaefaf" path="res://enemies/spike_shield_enemy.tscn" id="9_u6w1l"]
 [ext_resource type="PackedScene" uid="uid://bgtm18yxrdsdx" path="res://Management/camera_area.tscn" id="10_h6txr"]
 [ext_resource type="PackedScene" uid="uid://b7fccbrl06aa5" path="res://levels/enemy_spawn.tscn" id="11_14tdb"]
 [ext_resource type="PackedScene" uid="uid://djqldg2hn5i3u" path="res://Management/spike.tscn" id="11_davmh"]
@@ -41,7 +42,7 @@ free_spawn = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(-143.999, 288)
+position = Vector2(-448.001, 288)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("7_qpd7n")
@@ -82,10 +83,14 @@ point_right = NodePath("../../right")
 direction = -1.0
 
 [node name="sniper_enemy" parent="Limit" instance=ExtResource("8_5445f")]
-position = Vector2(112, 480)
+position = Vector2(1200, 480)
+
+[node name="spike_shield_enemy" parent="Limit" node_paths=PackedStringArray("starting_x") instance=ExtResource("9_u6w1l")]
+position = Vector2(576, 480)
+starting_x = NodePath("../Starting X")
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_2ic4t")]
-position = Vector2(-144, 480)
+position = Vector2(-448, 384)
 camera = NodePath("../Camera2D")
 
 [node name="Training Dummy" parent="." instance=ExtResource("9_dgptr")]
@@ -139,7 +144,7 @@ starting_x = NodePath("../Limit/Starting X")
 limit = NodePath("../Limit")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
-position = Vector2(-143.999, 288)
+position = Vector2(-448.001, 288)
 script = ExtResource("8_us7wb")
 follow_mode = 4
 follow_target = NodePath("../player")

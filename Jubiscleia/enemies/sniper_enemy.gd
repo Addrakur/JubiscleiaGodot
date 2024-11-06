@@ -35,7 +35,8 @@ func _physics_process(_delta: float) -> void:
 	
 	set_direction()
 	flip_body()
-	rotate_arm()
+	if player_ref != null:
+		rotate_arm()
 	
 	if not PlayerVariables.player_alive:
 		player_ref = null

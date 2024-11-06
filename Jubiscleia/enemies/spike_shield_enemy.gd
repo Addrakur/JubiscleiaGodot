@@ -151,7 +151,6 @@ func new_position():
 		move_position = randf_range(starting_x.global_position.x + walk_state.wander_limit, starting_x.global_position.x - walk_state.wander_limit)
 	else:
 		move_position = player_ref.global_position.x
-	print(move_position, "           current position: ", global_position.x)
 
 func set_direction():
 	if texture.flip_h:
