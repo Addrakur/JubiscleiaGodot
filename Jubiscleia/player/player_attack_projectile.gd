@@ -46,7 +46,6 @@ func _physics_process(delta):
 
 func _on_animation_finished(anim):
 	if anim == attack + "_finish":
-		print(starting_pos.distance_to(global_position)/16)
 		queue_free()
 	
 	#if anim == attack:

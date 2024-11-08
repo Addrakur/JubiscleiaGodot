@@ -7,10 +7,12 @@ var corruption_level: float = 0
 var hit_amount: float
 var attack_speed: float = 1.2
 
-var fire_meter_count: float = 0
-var water_meter_count: float = 0
-var air_meter_count: float = 0
-var earth_meter_count: float = 0
+var fire_stack_count: float = 0
+var water_stack_count: float = 0
+var air_stack_count: float = 0
+var earth_stack_count: float = 0
+
+var elemental_rupture: bool = false
 
 var player_alive: bool = true
 var player_attacking: bool = false

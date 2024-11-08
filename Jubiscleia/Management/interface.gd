@@ -1,7 +1,9 @@
+class_name PlayerInterface
 extends CanvasLayer
 
 @export var player: CharacterBody2D
-@export var health_component: Node2D
+@export var health_component: HealthComponent
+@export var element_manager: Node2D
 @onready var hp_bar: TextureProgressBar = $PlayerUI/HP
 
 func _ready() -> void:

@@ -41,7 +41,6 @@ func exit_state() -> void:
 	player.camera_methods.weapon_shake_false()
 	PlayerVariables.anim_finish = false
 	player.combo_timer_start()
-	PlayerVariables.anim_finish = false
 
 func _physics_process(_delta):
 	player.velocity.x = 0

@@ -24,8 +24,6 @@ func enter_state() -> void:
 	player.collision.shape.size = Vector2(15,10)
 	player.floor_snap_length = 0
 	player.can_dash = false
-	#if player.is_on_floor():
-		#player.can_flip = false
 	set_physics_process(true)
 	if player.direction != 0:
 		direction = player.direction
@@ -42,7 +40,7 @@ func exit_state() -> void:
 	player.health_component.invulnerable = false
 	player.set_collision_mask_value(2,true)
 	player.set_collision_layer_value(1,true)
-	player.collision.shape.size = Vector2(15,28)
+	player.collision.shape.size = Vector2(14,28)
 	player.override_gravity = 0
 	player.floor_snap_length = 5
 	player.can_flip = true
@@ -59,11 +57,8 @@ func _physics_process(_delta):
 		player.fsm.change_state(player.jump_state)
 	
 	if anim_finish and not passed_enemy or passed_enemy and enemy.is_empty():
-		if player.is_on_floor():
-			player.fsm.change_state(player.idle_state)
-		else:
-			player.fsm.change_state(player.fall_state)
-	
+		player.fsm.change_state(player.fall_state)
+	 
 
 func _on_animation_finished(anim):
 	if anim == "dash":
@@ -75,7 +70,6 @@ func _on_dash_collision_body_entered(body: Node2D) -> void:
 		enemy.append(body)
 	
 	if body.is_in_group("terrain"):
-		player.fsm.change_state(player.idle_state)
 		player.fsm.change_state(player.fall_state)
 	
 

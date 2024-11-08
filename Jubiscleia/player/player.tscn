@@ -1,4 +1,4 @@
-[gd_scene load_steps=180 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=182 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_tuo6g"]
@@ -63,7 +63,6 @@
 [ext_resource type="Texture2D" uid="uid://cbyq8t4asbo5s" path="res://assets/player/Ataques/Espada/C2/sword_2_2.png" id="56_2pvqp"]
 [ext_resource type="Texture2D" uid="uid://pehgkoqmwp40" path="res://assets/player/Ataques/Espada/C2/sword_2_3.png" id="57_8g3rr"]
 [ext_resource type="Texture2D" uid="uid://bfhrbbpxdjfpu" path="res://assets/player/Ataques/Machado/C1/axe_1_3.png" id="57_50i2n"]
-[ext_resource type="Script" path="res://player/CorruptionManager.gd" id="57_em6cc"]
 [ext_resource type="Texture2D" uid="uid://bwddmt2twr7jt" path="res://assets/player/Ataques/Lanca/C0/Lanca_0_1.png" id="57_pf0gw"]
 [ext_resource type="Texture2D" uid="uid://87npuqs8med2" path="res://assets/player/Ataques/Machado/C0/axe_0_3.png" id="58_e5bi3"]
 [ext_resource type="Texture2D" uid="uid://b28c8gry0nmnt" path="res://assets/player/Ataques/Espada/C3/sword_3_1.png" id="58_pumq4"]
@@ -94,13 +93,15 @@
 [ext_resource type="Texture2D" uid="uid://devm8aq2nrmd7" path="res://assets/player/Ataques/Lanca/C1/lanca_air_1.png" id="82_elj5s"]
 [ext_resource type="Texture2D" uid="uid://fabkw0snbnml" path="res://assets/player/Ataques/Lanca/C2/lanca_air_2.png" id="83_q1mdv"]
 [ext_resource type="Texture2D" uid="uid://dbfg2kntv3eyf" path="res://assets/player/Ataques/Lanca/C3/lanca_air_3.png" id="84_f126j"]
+[ext_resource type="Texture2D" uid="uid://c5yaidf3lljwg" path="res://assets/player/corruption_aura/complete_aura_level_0.png" id="90_fjhwm"]
+[ext_resource type="Script" path="res://player/element_manager.gd" id="94_8uuoj"]
 [ext_resource type="Script" path="res://player/camera.gd" id="95_v1sao"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ar5uo"]
 size = Vector2(15, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v34mu"]
-size = Vector2(16.9189, 10)
+size = Vector2(15.039, 10)
 
 [sub_resource type="Animation" id="Animation_115di"]
 length = 0.001
@@ -6805,110 +6806,6 @@ tracks/0/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_txsib"]
-resource_name = "corruption_level_1"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Aura:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("17_7bh1j")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Aura:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Aura:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Aura:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_xc8ab"]
-resource_name = "corruption_level_2"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Aura:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("49_80rfq")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Aura:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Aura:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Aura:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="Animation" id="Animation_jfs1f"]
 resource_name = "fire"
 length = 0.1
@@ -7285,19 +7182,176 @@ tracks/3/keys = {
 "values": [0]
 }
 
+[sub_resource type="Animation" id="Animation_xc8ab"]
+resource_name = "water"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Aura:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("49_80rfq")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Aura:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Aura:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Aura:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_txsib"]
+resource_name = "earth"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Aura:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("17_7bh1j")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Aura:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Aura:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Aura:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_38hf2"]
+resource_name = "air"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Aura:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("90_fjhwm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Aura:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Aura:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Aura:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vrfuq"]
 _data = {
 "RESET": SubResource("Animation_b2rpp"),
+"air": SubResource("Animation_38hf2"),
 "corruption_level_0": SubResource("Animation_vn8p6"),
-"corruption_level_1": SubResource("Animation_txsib"),
-"corruption_level_2": SubResource("Animation_xc8ab"),
+"earth": SubResource("Animation_txsib"),
 "fire": SubResource("Animation_jfs1f"),
 "level_up_0": SubResource("Animation_7tt87"),
 "level_up_1": SubResource("Animation_hvook"),
 "level_up_2": SubResource("Animation_1ox54"),
 "losing_level_1": SubResource("Animation_1s75d"),
 "losing_level_2": SubResource("Animation_ot1yn"),
-"losing_level_3": SubResource("Animation_8xva2")
+"losing_level_3": SubResource("Animation_8xva2"),
+"water": SubResource("Animation_xc8ab")
 }
 
 [sub_resource type="Animation" id="Animation_se0ya"]
@@ -7441,6 +7495,7 @@ hframes = 5
 [node name="Aura" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(0, -14)
+scale = Vector2(1.02396, 0.989389)
 texture = ExtResource("17_7bh1j")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -7453,7 +7508,7 @@ collision_layer = 0
 collision_mask = 65542
 
 [node name="DashCollision" type="CollisionShape2D" parent="DashCollision"]
-position = Vector2(1.12049e-07, 0)
+position = Vector2(-1.12049e-07, 0)
 shape = SubResource("RectangleShape2D_v34mu")
 debug_color = Color(0.944279, 7.79718e-06, 0.597798, 0.42)
 
@@ -7483,9 +7538,10 @@ libraries = {
 "": SubResource("AnimationLibrary_w1rpo")
 }
 
-[node name="Interface" parent="." node_paths=PackedStringArray("player", "health_component") instance=ExtResource("9_181sd")]
+[node name="Interface" parent="." node_paths=PackedStringArray("player", "health_component", "element_manager") instance=ExtResource("9_181sd")]
 player = NodePath("..")
 health_component = NodePath("../HealthComponent")
+element_manager = NodePath("../element_manager")
 
 [node name="PauseMenu" parent="." instance=ExtResource("10_yhe3o")]
 process_mode = 3
@@ -7530,18 +7586,16 @@ one_shot = true
 [node name="PoiseTimer" type="Timer" parent="."]
 one_shot = true
 
-[node name="CorruptionManager" type="Node2D" parent="." node_paths=PackedStringArray("player", "hit_timer", "animation")]
-script = ExtResource("57_em6cc")
-player = NodePath("..")
-hit_timer = NodePath("../HitTimer")
+[node name="element_timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="element_manager" type="Node2D" parent="." node_paths=PackedStringArray("animation", "element_timer")]
+scale = Vector2(1.00538, 1)
+script = ExtResource("94_8uuoj")
+max_element_stack = 10.0
 animation = NodePath("../AuraAnimations")
-hit_0_to_1 = 15.0
-hit_1_to_2 = 10.0
-hit_2_to_3 = 10.0
-sec_0 = 20.0
-sec_1 = 15.0
-sec_2 = 10.0
-sec_3 = 10.0
+element_timer = NodePath("../element_timer")
 
 [node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("79_cj1s4")]
 parent = NodePath("..")
@@ -7564,9 +7618,9 @@ text = "1"
 [connection signal="animation_finished" from="Animations" to="StateMachine/PlayerDash" method="_on_animation_finished"]
 [connection signal="animation_finished" from="HitModulate" to="." method="hit_modulate_animation_finished"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
-[connection signal="timeout" from="HitTimer" to="CorruptionManager" method="hit_timer_timeout"]
 [connection signal="timeout" from="ComboTimer" to="." method="_on_combo_timer_timeout"]
 [connection signal="timeout" from="CoyoteTime" to="StateMachine/Fall" method="_on_coyote_time_timeout"]
 [connection signal="timeout" from="InvTimer" to="." method="_on_inv_timer_timeout"]
 [connection signal="timeout" from="Direction0" to="StateMachine/Jump" method="_on_direction_0_timeout"]
 [connection signal="timeout" from="PoiseTimer" to="." method="_on_poise_timer_timeout"]
+[connection signal="timeout" from="element_timer" to="element_manager" method="_on_element_timer_timeout"]

@@ -20,9 +20,10 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var collision: CollisionShape2D = $Collision
 @onready var camera_methods: CameraMethods = $camera_methods
 @onready var attack_number: Label = $AttackNumber
+@onready var element_manager: ElementManager = $element_manager
+
 
 @onready var dash_cooldown: Timer = $DashCooldown
-@onready var corruption_manager: Node2D = $CorruptionManager
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var idle_state: State = $StateMachine/Idle as PlayerIdle

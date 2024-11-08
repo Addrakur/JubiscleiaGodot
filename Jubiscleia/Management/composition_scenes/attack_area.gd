@@ -44,17 +44,16 @@ func hit_func(body: Node2D):
 		
 		if parent.is_in_group("player"): # Verifica se quem bateu foi o jogador
 			PlayerVariables.hit_amount += 1
-			parent.corruption_manager.hit_timer.start()
-			var current_meter_value =  PlayerVariables.get(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_meter_count")
-			var new_value = current_meter_value + PlayerVariables.get(PlayerVariables.current_skill + "_element_amount")
-			PlayerVariables.set(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_meter_count", new_value)
-			print(new_value)
+			if not PlayerVariables.elemental_rupture:
+				var current_meter_value =  PlayerVariables.get(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_stack_count") # Recebe o valor atual do contador do elemento da arma
+				var new_value = current_meter_value + PlayerVariables.get(PlayerVariables.current_skill + "_element_amount") # Calcula o novo valor
+				PlayerVariables.set(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_stack_count", new_value) # Vincula o novo valor ao contador
 			
-		if parent.is_in_group("player_object"):
-			var current_meter_value = PlayerVariables.get(parent.element + "_meter_count")
+		if parent.is_in_group("player_object") and not PlayerVariables.elemental_rupture:
+			var current_meter_value = PlayerVariables.get(parent.element + "_stack_count")
 			var new_value = current_meter_value + PlayerVariables.get(parent.skill + "_element_amount")
-			PlayerVariables.set(parent.element + "_meter_count", new_value)
-			print(PlayerVariables.get(parent.element + "_meter_count"))
+			PlayerVariables.set(parent.element + "_stack_count", new_value)
+			#print(PlayerVariables.get(parent.element + "_stack_count"))
 				
 			
 			if PlayerVariables.my_knockup == true: # Verifica se o ataque do do jogador faz ele tomar knockup

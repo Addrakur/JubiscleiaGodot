@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dig4ptur76dp0"]
+[gd_scene load_steps=21 format=3 uid="uid://dig4ptur76dp0"]
 
 [ext_resource type="Script" path="res://Management/interface.gd" id="1_eph77"]
 [ext_resource type="Texture2D" uid="uid://crsh1ujf8cohx" path="res://assets/player/life_bar_under.png" id="2_5se83"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cnp6vltt0x06k" path="res://assets/player/sword_1.png" id="8_emdjm"]
 [ext_resource type="Texture2D" uid="uid://dm0dnkoi8077y" path="res://assets/player/spear_2.png" id="8_lppqw"]
 [ext_resource type="Texture2D" uid="uid://n386rxxp1ule" path="res://assets/player/sword_2.png" id="9_1d1sw"]
+[ext_resource type="PackedScene" uid="uid://c6bru2j5dj7cf" path="res://player/element_meter.tscn" id="12_l4c1m"]
 
 [sub_resource type="Animation" id="Animation_ugsmb"]
 length = 0.001
@@ -147,7 +148,6 @@ _data = {
 }
 
 [node name="Interface" type="CanvasLayer"]
-visible = false
 script = ExtResource("1_eph77")
 
 [node name="PlayerUI" type="Control" parent="."]
@@ -160,6 +160,7 @@ grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="HP" type="TextureProgressBar" parent="PlayerUI"]
+visible = false
 texture_filter = 1
 layout_mode = 1
 anchors_preset = -1
@@ -168,6 +169,7 @@ offset_top = 16.0
 offset_right = 339.0
 offset_bottom = 88.0
 max_value = 5.0
+value = 5.0
 stretch_margin_left = 3
 stretch_margin_top = 3
 stretch_margin_right = 3
@@ -178,6 +180,7 @@ texture_progress = ExtResource("4_b7pk7")
 metadata/_edit_use_anchors_ = true
 
 [node name="skill_1" type="TextureRect" parent="PlayerUI"]
+visible = false
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -188,6 +191,7 @@ script = ExtResource("6_rt343")
 textures = Array[Texture2D]([ExtResource("5_lwd1g"), ExtResource("4_78eoq"), ExtResource("8_emdjm")])
 
 [node name="skill_2" type="TextureRect" parent="PlayerUI"]
+visible = false
 layout_mode = 0
 offset_left = 16.0
 offset_top = 16.0
@@ -201,3 +205,39 @@ textures = Array[Texture2D]([ExtResource("6_7hyyx"), ExtResource("8_lppqw"), Ext
 libraries = {
 "": SubResource("AnimationLibrary_s0x3m")
 }
+
+[node name="water" parent="PlayerUI" node_paths=PackedStringArray("parent") instance=ExtResource("12_l4c1m")]
+layout_mode = 1
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 16.0
+offset_bottom = 64.0
+parent = NodePath("../..")
+element = "water"
+
+[node name="fire" parent="PlayerUI" node_paths=PackedStringArray("parent") instance=ExtResource("12_l4c1m")]
+layout_mode = 1
+offset_left = 80.0
+offset_top = 64.0
+offset_right = 80.0
+offset_bottom = 64.0
+parent = NodePath("../..")
+element = "fire"
+
+[node name="earth" parent="PlayerUI" node_paths=PackedStringArray("parent") instance=ExtResource("12_l4c1m")]
+layout_mode = 1
+offset_left = 144.0
+offset_top = 64.0
+offset_right = 144.0
+offset_bottom = 64.0
+parent = NodePath("../..")
+element = "earth"
+
+[node name="air" parent="PlayerUI" node_paths=PackedStringArray("parent") instance=ExtResource("12_l4c1m")]
+layout_mode = 1
+offset_left = 208.0
+offset_top = 64.0
+offset_right = 208.0
+offset_bottom = 64.0
+parent = NodePath("../..")
+element = "air"
