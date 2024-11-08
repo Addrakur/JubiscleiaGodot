@@ -3,6 +3,7 @@ extends CharacterBody2D
 @export var health_component: Node2D
 @export var attack_area: Area2D
 @export var direction: float
+@export var element: String
 
 @onready var limit: Area2D = get_parent()
 @onready var texture: Sprite2D = $Texture

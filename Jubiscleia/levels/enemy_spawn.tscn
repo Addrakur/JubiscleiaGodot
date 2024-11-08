@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://b7fccbrl06aa5"]
+[gd_scene load_steps=25 format=3 uid="uid://b7fccbrl06aa5"]
 
 [ext_resource type="Script" path="res://levels/enemy_spawn.gd" id="1_vxepv"]
 [ext_resource type="Texture2D" uid="uid://duo0b6w5ol3fa" path="res://assets/enemy/Miniature/moldura.png" id="2_eqmri"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cdxfpuoofl54i" path="res://assets/enemy/Miniature/skeleton.png" id="6_2foh3"]
 [ext_resource type="Texture2D" uid="uid://b1r1tqfjpbbac" path="res://assets/enemy/Miniature/snake.png" id="7_5t47j"]
 [ext_resource type="Texture2D" uid="uid://qccimbhu0qgv" path="res://assets/enemy/Miniature/sword_skeleton.png" id="8_jxvob"]
+[ext_resource type="Texture2D" uid="uid://dvsf6pqulkkwu" path="res://assets/enemy/Miniature/spike_shield.png" id="9_1lbo0"]
+[ext_resource type="Texture2D" uid="uid://b5w4s53u0tib8" path="res://assets/enemy/Miniature/aereal_suicide.png" id="10_0p6la"]
+[ext_resource type="Texture2D" uid="uid://b148g3gq61kcy" path="res://assets/enemy/Miniature/sniper.png" id="11_ict55"]
 
 [sub_resource type="Animation" id="Animation_j6t8w"]
 length = 0.001
@@ -34,6 +37,21 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_uoof5"]
+resource_name = "aereal_suicide_enemy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_0p6la")]
 }
 
 [sub_resource type="Animation" id="Animation_m0hgs"]
@@ -112,6 +130,21 @@ tracks/0/keys = {
 "values": [ExtResource("7_5t47j")]
 }
 
+[sub_resource type="Animation" id="Animation_2sh4g"]
+resource_name = "sniper_enemy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_ict55")]
+}
+
 [sub_resource type="Animation" id="Animation_6sdmu"]
 resource_name = "spear_skeleton"
 tracks/0/type = "value"
@@ -125,6 +158,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("6_2foh3")]
+}
+
+[sub_resource type="Animation" id="Animation_4bw4c"]
+resource_name = "spike_shield_enemy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_1lbo0")]
 }
 
 [sub_resource type="Animation" id="Animation_k4uyw"]
@@ -145,12 +193,15 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sna2n"]
 _data = {
 "RESET": SubResource("Animation_j6t8w"),
+"aereal_suicide_enemy": SubResource("Animation_uoof5"),
 "big_worm": SubResource("Animation_m0hgs"),
 "cooldown": SubResource("Animation_y6i8p"),
 "kitsune": SubResource("Animation_hijfk"),
 "scorpion": SubResource("Animation_7k3x0"),
 "snake": SubResource("Animation_08oxq"),
+"sniper_enemy": SubResource("Animation_2sh4g"),
 "spear_skeleton": SubResource("Animation_6sdmu"),
+"spike_shield_enemy": SubResource("Animation_4bw4c"),
 "sword_skeleton": SubResource("Animation_k4uyw")
 }
 

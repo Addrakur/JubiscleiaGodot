@@ -44,13 +44,24 @@ func hit_func(body: Node2D):
 		
 		if parent.is_in_group("player"): # Verifica se quem bateu foi o jogador
 			PlayerVariables.hit_amount += 1
-			if not parent.is_in_group("projectile"):
-				parent.corruption_manager.hit_timer.start()
+			parent.corruption_manager.hit_timer.start()
+			var current_meter_value =  PlayerVariables.get(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_meter_count")
+			var new_value = current_meter_value + PlayerVariables.get(PlayerVariables.current_skill + "_element_amount")
+			PlayerVariables.set(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_meter_count", new_value)
+			print(new_value)
+			
+		if parent.is_in_group("player_object"):
+			var current_meter_value = PlayerVariables.get(parent.element + "_meter_count")
+			var new_value = current_meter_value + PlayerVariables.get(parent.skill + "_element_amount")
+			PlayerVariables.set(parent.element + "_meter_count", new_value)
+			print(PlayerVariables.get(parent.element + "_meter_count"))
 				
+			
 			if PlayerVariables.my_knockup == true: # Verifica se o ataque do do jogador faz ele tomar knockup
 				parent.jump_attack_state.stop_false()
 				parent.jump_attack_state.get_out_of_state()
 				parent.fsm.change_state(parent.jump_state)
+				
 				
 		if one_hit_destroy:
 			parent.can_destroy = true

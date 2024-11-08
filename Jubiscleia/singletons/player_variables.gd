@@ -7,12 +7,18 @@ var corruption_level: float = 0
 var hit_amount: float
 var attack_speed: float = 1.2
 
+var fire_meter_count: float = 0
+var water_meter_count: float = 0
+var air_meter_count: float = 0
+var earth_meter_count: float = 0
+
 var player_alive: bool = true
 var player_attacking: bool = false
 
-var current_skill: String
-var current_attack: String
-var last_skill: String
+var next_skill: String #Arma que vai ser usada no ataque que vai vir
+var current_skill: String #Arma sendo usada no ataque atual
+var current_attack: String #Ataque que está sendo usado atualmente
+var last_skill: String #Ultima arma usada
 var skill_1: String = "sword" 
 var skill_2: String = "axe"
 
@@ -27,6 +33,8 @@ var axe_2_speed: float = 800
 var axe_3_speed: float = 0
 var axe_jump_speed: float = 0
 var axe_jump_gravity: float = 1000
+var axe_element: String = "fire"
+var axe_element_amount: float = 5
 
 var axe_0_1_damage: float = 3
 var axe_0_1_knockback: float = 300
@@ -126,6 +134,8 @@ var sword_2_speed: float = 0
 var sword_3_speed: float = 0
 var sword_jump_speed: float = 0
 var sword_jump_gravity: float = 0
+var sword_element: String = "water"
+var sword_element_amount: float = 3
 
 var sword_0_1_damage: float = 3
 var sword_0_1_knockback: float = 120
@@ -239,6 +249,8 @@ var spear_3_speed: float = 0
 var spear_jump_speed: float = 0
 var spear_jump_gravity: float = 0
 var spear_jump_my_knockup: float = -500
+var spear_element: String = "air"
+var spear_element_amount: float = 6
 
 var spear_0_1_damage: float = 2
 var spear_0_1_knockback: float = 70

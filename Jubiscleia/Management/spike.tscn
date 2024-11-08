@@ -9,7 +9,7 @@ size = Vector2(32, 15)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8ae0"]
 size = Vector2(30, 14)
 
-[node name="Spike" type="StaticBody2D"]
+[node name="Spike" type="StaticBody2D" groups=["terrain"]]
 collision_layer = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -18,7 +18,7 @@ texture = ExtResource("1_30gas")
 [node name="AttackArea" parent="." instance=ExtResource("2_5hn2l")]
 collision_mask = 1
 target = "player"
-damage = 5.0
+damage = 15.0
 knockup_force = -300.0
 poise_damage = 10.0
 attack_name = "spike"

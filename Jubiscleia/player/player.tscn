@@ -6910,7 +6910,7 @@ tracks/3/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_jfs1f"]
-resource_name = "corruption_level_3"
+resource_name = "fire"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -7291,7 +7291,7 @@ _data = {
 "corruption_level_0": SubResource("Animation_vn8p6"),
 "corruption_level_1": SubResource("Animation_txsib"),
 "corruption_level_2": SubResource("Animation_xc8ab"),
-"corruption_level_3": SubResource("Animation_jfs1f"),
+"fire": SubResource("Animation_jfs1f"),
 "level_up_0": SubResource("Animation_7tt87"),
 "level_up_1": SubResource("Animation_hvook"),
 "level_up_2": SubResource("Animation_1ox54"),

@@ -10,10 +10,13 @@ var direction: float
 
 var can_destroy: bool = false
 var attack: String = PlayerVariables.current_attack
+var skill: String = PlayerVariables.current_skill
 
 var starting_pos: Vector2
 
 var max_distance: float
+
+var element: String
 
 func _ready():
 	animation.play(attack)
@@ -22,8 +25,10 @@ func _ready():
 	attack_area.knockback_force = PlayerVariables.get(attack + "_projectile_knockback")
 	attack_area.poise_damage = PlayerVariables.get(attack + "_projectile_poise")
 	speed = PlayerVariables.get(attack + "_projectile_speed")
+	element = PlayerVariables.get(PlayerVariables.current_skill + "_element")
 	
 	attack_area.attack_name = name
+	print(element)
 
 func _physics_process(delta):
 	if move:
