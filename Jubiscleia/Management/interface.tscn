@@ -208,36 +208,56 @@ libraries = {
 
 [node name="water" parent="PlayerUI" node_paths=PackedStringArray("parent") instance=ExtResource("12_l4c1m")]
 layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 16.0
 offset_top = 64.0
-offset_right = 16.0
-offset_bottom = 64.0
+offset_right = 976.0
+offset_bottom = 604.0
+grow_horizontal = 1
+grow_vertical = 1
 parent = NodePath("../..")
 element = "water"
 
 [node name="fire" parent="PlayerUI" node_paths=PackedStringArray("parent") instance=ExtResource("12_l4c1m")]
 layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 80.0
 offset_top = 64.0
-offset_right = 80.0
-offset_bottom = 64.0
+offset_right = 1040.0
+offset_bottom = 604.0
+grow_horizontal = 1
+grow_vertical = 1
 parent = NodePath("../..")
 element = "fire"
 
 [node name="earth" parent="PlayerUI" node_paths=PackedStringArray("parent") instance=ExtResource("12_l4c1m")]
 layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 144.0
 offset_top = 64.0
-offset_right = 144.0
-offset_bottom = 64.0
+offset_right = 1104.0
+offset_bottom = 604.0
+grow_horizontal = 1
+grow_vertical = 1
 parent = NodePath("../..")
 element = "earth"
 
 [node name="air" parent="PlayerUI" node_paths=PackedStringArray("parent") instance=ExtResource("12_l4c1m")]
 layout_mode = 1
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = 208.0
 offset_top = 64.0
-offset_right = 208.0
-offset_bottom = 64.0
+offset_right = 1168.0
+offset_bottom = 604.0
+grow_horizontal = 1
+grow_vertical = 1
 parent = NodePath("../..")
 element = "air"

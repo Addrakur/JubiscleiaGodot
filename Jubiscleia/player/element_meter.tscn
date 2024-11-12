@@ -10,34 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://dtberije6yr7b" path="res://assets/player/element_meter/earth_under.png" id="7_lhchc"]
 [ext_resource type="Texture2D" uid="uid://nrwg73mhre8" path="res://assets/player/element_meter/earth_progress.png" id="8_tjsyy"]
 
-[sub_resource type="Animation" id="Animation_csq4e"]
-resource_name = "water"
-length = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("texture_under:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_3duso")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("progress_bar:texture_progress")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_qjhib")]
-}
-
 [sub_resource type="Animation" id="Animation_hoxds"]
 length = 0.001
 tracks/0/type = "value"
@@ -93,6 +65,34 @@ tracks/1/keys = {
 "values": [ExtResource("4_ku7cd")]
 }
 
+[sub_resource type="Animation" id="Animation_rbf0g"]
+resource_name = "earth"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture_under:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_lhchc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("progress_bar:texture_progress")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_tjsyy")]
+}
+
 [sub_resource type="Animation" id="Animation_t5tib"]
 resource_name = "fire"
 length = 0.1
@@ -121,8 +121,8 @@ tracks/1/keys = {
 "values": [ExtResource("6_opc8m")]
 }
 
-[sub_resource type="Animation" id="Animation_rbf0g"]
-resource_name = "earth"
+[sub_resource type="Animation" id="Animation_csq4e"]
+resource_name = "water"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -134,7 +134,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_lhchc")]
+"values": [ExtResource("1_3duso")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -146,7 +146,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("8_tjsyy")]
+"values": [ExtResource("2_qjhib")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4ee0e"]

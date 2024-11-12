@@ -17,6 +17,7 @@ func _ready():
 	speed = Parameters.player_dash_speed
 
 func enter_state() -> void:
+	print("enter dash")
 	if player.is_on_floor():
 		player.dash_cooldown.start()
 	player.set_collision_mask_value(2,false)
@@ -35,6 +36,7 @@ func enter_state() -> void:
 	
 
 func exit_state() -> void:
+	print("exit dash")
 	set_physics_process(false)
 	PlayerVariables.move = false
 	player.health_component.invulnerable = false

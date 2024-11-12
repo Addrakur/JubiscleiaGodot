@@ -3,6 +3,7 @@ extends State
 
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
+@export var dash_cooldown: Timer
 
 func _ready():
 	set_physics_process(false)

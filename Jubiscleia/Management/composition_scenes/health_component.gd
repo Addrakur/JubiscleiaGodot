@@ -64,9 +64,9 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 			parent.hit_modulate.play("defending")
 			if attacker != null and attacker.is_in_group("player_object"):
 				attacker.can_destroy = true
-
-		if parent.is_in_group("player"):
-			parent.corruption_manager.time_penalty()
+		
+		#if parent.is_in_group("player"):
+			#parent.corruption_manager.time_penalty()
 		
 		#print("tomou dano de " + last_attack_name)
 	else:
