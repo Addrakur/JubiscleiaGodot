@@ -669,6 +669,7 @@ collision_mask = 5
 script = ExtResource("1_jys8c")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
+element = "earth"
 
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {

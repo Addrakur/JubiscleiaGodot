@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dxjdburda31pb"]
+[gd_scene load_steps=16 format=3 uid="uid://dxjdburda31pb"]
 
 [ext_resource type="Texture2D" uid="uid://bekgllyv8sjt7" path="res://assets/enemy/aereal_suicide_enemy/aereal_suicide_enemy_patrol.png" id="1_2xoor"]
 [ext_resource type="Script" path="res://enemies/aereal_suicide_enemy.gd" id="1_3p8xi"]
@@ -32,7 +32,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -162,7 +162,8 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_in4ny"]
 resource_name = "patrol"
-length = 0.0333367
+length = 0.833341
+loop_mode = 1
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -186,7 +187,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -195,17 +196,35 @@ tracks/2/path = NodePath(".:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.333333, 0.5, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_xygbi"]
+resource_name = "prepare"
+length = 0.250008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_le3gb"]
 _data = {
 "RESET": SubResource("Animation_1pn60"),
 "explode": SubResource("Animation_nwl2x"),
-"patrol": SubResource("Animation_in4ny")
+"patrol": SubResource("Animation_in4ny"),
+"prepare": SubResource("Animation_xygbi")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kgv6s"]
@@ -255,6 +274,7 @@ disabled = true
 
 [node name="texture" type="Sprite2D" parent="."]
 texture = ExtResource("1_2xoor")
+hframes = 4
 
 [node name="HSM" type="LimboHSM" parent="."]
 
@@ -267,10 +287,12 @@ raycast_right = NodePath("../../RayCastRight")
 speed = 100.0
 tolerance = 10.0
 
-[node name="AerealSuicideEnemyAttack" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "timer")]
+[node name="AerealSuicideEnemyAttack" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation")]
 script = ExtResource("6_a2rqk")
 parent = NodePath("../..")
-timer = NodePath("../../Timer")
+animation = NodePath("../../animation")
+descent_speed_limit = 2000.0
+descent_start_speed = 40.0
 
 [node name="AerealSuicideEnemyExplode" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation")]
 script = ExtResource("7_15ntw")
@@ -290,10 +312,6 @@ collision_mask = 32769
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_d5dgb")
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-
 [connection signal="animation_finished" from="animation" to="." method="_on_animation_finished"]
+[connection signal="animation_finished" from="animation" to="HSM/AerealSuicideEnemyAttack" method="_on_animation_finished"]
 [connection signal="body_entered" from="trigger_area" to="." method="_on_trigger_area_body_entered"]
-[connection signal="timeout" from="Timer" to="HSM/AerealSuicideEnemyAttack" method="_on_timer_timeout"]

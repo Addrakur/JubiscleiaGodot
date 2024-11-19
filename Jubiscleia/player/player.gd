@@ -22,7 +22,6 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var attack_number: Label = $AttackNumber
 @onready var element_manager: ElementManager = $element_manager
 
-
 @onready var dash_cooldown: Timer = $DashCooldown
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine

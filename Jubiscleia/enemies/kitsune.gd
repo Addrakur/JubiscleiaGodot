@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var starting_x: Marker2D
 @export var warp_area: Polygon2D
 @export var contact_damage: AttackArea
+@export_enum("water","fire","earth","air") var element: String
 
 @onready var limit: Area2D = get_parent()
 @onready var texture: Sprite2D = $Texture

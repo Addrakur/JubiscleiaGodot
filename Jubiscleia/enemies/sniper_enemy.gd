@@ -1,6 +1,7 @@
 class_name SniperEnemy
 extends CharacterBody2D
 
+@export_enum("water","fire","earth","air") var element: String
 @export var health_component: Node2D
 var direction: float
 

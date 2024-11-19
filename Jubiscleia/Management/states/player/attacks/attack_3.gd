@@ -19,16 +19,16 @@ func enter_state() -> void:
 	player.can_combo = false
 	
 	player.combo_timer.stop()
-	animation.play(PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_3",-1,PlayerVariables.attack_speed,false)
-	PlayerVariables.current_attack = PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_3"
+	animation.play(PlayerVariables.current_skill + "_3",-1,PlayerVariables.attack_speed,false)
+	PlayerVariables.current_attack = PlayerVariables.current_skill + "_3"
 	player.attack_area.attack_name = PlayerVariables.current_attack
 
 	speed = PlayerVariables.get(str(PlayerVariables.current_skill) + "_3_speed")
 	
-	player.attack_area.damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_3_damage")
-	player.attack_area.knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_3_knockback")
-	player.attack_area.knockup_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_3_knockup")
-	player.attack_area.poise_damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_3_poise")
+	player.attack_area.damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_3_damage") * PlayerVariables.damage_mult
+	player.attack_area.knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_3_knockback")
+	player.attack_area.knockup_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_3_knockup")
+	player.attack_area.poise_damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_3_poise")
 
 func exit_state() -> void:
 	set_physics_process(false)

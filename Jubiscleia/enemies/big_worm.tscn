@@ -434,6 +434,7 @@ script = ExtResource("1_ls3a1")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
 gravity_mult = 10.0
+element = "earth"
 
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(0, -32)

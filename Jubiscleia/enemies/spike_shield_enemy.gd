@@ -4,6 +4,7 @@ extends CharacterBody2D
 @export var health_component: Node2D
 @export var attack_area: Area2D
 @export var starting_x: Marker2D
+@export_enum("water","fire","earth","air") var element: String
 
 var direction: float = -1
 

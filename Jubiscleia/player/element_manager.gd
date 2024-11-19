@@ -20,9 +20,7 @@ func _process(_delta: float) -> void:
 	
 	for element in elements:
 		if PlayerVariables.get(element + "_stack_count") >= max_element_stack:
-			PlayerVariables.elemental_rupture = true
 			rupture(element)
-			print(element)
 
 
 func rupture(element: String) -> void:
@@ -31,6 +29,7 @@ func rupture(element: String) -> void:
 			#PlayerVariables.set(str(PlayerVariables.get(variable + "_stack_count")), 0)
 		#else:
 			#PlayerVariables.set(str(PlayerVariables.get(element + "_stack_count")), max_element_stack)
+	PlayerVariables.elemental_rupture = element
 	animation.play(element)
 	element_timer.start()
 	
@@ -46,6 +45,7 @@ func rupture(element: String) -> void:
 			PlayerVariables.water_stack_count = 0
 			PlayerVariables.earth_stack_count = 0
 			PlayerVariables.air_stack_count = 0
+			PlayerVariables.damage_mult = 1.5
 		"earth":
 			PlayerVariables.earth_stack_count = max_element_stack
 			PlayerVariables.fire_stack_count = 0
@@ -56,6 +56,7 @@ func rupture(element: String) -> void:
 			PlayerVariables.fire_stack_count = 0
 			PlayerVariables.water_stack_count = 0
 			PlayerVariables.earth_stack_count = 0
+			PlayerVariables.attack_speed = 1.5
 
 
 func _input(event: InputEvent) -> void:
@@ -73,15 +74,16 @@ func _input(event: InputEvent) -> void:
 
 
 func _on_element_timer_timeout() -> void:
-	PlayerVariables.elemental_rupture = false
+	PlayerVariables.elemental_rupture = ""
 	#for element in elements:
 		#PlayerVariables.set(str(PlayerVariables.get(element + "_stack_count")), 0)
 	
 	# Solução temporária
 	reset_counters()
+	PlayerVariables.attack_speed = 1
+	PlayerVariables.damage_mult = 1
 	
 	animation.play("corruption_level_0")
-	print("timer timeout")
 
 func reset_counters():
 	PlayerVariables.water_stack_count = 0

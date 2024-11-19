@@ -581,6 +581,7 @@ health_component = NodePath("HealthComponent")
 off_set_wander = 150.0
 min_wander = 75.0
 contact_damage = NodePath("ContactDamage")
+element = "fire"
 
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(0, -45)

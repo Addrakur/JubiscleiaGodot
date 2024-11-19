@@ -168,6 +168,7 @@ _data = {
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_78735")
+element = "fire"
 health_component = NodePath("HealthComponent")
 
 [node name="body_collision" type="CollisionShape2D" parent="."]

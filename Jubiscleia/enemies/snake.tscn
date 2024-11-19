@@ -452,7 +452,7 @@ floor_constant_speed = true
 script = ExtResource("1_ep4bx")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
-element = "fire"
+element = "water"
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(-9, -18)

@@ -23,18 +23,18 @@ func enter_state() -> void:
 	player.combo_timer.stop()
 	
 	PlayerVariables.current_skill = PlayerVariables.next_skill
-	animation.play(PlayerVariables.current_skill + "_jump_" + str(PlayerVariables.corruption_level))
-	PlayerVariables.current_attack = PlayerVariables.current_skill + "_jump_" + str(PlayerVariables.corruption_level)
+	animation.play(PlayerVariables.current_skill + "_jump", -1, PlayerVariables.attack_speed,false)
+	PlayerVariables.current_attack = PlayerVariables.current_skill + "_jump"
 	player.attack_area.attack_name = PlayerVariables.current_attack
 	player.can_combo = false
 	
 	speed = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_speed")
 	player.override_gravity = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_gravity")
 	
-	player.attack_area.damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_" + str(PlayerVariables.corruption_level) + "_damage")
-	player.attack_area.knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_" + str(PlayerVariables.corruption_level) + "_knockback")
-	player.attack_area.knockup_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_" + str(PlayerVariables.corruption_level) + "_knockup")
-	player.attack_area.poise_damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_" + str(PlayerVariables.corruption_level) + "_poise")
+	player.attack_area.damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_damage") * PlayerVariables.damage_mult
+	player.attack_area.knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_knockback")
+	player.attack_area.knockup_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_knockup")
+	player.attack_area.poise_damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_poise")
 	
 	player.velocity.x = 0
 	
@@ -82,7 +82,7 @@ func my_knockup_true():
 	PlayerVariables.my_knockup = true
 
 func _play_animation(anim_name: String) -> void:
-	animation.play(anim_name)
+	animation.play(anim_name, -1, PlayerVariables.attack_speed, false)
 
 func set_gravity_override(value: float):
 	if value != 0:

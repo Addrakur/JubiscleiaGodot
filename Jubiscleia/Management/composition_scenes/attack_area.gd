@@ -43,13 +43,14 @@ func hit_func(body: Node2D):
 		body.health_component.update_health(damage, knockup_force, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage, parent.position.x, parent) # Chama a função que aplica o dano no alvo
 		
 		if parent.is_in_group("player"): # Verifica se quem bateu foi o jogador
-			PlayerVariables.hit_amount += 1
-			if not PlayerVariables.elemental_rupture:
+			if PlayerVariables.elemental_rupture == "":
 				var current_meter_value =  PlayerVariables.get(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_stack_count") # Recebe o valor atual do contador do elemento da arma
 				var new_value = current_meter_value + PlayerVariables.get(PlayerVariables.current_skill + "_element_amount") # Calcula o novo valor
 				PlayerVariables.set(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_stack_count", new_value) # Vincula o novo valor ao contador
+			elif PlayerVariables.elemental_rupture == "water":
+				parent.health_component.current_health += 5
 			
-		if parent.is_in_group("player_object") and not PlayerVariables.elemental_rupture:
+		if parent.is_in_group("player_object") and PlayerVariables.elemental_rupture == "":
 			var current_meter_value = PlayerVariables.get(parent.element + "_stack_count")
 			var new_value = current_meter_value + PlayerVariables.get(parent.skill + "_element_amount")
 			PlayerVariables.set(parent.element + "_stack_count", new_value)
@@ -60,7 +61,6 @@ func hit_func(body: Node2D):
 				parent.jump_attack_state.stop_false()
 				parent.jump_attack_state.get_out_of_state()
 				parent.fsm.change_state(parent.jump_state)
-				
 				
 		if one_hit_destroy:
 			parent.can_destroy = true

@@ -390,6 +390,7 @@ collision_mask = 13
 script = ExtResource("1_v6en7")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
+element = "water"
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("1_pjjdi")

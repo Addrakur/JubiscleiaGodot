@@ -19,16 +19,16 @@ func enter_state() -> void:
 	player.can_combo = false
 	
 	player.combo_timer.stop()
-	animation.play(PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_1",-1,PlayerVariables.attack_speed,false)
-	PlayerVariables.current_attack = PlayerVariables.current_skill + "_" + str(PlayerVariables.corruption_level) + "_1"
+	animation.play(PlayerVariables.current_skill + "_1",-1,PlayerVariables.attack_speed,false)
+	PlayerVariables.current_attack = PlayerVariables.current_skill + "_1"
 	player.attack_area.attack_name = PlayerVariables.current_attack
 
 	speed = PlayerVariables.get(str(PlayerVariables.current_skill) + "_1_speed")
 	
-	player.attack_area.damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_1_damage")
-	player.attack_area.knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_1_knockback")
-	player.attack_area.knockup_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_1_knockup")
-	player.attack_area.poise_damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_" + str(PlayerVariables.corruption_level) + "_1_poise")
+	player.attack_area.damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_1_damage") * PlayerVariables.damage_mult
+	player.attack_area.knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_1_knockback")
+	player.attack_area.knockup_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_1_knockup")
+	player.attack_area.poise_damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_1_poise")
 
 func exit_state() -> void:
 	set_physics_process(false)
@@ -41,7 +41,6 @@ func exit_state() -> void:
 	player.camera_methods.weapon_shake_false()
 	PlayerVariables.anim_finish = false
 	player.combo_timer_start()
-	PlayerVariables.anim_finish = false
 
 func _physics_process(_delta):
 	player.velocity.x = 0

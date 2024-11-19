@@ -560,6 +560,7 @@ script = ExtResource("1_vyemi")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
 contact_damage = NodePath("ContactDamage")
+element = "air"
 
 [node name="Texture" type="Sprite2D" parent="."]
 position = Vector2(0, -32)
