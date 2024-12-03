@@ -1,7 +1,7 @@
 class_name SnakeDeath
 extends State
 
-@export var snake: CharacterBody2D
+@export var snake: Snake
 @export var animation: AnimationPlayer
 
 func _ready():

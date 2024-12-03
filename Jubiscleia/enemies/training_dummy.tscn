@@ -207,7 +207,6 @@ variable_name = "dummy"
 max_health = 1000.0
 max_poise = 10.0
 poise_recover_timer = 3.0
-destroy_after_dead = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -16)

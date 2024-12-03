@@ -9,7 +9,6 @@ var true_poise_recover_time: float
 @export var max_health: float
 @export var max_poise: float
 @export var poise_recover_timer: float
-@export var destroy_after_dead: bool
 @export var attack_timer: Timer
 @onready var parent: Node2D = get_parent()
 var current_health: float = 100
@@ -20,6 +19,8 @@ var invulnerable: bool = false
 @export var left: bool
 
 var last_attack: String
+
+var orb_spawned: bool = false
 
 func _ready() -> void:
 	if not has_parameter_slider:
@@ -65,17 +66,14 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 			if attacker != null and attacker.is_in_group("player_object"):
 				attacker.can_destroy = true
 		
-		#if parent.is_in_group("player"):
-			#parent.corruption_manager.time_penalty()
-		
-		#print("tomou dano de " + last_attack_name)
-	else:
-		#print("nao tomou dano de " + last_attack_name)
-		pass
+
 
 func die() -> void:
 	if current_health <= 0:
 		parent.alive = false
+		if parent.is_in_group("enemy") and not orb_spawned:
+			spawn_elemental_orb(parent.position, parent.element, parent.limit)
+			orb_spawned = true
 
 func can_recieve_damage(attack_position: float) -> bool:
 	if defending:
@@ -91,3 +89,10 @@ func can_recieve_damage(attack_position: float) -> bool:
 				return false
 	else:
 		return true
+
+func spawn_elemental_orb(spawn_position: Vector2, element: String, limit: EnemyLimit):
+	var orb = Paths.elemental_orb.instantiate()
+	limit.add_child(orb)
+	orb.position = spawn_position
+	orb.element = element
+	orb.set_animation()

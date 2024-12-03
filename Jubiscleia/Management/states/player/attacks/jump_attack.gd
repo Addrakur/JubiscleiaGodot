@@ -73,7 +73,7 @@ func _physics_process(_delta):
 		player.fsm.change_state(player.fall_state)
 	
 	if PlayerVariables.current_skill == "axe" and player.is_on_floor():
-		_play_animation("axe_jump_wind_down_" + str(PlayerVariables.corruption_level))
+		_play_animation("axe_jump_wind_down")
 
 func stop_false() -> void:
 	stop = false

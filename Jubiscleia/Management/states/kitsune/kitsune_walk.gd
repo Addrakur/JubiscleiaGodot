@@ -34,12 +34,14 @@ func _physics_process(_delta):
 func new_position():
 	var chance: float
 	chance = randf_range(0,10)
-	if chance > 5:
+	if chance >= 5:
 		new_x = kitsune.starting_x.position.x + randf_range(kitsune.min_wander, kitsune.off_set_wander)
+		if new_x > kitsune.limit.limit_polygon.polygon[2].x:
+			new_x = kitsune.limit.limit_polygon.polygon[2].x - 13
 	elif chance < 5:
 		new_x = kitsune.starting_x.position.x - randf_range(kitsune.min_wander, kitsune.off_set_wander)
-	else:
-		new_x = kitsune.starting_x.position.x
+		if new_x < kitsune.limit.limit_polygon.polygon[1].x:
+			new_x = kitsune.limit.limit_polygon.polygon[1].x + 13
 	
 	if kitsune.position.x > new_x:
 		kitsune.direction = -1

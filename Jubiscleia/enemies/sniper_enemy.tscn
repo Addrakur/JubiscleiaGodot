@@ -193,7 +193,7 @@ scale = Vector2(-1, 1)
 texture = ExtResource("2_ookx4")
 
 [node name="RayCast" type="RayCast2D" parent="arm_texture"]
-target_position = Vector2(-2304, -0.0204697)
+target_position = Vector2(-3072, -0.0155754)
 collision_mask = 32773
 
 [node name="proj_spawn" type="Marker2D" parent="arm_texture"]
@@ -202,13 +202,12 @@ rotation = 3.14159
 scale = Vector2(1, -1)
 
 [node name="target_position" type="Marker2D" parent="arm_texture"]
-position = Vector2(-2304, -0.0204723)
+position = Vector2(-3072, -0.0155773)
 
 [node name="HealthComponent" type="Node2D" parent="." node_paths=PackedStringArray("attack_timer")]
 script = ExtResource("3_vrj2e")
 max_health = 10.0
 max_poise = 300.0
-destroy_after_dead = true
 attack_timer = NodePath("../attack_timer")
 
 [node name="HSM" type="LimboHSM" parent="."]
@@ -227,7 +226,7 @@ parent = NodePath("../..")
 proj_speed = 10.0
 proj_spawn = NodePath("../../arm_texture/proj_spawn")
 target_position = NodePath("../../arm_texture/target_position")
-proj_tween_duration = 15.0
+proj_tween_duration = 8.0
 animation = NodePath("../../animation")
 attack_timer = NodePath("../../attack_timer")
 

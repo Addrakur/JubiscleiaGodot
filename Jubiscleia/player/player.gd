@@ -78,6 +78,8 @@ func _ready():
 	fall_gravity = ((-2.0 * jump_height) / pow(jump_time_to_descent,2)) * -1
 	#GameSettings.default_gravity = fall_gravity
 	
+	print(attack_area)
+	
 func _process(_delta):
 	direction = Input.get_axis("left","right")
 	
@@ -179,14 +181,6 @@ func spawn_attack_projectile(player_direction: bool):
 	proj.direction = last_direction if player_direction else -last_direction
 	proj.collision_area.scale.x = proj.direction
 	proj.texture.flip_h = true if proj.direction == -1 else false
-
-func spawn_spear_burst():
-	var burst = Paths.spear_burst.instantiate()
-	add_child(burst)
-	#burst.position = global_position + PlayerVariables.get(PlayerVariables.current_attack + "_location")
-	burst.position = attack_spawn_point.global_position
-	#burst.direction = last_direction if player_direction else -last_direction
-	burst.direction = direction if direction != 0 else last_direction
 
 func spawn_point_location_change():
 	var spawn_direction: float = direction if direction != 0 else last_direction

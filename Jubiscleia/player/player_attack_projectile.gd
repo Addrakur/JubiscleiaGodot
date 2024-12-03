@@ -6,7 +6,7 @@ var direction: float
 @export var animation: AnimationPlayer
 @export var texture: Sprite2D
 @export var collision_area: CollisionPolygon2D
-@export var attack_area: Area2D
+@export var attack_area: AttackArea
 
 var can_destroy: bool = false
 var attack: String = PlayerVariables.current_attack

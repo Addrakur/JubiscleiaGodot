@@ -70,7 +70,7 @@ var sword_element: String = "water"
 var sword_element_amount: float = 3
 
 var sword_1_damage: float = 3
-var sword_1_knockback: float = 120
+var sword_1_knockback: float = 80
 var sword_1_knockup: float = 0
 var sword_1_poise: float = 5
 

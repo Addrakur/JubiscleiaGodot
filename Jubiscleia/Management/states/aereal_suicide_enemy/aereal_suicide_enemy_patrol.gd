@@ -24,13 +24,11 @@ func _update(_delta: float) -> void:
 		return
 	
 	if raycast_left.is_colliding() or raycast_right.is_colliding():
-		dispatch("patrol_to_attack")
-
-#func random_direction():
-	#direction = randi_range(-1,1)
-	#if direction == 0:
-		#random_direction()
-
+		var body_left = raycast_left.get_collider()
+		var body_right = raycast_right.get_collider()
+		if body_left != null and body_left.is_in_group("player") or body_right != null and body_right.is_in_group("player"):
+			dispatch("patrol_to_attack")
+	
 func turn_around():
 	if parent.direction == 1 and abs(parent.global_position.x - parent.point_right.position.x) < tolerance or parent.direction == -1 and abs(parent.global_position.x - parent.point_left.position.x) < tolerance:
 		parent.direction *= -1

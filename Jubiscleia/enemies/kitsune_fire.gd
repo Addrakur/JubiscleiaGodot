@@ -6,7 +6,7 @@ var speed: float
 @onready var animation = $Animation
 @onready var texture = $Texture
 @onready var collision = $AttackArea/CollisionPolygon2D
-@onready var attack_area = $AttackArea
+@onready var attack_area: AttackArea = $AttackArea
 
 var can_destroy: bool = false
 var base_anim_finish: bool = false

@@ -19,3 +19,6 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	big_worm.velocity.x = 0
 
+func _on_animation_finished(anim):
+	if anim == "death":
+		big_worm.queue_free()

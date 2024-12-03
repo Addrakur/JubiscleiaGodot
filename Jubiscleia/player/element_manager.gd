@@ -8,11 +8,7 @@ extends Node2D
 var elements: Array[String] = ["fire","water","air","earth"]
 
 func _ready() -> void:
-	for element in elements:
-		PlayerVariables.set(str(PlayerVariables.get(element + "_stack_count")), 0)
-	
-	# Solução temporária
-	reset_counters()
+	reset_elemental_counters()
 
 func _process(_delta: float) -> void:
 	if PlayerVariables.elemental_rupture:
@@ -24,42 +20,24 @@ func _process(_delta: float) -> void:
 
 
 func rupture(element: String) -> void:
-	#for variable in elements:
-		#if variable != element:
-			#PlayerVariables.set(str(PlayerVariables.get(variable + "_stack_count")), 0)
-		#else:
-			#PlayerVariables.set(str(PlayerVariables.get(element + "_stack_count")), max_element_stack)
+	for variable in elements:
+		if variable != element:
+			PlayerVariables.set(variable + "_stack_count", 0)
+		else:
+			PlayerVariables.set(element + "_stack_count", max_element_stack)
 	PlayerVariables.elemental_rupture = element
 	animation.play(element)
 	element_timer.start()
 	
 	# Solução temporária
 	match element:
-		"water":
-			PlayerVariables.water_stack_count = max_element_stack
-			PlayerVariables.fire_stack_count = 0
-			PlayerVariables.earth_stack_count = 0
-			PlayerVariables.air_stack_count = 0
 		"fire":
-			PlayerVariables.fire_stack_count = max_element_stack
-			PlayerVariables.water_stack_count = 0
-			PlayerVariables.earth_stack_count = 0
-			PlayerVariables.air_stack_count = 0
 			PlayerVariables.damage_mult = 1.5
-		"earth":
-			PlayerVariables.earth_stack_count = max_element_stack
-			PlayerVariables.fire_stack_count = 0
-			PlayerVariables.water_stack_count = 0
-			PlayerVariables.air_stack_count = 0
 		"air":
-			PlayerVariables.air_stack_count = max_element_stack
-			PlayerVariables.fire_stack_count = 0
-			PlayerVariables.water_stack_count = 0
-			PlayerVariables.earth_stack_count = 0
 			PlayerVariables.attack_speed = 1.5
 
 
-func _input(event: InputEvent) -> void:
+func _input(_event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_1):
 		print("Water: ",PlayerVariables.water_stack_count)
 		print("Fire: ",PlayerVariables.fire_stack_count)
@@ -75,18 +53,13 @@ func _input(event: InputEvent) -> void:
 
 func _on_element_timer_timeout() -> void:
 	PlayerVariables.elemental_rupture = ""
-	#for element in elements:
-		#PlayerVariables.set(str(PlayerVariables.get(element + "_stack_count")), 0)
 	
-	# Solução temporária
-	reset_counters()
+	reset_elemental_counters()
 	PlayerVariables.attack_speed = 1
 	PlayerVariables.damage_mult = 1
 	
 	animation.play("corruption_level_0")
 
-func reset_counters():
-	PlayerVariables.water_stack_count = 0
-	PlayerVariables.fire_stack_count = 0
-	PlayerVariables.earth_stack_count = 0
-	PlayerVariables.air_stack_count = 0
+func reset_elemental_counters():
+	for element in elements:
+		PlayerVariables.set(element + "_stack_count", 0)

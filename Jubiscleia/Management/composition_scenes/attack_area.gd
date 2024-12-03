@@ -48,14 +48,15 @@ func hit_func(body: Node2D):
 				var new_value = current_meter_value + PlayerVariables.get(PlayerVariables.current_skill + "_element_amount") # Calcula o novo valor
 				PlayerVariables.set(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_stack_count", new_value) # Vincula o novo valor ao contador
 			elif PlayerVariables.elemental_rupture == "water":
-				parent.health_component.current_health += 5
+				parent.health_component.current_health += damage * 0.5
 			
-		if parent.is_in_group("player_object") and PlayerVariables.elemental_rupture == "":
-			var current_meter_value = PlayerVariables.get(parent.element + "_stack_count")
-			var new_value = current_meter_value + PlayerVariables.get(parent.skill + "_element_amount")
-			PlayerVariables.set(parent.element + "_stack_count", new_value)
-			#print(PlayerVariables.get(parent.element + "_stack_count"))
-				
+		if parent.is_in_group("player_object"):
+			if PlayerVariables.elemental_rupture == "":
+				var current_meter_value = PlayerVariables.get(parent.element + "_stack_count")
+				var new_value = current_meter_value + PlayerVariables.get(parent.skill + "_element_amount")
+				PlayerVariables.set(parent.element + "_stack_count", new_value)
+			elif PlayerVariables.elemental_rupture == "water":
+				GameSettings.player.health_component.current_health += damage * 0.5
 			
 			if PlayerVariables.my_knockup == true: # Verifica se o ataque do do jogador faz ele tomar knockup
 				parent.jump_attack_state.stop_false()

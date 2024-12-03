@@ -685,7 +685,6 @@ libraries = {
 max_health = 25.0
 max_poise = 30.0
 poise_recover_timer = 2.0
-destroy_after_dead = true
 attack_timer = NodePath("../attack_timer")
 defending = true
 left = true

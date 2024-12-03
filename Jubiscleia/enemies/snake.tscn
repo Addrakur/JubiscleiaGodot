@@ -517,7 +517,6 @@ debug_color = Color(0.890196, 0.682353, 0, 0.419608)
 scale = Vector2(0.967821, 1)
 max_health = 8.0
 max_poise = 5.0
-destroy_after_dead = true
 attack_timer = NodePath("../AttackTimer")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
