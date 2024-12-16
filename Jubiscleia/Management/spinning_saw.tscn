@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1q0mp6dsqy6p"]
+
+[ext_resource type="Texture2D" uid="uid://crrbvqpj7gx45" path="res://assets/spinning_saw.png" id="1_h0b04"]
+[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_52cmm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kkkcx"]
+radius = 13.0
+
+[node name="spinning_saw" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_h0b04")
+
+[node name="AttackArea" parent="." instance=ExtResource("2_52cmm")]
+target = "player"
+damage = 20.0
+knockup_force = 200.0
+knockback_force = -10.0
+poise_damage = 50.0
+attack_name = "spinning_saw"
+
+[node name="attack_collision" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_kkkcx")

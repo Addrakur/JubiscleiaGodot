@@ -1,7 +1,7 @@
 class_name SnakeChase
 extends State
 
-@export var snake: CharacterBody2D
+@export var snake: Snake
 @export var animation: AnimationPlayer
 @export var speed: float
 
@@ -16,7 +16,7 @@ func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(_delta):
-	snake.velocity.x = snake.direction * speed
+	snake.velocity.x = snake.direction * speed * snake.speed
 	
 	if snake.player_ref != null and PlayerVariables.player_alive and snake.player_on_limit:
 		if snake.player_ref.position.x > snake.position.x - 10:

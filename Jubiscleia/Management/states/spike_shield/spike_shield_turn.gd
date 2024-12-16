@@ -10,10 +10,10 @@ var attack: String
 func _enter() -> void:
 	parent.velocity.x = 0
 	if parent.turn_attack:
-		animation.play("turn_attack")
+		animation.play("turn_attack", -1, parent.speed)
 		attack_timer.start()
 	else:
-		animation.play("turn")
+		animation.play("turn", -1, parent.speed)
 
 func _on_animation_finished(anim):
 	if anim == "turn":

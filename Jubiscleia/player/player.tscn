@@ -3093,6 +3093,11 @@ offset_right = 20.2613
 offset_bottom = -11.0644
 text = "1"
 
+[node name="ground_raycast" type="RayCast2D" parent="."]
+position = Vector2(0, -14.0265)
+target_position = Vector2(0, 15.0284)
+collision_mask = 4
+
 [connection signal="body_entered" from="DashCollision" to="StateMachine/PlayerDash" method="_on_dash_collision_body_entered"]
 [connection signal="body_exited" from="DashCollision" to="StateMachine/PlayerDash" method="_on_dash_collision_body_exited"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/Hit" method="_on_animation_finished"]

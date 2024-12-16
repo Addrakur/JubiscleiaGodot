@@ -1,7 +1,7 @@
 class_name SpearSkeletonRun
 extends State
 
-@export var skeleton: CharacterBody2D
+@export var skeleton: SpearSkeleton
 @export var animation: AnimationPlayer
 var speed: float
 @export var attack_timer: Timer
@@ -12,7 +12,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
-	animation.play("run")
+	animation.play("run", -1, skeleton.speed)
 
 func exit_state() -> void:
 	set_physics_process(false)

@@ -38,6 +38,8 @@ var alive: bool = true
 
 var gravity_mult: float = 4
 
+var speed: float = 1
+
 func _ready():
 	attack_area.attack_name = name + "hit"
 

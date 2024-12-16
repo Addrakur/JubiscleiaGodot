@@ -1,3 +1,4 @@
+class_name Kitsune
 extends CharacterBody2D
 
 @export var health_component: Node2D
@@ -46,6 +47,8 @@ var alive: bool = true
 var direction: float
 var gravity: float
 var gravity_mult: float = 0.18
+
+var speed: float = 1
 
 
 func _ready():

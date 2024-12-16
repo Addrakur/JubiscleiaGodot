@@ -1,7 +1,7 @@
 class_name ScorpionAttack
 extends State
 
-@export var scorpion: CharacterBody2D
+@export var scorpion: Scorpion
 @export var animation: AnimationPlayer
 
 @export var attack_distance: float
@@ -26,7 +26,7 @@ func exit_state() -> void:
 	scorpion.attack_timer.start()
 
 func _physics_process(_delta):
-	scorpion.velocity.x = direction * speed
+	scorpion.velocity.x = direction * speed * scorpion.speed
 	
 	
 	if scorpion.position.x > new_x and direction == 1 or scorpion.position.x < new_x and direction == -1 or scorpion.raycast.is_colliding():

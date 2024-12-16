@@ -1,7 +1,7 @@
 class_name SwordSkeletonWalk
 extends State
 
-@export var skeleton: CharacterBody2D
+@export var skeleton: SwordSkeleton
 @export var animation: AnimationPlayer
 @export var speed: float
 @export var wander_limit: float
@@ -17,7 +17,7 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	new_position()
-	animation.play("walk")
+	animation.play("walk", -1, skeleton.speed)
 	
 
 func exit_state() -> void:
@@ -27,7 +27,7 @@ func exit_state() -> void:
 
 func _physics_process(_delta):
 	if new_x != 0 and skeleton.direction != 0:
-		skeleton.velocity.x = skeleton.direction * speed
+		skeleton.velocity.x = skeleton.direction * speed * skeleton.speed
 	
 	if skeleton.position.x > new_x and skeleton.direction == 1 or skeleton.position.x < new_x and skeleton.direction == -1:
 		skeleton.fsm.change_state(skeleton.idle_state)

@@ -42,6 +42,8 @@ var alive: bool = true
 var gravity: float
 var gravity_mult: float = 4
 
+var speed: float = 1
+
 func _ready():
 	set_parameters()
 

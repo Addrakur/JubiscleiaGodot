@@ -1,7 +1,7 @@
 class_name BigWormAttack
 extends State
 
-@export var big_worm: CharacterBody2D
+@export var big_worm: BigWorm
 @export var animation: AnimationPlayer
 
 func _ready():
@@ -15,7 +15,7 @@ func enter_state() -> void:
 		big_worm.right()
 	else:
 		big_worm.left()
-	animation.play("attack")
+	animation.play("attack", -1, big_worm.speed)
 
 func exit_state() -> void:
 	set_physics_process(false)

@@ -1,7 +1,7 @@
 class_name KitsuneWalk
 extends State
 
-@export var kitsune: CharacterBody2D
+@export var kitsune: Kitsune
 @export var animation: AnimationPlayer
 @export var speed: float
 
@@ -14,7 +14,7 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	new_position()
-	animation.play("walk")
+	animation.play("walk", -1, kitsune.speed)
 	
 
 func exit_state() -> void:

@@ -1,3 +1,4 @@
+class_name BigWorm
 extends CharacterBody2D
 
 @export var health_component: Node2D
@@ -32,6 +33,8 @@ var is_attacking: bool = false
 var alive: bool = true
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+
+var speed: float = 1
 
 func _ready():
 	attack_area.attack_name = name + "_attack"

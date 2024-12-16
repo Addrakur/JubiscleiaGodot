@@ -1,7 +1,7 @@
 class_name SnakeAttack
 extends State
 
-@export var snake: CharacterBody2D
+@export var snake: Snake
 @export var animation: AnimationPlayer
 
 @onready var attack_collision = $"../../AttackArea/AttackCollision"
@@ -13,7 +13,7 @@ func enter_state() -> void:
 	set_physics_process(true)
 	snake.is_attacking = true
 	snake.velocity.x = 0
-	animation.play("attack")
+	animation.play("attack",-1,snake.speed)
 
 func exit_state() -> void:
 	set_physics_process(false)

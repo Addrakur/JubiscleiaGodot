@@ -45,6 +45,8 @@ var gravity_mult: float = 4
 
 var move_position: float
 
+var speed: float = 1
+
 func _ready() -> void:
 	init_state_machine()
 

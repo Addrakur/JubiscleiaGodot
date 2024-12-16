@@ -10,7 +10,7 @@ extends LimboState
 var move: bool = false
 
 func _enter() -> void:
-	animation.play("walk",-1,0.9)
+	animation.play("walk", -1, parent.speed)
 
 func _exit() -> void:
 	move = false

@@ -1,3 +1,4 @@
+class_name SpearSkeleton
 extends CharacterBody2D
 
 @export var health_component: Node2D
@@ -40,6 +41,7 @@ var alive: bool = true
 var gravity: float
 var gravity_mult: float = 4
 
+var speed: float = 1
 
 func _ready():
 	set_parameters()

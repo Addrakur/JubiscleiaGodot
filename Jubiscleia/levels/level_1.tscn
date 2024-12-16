@@ -30,6 +30,15 @@
 [ext_resource type="PackedScene" uid="uid://b182cvp28iapt" path="res://Management/checkpoint.tscn" id="28_8uu5h"]
 [ext_resource type="TileSet" uid="uid://ceays6vwb8ltl" path="res://assets/Tileset/forest_grass_tile.tres" id="29_8mjc4"]
 
+[sub_resource type="Curve2D" id="Curve2D_411xf"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -3200, 416, 0, 0, 0, 0, 4416, 416)
+}
+point_count = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_trfcx"]
+size = Vector2(0, 64)
+
 [sub_resource type="Resource" id="Resource_uo4o3"]
 script = ExtResource("12_u2j2b")
 duration = 1.0
@@ -48,15 +57,6 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[sub_resource type="Curve2D" id="Curve2D_411xf"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -3200, 416, 0, 0, 0, 0, 4416, 416)
-}
-point_count = 2
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_trfcx"]
-size = Vector2(0, 64)
-
 [node name="level_1" type="Node2D" node_paths=PackedStringArray("player")]
 process_mode = 1
 script = ExtResource("1_6ujk3")
@@ -64,7 +64,7 @@ player = NodePath("player")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(-1280, 416)
+position = Vector2(-3200, 416)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("2_btaha")
@@ -365,29 +365,6 @@ rotation = -1.5708
 [node name="Spike75" parent="Spikes" instance=ExtResource("10_50l06")]
 position = Vector2(1275, 517)
 rotation = -4.71239
-
-[node name="PC1" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
-position = Vector2(-1280, 416)
-script = ExtResource("11_cb0fu")
-priority = 10
-follow_mode = 4
-follow_target = NodePath("../player")
-follow_path = NodePath("../Cameras/CameraAreaPC1/Path1")
-tween_resource = SubResource("Resource_uo4o3")
-follow_damping = true
-draw_limits = true
-
-[node name="PCArena1" type="Node2D" parent="."]
-position = Vector2(-736, 416)
-script = ExtResource("11_cb0fu")
-tween_resource = SubResource("Resource_b0sq4")
-draw_limits = true
-
-[node name="PCArena2" type="Node2D" parent="."]
-position = Vector2(3904, 416)
-script = ExtResource("11_cb0fu")
-tween_resource = SubResource("Resource_imwbs")
-draw_limits = true
 
 [node name="Cameras" type="Node2D" parent="."]
 visible = false
@@ -715,7 +692,7 @@ position = Vector2(3332, 453)
 level = NodePath("..")
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("19_8ysb2")]
-position = Vector2(-1280, 512)
+position = Vector2(-3520, 288)
 camera = NodePath("../Camera2D")
 
 [node name="Lava" type="Node2D" parent="."]
@@ -1200,3 +1177,26 @@ position = Vector2(3488, 224)
 visible = false
 color = Color(1, 1, 1, 0.388235)
 polygon = PackedVector2Array(3712, 128, 3712, 608, 4320, 608, 4320, 128)
+
+[node name="PC1" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
+position = Vector2(-3200, 416)
+script = ExtResource("11_cb0fu")
+priority = 10
+follow_mode = 4
+follow_target = NodePath("../player")
+follow_path = NodePath("../Cameras/CameraAreaPC1/Path1")
+tween_resource = SubResource("Resource_uo4o3")
+follow_damping = true
+draw_limits = true
+
+[node name="PCArena1" type="Node2D" parent="."]
+position = Vector2(-736, 416)
+script = ExtResource("11_cb0fu")
+tween_resource = SubResource("Resource_b0sq4")
+draw_limits = true
+
+[node name="PCArena2" type="Node2D" parent="."]
+position = Vector2(3904, 416)
+script = ExtResource("11_cb0fu")
+tween_resource = SubResource("Resource_imwbs")
+draw_limits = true

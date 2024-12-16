@@ -1,7 +1,7 @@
 class_name SnakeMove
 extends State
 
-@export var snake: CharacterBody2D
+@export var snake: Snake
 @export var animation: AnimationPlayer
 @export var speed: float
 @export var limit_offset: float
@@ -17,7 +17,7 @@ func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(_delta):
-	snake.velocity.x = snake.direction * speed
+	snake.velocity.x = snake.direction * speed * snake.speed
 	
 	if snake.position.x > snake.limit.limit_polygon.polygon[2].x - limit_offset:
 		snake.direction = -1

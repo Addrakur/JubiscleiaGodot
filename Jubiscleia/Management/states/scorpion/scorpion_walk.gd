@@ -1,7 +1,7 @@
 class_name ScorpionWalk
 extends State
 
-@export var scorpion: CharacterBody2D
+@export var scorpion: Scorpion
 @export var animation: AnimationPlayer
 @export var off_set_wander: float
 @export var speed: float
@@ -26,7 +26,7 @@ func exit_state() -> void:
 
 func _physics_process(_delta):
 	if new_x != 0 and direction != 0:
-		scorpion.velocity.x = direction * speed
+		scorpion.velocity.x = direction * speed * scorpion.speed
 	
 	if scorpion.position.x > new_x and direction == 1 or scorpion.position.x < new_x and direction == -1:
 		scorpion.fsm.change_state(scorpion.idle_state)

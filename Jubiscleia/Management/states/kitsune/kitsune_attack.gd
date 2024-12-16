@@ -1,7 +1,7 @@
 class_name KitsuneAttack
 extends State
 
-@export var kitsune: CharacterBody2D
+@export var kitsune: Kitsune
 @export var animation: AnimationPlayer
 @export var attack_timer: Timer
 
@@ -15,9 +15,9 @@ func enter_state() -> void:
 	kitsune.is_attacking = true
 	kitsune.velocity.x = 0
 	if kitsune.can_attack_short_range:
-		animation.play("attack_1")
+		animation.play("attack_1", -1, kitsune.speed)
 	else:
-		animation.play("attack_2")
+		animation.play("attack_2", -1, kitsune.speed)
 
 func exit_state() -> void:
 	set_physics_process(false)

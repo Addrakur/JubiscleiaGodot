@@ -1,7 +1,7 @@
 class_name KitsuneRun
 extends State
 
-@export var kitsune: CharacterBody2D
+@export var kitsune: Kitsune
 @export var animation: AnimationPlayer
 @export var speed: float
 @export var run_timer: Timer
@@ -14,7 +14,7 @@ func _ready():
 func enter_state() -> void:
 	run_timer.start()
 	set_physics_process(true)
-	animation.play("run")
+	animation.play("run", -1, kitsune.speed)
 	
 
 func exit_state() -> void:

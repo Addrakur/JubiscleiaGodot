@@ -1,7 +1,7 @@
 class_name SpearSkeletonWalk
 extends State
 
-@export var skeleton: CharacterBody2D
+@export var skeleton: SpearSkeleton
 @export var animation: AnimationPlayer
 var speed: float
 var wander_limit: float
@@ -17,7 +17,7 @@ func _ready():
 func enter_state() -> void:
 	set_physics_process(true)
 	new_position()
-	animation.play("walk")
+	animation.play("walk", -1, skeleton.speed)
 	
 
 func exit_state() -> void:

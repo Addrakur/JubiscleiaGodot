@@ -12,7 +12,7 @@ var move: bool = false
 func _enter() -> void:
 	parent.is_attacking = true
 	parent.velocity.x = 0
-	animation.play("attack")
+	animation.play("attack", -1, parent.speed)
 	parent.attack_area.attack_name = parent.name + attack
 
 func _exit() -> void:
