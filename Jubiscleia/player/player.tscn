@@ -3075,7 +3075,7 @@ one_shot = true
 [node name="element_manager" type="Node2D" parent="." node_paths=PackedStringArray("animation", "element_timer")]
 scale = Vector2(1.00538, 1)
 script = ExtResource("94_8uuoj")
-max_element_stack = 10.0
+max_element_stack = 3.0
 animation = NodePath("../AuraAnimations")
 element_timer = NodePath("../element_timer")
 

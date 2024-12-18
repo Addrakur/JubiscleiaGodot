@@ -63,3 +63,5 @@ func _on_element_timer_timeout() -> void:
 func reset_elemental_counters():
 	for element in elements:
 		PlayerVariables.set(element + "_stack_count", 0)
+	
+	PlayerVariables.elemental_rupture = ""

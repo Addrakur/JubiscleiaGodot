@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://daabvpmmaefaf"]
+[gd_scene load_steps=32 format=3 uid="uid://daabvpmmaefaf"]
 
 [ext_resource type="Texture2D" uid="uid://cfk40b7vx8e7h" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_walk.png" id="1_j8oj4"]
 [ext_resource type="Script" path="res://enemies/spike_shield_enemy.gd" id="1_jys8c"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://d4dcheggmc7xu" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_turn_attack.png" id="11_qkqfi"]
 [ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_hit.gd" id="13_hpytp"]
 [ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_death.gd" id="15_w4p7o"]
+[ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="17_thh6s"]
 
 [sub_resource type="Animation" id="Animation_tdskv"]
 length = 0.001
@@ -809,6 +810,12 @@ animation = NodePath("../../animation")
 position = Vector2(0, -32)
 texture = ExtResource("1_j8oj4")
 hframes = 18
+
+[node name="Label" parent="." instance=ExtResource("17_thh6s")]
+offset_left = -16.0
+offset_top = -96.0
+offset_right = 24.0
+offset_bottom = -73.0
 
 [connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyTurn" method="_on_animation_finished"]
 [connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyAttack" method="_on_animation_finished"]
