@@ -10,13 +10,14 @@ extends CharacterBody2D
 @onready var limit: Area2D = get_parent()
 @onready var texture: Sprite2D = $Texture
 @onready var collision: CollisionShape2D = $Collision
-@onready var attack_area_collision: CollisionPolygon2D = $AttackArea/AttackPolygon
 @onready var can_attack_area_collision: CollisionShape2D = $CanAttackArea/CanAttackCollision
 const CAA_POSITION: float = -53
 @onready var raycast: RayCast2D = $WallRaycast
 @onready var attack_timer: Timer = $AttackTimer
 @onready var poise_timer: Timer = $PoiseTimer
 @onready var hit_modulate: AnimationPlayer = $HitModulate
+@onready var attack_polygon: CollisionShape2D = $AttackArea/AttackPolygon
+const AP_POSITION: float = -9
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var idle_state: State = $StateMachine/ScorpionIdle as ScorpionIdle
@@ -63,15 +64,15 @@ func _physics_process(delta):
 
 func right():
 	texture.flip_h = true
-	attack_area_collision.scale.x = -1
 	raycast.scale.x = -1
 	can_attack_area_collision.position.x = -CAA_POSITION
+	attack_polygon.position.x = -AP_POSITION
 
 func left():
 	texture.flip_h = false
-	attack_area_collision.scale.x = 1
 	raycast.scale.x = 1
 	can_attack_area_collision.position.x = CAA_POSITION
+	attack_polygon.position.x = AP_POSITION
 
 func can_attack_area_entered(body):
 	if body.is_in_group("player"):

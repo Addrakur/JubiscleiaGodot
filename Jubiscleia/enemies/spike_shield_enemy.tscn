@@ -811,11 +811,12 @@ position = Vector2(0, -32)
 texture = ExtResource("1_j8oj4")
 hframes = 18
 
-[node name="Label" parent="." instance=ExtResource("17_thh6s")]
+[node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("17_thh6s")]
 offset_left = -16.0
 offset_top = -96.0
 offset_right = 24.0
 offset_bottom = -73.0
+parent = NodePath("..")
 
 [connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyTurn" method="_on_animation_finished"]
 [connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyAttack" method="_on_animation_finished"]

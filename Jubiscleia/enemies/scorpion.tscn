@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bysdn4i581jjc"]
+[gd_scene load_steps=31 format=3 uid="uid://bysdn4i581jjc"]
 
 [ext_resource type="Script" path="res://Management/states/state_machine.gd" id="1_pjjdi"]
 [ext_resource type="Script" path="res://enemies/scorpion.gd" id="1_v6en7"]
@@ -70,7 +70,9 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_mmcw6"]
 resource_name = "attack"
-length = 0.4
+length = 0.333342
+loop_mode = 1
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -93,7 +95,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [8]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -102,10 +104,10 @@ tracks/2/path = NodePath(".:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [4, 5, 6, 7]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -279,8 +281,9 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_k435s"]
 resource_name = "walk"
-length = 0.4
+length = 0.333342
 loop_mode = 1
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -312,7 +315,7 @@ tracks/2/path = NodePath(".:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
@@ -330,10 +333,52 @@ tracks/3/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_0s6mg"]
+resource_name = "attack_prepare"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("10_nox61")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_putix"]
 _data = {
 "RESET": SubResource("Animation_h166x"),
 "attack": SubResource("Animation_mmcw6"),
+"attack_prepare": SubResource("Animation_0s6mg"),
 "death": SubResource("Animation_q6dpn"),
 "hit": SubResource("Animation_727in"),
 "idle": SubResource("Animation_yohg2"),
@@ -378,11 +423,15 @@ _data = {
 "hit": SubResource("Animation_ylykx")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8hil8"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hsw8n"]
+radius = 17.0
+height = 44.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oglt4"]
 radius = 17.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_khbgp"]
-size = Vector2(178, 53)
+size = Vector2(324, 34)
 
 [node name="Scorpion" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 collision_layer = 2
@@ -450,7 +499,8 @@ libraries = {
 
 [node name="Collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -17)
-shape = SubResource("CircleShape2D_8hil8")
+rotation = 1.57079
+shape = SubResource("CapsuleShape2D_hsw8n")
 
 [node name="AttackArea" parent="." instance=ExtResource("3_14bc2")]
 position = Vector2(0, -24)
@@ -461,15 +511,17 @@ knockup_force = 10.0
 knockback_force = 200.0
 poise_damage = 5.0
 
-[node name="AttackPolygon" type="CollisionPolygon2D" parent="AttackArea"]
-polygon = PackedVector2Array(-24, 24, 24, 24, 24, -3, 14, -11, 8, -11, 0, -8, 0, 2, 0, 5, -24, 5)
+[node name="AttackPolygon" type="CollisionShape2D" parent="AttackArea"]
+position = Vector2(-9, 7)
+rotation = 1.57079
+shape = SubResource("CircleShape2D_oglt4")
 disabled = true
 
 [node name="CanAttackArea" type="Area2D" parent="."]
 position = Vector2(0, -24)
 
 [node name="CanAttackCollision" type="CollisionShape2D" parent="CanAttackArea"]
-position = Vector2(-53, -2.5)
+position = Vector2(-53, 7)
 shape = SubResource("RectangleShape2D_khbgp")
 
 [node name="IdleTimer" type="Timer" parent="."]
@@ -499,6 +551,7 @@ offset_top = -80.0
 offset_bottom = -57.0
 parent = NodePath("..")
 
+[connection signal="animation_finished" from="Animation" to="StateMachine/ScorpionAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="StateMachine/ScorpionHit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="StateMachine/ScorpionDeath" method="_on_animation_finished"]
 [connection signal="animation_finished" from="HitModulate" to="." method="_on_hit_modulate_animation_finished"]
