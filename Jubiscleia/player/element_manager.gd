@@ -11,7 +11,9 @@ func _ready() -> void:
 	reset_elemental_counters()
 
 func _process(_delta: float) -> void:
-	if PlayerVariables.elemental_rupture:
+	if PlayerVariables.elemental_rupture != "":
+		if element_timer.time_left <= 3:
+			animation.play(PlayerVariables.elemental_rupture + "_ending")
 		return
 	
 	for element in elements:
@@ -58,7 +60,7 @@ func _on_element_timer_timeout() -> void:
 	PlayerVariables.attack_speed = 1
 	PlayerVariables.damage_mult = 1
 	
-	animation.play("corruption_level_0")
+	animation.play("no_rupture")
 
 func reset_elemental_counters():
 	for element in elements:

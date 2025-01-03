@@ -691,6 +691,7 @@ height = 58.0
 [node name="spike_shield_enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy", "shield_enemy"]]
 collision_layer = 2
 collision_mask = 5
+floor_constant_speed = true
 script = ExtResource("1_jys8c")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")

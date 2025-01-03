@@ -67,7 +67,6 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 				attacker.can_destroy = true
 		
 
-
 func die() -> void:
 	if current_health <= 0:
 		parent.alive = false
