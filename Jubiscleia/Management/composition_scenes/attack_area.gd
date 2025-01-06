@@ -51,6 +51,12 @@ func hit_func(body: Node2D):
 				body.speed = 0.5
 				var slow_timer = Paths.slow_timer.instantiate()
 				body.add_child(slow_timer)
+			elif PlayerVariables.elemental_rupture == "air":
+				var area = Paths.air_damage_area.instantiate()
+				#body.add_child(area)
+				body.call_deferred("add_child",area)
+				area.position = body.center_damage_area.position
+				
 			
 		if parent.is_in_group("player_object"):
 			if PlayerVariables.elemental_rupture == "":

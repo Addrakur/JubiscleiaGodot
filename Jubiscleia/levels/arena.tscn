@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://cqp1060wjlhfn"]
+[gd_scene load_steps=16 format=4 uid="uid://cqp1060wjlhfn"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_5moen"]
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="3_2ic4t"]
@@ -13,7 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://b7fccbrl06aa5" path="res://levels/enemy_spawn.tscn" id="11_14tdb"]
 [ext_resource type="PackedScene" uid="uid://djqldg2hn5i3u" path="res://Management/spike.tscn" id="11_davmh"]
 [ext_resource type="TileSet" uid="uid://ceays6vwb8ltl" path="res://assets/Tileset/forest_grass_tile.tres" id="13_coqf5"]
-[ext_resource type="PackedScene" uid="uid://dseb6ginyey2r" path="res://Management/elemental_orb.tscn" id="14_jp3ek"]
 
 [sub_resource type="Resource" id="Resource_td1jt"]
 script = ExtResource("9_dny5v")
@@ -34,7 +33,7 @@ free_spawn = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(-636.999, 288)
+position = Vector2(-1280, 288)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("7_qpd7n")
@@ -69,11 +68,14 @@ position = Vector2(1088, 485)
 position = Vector2(0, 485)
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_2ic4t")]
-position = Vector2(-637, 382)
+position = Vector2(-1294, 482)
 camera = NodePath("../Camera2D")
 
 [node name="Training Dummy" parent="." instance=ExtResource("9_dgptr")]
 position = Vector2(-1216, 485)
+
+[node name="Training Dummy2" parent="." instance=ExtResource("9_dgptr")]
+position = Vector2(-1148, 485)
 
 [node name="EnemySpawns" type="Node2D" parent="."]
 
@@ -149,7 +151,7 @@ point_left = NodePath("../../Limit/PointLeft")
 point_right = NodePath("../../Limit/PointRight")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
-position = Vector2(-636.999, 288)
+position = Vector2(-1280, 288)
 script = ExtResource("8_us7wb")
 follow_mode = 4
 follow_target = NodePath("../player")
@@ -189,6 +191,3 @@ offset_top = 256.0
 offset_right = -411.0
 offset_bottom = 279.0
 text = "Aperte F para spawnar inimigos"
-
-[node name="elemental_orb" parent="." instance=ExtResource("14_jp3ek")]
-position = Vector2(-1151, 486)

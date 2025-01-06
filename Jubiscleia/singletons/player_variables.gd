@@ -3,7 +3,7 @@ extends Node
 @onready var player: Player
 var player_max_life: float = 10
 var player_current_life: float
-var attack_speed: float = 1
+var attack_speed: float = 1.2
 var damage_mult: float = 1
 
 var fire_stack_count: float = 0

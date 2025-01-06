@@ -7,7 +7,7 @@ extends CharacterBody2D
 @export_enum("water","fire","earth","air") var element: String
 
 @onready var limit: Area2D = get_parent()
-@onready var texture: Sprite2D = $Texture
+@onready var texture: Sprite2D = $texture
 @onready var collision: CollisionShape2D = $Collision
 const C_POSITION: float = -9
 @onready var attack_area_collision: CollisionShape2D = $AttackArea/AttackCollision

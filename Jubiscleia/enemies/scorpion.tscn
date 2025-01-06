@@ -390,7 +390,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:modulate")
+tracks/0/path = NodePath("texture:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -407,7 +407,7 @@ step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:modulate")
+tracks/0/path = NodePath("texture:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -480,14 +480,14 @@ animation = NodePath("../../Animation")
 [node name="State" type="Node" parent="StateMachine"]
 script = ExtResource("8_frrsh")
 
-[node name="Texture" type="Sprite2D" parent="."]
+[node name="texture" type="Sprite2D" parent="."]
 position = Vector2(0, -24)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_hod70")
 hframes = 4
 
 [node name="Animation" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Texture")
+root_node = NodePath("../texture")
 libraries = {
 "": SubResource("AnimationLibrary_putix")
 }
@@ -550,6 +550,9 @@ attack_timer = NodePath("../AttackTimer")
 offset_top = -80.0
 offset_bottom = -57.0
 parent = NodePath("..")
+
+[node name="center_damage_area" type="Marker2D" parent="."]
+position = Vector2(0, -9)
 
 [connection signal="animation_finished" from="Animation" to="StateMachine/ScorpionAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="StateMachine/ScorpionHit" method="_on_animation_finished"]

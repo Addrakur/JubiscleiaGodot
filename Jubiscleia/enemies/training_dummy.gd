@@ -7,6 +7,7 @@ extends CharacterBody2D
 @onready var state = $StateMachine/State as State
 @onready var hit_modulate = $HitModulate
 @onready var poise_timer = $PoiseTimer
+@onready var center_damage_area: Marker2D = $center_damage_area
 
 var alive: bool = true
 
