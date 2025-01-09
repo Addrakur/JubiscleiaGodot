@@ -17,6 +17,7 @@ const CAA_POSITION: float = -38
 @onready var can_chase_area: CollisionShape2D = $ChaseArea/CanChaseArea
 const CCA_POSITION: float = -48
 @onready var attack_timer: Timer = $AttackTimer
+@onready var center_damage_area: Marker2D = $center_damage_area
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var move_state: State = $StateMachine/SnakeMove as SnakeMove

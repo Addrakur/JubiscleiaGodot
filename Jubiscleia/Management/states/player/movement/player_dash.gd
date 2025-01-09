@@ -56,9 +56,18 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("jump") and not passed_enemy:
 		player.fsm.change_state(player.jump_state)
 	
-	if anim_finish and not passed_enemy or passed_enemy and enemy.is_empty():
-		player.fsm.change_state(player.fall_state)
-	 
+	if not passed_enemy or passed_enemy and enemy.is_empty():
+		if anim_finish:
+			player.fsm.change_state(player.fall_state)
+		
+		if Input.is_action_just_pressed("attack_button_1") and PlayerVariables.can_attack:
+			PlayerVariables.next_skill = PlayerVariables.skill_1
+			player.fsm.change_state(player.get("attack_" + str(player.next_attack) + "_state"))
+	
+		if Input.is_action_just_pressed("attack_button_2") and PlayerVariables.can_attack:
+			PlayerVariables.next_skill = PlayerVariables.skill_2
+			player.fsm.change_state(player.get("attack_" + str(player.next_attack) + "_state"))
+	
 
 func _on_animation_finished(anim):
 	if anim == "dash":

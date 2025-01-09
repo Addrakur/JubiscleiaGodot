@@ -11,6 +11,7 @@ var direction: float
 @onready var laser: Line2D = $laser
 @onready var raycast: RayCast2D = $arm_texture/RayCast
 @onready var hit_modulate: AnimationPlayer = $hit_modulate
+@onready var center_damage_area: Marker2D = $center_damage_area
 
 @onready var hsm: LimboHSM = $HSM
 @onready var idle_state: SniperEnemyIdle = $HSM/SniperEnemyIdle

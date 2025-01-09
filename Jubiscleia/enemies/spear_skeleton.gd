@@ -20,6 +20,7 @@ extends CharacterBody2D
 @onready var attack_collision_air = $AttackArea/AttackCollisionAir
 @onready var attack_collision_ground = $AttackArea/AttackCollisionGround
 @onready var contact_area: CollisionShape2D = $ContactDamage/contact_area
+@onready var center_damage_area: Marker2D = $center_damage_area
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var walk_state: State = $StateMachine/SpearSkeletonWalk as SpearSkeletonWalk

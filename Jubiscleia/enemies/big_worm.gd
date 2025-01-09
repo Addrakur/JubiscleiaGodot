@@ -16,6 +16,7 @@ const CAA_POSITION: float = -5
 @onready var attack_timer: Timer = $AttackTimer
 @onready var hit_modulate: AnimationPlayer = $HitModulate
 @onready var poise_timer: Timer = $PoiseTimer
+@onready var center_damage_area: Marker2D = $center_damage_area
 
 @onready var fsm: StateMachine = $StateMachine as StateMachine
 @onready var move_state: State = $StateMachine/BigWormMove as BigWormMove

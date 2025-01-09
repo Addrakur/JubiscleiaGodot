@@ -35,9 +35,6 @@ func rupture(element: String) -> void:
 	match element:
 		"fire":
 			PlayerVariables.damage_mult = 1.5
-		"air":
-			PlayerVariables.attack_speed = 1.5
-
 
 func _input(_event: InputEvent) -> void:
 	if Input.is_key_pressed(KEY_1):

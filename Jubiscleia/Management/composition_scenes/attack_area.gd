@@ -42,9 +42,9 @@ func hit_func(body: Node2D):
 	if body.is_in_group(target) and not body.health_component.invulnerable and body.alive:
 		body.health_component.update_health(damage, knockup_force, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage, parent.position.x, parent) # Chama a função que aplica o dano no alvo
 		
-		if parent.is_in_group("player"): # Verifica se quem bateu foi o jogador
+		if parent.is_in_group("player") or parent.is_in_group("player_object"): # Verifica se quem bateu foi o jogador
 			if PlayerVariables.elemental_rupture == "":
-				var current_meter_value =  PlayerVariables.get(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_stack_count") # Recebe o valor atual do contador do elemento da arma
+				var current_meter_value = PlayerVariables.get(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_stack_count") if PlayerVariables.current_skill != null else PlayerVariables.get(PlayerVariables.get(PlayerVariables.last_skill + "_element") + "_stack_count") # Recebe o valor atual do contador do elemento da arma
 				var new_value = current_meter_value + PlayerVariables.get(PlayerVariables.current_skill + "_element_amount") # Calcula o novo valor
 				PlayerVariables.set(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_stack_count", new_value) # Vincula o novo valor ao contador
 			elif PlayerVariables.elemental_rupture == "water":

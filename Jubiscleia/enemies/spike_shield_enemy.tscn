@@ -819,6 +819,9 @@ offset_right = 24.0
 offset_bottom = -73.0
 parent = NodePath("..")
 
+[node name="center_damage_area" type="Marker2D" parent="."]
+position = Vector2(0, -32)
+
 [connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyTurn" method="_on_animation_finished"]
 [connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyHit" method="_on_animation_finished"]

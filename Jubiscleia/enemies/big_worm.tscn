@@ -523,7 +523,7 @@ script = ExtResource("3_v8eoo")
 big_worm = NodePath("../..")
 animation = NodePath("../../Animation")
 speed = 25.0
-limit_offset = 49.0
+limit_offset = 55.0
 
 [node name="BigWormIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("big_worm", "animation")]
 script = ExtResource("4_wavyi")
@@ -555,6 +555,9 @@ offset_top = -88.0
 offset_bottom = -65.0
 parent = NodePath("..")
 metadata/_edit_use_anchors_ = true
+
+[node name="center_damage_area" type="Marker2D" parent="."]
+position = Vector2(0, -32)
 
 [connection signal="animation_finished" from="Animation" to="StateMachine/BigWormAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animation" to="StateMachine/BigWormHit" method="_on_animation_finished"]

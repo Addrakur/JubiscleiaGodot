@@ -83,11 +83,11 @@ var sword_3_damage: float = 0
 var sword_3_knockback: float = 0
 var sword_3_knockup: float = 0
 var sword_3_projectile_damage: float = 3
-var sword_3_projectile_speed: float = 100
+var sword_3_projectile_speed: float = 150
 var sword_3_projectile_knockback: float = 100
 var sword_3_projectile_poise: float = 5
 var sword_3_location: Vector2 = Vector2 (0,0)
-var sword_3_projectile_max_distance: float = 80
+var sword_3_projectile_max_distance: float = 100
 var sword_3_poise: float = 0
 var sword_3_shake: float = 1
 

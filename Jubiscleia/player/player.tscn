@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="9_6bxkt"]
 [ext_resource type="PackedScene" uid="uid://dig4ptur76dp0" path="res://Management/interface.tscn" id="9_181sd"]
 [ext_resource type="PackedScene" uid="uid://c38p3p0grwy4a" path="res://Management/pause_menu.tscn" id="10_yhe3o"]
-[ext_resource type="Texture2D" uid="uid://0dipakhg7opt" path="res://assets/player/banco_de_assets/player_crouch.png" id="11_3e18o"]
 [ext_resource type="Script" path="res://Management/states/state_machine.gd" id="12_8y4yw"]
 [ext_resource type="Texture2D" uid="uid://taqvn8kcxrob" path="res://assets/player/banco_de_assets/player_death.png" id="12_sohuu"]
 [ext_resource type="Script" path="res://Management/states/player/movement/player_idle.gd" id="13_8i2bm"]
@@ -24,7 +23,8 @@
 [ext_resource type="Texture2D" uid="uid://rpagcg4joje8" path="res://assets/player/Ataques/Machado/C0/air_attack/axe_air_wind_up_0.png" id="18_oa50r"]
 [ext_resource type="Script" path="res://Management/states/player/movement/player_hit.gd" id="23_j7sbs"]
 [ext_resource type="Script" path="res://Management/states/player/movement/player_death.gd" id="25_wysx4"]
-[ext_resource type="Texture2D" uid="uid://n0anihxnfkqq" path="res://assets/player/banco_de_assets/player_dash.png" id="37_hyyk8"]
+[ext_resource type="Texture2D" uid="uid://b1l8jqfpsuir2" path="res://assets/player/movimentcoes/player_crouch.png" id="27_dtffl"]
+[ext_resource type="Texture2D" uid="uid://dk8jsffb5xsyl" path="res://assets/player/movimentcoes/player_dash.png" id="28_1k77c"]
 [ext_resource type="Script" path="res://Management/states/player/attacks/jump_attack.gd" id="38_vuiip"]
 [ext_resource type="Texture2D" uid="uid://c6v311lo5jggt" path="res://assets/player/movimentcoes/player_idle.png" id="39_gjx6q"]
 [ext_resource type="Script" path="res://Management/states/player/attacks/attack_1.gd" id="41_621kb"]
@@ -56,7 +56,7 @@
 size = Vector2(15, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v34mu"]
-size = Vector2(13.1591, 10)
+size = Vector2(9.39938, 8.01515)
 
 [sub_resource type="Animation" id="Animation_115di"]
 length = 0.001
@@ -777,6 +777,8 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_4nan0"]
 resource_name = "crouch"
+length = 0.0833417
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -823,7 +825,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("11_3e18o")]
+"values": [ExtResource("27_dtffl")]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -832,7 +834,7 @@ tracks/4/path = NodePath("AttackArea/AttackArea:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [PackedVector2Array(-39.8621, 1, -39.8621, -1, -37.8689, -1, -37.8689, 1)]
@@ -888,7 +890,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("37_hyyk8")]
+"values": [ExtResource("28_1k77c")]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -2877,7 +2879,7 @@ collision_layer = 0
 collision_mask = 65542
 
 [node name="DashCollision" type="CollisionShape2D" parent="DashCollision"]
-position = Vector2(-5.60247e-08, 0)
+position = Vector2(-1.12049e-07, -0.0265102)
 shape = SubResource("RectangleShape2D_v34mu")
 debug_color = Color(0.944279, 7.79718e-06, 0.597798, 0.42)
 

@@ -22,6 +22,7 @@ extends CharacterBody2D
 @onready var hit_modulate = $HitModulate
 @onready var poise_timer = $PoiseTimer
 @onready var contact_area: CollisionShape2D = $ContactDamage/contact_area
+@onready var center_damage_area: Marker2D = $center_damage_area
 
 #const ASP_POSITION: float = 47
 

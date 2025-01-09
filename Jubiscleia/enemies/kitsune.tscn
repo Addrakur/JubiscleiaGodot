@@ -736,6 +736,9 @@ metadata/_edit_use_anchors_ = true
 wait_time = 4.0
 one_shot = true
 
+[node name="center_damage_area" type="Marker2D" parent="."]
+position = Vector2(0, -45)
+
 [connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneDeath" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneHit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/KitsuneAttack" method="_on_animation_finished"]

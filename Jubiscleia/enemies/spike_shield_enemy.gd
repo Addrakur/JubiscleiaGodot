@@ -21,6 +21,7 @@ var direction: float = -1
 @onready var can_attack_collision: CollisionPolygon2D = $can_attack_area/can_attack_collision
 @onready var shield_shape_collision: CollisionPolygon2D = $shield_shape_collision
 @onready var turn_attack_collision: CollisionPolygon2D = $turn_attack_area/turn_attack_collision
+@onready var center_damage_area: Marker2D = $center_damage_area
 
 @onready var hsm: LimboHSM = $HSM
 @onready var idle_state: SpikeShieldEnemyIdle = $HSM/SpikeShieldEnemyIdle

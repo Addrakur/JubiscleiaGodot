@@ -20,6 +20,7 @@ extends CharacterBody2D
 @onready var protect_duration: Timer = $ProtectDuration
 @onready var contact_area: CollisionShape2D = $ContactDamage/contact_area
 @onready var attack_timer: Timer = $AttackTimer
+@onready var center_damage_area: Marker2D = $center_damage_area
 
 @onready var fsm: StateMachine = $StateMachine
 @onready var walk_state: State = $StateMachine/SwordSkeletonWalk as SwordSkeletonWalk

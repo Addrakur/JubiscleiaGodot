@@ -882,6 +882,9 @@ offset_top = -86.0
 offset_bottom = -63.0
 parent = NodePath("..")
 
+[node name="center_damage_area" type="Marker2D" parent="."]
+position = Vector2(0, -32)
+
 [connection signal="animation_finished" from="Animations" to="StateMachine/SwordSkeletonHit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/SwordSkeletonAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/SwordSkeletonDeath" method="_on_animation_finished"]
