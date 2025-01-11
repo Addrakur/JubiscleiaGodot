@@ -44,9 +44,10 @@ func hit_func(body: Node2D):
 		
 		if parent.is_in_group("player") or parent.is_in_group("player_object"): # Verifica se quem bateu foi o jogador
 			if PlayerVariables.elemental_rupture == "":
-				var current_meter_value = PlayerVariables.get(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_stack_count") if PlayerVariables.current_skill != null else PlayerVariables.get(PlayerVariables.get(PlayerVariables.last_skill + "_element") + "_stack_count") # Recebe o valor atual do contador do elemento da arma
-				var new_value = current_meter_value + PlayerVariables.get(PlayerVariables.current_skill + "_element_amount") # Calcula o novo valor
-				PlayerVariables.set(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_stack_count", new_value) # Vincula o novo valor ao contador
+				var current_meter_value = PlayerVariables.get(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_stack_count") if parent.is_in_group("player") else PlayerVariables.get(parent.element + "_stack_count")# Recebe o valor atual do contador do elemento da arma
+				var new_value = current_meter_value + PlayerVariables.get(PlayerVariables.current_skill + "_element_amount") if parent.is_in_group("player") else current_meter_value + PlayerVariables.get(parent.skill + "_element_amount")# Calcula o novo valor
+				PlayerVariables.set(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_stack_count" if parent.is_in_group("player") else parent.element + "_stack_count" , new_value)  # Vincula o novo valor ao contador
+				
 			elif PlayerVariables.elemental_rupture == "water":
 				body.speed = 0.5
 				var slow_timer = Paths.slow_timer.instantiate()

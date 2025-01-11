@@ -24,4 +24,3 @@ func _physics_process(_delta):
 	if scorpion.player_ref != null and scorpion.player_on_limit and scorpion.attack_timer.is_stopped():
 		scorpion.fsm.change_state(scorpion.attack_state)
 	
-

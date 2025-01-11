@@ -28,7 +28,6 @@ func _ready():
 	element = PlayerVariables.get(PlayerVariables.current_skill + "_element")
 	
 	attack_area.attack_name = name
-	print(element)
 
 func _physics_process(delta):
 	if move:

@@ -5,6 +5,7 @@ extends State
 @export var animation: AnimationPlayer
 @export var off_set_wander: float
 @export var speed: float
+@export var wall_raycast: RayCast2D
 
 var direction: float
 
@@ -23,12 +24,13 @@ func exit_state() -> void:
 	set_physics_process(false)
 	new_x = 0
 	direction = 0
+	wall_raycast.enabled = false
 
 func _physics_process(_delta):
 	if new_x != 0 and direction != 0:
 		scorpion.velocity.x = direction * speed * scorpion.speed
 	
-	if scorpion.position.x > new_x and direction == 1 or scorpion.position.x < new_x and direction == -1:
+	if scorpion.position.x > new_x and direction == 1 or scorpion.position.x < new_x and direction == -1 or wall_raycast.is_colliding():
 		scorpion.fsm.change_state(scorpion.idle_state)
 	
 	if scorpion.player_ref != null and scorpion.player_on_limit and scorpion.attack_timer.is_stopped():
@@ -48,3 +50,6 @@ func new_position():
 		direction = -1
 	else:
 		direction = 1
+
+func raycast_enable():
+	wall_raycast.enabled = true

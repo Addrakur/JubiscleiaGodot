@@ -33,7 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://b1q0mp6dsqy6p" path="res://Management/spinning_saw.tscn" id="31_aub8s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4xtsj"]
-size = Vector2(2, 64)
+size = Vector2(1, 64)
 
 [sub_resource type="Curve2D" id="Curve2D_ifwqv"]
 _data = {
@@ -68,13 +68,13 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[node name="Level2" type="Node2D" node_paths=PackedStringArray("player")]
+[node name="level_2" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_e2h5m")
 player = NodePath("player")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(192, 1718)
+position = Vector2(192, 1604)
 limit_left = -288
 limit_top = -416
 limit_right = 16032
@@ -107,6 +107,82 @@ texture = ExtResource("21_sadsu")
 position = Vector2(15718, 1381)
 
 [node name="enemies" type="Node2D" parent="."]
+
+[node name="walls" type="Node2D" parent="enemies"]
+
+[node name="EnemyWall" parent="enemies/walls" instance=ExtResource("6_xxqtp")]
+position = Vector2(2756, 1701)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/walls/EnemyWall"]
+shape = SubResource("RectangleShape2D_4xtsj")
+
+[node name="EnemyWall11" parent="enemies/walls" instance=ExtResource("6_xxqtp")]
+position = Vector2(12453, 2597)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/walls/EnemyWall11"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_4xtsj")
+
+[node name="EnemyWall12" parent="enemies/walls" instance=ExtResource("6_xxqtp")]
+position = Vector2(13212, 2597)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/walls/EnemyWall12"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_4xtsj")
+
+[node name="EnemyWall9" parent="enemies/walls" instance=ExtResource("6_xxqtp")]
+position = Vector2(5956, 1157)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/walls/EnemyWall9"]
+shape = SubResource("RectangleShape2D_4xtsj")
+
+[node name="EnemyWall10" parent="enemies/walls" instance=ExtResource("6_xxqtp")]
+position = Vector2(6364, 1157)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/walls/EnemyWall10"]
+shape = SubResource("RectangleShape2D_4xtsj")
+
+[node name="EnemyWall7" parent="enemies/walls" instance=ExtResource("6_xxqtp")]
+position = Vector2(1284, 1413)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/walls/EnemyWall7"]
+shape = SubResource("RectangleShape2D_4xtsj")
+
+[node name="EnemyWall8" parent="enemies/walls" instance=ExtResource("6_xxqtp")]
+position = Vector2(2044, 1413)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/walls/EnemyWall8"]
+shape = SubResource("RectangleShape2D_4xtsj")
+
+[node name="EnemyWall2" parent="enemies/walls" instance=ExtResource("6_xxqtp")]
+position = Vector2(3900, 1701)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/walls/EnemyWall2"]
+shape = SubResource("RectangleShape2D_4xtsj")
+
+[node name="EnemyWall3" parent="enemies/walls" instance=ExtResource("6_xxqtp")]
+position = Vector2(5604, 2373)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/walls/EnemyWall3"]
+shape = SubResource("RectangleShape2D_4xtsj")
+
+[node name="EnemyWall4" parent="enemies/walls" instance=ExtResource("6_xxqtp")]
+position = Vector2(6364, 2373)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/walls/EnemyWall4"]
+shape = SubResource("RectangleShape2D_4xtsj")
+
+[node name="EnemyWall5" parent="enemies/walls" instance=ExtResource("6_xxqtp")]
+position = Vector2(6364, 2757)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/walls/EnemyWall5"]
+shape = SubResource("RectangleShape2D_4xtsj")
+
+[node name="EnemyWall6" parent="enemies/walls" instance=ExtResource("6_xxqtp")]
+position = Vector2(5604, 2757)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/walls/EnemyWall6"]
+shape = SubResource("RectangleShape2D_4xtsj")
 
 [node name="Limit" parent="enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("6_amf8j")]
 limit_polygon = NodePath("limit")
@@ -364,7 +440,7 @@ position = Vector2(13578, 2629)
 level = NodePath("../..")
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_uw1h1")]
-position = Vector2(44, 1734)
+position = Vector2(146.001, 1620)
 camera = NodePath("../Camera2D")
 
 [node name="plataforms" type="Node2D" parent="."]
@@ -1351,68 +1427,6 @@ rotation = -1.57079
 [node name="Spike37" parent="spikes" instance=ExtResource("13_wfuhg")]
 position = Vector2(6405, 1573)
 
-[node name="walls" type="Node2D" parent="."]
-
-[node name="EnemyWall" parent="walls" instance=ExtResource("6_xxqtp")]
-position = Vector2(2756, 1701)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/EnemyWall"]
-shape = SubResource("RectangleShape2D_4xtsj")
-
-[node name="EnemyWall9" parent="walls" instance=ExtResource("6_xxqtp")]
-position = Vector2(5956, 1157)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/EnemyWall9"]
-shape = SubResource("RectangleShape2D_4xtsj")
-
-[node name="EnemyWall10" parent="walls" instance=ExtResource("6_xxqtp")]
-position = Vector2(6364, 1157)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/EnemyWall10"]
-shape = SubResource("RectangleShape2D_4xtsj")
-
-[node name="EnemyWall7" parent="walls" instance=ExtResource("6_xxqtp")]
-position = Vector2(1284, 1413)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/EnemyWall7"]
-shape = SubResource("RectangleShape2D_4xtsj")
-
-[node name="EnemyWall8" parent="walls" instance=ExtResource("6_xxqtp")]
-position = Vector2(2044, 1413)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/EnemyWall8"]
-shape = SubResource("RectangleShape2D_4xtsj")
-
-[node name="EnemyWall2" parent="walls" instance=ExtResource("6_xxqtp")]
-position = Vector2(3900, 1701)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/EnemyWall2"]
-shape = SubResource("RectangleShape2D_4xtsj")
-
-[node name="EnemyWall3" parent="walls" instance=ExtResource("6_xxqtp")]
-position = Vector2(5604, 2373)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/EnemyWall3"]
-shape = SubResource("RectangleShape2D_4xtsj")
-
-[node name="EnemyWall4" parent="walls" instance=ExtResource("6_xxqtp")]
-position = Vector2(6364, 2373)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/EnemyWall4"]
-shape = SubResource("RectangleShape2D_4xtsj")
-
-[node name="EnemyWall5" parent="walls" instance=ExtResource("6_xxqtp")]
-position = Vector2(6364, 2757)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/EnemyWall5"]
-shape = SubResource("RectangleShape2D_4xtsj")
-
-[node name="EnemyWall6" parent="walls" instance=ExtResource("6_xxqtp")]
-position = Vector2(5604, 2757)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/EnemyWall6"]
-shape = SubResource("RectangleShape2D_4xtsj")
-
 [node name="turrets" type="Node2D" parent="."]
 
 [node name="Turret" parent="turrets" instance=ExtResource("16_rcq25")]
@@ -1669,9 +1683,9 @@ position = Vector2(5568, 3936)
 position = Vector2(6400, 3936)
 
 [node name="arena_manager2" parent="." node_paths=PackedStringArray("waves", "wall_manager", "close_polygon", "interval_label") instance=ExtResource("22_carfo")]
-waves = [NodePath("Wave")]
+waves = [NodePath("Wave"), NodePath("Wave2")]
 interval_time = 3.0
-max_waves = 1.0
+max_waves = 2.0
 wall_manager = NodePath("enemy_kill_wall_manager")
 close_polygon = NodePath("close_polygon")
 interval_label = NodePath("Label")
@@ -1679,17 +1693,52 @@ interval_label = NodePath("Label")
 [node name="Wave" type="Node" parent="arena_manager2"]
 script = ExtResource("23_wxaka")
 
-[node name="WaveEnemySpawn" type="Node" parent="arena_manager2/Wave" node_paths=PackedStringArray("limit", "spawn_point")]
+[node name="spear_skeleton_center" type="Node" parent="arena_manager2/Wave" node_paths=PackedStringArray("limit", "spawn_point")]
 script = ExtResource("24_pjyyl")
 enemy = "spear_skeleton"
 limit = NodePath("../../arena_objs/Limit")
 spawn_point = NodePath("../../arena_objs/spawn_center")
 
+[node name="sniper_left" type="Node" parent="arena_manager2/Wave" node_paths=PackedStringArray("limit", "spawn_point")]
+script = ExtResource("24_pjyyl")
+enemy = "sniper_enemy"
+limit = NodePath("../../arena_objs/Limit")
+spawn_point = NodePath("../../arena_objs/spawn_left")
+
+[node name="sniper_right" type="Node" parent="arena_manager2/Wave" node_paths=PackedStringArray("limit", "spawn_point")]
+script = ExtResource("24_pjyyl")
+enemy = "sniper_enemy"
+limit = NodePath("../../arena_objs/Limit")
+spawn_point = NodePath("../../arena_objs/spawn_right")
+
+[node name="Wave2" type="Node" parent="arena_manager2"]
+script = ExtResource("23_wxaka")
+
+[node name="kitsune_right" type="Node" parent="arena_manager2/Wave2" node_paths=PackedStringArray("warp_area", "starting_x", "limit", "spawn_point")]
+script = ExtResource("24_pjyyl")
+enemy = "kitsune"
+has_starting_x = true
+has_warp_area = true
+warp_area = NodePath("../../arena_objs/Limit/arena_2_limit")
+starting_x = NodePath("../../arena_objs/spawn_right")
+limit = NodePath("../../arena_objs/Limit")
+spawn_point = NodePath("../../arena_objs/spawn_right")
+
+[node name="kitsune_left" type="Node" parent="arena_manager2/Wave2" node_paths=PackedStringArray("warp_area", "starting_x", "limit", "spawn_point")]
+script = ExtResource("24_pjyyl")
+enemy = "kitsune"
+has_starting_x = true
+has_warp_area = true
+warp_area = NodePath("../../arena_objs/Limit/arena_2_limit")
+starting_x = NodePath("../../arena_objs/spawn_left")
+limit = NodePath("../../arena_objs/Limit")
+spawn_point = NodePath("../../arena_objs/spawn_left")
+
 [node name="Label" type="Label" parent="arena_manager2"]
-offset_left = 12768.0
-offset_top = 2656.0
-offset_right = 12832.0
-offset_bottom = 2688.0
+offset_left = 12800.0
+offset_top = 2272.0
+offset_right = 12864.0
+offset_bottom = 2304.0
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1897,6 +1946,12 @@ polygon = PackedVector2Array(12832, 2208, 12832, 2624, 13216, 2624, 13216, 2208)
 [node name="spawn_center" type="Marker2D" parent="arena_manager2/arena_objs"]
 position = Vector2(12832, 2629)
 
+[node name="spawn_left" type="Marker2D" parent="arena_manager2/arena_objs"]
+position = Vector2(12512, 2629)
+
+[node name="spawn_right" type="Marker2D" parent="arena_manager2/arena_objs"]
+position = Vector2(13152, 2629)
+
 [node name="Limit" parent="arena_manager2/arena_objs" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("6_amf8j")]
 limit_polygon = NodePath("arena_2_limit")
 
@@ -1952,7 +2007,7 @@ position = Vector2(7872, 1920)
 shape = SubResource("RectangleShape2D_ttapc")
 
 [node name="FreeCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-position = Vector2(192, 1718)
+position = Vector2(192, 1604)
 script = ExtResource("14_nee6w")
 follow_mode = 2
 follow_target = NodePath("../player")
@@ -1963,7 +2018,7 @@ draw_limits = true
 limit_target = NodePath("../cameras/FreeCameraLimit")
 
 [node name="PC2" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
-position = Vector2(5984, 1734)
+position = Vector2(5984, 1620.48)
 script = ExtResource("14_nee6w")
 follow_mode = 4
 follow_target = NodePath("../player")
