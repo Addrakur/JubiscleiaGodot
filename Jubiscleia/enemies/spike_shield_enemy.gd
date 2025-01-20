@@ -22,6 +22,9 @@ var direction: float = -1
 @onready var shield_shape_collision: CollisionPolygon2D = $shield_shape_collision
 @onready var turn_attack_collision: CollisionPolygon2D = $turn_attack_area/turn_attack_collision
 @onready var center_damage_area: Marker2D = $center_damage_area
+@onready var wall_cast_ground: RayCast2D = $RayCast2D
+@onready var wall_cast_up: RayCast2D = $RayCast2D2
+
 
 @onready var hsm: LimboHSM = $HSM
 @onready var idle_state: SpikeShieldEnemyIdle = $HSM/SpikeShieldEnemyIdle
@@ -81,6 +84,8 @@ func right():
 	detect_collision.scale.x = -1
 	can_attack_collision.scale.x = -1
 	turn_attack_collision.scale.x = -1
+	wall_cast_ground.scale.x = -1
+	wall_cast_up.scale.x = -1
 
 func left():
 	texture.flip_h = false
@@ -90,6 +95,8 @@ func left():
 	detect_collision.scale.x = 1
 	can_attack_collision.scale.x = 1
 	turn_attack_collision.scale.x = 1
+	wall_cast_ground.scale.x = 1
+	wall_cast_up.scale.x = 1
 
 func move_position_behind() -> bool:
 		if move_position > global_position.x and direction == -1 or move_position < global_position.x and direction == 1:

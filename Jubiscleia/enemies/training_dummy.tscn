@@ -231,6 +231,8 @@ animation = NodePath("../../AnimationPlayer")
 script = ExtResource("8_psoes")
 
 [node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("9_kohpx")]
+offset_top = -51.0
+offset_bottom = -41.0
 parent = NodePath("..")
 
 [node name="PoiseTimer" type="Timer" parent="."]

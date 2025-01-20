@@ -69,7 +69,7 @@ position = Vector2(2441, -4891)
 scale = Vector2(-1, 1)
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_u8sxp")]
-position = Vector2(-68, 37)
+position = Vector2(-104, 17)
 camera = NodePath("../Camera2D")
 
 [node name="Enemies" type="Node2D" parent="."]

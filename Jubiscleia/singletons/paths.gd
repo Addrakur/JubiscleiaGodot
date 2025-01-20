@@ -26,3 +26,4 @@ var sniper_enemy_projectile = preload("res://enemies/sniper_enemy_projectile.tsc
 var elemental_orb = preload("res://Management/elemental_orb.tscn")
 var slow_timer = preload("res://Management/composition_scenes/slow_timer.tscn")
 var air_damage_area = preload("res://player/air_area_damage.tscn")
+var temp_life_bar = preload("res://Management/temp_life_bar.tscn")

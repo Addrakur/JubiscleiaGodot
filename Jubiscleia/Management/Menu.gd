@@ -1,8 +1,17 @@
 extends Control
 
-@onready var w1_text: Label = $w1text
-@onready var w2_text: Label = $w2text
+@export var w1_text: Sprite2D
+@export var w2_text: Sprite2D
 @onready var parameter_settings: Control = $ParameterSettings
+@onready var w_1: AnimationPlayer = $w1
+@onready var w_2: AnimationPlayer = $w2
+
+
+@export var weapon_1_buttons: Array[TextureButton]
+@export var weapon_2_buttons: Array[TextureButton]
+
+func _ready() -> void:
+	button_pressed_manager()
 
 
 func on_tutorial_pressed():
@@ -29,6 +38,8 @@ func _on_w_1_sword_pressed():
 	else:
 		PlayerVariables.skill_2 = "axe"
 		PlayerVariables.skill_1 = "sword"
+	
+	button_pressed_manager()
 
 func _on_w_1_axe_pressed():
 	if PlayerVariables.skill_2 != "axe":
@@ -36,6 +47,8 @@ func _on_w_1_axe_pressed():
 	else:
 		PlayerVariables.skill_2 = "sword"
 		PlayerVariables.skill_1 = "axe"
+	
+	button_pressed_manager()
 
 func _on_w_1_spear_pressed():
 	if PlayerVariables.skill_2 != "spear":
@@ -43,6 +56,8 @@ func _on_w_1_spear_pressed():
 	else:
 		PlayerVariables.skill_2 = "sword"
 		PlayerVariables.skill_1 = "spear"
+	
+	button_pressed_manager()
 
 func _on_w_2_sword_pressed():
 	if PlayerVariables.skill_1 != "sword":
@@ -50,6 +65,8 @@ func _on_w_2_sword_pressed():
 	else:
 		PlayerVariables.skill_1 = "axe"
 		PlayerVariables.skill_2 = "sword"
+	
+	button_pressed_manager()
 
 func _on_w_2_axe_pressed():
 	if PlayerVariables.skill_1 != "axe":
@@ -57,6 +74,8 @@ func _on_w_2_axe_pressed():
 	else:
 		PlayerVariables.skill_1 = "sword"
 		PlayerVariables.skill_2 = "axe"
+	
+	button_pressed_manager()
 
 func _on_w_2_spear_pressed():
 	if PlayerVariables.skill_1 != "spear":
@@ -64,14 +83,29 @@ func _on_w_2_spear_pressed():
 	else:
 		PlayerVariables.skill_1 = "sword"
 		PlayerVariables.skill_2 = "spear"
-
-func _process(_delta):
-	w1_text.text = "Weapon 1 = " + PlayerVariables.skill_1
-	w2_text.text = "Weapon 2 = " + PlayerVariables.skill_2
-
+	
+	button_pressed_manager()
 
 func _on_settings_pressed() -> void:
 	parameter_settings.visible = true
 
 func _on_back_pressed() -> void:
 	parameter_settings.visible = false
+	
+
+func button_pressed_manager():
+	for button in weapon_1_buttons:
+		if button.name != PlayerVariables.skill_1:
+			button.button_pressed = false
+		else:
+			button.button_pressed = true
+	
+	for button in weapon_2_buttons:
+		if button.name != PlayerVariables.skill_2:
+			button.button_pressed = false
+		else:
+			button.button_pressed = true
+	
+	w_1.play(PlayerVariables.skill_1)
+	w_2.play(PlayerVariables.skill_2)
+	

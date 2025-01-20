@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=94 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_tuo6g"]
@@ -37,6 +37,7 @@
 [ext_resource type="Texture2D" uid="uid://cd3uanae2v0jg" path="res://assets/player/Ataques/Machado/C0/axe_0_1.png" id="50_6mi2m"]
 [ext_resource type="Texture2D" uid="uid://qrwri5x1m2jj" path="res://assets/player/Ataques/Espada/C0/sword_0_2.png" id="50_rdt3s"]
 [ext_resource type="Texture2D" uid="uid://dkhb5k7uvtuni" path="res://assets/player/Ataques/Espada/C0/sword_0_3.png" id="51_is44h"]
+[ext_resource type="PackedScene" uid="uid://8cv7proap5ue" path="res://Management/temp_life_bar.tscn" id="52_o0loj"]
 [ext_resource type="Texture2D" uid="uid://duybggky7yoqx" path="res://assets/player/Ataques/Machado/C0/axe_0_2.png" id="54_xe58q"]
 [ext_resource type="Texture2D" uid="uid://bwddmt2twr7jt" path="res://assets/player/Ataques/Lanca/C0/Lanca_0_1.png" id="57_pf0gw"]
 [ext_resource type="Texture2D" uid="uid://87npuqs8med2" path="res://assets/player/Ataques/Machado/C0/axe_0_3.png" id="58_e5bi3"]
@@ -2925,6 +2926,8 @@ has_parameter_slider = true
 variable_name = "player"
 max_health = 100.0
 max_poise = 5.0
+max_temp_life = 50.0
+starting_temp_life = 25.0
 
 [node name="WallGrab" type="RayCast2D" parent="."]
 position = Vector2(0, -14)
@@ -2961,14 +2964,19 @@ one_shot = true
 wait_time = 10.0
 one_shot = true
 
-[node name="element_manager" type="Node2D" parent="." node_paths=PackedStringArray("animation", "element_timer")]
+[node name="element_manager" type="Node2D" parent="." node_paths=PackedStringArray("player", "animation", "element_timer")]
 scale = Vector2(1.00538, 1)
 script = ExtResource("94_8uuoj")
+player = NodePath("..")
 max_element_stack = 20.0
 animation = NodePath("../AuraAnimations")
 element_timer = NodePath("../element_timer")
 
 [node name="Label" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("79_cj1s4")]
+offset_left = -42.2972
+offset_top = -54.1023
+offset_right = 41.7028
+offset_bottom = -44.1023
 parent = NodePath("..")
 
 [node name="camera_methods" type="Node2D" parent="." node_paths=PackedStringArray("parent")]
@@ -2989,6 +2997,15 @@ collision_mask = 4
 
 [node name="center_damage_area" type="Marker2D" parent="."]
 position = Vector2(0, -14.0265)
+
+[node name="TextureProgressBar" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("52_o0loj")]
+offset_left = -20.6786
+offset_top = -68.1288
+offset_right = 21.3214
+offset_bottom = -28.1288
+max_value = 50.0
+value = 25.0
+parent = NodePath("..")
 
 [connection signal="body_entered" from="DashCollision" to="StateMachine/PlayerDash" method="_on_dash_collision_body_entered"]
 [connection signal="body_exited" from="DashCollision" to="StateMachine/PlayerDash" method="_on_dash_collision_body_exited"]

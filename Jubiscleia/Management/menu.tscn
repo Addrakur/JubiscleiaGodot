@@ -1,9 +1,174 @@
-[gd_scene load_steps=3 format=3 uid="uid://drbjtfhmgpum0"]
+[gd_scene load_steps=36 format=3 uid="uid://drbjtfhmgpum0"]
 
 [ext_resource type="Script" path="res://Management/Menu.gd" id="1_slu8i"]
+[ext_resource type="Texture2D" uid="uid://bfuaipif3rr8" path="res://assets/UI/tutorial_button.png" id="2_b6hrv"]
+[ext_resource type="Texture2D" uid="uid://ymdypl2ibi2g" path="res://assets/UI/background.png" id="2_cpmcd"]
+[ext_resource type="Texture2D" uid="uid://dhdq5ackgb0e1" path="res://assets/UI/tutorial_button_selected.png" id="3_74m52"]
 [ext_resource type="Script" path="res://Management/parametro_linha_update.gd" id="3_vq8mx"]
+[ext_resource type="Texture2D" uid="uid://csw7wk51p2rpu" path="res://assets/UI/arena_button.png" id="4_wcdt5"]
+[ext_resource type="Texture2D" uid="uid://ctmx5t7r53beb" path="res://assets/UI/arena_button_selected.png" id="5_1ssod"]
+[ext_resource type="Texture2D" uid="uid://wq8861meu5sr" path="res://assets/UI/level_1_button.png" id="6_7hd5p"]
+[ext_resource type="Texture2D" uid="uid://bgldtq2ds4wgj" path="res://assets/UI/exit_button.png" id="6_srlhf"]
+[ext_resource type="Texture2D" uid="uid://4gq7grlygr1v" path="res://assets/UI/level_1_button_selected.png" id="7_7cqmf"]
+[ext_resource type="Texture2D" uid="uid://bgv5xmbsx71k7" path="res://assets/UI/exit_button_selected.png" id="7_deshu"]
+[ext_resource type="Texture2D" uid="uid://ed50yoanwmex" path="res://assets/UI/level_2_button.png" id="8_0jgdy"]
+[ext_resource type="Texture2D" uid="uid://bl0b0wa3mxlr8" path="res://assets/UI/level_2_button_selected.png" id="9_c6cib"]
+[ext_resource type="Texture2D" uid="uid://birownw16c3gj" path="res://assets/UI/level_3_button.png" id="10_10avj"]
+[ext_resource type="Texture2D" uid="uid://b8kvmtrsj2sr5" path="res://assets/UI/level_3_button_selected.png" id="11_gb0yr"]
+[ext_resource type="Texture2D" uid="uid://dw3u3dtfbb1fh" path="res://assets/UI/sword_button.png" id="14_d6exe"]
+[ext_resource type="Texture2D" uid="uid://b2ttutuofhqcy" path="res://assets/UI/axe_button.png" id="15_0quxr"]
+[ext_resource type="Texture2D" uid="uid://dqhgr6ti84ck6" path="res://assets/UI/sword_selected_button.png" id="15_e6xa3"]
+[ext_resource type="Texture2D" uid="uid://ctlngi86o3uro" path="res://assets/UI/spear_button.png" id="16_l2spj"]
+[ext_resource type="Texture2D" uid="uid://blq5eqgd5n2ku" path="res://assets/UI/axe_selected_button.png" id="17_3nv2h"]
+[ext_resource type="Texture2D" uid="uid://dopaha3f7fbcr" path="res://assets/UI/spear_selected_button.png" id="19_2b1f4"]
+[ext_resource type="Texture2D" uid="uid://dswxgnihe3un7" path="res://assets/UI/Title.png" id="22_pvhg6"]
+[ext_resource type="Texture2D" uid="uid://41enr4muyyga" path="res://assets/UI/axe_text.png" id="23_a1yas"]
+[ext_resource type="Texture2D" uid="uid://cndfuxw2gm1b2" path="res://assets/UI/sword_text.png" id="24_gqaf7"]
+[ext_resource type="Texture2D" uid="uid://dsgn5qy0o5cxl" path="res://assets/UI/spear_text.png" id="25_2vw6x"]
 
-[node name="Menu" type="Control"]
+[sub_resource type="Animation" id="Animation_wgjs4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("w1_text:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("23_a1yas")]
+}
+
+[sub_resource type="Animation" id="Animation_u20tr"]
+resource_name = "axe"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("w1_text:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("23_a1yas")]
+}
+
+[sub_resource type="Animation" id="Animation_5i1m6"]
+resource_name = "spear"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("w1_text:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("25_2vw6x")]
+}
+
+[sub_resource type="Animation" id="Animation_nmfrv"]
+resource_name = "sword"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("w1_text:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("24_gqaf7")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bqw4q"]
+_data = {
+"RESET": SubResource("Animation_wgjs4"),
+"axe": SubResource("Animation_u20tr"),
+"spear": SubResource("Animation_5i1m6"),
+"sword": SubResource("Animation_nmfrv")
+}
+
+[sub_resource type="Animation" id="Animation_rpuv8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("w2_text:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("23_a1yas")]
+}
+
+[sub_resource type="Animation" id="Animation_7innq"]
+resource_name = "axe"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("w2_text:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("23_a1yas")]
+}
+
+[sub_resource type="Animation" id="Animation_clk47"]
+resource_name = "spear"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("w2_text:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("25_2vw6x")]
+}
+
+[sub_resource type="Animation" id="Animation_o2axp"]
+resource_name = "sword"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("w2_text:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("24_gqaf7")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qqt8"]
+_data = {
+"RESET": SubResource("Animation_rpuv8"),
+"axe": SubResource("Animation_7innq"),
+"spear": SubResource("Animation_clk47"),
+"sword": SubResource("Animation_o2axp")
+}
+
+[node name="Menu" type="Control" node_paths=PackedStringArray("weapon_1_buttons", "weapon_2_buttons")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -12,166 +177,193 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_slu8i")
+weapon_1_buttons = [NodePath("HBoxContainer/sword"), NodePath("HBoxContainer/axe"), NodePath("HBoxContainer/spear")]
+weapon_2_buttons = [NodePath("HBoxContainer2/sword"), NodePath("HBoxContainer2/axe"), NodePath("HBoxContainer2/spear")]
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.501961, 0.658824, 1, 1)
+texture = ExtResource("2_cpmcd")
 
-[node name="Tutorial" type="Button" parent="."]
+[node name="Tutorial" type="TextureButton" parent="."]
 process_mode = 3
 layout_mode = 2
-offset_left = 32.0
-offset_top = 32.0
-offset_right = 96.0
-offset_bottom = 96.0
-theme_override_font_sizes/font_size = 37
-text = "Tutorial"
+offset_left = 169.0
+offset_top = 160.0
+offset_right = 315.0
+offset_bottom = 192.0
+texture_normal = ExtResource("2_b6hrv")
+texture_hover = ExtResource("3_74m52")
 
-[node name="Arena" type="Button" parent="."]
+[node name="Arena" type="TextureButton" parent="."]
 layout_mode = 2
-offset_left = 224.0
-offset_top = 32.0
-offset_right = 337.0
-offset_bottom = 96.0
+offset_left = 189.0
+offset_top = 223.0
+offset_right = 285.0
+offset_bottom = 255.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 37
-text = "Arena"
+texture_normal = ExtResource("4_wcdt5")
+texture_hover = ExtResource("5_1ssod")
 
-[node name="Quit" type="Button" parent="."]
+[node name="Quit" type="TextureButton" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 32.0
-offset_top = -92.0
-offset_right = 117.0
-offset_bottom = -28.0
+offset_left = 207.0
+offset_top = 365.0
+offset_right = 274.0
+offset_bottom = 397.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 37
-text = "Sair"
+texture_normal = ExtResource("6_srlhf")
+texture_hover = ExtResource("7_deshu")
 
 [node name="Settings" type="Button" parent="."]
+visible = false
 layout_mode = 0
-offset_left = 32.0
-offset_top = 193.0
-offset_right = 249.0
-offset_bottom = 252.0
+offset_left = 106.0
+offset_top = 257.0
+offset_right = 323.0
+offset_bottom = 316.0
 theme_override_font_sizes/font_size = 37
 text = "Parametros"
 
-[node name="Level1" type="Button" parent="."]
+[node name="Level1" type="TextureButton" parent="."]
 layout_mode = 2
-offset_left = 32.0
-offset_top = 112.0
-offset_right = 96.0
-offset_bottom = 176.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 37
-text = "1"
-
-[node name="Level2" type="Button" parent="."]
-layout_mode = 2
-offset_left = 128.0
-offset_top = 112.0
+offset_left = 143.0
+offset_top = 288.0
 offset_right = 192.0
-offset_bottom = 176.0
+offset_bottom = 336.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 37
-text = "2"
+texture_normal = ExtResource("6_7hd5p")
+texture_hover = ExtResource("7_7cqmf")
 
-[node name="Level3" type="Button" parent="."]
+[node name="Level2" type="TextureButton" parent="."]
 layout_mode = 2
-offset_left = 223.0
-offset_top = 112.0
-offset_right = 287.0
-offset_bottom = 176.0
+offset_left = 215.0
+offset_top = 288.0
+offset_right = 263.0
+offset_bottom = 336.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 37
-text = "3"
+texture_normal = ExtResource("8_0jgdy")
+texture_hover = ExtResource("9_c6cib")
 
-[node name="w1text" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -206.0
-offset_top = 32.0
-offset_right = -48.0
-offset_bottom = 58.0
-grow_horizontal = 0
-text = "Arma 1"
-horizontal_alignment = 1
+[node name="Level3" type="TextureButton" parent="."]
+layout_mode = 2
+offset_left = 288.0
+offset_top = 288.0
+offset_right = 337.0
+offset_bottom = 336.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("10_10avj")
+texture_hover = ExtResource("11_gb0yr")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -224.0
-offset_top = 64.0
-offset_right = -32.0
-offset_bottom = 96.0
+offset_left = -320.0
+offset_top = 96.0
+offset_right = -72.0
+offset_bottom = 176.0
 grow_horizontal = 0
+theme_override_constants/separation = 30
 alignment = 1
 
-[node name="w1sword" type="Button" parent="HBoxContainer"]
+[node name="sword" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-text = "Sword"
+toggle_mode = true
+texture_normal = ExtResource("14_d6exe")
+texture_pressed = ExtResource("15_e6xa3")
+texture_hover = ExtResource("15_e6xa3")
 
-[node name="w1axe" type="Button" parent="HBoxContainer"]
+[node name="axe" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-text = "Axe"
+toggle_mode = true
+texture_normal = ExtResource("15_0quxr")
+texture_pressed = ExtResource("17_3nv2h")
+texture_hover = ExtResource("17_3nv2h")
 
-[node name="w1spear" type="Button" parent="HBoxContainer"]
+[node name="spear" type="TextureButton" parent="HBoxContainer"]
 layout_mode = 2
-text = "Spear"
-
-[node name="w2text" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -206.0
-offset_top = 128.0
-offset_right = -51.0
-offset_bottom = 154.0
-grow_horizontal = 0
-text = "Arma 2"
-horizontal_alignment = 1
+toggle_mode = true
+texture_normal = ExtResource("16_l2spj")
+texture_pressed = ExtResource("19_2b1f4")
+texture_hover = ExtResource("19_2b1f4")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -224.0
-offset_top = 160.0
-offset_right = -32.0
-offset_bottom = 192.0
+offset_left = -320.0
+offset_top = 288.0
+offset_right = -72.0
+offset_bottom = 368.0
 grow_horizontal = 0
+theme_override_constants/separation = 30
 alignment = 1
 
-[node name="w2sword" type="Button" parent="HBoxContainer2"]
+[node name="sword" type="TextureButton" parent="HBoxContainer2"]
 layout_mode = 2
-text = "Sword"
+toggle_mode = true
+texture_normal = ExtResource("14_d6exe")
+texture_pressed = ExtResource("15_e6xa3")
+texture_hover = ExtResource("15_e6xa3")
 
-[node name="w2axe" type="Button" parent="HBoxContainer2"]
+[node name="axe" type="TextureButton" parent="HBoxContainer2"]
 layout_mode = 2
-text = "Axe"
+toggle_mode = true
+texture_normal = ExtResource("15_0quxr")
+texture_pressed = ExtResource("17_3nv2h")
+texture_hover = ExtResource("17_3nv2h")
 
-[node name="w2spear" type="Button" parent="HBoxContainer2"]
+[node name="spear" type="TextureButton" parent="HBoxContainer2"]
 layout_mode = 2
-text = "Spear"
+toggle_mode = true
+texture_normal = ExtResource("16_l2spj")
+texture_pressed = ExtResource("19_2b1f4")
+texture_hover = ExtResource("19_2b1f4")
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -96.0
+offset_top = -32.0
+offset_right = 352.0
+offset_bottom = 96.0
+texture = ExtResource("22_pvhg6")
+
+[node name="w1_text" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -264.0
+offset_top = 31.0
+offset_right = -136.0
+offset_bottom = 71.0
+grow_horizontal = 0
+texture = ExtResource("23_a1yas")
+
+[node name="w2_text" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -264.0
+offset_top = 223.0
+offset_right = -136.0
+offset_bottom = 263.0
+grow_horizontal = 0
+texture = ExtResource("23_a1yas")
 
 [node name="ParameterSettings" type="Control" parent="."]
 visible = false
@@ -4573,6 +4765,16 @@ offset_bottom = -16.0
 theme_override_constants/outline_size = 10
 text = "Voltar"
 
+[node name="w1" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bqw4q")
+}
+
+[node name="w2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8qqt8")
+}
+
 [connection signal="pressed" from="Tutorial" to="." method="on_tutorial_pressed"]
 [connection signal="pressed" from="Arena" to="." method="_on_arena_pressed"]
 [connection signal="pressed" from="Quit" to="." method="on_quit_pressed"]
@@ -4580,10 +4782,10 @@ text = "Voltar"
 [connection signal="pressed" from="Level1" to="." method="on_level1_pressed"]
 [connection signal="pressed" from="Level2" to="." method="on_level2_pressed"]
 [connection signal="pressed" from="Level3" to="." method="_on_level_3_pressed"]
-[connection signal="pressed" from="HBoxContainer/w1sword" to="." method="_on_w_1_sword_pressed"]
-[connection signal="pressed" from="HBoxContainer/w1axe" to="." method="_on_w_1_axe_pressed"]
-[connection signal="pressed" from="HBoxContainer/w1spear" to="." method="_on_w_1_spear_pressed"]
-[connection signal="pressed" from="HBoxContainer2/w2sword" to="." method="_on_w_2_sword_pressed"]
-[connection signal="pressed" from="HBoxContainer2/w2axe" to="." method="_on_w_2_axe_pressed"]
-[connection signal="pressed" from="HBoxContainer2/w2spear" to="." method="_on_w_2_spear_pressed"]
+[connection signal="pressed" from="HBoxContainer/sword" to="." method="_on_w_1_sword_pressed"]
+[connection signal="pressed" from="HBoxContainer/axe" to="." method="_on_w_1_axe_pressed"]
+[connection signal="pressed" from="HBoxContainer/spear" to="." method="_on_w_1_spear_pressed"]
+[connection signal="pressed" from="HBoxContainer2/sword" to="." method="_on_w_2_sword_pressed"]
+[connection signal="pressed" from="HBoxContainer2/axe" to="." method="_on_w_2_axe_pressed"]
+[connection signal="pressed" from="HBoxContainer2/spear" to="." method="_on_w_2_spear_pressed"]
 [connection signal="pressed" from="ParameterSettings/Panel/Button" to="." method="_on_back_pressed"]

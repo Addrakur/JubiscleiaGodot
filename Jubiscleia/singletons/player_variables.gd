@@ -91,7 +91,7 @@ var sword_3_projectile_max_distance: float = 100
 var sword_3_poise: float = 0
 var sword_3_shake: float = 1
 
-var sword_jump_damage: float = 2
+var sword_jump_damage: float = 500 #2
 var sword_jump_knockback: float = 50
 var sword_jump_knockup: float = 0
 var sword_jump_poise: float = 5

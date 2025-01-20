@@ -14,12 +14,14 @@ func _enter() -> void:
 
 func _exit() -> void:
 	move = false
+	parent.wall_cast_ground.enabled = false
+	parent.wall_cast_up.enabled = false
 
 func _update(_delta):
 	if parent.player_ref != null:
 		parent.new_position()
 	
-	if parent.move_position_behind() or parent.can_attack_player:
+	if parent.move_position_behind() or parent.can_attack_player or parent.wall_cast_ground.is_colliding() or parent.wall_cast_up.is_colliding():
 		dispatch("walk_to_idle")
 	
 	if parent.move_position != 0 and parent.direction != 0 and move:
@@ -41,3 +43,7 @@ func move_true():
 	
 func move_false():
 	move = false
+
+func raycast_enable():
+	parent.wall_cast_ground.enabled = true
+	parent.wall_cast_up.enabled = true

@@ -74,7 +74,7 @@ player = NodePath("player")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(192, 1604)
+position = Vector2(192, 1704)
 limit_left = -288
 limit_top = -416
 limit_right = 16032
@@ -440,7 +440,7 @@ position = Vector2(13578, 2629)
 level = NodePath("../..")
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_uw1h1")]
-position = Vector2(146.001, 1620)
+position = Vector2(46, 1720)
 camera = NodePath("../Camera2D")
 
 [node name="plataforms" type="Node2D" parent="."]
@@ -2007,7 +2007,7 @@ position = Vector2(7872, 1920)
 shape = SubResource("RectangleShape2D_ttapc")
 
 [node name="FreeCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-position = Vector2(192, 1604)
+position = Vector2(192, 1704)
 script = ExtResource("14_nee6w")
 follow_mode = 2
 follow_target = NodePath("../player")
@@ -2018,7 +2018,7 @@ draw_limits = true
 limit_target = NodePath("../cameras/FreeCameraLimit")
 
 [node name="PC2" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
-position = Vector2(5984, 1620.48)
+position = Vector2(5984, 1720)
 script = ExtResource("14_nee6w")
 follow_mode = 4
 follow_target = NodePath("../player")
