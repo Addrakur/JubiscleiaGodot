@@ -47,6 +47,7 @@ func exit_state() -> void:
 	anim_finish = false
 	passed_enemy = false
 	enemy.clear()
+	player.health_component.invulnerable = false
 	
 
 func _physics_process(_delta):
@@ -77,6 +78,7 @@ func _on_dash_collision_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		passed_enemy = true
 		enemy.append(body)
+		print(body.name + " entered")
 	
 	if body.is_in_group("terrain"):
 		player.fsm.change_state(player.fall_state)
@@ -86,3 +88,4 @@ func _on_dash_collision_body_exited(body: Node2D) -> void:
 	if body.is_in_group("enemy"):
 		if enemy.has(body):
 			enemy.erase(body)
+		print(body.name + " exited")

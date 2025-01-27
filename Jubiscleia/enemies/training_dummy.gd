@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export_enum("water","fire","earth","air") var element: String
 @export var health_component: Node2D
 @onready var fsm = $StateMachine as StateMachine
 @onready var idle_state = $StateMachine/DummyIdleState as DummyIdleState

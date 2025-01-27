@@ -57,7 +57,7 @@
 size = Vector2(15, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v34mu"]
-size = Vector2(9.39938, 8.01515)
+size = Vector2(13.1591, 12.0227)
 
 [sub_resource type="Animation" id="Animation_115di"]
 length = 0.001
@@ -917,14 +917,11 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"player_inv_true"
-}, {
-"args": [],
-"method": &"player_inv_false"
 }]
 }
 tracks/6/type = "value"
@@ -2927,7 +2924,6 @@ variable_name = "player"
 max_health = 100.0
 max_poise = 5.0
 max_temp_life = 50.0
-starting_temp_life = 25.0
 
 [node name="WallGrab" type="RayCast2D" parent="."]
 position = Vector2(0, -14)

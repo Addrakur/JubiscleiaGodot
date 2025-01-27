@@ -15,7 +15,7 @@ var direction: float = -1
 @onready var idle_timer: Timer = $idle_timer
 @onready var hit_modulate: AnimationPlayer = $hit_modulate
 @onready var texture: Sprite2D = $texture
-@onready var collision: CollisionShape2D = $collision
+#@onready var collision: CollisionShape2D = $collision
 @onready var shield_collision: CollisionPolygon2D = $AttackArea/shield_collision
 @onready var detect_collision: CollisionPolygon2D = $detect_area/detect_collision
 @onready var can_attack_collision: CollisionPolygon2D = $can_attack_area/can_attack_collision
@@ -78,7 +78,7 @@ func _physics_process(delta):
 
 func right():
 	texture.flip_h = true
-	collision.position.x = 12
+	#collision.position.x = 12
 	shield_collision.scale.x = -1
 	shield_shape_collision.scale.x = -1
 	detect_collision.scale.x = -1
@@ -89,7 +89,7 @@ func right():
 
 func left():
 	texture.flip_h = false
-	collision.position.x = -12
+	#collision.position.x = -12
 	shield_collision.scale.x = 1
 	shield_shape_collision.scale.x = 1
 	detect_collision.scale.x = 1

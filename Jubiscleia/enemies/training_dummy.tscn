@@ -183,6 +183,7 @@ height = 32.1721
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_qe621")
+element = "fire"
 health_component = NodePath("HealthComponent")
 metadata/_edit_horizontal_guides_ = [-93.0]
 
@@ -204,7 +205,7 @@ libraries = {
 [node name="HealthComponent" parent="." instance=ExtResource("1_oll5j")]
 has_parameter_slider = true
 variable_name = "dummy"
-max_health = 1000.0
+max_health = 20.0
 max_poise = 10.0
 poise_recover_timer = 3.0
 

@@ -11,6 +11,12 @@ var water_stack_count: float = 0
 var air_stack_count: float = 0
 var earth_stack_count: float = 0
 
+var element_extra_damage: float = 1.5
+var element_extra_stack: float = 2
+
+var element_reduced_damage: float = 0.7
+var element_reduced_stack: float = 0.5
+
 var elemental_rupture: String = ""
 
 var player_alive: bool = true

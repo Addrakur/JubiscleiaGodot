@@ -48,12 +48,6 @@ func _input(_event: InputEvent) -> void:
 		print("Fire: ",PlayerVariables.fire_stack_count)
 		print("Earth: ",PlayerVariables.earth_stack_count)
 		print("Air: ",PlayerVariables.air_stack_count)
-	
-	if Input.is_key_pressed(KEY_2):
-		PlayerVariables.water_stack_count = 0
-		PlayerVariables.fire_stack_count = 0
-		PlayerVariables.earth_stack_count = 0
-		PlayerVariables.air_stack_count = 0
 
 
 func _on_element_timer_timeout() -> void:
