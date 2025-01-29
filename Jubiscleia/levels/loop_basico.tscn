@@ -30,6 +30,9 @@ point_count = 2
 script = ExtResource("1_7dotf")
 player = NodePath("Player")
 free_spawn = true
+weapon_locked = true
+skill_1 = "sword"
+skill_2 = "none"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
