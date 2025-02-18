@@ -555,7 +555,7 @@ height = 14.0
 
 [node name="SpearSkeleton" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area", "contact_damage") groups=["enemy"]]
 collision_layer = 2
-collision_mask = 13
+collision_mask = 45
 script = ExtResource("1_vyemi")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")

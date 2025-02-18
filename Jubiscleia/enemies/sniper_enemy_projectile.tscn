@@ -15,7 +15,7 @@ scale = Vector2(-1, 1)
 texture = ExtResource("1_47tyk")
 
 [node name="AttackArea" parent="." instance=ExtResource("2_ldot1")]
-collision_mask = 21
+collision_mask = 53
 target = "player"
 damage = 5.0
 knockup_force = -10.0

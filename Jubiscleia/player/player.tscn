@@ -2764,7 +2764,7 @@ _data = {
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("attack_area", "health_component") groups=["player"]]
 scale = Vector2(1.0639, 0.99811)
 collision_layer = 32769
-collision_mask = 81926
+collision_mask = 81958
 floor_constant_speed = true
 floor_max_angle = 1.22173
 floor_snap_length = 5.0
@@ -2777,10 +2777,11 @@ health_component = NodePath("HealthComponent")
 script = ExtResource("12_8y4yw")
 state = NodePath("Idle")
 
-[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
+[node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation", "dash_cooldown")]
 script = ExtResource("13_8i2bm")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
+dash_cooldown = NodePath("../../DashCooldown")
 
 [node name="Move" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("14_nnfso")

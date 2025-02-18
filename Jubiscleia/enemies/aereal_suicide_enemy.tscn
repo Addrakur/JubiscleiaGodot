@@ -238,7 +238,7 @@ radius = 9.0
 
 [node name="aereal_suicide_enemy" type="CharacterBody2D" node_paths=PackedStringArray("attack_area")]
 collision_layer = 2
-collision_mask = 5
+collision_mask = 37
 motion_mode = 1
 script = ExtResource("1_3p8xi")
 attack_area = NodePath("explosion_area")
@@ -251,7 +251,7 @@ libraries = {
 
 [node name="trigger_area" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 32773
+collision_mask = 32805
 
 [node name="trigger_collision" type="CollisionShape2D" parent="trigger_area"]
 shape = SubResource("CircleShape2D_kgv6s")
@@ -302,12 +302,12 @@ animation = NodePath("../../animation")
 [node name="RayCastLeft" type="RayCast2D" parent="."]
 position = Vector2(-15, 0)
 target_position = Vector2(-1, 576)
-collision_mask = 32773
+collision_mask = 32805
 
 [node name="RayCastRight" type="RayCast2D" parent="."]
 position = Vector2(15, 0)
 target_position = Vector2(1, 576)
-collision_mask = 32773
+collision_mask = 32805
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_d5dgb")

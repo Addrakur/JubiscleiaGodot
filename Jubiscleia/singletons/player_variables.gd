@@ -110,7 +110,7 @@ var spear_jump_speed: float = 0
 var spear_jump_gravity: float = 0
 var spear_jump_my_knockup: float = -500
 var spear_element: String = "air"
-var spear_element_amount: float = 6
+var spear_element_amount: float = 3
 
 var spear_1_damage: float = 2
 var spear_1_knockback: float = 70
@@ -129,7 +129,7 @@ var spear_3_projectile_damage: float = 3
 var spear_3_projectile_speed: float = 250
 var spear_3_projectile_knockback: float = 30
 var spear_3_projectile_poise: float = 5
-var spear_3_projectile_max_distance: float = 160
+var spear_3_projectile_max_distance: float = 240
 var spear_3_location: Vector2 = Vector2 (9,-20)
 var spear_3_poise: float = 0
 

@@ -447,7 +447,7 @@ size = Vector2(33.625, 25.75)
 
 [node name="Snake" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 collision_layer = 2
-collision_mask = 13
+collision_mask = 45
 floor_constant_speed = true
 script = ExtResource("1_ep4bx")
 health_component = NodePath("HealthComponent")

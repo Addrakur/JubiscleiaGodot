@@ -818,12 +818,12 @@ position = Vector2(0, -32)
 [node name="RayCast2D" type="RayCast2D" parent="."]
 position = Vector2(0, -9)
 target_position = Vector2(-62, 0)
-collision_mask = 12
+collision_mask = 65580
 
 [node name="RayCast2D2" type="RayCast2D" parent="."]
 position = Vector2(0, -51)
 target_position = Vector2(-62, 0)
-collision_mask = 12
+collision_mask = 65580
 
 [connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyTurn" method="_on_animation_finished"]
 [connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyAttack" method="_on_animation_finished"]

@@ -27,6 +27,7 @@ Parameters="*res://singletons/parameters.gd"
 
 window/size/viewport_width=960
 window/size/viewport_height=540
+window/size/mode=3
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=2
@@ -112,9 +113,10 @@ spawn_enemy={
 
 2d_physics/layer_1="player_collision"
 2d_physics/layer_2="enemy_collision"
-2d_physics/layer_3="map"
+2d_physics/layer_3="tile que pode escalar"
 2d_physics/layer_4="enemy_wall"
 2d_physics/layer_5="enemy_projectile_wall"
+2d_physics/layer_6="tile que nao pode escalar"
 2d_physics/layer_15="non_movable_enemy"
 2d_physics/layer_16="player_inv_collision"
 2d_physics/layer_17="management_tiles"
