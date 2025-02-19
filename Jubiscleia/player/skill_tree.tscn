@@ -1,0 +1,214 @@
+[gd_scene load_steps=36 format=3 uid="uid://cneih5yhue5ap"]
+
+[ext_resource type="PackedScene" uid="uid://dfru6bt5m86fd" path="res://Management/upgrade_button.tscn" id="1_k8erm"]
+[ext_resource type="Texture2D" uid="uid://d1hvu462x74ih" path="res://assets/UI/skill_tree/base_upgrades/dash_cd_not_pressed.png" id="2_j78d3"]
+[ext_resource type="Texture2D" uid="uid://dixqyeq4oal86" path="res://assets/UI/skill_tree/base_upgrades/dash_cd_pressed.png" id="3_bk053"]
+[ext_resource type="Texture2D" uid="uid://qul7pl3hyysq" path="res://assets/UI/skill_tree/base_upgrades/life_up_not_pressed.png" id="4_bnyuo"]
+[ext_resource type="Texture2D" uid="uid://csu6n8p6lm6t4" path="res://assets/UI/skill_tree/base_upgrades/life_up_pressed.png" id="5_s5tfj"]
+[ext_resource type="Texture2D" uid="uid://4iy66oidippf" path="res://assets/UI/skill_tree/base_upgrades/poise_up_not_pressed.png" id="6_pjiaf"]
+[ext_resource type="Texture2D" uid="uid://udh6hw0ayode" path="res://assets/UI/skill_tree/base_upgrades/poise_up_pressed.png" id="7_co1e8"]
+[ext_resource type="Texture2D" uid="uid://dcaqhu1nmwm1b" path="res://assets/UI/skill_tree/fire_upgrades/damage_up_not_pressed.png" id="8_ds5pf"]
+[ext_resource type="Texture2D" uid="uid://bhnxv0uoiffmg" path="res://assets/UI/skill_tree/fire_upgrades/damage_up_pressed.png" id="9_ei6eu"]
+[ext_resource type="Texture2D" uid="uid://cblxpec4vlmg8" path="res://assets/UI/skill_tree/fire_upgrades/stacks_not_pressed.png" id="10_poopx"]
+[ext_resource type="Texture2D" uid="uid://do8eqxqlvcceh" path="res://assets/UI/skill_tree/fire_upgrades/stacks_pressed.png" id="11_hsimr"]
+[ext_resource type="Texture2D" uid="uid://c3v2opv01eedc" path="res://assets/UI/skill_tree/fire_upgrades/duration_up_not_pressed.png" id="12_oxtik"]
+[ext_resource type="Texture2D" uid="uid://hrhsee508x8b" path="res://assets/UI/skill_tree/fire_upgrades/duration_up_pressed.png" id="13_o3qqo"]
+[ext_resource type="Texture2D" uid="uid://cpo4w1d20iltk" path="res://assets/UI/skill_tree/earth_upgrades/stacks_not_pressed.png" id="14_ndd13"]
+[ext_resource type="Texture2D" uid="uid://by0au166c3xp5" path="res://assets/UI/skill_tree/earth_upgrades/stacks_pressed.png" id="15_ceboh"]
+[ext_resource type="Texture2D" uid="uid://dghgoiboxbjdb" path="res://assets/UI/skill_tree/earth_upgrades/duration_up_not_pressed.png" id="16_7ythe"]
+[ext_resource type="Texture2D" uid="uid://b2oitllqs50xw" path="res://assets/UI/skill_tree/earth_upgrades/duration_up_pressed.png" id="17_yja10"]
+[ext_resource type="Texture2D" uid="uid://codcydyvrxroj" path="res://assets/UI/skill_tree/earth_upgrades/temp_life_up_not_pressed.png" id="18_tw0ap"]
+[ext_resource type="Texture2D" uid="uid://dfdx3wsfr4oub" path="res://assets/UI/skill_tree/earth_upgrades/temp_life_up_pressed.png" id="19_ukkni"]
+[ext_resource type="Texture2D" uid="uid://bnuelk3sdit3x" path="res://assets/UI/skill_tree/water_upgrades/stacks_not_pressed.png" id="20_tvt2n"]
+[ext_resource type="Texture2D" uid="uid://s587ubj6dbqf" path="res://assets/UI/skill_tree/water_upgrades/stacks_pressed.png" id="21_vnyr6"]
+[ext_resource type="Texture2D" uid="uid://cjv3y2dj7lkqb" path="res://assets/UI/skill_tree/water_upgrades/duration_up_not_pressed.png" id="22_6xw4y"]
+[ext_resource type="Texture2D" uid="uid://cwt0mtb0mryp3" path="res://assets/UI/skill_tree/water_upgrades/duration_up_pressed.png" id="23_yfap2"]
+[ext_resource type="Texture2D" uid="uid://sxft2sdtakmv" path="res://assets/UI/skill_tree/water_upgrades/slow_up_not_pressed.png" id="24_beo0m"]
+[ext_resource type="Texture2D" uid="uid://b6cgtoju5s1b2" path="res://assets/UI/skill_tree/water_upgrades/slow_up_pressed.png" id="25_0yvdx"]
+[ext_resource type="Texture2D" uid="uid://cxgw30373nx3r" path="res://assets/UI/skill_tree/water_upgrades/slow_duration_not_pressed.png" id="26_1rpxq"]
+[ext_resource type="Texture2D" uid="uid://bhp676s5dv50u" path="res://assets/UI/skill_tree/water_upgrades/slow_duration_pressed.png" id="27_xe71c"]
+[ext_resource type="Texture2D" uid="uid://c4glteyd632i7" path="res://assets/UI/skill_tree/air_upgrades/stacks_not_pressed.png" id="28_o7hiv"]
+[ext_resource type="Texture2D" uid="uid://ksju111uru4m" path="res://assets/UI/skill_tree/air_upgrades/stacks_pressed.png" id="29_kal2d"]
+[ext_resource type="Texture2D" uid="uid://dm68ni3g6eyjh" path="res://assets/UI/skill_tree/air_upgrades/duration_up_not_pressed.png" id="30_dc0is"]
+[ext_resource type="Texture2D" uid="uid://c4o2t32onevms" path="res://assets/UI/skill_tree/air_upgrades/duration_up_pressed.png" id="31_6bwd5"]
+[ext_resource type="Texture2D" uid="uid://btlcpqpdgfg6w" path="res://assets/UI/skill_tree/air_upgrades/area_up_not_pressed.png" id="32_r3akm"]
+[ext_resource type="Texture2D" uid="uid://dajfcfsf7aci6" path="res://assets/UI/skill_tree/air_upgrades/area_up_pressed.png" id="33_y1t32"]
+[ext_resource type="Texture2D" uid="uid://bvpc2lixeh01y" path="res://assets/UI/skill_tree/air_upgrades/area_damage_not_pressed.png" id="34_gmjat"]
+[ext_resource type="Texture2D" uid="uid://c65o0ucq5h41x" path="res://assets/UI/skill_tree/air_upgrades/area_damage_pressed.png" id="35_8be1x"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = -64.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.077
+anchor_right = 0.923
+anchor_bottom = 1.0
+offset_left = -0.064003
+offset_right = 0.0639648
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1, 0.235, 0.4, 1)
+
+[node name="dash_cooldown" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 352.0
+offset_right = 256.0
+offset_bottom = 384.0
+texture_normal = ExtResource("2_j78d3")
+texture_pressed = ExtResource("3_bk053")
+
+[node name="life_up" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 352.0
+offset_right = 320.0
+offset_bottom = 384.0
+texture_normal = ExtResource("4_bnyuo")
+texture_pressed = ExtResource("5_s5tfj")
+
+[node name="poise_up" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 352.0
+offset_right = 384.0
+offset_bottom = 384.0
+texture_normal = ExtResource("6_pjiaf")
+texture_pressed = ExtResource("7_co1e8")
+
+[node name="fire_damage_up" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 288.0
+offset_right = 384.0
+offset_bottom = 320.0
+texture_normal = ExtResource("8_ds5pf")
+texture_pressed = ExtResource("9_ei6eu")
+
+[node name="fire_stacks_down" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 288.0
+offset_right = 256.0
+offset_bottom = 320.0
+texture_normal = ExtResource("10_poopx")
+texture_pressed = ExtResource("11_hsimr")
+
+[node name="fire_duration_up" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 288.0
+offset_right = 320.0
+offset_bottom = 320.0
+texture_normal = ExtResource("12_oxtik")
+texture_pressed = ExtResource("13_o3qqo")
+
+[node name="earth_stacks_down" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 224.0
+offset_right = 256.0
+offset_bottom = 256.0
+texture_normal = ExtResource("14_ndd13")
+texture_pressed = ExtResource("15_ceboh")
+
+[node name="earth_duration_up" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 224.0
+offset_right = 320.0
+offset_bottom = 256.0
+texture_normal = ExtResource("16_7ythe")
+texture_pressed = ExtResource("17_yja10")
+
+[node name="earth_temp_life_up" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 224.0
+offset_right = 384.0
+offset_bottom = 256.0
+texture_normal = ExtResource("18_tw0ap")
+texture_pressed = ExtResource("19_ukkni")
+
+[node name="water_stacks_down" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 160.0
+offset_right = 256.0
+offset_bottom = 192.0
+texture_normal = ExtResource("20_tvt2n")
+texture_pressed = ExtResource("21_vnyr6")
+
+[node name="water_duration_up" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 160.0
+offset_right = 320.0
+offset_bottom = 192.0
+texture_normal = ExtResource("22_6xw4y")
+texture_pressed = ExtResource("23_yfap2")
+
+[node name="water_slow_up" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 160.0
+offset_right = 384.0
+offset_bottom = 192.0
+texture_normal = ExtResource("24_beo0m")
+texture_pressed = ExtResource("25_0yvdx")
+
+[node name="water_slow_duration_up" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 160.0
+offset_right = 448.0
+offset_bottom = 192.0
+texture_normal = ExtResource("26_1rpxq")
+texture_pressed = ExtResource("27_xe71c")
+
+[node name="air_stacks_down" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 96.0
+offset_right = 256.0
+offset_bottom = 128.0
+texture_normal = ExtResource("28_o7hiv")
+texture_pressed = ExtResource("29_kal2d")
+
+[node name="air_duration_up" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 288.0
+offset_top = 96.0
+offset_right = 320.0
+offset_bottom = 128.0
+texture_normal = ExtResource("30_dc0is")
+texture_pressed = ExtResource("31_6bwd5")
+
+[node name="air_area_up" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 96.0
+offset_right = 384.0
+offset_bottom = 128.0
+texture_normal = ExtResource("32_r3akm")
+texture_pressed = ExtResource("33_y1t32")
+
+[node name="air_area_damage" parent="Panel" instance=ExtResource("1_k8erm")]
+layout_mode = 0
+offset_left = 416.0
+offset_top = 96.0
+offset_right = 448.0
+offset_bottom = 128.0
+texture_normal = ExtResource("34_gmjat")
+texture_pressed = ExtResource("35_8be1x")

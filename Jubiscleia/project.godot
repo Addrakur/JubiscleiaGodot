@@ -22,6 +22,7 @@ PlayerVariables="*res://singletons/player_variables.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 Paths="*res://singletons/paths.gd"
 Parameters="*res://singletons/parameters.gd"
+SkillTree="*res://singletons/skill_tree.gd"
 
 [display]
 
