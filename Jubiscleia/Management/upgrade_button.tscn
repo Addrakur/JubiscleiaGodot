@@ -13,5 +13,10 @@ texture_normal = ExtResource("1_ta47n")
 texture_pressed = ExtResource("2_t5arh")
 texture_disabled = ExtResource("3_4d8gr")
 script = ExtResource("1_sei5x")
+Player = false
+Water = false
+Air = false
+Fire = false
+Earth = false
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

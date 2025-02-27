@@ -5,6 +5,7 @@ extends Control
 @onready var parameter_settings: Control = $ParameterSettings
 @onready var w_1: AnimationPlayer = $w1
 @onready var w_2: AnimationPlayer = $w2
+@onready var skill_tree: Control = $skill_tree
 
 
 @export var weapon_1_buttons: Array[TextureButton]
@@ -12,7 +13,6 @@ extends Control
 
 func _ready() -> void:
 	button_pressed_manager()
-
 
 func on_tutorial_pressed():
 	GameSettings.change_scene(Paths.tutorial)
@@ -109,3 +109,9 @@ func button_pressed_manager():
 	w_1.play(PlayerVariables.skill_1)
 	w_2.play(PlayerVariables.skill_2)
 	
+
+func _on_skill_tree_button_pressed() -> void:
+	if skill_tree.visible:
+		skill_tree.visible = false
+	else:
+		skill_tree.visible = true

@@ -35,6 +35,11 @@ func _ready() -> void:
 		true_poise_recover_time = Parameters.get(variable_name + "_poise_recover_time")
 		current_health = true_max_health
 		current_poise = true_max_poise
+	
+	if parent is Player:
+		true_max_health += SkillTree.bonus_life
+		current_health = true_max_health
+		print(true_max_health)
 
 func _process(_delta):
 	die()

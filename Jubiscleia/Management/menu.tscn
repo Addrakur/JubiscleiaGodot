@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://drbjtfhmgpum0"]
+[gd_scene load_steps=37 format=3 uid="uid://drbjtfhmgpum0"]
 
 [ext_resource type="Script" path="res://Management/Menu.gd" id="1_slu8i"]
 [ext_resource type="Texture2D" uid="uid://bfuaipif3rr8" path="res://assets/UI/tutorial_button.png" id="2_b6hrv"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://41enr4muyyga" path="res://assets/UI/axe_text.png" id="23_a1yas"]
 [ext_resource type="Texture2D" uid="uid://cndfuxw2gm1b2" path="res://assets/UI/sword_text.png" id="24_gqaf7"]
 [ext_resource type="Texture2D" uid="uid://dsgn5qy0o5cxl" path="res://assets/UI/spear_text.png" id="25_2vw6x"]
+[ext_resource type="PackedScene" uid="uid://cneih5yhue5ap" path="res://player/skill_tree.tscn" id="26_y8r8k"]
 
 [sub_resource type="Animation" id="Animation_wgjs4"]
 length = 0.001
@@ -4775,6 +4776,18 @@ libraries = {
 "": SubResource("AnimationLibrary_8qqt8")
 }
 
+[node name="skill_tree" parent="." instance=ExtResource("26_y8r8k")]
+visible = false
+layout_mode = 1
+
+[node name="skill_tree_button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 436.0
+offset_top = 19.0
+offset_right = 514.0
+offset_bottom = 50.0
+text = "Skill Tree"
+
 [connection signal="pressed" from="Tutorial" to="." method="on_tutorial_pressed"]
 [connection signal="pressed" from="Arena" to="." method="_on_arena_pressed"]
 [connection signal="pressed" from="Quit" to="." method="on_quit_pressed"]
@@ -4789,3 +4802,4 @@ libraries = {
 [connection signal="pressed" from="HBoxContainer2/axe" to="." method="_on_w_2_axe_pressed"]
 [connection signal="pressed" from="HBoxContainer2/spear" to="." method="_on_w_2_spear_pressed"]
 [connection signal="pressed" from="ParameterSettings/Panel/Button" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="skill_tree_button" to="." method="_on_skill_tree_button_pressed"]

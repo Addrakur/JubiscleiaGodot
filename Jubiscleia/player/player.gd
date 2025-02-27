@@ -76,9 +76,6 @@ func _ready():
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
 	jump_gravity = ((-2.0 * jump_height) / pow(jump_time_to_peak,2)) * -1
 	fall_gravity = ((-2.0 * jump_height) / pow(jump_time_to_descent,2)) * -1
-	#GameSettings.default_gravity = fall_gravity
-	
-	print(attack_area)
 	
 func _process(_delta):
 	direction = Input.get_axis("left","right")
