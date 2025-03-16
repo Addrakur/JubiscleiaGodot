@@ -63,7 +63,6 @@ func end_rupture():
 	PlayerVariables.elemental_rupture = ""
 	
 	reset_elemental_counters()
-	PlayerVariables.attack_speed = 1
 	PlayerVariables.damage_mult = 1
 	player.health_component.current_temp_life = 0
 	

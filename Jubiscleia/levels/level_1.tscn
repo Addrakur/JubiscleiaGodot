@@ -66,16 +66,20 @@ ease = 2
 process_mode = 1
 script = ExtResource("1_6ujk3")
 player = NodePath("player")
+free_spawn = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(-5184, 1522)
+position = Vector2(-2976, 432)
+process_callback = 0
 limit_left = -5664
 limit_top = -832
 limit_right = 4896
 limit_bottom = 1792
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
 script = ExtResource("2_btaha")
 
 [node name="BG" parent="Camera2D" instance=ExtResource("3_pkpnn")]
@@ -817,7 +821,7 @@ position = Vector2(3332, 453)
 level = NodePath("..")
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("19_8ysb2")]
-position = Vector2(-5434, 1637)
+position = Vector2(-2976, 448)
 camera = NodePath("../Camera2D")
 
 [node name="Lava" type="Node2D" parent="."]
@@ -1301,7 +1305,8 @@ tile_map_data = PackedByteArray("AAB//xkAAAAKAAAAAACA/xkAAAAKAAAAAACB/xkAAAAKAAA
 tile_set = ExtResource("34_5p0hh")
 
 [node name="PC1" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-position = Vector2(-5184, 1522)
+top_level = true
+position = Vector2(-2976, 432)
 script = ExtResource("11_cb0fu")
 priority = 10
 follow_mode = 2

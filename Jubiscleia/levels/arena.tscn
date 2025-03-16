@@ -1,12 +1,19 @@
-[gd_scene load_steps=17 format=4 uid="uid://cqp1060wjlhfn"]
+[gd_scene load_steps=24 format=4 uid="uid://cqp1060wjlhfn"]
 
 [ext_resource type="Script" path="res://levels/level.gd" id="1_5moen"]
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="3_2ic4t"]
 [ext_resource type="PackedScene" uid="uid://c33bx5e2javr1" path="res://levels/BG.tscn" id="3_48sx8"]
+[ext_resource type="Texture2D" uid="uid://huodpw7o855v" path="res://assets/earth_level/parallax/sky.png" id="3_jconn"]
+[ext_resource type="Texture2D" uid="uid://3ilk4oonemyu" path="res://assets/earth_level/parallax/back_clouds.png" id="4_l2ebp"]
 [ext_resource type="PackedScene" uid="uid://cv8owgy7v2lhb" path="res://enemies/enemy_limit.tscn" id="4_l7r3x"]
+[ext_resource type="Texture2D" uid="uid://xf3sahpb3n3c" path="res://assets/earth_level/parallax/mountains_1.png" id="5_j0nnq"]
 [ext_resource type="TileSet" uid="uid://bftwvroh3jjjb" path="res://assets/Tileset/management_tiles.tres" id="5_uhkh2"]
+[ext_resource type="Texture2D" uid="uid://dlbdl10m1un6a" path="res://assets/earth_level/parallax/mountains_2.png" id="6_wjx5i"]
+[ext_resource type="Texture2D" uid="uid://bdeiixbpri17s" path="res://assets/earth_level/parallax/middle_cloud.png" id="7_7apbn"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="7_qpd7n"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_us7wb"]
+[ext_resource type="Texture2D" uid="uid://230wy84irrjw" path="res://assets/earth_level/parallax/tree_1.png" id="8_xlab8"]
+[ext_resource type="Texture2D" uid="uid://d2nhjbtnnd38f" path="res://assets/earth_level/parallax/tree_2.png" id="9_4najf"]
 [ext_resource type="PackedScene" uid="uid://sdmdvsx1p41u" path="res://enemies/training_dummy.tscn" id="9_dgptr"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_dny5v"]
 [ext_resource type="PackedScene" uid="uid://bgtm18yxrdsdx" path="res://Management/camera_area.tscn" id="10_h6txr"]
@@ -32,14 +39,117 @@ script = ExtResource("1_5moen")
 player = NodePath("player")
 free_spawn = true
 
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="sky" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(480, 270)
+motion_scale = Vector2(0, 0)
+
+[node name="sky" parent="ParallaxBackground/sky" instance=ExtResource("3_48sx8")]
+texture = ExtResource("3_jconn")
+
+[node name="back_clouds" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(480, 270)
+motion_scale = Vector2(0.01, 0)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="back_clouds" type="Sprite2D" parent="ParallaxBackground/back_clouds"]
+position = Vector2(0, 270)
+texture = ExtResource("4_l2ebp")
+
+[node name="back_clouds2" type="Sprite2D" parent="ParallaxBackground/back_clouds"]
+position = Vector2(960, 270)
+texture = ExtResource("4_l2ebp")
+
+[node name="mountains_1" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(480, 270)
+motion_scale = Vector2(0.02, 0.01)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="mountains_1" type="Sprite2D" parent="ParallaxBackground/mountains_1"]
+position = Vector2(0, 270)
+texture = ExtResource("5_j0nnq")
+
+[node name="mountains_1_2" type="Sprite2D" parent="ParallaxBackground/mountains_1"]
+position = Vector2(960, 270)
+texture = ExtResource("5_j0nnq")
+
+[node name="moutains_2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(480, 270)
+motion_scale = Vector2(0.03, 0.02)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="moutains_2" type="Sprite2D" parent="ParallaxBackground/moutains_2"]
+position = Vector2(0, 270)
+texture = ExtResource("6_wjx5i")
+
+[node name="moutains_2_2" type="Sprite2D" parent="ParallaxBackground/moutains_2"]
+position = Vector2(960, 270)
+texture = ExtResource("6_wjx5i")
+
+[node name="middle_cloud" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(480, 270)
+motion_scale = Vector2(0.04, 0.03)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="middle_cloud" type="Sprite2D" parent="ParallaxBackground/middle_cloud"]
+position = Vector2(0, 270)
+texture = ExtResource("7_7apbn")
+
+[node name="middle_cloud2" type="Sprite2D" parent="ParallaxBackground/middle_cloud"]
+position = Vector2(960, 270)
+texture = ExtResource("7_7apbn")
+
+[node name="tree_1" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(480, 270)
+motion_scale = Vector2(0.2, 0.15)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/tree_1"]
+texture = ExtResource("8_xlab8")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/tree_1"]
+position = Vector2(960, 0)
+texture = ExtResource("8_xlab8")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/tree_1"]
+position = Vector2(0, 540)
+texture = ExtResource("8_xlab8")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/tree_1"]
+position = Vector2(960, 540)
+texture = ExtResource("8_xlab8")
+
+[node name="tree_2" type="ParallaxLayer" parent="ParallaxBackground"]
+position = Vector2(480, 270)
+motion_scale = Vector2(0.3, 0.2)
+motion_mirroring = Vector2(1920, 1080)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/tree_2"]
+texture = ExtResource("9_4najf")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/tree_2"]
+position = Vector2(960, 0)
+texture = ExtResource("9_4najf")
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/tree_2"]
+position = Vector2(0, 540)
+texture = ExtResource("9_4najf")
+
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/tree_2"]
+position = Vector2(960, 540)
+texture = ExtResource("9_4najf")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 position = Vector2(-560, 288)
+zoom = Vector2(0.8, 0.8)
+process_callback = 0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
 script = ExtResource("7_qpd7n")
-
-[node name="BG" parent="Camera2D" instance=ExtResource("3_48sx8")]
 
 [node name="CameraLimit" type="TileMapLayer" parent="." groups=["terrain"]]
 tile_map_data = PackedByteArray("AADX////AQAAAAAAAADX/xIAAQAAAAAAAADY/xIAAQAAAAAAAADZ/xIAAQAAAAAAAADa/xIAAQAAAAAAAADb/xIAAQAAAAAAAADc/xIAAQAAAAAAAADd/xIAAQAAAAAAAADe/xIAAQAAAAAAAADf/xIAAQAAAAAAAADg/xIAAQAAAAAAAADh/xIAAQAAAAAAAADi/xIAAQAAAAAAAADj/xIAAQAAAAAAAADk/xIAAQAAAAAAAADl/xIAAQAAAAAAAADm/xIAAQAAAAAAAADn/xIAAQAAAAAAAADo/xIAAQAAAAAAAADp/xIAAQAAAAAAAADq/xIAAQAAAAAAAADr/xIAAQAAAAAAAADs/xIAAQAAAAAAAADt/xIAAQAAAAAAAADu/xIAAQAAAAAAAADv/xIAAQAAAAAAAADw/xIAAQAAAAAAAADx/xIAAQAAAAAAAADy/xIAAQAAAAAAAADz/xIAAQAAAAAAAAD0/xIAAQAAAAAAAAD1/xIAAQAAAAAAAAD2/xIAAQAAAAAAAAD3/xIAAQAAAAAAAAD4/xIAAQAAAAAAAAD5/xIAAQAAAAAAAAD6/xIAAQAAAAAAAAD7/xIAAQAAAAAAAAD8/xIAAQAAAAAAAAD9/xIAAQAAAAAAAAD+/xIAAQAAAAAAAAD//xIAAQAAAAAAAAAAABIAAQAAAAAAAAABABIAAQAAAAAAAAACABIAAQAAAAAAAAADABIAAQAAAAAAAAAEABIAAQAAAAAAAAAFABIAAQAAAAAAAAAGABIAAQAAAAAAAAAHABIAAQAAAAAAAAAIABIAAQAAAAAAAAAJABIAAQAAAAAAAAAKABIAAQAAAAAAAAALABIAAQAAAAAAAAAMABIAAQAAAAAAAAANABIAAQAAAAAAAAAOABIAAQAAAAAAAAAPABIAAQAAAAAAAAAQABIAAQAAAAAAAAARABIAAQAAAAAAAAASABIAAQAAAAAAAAATABIAAQAAAAAAAAAUABIAAQAAAAAAAAAVABIAAQAAAAAAAAAWABIAAQAAAAAAAAAXABIAAQAAAAAAAAAYABIAAQAAAAAAAAAZABIAAQAAAAAAAAAaABIAAQAAAAAAAAAbABIAAQAAAAAAAAAcABIAAQAAAAAAAAAdABIAAQAAAAAAAAAeABIAAQAAAAAAAAAfABIAAQAAAAAAAAAgABIAAQAAAAAAAAAhABIAAQAAAAAAAAAiABIAAQAAAAAAAAAjABIAAQAAAAAAAAAkABIAAQAAAAAAAAAlABIAAQAAAAAAAAAmABIAAQAAAAAAAAAnABIAAQAAAAAAAAAoABIAAQAAAAAAAAAoAP//AQAAAAAAAAAoAAAAAQAAAAAAAAAoAAEAAQAAAAAAAAAoAAIAAQAAAAAAAAAoAAMAAQAAAAAAAAAoAAQAAQAAAAAAAAAoAAUAAQAAAAAAAAAoAAYAAQAAAAAAAAAoAAcAAQAAAAAAAAAoAAgAAQAAAAAAAAAoAAkAAQAAAAAAAAAoAAoAAQAAAAAAAAAoAAsAAQAAAAAAAAAoAAwAAQAAAAAAAAAoAA0AAQAAAAAAAAAoAA4AAQAAAAAAAAAoAA8AAQAAAAAAAAAoABAAAQAAAAAAAAAoABEAAQAAAAAAAADY////AQAAAAAAAADZ////AQAAAAAAAADa////AQAAAAAAAADb////AQAAAAAAAADc////AQAAAAAAAADd////AQAAAAAAAADe////AQAAAAAAAADf////AQAAAAAAAADg////AQAAAAAAAADh////AQAAAAAAAADi////AQAAAAAAAADj////AQAAAAAAAADk////AQAAAAAAAADl////AQAAAAAAAADm////AQAAAAAAAADn////AQAAAAAAAADo////AQAAAAAAAADp////AQAAAAAAAADq////AQAAAAAAAADr////AQAAAAAAAADs////AQAAAAAAAADt////AQAAAAAAAADu////AQAAAAAAAADv////AQAAAAAAAADw////AQAAAAAAAADx////AQAAAAAAAADy////AQAAAAAAAADz////AQAAAAAAAAD0////AQAAAAAAAAD1////AQAAAAAAAAD2////AQAAAAAAAAD3////AQAAAAAAAAD4////AQAAAAAAAAD5////AQAAAAAAAAD6////AQAAAAAAAAD7////AQAAAAAAAAD8////AQAAAAAAAAD9////AQAAAAAAAAD+////AQAAAAAAAAD/////AQAAAAAAAAAAAP//AQAAAAAAAAABAP//AQAAAAAAAAACAP//AQAAAAAAAAADAP//AQAAAAAAAAAEAP//AQAAAAAAAAAFAP//AQAAAAAAAAAGAP//AQAAAAAAAAAHAP//AQAAAAAAAAAIAP//AQAAAAAAAAAJAP//AQAAAAAAAAAKAP//AQAAAAAAAAALAP//AQAAAAAAAAAMAP//AQAAAAAAAAANAP//AQAAAAAAAAAOAP//AQAAAAAAAAAPAP//AQAAAAAAAAAQAP//AQAAAAAAAAARAP//AQAAAAAAAAASAP//AQAAAAAAAAATAP//AQAAAAAAAAAUAP//AQAAAAAAAAAVAP//AQAAAAAAAAAWAP//AQAAAAAAAAAXAP//AQAAAAAAAAAYAP//AQAAAAAAAAAZAP//AQAAAAAAAAAaAP//AQAAAAAAAAAbAP//AQAAAAAAAAAcAP//AQAAAAAAAAAdAP//AQAAAAAAAAAeAP//AQAAAAAAAAAfAP//AQAAAAAAAAAgAP//AQAAAAAAAAAhAP//AQAAAAAAAAAiAP//AQAAAAAAAAAjAP//AQAAAAAAAAAkAP//AQAAAAAAAAAlAP//AQAAAAAAAAAmAP//AQAAAAAAAAAnAP//AQAAAAAAAADW////AQAAAAAAAADV////AQAAAAAAAADU////AQAAAAAAAADT////AQAAAAAAAADS////AQAAAAAAAADR////AQAAAAAAAADQ////AQAAAAAAAADP////AQAAAAAAAADO////AQAAAAAAAADN////AQAAAAAAAADM////AQAAAAAAAADL////AQAAAAAAAADK////AQAAAAAAAADJ////AQAAAAAAAADI////AQAAAAAAAADH////AQAAAAAAAADH/xEAAQAAAAAAAADH/xAAAQAAAAAAAADH/w8AAQAAAAAAAADH/w4AAQAAAAAAAADH/w0AAQAAAAAAAADH/wwAAQAAAAAAAADH/wsAAQAAAAAAAADH/woAAQAAAAAAAADH/wkAAQAAAAAAAADH/wgAAQAAAAAAAADH/wcAAQAAAAAAAADH/wYAAQAAAAAAAADH/wUAAQAAAAAAAADH/wQAAQAAAAAAAADH/wMAAQAAAAAAAADH/wIAAQAAAAAAAADH/wEAAQAAAAAAAADH/wAAAQAAAAAAAADH/xIAAQAAAAAAAADI/xIAAQAAAAAAAADJ/xIAAQAAAAAAAADK/xIAAQAAAAAAAADL/xIAAQAAAAAAAADM/xIAAQAAAAAAAADN/xIAAQAAAAAAAADO/xIAAQAAAAAAAADP/xIAAQAAAAAAAADQ/xIAAQAAAAAAAADR/xIAAQAAAAAAAADS/xIAAQAAAAAAAADT/xIAAQAAAAAAAADU/xIAAQAAAAAAAADV/xIAAQAAAAAAAADW/xIAAQAAAAAAAAA=")
@@ -153,11 +263,13 @@ point_left = NodePath("../../Limit/PointLeft")
 point_right = NodePath("../../Limit/PointRight")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
+top_level = true
 position = Vector2(-560, 288)
 script = ExtResource("8_us7wb")
 follow_mode = 4
 follow_target = NodePath("../player")
 follow_path = NodePath("../CameraArea/Path2D")
+zoom = Vector2(0.8, 0.8)
 tween_resource = SubResource("Resource_td1jt")
 follow_damping = true
 draw_limits = true

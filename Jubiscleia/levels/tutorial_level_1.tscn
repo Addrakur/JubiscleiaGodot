@@ -151,13 +151,16 @@ texture = ExtResource("9_1aucn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(480, 381)
+position = Vector2(320, 381)
+process_callback = 0
 limit_left = 0
 limit_top = -4140
 limit_right = 20032
 limit_bottom = 992
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
 script = ExtResource("2_7kgwx")
 
 [node name="cavern_background" type="TileMapLayer" parent="."]
@@ -357,8 +360,10 @@ tile_set = ExtResource("3_iavsu")
 [node name="Node2D" type="Node2D" parent="."]
 
 [node name="free_camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-position = Vector2(480, 381)
+top_level = true
+position = Vector2(320, 381)
 script = ExtResource("9_co3pi")
+priority = 10
 follow_mode = 2
 follow_target = NodePath("../player")
 tween_resource = SubResource("Resource_jkccs")

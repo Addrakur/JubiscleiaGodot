@@ -74,14 +74,16 @@ offset_bottom = 416.0
 [node name="Control" type="Control" parent="Panel/ScrollContainer"]
 layout_mode = 2
 
-[node name="dash_down" parent="Panel/ScrollContainer/Control" instance=ExtResource("1_k8erm")]
+[node name="dash_down" parent="Panel/ScrollContainer/Control" node_paths=PackedStringArray("upgrades_needed") instance=ExtResource("1_k8erm")]
 layout_mode = 0
 offset_left = 320.0
 offset_top = 256.0
 offset_right = 352.0
 offset_bottom = 288.0
+disabled = true
 texture_normal = ExtResource("2_j78d3")
 texture_pressed = ExtResource("3_bk053")
+upgrades_needed = [NodePath("../knockback_up"), NodePath("../poise_up")]
 Player = true
 "Life Up" = 0.0
 "Poise Up" = 0.0
@@ -89,14 +91,16 @@ Player = true
 "Damage Up" = 0.0
 "Knockback Up" = 0.0
 
-[node name="dash_down_2" parent="Panel/ScrollContainer/Control" instance=ExtResource("1_k8erm")]
+[node name="dash_down_2" parent="Panel/ScrollContainer/Control" node_paths=PackedStringArray("upgrades_needed") instance=ExtResource("1_k8erm")]
 layout_mode = 0
 offset_left = 320.0
 offset_top = 192.0
 offset_right = 352.0
 offset_bottom = 224.0
+disabled = true
 texture_normal = ExtResource("2_j78d3")
 texture_pressed = ExtResource("3_bk053")
+upgrades_needed = [NodePath("../dash_down")]
 Player = true
 "Life Up" = 0.0
 "Poise Up" = 0.0
@@ -119,14 +123,16 @@ Player = true
 "Damage Up" = 5.0
 "Knockback Up" = 0.0
 
-[node name="damage_up_2" parent="Panel/ScrollContainer/Control" instance=ExtResource("1_k8erm")]
+[node name="damage_up_2" parent="Panel/ScrollContainer/Control" node_paths=PackedStringArray("upgrades_needed") instance=ExtResource("1_k8erm")]
 layout_mode = 0
 offset_left = 448.0
 offset_top = 320.0
 offset_right = 480.0
 offset_bottom = 352.0
+disabled = true
 texture_normal = ExtResource("4_3vt3x")
 texture_pressed = ExtResource("5_gs6ul")
+upgrades_needed = [NodePath("../damage_up")]
 Player = true
 "Life Up" = 0.0
 "Poise Up" = 0.0
@@ -134,14 +140,16 @@ Player = true
 "Damage Up" = 5.0
 "Knockback Up" = 0.0
 
-[node name="knockback_up" parent="Panel/ScrollContainer/Control" instance=ExtResource("1_k8erm")]
+[node name="knockback_up" parent="Panel/ScrollContainer/Control" node_paths=PackedStringArray("upgrades_needed") instance=ExtResource("1_k8erm")]
 layout_mode = 0
 offset_left = 416.0
 offset_top = 256.0
 offset_right = 448.0
 offset_bottom = 288.0
+disabled = true
 texture_normal = ExtResource("6_vprps")
 texture_pressed = ExtResource("7_jw82x")
+upgrades_needed = [NodePath("../damage_up")]
 Player = true
 "Life Up" = 0.0
 "Poise Up" = 0.0
@@ -164,14 +172,16 @@ Player = true
 "Damage Up" = 0.0
 "Knockback Up" = 0.0
 
-[node name="life_up_2" parent="Panel/ScrollContainer/Control" instance=ExtResource("1_k8erm")]
+[node name="life_up_2" parent="Panel/ScrollContainer/Control" node_paths=PackedStringArray("upgrades_needed") instance=ExtResource("1_k8erm")]
 layout_mode = 0
 offset_left = 192.0
 offset_top = 320.0
 offset_right = 224.0
 offset_bottom = 352.0
+disabled = true
 texture_normal = ExtResource("4_bnyuo")
 texture_pressed = ExtResource("5_s5tfj")
+upgrades_needed = [NodePath("../life_up")]
 Player = true
 "Life Up" = 10.0
 "Poise Up" = 0.0
@@ -179,14 +189,16 @@ Player = true
 "Damage Up" = 0.0
 "Knockback Up" = 0.0
 
-[node name="poise_up" parent="Panel/ScrollContainer/Control" instance=ExtResource("1_k8erm")]
+[node name="poise_up" parent="Panel/ScrollContainer/Control" node_paths=PackedStringArray("upgrades_needed") instance=ExtResource("1_k8erm")]
 layout_mode = 0
 offset_left = 224.0
 offset_top = 256.0
 offset_right = 256.0
 offset_bottom = 288.0
+disabled = true
 texture_normal = ExtResource("6_pjiaf")
 texture_pressed = ExtResource("7_co1e8")
+upgrades_needed = [NodePath("../life_up")]
 Player = true
 "Life Up" = 0.0
 "Poise Up" = 1.0
