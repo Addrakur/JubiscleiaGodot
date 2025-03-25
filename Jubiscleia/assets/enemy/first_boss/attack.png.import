@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmrq5xoy1wgw5"
-path="res://.godot/imported/size_test.png-080fc87d005ce843bcec2b8ce1c79c5e.ctex"
+uid="uid://cyfniuwbfxdbm"
+path="res://.godot/imported/attack.png-0f5b1b5ffc3e462cb9d13d78efff4b43.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy/first_boss/size_test.png"
-dest_files=["res://.godot/imported/size_test.png-080fc87d005ce843bcec2b8ce1c79c5e.ctex"]
+source_file="res://assets/enemy/first_boss/attack.png"
+dest_files=["res://.godot/imported/attack.png-0f5b1b5ffc3e462cb9d13d78efff4b43.ctex"]
 
 [params]
 
