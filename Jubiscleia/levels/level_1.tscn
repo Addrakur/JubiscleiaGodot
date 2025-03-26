@@ -70,7 +70,8 @@ free_spawn = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(-2976, 432)
+position = Vector2(-1280, 464)
+zoom = Vector2(0.8, 0.8)
 process_callback = 0
 limit_left = -5664
 limit_top = -832
@@ -821,7 +822,7 @@ position = Vector2(3332, 453)
 level = NodePath("..")
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("19_8ysb2")]
-position = Vector2(-2976, 448)
+position = Vector2(-1280, 480)
 camera = NodePath("../Camera2D")
 
 [node name="Lava" type="Node2D" parent="."]
@@ -1306,11 +1307,12 @@ tile_set = ExtResource("34_5p0hh")
 
 [node name="PC1" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(-2976, 432)
+position = Vector2(-1280, 464)
 script = ExtResource("11_cb0fu")
 priority = 10
 follow_mode = 2
 follow_target = NodePath("../player")
+zoom = Vector2(0.8, 0.8)
 tween_resource = SubResource("Resource_uo4o3")
 follow_offset = Vector2(0, -16)
 follow_damping = true
@@ -1320,11 +1322,13 @@ limit_target = NodePath("../Cameras/free_camera_limit")
 [node name="PCArena1" type="Node2D" parent="."]
 position = Vector2(-736, 416)
 script = ExtResource("11_cb0fu")
+zoom = Vector2(0.7, 0.7)
 tween_resource = SubResource("Resource_b0sq4")
 draw_limits = true
 
 [node name="PCArena2" type="Node2D" parent="."]
 position = Vector2(3904, 416)
 script = ExtResource("11_cb0fu")
+zoom = Vector2(0.7, 0.7)
 tween_resource = SubResource("Resource_imwbs")
 draw_limits = true

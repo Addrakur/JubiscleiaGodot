@@ -1,8 +1,47 @@
 [gd_scene load_steps=9 format=3 uid="uid://36mqj2owa7ei"]
 
-[ext_resource type="Texture2D" uid="uid://cyfniuwbfxdbm" path="res://assets/enemy/first_boss/attack.png" id="1_0d65j"]
-[ext_resource type="Texture2D" uid="uid://cy5027rcsq2gi" path="res://assets/enemy/first_boss/idle.png" id="2_ipgld"]
-[ext_resource type="Texture2D" uid="uid://bf657s2ge64aq" path="res://assets/enemy/first_boss/walk.png" id="3_jwh6k"]
+[ext_resource type="Texture2D" uid="uid://cyfniuwbfxdbm" path="res://assets/enemy/second_boss/attack.png" id="1_awf1e"]
+[ext_resource type="Texture2D" uid="uid://cy5027rcsq2gi" path="res://assets/enemy/second_boss/idle.png" id="2_xr4nh"]
+[ext_resource type="Texture2D" uid="uid://bf657s2ge64aq" path="res://assets/enemy/second_boss/walk.png" id="3_n1pcj"]
+
+[sub_resource type="Animation" id="Animation_1uc0n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_awf1e")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [23]
+}
 
 [sub_resource type="Animation" id="Animation_2vhyl"]
 resource_name = "attack"
@@ -18,7 +57,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_0d65j")]
+"values": [ExtResource("1_awf1e")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -45,45 +84,6 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22]
 }
 
-[sub_resource type="Animation" id="Animation_1uc0n"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:texture")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_0d65j")]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [17]
-}
-
 [sub_resource type="Animation" id="Animation_dap5e"]
 resource_name = "idle"
 length = 0.666675
@@ -99,7 +99,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_ipgld")]
+"values": [ExtResource("2_xr4nh")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -141,7 +141,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_jwh6k")]
+"values": [ExtResource("3_n1pcj")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -176,7 +176,7 @@ _data = {
 "walk": SubResource("Animation_0lrpn")
 }
 
-[node name="first_boss" type="Node2D"]
+[node name="second_boss" type="Node2D"]
 
 [node name="animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../texture")
@@ -186,5 +186,5 @@ libraries = {
 
 [node name="texture" type="Sprite2D" parent="."]
 position = Vector2(-7, -80)
-texture = ExtResource("1_0d65j")
-hframes = 17
+texture = ExtResource("1_awf1e")
+hframes = 23

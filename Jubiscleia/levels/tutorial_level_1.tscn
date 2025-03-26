@@ -151,7 +151,8 @@ texture = ExtResource("9_1aucn")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(320, 381)
+position = Vector2(400, 381)
+zoom = Vector2(0.8, 0.8)
 process_callback = 0
 limit_left = 0
 limit_top = -4140
@@ -361,11 +362,12 @@ tile_set = ExtResource("3_iavsu")
 
 [node name="free_camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(320, 381)
+position = Vector2(400, 381)
 script = ExtResource("9_co3pi")
 priority = 10
 follow_mode = 2
 follow_target = NodePath("../player")
+zoom = Vector2(0.8, 0.8)
 tween_resource = SubResource("Resource_jkccs")
 follow_offset = Vector2(0, -32)
 follow_damping = true

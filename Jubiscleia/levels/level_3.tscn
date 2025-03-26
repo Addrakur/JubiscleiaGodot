@@ -51,13 +51,17 @@ player = NodePath("Player")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(224, -206)
+position = Vector2(144, -161)
+zoom = Vector2(0.8, 0.8)
+process_callback = 0
 limit_left = -256
 limit_top = -5081
 limit_right = 5664
 limit_bottom = 64
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_priority = 300
+process_physics_priority = 300
 script = ExtResource("9_v3q6t")
 
 [node name="BG" parent="Camera2D" instance=ExtResource("3_gn4vf")]
@@ -1332,10 +1336,12 @@ tile_map_data = PackedByteArray("AAAVAPD/AAAEAAEAAAAVAPH/AAAEAAEAAAAVAPL/AAAEAAE
 tile_set = ExtResource("24_afr4a")
 
 [node name="free_camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
-position = Vector2(224, -206)
+top_level = true
+position = Vector2(144, -161)
 script = ExtResource("9_qomd1")
 follow_mode = 2
 follow_target = NodePath("../Player")
+zoom = Vector2(0.8, 0.8)
 tween_resource = SubResource("Resource_pm3wg")
 follow_offset = Vector2(0, -16)
 follow_damping = true
@@ -1345,5 +1351,6 @@ limit_target = NodePath("../Cameras/free_camera_limit")
 [node name="arena_1_camera" type="Node2D" parent="."]
 position = Vector2(2240, -1856)
 script = ExtResource("9_qomd1")
+zoom = Vector2(0.7, 0.7)
 tween_resource = SubResource("Resource_s8lqy")
 draw_limits = true

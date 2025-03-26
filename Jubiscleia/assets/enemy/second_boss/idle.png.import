@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bf657s2ge64aq"
-path="res://.godot/imported/walk.png-a4e1127f7f2666dcaa489ebcb94077a4.ctex"
+uid="uid://cy5027rcsq2gi"
+path="res://.godot/imported/idle.png-130a14362356624b5e375e94ee113b08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/enemy/first_boss/walk.png"
-dest_files=["res://.godot/imported/walk.png-a4e1127f7f2666dcaa489ebcb94077a4.ctex"]
+source_file="res://assets/enemy/second_boss/idle.png"
+dest_files=["res://.godot/imported/idle.png-130a14362356624b5e375e94ee113b08.ctex"]
 
 [params]
 
