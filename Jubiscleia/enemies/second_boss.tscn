@@ -170,10 +170,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_i1aye"]
 _data = {
-"RESET": SubResource("Animation_1uc0n"),
-"attack": SubResource("Animation_2vhyl"),
-"idle": SubResource("Animation_dap5e"),
-"walk": SubResource("Animation_0lrpn")
+&"RESET": SubResource("Animation_1uc0n"),
+&"attack": SubResource("Animation_2vhyl"),
+&"idle": SubResource("Animation_dap5e"),
+&"walk": SubResource("Animation_0lrpn")
 }
 
 [node name="second_boss" type="Node2D"]
@@ -181,7 +181,7 @@ _data = {
 [node name="animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../texture")
 libraries = {
-"": SubResource("AnimationLibrary_i1aye")
+&"": SubResource("AnimationLibrary_i1aye")
 }
 
 [node name="texture" type="Sprite2D" parent="."]

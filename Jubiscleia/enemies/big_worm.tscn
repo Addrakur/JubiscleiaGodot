@@ -1,18 +1,18 @@
 [gd_scene load_steps=28 format=3 uid="uid://crkl2utufgcrd"]
 
 [ext_resource type="Texture2D" uid="uid://csffgyii1wdoc" path="res://assets/enemy/banco_de_assets/big_worm/big_worm_walk.png" id="1_5i8uh"]
-[ext_resource type="Script" path="res://enemies/big_worm.gd" id="1_ls3a1"]
+[ext_resource type="Script" uid="uid://pgkf1hadiblw" path="res://enemies/big_worm.gd" id="1_ls3a1"]
 [ext_resource type="Texture2D" uid="uid://bgcosojsk2oqp" path="res://assets/enemy/banco_de_assets/big_worm/big_worm_attack.png" id="2_tqm0e"]
 [ext_resource type="Texture2D" uid="uid://bsuc0aaqqydsl" path="res://assets/enemy/banco_de_assets/big_worm/big_worm_hit.png" id="3_pev8j"]
-[ext_resource type="Script" path="res://Management/states/big_worm/big_worm_move.gd" id="3_v8eoo"]
+[ext_resource type="Script" uid="uid://d2ak2qh5fiwbt" path="res://Management/states/big_worm/big_worm_move.gd" id="3_v8eoo"]
 [ext_resource type="Texture2D" uid="uid://bdwd5vifbfho0" path="res://assets/enemy/banco_de_assets/big_worm/big_worm_death.png" id="4_oibm7"]
-[ext_resource type="Script" path="res://Management/states/big_worm/big_worm_idle.gd" id="4_wavyi"]
-[ext_resource type="Script" path="res://Management/states/state_machine.gd" id="5_1jltg"]
-[ext_resource type="Script" path="res://Management/states/big_worm/big_worm_attack.gd" id="5_ux2og"]
-[ext_resource type="Script" path="res://Management/states/big_worm/big_worm_hit.gd" id="6_0lll1"]
+[ext_resource type="Script" uid="uid://c0r5qxwcoqp82" path="res://Management/states/big_worm/big_worm_idle.gd" id="4_wavyi"]
+[ext_resource type="Script" uid="uid://ddf7tsdxe0rpy" path="res://Management/states/state_machine.gd" id="5_1jltg"]
+[ext_resource type="Script" uid="uid://6h3ye8rf7lw" path="res://Management/states/big_worm/big_worm_attack.gd" id="5_ux2og"]
+[ext_resource type="Script" uid="uid://33fognjd35a8" path="res://Management/states/big_worm/big_worm_hit.gd" id="6_0lll1"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="7_0dtaf"]
-[ext_resource type="Script" path="res://Management/states/big_worm/big_worm_death.gd" id="7_cyfq4"]
-[ext_resource type="Script" path="res://Management/states/state.gd" id="8_dlgf0"]
+[ext_resource type="Script" uid="uid://bhmyumnt1g7wr" path="res://Management/states/big_worm/big_worm_death.gd" id="7_cyfq4"]
+[ext_resource type="Script" uid="uid://daphi32qby7fe" path="res://Management/states/state.gd" id="8_dlgf0"]
 [ext_resource type="Texture2D" uid="uid://btmgn1pjl6ab7" path="res://assets/enemy/banco_de_assets/big_worm/big_worm_idle.png" id="8_f7rdg"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="8_iw5ih"]
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="16_mp118"]
@@ -414,12 +414,12 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lxcon"]
 _data = {
-"RESET": SubResource("Animation_g3fvp"),
-"attack": SubResource("Animation_1gsxd"),
-"death": SubResource("Animation_egqmp"),
-"hit": SubResource("Animation_qspdh"),
-"idle": SubResource("Animation_771wf"),
-"walk": SubResource("Animation_6fthp")
+&"RESET": SubResource("Animation_g3fvp"),
+&"attack": SubResource("Animation_1gsxd"),
+&"death": SubResource("Animation_egqmp"),
+&"hit": SubResource("Animation_qspdh"),
+&"idle": SubResource("Animation_771wf"),
+&"walk": SubResource("Animation_6fthp")
 }
 
 [sub_resource type="Animation" id="Animation_7xdyv"]
@@ -456,8 +456,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ochh1"]
 _data = {
-"RESET": SubResource("Animation_7xdyv"),
-"hit": SubResource("Animation_aia7n")
+&"RESET": SubResource("Animation_7xdyv"),
+&"hit": SubResource("Animation_aia7n")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_owbtl"]
@@ -480,12 +480,12 @@ hframes = 4
 [node name="Animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Texture")
 libraries = {
-"": SubResource("AnimationLibrary_lxcon")
+&"": SubResource("AnimationLibrary_lxcon")
 }
 
 [node name="HitModulate" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ochh1")
+&"": SubResource("AnimationLibrary_ochh1")
 }
 
 [node name="Collision" type="CollisionPolygon2D" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://7xqtkvl73d56"]
 
-[ext_resource type="Script" path="res://Management/checkpoint_weapon_change.gd" id="1_lyxpg"]
+[ext_resource type="Script" uid="uid://dlc2jdv4ubnoy" path="res://Management/checkpoint_weapon_change.gd" id="1_lyxpg"]
 
 [node name="checkpoint_weapon_change" type="CanvasLayer"]
 script = ExtResource("1_lyxpg")

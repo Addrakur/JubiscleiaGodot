@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bgtm18yxrdsdx"]
 
-[ext_resource type="Script" path="res://Management/CameraArea.gd" id="1_iubab"]
+[ext_resource type="Script" uid="uid://24twk8cdjcyi" path="res://Management/CameraArea.gd" id="1_iubab"]
 
 [node name="CameraArea" type="Area2D"]
 script = ExtResource("1_iubab")

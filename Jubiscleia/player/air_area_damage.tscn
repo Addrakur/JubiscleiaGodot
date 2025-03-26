@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtgqev2rsa5cb"]
 
-[ext_resource type="Script" path="res://player/air_area_damage.gd" id="1_j456x"]
+[ext_resource type="Script" uid="uid://cwibip4ct10tg" path="res://player/air_area_damage.gd" id="1_j456x"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hhrp3"]
 radius = 143.003

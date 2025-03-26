@@ -1,10 +1,10 @@
 [gd_scene load_steps=37 format=3 uid="uid://drbjtfhmgpum0"]
 
-[ext_resource type="Script" path="res://Management/Menu.gd" id="1_slu8i"]
+[ext_resource type="Script" uid="uid://crbph13qapiwe" path="res://Management/Menu.gd" id="1_slu8i"]
 [ext_resource type="Texture2D" uid="uid://bfuaipif3rr8" path="res://assets/UI/tutorial_button.png" id="2_b6hrv"]
 [ext_resource type="Texture2D" uid="uid://ymdypl2ibi2g" path="res://assets/UI/background.png" id="2_cpmcd"]
 [ext_resource type="Texture2D" uid="uid://dhdq5ackgb0e1" path="res://assets/UI/tutorial_button_selected.png" id="3_74m52"]
-[ext_resource type="Script" path="res://Management/parametro_linha_update.gd" id="3_vq8mx"]
+[ext_resource type="Script" uid="uid://c4714two8lm5t" path="res://Management/parametro_linha_update.gd" id="3_vq8mx"]
 [ext_resource type="Texture2D" uid="uid://csw7wk51p2rpu" path="res://assets/UI/arena_button.png" id="4_wcdt5"]
 [ext_resource type="Texture2D" uid="uid://ctmx5t7r53beb" path="res://assets/UI/arena_button_selected.png" id="5_1ssod"]
 [ext_resource type="Texture2D" uid="uid://wq8861meu5sr" path="res://assets/UI/level_1_button.png" id="6_7hd5p"]
@@ -92,10 +92,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bqw4q"]
 _data = {
-"RESET": SubResource("Animation_wgjs4"),
-"axe": SubResource("Animation_u20tr"),
-"spear": SubResource("Animation_5i1m6"),
-"sword": SubResource("Animation_nmfrv")
+&"RESET": SubResource("Animation_wgjs4"),
+&"axe": SubResource("Animation_u20tr"),
+&"spear": SubResource("Animation_5i1m6"),
+&"sword": SubResource("Animation_nmfrv")
 }
 
 [sub_resource type="Animation" id="Animation_rpuv8"]
@@ -163,10 +163,10 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8qqt8"]
 _data = {
-"RESET": SubResource("Animation_rpuv8"),
-"axe": SubResource("Animation_7innq"),
-"spear": SubResource("Animation_clk47"),
-"sword": SubResource("Animation_o2axp")
+&"RESET": SubResource("Animation_rpuv8"),
+&"axe": SubResource("Animation_7innq"),
+&"spear": SubResource("Animation_clk47"),
+&"sword": SubResource("Animation_o2axp")
 }
 
 [node name="Menu" type="Control" node_paths=PackedStringArray("weapon_1_buttons", "weapon_2_buttons")]
@@ -4768,12 +4768,12 @@ text = "Voltar"
 
 [node name="w1" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_bqw4q")
+&"": SubResource("AnimationLibrary_bqw4q")
 }
 
 [node name="w2" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_8qqt8")
+&"": SubResource("AnimationLibrary_8qqt8")
 }
 
 [node name="skill_tree" parent="." instance=ExtResource("26_y8r8k")]

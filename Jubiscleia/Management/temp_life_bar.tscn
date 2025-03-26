@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dscwkptjijmay" path="res://assets/UI/temp_life_bar_under.png" id="1_usdsh"]
 [ext_resource type="Texture2D" uid="uid://dslsuv7cdbpee" path="res://assets/UI/temp_life_bar_progress.png" id="2_k6haw"]
-[ext_resource type="Script" path="res://Management/temp_life_bar.gd" id="3_3ds3y"]
+[ext_resource type="Script" uid="uid://df1gn8q3qey2f" path="res://Management/temp_life_bar.gd" id="3_3ds3y"]
 
 [node name="TextureProgressBar" type="TextureProgressBar"]
 anchors_preset = 8

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cbkmdf5fph8mt"]
 
-[ext_resource type="Script" path="res://enemies/turret.gd" id="1_odvsp"]
+[ext_resource type="Script" uid="uid://d28lypiglb7vw" path="res://enemies/turret.gd" id="1_odvsp"]
 [ext_resource type="Texture2D" uid="uid://law62h0uiqjx" path="res://assets/enemy/turret/turret.png" id="2_kataa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1p62m"]

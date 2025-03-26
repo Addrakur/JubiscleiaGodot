@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dn5fvjmd2ewpb"]
 
 [ext_resource type="Texture2D" uid="uid://ngcoaln4lo25" path="res://assets/enemy/sniper_enemy/sniper_enemy_projectile.png" id="1_47tyk"]
-[ext_resource type="Script" path="res://enemies/sniper_enemy_projectile.gd" id="1_b5fmj"]
+[ext_resource type="Script" uid="uid://g8mt7xmbu0kw" path="res://enemies/sniper_enemy_projectile.gd" id="1_b5fmj"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_ldot1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2evnq"]

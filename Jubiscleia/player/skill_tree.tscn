@@ -1,6 +1,6 @@
 [gd_scene load_steps=41 format=3 uid="uid://cneih5yhue5ap"]
 
-[ext_resource type="Script" path="res://player/skill_tree.gd" id="1_eikrr"]
+[ext_resource type="Script" uid="uid://bkcubo6hcbq1y" path="res://player/skill_tree.gd" id="1_eikrr"]
 [ext_resource type="PackedScene" uid="uid://dfru6bt5m86fd" path="res://Management/upgrade_button.tscn" id="1_k8erm"]
 [ext_resource type="Texture2D" uid="uid://d1hvu462x74ih" path="res://assets/UI/skill_tree/base_upgrades/dash_cd_not_pressed.png" id="2_j78d3"]
 [ext_resource type="Texture2D" uid="uid://dixqyeq4oal86" path="res://assets/UI/skill_tree/base_upgrades/dash_cd_pressed.png" id="3_bk053"]

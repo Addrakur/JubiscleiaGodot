@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dujgxpnuckrha"]
 
-[ext_resource type="Script" path="res://Management/tween_area.gd" id="1_b0u5u"]
+[ext_resource type="Script" uid="uid://cbnbm7oc5ijiu" path="res://Management/tween_area.gd" id="1_b0u5u"]
 
 [node name="TweenArea" type="Area2D"]
 script = ExtResource("1_b0u5u")

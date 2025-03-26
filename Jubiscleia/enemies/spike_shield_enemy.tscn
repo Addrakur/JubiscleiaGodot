@@ -1,21 +1,21 @@
 [gd_scene load_steps=32 format=3 uid="uid://daabvpmmaefaf"]
 
 [ext_resource type="Texture2D" uid="uid://cfk40b7vx8e7h" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_walk.png" id="1_j8oj4"]
-[ext_resource type="Script" path="res://enemies/spike_shield_enemy.gd" id="1_jys8c"]
+[ext_resource type="Script" uid="uid://k4dj66yl2ck7" path="res://enemies/spike_shield_enemy.gd" id="1_jys8c"]
 [ext_resource type="Texture2D" uid="uid://bpmiq3wodevxo" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_idle.png" id="2_grvos"]
 [ext_resource type="Texture2D" uid="uid://bsx046yhihnx0" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_attack.png" id="3_mdd8t"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="4_6roo1"]
-[ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_walk.gd" id="4_begci"]
-[ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_attack.gd" id="5_8ncuv"]
-[ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_turn.gd" id="6_v2cu5"]
+[ext_resource type="Script" uid="uid://dp2maa5exfltp" path="res://Management/states/spike_shield/spike_shield_walk.gd" id="4_begci"]
+[ext_resource type="Script" uid="uid://dg7bp8j54fpt" path="res://Management/states/spike_shield/spike_shield_attack.gd" id="5_8ncuv"]
+[ext_resource type="Script" uid="uid://b3rparjkevccr" path="res://Management/states/spike_shield/spike_shield_turn.gd" id="6_v2cu5"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="7_7f32w"]
-[ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_idle.gd" id="7_h2e6f"]
+[ext_resource type="Script" uid="uid://b2rycjbkqr8ec" path="res://Management/states/spike_shield/spike_shield_idle.gd" id="7_h2e6f"]
 [ext_resource type="Texture2D" uid="uid://t0rbfgr0bg02" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_hit.png" id="7_v4sg3"]
 [ext_resource type="Texture2D" uid="uid://cn3y5ip3xufci" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_death.png" id="8_4sxjj"]
 [ext_resource type="Texture2D" uid="uid://b34413yxf1760" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_turn.png" id="10_wy2kl"]
 [ext_resource type="Texture2D" uid="uid://d4dcheggmc7xu" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_turn_attack.png" id="11_qkqfi"]
-[ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_hit.gd" id="13_hpytp"]
-[ext_resource type="Script" path="res://Management/states/spike_shield/spike_shield_death.gd" id="15_w4p7o"]
+[ext_resource type="Script" uid="uid://cmwq77s8ybres" path="res://Management/states/spike_shield/spike_shield_hit.gd" id="13_hpytp"]
+[ext_resource type="Script" uid="uid://dadnqfkgee0e6" path="res://Management/states/spike_shield/spike_shield_death.gd" id="15_w4p7o"]
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="17_thh6s"]
 
 [sub_resource type="Animation" id="Animation_tdskv"]
@@ -560,14 +560,14 @@ tracks/5/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_db5ga"]
 _data = {
-"RESET": SubResource("Animation_tdskv"),
-"attack": SubResource("Animation_7negd"),
-"dead": SubResource("Animation_akvdf"),
-"hit": SubResource("Animation_00gt0"),
-"idle": SubResource("Animation_re4ci"),
-"turn": SubResource("Animation_7afq0"),
-"turn_attack": SubResource("Animation_fisxc"),
-"walk": SubResource("Animation_4xin1")
+&"RESET": SubResource("Animation_tdskv"),
+&"attack": SubResource("Animation_7negd"),
+&"dead": SubResource("Animation_akvdf"),
+&"hit": SubResource("Animation_00gt0"),
+&"idle": SubResource("Animation_re4ci"),
+&"turn": SubResource("Animation_7afq0"),
+&"turn_attack": SubResource("Animation_fisxc"),
+&"walk": SubResource("Animation_4xin1")
 }
 
 [sub_resource type="Animation" id="Animation_vaxkp"]
@@ -621,9 +621,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xov44"]
 _data = {
-"RESET": SubResource("Animation_vaxkp"),
-"defending": SubResource("Animation_gpl13"),
-"hit": SubResource("Animation_xjmkf")
+&"RESET": SubResource("Animation_vaxkp"),
+&"defending": SubResource("Animation_gpl13"),
+&"hit": SubResource("Animation_xjmkf")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0ydax"]

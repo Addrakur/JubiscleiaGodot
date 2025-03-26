@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dseb6ginyey2r"]
 
-[ext_resource type="Script" path="res://Management/elemental_orb.gd" id="1_2k52p"]
+[ext_resource type="Script" uid="uid://n10od2stw3uq" path="res://Management/elemental_orb.gd" id="1_2k52p"]
 [ext_resource type="Texture2D" uid="uid://cis27bwcdnqfy" path="res://assets/elemental_orbs/air_orb.png" id="1_2u8a6"]
 [ext_resource type="Texture2D" uid="uid://yhf4r6yeoi5h" path="res://assets/elemental_orbs/earth_orb.png" id="2_hbs1q"]
 [ext_resource type="Texture2D" uid="uid://bq78grrkom1fj" path="res://assets/elemental_orbs/fire_orb.png" id="3_oevdq"]
@@ -91,11 +91,11 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aexts"]
 _data = {
-"RESET": SubResource("Animation_g8wyd"),
-"air": SubResource("Animation_22ygb"),
-"earth": SubResource("Animation_xqtaj"),
-"fire": SubResource("Animation_64hnc"),
-"water": SubResource("Animation_pfmfb")
+&"RESET": SubResource("Animation_g8wyd"),
+&"air": SubResource("Animation_22ygb"),
+&"earth": SubResource("Animation_xqtaj"),
+&"fire": SubResource("Animation_64hnc"),
+&"water": SubResource("Animation_pfmfb")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wk365"]

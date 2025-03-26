@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://b7fccbrl06aa5"]
 
-[ext_resource type="Script" path="res://levels/enemy_spawn.gd" id="1_vxepv"]
+[ext_resource type="Script" uid="uid://blculs8hcxaq" path="res://levels/enemy_spawn.gd" id="1_vxepv"]
 [ext_resource type="Texture2D" uid="uid://duo0b6w5ol3fa" path="res://assets/enemy/Miniature/moldura.png" id="2_eqmri"]
 [ext_resource type="Texture2D" uid="uid://jq1h0qoa800l" path="res://assets/enemy/Miniature/big_worm.png" id="3_pu6lx"]
 [ext_resource type="Texture2D" uid="uid://f44dmq113jpt" path="res://assets/enemy/Miniature/kitsune.png" id="4_vouvs"]
@@ -192,17 +192,17 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sna2n"]
 _data = {
-"RESET": SubResource("Animation_j6t8w"),
-"aereal_suicide_enemy": SubResource("Animation_uoof5"),
-"big_worm": SubResource("Animation_m0hgs"),
-"cooldown": SubResource("Animation_y6i8p"),
-"kitsune": SubResource("Animation_hijfk"),
-"scorpion": SubResource("Animation_7k3x0"),
-"snake": SubResource("Animation_08oxq"),
-"sniper_enemy": SubResource("Animation_2sh4g"),
-"spear_skeleton": SubResource("Animation_6sdmu"),
-"spike_shield_enemy": SubResource("Animation_4bw4c"),
-"sword_skeleton": SubResource("Animation_k4uyw")
+&"RESET": SubResource("Animation_j6t8w"),
+&"aereal_suicide_enemy": SubResource("Animation_uoof5"),
+&"big_worm": SubResource("Animation_m0hgs"),
+&"cooldown": SubResource("Animation_y6i8p"),
+&"kitsune": SubResource("Animation_hijfk"),
+&"scorpion": SubResource("Animation_7k3x0"),
+&"snake": SubResource("Animation_08oxq"),
+&"sniper_enemy": SubResource("Animation_2sh4g"),
+&"spear_skeleton": SubResource("Animation_6sdmu"),
+&"spike_shield_enemy": SubResource("Animation_4bw4c"),
+&"sword_skeleton": SubResource("Animation_k4uyw")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22y4h"]

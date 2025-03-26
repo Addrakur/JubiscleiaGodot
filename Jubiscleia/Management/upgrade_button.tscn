@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dfru6bt5m86fd"]
 
-[ext_resource type="Script" path="res://Management/upgrade_button.gd" id="1_sei5x"]
+[ext_resource type="Script" uid="uid://dk74sdebesd0x" path="res://Management/upgrade_button.gd" id="1_sei5x"]
 [ext_resource type="Texture2D" uid="uid://dk1bknall62aj" path="res://assets/UI/skill_tree/can_upgrade_button.png" id="1_ta47n"]
 [ext_resource type="Texture2D" uid="uid://bi6i1blywhqbr" path="res://assets/UI/skill_tree/upgraded_button.png" id="2_t5arh"]
 [ext_resource type="Texture2D" uid="uid://bh0fo5wjh2lk5" path="res://assets/UI/skill_tree/disabled_button.png" id="3_4d8gr"]

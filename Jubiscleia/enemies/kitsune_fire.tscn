@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://yanv3o3h073d"]
 
-[ext_resource type="Script" path="res://enemies/kitsune_fire.gd" id="1_l5oui"]
+[ext_resource type="Script" uid="uid://365iyjxn4iv1" path="res://enemies/kitsune_fire.gd" id="1_l5oui"]
 [ext_resource type="Texture2D" uid="uid://mc7wrwn0rtnr" path="res://assets/enemy/banco_de_assets/kitsune/Fire_1.png" id="1_ok66x"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="1_y1jhn"]
 [ext_resource type="Texture2D" uid="uid://bx8x53p7gfcpq" path="res://assets/enemy/banco_de_assets/kitsune/Kitsune_Short_Attack_finish.png" id="4_645gs"]
@@ -519,11 +519,11 @@ tracks/10/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tlo37"]
 _data = {
-"1": SubResource("Animation_tu6m3"),
-"1_finish": SubResource("Animation_mgdjv"),
-"2": SubResource("Animation_ymklh"),
-"2_finish": SubResource("Animation_3cq1p"),
-"RESET": SubResource("Animation_ve5rw")
+&"1": SubResource("Animation_tu6m3"),
+&"1_finish": SubResource("Animation_mgdjv"),
+&"2": SubResource("Animation_ymklh"),
+&"2_finish": SubResource("Animation_3cq1p"),
+&"RESET": SubResource("Animation_ve5rw")
 }
 
 [node name="kitsune_fire" type="Node2D" groups=["projectile"]]

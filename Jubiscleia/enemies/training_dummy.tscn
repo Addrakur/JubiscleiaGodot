@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://d0p48v5hp6sq" path="res://assets/enemy/Training_Dummy/idle.png" id="1_hqlgo"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="1_oll5j"]
-[ext_resource type="Script" path="res://enemies/training_dummy.gd" id="1_qe621"]
+[ext_resource type="Script" uid="uid://cb2amts3jwxoi" path="res://enemies/training_dummy.gd" id="1_qe621"]
 [ext_resource type="Texture2D" uid="uid://3w6i4v4e8dmt" path="res://assets/enemy/Training_Dummy/hit.png" id="2_8cwij"]
-[ext_resource type="Script" path="res://Management/states/state_machine.gd" id="5_y00kf"]
-[ext_resource type="Script" path="res://Management/states/dummy/dummy_idle_state.gd" id="6_lym3a"]
-[ext_resource type="Script" path="res://Management/states/dummy/dummy_hit_state.gd" id="7_gb8br"]
-[ext_resource type="Script" path="res://Management/states/state.gd" id="8_psoes"]
+[ext_resource type="Script" uid="uid://ddf7tsdxe0rpy" path="res://Management/states/state_machine.gd" id="5_y00kf"]
+[ext_resource type="Script" uid="uid://cjnxt1bk1vtf5" path="res://Management/states/dummy/dummy_idle_state.gd" id="6_lym3a"]
+[ext_resource type="Script" uid="uid://84sphjl13l0a" path="res://Management/states/dummy/dummy_hit_state.gd" id="7_gb8br"]
+[ext_resource type="Script" uid="uid://daphi32qby7fe" path="res://Management/states/state.gd" id="8_psoes"]
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="9_kohpx"]
 
 [sub_resource type="Animation" id="Animation_s2a12"]
@@ -44,8 +44,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_u1g37"]
 _data = {
-"RESET": SubResource("Animation_s2a12"),
-"hit": SubResource("Animation_h3ndm")
+&"RESET": SubResource("Animation_s2a12"),
+&"hit": SubResource("Animation_h3ndm")
 }
 
 [sub_resource type="Animation" id="Animation_eyvg0"]
@@ -170,9 +170,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3wacu"]
 _data = {
-"RESET": SubResource("Animation_eyvg0"),
-"hit": SubResource("Animation_f0p8h"),
-"idle": SubResource("Animation_8b45t")
+&"RESET": SubResource("Animation_eyvg0"),
+&"hit": SubResource("Animation_f0p8h"),
+&"idle": SubResource("Animation_8b45t")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3o0gp"]

@@ -1,11 +1,11 @@
 [gd_scene load_steps=42 format=3 uid="uid://3f7lr15bhlyx"]
 
 [ext_resource type="Texture2D" uid="uid://cb0yftlo5iyws" path="res://assets/enemy/banco_de_assets/sword_skeleton/Idle.png" id="1_4i5gc"]
-[ext_resource type="Script" path="res://enemies/sword_skeleton.gd" id="1_gupx0"]
+[ext_resource type="Script" uid="uid://b7ardppw8h13o" path="res://enemies/sword_skeleton.gd" id="1_gupx0"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="1_uam10"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_3g66j"]
 [ext_resource type="Texture2D" uid="uid://c8570meofudqi" path="res://assets/enemy/banco_de_assets/sword_skeleton/Walk.png" id="2_gfhu8"]
-[ext_resource type="Script" path="res://Management/states/state_machine.gd" id="3_ogvwr"]
+[ext_resource type="Script" uid="uid://ddf7tsdxe0rpy" path="res://Management/states/state_machine.gd" id="3_ogvwr"]
 [ext_resource type="Texture2D" uid="uid://p314w11fsjgd" path="res://assets/enemy/banco_de_assets/sword_skeleton/run.png" id="3_rgime"]
 [ext_resource type="Texture2D" uid="uid://bkma344oyl2ch" path="res://assets/enemy/banco_de_assets/sword_skeleton/run_attack.png" id="4_cg1yv"]
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="4_x53xa"]
@@ -15,14 +15,14 @@
 [ext_resource type="Texture2D" uid="uid://c8oi0rubryrr3" path="res://assets/enemy/banco_de_assets/sword_skeleton/Attack_1.png" id="8_yay3t"]
 [ext_resource type="Texture2D" uid="uid://chxa2or8ubawm" path="res://assets/enemy/banco_de_assets/sword_skeleton/Attack_2.png" id="9_aonpa"]
 [ext_resource type="Texture2D" uid="uid://brgf7bpvvbsxe" path="res://assets/enemy/banco_de_assets/sword_skeleton/Attack_3.png" id="10_p3uu5"]
-[ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_hit.gd" id="15_urcig"]
-[ext_resource type="Script" path="res://Management/states/state.gd" id="16_p3k75"]
-[ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_idle.gd" id="17_shncf"]
-[ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_walk.gd" id="18_nijjx"]
-[ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_run.gd" id="18_s3ijb"]
-[ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_attack.gd" id="20_famnf"]
-[ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_death.gd" id="21_ikto8"]
-[ext_resource type="Script" path="res://Management/states/sword_skeleton/sword_skeleton_protect.gd" id="22_j1eg1"]
+[ext_resource type="Script" uid="uid://d1vku220kvvaf" path="res://Management/states/sword_skeleton/sword_skeleton_hit.gd" id="15_urcig"]
+[ext_resource type="Script" uid="uid://daphi32qby7fe" path="res://Management/states/state.gd" id="16_p3k75"]
+[ext_resource type="Script" uid="uid://bbt5pfdxffx5t" path="res://Management/states/sword_skeleton/sword_skeleton_idle.gd" id="17_shncf"]
+[ext_resource type="Script" uid="uid://c2ke2ekd2avdn" path="res://Management/states/sword_skeleton/sword_skeleton_walk.gd" id="18_nijjx"]
+[ext_resource type="Script" uid="uid://c852261qii070" path="res://Management/states/sword_skeleton/sword_skeleton_run.gd" id="18_s3ijb"]
+[ext_resource type="Script" uid="uid://cvlaw2j687xit" path="res://Management/states/sword_skeleton/sword_skeleton_attack.gd" id="20_famnf"]
+[ext_resource type="Script" uid="uid://cwy6q6i8r3gt2" path="res://Management/states/sword_skeleton/sword_skeleton_death.gd" id="21_ikto8"]
+[ext_resource type="Script" uid="uid://7toin3ftwfx4" path="res://Management/states/sword_skeleton/sword_skeleton_protect.gd" id="22_j1eg1"]
 
 [sub_resource type="Animation" id="Animation_fp2sw"]
 length = 0.001
@@ -656,17 +656,17 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rre1u"]
 _data = {
-"RESET": SubResource("Animation_fp2sw"),
-"attack_1": SubResource("Animation_fnrbp"),
-"attack_2": SubResource("Animation_shm3s"),
-"attack_3": SubResource("Animation_gwcyk"),
-"dead": SubResource("Animation_728dh"),
-"hit": SubResource("Animation_u2721"),
-"idle": SubResource("Animation_lidb7"),
-"protect": SubResource("Animation_aa8ry"),
-"run": SubResource("Animation_43e6k"),
-"run_attack": SubResource("Animation_2eypl"),
-"walk": SubResource("Animation_ghpta")
+&"RESET": SubResource("Animation_fp2sw"),
+&"attack_1": SubResource("Animation_fnrbp"),
+&"attack_2": SubResource("Animation_shm3s"),
+&"attack_3": SubResource("Animation_gwcyk"),
+&"dead": SubResource("Animation_728dh"),
+&"hit": SubResource("Animation_u2721"),
+&"idle": SubResource("Animation_lidb7"),
+&"protect": SubResource("Animation_aa8ry"),
+&"run": SubResource("Animation_43e6k"),
+&"run_attack": SubResource("Animation_2eypl"),
+&"walk": SubResource("Animation_ghpta")
 }
 
 [sub_resource type="Animation" id="Animation_0x2dl"]
@@ -720,9 +720,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xijdb"]
 _data = {
-"RESET": SubResource("Animation_0x2dl"),
-"defending": SubResource("Animation_gg2rm"),
-"hit": SubResource("Animation_ecgxx")
+&"RESET": SubResource("Animation_0x2dl"),
+&"defending": SubResource("Animation_gg2rm"),
+&"hit": SubResource("Animation_ecgxx")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d52rv"]

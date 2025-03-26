@@ -1,13 +1,13 @@
 [gd_scene load_steps=21 format=3 uid="uid://dig4ptur76dp0"]
 
-[ext_resource type="Script" path="res://Management/interface.gd" id="1_eph77"]
+[ext_resource type="Script" uid="uid://cfx2aijo5004d" path="res://Management/interface.gd" id="1_eph77"]
 [ext_resource type="Texture2D" uid="uid://crsh1ujf8cohx" path="res://assets/player/life_bar_under.png" id="2_5se83"]
 [ext_resource type="Texture2D" uid="uid://dq37r74cyg4tn" path="res://assets/player/life_bar_over.png" id="3_70njx"]
 [ext_resource type="Texture2D" uid="uid://bu7vc6e5msmh8" path="res://assets/player/spear_1.png" id="4_78eoq"]
 [ext_resource type="Texture2D" uid="uid://chkbjnsjrax07" path="res://assets/player/life_bar_progress.png" id="4_b7pk7"]
 [ext_resource type="Texture2D" uid="uid://06akw4qokdsm" path="res://assets/player/axe_1.png" id="5_lwd1g"]
 [ext_resource type="Texture2D" uid="uid://mkynrk6rt2yn" path="res://assets/player/axe_2.png" id="6_7hyyx"]
-[ext_resource type="Script" path="res://Management/weapon_texture_change.gd" id="6_rt343"]
+[ext_resource type="Script" uid="uid://hl0s1y41xwbr" path="res://Management/weapon_texture_change.gd" id="6_rt343"]
 [ext_resource type="Texture2D" uid="uid://cnp6vltt0x06k" path="res://assets/player/sword_1.png" id="8_emdjm"]
 [ext_resource type="Texture2D" uid="uid://dm0dnkoi8077y" path="res://assets/player/spear_2.png" id="8_lppqw"]
 [ext_resource type="Texture2D" uid="uid://n386rxxp1ule" path="res://assets/player/sword_2.png" id="9_1d1sw"]
@@ -138,13 +138,13 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s0x3m"]
 _data = {
-"RESET": SubResource("Animation_ugsmb"),
-"axe_1": SubResource("Animation_smxjy"),
-"axe_2": SubResource("Animation_hhuuh"),
-"spear_1": SubResource("Animation_fhtdm"),
-"spear_2": SubResource("Animation_3dsra"),
-"sword_1": SubResource("Animation_pn3vd"),
-"sword_2": SubResource("Animation_3u3q0")
+&"RESET": SubResource("Animation_ugsmb"),
+&"axe_1": SubResource("Animation_smxjy"),
+&"axe_2": SubResource("Animation_hhuuh"),
+&"spear_1": SubResource("Animation_fhtdm"),
+&"spear_2": SubResource("Animation_3dsra"),
+&"sword_1": SubResource("Animation_pn3vd"),
+&"sword_2": SubResource("Animation_3u3q0")
 }
 
 [node name="Interface" type="CanvasLayer"]

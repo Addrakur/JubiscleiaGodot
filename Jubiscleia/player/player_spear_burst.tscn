@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://btrcejwrif42t"]
 
-[ext_resource type="Script" path="res://player/player_spear_burst.gd" id="1_rts2k"]
+[ext_resource type="Script" uid="uid://dfibllqj7kdqi" path="res://player/player_spear_burst.gd" id="1_rts2k"]
 [ext_resource type="Texture2D" uid="uid://5nx7isr8eqbc" path="res://assets/player/Ataques/Lanca/C1/burst_1_2.png" id="3_1l4px"]
 [ext_resource type="Texture2D" uid="uid://cmxdc3jl8oivb" path="res://assets/player/Ataques/Lanca/C2/burst_2_2.png" id="4_7dl57"]
 [ext_resource type="Texture2D" uid="uid://bk4yfmxpyjjoc" path="res://assets/player/Ataques/Lanca/C0/Lanca_0_2_burst.png" id="5_qrgs6"]
@@ -199,11 +199,11 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6np2i"]
 _data = {
-"RESET": SubResource("Animation_5lfdb"),
-"spear_0_2": SubResource("Animation_25id6"),
-"spear_1_2": SubResource("Animation_555qu"),
-"spear_2_2": SubResource("Animation_3ntxy"),
-"spear_3_2": SubResource("Animation_uii6v")
+&"RESET": SubResource("Animation_5lfdb"),
+&"spear_0_2": SubResource("Animation_25id6"),
+&"spear_1_2": SubResource("Animation_555qu"),
+&"spear_2_2": SubResource("Animation_3ntxy"),
+&"spear_3_2": SubResource("Animation_uii6v")
 }
 
 [node name="spear_burst" type="Node2D" node_paths=PackedStringArray("animation", "texture") groups=["player_object"]]

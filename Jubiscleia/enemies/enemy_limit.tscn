@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cv8owgy7v2lhb"]
 
-[ext_resource type="Script" path="res://enemies/Limit.gd" id="1_l4xsx"]
+[ext_resource type="Script" uid="uid://bnfm6j6hkmq23" path="res://enemies/Limit.gd" id="1_l4xsx"]
 
 [node name="Limit" type="Area2D"]
 collision_layer = 0

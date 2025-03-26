@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://bb2cdotqvfh4g"]
 
-[ext_resource type="Script" path="res://enemies/bee.gd" id="1_khtff"]
+[ext_resource type="Script" uid="uid://ddv55jtvrbdmi" path="res://enemies/bee.gd" id="1_khtff"]
 [ext_resource type="Texture2D" uid="uid://cmctdooj6fqif" path="res://assets/enemy/turret/projectile.png" id="2_cs6qf"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="3_fwunx"]
 

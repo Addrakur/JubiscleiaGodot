@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://c6bru2j5dj7cf"]
 
 [ext_resource type="Texture2D" uid="uid://cgvap5872e5xy" path="res://assets/player/element_meter/water_under.png" id="1_3duso"]
-[ext_resource type="Script" path="res://player/element_meter.gd" id="1_w13jx"]
+[ext_resource type="Script" uid="uid://l44rj1vfqnm7" path="res://player/element_meter.gd" id="1_w13jx"]
 [ext_resource type="Texture2D" uid="uid://b6cwvkmshtrwt" path="res://assets/player/element_meter/water_progress.png" id="2_qjhib"]
 [ext_resource type="Texture2D" uid="uid://18t1xh22wmsg" path="res://assets/player/element_meter/air_under.png" id="3_hfesu"]
 [ext_resource type="Texture2D" uid="uid://ht40vmmgty7k" path="res://assets/player/element_meter/air_progress.png" id="4_ku7cd"]
@@ -151,11 +151,11 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4ee0e"]
 _data = {
-"RESET": SubResource("Animation_hoxds"),
-"air": SubResource("Animation_0flvh"),
-"earth": SubResource("Animation_rbf0g"),
-"fire": SubResource("Animation_t5tib"),
-"water": SubResource("Animation_csq4e")
+&"RESET": SubResource("Animation_hoxds"),
+&"air": SubResource("Animation_0flvh"),
+&"earth": SubResource("Animation_rbf0g"),
+&"fire": SubResource("Animation_t5tib"),
+&"water": SubResource("Animation_csq4e")
 }
 
 [node name="element_meter" type="Control"]

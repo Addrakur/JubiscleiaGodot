@@ -1,6 +1,6 @@
 [gd_scene load_steps=94 format=3 uid="uid://cyum4hvfs7wnh"]
 
-[ext_resource type="Script" path="res://player/player.gd" id="1_5lux4"]
+[ext_resource type="Script" uid="uid://cvl15g6x6hrij" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_tuo6g"]
 [ext_resource type="Texture2D" uid="uid://sdcuoq736vyl" path="res://assets/player/banco_de_assets/player_fall.png" id="5_bu6v8"]
 [ext_resource type="Texture2D" uid="uid://kqbay724xnxt" path="res://assets/player/banco_de_assets/player_hit.png" id="6_buhst"]
@@ -8,29 +8,29 @@
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="9_6bxkt"]
 [ext_resource type="PackedScene" uid="uid://dig4ptur76dp0" path="res://Management/interface.tscn" id="9_181sd"]
 [ext_resource type="PackedScene" uid="uid://c38p3p0grwy4a" path="res://Management/pause_menu.tscn" id="10_yhe3o"]
-[ext_resource type="Script" path="res://Management/states/state_machine.gd" id="12_8y4yw"]
+[ext_resource type="Script" uid="uid://ddf7tsdxe0rpy" path="res://Management/states/state_machine.gd" id="12_8y4yw"]
 [ext_resource type="Texture2D" uid="uid://taqvn8kcxrob" path="res://assets/player/banco_de_assets/player_death.png" id="12_sohuu"]
-[ext_resource type="Script" path="res://Management/states/player/movement/player_idle.gd" id="13_8i2bm"]
-[ext_resource type="Script" path="res://Management/states/player/movement/player_move.gd" id="14_nnfso"]
-[ext_resource type="Script" path="res://Management/states/player/movement/player_dash.gd" id="15_6875b"]
-[ext_resource type="Script" path="res://Management/states/player/movement/player_jump.gd" id="15_dnbrn"]
-[ext_resource type="Script" path="res://Management/states/state.gd" id="16_hy8fg"]
-[ext_resource type="Script" path="res://Management/states/player/movement/player_fall.gd" id="16_xs1j5"]
+[ext_resource type="Script" uid="uid://2ht2x51jaowj" path="res://Management/states/player/movement/player_idle.gd" id="13_8i2bm"]
+[ext_resource type="Script" uid="uid://b7vd4s1ht6v3w" path="res://Management/states/player/movement/player_move.gd" id="14_nnfso"]
+[ext_resource type="Script" uid="uid://dqih603tltmqw" path="res://Management/states/player/movement/player_dash.gd" id="15_6875b"]
+[ext_resource type="Script" uid="uid://ddawi8xotaior" path="res://Management/states/player/movement/player_jump.gd" id="15_dnbrn"]
+[ext_resource type="Script" uid="uid://daphi32qby7fe" path="res://Management/states/state.gd" id="16_hy8fg"]
+[ext_resource type="Script" uid="uid://c8cd1vcncpb7o" path="res://Management/states/player/movement/player_fall.gd" id="16_xs1j5"]
 [ext_resource type="Texture2D" uid="uid://c6t14wadfcujm" path="res://assets/player/corruption_aura/complete_aura_level_1.png" id="17_7bh1j"]
-[ext_resource type="Script" path="res://Management/states/player/movement/player_wall_grab.gd" id="17_dwjry"]
-[ext_resource type="Script" path="res://Management/states/player/movement/player_double_jump.gd" id="17_ywk3g"]
-[ext_resource type="Script" path="res://Management/states/player/movement/player_crouch.gd" id="18_ia5tc"]
+[ext_resource type="Script" uid="uid://h8segw6wmllx" path="res://Management/states/player/movement/player_wall_grab.gd" id="17_dwjry"]
+[ext_resource type="Script" uid="uid://d123uy5peyjvc" path="res://Management/states/player/movement/player_double_jump.gd" id="17_ywk3g"]
+[ext_resource type="Script" uid="uid://ctrsbnsvwwofe" path="res://Management/states/player/movement/player_crouch.gd" id="18_ia5tc"]
 [ext_resource type="Texture2D" uid="uid://rpagcg4joje8" path="res://assets/player/Ataques/Machado/C0/air_attack/axe_air_wind_up_0.png" id="18_oa50r"]
-[ext_resource type="Script" path="res://Management/states/player/movement/player_hit.gd" id="23_j7sbs"]
-[ext_resource type="Script" path="res://Management/states/player/movement/player_death.gd" id="25_wysx4"]
+[ext_resource type="Script" uid="uid://catwnrvph2ekx" path="res://Management/states/player/movement/player_hit.gd" id="23_j7sbs"]
+[ext_resource type="Script" uid="uid://byvis0304a4l6" path="res://Management/states/player/movement/player_death.gd" id="25_wysx4"]
 [ext_resource type="Texture2D" uid="uid://b1l8jqfpsuir2" path="res://assets/player/movimentcoes/player_crouch.png" id="27_dtffl"]
 [ext_resource type="Texture2D" uid="uid://dk8jsffb5xsyl" path="res://assets/player/movimentcoes/player_dash.png" id="28_1k77c"]
-[ext_resource type="Script" path="res://Management/states/player/attacks/jump_attack.gd" id="38_vuiip"]
+[ext_resource type="Script" uid="uid://btyktfuqdpur1" path="res://Management/states/player/attacks/jump_attack.gd" id="38_vuiip"]
 [ext_resource type="Texture2D" uid="uid://c6v311lo5jggt" path="res://assets/player/movimentcoes/player_idle.png" id="39_gjx6q"]
-[ext_resource type="Script" path="res://Management/states/player/attacks/attack_1.gd" id="41_621kb"]
+[ext_resource type="Script" uid="uid://bgiivkcw31ljh" path="res://Management/states/player/attacks/attack_1.gd" id="41_621kb"]
 [ext_resource type="Texture2D" uid="uid://dboexykbv3xkm" path="res://assets/player/movimentcoes/player_run.png" id="41_atgjq"]
-[ext_resource type="Script" path="res://Management/states/player/attacks/attack_2.gd" id="42_ebned"]
-[ext_resource type="Script" path="res://Management/states/player/attacks/attack_3.gd" id="43_nthil"]
+[ext_resource type="Script" uid="uid://bge7psdvnyi3q" path="res://Management/states/player/attacks/attack_2.gd" id="42_ebned"]
+[ext_resource type="Script" uid="uid://bevjydkrvetfu" path="res://Management/states/player/attacks/attack_3.gd" id="43_nthil"]
 [ext_resource type="Texture2D" uid="uid://cq8jutrwen08y" path="res://assets/player/Ataques/Espada/C0/sword_0_1.png" id="49_26le7"]
 [ext_resource type="Texture2D" uid="uid://cx6nyut6vcret" path="res://assets/player/corruption_aura/complete_aura_level_2.png" id="49_80rfq"]
 [ext_resource type="Texture2D" uid="uid://1ypywgu38i7e" path="res://assets/player/corruption_aura/complete_aura_level_3.png" id="50_2f1dk"]
@@ -50,8 +50,8 @@
 [ext_resource type="Texture2D" uid="uid://jttbrn378kor" path="res://assets/player/Ataques/Machado/C0/air_attack/axe_air_wind_down_0.png" id="69_puoao"]
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="79_cj1s4"]
 [ext_resource type="Texture2D" uid="uid://c5yaidf3lljwg" path="res://assets/player/corruption_aura/complete_aura_level_0.png" id="90_fjhwm"]
-[ext_resource type="Script" path="res://player/element_manager.gd" id="94_8uuoj"]
-[ext_resource type="Script" path="res://player/camera.gd" id="95_v1sao"]
+[ext_resource type="Script" uid="uid://c2qnadiycmxx3" path="res://player/element_manager.gd" id="94_8uuoj"]
+[ext_resource type="Script" uid="uid://rdmps2ntmg5a" path="res://player/camera.gd" id="95_v1sao"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ar5uo"]
 size = Vector2(15, 28)
@@ -2192,30 +2192,30 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ofbi6"]
 _data = {
-"RESET": SubResource("Animation_115di"),
-"axe_1": SubResource("Animation_t3v43"),
-"axe_2": SubResource("Animation_7mvq4"),
-"axe_3": SubResource("Animation_n7ymw"),
-"axe_jump": SubResource("Animation_w1xyu"),
-"axe_jump_loop": SubResource("Animation_l5mc6"),
-"axe_jump_wind_down": SubResource("Animation_v356d"),
-"crouch": SubResource("Animation_4nan0"),
-"dash": SubResource("Animation_6pvof"),
-"dead": SubResource("Animation_kx8rs"),
-"fall": SubResource("Animation_c2tqs"),
-"hit": SubResource("Animation_xqvro"),
-"idle": SubResource("Animation_bna6s"),
-"jump": SubResource("Animation_0jgjf"),
-"run": SubResource("Animation_sjlee"),
-"spear_1": SubResource("Animation_cobig"),
-"spear_2": SubResource("Animation_cjftq"),
-"spear_3": SubResource("Animation_h28ms"),
-"spear_jump": SubResource("Animation_5g2vm"),
-"sword_1": SubResource("Animation_wpe56"),
-"sword_2": SubResource("Animation_jgs4h"),
-"sword_3": SubResource("Animation_obsdj"),
-"sword_jump": SubResource("Animation_kckst"),
-"wall_grab": SubResource("Animation_3n55v")
+&"RESET": SubResource("Animation_115di"),
+&"axe_1": SubResource("Animation_t3v43"),
+&"axe_2": SubResource("Animation_7mvq4"),
+&"axe_3": SubResource("Animation_n7ymw"),
+&"axe_jump": SubResource("Animation_w1xyu"),
+&"axe_jump_loop": SubResource("Animation_l5mc6"),
+&"axe_jump_wind_down": SubResource("Animation_v356d"),
+&"crouch": SubResource("Animation_4nan0"),
+&"dash": SubResource("Animation_6pvof"),
+&"dead": SubResource("Animation_kx8rs"),
+&"fall": SubResource("Animation_c2tqs"),
+&"hit": SubResource("Animation_xqvro"),
+&"idle": SubResource("Animation_bna6s"),
+&"jump": SubResource("Animation_0jgjf"),
+&"run": SubResource("Animation_sjlee"),
+&"spear_1": SubResource("Animation_cobig"),
+&"spear_2": SubResource("Animation_cjftq"),
+&"spear_3": SubResource("Animation_h28ms"),
+&"spear_jump": SubResource("Animation_5g2vm"),
+&"sword_1": SubResource("Animation_wpe56"),
+&"sword_2": SubResource("Animation_jgs4h"),
+&"sword_3": SubResource("Animation_obsdj"),
+&"sword_jump": SubResource("Animation_kckst"),
+&"wall_grab": SubResource("Animation_3n55v")
 }
 
 [sub_resource type="Animation" id="Animation_b2rpp"]
@@ -2711,16 +2711,16 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vrfuq"]
 _data = {
-"RESET": SubResource("Animation_b2rpp"),
-"air": SubResource("Animation_38hf2"),
-"air_ending": SubResource("Animation_ym5ph"),
-"earth": SubResource("Animation_txsib"),
-"earth_ending": SubResource("Animation_1s75d"),
-"fire": SubResource("Animation_jfs1f"),
-"fire_ending": SubResource("Animation_8xva2"),
-"no_rupture": SubResource("Animation_vn8p6"),
-"water": SubResource("Animation_xc8ab"),
-"water_ending": SubResource("Animation_ot1yn")
+&"RESET": SubResource("Animation_b2rpp"),
+&"air": SubResource("Animation_38hf2"),
+&"air_ending": SubResource("Animation_ym5ph"),
+&"earth": SubResource("Animation_txsib"),
+&"earth_ending": SubResource("Animation_1s75d"),
+&"fire": SubResource("Animation_jfs1f"),
+&"fire_ending": SubResource("Animation_8xva2"),
+&"no_rupture": SubResource("Animation_vn8p6"),
+&"water": SubResource("Animation_xc8ab"),
+&"water_ending": SubResource("Animation_ot1yn")
 }
 
 [sub_resource type="Animation" id="Animation_se0ya"]
@@ -2757,8 +2757,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w1rpo"]
 _data = {
-"RESET": SubResource("Animation_se0ya"),
-"hit": SubResource("Animation_3qir1")
+&"RESET": SubResource("Animation_se0ya"),
+&"hit": SubResource("Animation_3qir1")
 }
 
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("attack_area", "health_component") groups=["player"]]
@@ -2895,17 +2895,17 @@ disabled = true
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_ofbi6")
+&"": SubResource("AnimationLibrary_ofbi6")
 }
 
 [node name="AuraAnimations" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_vrfuq")
+&"": SubResource("AnimationLibrary_vrfuq")
 }
 
 [node name="HitModulate" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_w1rpo")
+&"": SubResource("AnimationLibrary_w1rpo")
 }
 
 [node name="Interface" parent="." node_paths=PackedStringArray("player", "health_component", "element_manager") instance=ExtResource("9_181sd")]

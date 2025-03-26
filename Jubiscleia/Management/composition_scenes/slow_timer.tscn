@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bpdrcouvl76l7"]
 
-[ext_resource type="Script" path="res://Management/composition_scenes/slow_timer.gd" id="1_bgkid"]
+[ext_resource type="Script" uid="uid://bysrcf3hfneev" path="res://Management/composition_scenes/slow_timer.gd" id="1_bgkid"]
 
 [node name="slow_timer" type="Timer"]
 wait_time = 5.0

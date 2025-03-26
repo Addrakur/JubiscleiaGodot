@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://b182cvp28iapt"]
 
-[ext_resource type="Script" path="res://Management/checkpoint.gd" id="1_2pkr2"]
+[ext_resource type="Script" uid="uid://bm5btv1vm5oxu" path="res://Management/checkpoint.gd" id="1_2pkr2"]
 [ext_resource type="Texture2D" uid="uid://w375yp1el1xi" path="res://assets/Checkpoint_not_active.png" id="2_q55nh"]
 [ext_resource type="Texture2D" uid="uid://bd8f2qpgkhj4i" path="res://assets/Checkpoint_activate.png" id="3_4xcey"]
 [ext_resource type="Texture2D" uid="uid://ctc2347iaj6f" path="res://assets/Checkpoint_active.png" id="4_k64il"]
@@ -181,10 +181,10 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l6j48"]
 _data = {
-"RESET": SubResource("Animation_jrf87"),
-"activating": SubResource("Animation_sd44n"),
-"active": SubResource("Animation_l6dtp"),
-"not_active": SubResource("Animation_evd3b")
+&"RESET": SubResource("Animation_jrf87"),
+&"activating": SubResource("Animation_sd44n"),
+&"active": SubResource("Animation_l6dtp"),
+&"not_active": SubResource("Animation_evd3b")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nknd5"]

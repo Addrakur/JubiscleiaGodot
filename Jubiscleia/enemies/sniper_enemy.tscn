@@ -1,12 +1,12 @@
 [gd_scene load_steps=17 format=3 uid="uid://bpsjpptboyfvh"]
 
-[ext_resource type="Script" path="res://enemies/sniper_enemy.gd" id="1_78735"]
+[ext_resource type="Script" uid="uid://ctfjte2u84u84" path="res://enemies/sniper_enemy.gd" id="1_78735"]
 [ext_resource type="Texture2D" uid="uid://b2djyk3otuq3i" path="res://assets/enemy/sniper_enemy/sniper_enemy_idle_body.png" id="1_rd4f2"]
 [ext_resource type="Texture2D" uid="uid://d3wwf5081vt31" path="res://assets/enemy/sniper_enemy/sniper_enemy_idle_arm.png" id="2_ookx4"]
-[ext_resource type="Script" path="res://Management/composition_scenes/health_component.gd" id="3_vrj2e"]
-[ext_resource type="Script" path="res://Management/states/sniper_enemy/sniper_enemy_idle.gd" id="5_6fqx2"]
-[ext_resource type="Script" path="res://Management/states/sniper_enemy/sniper_enemy_attack.gd" id="6_ut57s"]
-[ext_resource type="Script" path="res://Management/states/sniper_enemy/sniper_enemy_death.gd" id="7_4ibfx"]
+[ext_resource type="Script" uid="uid://bljn1qhbvkg5i" path="res://Management/composition_scenes/health_component.gd" id="3_vrj2e"]
+[ext_resource type="Script" uid="uid://bxqcqvm4n7ver" path="res://Management/states/sniper_enemy/sniper_enemy_idle.gd" id="5_6fqx2"]
+[ext_resource type="Script" uid="uid://bpwgu5dutdh7m" path="res://Management/states/sniper_enemy/sniper_enemy_attack.gd" id="6_ut57s"]
+[ext_resource type="Script" uid="uid://4r07a8nawfmm" path="res://Management/states/sniper_enemy/sniper_enemy_death.gd" id="7_4ibfx"]
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="8_ev87a"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8gqt6"]
@@ -98,9 +98,9 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_og8hr"]
 _data = {
-"RESET": SubResource("Animation_dgjpk"),
-"attack_prep": SubResource("Animation_j67xn"),
-"idle": SubResource("Animation_wdlal")
+&"RESET": SubResource("Animation_dgjpk"),
+&"attack_prep": SubResource("Animation_j67xn"),
+&"idle": SubResource("Animation_wdlal")
 }
 
 [sub_resource type="Animation" id="Animation_e023m"]
@@ -161,8 +161,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n3ft7"]
 _data = {
-"RESET": SubResource("Animation_e023m"),
-"hit": SubResource("Animation_5h54s")
+&"RESET": SubResource("Animation_e023m"),
+&"hit": SubResource("Animation_5h54s")
 }
 
 [node name="sniper_enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemy"]]

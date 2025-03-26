@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://bx4lmho2y840s"]
 
-[ext_resource type="Script" path="res://enemies/snake.gd" id="1_ep4bx"]
+[ext_resource type="Script" uid="uid://3hpctc7333fh" path="res://enemies/snake.gd" id="1_ep4bx"]
 [ext_resource type="Texture2D" uid="uid://boe1qhplhi48e" path="res://assets/enemy/banco_de_assets/snake/snake_idle.png" id="2_avb4p"]
 [ext_resource type="Texture2D" uid="uid://beu7vhok5k65h" path="res://assets/enemy/banco_de_assets/snake/Snake_attack.png" id="3_j14wd"]
 [ext_resource type="Texture2D" uid="uid://c0ryy7uf7jrva" path="res://assets/enemy/banco_de_assets/snake/Snake_death.png" id="4_7mk4u"]
@@ -8,14 +8,14 @@
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="6_krml7"]
 [ext_resource type="Texture2D" uid="uid://bes4jlty8taqc" path="res://assets/enemy/banco_de_assets/snake/Snake_walk.png" id="6_nefrm"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="7_0q0uj"]
-[ext_resource type="Script" path="res://Management/states/state_machine.gd" id="11_svs25"]
-[ext_resource type="Script" path="res://Management/states/snake/snake_move.gd" id="12_31np0"]
-[ext_resource type="Script" path="res://Management/states/snake/snake_idle.gd" id="13_6axb0"]
-[ext_resource type="Script" path="res://Management/states/snake/snake_attack.gd" id="13_gcars"]
-[ext_resource type="Script" path="res://Management/states/snake/snake_hit.gd" id="13_k7h8k"]
-[ext_resource type="Script" path="res://Management/states/snake/snake_death.gd" id="14_q5to3"]
-[ext_resource type="Script" path="res://Management/states/state.gd" id="16_go42g"]
-[ext_resource type="Script" path="res://Management/states/snake/snake_chase.gd" id="16_yplpm"]
+[ext_resource type="Script" uid="uid://ddf7tsdxe0rpy" path="res://Management/states/state_machine.gd" id="11_svs25"]
+[ext_resource type="Script" uid="uid://ckbqbldndibok" path="res://Management/states/snake/snake_move.gd" id="12_31np0"]
+[ext_resource type="Script" uid="uid://b0pmmo1o4vkbb" path="res://Management/states/snake/snake_idle.gd" id="13_6axb0"]
+[ext_resource type="Script" uid="uid://cjai20ds4rlu4" path="res://Management/states/snake/snake_attack.gd" id="13_gcars"]
+[ext_resource type="Script" uid="uid://cc4fsuu2kkisu" path="res://Management/states/snake/snake_hit.gd" id="13_k7h8k"]
+[ext_resource type="Script" uid="uid://dyeqiog47ox0" path="res://Management/states/snake/snake_death.gd" id="14_q5to3"]
+[ext_resource type="Script" uid="uid://daphi32qby7fe" path="res://Management/states/state.gd" id="16_go42g"]
+[ext_resource type="Script" uid="uid://dpua32uu26xd6" path="res://Management/states/snake/snake_chase.gd" id="16_yplpm"]
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="17_0tqgs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_utiwq"]
@@ -390,12 +390,12 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_p3sgm"]
 _data = {
-"RESET": SubResource("Animation_fixrv"),
-"attack": SubResource("Animation_u7nyx"),
-"dead": SubResource("Animation_rljuu"),
-"hit": SubResource("Animation_8regp"),
-"idle": SubResource("Animation_nbeqx"),
-"run": SubResource("Animation_xk164")
+&"RESET": SubResource("Animation_fixrv"),
+&"attack": SubResource("Animation_u7nyx"),
+&"dead": SubResource("Animation_rljuu"),
+&"hit": SubResource("Animation_8regp"),
+&"idle": SubResource("Animation_nbeqx"),
+&"run": SubResource("Animation_xk164")
 }
 
 [sub_resource type="Animation" id="Animation_084i1"]
@@ -432,8 +432,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_gkepf"]
 _data = {
-"RESET": SubResource("Animation_084i1"),
-"hit": SubResource("Animation_jsre7")
+&"RESET": SubResource("Animation_084i1"),
+&"hit": SubResource("Animation_jsre7")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_smh5j"]
