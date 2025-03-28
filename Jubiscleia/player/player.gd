@@ -51,7 +51,7 @@ var jump_velocity: float
 var jump_gravity: float
 var fall_gravity: float
 var override_gravity: float = 0
-var next_attack: float = 1
+var next_attack: int = 1
 
 var alive: bool = true
 var can_combo: bool

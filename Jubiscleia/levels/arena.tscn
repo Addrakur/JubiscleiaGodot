@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cqp1060wjlhfn"]
+[gd_scene load_steps=25 format=4 uid="uid://cqp1060wjlhfn"]
 
 [ext_resource type="Script" uid="uid://cr0m6uuoltxgb" path="res://levels/level.gd" id="1_5moen"]
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="3_2ic4t"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://bgtm18yxrdsdx" path="res://Management/camera_area.tscn" id="10_h6txr"]
 [ext_resource type="PackedScene" uid="uid://b7fccbrl06aa5" path="res://levels/enemy_spawn.tscn" id="11_14tdb"]
 [ext_resource type="PackedScene" uid="uid://djqldg2hn5i3u" path="res://Management/spike.tscn" id="11_davmh"]
+[ext_resource type="PackedScene" uid="uid://36mqj2owa7ei" path="res://enemies/second_boss.tscn" id="13_bj08y"]
 [ext_resource type="TileSet" uid="uid://ceays6vwb8ltl" path="res://assets/Tileset/forest_grass_tile.tres" id="13_coqf5"]
 [ext_resource type="TileSet" uid="uid://bnpgwb6pweab2" path="res://assets/Tileset/forest_grass_climb_tile.tres" id="14_hsqxd"]
 
@@ -177,6 +178,9 @@ position = Vector2(1088, 485)
 
 [node name="SpawnPointLeft" type="Marker2D" parent="Limit"]
 position = Vector2(-47, 339)
+
+[node name="second_boss" parent="." instance=ExtResource("13_bj08y")]
+position = Vector2(-337, 390)
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_2ic4t")]
 position = Vector2(-560, 372)

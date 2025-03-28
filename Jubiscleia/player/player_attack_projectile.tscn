@@ -468,7 +468,7 @@ attack_area = NodePath("AttackArea")
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_hei53")
+&"": SubResource("AnimationLibrary_hei53")
 }
 
 [node name="AttackArea" parent="." instance=ExtResource("4_6h2qd")]

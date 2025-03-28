@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://36mqj2owa7ei"]
+[gd_scene load_steps=11 format=3 uid="uid://36mqj2owa7ei"]
 
 [ext_resource type="Texture2D" uid="uid://cyfniuwbfxdbm" path="res://assets/enemy/second_boss/attack.png" id="1_awf1e"]
 [ext_resource type="Texture2D" uid="uid://cy5027rcsq2gi" path="res://assets/enemy/second_boss/idle.png" id="2_xr4nh"]
 [ext_resource type="Texture2D" uid="uid://bf657s2ge64aq" path="res://assets/enemy/second_boss/walk.png" id="3_n1pcj"]
+[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="4_4vsui"]
 
 [sub_resource type="Animation" id="Animation_1uc0n"]
 length = 0.001
@@ -176,15 +177,30 @@ _data = {
 &"walk": SubResource("Animation_0lrpn")
 }
 
-[node name="second_boss" type="Node2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jwxbh"]
+radius = 27.0
+height = 170.0
+
+[node name="second_boss" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 65581
 
 [node name="animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../texture")
 libraries = {
 &"": SubResource("AnimationLibrary_i1aye")
 }
+autoplay = "idle"
 
 [node name="texture" type="Sprite2D" parent="."]
 position = Vector2(-7, -80)
 texture = ExtResource("1_awf1e")
 hframes = 23
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -85)
+shape = SubResource("CapsuleShape2D_jwxbh")
+
+[node name="AttackArea" parent="." instance=ExtResource("4_4vsui")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackArea"]

@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var move: bool
-@export var animation_level: float
+@export var animation_level: int
 var speed: float
 @onready var animation = $Animation
 @onready var texture = $Texture
