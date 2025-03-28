@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://cqp1060wjlhfn"]
+[gd_scene load_steps=24 format=4 uid="uid://cqp1060wjlhfn"]
 
 [ext_resource type="Script" uid="uid://cr0m6uuoltxgb" path="res://levels/level.gd" id="1_5moen"]
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="3_2ic4t"]
@@ -16,7 +16,6 @@
 [ext_resource type="Texture2D" uid="uid://d2nhjbtnnd38f" path="res://assets/earth_level/parallax/tree_2.png" id="9_4najf"]
 [ext_resource type="PackedScene" uid="uid://sdmdvsx1p41u" path="res://enemies/training_dummy.tscn" id="9_dgptr"]
 [ext_resource type="Script" uid="uid://b0yfdy7e0kx0p" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_dny5v"]
-[ext_resource type="PackedScene" uid="uid://bgtm18yxrdsdx" path="res://Management/camera_area.tscn" id="10_h6txr"]
 [ext_resource type="PackedScene" uid="uid://b7fccbrl06aa5" path="res://levels/enemy_spawn.tscn" id="11_14tdb"]
 [ext_resource type="PackedScene" uid="uid://djqldg2hn5i3u" path="res://Management/spike.tscn" id="11_davmh"]
 [ext_resource type="PackedScene" uid="uid://36mqj2owa7ei" path="res://enemies/second_boss.tscn" id="13_bj08y"]
@@ -29,11 +28,8 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[sub_resource type="Curve2D" id="Curve2D_ldnnj"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1280, 288, 0, 0, 0, 0, 768, 288)
-}
-point_count = 2
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38c5u"]
+size = Vector2(3076, 576)
 
 [node name="arena" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_5moen")
@@ -143,9 +139,13 @@ texture = ExtResource("9_4najf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(-560, 288)
+position = Vector2(-1392, 351)
 zoom = Vector2(0.8, 0.8)
 process_callback = 0
+limit_left = -1792
+limit_top = 0
+limit_right = 1284
+limit_bottom = 576
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
@@ -180,10 +180,10 @@ position = Vector2(1088, 485)
 position = Vector2(-47, 339)
 
 [node name="second_boss" parent="." instance=ExtResource("13_bj08y")]
-position = Vector2(-337, 390)
+position = Vector2(-904, 389)
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_2ic4t")]
-position = Vector2(-560, 372)
+position = Vector2(-1696, 416)
 camera = NodePath("../Camera2D")
 
 [node name="Training Dummy" parent="." instance=ExtResource("9_dgptr")]
@@ -266,29 +266,18 @@ spawn_point = NodePath("../../Limit/PointLeft")
 point_left = NodePath("../../Limit/PointLeft")
 point_right = NodePath("../../Limit/PointRight")
 
-[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
+[node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(-560, 288)
+position = Vector2(-1392, 351)
 script = ExtResource("8_us7wb")
-follow_mode = 4
+follow_mode = 2
 follow_target = NodePath("../player")
-follow_path = NodePath("../CameraArea/Path2D")
 zoom = Vector2(0.8, 0.8)
 tween_resource = SubResource("Resource_td1jt")
+follow_offset = Vector2(0, -32)
 follow_damping = true
 draw_limits = true
-
-[node name="CameraArea" parent="." node_paths=PackedStringArray("camera", "old_cameras") instance=ExtResource("10_h6txr")]
-visible = false
-horizontal = true
-camera = NodePath("../PhantomCamera2D")
-old_cameras = [null]
-
-[node name="Path2D" type="Path2D" parent="CameraArea"]
-curve = SubResource("Curve2D_ldnnj")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="CameraArea"]
-polygon = PackedVector2Array(-1792, 576, 1280, 576, 1280, 0, -1792, 0)
+limit_target = NodePath("../CollisionShape2D")
 
 [node name="Spike" parent="." instance=ExtResource("11_davmh")]
 position = Vector2(-1646, 517)
@@ -313,3 +302,8 @@ offset_top = 256.0
 offset_right = -411.0
 offset_bottom = 279.0
 text = "Aperte F para spawnar inimigos"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-254, 288)
+shape = SubResource("RectangleShape2D_38c5u")

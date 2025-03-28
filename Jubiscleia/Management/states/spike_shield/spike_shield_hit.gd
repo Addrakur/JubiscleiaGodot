@@ -24,10 +24,10 @@ func _exit() -> void:
 	anim_finish = false
 	parent.health_component.last_attack = ""
 
-func _update(_delta):
+func _update(delta):
 	
 	if not parent.velocity == Vector2(0,0):
-		parent.velocity.x = parent.velocity.x - parent.velocity.x * 0.02
+		parent.velocity.x = parent.velocity.x - parent.velocity.x * delta * 2.5
 	
 	if direction == 1 and parent.velocity.x <= hit_recover_limit or direction == -1 and parent.velocity.x >=-hit_recover_limit:
 		if parent.is_on_floor() and anim_finish:

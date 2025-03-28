@@ -743,12 +743,12 @@ element = "air"
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_rre1u")
+&"": SubResource("AnimationLibrary_rre1u")
 }
 
 [node name="HitModulate" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_xijdb")
+&"": SubResource("AnimationLibrary_xijdb")
 }
 
 [node name="SkeletonCollision" type="CollisionShape2D" parent="."]
@@ -819,7 +819,7 @@ script = ExtResource("15_urcig")
 skeleton = NodePath("../..")
 animation = NodePath("../../Animations")
 knock_multi = 1.0
-hit_recover_limit = 10.0
+hit_recover_limit = 30.0
 
 [node name="SwordSkeletonWalk" type="Node" parent="StateMachine" node_paths=PackedStringArray("skeleton", "animation", "attack_timer")]
 script = ExtResource("18_nijjx")

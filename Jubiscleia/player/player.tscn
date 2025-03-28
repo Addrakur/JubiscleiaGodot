@@ -2812,6 +2812,7 @@ animation = NodePath("../../Animations")
 script = ExtResource("23_j7sbs")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
+knockback_mult = 2.5
 
 [node name="Death" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("25_wysx4")
@@ -2842,10 +2843,11 @@ player = NodePath("../..")
 animation = NodePath("../../Animations")
 move_speed = 200.0
 
-[node name="PlayerDash" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
+[node name="PlayerDash" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation", "ground_raycast")]
 script = ExtResource("15_6875b")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
+ground_raycast = NodePath("../../ground_raycast")
 
 [node name="State" type="Node" parent="StateMachine"]
 script = ExtResource("16_hy8fg")
@@ -2991,7 +2993,7 @@ text = "1"
 [node name="ground_raycast" type="RayCast2D" parent="."]
 position = Vector2(0, -14.0265)
 target_position = Vector2(0, 15.0284)
-collision_mask = 4
+collision_mask = 36
 
 [node name="center_damage_area" type="Marker2D" parent="."]
 position = Vector2(0, -14.0265)

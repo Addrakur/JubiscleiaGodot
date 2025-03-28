@@ -29,10 +29,10 @@ func exit_state() -> void:
 	anim_finish = false
 	skeleton.health_component.last_attack = ""
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	
 	if not skeleton.velocity == Vector2(0,0):
-		skeleton.velocity.x = skeleton.velocity.x - skeleton.velocity.x * 0.02
+		skeleton.velocity.x = skeleton.velocity.x - skeleton.velocity.x * delta * 2.5
 	
 	if direction == 1 and skeleton.velocity.x <= hit_recover_limit or direction == -1 and skeleton.velocity.x >=-hit_recover_limit:
 		if skeleton.is_on_floor() and anim_finish:

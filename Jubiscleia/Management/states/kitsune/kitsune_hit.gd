@@ -28,10 +28,10 @@ func exit_state() -> void:
 	anim_finish = false
 	kitsune.health_component.last_attack = ""
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	
 	if not kitsune.velocity == Vector2(0,0):
-		kitsune.velocity.x = kitsune.velocity.x - kitsune.velocity.x * 0.02
+		kitsune.velocity.x = kitsune.velocity.x - kitsune.velocity.x * delta * 2.5
 	
 	if direction == 1 and kitsune.velocity.x <= hit_recover_limit or direction == -1 and kitsune.velocity.x >=-hit_recover_limit:
 		if kitsune.is_on_floor() and anim_finish:

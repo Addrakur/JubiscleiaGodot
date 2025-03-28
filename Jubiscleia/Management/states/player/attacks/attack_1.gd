@@ -42,7 +42,7 @@ func exit_state() -> void:
 	PlayerVariables.anim_finish = false
 	player.combo_timer_start()
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("jump"):
 		player.fsm.change_state(player.jump_state)
@@ -50,7 +50,7 @@ func _physics_process(_delta):
 	if PlayerVariables.move:
 		player.velocity.x = speed * player.last_direction
 	else:
-		zero_speed()
+		zero_speed(delta)
 	
 	if Input.is_action_just_pressed("dash"):
 		PlayerVariables.next_skill = ""
@@ -67,8 +67,8 @@ func _physics_process(_delta):
 	if PlayerVariables.anim_finish:
 		player.fsm.change_state(player.idle_state)
 
-func zero_speed():
+func zero_speed(delta: float):
 	if player.velocity.x > 0:
-		player.velocity.x = player.velocity.x - player.velocity.x * 0.1
+		player.velocity.x = player.velocity.x - player.velocity.x * delta * 20
 	elif player.velocity.x < 0:
-		player.velocity.x = player.velocity.x + player.velocity.x * -0.1
+		player.velocity.x = player.velocity.x + player.velocity.x * delta * -20

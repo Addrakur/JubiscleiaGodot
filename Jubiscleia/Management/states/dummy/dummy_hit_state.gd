@@ -3,7 +3,7 @@ extends State
 
 @export var dummy: CharacterBody2D
 @export var animation: AnimationPlayer
-var knock_multi: float
+@export var knock_multi: float
 var hit_recover_limit: float
 
 var knockup_force: float
@@ -31,10 +31,10 @@ func exit_state() -> void:
 	anim_finish = false
 	dummy.health_component.last_attack = ""
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	
 	if not dummy.velocity == Vector2(0,0):
-		dummy.velocity.x = dummy.velocity.x - dummy.velocity.x * 0.02
+		dummy.velocity.x = dummy.velocity.x - dummy.velocity.x * delta * 2.5
 	
 	if direction == 1 and dummy.velocity.x <= hit_recover_limit or direction == -1 and dummy.velocity.x >=-hit_recover_limit:
 		if dummy.is_on_floor() and anim_finish:

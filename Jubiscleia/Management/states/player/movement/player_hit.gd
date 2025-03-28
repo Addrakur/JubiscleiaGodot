@@ -3,6 +3,7 @@ extends State
 
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
+@export var knockback_mult: float
 var knock_multi: float
 var hit_recover_limit: float
 
@@ -36,10 +37,10 @@ func exit_state() -> void:
 	player.inv_timer.start()
 	player.health_component.last_attack = ""
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	
 	if not player.velocity == Vector2(0,0):
-		player.velocity.x = player.velocity.x - player.velocity.x * 0.02
+		player.velocity.x = player.velocity.x - player.velocity.x * delta * knockback_mult
 	
 	if direction == 1 and player.velocity.x <= hit_recover_limit or direction == -1 and player.velocity.x >=-hit_recover_limit:
 		if player.is_on_floor() and anim_finish:

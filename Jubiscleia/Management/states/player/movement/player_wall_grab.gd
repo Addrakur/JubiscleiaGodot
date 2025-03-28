@@ -28,10 +28,10 @@ func exit_state() -> void:
 	set_physics_process(false)
 	player.override_gravity = 0
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	
 	if player.velocity.y < gravity:
-		player.velocity.y += player.velocity.y * 0.05
+		player.velocity.y += player.velocity.y * delta * 10
 	
 	if not player.wall_grab_ray_cast.is_colliding():
 		player.fsm.change_state(player.fall_state)

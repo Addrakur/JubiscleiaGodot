@@ -467,12 +467,12 @@ hframes = 4
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_p3sgm")
+&"": SubResource("AnimationLibrary_p3sgm")
 }
 
 [node name="HitModulate" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_gkepf")
+&"": SubResource("AnimationLibrary_gkepf")
 }
 
 [node name="AttackTimer" type="Timer" parent="."]
@@ -539,8 +539,8 @@ animation = NodePath("../../Animations")
 script = ExtResource("13_k7h8k")
 snake = NodePath("../..")
 animation = NodePath("../../Animations")
-knock_multi = 1.5
-hit_recover_limit = 10.0
+knock_multi = 1.0
+hit_recover_limit = 30.0
 
 [node name="SnakeIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("snake", "animation")]
 script = ExtResource("13_6axb0")

@@ -28,10 +28,10 @@ func exit_state() -> void:
 	anim_finish = false
 	snake.health_component.last_attack = ""
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	
 	if not snake.velocity == Vector2(0,0):
-		snake.velocity.x = snake.velocity.x - snake.velocity.x * 0.02
+		snake.velocity.x = snake.velocity.x - snake.velocity.x * delta * 2.5
 	
 	if direction == 1 and snake.velocity.x <= hit_recover_limit or direction == -1 and snake.velocity.x >=-hit_recover_limit:
 		if snake.is_on_floor() and anim_finish:

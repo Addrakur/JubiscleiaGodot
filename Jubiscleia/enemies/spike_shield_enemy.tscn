@@ -641,12 +641,12 @@ element = "earth"
 
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_db5ga")
+&"": SubResource("AnimationLibrary_db5ga")
 }
 
 [node name="hit_modulate" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_xov44")
+&"": SubResource("AnimationLibrary_xov44")
 }
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("7_7f32w")]

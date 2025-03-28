@@ -590,12 +590,12 @@ hframes = 8
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_5fyoy")
+&"": SubResource("AnimationLibrary_5fyoy")
 }
 
 [node name="HitModulate" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_io2th")
+&"": SubResource("AnimationLibrary_io2th")
 }
 
 [node name="Collision" type="CollisionShape2D" parent="."]

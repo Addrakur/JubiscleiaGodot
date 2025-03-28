@@ -569,13 +569,13 @@ hframes = 7
 
 [node name="HitModulate" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_hoqvn")
+&"": SubResource("AnimationLibrary_hoqvn")
 }
 
 [node name="Animations" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Texture")
 libraries = {
-"": SubResource("AnimationLibrary_opfwi")
+&"": SubResource("AnimationLibrary_opfwi")
 }
 
 [node name="Collision" type="CollisionShape2D" parent="."]
@@ -672,7 +672,7 @@ script = ExtResource("16_fx7mn")
 skeleton = NodePath("../..")
 animation = NodePath("../../Animations")
 knock_multi = 1.0
-hit_recover_limit = 10.0
+hit_recover_limit = 30.0
 
 [node name="SpearSkeletonDeath" type="Node" parent="StateMachine" node_paths=PackedStringArray("skeleton", "animation")]
 script = ExtResource("17_gghc7")

@@ -504,12 +504,12 @@ hframes = 4
 [node name="Animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../texture")
 libraries = {
-"": SubResource("AnimationLibrary_putix")
+&"": SubResource("AnimationLibrary_putix")
 }
 
 [node name="HitModulate" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_o15vl")
+&"": SubResource("AnimationLibrary_o15vl")
 }
 
 [node name="Collision" type="CollisionShape2D" parent="."]

@@ -28,10 +28,10 @@ func exit_state() -> void:
 	anim_finish = false
 	scorpion.health_component.last_attack = ""
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	
 	if not scorpion.velocity == Vector2(0,0):
-		scorpion.velocity.x = scorpion.velocity.x - scorpion.velocity.x * 0.02
+		scorpion.velocity.x = scorpion.velocity.x - scorpion.velocity.x * delta * 2.5
 	
 	if direction == 1 and scorpion.velocity.x <= hit_recover_limit or direction == -1 and scorpion.velocity.x >=-hit_recover_limit:
 		if scorpion.is_on_floor() and anim_finish:

@@ -45,6 +45,10 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if active:
+		for upgrade in upgrades_needed:
+			if not upgrade.active:
+				active = false
+				return
 		disabled = false
 		button_pressed = true
 		SkillTree.set(name,true)
