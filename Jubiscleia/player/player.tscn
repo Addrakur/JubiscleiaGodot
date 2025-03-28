@@ -2967,7 +2967,7 @@ one_shot = true
 scale = Vector2(1.00538, 1)
 script = ExtResource("94_8uuoj")
 player = NodePath("..")
-max_element_stack = 20.0
+max_element_stack = 1.0
 animation = NodePath("../AuraAnimations")
 element_timer = NodePath("../element_timer")
 

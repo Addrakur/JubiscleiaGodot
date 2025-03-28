@@ -139,8 +139,8 @@ texture = ExtResource("9_4najf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(-1392, 351)
-zoom = Vector2(0.8, 0.8)
+position = Vector2(-1216, 336)
+zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = -1792
 limit_top = 0
@@ -183,7 +183,7 @@ position = Vector2(-47, 339)
 position = Vector2(-904, 389)
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_2ic4t")]
-position = Vector2(-1696, 416)
+position = Vector2(-1216, 480)
 camera = NodePath("../Camera2D")
 
 [node name="Training Dummy" parent="." instance=ExtResource("9_dgptr")]
@@ -268,11 +268,11 @@ point_right = NodePath("../../Limit/PointRight")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(-1392, 351)
+position = Vector2(-1216, 336)
 script = ExtResource("8_us7wb")
 follow_mode = 2
 follow_target = NodePath("../player")
-zoom = Vector2(0.8, 0.8)
+zoom = Vector2(0.75, 0.75)
 tween_resource = SubResource("Resource_td1jt")
 follow_offset = Vector2(0, -32)
 follow_damping = true

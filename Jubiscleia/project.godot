@@ -124,6 +124,7 @@ spawn_enemy={
 
 [physics]
 
+common/physics_ticks_per_second=165
 common/physics_interpolation=true
 
 [rendering]

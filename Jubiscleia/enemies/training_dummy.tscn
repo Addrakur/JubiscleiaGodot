@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://sdmdvsx1p41u"]
+[gd_scene load_steps=20 format=3 uid="uid://sdmdvsx1p41u"]
 
 [ext_resource type="Texture2D" uid="uid://d0p48v5hp6sq" path="res://assets/enemy/Training_Dummy/idle.png" id="1_hqlgo"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="1_oll5j"]
@@ -9,13 +9,14 @@
 [ext_resource type="Script" uid="uid://84sphjl13l0a" path="res://Management/states/dummy/dummy_hit_state.gd" id="7_gb8br"]
 [ext_resource type="Script" uid="uid://daphi32qby7fe" path="res://Management/states/state.gd" id="8_psoes"]
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="9_kohpx"]
+[ext_resource type="Shader" uid="uid://dqi4fnw7r5atv" path="res://enemies/training_dummy.gdshader" id="10_4jhrn"]
 
 [sub_resource type="Animation" id="Animation_s2a12"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:modulate")
+tracks/0/path = NodePath("texture:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,7 +33,7 @@ step = 0.075
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:modulate")
+tracks/0/path = NodePath("texture:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -53,7 +54,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:texture")
+tracks/0/path = NodePath("texture:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -65,7 +66,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Texture:hframes")
+tracks/1/path = NodePath("texture:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -77,7 +78,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Texture:frame")
+tracks/2/path = NodePath("texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -93,7 +94,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:texture")
+tracks/0/path = NodePath("texture:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -105,7 +106,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Texture:hframes")
+tracks/1/path = NodePath("texture:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -117,7 +118,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Texture:frame")
+tracks/2/path = NodePath("texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -134,7 +135,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:texture")
+tracks/0/path = NodePath("texture:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -146,7 +147,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Texture:hframes")
+tracks/1/path = NodePath("texture:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -158,7 +159,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Texture:frame")
+tracks/2/path = NodePath("texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -179,6 +180,11 @@ _data = {
 radius = 6.0
 height = 32.1721
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gfjvq"]
+resource_local_to_scene = true
+shader = ExtResource("10_4jhrn")
+shader_parameter/blue_value = 0.0
+
 [node name="Training Dummy" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemy"]]
 collision_layer = 2
 collision_mask = 45
@@ -186,11 +192,6 @@ script = ExtResource("1_qe621")
 element = "fire"
 health_component = NodePath("HealthComponent")
 metadata/_edit_horizontal_guides_ = [-93.0]
-
-[node name="Texture" type="Sprite2D" parent="."]
-position = Vector2(0, -16)
-texture = ExtResource("1_hqlgo")
-hframes = 4
 
 [node name="HitModulate" type="AnimationPlayer" parent="."]
 libraries = {
@@ -241,6 +242,12 @@ parent = NodePath("..")
 
 [node name="center_damage_area" type="Marker2D" parent="."]
 position = Vector2(0, -16)
+
+[node name="texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_gfjvq")
+position = Vector2(0, -16)
+texture = ExtResource("1_hqlgo")
+hframes = 4
 
 [connection signal="animation_finished" from="HitModulate" to="." method="_on_hit_modulate_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/DummyHitState" method="_on_animation_finished"]

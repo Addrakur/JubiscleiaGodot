@@ -74,11 +74,12 @@ ease = 2
 [node name="level_2" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_e2h5m")
 player = NodePath("player")
+free_spawn = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(112, 1704)
-zoom = Vector2(0.8, 0.8)
+position = Vector2(5760, 1120)
+zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = -288
 limit_top = -416
@@ -451,7 +452,7 @@ position = Vector2(13578, 2629)
 level = NodePath("../..")
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("2_uw1h1")]
-position = Vector2(46, 1720)
+position = Vector2(5760, 1152)
 camera = NodePath("../Camera2D")
 
 [node name="plataforms" type="Node2D" parent="."]
@@ -2027,25 +2028,25 @@ shape = SubResource("RectangleShape2D_ttapc")
 
 [node name="FreeCamera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(112, 1704)
+position = Vector2(5760, 1120)
 script = ExtResource("14_nee6w")
 follow_mode = 2
 follow_target = NodePath("../player")
-zoom = Vector2(0.8, 0.8)
+zoom = Vector2(0.75, 0.75)
 tween_resource = SubResource("Resource_qoof4")
-follow_offset = Vector2(0, -16)
+follow_offset = Vector2(0, -32)
 follow_damping = true
 draw_limits = true
 limit_target = NodePath("../cameras/FreeCameraLimit")
 
 [node name="PC2" type="Node2D" parent="." node_paths=PackedStringArray("follow_target", "follow_path")]
 top_level = true
-position = Vector2(5984, 1720)
+position = Vector2(5984, 1151.98)
 script = ExtResource("14_nee6w")
 follow_mode = 4
 follow_target = NodePath("../player")
 follow_path = NodePath("../cameras/C2/P2")
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(0.65, 0.65)
 tween_resource = SubResource("Resource_gx74b")
 draw_limits = true
 
