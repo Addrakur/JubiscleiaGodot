@@ -1,7 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://bx4lmho2y840s"]
+[gd_scene load_steps=34 format=3 uid="uid://bx4lmho2y840s"]
 
 [ext_resource type="Script" uid="uid://3hpctc7333fh" path="res://enemies/snake.gd" id="1_ep4bx"]
 [ext_resource type="Texture2D" uid="uid://boe1qhplhi48e" path="res://assets/enemy/banco_de_assets/snake/snake_idle.png" id="2_avb4p"]
+[ext_resource type="Shader" uid="uid://dqi4fnw7r5atv" path="res://enemies/slow_shader.gdshader" id="2_eatqc"]
 [ext_resource type="Texture2D" uid="uid://beu7vhok5k65h" path="res://assets/enemy/banco_de_assets/snake/Snake_attack.png" id="3_j14wd"]
 [ext_resource type="Texture2D" uid="uid://c0ryy7uf7jrva" path="res://assets/enemy/banco_de_assets/snake/Snake_death.png" id="4_7mk4u"]
 [ext_resource type="Texture2D" uid="uid://cuf7pfauc48dl" path="res://assets/enemy/banco_de_assets/snake/Snake_hurt.png" id="5_04yf1"]
@@ -20,6 +21,11 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_utiwq"]
 radius = 18.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gu3dd"]
+resource_local_to_scene = true
+shader = ExtResource("2_eatqc")
+shader_parameter/blue_value = 0.0
 
 [sub_resource type="Animation" id="Animation_fixrv"]
 length = 0.001
@@ -460,6 +466,7 @@ shape = SubResource("CircleShape2D_utiwq")
 
 [node name="texture" type="Sprite2D" parent="."]
 texture_filter = 1
+material = SubResource("ShaderMaterial_gu3dd")
 position = Vector2(0, -32)
 scale = Vector2(2, 2)
 texture = ExtResource("2_avb4p")

@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://84sphjl13l0a" path="res://Management/states/dummy/dummy_hit_state.gd" id="7_gb8br"]
 [ext_resource type="Script" uid="uid://daphi32qby7fe" path="res://Management/states/state.gd" id="8_psoes"]
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="9_kohpx"]
-[ext_resource type="Shader" uid="uid://dqi4fnw7r5atv" path="res://enemies/training_dummy.gdshader" id="10_4jhrn"]
+[ext_resource type="Shader" uid="uid://dqi4fnw7r5atv" path="res://enemies/slow_shader.gdshader" id="10_4jhrn"]
 
 [sub_resource type="Animation" id="Animation_s2a12"]
 length = 0.001

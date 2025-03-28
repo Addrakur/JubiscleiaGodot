@@ -1,7 +1,8 @@
-[gd_scene load_steps=38 format=3 uid="uid://radoy72pb50a"]
+[gd_scene load_steps=40 format=3 uid="uid://radoy72pb50a"]
 
 [ext_resource type="Script" uid="uid://dtpm3x3i3m76t" path="res://enemies/kitsune.gd" id="1_3ptr8"]
 [ext_resource type="Texture2D" uid="uid://c4s8bcr5r7i73" path="res://assets/enemy/banco_de_assets/kitsune/Run.png" id="1_5gbqr"]
+[ext_resource type="Shader" uid="uid://dqi4fnw7r5atv" path="res://enemies/slow_shader.gdshader" id="2_6534q"]
 [ext_resource type="Texture2D" uid="uid://dii2xja8loqsu" path="res://assets/enemy/banco_de_assets/kitsune/Walk.png" id="2_qsjel"]
 [ext_resource type="Texture2D" uid="uid://cu4f72aj3m0wa" path="res://assets/enemy/banco_de_assets/kitsune/Idle.png" id="3_oy4qb"]
 [ext_resource type="Texture2D" uid="uid://cackeedv30qau" path="res://assets/enemy/banco_de_assets/kitsune/Hurt.png" id="4_r6mft"]
@@ -21,6 +22,11 @@
 [ext_resource type="Script" uid="uid://c8djqtbs3qcqq" path="res://Management/states/kitsune/kitsune_warp.gd" id="19_dtqgi"]
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="20_06pfj"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="20_r3x23"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h14eo"]
+resource_local_to_scene = true
+shader = ExtResource("2_6534q")
+shader_parameter/blue_value = 0.0
 
 [sub_resource type="Animation" id="Animation_bocml"]
 length = 0.001
@@ -584,6 +590,7 @@ contact_damage = NodePath("ContactDamage")
 element = "fire"
 
 [node name="Texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_h14eo")
 position = Vector2(0, -45)
 texture = ExtResource("1_5gbqr")
 hframes = 8

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bysdn4i581jjc"]
+[gd_scene load_steps=33 format=3 uid="uid://bysdn4i581jjc"]
 
 [ext_resource type="Script" uid="uid://ddf7tsdxe0rpy" path="res://Management/states/state_machine.gd" id="1_pjjdi"]
 [ext_resource type="Script" uid="uid://djkuxi7g0c5s2" path="res://enemies/scorpion.gd" id="1_v6en7"]
@@ -14,8 +14,14 @@
 [ext_resource type="Script" uid="uid://cfp3tiiw3afm2" path="res://Management/states/scorpion/scorpion_hit.gd" id="6_e18mf"]
 [ext_resource type="Script" uid="uid://dud4utalvefm8" path="res://Management/states/scorpion/scorpion_death.gd" id="7_wrwk7"]
 [ext_resource type="Script" uid="uid://daphi32qby7fe" path="res://Management/states/state.gd" id="8_frrsh"]
+[ext_resource type="Shader" uid="uid://dqi4fnw7r5atv" path="res://enemies/slow_shader.gdshader" id="9_tr0ii"]
 [ext_resource type="Texture2D" uid="uid://c7hfwkunooka2" path="res://assets/enemy/banco_de_assets/scorpion/scorpion_attack.png" id="10_nox61"]
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="16_msgvx"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dw443"]
+resource_local_to_scene = true
+shader = ExtResource("9_tr0ii")
+shader_parameter/blue_value = 0.0
 
 [sub_resource type="Animation" id="Animation_h166x"]
 length = 0.001
@@ -496,6 +502,7 @@ animation = NodePath("../../Animation")
 script = ExtResource("8_frrsh")
 
 [node name="texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_dw443")
 position = Vector2(0, -24)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_hod70")
