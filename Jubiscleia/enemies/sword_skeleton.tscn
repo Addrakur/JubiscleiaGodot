@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://3f7lr15bhlyx"]
+[gd_scene load_steps=44 format=3 uid="uid://3f7lr15bhlyx"]
 
 [ext_resource type="Texture2D" uid="uid://cb0yftlo5iyws" path="res://assets/enemy/banco_de_assets/sword_skeleton/Idle.png" id="1_4i5gc"]
 [ext_resource type="Script" uid="uid://b7ardppw8h13o" path="res://enemies/sword_skeleton.gd" id="1_gupx0"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c8oi0rubryrr3" path="res://assets/enemy/banco_de_assets/sword_skeleton/Attack_1.png" id="8_yay3t"]
 [ext_resource type="Texture2D" uid="uid://chxa2or8ubawm" path="res://assets/enemy/banco_de_assets/sword_skeleton/Attack_2.png" id="9_aonpa"]
 [ext_resource type="Texture2D" uid="uid://brgf7bpvvbsxe" path="res://assets/enemy/banco_de_assets/sword_skeleton/Attack_3.png" id="10_p3uu5"]
+[ext_resource type="Shader" uid="uid://dqi4fnw7r5atv" path="res://enemies/slow_shader.gdshader" id="14_js6e0"]
 [ext_resource type="Script" uid="uid://d1vku220kvvaf" path="res://Management/states/sword_skeleton/sword_skeleton_hit.gd" id="15_urcig"]
 [ext_resource type="Script" uid="uid://daphi32qby7fe" path="res://Management/states/state.gd" id="16_p3k75"]
 [ext_resource type="Script" uid="uid://bbt5pfdxffx5t" path="res://Management/states/sword_skeleton/sword_skeleton_idle.gd" id="17_shncf"]
@@ -732,6 +733,11 @@ height = 64.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_mkyu1"]
 radius = 8.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7rjvn"]
+resource_local_to_scene = true
+shader = ExtResource("14_js6e0")
+shader_parameter/blue_value = 0.0
+
 [node name="SwordSkeleton" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area", "contact_damage") groups=["enemy"]]
 collision_layer = 2
 collision_mask = 45
@@ -800,6 +806,7 @@ modulate = Color(0, 1, 0.560784, 1)
 polygon = PackedVector2Array(0, 0, 63, 0, 63, -64, 0, -64)
 
 [node name="Texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_7rjvn")
 texture = ExtResource("1_4i5gc")
 hframes = 7
 

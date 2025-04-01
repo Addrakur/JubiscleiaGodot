@@ -1,7 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://dx23ctyg8spen"]
+[gd_scene load_steps=36 format=3 uid="uid://dx23ctyg8spen"]
 
 [ext_resource type="Texture2D" uid="uid://c13582svml54y" path="res://assets/enemy/banco_de_assets/spear_skeleton/Walk.png" id="1_pnfn2"]
 [ext_resource type="Script" uid="uid://bq4yafjfu06hk" path="res://enemies/spear_skeleton.gd" id="1_vyemi"]
+[ext_resource type="Shader" uid="uid://dqi4fnw7r5atv" path="res://enemies/slow_shader.gdshader" id="2_2is88"]
 [ext_resource type="Texture2D" uid="uid://d0fgor0on4gro" path="res://assets/enemy/banco_de_assets/spear_skeleton/Run.png" id="2_4j6l1"]
 [ext_resource type="Texture2D" uid="uid://cdlkofs0cu7c0" path="res://assets/enemy/banco_de_assets/spear_skeleton/Idle.png" id="3_ds0tf"]
 [ext_resource type="Texture2D" uid="uid://iwqmnrb2quhk" path="res://assets/enemy/banco_de_assets/spear_skeleton/Attack_air.png" id="3_swvfd"]
@@ -19,6 +20,11 @@
 [ext_resource type="Script" uid="uid://dpwsiqrqrucc8" path="res://Management/states/spear_skeleton/spear_skeleton_death.gd" id="17_gghc7"]
 [ext_resource type="Script" uid="uid://daphi32qby7fe" path="res://Management/states/state.gd" id="18_lkfkt"]
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="19_82j6j"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dd0bl"]
+resource_local_to_scene = true
+shader = ExtResource("2_2is88")
+shader_parameter/blue_value = 0.0
 
 [sub_resource type="Animation" id="Animation_uut6e"]
 length = 0.001
@@ -563,6 +569,7 @@ contact_damage = NodePath("ContactDamage")
 element = "air"
 
 [node name="Texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_dd0bl")
 position = Vector2(0, -32)
 texture = ExtResource("1_pnfn2")
 hframes = 7

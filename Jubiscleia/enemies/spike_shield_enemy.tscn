@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://daabvpmmaefaf"]
+[gd_scene load_steps=34 format=3 uid="uid://daabvpmmaefaf"]
 
 [ext_resource type="Texture2D" uid="uid://cfk40b7vx8e7h" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_walk.png" id="1_j8oj4"]
 [ext_resource type="Script" uid="uid://k4dj66yl2ck7" path="res://enemies/spike_shield_enemy.gd" id="1_jys8c"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://d4dcheggmc7xu" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_turn_attack.png" id="11_qkqfi"]
 [ext_resource type="Script" uid="uid://cmwq77s8ybres" path="res://Management/states/spike_shield/spike_shield_hit.gd" id="13_hpytp"]
 [ext_resource type="Script" uid="uid://dadnqfkgee0e6" path="res://Management/states/spike_shield/spike_shield_death.gd" id="15_w4p7o"]
+[ext_resource type="Shader" uid="uid://dqi4fnw7r5atv" path="res://enemies/slow_shader.gdshader" id="17_fv7fv"]
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="17_thh6s"]
 
 [sub_resource type="Animation" id="Animation_tdskv"]
@@ -630,6 +631,11 @@ _data = {
 radius = 12.0
 height = 62.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lr0xd"]
+resource_local_to_scene = true
+shader = ExtResource("17_fv7fv")
+shader_parameter/blue_value = 0.0
+
 [node name="spike_shield_enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy", "shield_enemy"]]
 collision_layer = 2
 collision_mask = 45
@@ -745,6 +751,7 @@ parent = NodePath("../..")
 animation = NodePath("../../animation")
 
 [node name="texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_lr0xd")
 position = Vector2(0, -32)
 texture = ExtResource("1_j8oj4")
 hframes = 18
