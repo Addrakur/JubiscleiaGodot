@@ -28,7 +28,6 @@ SkillTree="*res://singletons/skill_tree.gd"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=2
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 window/vsync/vsync_mode=2

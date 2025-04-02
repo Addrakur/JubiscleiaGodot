@@ -219,7 +219,6 @@ zoom = Vector2(0.75, 0.75)
 tween_resource = SubResource("Resource_a3tg3")
 follow_offset = Vector2(0, -32)
 follow_damping = true
-draw_limits = true
 limit_target = NodePath("../CameraArea/free_camera_limit")
 
 [node name="Tutorial" type="Control" parent="."]

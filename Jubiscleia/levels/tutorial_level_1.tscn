@@ -371,7 +371,6 @@ zoom = Vector2(0.75, 0.75)
 tween_resource = SubResource("Resource_jkccs")
 follow_offset = Vector2(0, -32)
 follow_damping = true
-draw_limits = true
 limit_target = NodePath("../CameraArea/limit_area")
 
 [node name="CameraArea" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("14_35gj7")]
