@@ -1,0 +1,34 @@
+[gd_resource type="BehaviorTree" load_steps=10 format=3 uid="uid://cv8t2m8gmhswg"]
+
+[ext_resource type="Script" uid="uid://dvu6fuaoqjp1g" path="res://ai/tasks/parent_var_check.gd" id="1_fd88q"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_hi1ka"]
+
+[sub_resource type="BTAction" id="BTAction_f1rgq"]
+script = ExtResource("1_fd88q")
+var_name = "can_attack_melee"
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_6qcbg"]
+text = "melee"
+
+[sub_resource type="BTSequence" id="BTSequence_n6xbh"]
+custom_name = "melee"
+children = [SubResource("BTAction_f1rgq"), SubResource("BTConsolePrint_6qcbg")]
+
+[sub_resource type="BTAction" id="BTAction_nohrm"]
+script = ExtResource("1_fd88q")
+var_name = "can_attack_ranged"
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_o71bt"]
+text = "ranged"
+
+[sub_resource type="BTSequence" id="BTSequence_xf8cl"]
+custom_name = "ranged"
+children = [SubResource("BTAction_nohrm"), SubResource("BTConsolePrint_o71bt")]
+
+[sub_resource type="BTSelector" id="BTSelector_pchdb"]
+children = [SubResource("BTSequence_n6xbh"), SubResource("BTSequence_xf8cl")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_hi1ka")
+root_task = SubResource("BTSelector_pchdb")

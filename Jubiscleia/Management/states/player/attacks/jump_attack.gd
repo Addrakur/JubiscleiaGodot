@@ -9,7 +9,7 @@ extends State
 var speed: float
 var direction: float
 
-var next_attack_sustain: float
+var next_attack_sustain: int
 
 var stop: bool = true
 
