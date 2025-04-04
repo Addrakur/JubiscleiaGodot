@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=10 format=3 uid="uid://cv8t2m8gmhswg"]
+[gd_resource type="BehaviorTree" load_steps=12 format=3 uid="uid://cv8t2m8gmhswg"]
 
 [ext_resource type="Script" uid="uid://dvu6fuaoqjp1g" path="res://ai/tasks/parent_var_check.gd" id="1_fd88q"]
 
@@ -26,8 +26,15 @@ text = "ranged"
 custom_name = "ranged"
 children = [SubResource("BTAction_nohrm"), SubResource("BTConsolePrint_o71bt")]
 
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_fd88q"]
+text = "move"
+
+[sub_resource type="BTSequence" id="BTSequence_fd88q"]
+custom_name = "move to player"
+children = [SubResource("BTConsolePrint_fd88q")]
+
 [sub_resource type="BTSelector" id="BTSelector_pchdb"]
-children = [SubResource("BTSequence_n6xbh"), SubResource("BTSequence_xf8cl")]
+children = [SubResource("BTSequence_n6xbh"), SubResource("BTSequence_xf8cl"), SubResource("BTSequence_fd88q")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_hi1ka")
