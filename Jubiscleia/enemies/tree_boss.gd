@@ -22,6 +22,9 @@ func _ready() -> void:
 	init_state_machine()
 	player_ref = player
 
+func _physics_process(_delta: float) -> void:
+	move_and_slide()
+
 func init_state_machine():
 	hsm.add_transition(idle_state,move_state, &"idle_to_move")
 	

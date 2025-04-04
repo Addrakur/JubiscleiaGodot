@@ -22,8 +22,8 @@ func _ready() -> void:
 	can_finish = true
 
 func on_body_entered(body):
-	if body.is_in_group("player"):
-		player_inside_limit = true
+	if body is Player:
+		#player_inside_limit = true
 		for enemy in enemy_list:
 			enemy.player_on_limit = true
 	
