@@ -17,6 +17,8 @@ var element_extra_stack: float = 2
 var element_reduced_damage: float = 0.7
 var element_reduced_stack: float = 0.5
 
+var fire_dot_damage: float = 3
+
 var elemental_rupture: String = ""
 
 var player_alive: bool = true

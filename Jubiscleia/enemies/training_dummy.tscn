@@ -184,6 +184,7 @@ height = 32.1721
 resource_local_to_scene = true
 shader = ExtResource("10_4jhrn")
 shader_parameter/blue_value = 0.0
+shader_parameter/red_value = 0.0
 
 [node name="Training Dummy" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemy"]]
 collision_layer = 2

@@ -58,9 +58,17 @@ func hit_func(body: Node2D):
 			else:
 				match PlayerVariables.elemental_rupture:
 					"water":
-						body.speed = 0.5
 						var slow_timer = Paths.slow_timer.instantiate()
 						body.add_child(slow_timer)
+					"fire":
+						var fire_dot = Paths.fire_dot.instantiate()
+						var nodes = body.get_children()
+						var can_create: bool = true
+						for node in nodes:
+							if node is FireDot:
+								can_create = false
+						if can_create:
+							body.add_child(fire_dot)
 					"air":
 						var area = Paths.air_damage_area.instantiate()
 						body.call_deferred("add_child",area)

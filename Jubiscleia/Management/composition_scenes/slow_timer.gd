@@ -3,13 +3,14 @@ extends Timer
 
 var parent: Node2D
 
-var material: ShaderMaterial
+var shader: ShaderMaterial
 
 func _ready() -> void:
 	parent = get_parent()
-	material = parent.texture.get_material()
-	material.set_shader_parameter("blue_value",0.4)
+	shader = parent.texture.get_material()
+	shader.set_shader_parameter("blue_value",0.4)
+	parent.speed = 0.5 if parent.element == "fire" else 0.7
 
 func _on_timeout() -> void:
 	parent.speed = 1
-	material.set_shader_parameter("blue_value",0.0)
+	shader.set_shader_parameter("blue_value",0.0)

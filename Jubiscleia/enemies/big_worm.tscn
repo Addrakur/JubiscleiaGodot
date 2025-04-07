@@ -22,6 +22,7 @@
 resource_local_to_scene = true
 shader = ExtResource("2_hbyau")
 shader_parameter/blue_value = 0.0
+shader_parameter/red_value = 0.0
 
 [sub_resource type="Animation" id="Animation_g3fvp"]
 length = 0.001
