@@ -1,0 +1,59 @@
+[gd_resource type="BehaviorTree" load_steps=17 format=3 uid="uid://djga7cm0ugc4e"]
+
+[ext_resource type="Script" uid="uid://dvu6fuaoqjp1g" path="res://ai/tasks/parent_var_check.gd" id="1_wmhf4"]
+[ext_resource type="Script" uid="uid://d2drruk6boo2v" path="res://ai/tasks/dispatch.gd" id="3_a782n"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_b0vht"]
+
+[sub_resource type="BTAction" id="BTAction_648k1"]
+script = ExtResource("1_wmhf4")
+var_name = "player_on_limit"
+
+[sub_resource type="BTComment" id="BTComment_wmhf4"]
+custom_name = "Verifica se o ataque está em cooldown"
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_a782n"]
+min_duration = 3.0
+max_duration = 5.0
+children = [SubResource("BTComment_wmhf4")]
+
+[sub_resource type="BTAction" id="BTAction_r34ki"]
+custom_name = "dispatch to swipe"
+script = ExtResource("3_a782n")
+dispatch_name = "idle_to_swipe"
+
+[sub_resource type="BTProbability" id="BTProbability_648k1"]
+run_chance = 0.4
+children = [SubResource("BTAction_r34ki")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_a782n"]
+text = "ranged"
+
+[sub_resource type="BTSequence" id="BTSequence_iklfa"]
+custom_name = "ranged"
+children = [SubResource("BTConsolePrint_a782n")]
+
+[sub_resource type="BTProbability" id="BTProbability_r34ki"]
+run_chance = 0.6
+children = [SubResource("BTSequence_iklfa")]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_05rcb"]
+text = "root"
+
+[sub_resource type="BTSequence" id="BTSequence_dor2w"]
+custom_name = "root"
+children = [SubResource("BTConsolePrint_05rcb")]
+
+[sub_resource type="BTSelector" id="BTSelector_bg0r3"]
+custom_name = "attack_selector"
+children = [SubResource("BTProbability_648k1"), SubResource("BTProbability_r34ki"), SubResource("BTSequence_dor2w")]
+
+[sub_resource type="BTSequence" id="BTSequence_a782n"]
+children = [SubResource("BTRandomWait_a782n"), SubResource("BTSelector_bg0r3")]
+
+[sub_resource type="BTSequence" id="BTSequence_648k1"]
+children = [SubResource("BTAction_648k1"), SubResource("BTSequence_a782n")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_b0vht")
+root_task = SubResource("BTSequence_648k1")

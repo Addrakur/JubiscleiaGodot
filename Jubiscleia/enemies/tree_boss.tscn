@@ -1,12 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://d3itdnmn8ah43"]
+[gd_scene load_steps=24 format=3 uid="uid://d3itdnmn8ah43"]
 
 [ext_resource type="Texture2D" uid="uid://bjfl0l5bdyq5s" path="res://assets/enemy/tree_boss/tree_boss_idle.png" id="1_kjuq6"]
 [ext_resource type="Script" uid="uid://bwjayd6kp0gh8" path="res://enemies/tree_boss.gd" id="1_w1ig0"]
 [ext_resource type="Texture2D" uid="uid://dhlp3n8t4wtr8" path="res://assets/enemy/tree_boss/tree_boss_Walk.png" id="2_u1iyd"]
 [ext_resource type="Texture2D" uid="uid://dgfw37jxm8px3" path="res://assets/enemy/tree_boss/tree_boss_attack.png" id="3_u76h0"]
 [ext_resource type="Script" uid="uid://4gnydbw1e83y" path="res://Management/states/tree_boss/tree_boss_idle.gd" id="5_vdt7u"]
-[ext_resource type="Script" uid="uid://c674juv1mbw5d" path="res://Management/states/tree_boss/tree_boss_move.gd" id="6_hi1ka"]
-[ext_resource type="BehaviorTree" uid="uid://cv8t2m8gmhswg" path="res://Management/behaviour_trees/tree_boss/tree_boss_move_tree.tres" id="7_3ptil"]
+[ext_resource type="BehaviorTree" uid="uid://djga7cm0ugc4e" path="res://Management/behaviour_trees/tree_boss/tree_boss_idle_tree.tres" id="6_gafwg"]
+[ext_resource type="Script" uid="uid://dw4rhurscgw0s" path="res://Management/states/tree_boss/attack_swipe.gd" id="8_1hkfu"]
+[ext_resource type="BehaviorTree" uid="uid://b1ptrptn023l8" path="res://Management/behaviour_trees/tree_boss/tree_boss_swipe_tree.tres" id="10_lebh0"]
 
 [sub_resource type="Animation" id="Animation_u76h0"]
 length = 0.001
@@ -45,48 +46,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [1]
-}
-
-[sub_resource type="Animation" id="Animation_vdt7u"]
-resource_name = "attack"
-length = 2.08334
-loop_mode = 1
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("texture:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_u76h0")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("texture:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [25]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("texture:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 }
 
 [sub_resource type="Animation" id="Animation_u1iyd"]
@@ -129,6 +88,48 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+}
+
+[sub_resource type="Animation" id="Animation_vdt7u"]
+resource_name = "swipe"
+length = 2.08334
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_u76h0")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [25]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
 }
 
 [sub_resource type="Animation" id="Animation_w1ig0"]
@@ -176,8 +177,8 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w1ig0"]
 _data = {
 &"RESET": SubResource("Animation_u76h0"),
-&"attack": SubResource("Animation_vdt7u"),
 &"idle": SubResource("Animation_u1iyd"),
+&"swipe": SubResource("Animation_vdt7u"),
 &"walk": SubResource("Animation_w1ig0")
 }
 
@@ -185,7 +186,19 @@ _data = {
 radius = 24.0
 height = 164.0
 
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_vdt7u"]
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_1hkfu"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_urt7n"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_lebh0"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_vi44x"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_c8gdp"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_xul8h"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_16syl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ptil"]
 size = Vector2(57, 160)
@@ -216,22 +229,54 @@ shape = SubResource("CapsuleShape2D_kjuq6")
 
 [node name="hsm" type="LimboHSM" parent="."]
 
-[node name="idle" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+[node name="idle" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "tree")]
 script = ExtResource("5_vdt7u")
 parent = NodePath("../..")
 animation = NodePath("../../animation")
+tree = NodePath("idle_tree")
 
-[node name="move" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "move_tree")]
-script = ExtResource("6_hi1ka")
+[node name="idle_tree" type="BTPlayer" parent="hsm/idle"]
+behavior_tree = ExtResource("6_gafwg")
+active = false
+blackboard_plan = SubResource("BlackboardPlan_1hkfu")
+
+[node name="attack_swipe" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "tree")]
+script = ExtResource("8_1hkfu")
 speed = 100.0
 parent = NodePath("../..")
-animation = NodePath("../../animation")
-move_tree = NodePath("move")
+tree = NodePath("attack_swipe_tree")
 
-[node name="move" type="BTPlayer" parent="hsm/move"]
-behavior_tree = ExtResource("7_3ptil")
+[node name="attack_swipe_tree" type="BTPlayer" parent="hsm/attack_swipe"]
+behavior_tree = ExtResource("10_lebh0")
 active = false
-blackboard_plan = SubResource("BlackboardPlan_vdt7u")
+blackboard_plan = SubResource("BlackboardPlan_urt7n")
+
+[node name="attack_throw" type="LimboState" parent="hsm"]
+
+[node name="attack_throw_tree" type="BTPlayer" parent="hsm/attack_throw"]
+blackboard_plan = SubResource("BlackboardPlan_lebh0")
+
+[node name="attack_root" type="LimboState" parent="hsm"]
+
+[node name="attack_root_tree" type="BTPlayer" parent="hsm/attack_root"]
+blackboard_plan = SubResource("BlackboardPlan_vi44x")
+
+[node name="attack_fire" type="LimboState" parent="hsm"]
+
+[node name="attack_fire_tree" type="BTPlayer" parent="hsm/attack_fire"]
+blackboard_plan = SubResource("BlackboardPlan_c8gdp")
+
+[node name="attack_run" type="LimboState" parent="hsm"]
+
+[node name="attack_run_tree" type="BTPlayer" parent="hsm/attack_run"]
+blackboard_plan = SubResource("BlackboardPlan_xul8h")
+
+[node name="change_fase" type="LimboState" parent="hsm"]
+
+[node name="change_fase_tree" type="BTPlayer" parent="hsm/change_fase"]
+blackboard_plan = SubResource("BlackboardPlan_16syl")
+
+[node name="death" type="LimboState" parent="hsm"]
 
 [node name="melee_detect_area" type="Area2D" parent="."]
 collision_layer = 0

@@ -2,10 +2,13 @@ extends LimboState
 
 @export var parent: BossTree
 @export var animation: AnimationPlayer
+@export var tree: BTPlayer
 
-func _enter() -> void:
+func _enter():
+	print("enter idle")
+	tree.active = true
 	animation.play("idle")
 
-func _update(_delta: float):
-	if parent.player_on_limit:
-		dispatch("idle_to_move")
+func _exit():
+	print("exit idle")
+	tree.active = false

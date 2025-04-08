@@ -1,0 +1,72 @@
+[gd_resource type="BehaviorTree" load_steps=23 format=3 uid="uid://b1ptrptn023l8"]
+
+[ext_resource type="BlackboardPlan" uid="uid://bvu2xc7ap8cpy" path="res://Management/behaviour_trees/tree_boss/tree_boss_blackboard.tres" id="1_prcag"]
+[ext_resource type="Script" uid="uid://d2drruk6boo2v" path="res://ai/tasks/dispatch.gd" id="1_sm2ss"]
+[ext_resource type="Script" uid="uid://dvu6fuaoqjp1g" path="res://ai/tasks/parent_var_check.gd" id="2_ek8e1"]
+[ext_resource type="Script" uid="uid://c7qn0683f181d" path="res://ai/tasks/set_velocity.gd" id="3_jcrl7"]
+[ext_resource type="Script" uid="uid://cokas24u28bqe" path="res://ai/tasks/set_parent_string.gd" id="4_62ihk"]
+[ext_resource type="Script" uid="uid://dfiw2i6ulwna8" path="res://ai/tasks/set_direction_to_target.gd" id="5_jcrl7"]
+[ext_resource type="Script" uid="uid://bg3ndytd1lpqf" path="res://ai/tasks/move_to_direction.gd" id="6_8ol1b"]
+
+[sub_resource type="BTAction" id="BTAction_1nh3i"]
+script = ExtResource("2_ek8e1")
+var_name = "can_attack_melee"
+
+[sub_resource type="BTAction" id="BTAction_8ol1b"]
+script = ExtResource("3_jcrl7")
+value = Vector2(0, 0)
+
+[sub_resource type="BBNode" id="BBNode_7udd3"]
+saved_value = NodePath("animation")
+resource_name = "animation"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_sm2ss"]
+animation_player = SubResource("BBNode_7udd3")
+animation_name = &"swipe"
+
+[sub_resource type="BBNode" id="BBNode_sm2ss"]
+saved_value = NodePath("animation")
+resource_name = "animation"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_prcag"]
+animation_player = SubResource("BBNode_sm2ss")
+animation_name = &"swipe"
+max_time = 2.084
+
+[sub_resource type="BTAction" id="BTAction_ek8e1"]
+script = ExtResource("1_sm2ss")
+dispatch_name = "swipe_to_idle"
+
+[sub_resource type="BTSequence" id="BTSequence_prcag"]
+custom_name = "Attacking"
+children = [SubResource("BTAction_1nh3i"), SubResource("BTAction_8ol1b"), SubResource("BTPlayAnimation_sm2ss"), SubResource("BTAwaitAnimation_prcag"), SubResource("BTAction_ek8e1")]
+
+[sub_resource type="BTAction" id="BTAction_5a16x"]
+script = ExtResource("4_62ihk")
+var_name = "target"
+value = "player_ref"
+
+[sub_resource type="BTAction" id="BTAction_bndkf"]
+script = ExtResource("5_jcrl7")
+
+[sub_resource type="BBNode" id="BBNode_62ihk"]
+saved_value = NodePath("animation")
+resource_name = "animation"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_jcrl7"]
+animation_player = SubResource("BBNode_62ihk")
+animation_name = &"walk"
+
+[sub_resource type="BTAction" id="BTAction_a65uw"]
+script = ExtResource("6_8ol1b")
+
+[sub_resource type="BTSequence" id="BTSequence_6rmca"]
+custom_name = "move_to_target"
+children = [SubResource("BTAction_5a16x"), SubResource("BTAction_bndkf"), SubResource("BTPlayAnimation_jcrl7"), SubResource("BTAction_a65uw")]
+
+[sub_resource type="BTSelector" id="BTSelector_4me7a"]
+children = [SubResource("BTSequence_prcag"), SubResource("BTSequence_6rmca")]
+
+[resource]
+blackboard_plan = ExtResource("1_prcag")
+root_task = SubResource("BTSelector_4me7a")

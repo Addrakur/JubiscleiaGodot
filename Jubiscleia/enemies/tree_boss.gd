@@ -5,15 +5,17 @@ extends CharacterBody2D
 @export var attack_area: AttackArea
 @export_enum("water","fire","earth","air") var element: String
 @export var player: Player
+@export var arena_middle: Marker2D
 
 @export var limit: Area2D
 @onready var texture: Sprite2D = $texture
 
 @onready var hsm: LimboHSM = $hsm
 @onready var idle_state: LimboState = $hsm/idle
-@onready var move_state: LimboState = $hsm/move
+@onready var swipe_state: LimboState = $hsm/attack_swipe
 
 @onready var player_ref: Player
+var target: Node2D
 var player_on_limit: bool = false
 var can_attack_melee: bool = false
 var can_attack_ranged: bool = false
@@ -26,9 +28,9 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func init_state_machine():
-	hsm.add_transition(idle_state,move_state, &"idle_to_move")
+	hsm.add_transition(idle_state, swipe_state, &"idle_to_swipe")
 	
-	hsm.add_transition(move_state,idle_state, &"move_to_idle")
+	hsm.add_transition(swipe_state, idle_state, &"swipe_to_idle")
 	
 	hsm.initial_state = idle_state
 	hsm.initialize(self)

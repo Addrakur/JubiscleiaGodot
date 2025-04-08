@@ -23,7 +23,7 @@ func _ready() -> void:
 
 func on_body_entered(body):
 	if body is Player:
-		#player_inside_limit = true
+		player_inside_limit = true
 		for enemy in enemy_list:
 			enemy.player_on_limit = true
 	
