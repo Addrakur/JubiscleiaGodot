@@ -9,6 +9,8 @@ extends CharacterBody2D
 
 @export var limit: Area2D
 @onready var texture: Sprite2D = $texture
+@onready var melee_detect_area: Area2D = $melee_detect_area
+@onready var ranged_detect_area: Area2D = $ranged_detect_area
 
 @onready var hsm: LimboHSM = $hsm
 @onready var idle_state: LimboState = $hsm/idle
@@ -25,6 +27,10 @@ func _ready() -> void:
 	player_ref = player
 
 func _physics_process(_delta: float) -> void:
+	if velocity.x > 0:
+		right()
+	elif velocity.x < 0:
+		left()
 	move_and_slide()
 
 func init_state_machine():
@@ -51,3 +57,13 @@ func _on_ranged_detect_area_body_entered(body: Node2D) -> void:
 func _on_ranged_detect_area_body_exited(body: Node2D) -> void:
 	if body == player_ref:
 		can_attack_ranged = false
+
+func right():
+	texture.flip_h = true
+	melee_detect_area.scale.x = -1
+	ranged_detect_area.scale.x = -1
+
+func left():
+	texture.flip_h = false
+	melee_detect_area.scale.x = 1
+	ranged_detect_area.scale.x = 1
