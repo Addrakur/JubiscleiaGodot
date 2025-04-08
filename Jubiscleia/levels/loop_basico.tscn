@@ -200,7 +200,7 @@ position = Vector2(5787, -9)
 direction = -1.0
 
 [node name="LevelEnd" parent="." instance=ExtResource("6_ndssn")]
-position = Vector2(-1440, 160)
+position = Vector2(8084, -414)
 
 [node name="Training Dummy" parent="." instance=ExtResource("16_e263j")]
 position = Vector2(1922, 165)
@@ -223,99 +223,6 @@ tween_resource = SubResource("Resource_a3tg3")
 follow_offset = Vector2(0, -32)
 follow_damping = true
 limit_target = NodePath("../CameraArea/free_camera_limit")
-
-[node name="Tutorial" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Label" type="Label" parent="Tutorial"]
-layout_mode = 0
-offset_left = 381.0
-offset_top = 247.0
-offset_right = 564.0
-offset_bottom = 351.0
-theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
-text = "MOVER:
-A/D
-</>
-Analogico para os lados"
-horizontal_alignment = 1
-
-[node name="Label2" type="Label" parent="Tutorial"]
-layout_mode = 0
-offset_left = 822.0
-offset_top = 204.0
-offset_right = 1045.0
-offset_bottom = 305.0
-theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
-text = "PULAR:
-Espaço
-X/A
-(Segure para pular mais alto)"
-horizontal_alignment = 1
-
-[node name="Label5" type="Label" parent="Tutorial"]
-layout_mode = 0
-offset_left = -1088.0
-offset_top = -480.0
-offset_right = -865.0
-offset_bottom = -376.0
-theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
-text = "PULO DUPLO:
-ESPAÇO
-W
-X/A"
-horizontal_alignment = 1
-
-[node name="Label6" type="Label" parent="Tutorial"]
-layout_mode = 0
-offset_left = -832.0
-offset_top = -448.0
-offset_right = -609.0
-offset_bottom = -344.0
-theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
-text = "Dash:
-SHIFT
-R2 / RT"
-horizontal_alignment = 1
-
-[node name="Label3" type="Label" parent="Tutorial"]
-layout_mode = 0
-offset_left = -704.0
-offset_top = -256.0
-offset_right = -542.0
-offset_bottom = -152.0
-theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
-text = "ABAIXAR:
-S
-↓
-Analógico para baixo"
-horizontal_alignment = 1
-
-[node name="Label4" type="Label" parent="Tutorial"]
-layout_mode = 0
-offset_left = -896.0
-offset_top = -96.0
-offset_right = -741.0
-offset_bottom = -18.0
-theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
-text = "DESCER:
-segure ABAIXAR
-aperte PULAR"
-horizontal_alignment = 1
-
-[node name="Label7" type="Label" parent="Tutorial"]
-layout_mode = 0
-offset_left = -1056.0
-offset_top = -224.0
-offset_right = -949.0
-offset_bottom = -175.0
-theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
-text = "WALL JUMP:
-aperte PULAR"
-horizontal_alignment = 1
 
 [node name="LavaTiles" type="Node2D" parent="."]
 
@@ -433,3 +340,96 @@ camera = NodePath("../free_camera")
 [node name="free_camera_limit" type="CollisionShape2D" parent="CameraArea"]
 position = Vector2(5312, -432)
 shape = SubResource("RectangleShape2D_24aq3")
+
+[node name="Tutorial" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 381.0
+offset_top = 247.0
+offset_right = 564.0
+offset_bottom = 351.0
+theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
+text = "MOVER:
+A/D
+</>
+Analogico para os lados"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 822.0
+offset_top = 204.0
+offset_right = 1045.0
+offset_bottom = 305.0
+theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
+text = "PULAR:
+Espaço
+X/A
+(Segure para pular mais alto)"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 3200.0
+offset_top = -896.0
+offset_right = 3423.0
+offset_bottom = -792.0
+theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
+text = "PULO DUPLO:
+ESPAÇO
+W
+X/A"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 4448.0
+offset_top = -256.0
+offset_right = 4671.0
+offset_bottom = -152.0
+theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
+text = "Dash:
+SHIFT
+R2 / RT"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 5551.0
+offset_top = -170.0
+offset_right = 5713.0
+offset_bottom = -66.0
+theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
+text = "ABAIXAR:
+S
+↓
+Analógico para baixo"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 6994.0
+offset_top = -1005.0
+offset_right = 7149.0
+offset_bottom = -927.0
+theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
+text = "DESCER:
+segure ABAIXAR
+aperte PULAR"
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Tutorial"]
+layout_mode = 0
+offset_left = 2208.0
+offset_top = -96.0
+offset_right = 2315.0
+offset_bottom = -47.0
+theme_override_colors/font_color = Color(0.933333, 1, 0, 1)
+text = "WALL JUMP:
+aperte PULAR"
+horizontal_alignment = 1
