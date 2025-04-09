@@ -116,11 +116,11 @@ func hit_func_2(body: Node2D):
 			if body.is_in_group("obstacle"):
 				if has_elemental_weakness(PlayerVariables.get(PlayerVariables.current_skill + "_element") if parent.is_in_group("player") else parent.element, body.element):
 					body.health_component.update_health(damage, 0, 0,0, attack_name, 0, parent.position.x, parent) # Chama a função que aplica o dano no alvo
-					print("dano no obstaculo")
-				else:
-					print("sem dano no obstaculo")
 			else:
-				pass
+				if PlayerVariables.elemental_rupture == "":
+					pass
+				else:
+					pass
 		else:
 			body.health_component.update_health(damage, knockup_force, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage, parent.position.x, parent) # Chama a função que aplica o dano no alvo
 

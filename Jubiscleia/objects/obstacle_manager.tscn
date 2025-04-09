@@ -12,7 +12,7 @@ _data = {
 }
 
 [node name="obstacle_manager" type="StaticBody2D" groups=["obstacle", "terrain"]]
-collision_layer = 65576
+collision_layer = 65578
 collision_mask = 32771
 script = ExtResource("1_enwpo")
 
