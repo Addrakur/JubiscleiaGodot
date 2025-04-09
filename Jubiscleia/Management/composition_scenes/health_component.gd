@@ -81,7 +81,7 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 func die() -> void:
 	if current_health <= 0:
 		parent.alive = false
-		if parent.is_in_group("enemy") and not orb_spawned:
+		if parent.is_in_group("enemy") and not orb_spawned and not parent.is_in_group("obstacle"):
 			spawn_elemental_orb(parent.position, parent.element, parent.limit)
 			orb_spawned = true
 

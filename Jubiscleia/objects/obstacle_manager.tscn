@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bpmgpdleeh4k6"]
+
+[ext_resource type="Script" uid="uid://cc2qidbiakpqc" path="res://objects/obstacle_manager.gd" id="1_enwpo"]
+[ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="2_vkobl"]
+
+[sub_resource type="Animation" id="Animation_vkobl"]
+resource_name = "hit"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u8200"]
+_data = {
+&"hit": SubResource("Animation_vkobl")
+}
+
+[node name="obstacle_manager" type="StaticBody2D" groups=["obstacle", "terrain"]]
+collision_layer = 65576
+collision_mask = 32771
+script = ExtResource("1_enwpo")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_vkobl")]
+max_health = 5.0
+max_poise = 100.0
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+
+[node name="hit_modulate" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u8200")
+}

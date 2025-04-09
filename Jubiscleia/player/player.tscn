@@ -2889,6 +2889,7 @@ position = Vector2(0, -14)
 scale = Vector2(1.00346, 1)
 collision_mask = 2
 target = "enemy"
+targets = Array[String](["enemy", "obstacle"])
 
 [node name="AttackArea" type="CollisionPolygon2D" parent="AttackArea"]
 position = Vector2(38.8655, 0)

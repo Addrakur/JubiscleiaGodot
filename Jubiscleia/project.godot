@@ -43,6 +43,7 @@ terrain=""
 projectile=""
 player_object=""
 shield_enemy=""
+obstacle=""
 
 [input]
 
