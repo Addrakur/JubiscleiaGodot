@@ -25,12 +25,12 @@ func _ready():
 
 func _physics_process(_delta):
 	if body_ref != null:
-		hit_func_2(body_ref)
+		hit_func(body_ref)
 		#print(parent.name + " hit " + body_ref.name)
 
 func on_body_entered(ref):
 	if single_hit_per_enemy:
-		hit_func_2(ref)
+		hit_func(ref)
 		#print(parent.name + " hit " + ref.name)
 	else:
 		body_ref = ref
@@ -40,23 +40,29 @@ func on_body_exited(body):
 		body_ref = null
 
 func hit_func(body: Node2D):
-	if body.is_in_group(target) and not body.health_component.invulnerable and body.alive:
-		
-		
-		if parent.is_in_group("player") or parent.is_in_group("player_object"): # Verifica se quem bateu foi o jogador
-			if not body.is_in_group("obstacle"):
+	var body_is_target: bool = false
+	for unit in targets:
+		if body.is_in_group(unit):
+			body_is_target = true
+	
+	if body_is_target and not body.health_component.invulnerable and body.alive:
+		if parent.is_in_group("player") or parent.is_in_group("player_object"):
+			if body.is_in_group("obstacle"):
+				if has_elemental_weakness(PlayerVariables.get(PlayerVariables.current_skill + "_element") if parent.is_in_group("player") else parent.element, body.element):
+					body.health_component.update_health(damage, 0, 0,0, attack_name, 0, parent.position.x, parent) # Chama a função que aplica o dano no alvo
+			else:
+				var current_element: String = PlayerVariables.get(PlayerVariables.current_skill + "_element") if parent.is_in_group("player") else parent.element
 				if PlayerVariables.elemental_rupture == "":
-					var current_meter_value = PlayerVariables.get(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_stack_count") if parent.is_in_group("player") else PlayerVariables.get(parent.element + "_stack_count")# Recebe o valor atual do contador do elemento da arma
+					var current_meter_value = PlayerVariables.get(current_element + "_stack_count") # Recebe o valor atual do contador do elemento da arma
 					var new_value: float
-					if has_elemental_weakness(PlayerVariables.get(PlayerVariables.current_skill + "_element") if parent.is_in_group("player") else parent.element, body.element):
+					if has_elemental_weakness(current_element, body.element):
 						new_value = current_meter_value + (PlayerVariables.get(PlayerVariables.current_skill + "_element_amount") * PlayerVariables.element_extra_stack) if parent.is_in_group("player") else current_meter_value + (PlayerVariables.get(parent.skill + "_element_amount") * PlayerVariables.element_extra_stack)# Calcula o novo valor
-					elif has_elemental_strength(PlayerVariables.get(PlayerVariables.current_skill + "_element") if parent.is_in_group("player") else parent.element, body.element):
+					elif has_elemental_strength(current_element, body.element):
 						new_value = current_meter_value + (PlayerVariables.get(PlayerVariables.current_skill + "_element_amount") * PlayerVariables.element_reduced_stack) if parent.is_in_group("player") else current_meter_value + (PlayerVariables.get(parent.skill + "_element_amount") * PlayerVariables.element_reduced_stack)# Calcula o novo valor
 					else:
 						new_value = current_meter_value + PlayerVariables.get(PlayerVariables.current_skill + "_element_amount") if parent.is_in_group("player") else current_meter_value + PlayerVariables.get(parent.skill + "_element_amount")# Calcula o novo valor
 					
-					PlayerVariables.set(PlayerVariables.get(PlayerVariables.current_skill + "_element") + "_stack_count" if parent.is_in_group("player") else parent.element + "_stack_count" , new_value)  # Vincula o novo valor ao contador
-					
+					PlayerVariables.set(current_element + "_stack_count" , new_value)  # Vincula o novo valor ao contador
 				else:
 					match PlayerVariables.elemental_rupture:
 						"water":
@@ -75,55 +81,18 @@ func hit_func(body: Node2D):
 							var area = Paths.air_damage_area.instantiate()
 							body.call_deferred("add_child",area)
 							area.position = body.center_damage_area.position
-					if has_elemental_weakness(PlayerVariables.get(PlayerVariables.current_skill + "_element") if parent.is_in_group("player") else parent.element, body.element):
-						damage *= PlayerVariables.element_extra_damage
-					elif has_elemental_strength(PlayerVariables.get(PlayerVariables.current_skill + "_element") if parent.is_in_group("player") else parent.element, body.element):
-						damage *= PlayerVariables.element_reduced_damage
+				if has_elemental_weakness(current_element, body.element):
+					damage *= PlayerVariables.element_extra_damage
+				elif has_elemental_strength(current_element, body.element):
+					damage *= PlayerVariables.element_reduced_damage
+				body.health_component.update_health(damage, knockup_force, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage, parent.position.x, parent)
 				
-			
-		if parent.is_in_group("player_object"):
-			if not body.is_in_group("obstacle"):
-				if PlayerVariables.elemental_rupture == "":
-					var current_meter_value = PlayerVariables.get(parent.element + "_stack_count")
-					var new_value = current_meter_value + PlayerVariables.get(parent.skill + "_element_amount")
-					PlayerVariables.set(parent.element + "_stack_count", new_value)
-				elif PlayerVariables.elemental_rupture == "water":
-					GameSettings.player.health_component.current_health += damage * 0.5
-				
-		if one_hit_destroy or body.is_in_group("shield_enemy") and parent.is_in_group("player_object"):
-			parent.can_destroy = true
-		
-		if body.is_in_group("obstacle"):
-			if has_elemental_weakness(PlayerVariables.get(PlayerVariables.current_skill + "_element") if parent.is_in_group("player") else parent.element, body.element):
-				body.health_component.update_health(damage, 0, 0, 0, attack_name, 0, parent.position.x, parent)
-				print("dano no obstaculo")
-			else:
-				print("sem dano no obstaculod")
 		else:
 			body.health_component.update_health(damage, knockup_force, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage, parent.position.x, parent) # Chama a função que aplica o dano no alvo
-		
-	elif body.is_in_group("terrain") and destroy_on_terrain:
-		parent.can_destroy = true
-
-func hit_func_2(body: Node2D):
-	var body_is_target: bool = false
-	for unit in targets:
-		if body.is_in_group(unit):
-			body_is_target = true
 	
-	if body_is_target and not body.health_component.invulnerable and body.alive:
-		if parent.is_in_group("player") or parent.is_in_group("player_object"):
-			if body.is_in_group("obstacle"):
-				if has_elemental_weakness(PlayerVariables.get(PlayerVariables.current_skill + "_element") if parent.is_in_group("player") else parent.element, body.element):
-					body.health_component.update_health(damage, 0, 0,0, attack_name, 0, parent.position.x, parent) # Chama a função que aplica o dano no alvo
-			else:
-				if PlayerVariables.elemental_rupture == "":
-					pass
-				else:
-					pass
-		else:
-			body.health_component.update_health(damage, knockup_force, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage, parent.position.x, parent) # Chama a função que aplica o dano no alvo
-
+	if one_hit_destroy or body.is_in_group("shield_enemy") and parent.is_in_group("player_object") or body.is_in_group("terrain") and destroy_on_terrain:
+		parent.can_destroy = true
+	
 
 func has_elemental_weakness(parent_element: String, body_element: String) -> bool:
 	if parent_element == "water" and body_element == "fire" or parent_element == "fire" and body_element == "earth" or parent_element == "earth" and body_element == "air" or parent_element == "air" and body_element == "water":
