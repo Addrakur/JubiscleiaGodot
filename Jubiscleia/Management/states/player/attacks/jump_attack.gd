@@ -38,7 +38,6 @@ func enter_state() -> void:
 	
 	player.velocity.x = 0
 	
-
 func exit_state() -> void:
 	set_physics_process(false)
 	player.override_gravity = 0
@@ -59,9 +58,9 @@ func exit_state() -> void:
 	player.next_attack = next_attack_sustain
 	player.combo_timer.start()
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if stop:
-		player.velocity.y = player.velocity.y - player.velocity.y * 0.05
+		player.velocity.y = player.velocity.y - player.velocity.y * 5 * delta
 	
 	if PlayerVariables.can_move_during_attack:
 		player.velocity.x = player.direction * player.jump_state.speed

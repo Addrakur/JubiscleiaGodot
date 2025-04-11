@@ -25,3 +25,8 @@ func _physics_process(_delta: float) -> void:
 
 func destroy():
 	queue_free()
+
+
+func _on_hit_modulate_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "hit":
+		health_component.last_attack = ""

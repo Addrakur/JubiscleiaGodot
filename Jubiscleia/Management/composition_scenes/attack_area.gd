@@ -47,11 +47,13 @@ func hit_func(body: Node2D):
 	
 	if body_is_target and not body.health_component.invulnerable and body.alive:
 		if parent.is_in_group("player") or parent.is_in_group("player_object"):
+			var current_element: String = PlayerVariables.get(PlayerVariables.current_skill + "_element") if parent.is_in_group("player") else parent.element
 			if body.is_in_group("obstacle"):
-				if has_elemental_weakness(PlayerVariables.get(PlayerVariables.current_skill + "_element") if parent.is_in_group("player") else parent.element, body.element):
+				if has_elemental_weakness(current_element, body.element):
+					print(current_element) 
+					print(damage)
 					body.health_component.update_health(damage, 0, 0,0, attack_name, 0, parent.position.x, parent) # Chama a função que aplica o dano no alvo
 			else:
-				var current_element: String = PlayerVariables.get(PlayerVariables.current_skill + "_element") if parent.is_in_group("player") else parent.element
 				if PlayerVariables.elemental_rupture == "":
 					var current_meter_value = PlayerVariables.get(current_element + "_stack_count") # Recebe o valor atual do contador do elemento da arma
 					var new_value: float

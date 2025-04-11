@@ -4,21 +4,6 @@
 [ext_resource type="Script" uid="uid://d2ysjvhxm4dwb" path="res://objects/elemental_obstacle.gd" id="1_jli4y"]
 [ext_resource type="Texture2D" uid="uid://dpik77gt30pqy" path="res://assets/placeholder/earth_obs.png" id="2_jli4y"]
 
-[sub_resource type="Animation" id="Animation_r8ipm"]
-resource_name = "fire"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("texture:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("1_3rqq4")]
-}
-
 [sub_resource type="Animation" id="Animation_rx71l"]
 length = 0.001
 tracks/0/type = "value"
@@ -47,6 +32,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [ExtResource("2_jli4y")]
+}
+
+[sub_resource type="Animation" id="Animation_r8ipm"]
+resource_name = "fire"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_3rqq4")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rdfal"]
