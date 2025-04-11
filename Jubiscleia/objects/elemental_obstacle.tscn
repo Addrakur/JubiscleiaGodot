@@ -60,7 +60,7 @@ _data = {
 script = ExtResource("1_jli4y")
 
 [node name="texture" type="Sprite2D" parent="."]
-position = Vector2(48, -16)
+position = Vector2(47, -16)
 texture = ExtResource("1_3rqq4")
 
 [node name="animation" type="AnimationPlayer" parent="."]

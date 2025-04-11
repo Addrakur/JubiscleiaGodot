@@ -50,8 +50,6 @@ func hit_func(body: Node2D):
 			var current_element: String = PlayerVariables.get(PlayerVariables.current_skill + "_element") if parent.is_in_group("player") else parent.element
 			if body.is_in_group("obstacle"):
 				if has_elemental_weakness(current_element, body.element):
-					print(current_element) 
-					print(damage)
 					body.health_component.update_health(damage, 0, 0,0, attack_name, 0, parent.position.x, parent) # Chama a função que aplica o dano no alvo
 			else:
 				if PlayerVariables.elemental_rupture == "":
