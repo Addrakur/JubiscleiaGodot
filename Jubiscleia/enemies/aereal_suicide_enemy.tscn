@@ -246,7 +246,7 @@ attack_area = NodePath("explosion_area")
 [node name="animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../texture")
 libraries = {
-"": SubResource("AnimationLibrary_le3gb")
+&"": SubResource("AnimationLibrary_le3gb")
 }
 
 [node name="trigger_area" type="Area2D" parent="."]
