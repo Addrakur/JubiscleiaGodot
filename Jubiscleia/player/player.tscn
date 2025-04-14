@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=103 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" uid="uid://cvl15g6x6hrij" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_tuo6g"]
@@ -33,9 +33,12 @@
 [ext_resource type="Script" uid="uid://bge7psdvnyi3q" path="res://Management/states/player/attacks/attack_2.gd" id="42_ebned"]
 [ext_resource type="Script" uid="uid://bevjydkrvetfu" path="res://Management/states/player/attacks/attack_3.gd" id="43_nthil"]
 [ext_resource type="Texture2D" uid="uid://38dtki6n38ay" path="res://assets/player/corruption_aura/water_heal_charge.png" id="47_wpyo2"]
+[ext_resource type="Texture2D" uid="uid://b8whcco26yqpc" path="res://assets/player/corruption_aura/fire_heal_charge.png" id="48_vgvch"]
 [ext_resource type="Texture2D" uid="uid://cq8jutrwen08y" path="res://assets/player/Ataques/Espada/C0/sword_0_1.png" id="49_26le7"]
 [ext_resource type="Texture2D" uid="uid://cx6nyut6vcret" path="res://assets/player/corruption_aura/complete_aura_level_2.png" id="49_80rfq"]
+[ext_resource type="Texture2D" uid="uid://cf7sdl8lsr1q" path="res://assets/player/corruption_aura/air_heal_charge.png" id="49_a1u5o"]
 [ext_resource type="Texture2D" uid="uid://1ypywgu38i7e" path="res://assets/player/corruption_aura/complete_aura_level_3.png" id="50_2f1dk"]
+[ext_resource type="Texture2D" uid="uid://s7qsggkqiwlb" path="res://assets/player/corruption_aura/earth_heal_charge.png" id="50_3dxkp"]
 [ext_resource type="Texture2D" uid="uid://cd3uanae2v0jg" path="res://assets/player/Ataques/Machado/C0/axe_0_1.png" id="50_6mi2m"]
 [ext_resource type="Texture2D" uid="uid://qrwri5x1m2jj" path="res://assets/player/Ataques/Espada/C0/sword_0_2.png" id="50_rdt3s"]
 [ext_resource type="Texture2D" uid="uid://dkhb5k7uvtuni" path="res://assets/player/Ataques/Espada/C0/sword_0_3.png" id="51_is44h"]
@@ -2726,16 +2729,115 @@ tracks/0/keys = {
 "update": 1,
 "values": [ExtResource("47_wpyo2")]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Aura:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_6wior"]
+resource_name = "fire_healing"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Aura:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("48_vgvch")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Aura:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_p5tca"]
+resource_name = "air_healing"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Aura:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("49_a1u5o")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Aura:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_jbx34"]
+resource_name = "earth_healing"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Aura:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("50_3dxkp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Aura:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vrfuq"]
 _data = {
 &"RESET": SubResource("Animation_b2rpp"),
 &"air": SubResource("Animation_38hf2"),
 &"air_ending": SubResource("Animation_ym5ph"),
+&"air_healing": SubResource("Animation_p5tca"),
 &"earth": SubResource("Animation_txsib"),
 &"earth_ending": SubResource("Animation_1s75d"),
+&"earth_healing": SubResource("Animation_jbx34"),
 &"fire": SubResource("Animation_jfs1f"),
 &"fire_ending": SubResource("Animation_8xva2"),
+&"fire_healing": SubResource("Animation_6wior"),
 &"no_rupture": SubResource("Animation_vn8p6"),
 &"water": SubResource("Animation_xc8ab"),
 &"water_ending": SubResource("Animation_ot1yn"),
@@ -2796,11 +2898,12 @@ health_component = NodePath("HealthComponent")
 script = ExtResource("12_8y4yw")
 state = NodePath("Idle")
 
-[node name="PlayerHeal" type="Node" parent="StateMachine" node_paths=PackedStringArray("parent", "animation", "element_manager")]
+[node name="Heal" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation", "element_manager")]
 script = ExtResource("3_237xx")
-parent = NodePath("../..")
+player = NodePath("../..")
 animation = NodePath("../../AuraAnimations")
 element_manager = NodePath("../../element_manager")
+healing_amount = 20.0
 metadata/_custom_type_script = "uid://chlxopckcm1pw"
 
 [node name="Idle" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation", "dash_cooldown")]
@@ -2993,8 +3096,9 @@ one_shot = true
 [node name="element_manager" type="Node2D" parent="." node_paths=PackedStringArray("player", "animation", "element_timer")]
 scale = Vector2(1.00538, 1)
 script = ExtResource("94_8uuoj")
-player = NodePath("..")
 max_element_stack = 1.0
+timer = 10.0
+player = NodePath("..")
 animation = NodePath("../AuraAnimations")
 element_timer = NodePath("../element_timer")
 
@@ -3039,7 +3143,7 @@ parent = NodePath("..")
 [connection signal="animation_finished" from="Animations" to="StateMachine/Hit" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/PlayerJumpAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/PlayerDash" method="_on_animation_finished"]
-[connection signal="animation_finished" from="AuraAnimations" to="StateMachine/PlayerHeal" method="_on_aura_animations_animation_finished"]
+[connection signal="animation_finished" from="AuraAnimations" to="StateMachine/Heal" method="_on_aura_animations_animation_finished"]
 [connection signal="animation_finished" from="HitModulate" to="." method="hit_modulate_animation_finished"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
 [connection signal="timeout" from="ComboTimer" to="." method="_on_combo_timer_timeout"]

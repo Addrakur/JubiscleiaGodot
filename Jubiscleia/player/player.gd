@@ -39,6 +39,7 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var jump_attack_state: State = $StateMachine/PlayerJumpAttack as PlayerJumpAttack
 @onready var dash_state: State = $StateMachine/PlayerDash as PlayerDash
 @onready var wall_grab_state = $StateMachine/PlayerWallGrab
+@onready var heal_state: PlayerHeal = $StateMachine/Heal
 @onready var state = $StateMachine/State as State
 @onready var interface = $Interface
 

@@ -1,8 +1,9 @@
 class_name ElementManager
 extends Node2D
 
-@export var player: Player
 @export var max_element_stack: float
+@export var timer: float
+@export var player: Player
 @export var animation: AnimationPlayer
 @export var element_timer: Timer
 
@@ -12,6 +13,9 @@ func _ready() -> void:
 	reset_elemental_counters()
 
 func _process(_delta: float) -> void:
+	if player.fsm.state == player.heal_state:
+		return
+	
 	if PlayerVariables.elemental_rupture != "":
 		if element_timer.time_left <= 3:
 			animation.play(PlayerVariables.elemental_rupture + "_ending")
@@ -33,6 +37,7 @@ func rupture(element: String) -> void:
 			PlayerVariables.set(element + "_stack_count", max_element_stack)
 	PlayerVariables.elemental_rupture = element
 	animation.play(element)
+	element_timer.wait_time = timer
 	element_timer.start()
 	
 	# Solução temporária
