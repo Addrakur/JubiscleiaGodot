@@ -40,3 +40,7 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("attack_button_2") and PlayerVariables.can_attack and PlayerVariables.skill_2 != "none":
 		PlayerVariables.next_skill = PlayerVariables.skill_2
 		player.fsm.change_state(player.get("attack_" + str(player.next_attack) + "_state"))
+	
+	if Input.is_action_just_pressed("heal") and PlayerVariables.elemental_rupture != "":
+		if PlayerVariables.elemental_rupture == PlayerVariables.get(PlayerVariables.skill_1 + "_element") or PlayerVariables.elemental_rupture == PlayerVariables.get(PlayerVariables.skill_2 + "_element"):
+			player.fsm.change_state(player.heal_state)

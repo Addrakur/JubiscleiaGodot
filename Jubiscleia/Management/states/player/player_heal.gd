@@ -13,6 +13,7 @@ var element_time_left: float
 var heal_level: float
 
 func enter_state():
+	player.velocity.x = 0
 	anim_finish = false
 	animation.play(PlayerVariables.elemental_rupture + "_healing")
 	element_time_left = element_manager.element_timer.time_left
