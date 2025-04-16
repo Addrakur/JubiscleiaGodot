@@ -19,6 +19,8 @@ func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(_delta):
+	if not PlayerVariables.active:
+		return
 	
 	if player.direction != 0 and player.is_on_floor():
 		player.fsm.change_state(player.move_state)

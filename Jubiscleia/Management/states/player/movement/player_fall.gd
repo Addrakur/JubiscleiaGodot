@@ -31,7 +31,7 @@ func _physics_process(_delta):
 		animation.play("jump")
 	
 	if player.is_on_floor():
-		if player.direction == 0:
+		if player.direction == 0 or not PlayerVariables.active:
 			player.fsm.change_state(player.idle_state)
 		else:
 			player.fsm.change_state(player.move_state)
@@ -41,20 +41,21 @@ func _physics_process(_delta):
 	if player.wall_grab_ray_cast.is_colliding(): #and player.direction == player.wall_grab_ray_cast.scale.x:
 		player.fsm.change_state(player.wall_grab_state)
 	
-	if Input.is_action_just_pressed("jump") and player.jump_count < player.max_jump_count:
-		if !player.coyote_time.is_stopped():
-			player.coyote_time.stop()
-			player.fsm.change_state(player.jump_state)
-		else:
-			player.fsm.change_state(player.double_jump_state)
-	
-	if Input.is_action_just_pressed("attack_button_1") and PlayerVariables.can_attack and PlayerVariables.skill_1 != "none":
-		PlayerVariables.next_skill = PlayerVariables.skill_1
-		player.fsm.change_state(player.jump_attack_state)
-	
-	if Input.is_action_just_pressed("attack_button_2") and PlayerVariables.can_attack and PlayerVariables.skill_2 != "none":
-		PlayerVariables.next_skill = PlayerVariables.skill_2
-		player.fsm.change_state(player.jump_attack_state)
+	if PlayerVariables.active:
+		if Input.is_action_just_pressed("jump") and player.jump_count < player.max_jump_count:
+			if !player.coyote_time.is_stopped():
+				player.coyote_time.stop()
+				player.fsm.change_state(player.jump_state)
+			else:
+				player.fsm.change_state(player.double_jump_state)
+		
+		if Input.is_action_just_pressed("attack_button_1") and PlayerVariables.can_attack and PlayerVariables.skill_1 != "none":
+			PlayerVariables.next_skill = PlayerVariables.skill_1
+			player.fsm.change_state(player.jump_attack_state)
+		
+		if Input.is_action_just_pressed("attack_button_2") and PlayerVariables.can_attack and PlayerVariables.skill_2 != "none":
+			PlayerVariables.next_skill = PlayerVariables.skill_2
+			player.fsm.change_state(player.jump_attack_state)
 
 func _on_coyote_time_timeout():
 	player.jump_count += 1

@@ -36,6 +36,7 @@ var my_knockup: bool = false
 var anim_finish: bool = false
 var can_move_during_attack: bool = false
 var can_attack: bool = true
+var active: bool = true
 
 var axe_1_speed: float = 0
 var axe_2_speed: float = 800
@@ -139,3 +140,6 @@ var spear_jump_damage: float = 2
 var spear_jump_knockback: float = 0
 var spear_jump_knockup: float = 0
 var spear_jump_poise: float = 5
+
+func toggle_active_player(t_or_f: bool):
+	active = t_or_f

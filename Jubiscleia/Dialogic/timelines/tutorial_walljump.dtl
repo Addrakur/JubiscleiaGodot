@@ -1,0 +1,3 @@
+PULE e ANDE na direção da parede para se segurar nela.
+Aperte PULAR enquanto preso na parede para pular para frente.
+do PlayerVariables.toggle_active_player(true)

@@ -79,7 +79,13 @@ func _ready():
 	fall_gravity = ((-2.0 * jump_height) / pow(jump_time_to_descent,2)) * -1
 	
 func _process(_delta):
-	direction = Input.get_axis("left","right")
+	if PlayerVariables.active:
+		direction = Input.get_axis("left","right")
+		
+		if Input.is_action_just_pressed("dash") and can_dash:
+			if fsm.state == wall_grab_state:
+				direction = -wall_grab_ray_cast.scale.x
+			fsm.change_state(dash_state)
 	
 	if not PlayerVariables.player_attacking:
 		attack_area_polygon.disabled = true
@@ -92,10 +98,6 @@ func _process(_delta):
 	if not alive:
 		fsm.change_state(death_state)
 	
-	if Input.is_action_just_pressed("dash") and can_dash:
-		if fsm.state == wall_grab_state:
-			direction = -wall_grab_ray_cast.scale.x
-		fsm.change_state(dash_state)
 
 func _physics_process(delta):
 	if not is_on_floor():

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv5vvn1dq5jyq"]
+
+[ext_resource type="Script" uid="uid://dk0p7mw2s1sxq" path="res://dialog_start.gd" id="1_jgeso"]
+
+[node name="dialog_start" type="Area2D"]
+collision_layer = 0
+collision_mask = 32769
+script = ExtResource("1_jgeso")
+
+[connection signal="body_entered" from="." to="." method="player_on_area"]
