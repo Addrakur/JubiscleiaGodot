@@ -10,6 +10,7 @@ var not_repeated: bool = true
 func player_on_area(body: Node2D):
 	if not interactive and body is Player:
 		if can_repeat or not_repeated:
+			body.velocity.x = 0
 			if body.is_on_floor():
 				body.fsm.change_state(body.idle_state)
 			else:

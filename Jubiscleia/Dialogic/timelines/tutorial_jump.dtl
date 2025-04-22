@@ -1,3 +1,3 @@
-Aperte W para pular.
+Aperte W ou ESPAÇO para pular.
 Segure o botão para pular mais alto.
 do PlayerVariables.toggle_active_player(true)

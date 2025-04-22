@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=4 uid="uid://b3xa4xiengywm"]
+[gd_scene load_steps=43 format=4 uid="uid://b3xa4xiengywm"]
 
 [ext_resource type="Script" uid="uid://cr0m6uuoltxgb" path="res://levels/level.gd" id="1_7dotf"]
 [ext_resource type="PackedScene" uid="uid://c33bx5e2javr1" path="res://levels/BG.tscn" id="3_5npyn"]
@@ -53,6 +53,24 @@ size = Vector2(196, 450)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ubnb6"]
 size = Vector2(86, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0sdop"]
+size = Vector2(45, 320)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_niye7"]
+size = Vector2(434, 41)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvpbm"]
+size = Vector2(54, 170)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sk8w0"]
+size = Vector2(80, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rwkmp"]
+size = Vector2(13, 447)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v25dc"]
+size = Vector2(136, 470)
 
 [node name="tutorial" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_7dotf")
@@ -165,7 +183,7 @@ texture = ExtResource("9_0j6fp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(2043, 13)
+position = Vector2(7769, -473)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = -448
@@ -341,12 +359,12 @@ visible = false
 polygon = PackedVector2Array(10272, -480, 10272, -448, 10752, -448, 10752, -480)
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_q1c72")]
-position = Vector2(2043, 45)
+position = Vector2(7769, -441)
 camera = NodePath("../Camera2D")
 
 [node name="free_camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(2043, 13)
+position = Vector2(7769, -473)
 script = ExtResource("8_rt00j")
 follow_mode = 2
 follow_target = NodePath("../Player")
@@ -494,7 +512,7 @@ position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_0k1lm")
 
 [node name="EnemyWall3" parent="." instance=ExtResource("28_g1vyw")]
-position = Vector2(8985, -699)
+position = Vector2(8997, -699)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyWall3"]
 position = Vector2(0.5, 0)
@@ -532,3 +550,51 @@ area_collision = NodePath("CollisionShape2D")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dialogic/wall_jump"]
 position = Vector2(2256, -48)
 shape = SubResource("RectangleShape2D_ubnb6")
+
+[node name="double_jump" parent="dialogic" node_paths=PackedStringArray("area_collision") instance=ExtResource("29_0k1lm")]
+timeline_name = "tutorial_double_jump"
+area_collision = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogic/double_jump"]
+position = Vector2(3171.5, -955)
+shape = SubResource("RectangleShape2D_0sdop")
+
+[node name="stacking" parent="dialogic" node_paths=PackedStringArray("area_collision") instance=ExtResource("29_0k1lm")]
+timeline_name = "tutorial_stacking"
+area_collision = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogic/stacking"]
+position = Vector2(4400, -76.5)
+shape = SubResource("RectangleShape2D_niye7")
+
+[node name="dash" parent="dialogic" node_paths=PackedStringArray("area_collision") instance=ExtResource("29_0k1lm")]
+timeline_name = "tutorial_dash"
+area_collision = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogic/dash"]
+position = Vector2(4653, -206)
+shape = SubResource("RectangleShape2D_dvpbm")
+
+[node name="duck" parent="dialogic" node_paths=PackedStringArray("area_collision") instance=ExtResource("29_0k1lm")]
+timeline_name = "tutorial_duck"
+area_collision = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogic/duck"]
+position = Vector2(5503, -104.5)
+shape = SubResource("RectangleShape2D_sk8w0")
+
+[node name="plat_down" parent="dialogic" node_paths=PackedStringArray("area_collision") instance=ExtResource("29_0k1lm")]
+timeline_name = "tutorial_plat_down"
+area_collision = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogic/plat_down"]
+position = Vector2(7092.5, -1111.5)
+shape = SubResource("RectangleShape2D_rwkmp")
+
+[node name="obstacles" parent="dialogic" node_paths=PackedStringArray("area_collision") instance=ExtResource("29_0k1lm")]
+timeline_name = "tutorial_obstacles"
+area_collision = NodePath("CollisionShape2D")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="dialogic/obstacles"]
+position = Vector2(7895, -635)
+shape = SubResource("RectangleShape2D_v25dc")

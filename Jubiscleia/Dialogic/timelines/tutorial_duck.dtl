@@ -1,0 +1,2 @@
+Aperte S para se abaixar. Não te deixa invulnerável, mas pode ser usado para desviar de certos ataques.
+do PlayerVariables.toggle_active_player(true)
