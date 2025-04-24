@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://cqp1060wjlhfn"]
+[gd_scene load_steps=25 format=4 uid="uid://cqp1060wjlhfn"]
 
 [ext_resource type="Script" uid="uid://cr0m6uuoltxgb" path="res://levels/level.gd" id="1_5moen"]
 [ext_resource type="PackedScene" uid="uid://cyum4hvfs7wnh" path="res://player/player.tscn" id="3_2ic4t"]
@@ -20,6 +20,8 @@
 [ext_resource type="PackedScene" uid="uid://djqldg2hn5i3u" path="res://Management/spike.tscn" id="11_davmh"]
 [ext_resource type="PackedScene" uid="uid://36mqj2owa7ei" path="res://enemies/second_boss.tscn" id="13_bj08y"]
 [ext_resource type="TileSet" uid="uid://ceays6vwb8ltl" path="res://assets/Tileset/forest_grass_tile.tres" id="13_coqf5"]
+[ext_resource type="PackedScene" uid="uid://d02iqmvry0lkc" path="res://Management/weapon_altar.tscn" id="13_fii5o"]
+[ext_resource type="PackedScene" uid="uid://b182cvp28iapt" path="res://Management/checkpoint.tscn" id="13_iekam"]
 [ext_resource type="TileSet" uid="uid://bnpgwb6pweab2" path="res://assets/Tileset/forest_grass_climb_tile.tres" id="14_hsqxd"]
 
 [sub_resource type="Resource" id="Resource_td1jt"]
@@ -28,13 +30,13 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_38c5u"]
-size = Vector2(3076, 576)
-
 [node name="arena" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_5moen")
 player = NodePath("player")
 free_spawn = true
+has_starting_weapon = true
+skill_1 = "sword"
+skill_2 = "none"
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -139,13 +141,9 @@ texture = ExtResource("9_4najf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(-538, 332)
+position = Vector2(-893, 439)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
-limit_left = -1792
-limit_top = 0
-limit_right = 1284
-limit_bottom = 576
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 process_priority = 300
@@ -179,11 +177,19 @@ position = Vector2(1088, 485)
 [node name="SpawnPointLeft" type="Marker2D" parent="Limit"]
 position = Vector2(-47, 339)
 
+[node name="Checkpoint" parent="." node_paths=PackedStringArray("level") instance=ExtResource("13_iekam")]
+position = Vector2(-916, 389)
+level = NodePath("..")
+
+[node name="weapon_altar" parent="." instance=ExtResource("13_fii5o")]
+position = Vector2(-1026, 485)
+weapon = "axe"
+
 [node name="second_boss" parent="." instance=ExtResource("13_bj08y")]
-position = Vector2(-904, 389)
+position = Vector2(-1500, 485)
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_2ic4t")]
-position = Vector2(-538, 364)
+position = Vector2(-893, 471)
 camera = NodePath("../Camera2D")
 
 [node name="Training Dummy" parent="." instance=ExtResource("9_dgptr")]
@@ -268,7 +274,7 @@ point_right = NodePath("../../Limit/PointRight")
 
 [node name="PhantomCamera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(-538, 332)
+position = Vector2(-893, 439)
 script = ExtResource("8_us7wb")
 follow_mode = 2
 follow_target = NodePath("../player")
@@ -276,7 +282,6 @@ zoom = Vector2(0.75, 0.75)
 tween_resource = SubResource("Resource_td1jt")
 follow_offset = Vector2(0, -32)
 follow_damping = true
-limit_target = NodePath("../CollisionShape2D")
 
 [node name="Spike" parent="." instance=ExtResource("11_davmh")]
 position = Vector2(-1646, 517)
@@ -301,8 +306,3 @@ offset_top = 256.0
 offset_right = -411.0
 offset_bottom = 279.0
 text = "Aperte F para spawnar inimigos"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-254, 288)
-shape = SubResource("RectangleShape2D_38c5u")

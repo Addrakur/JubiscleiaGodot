@@ -33,58 +33,64 @@ func on_quit_pressed():
 	get_tree().quit()
 
 func _on_w_1_sword_pressed():
-	if PlayerVariables.skill_2 != "sword":
-		PlayerVariables.skill_1 = "sword"
-	else:
-		PlayerVariables.skill_2 = "axe"
-		PlayerVariables.skill_1 = "sword"
-	
-	button_pressed_manager()
+	if PlayerVariables.sword_unlocked:
+		if PlayerVariables.skill_2 != "sword":
+			PlayerVariables.skill_1 = "sword"
+		else:
+			PlayerVariables.skill_2 = "axe"
+			PlayerVariables.skill_1 = "sword"
+		
+		button_pressed_manager()
 
 func _on_w_1_axe_pressed():
-	if PlayerVariables.skill_2 != "axe":
-		PlayerVariables.skill_1 = "axe"
-	else:
-		PlayerVariables.skill_2 = "sword"
-		PlayerVariables.skill_1 = "axe"
-	
-	button_pressed_manager()
+	if PlayerVariables.axe_unlocked:
+		if PlayerVariables.skill_2 != "axe":
+			PlayerVariables.skill_1 = "axe"
+		else:
+			PlayerVariables.skill_2 = "sword"
+			PlayerVariables.skill_1 = "axe"
+		
+		button_pressed_manager()
 
 func _on_w_1_spear_pressed():
-	if PlayerVariables.skill_2 != "spear":
-		PlayerVariables.skill_1 = "spear"
-	else:
-		PlayerVariables.skill_2 = "sword"
-		PlayerVariables.skill_1 = "spear"
-	
-	button_pressed_manager()
+	if PlayerVariables.spear_unlocked:
+		if PlayerVariables.skill_2 != "spear":
+			PlayerVariables.skill_1 = "spear"
+		else:
+			PlayerVariables.skill_2 = "sword"
+			PlayerVariables.skill_1 = "spear"
+		
+		button_pressed_manager()
 
 func _on_w_2_sword_pressed():
-	if PlayerVariables.skill_1 != "sword":
-		PlayerVariables.skill_2 = "sword"
-	else:
-		PlayerVariables.skill_1 = "axe"
-		PlayerVariables.skill_2 = "sword"
-	
-	button_pressed_manager()
+	if PlayerVariables.sword_unlocked:
+		if PlayerVariables.skill_1 != "sword":
+			PlayerVariables.skill_2 = "sword"
+		else:
+			PlayerVariables.skill_1 = "axe"
+			PlayerVariables.skill_2 = "sword"
+		
+		button_pressed_manager()
 
 func _on_w_2_axe_pressed():
-	if PlayerVariables.skill_1 != "axe":
-		PlayerVariables.skill_2 = "axe"
-	else:
-		PlayerVariables.skill_1 = "sword"
-		PlayerVariables.skill_2 = "axe"
-	
-	button_pressed_manager()
+	if PlayerVariables.sword_unlocked:
+		if PlayerVariables.skill_1 != "axe":
+			PlayerVariables.skill_2 = "axe"
+		else:
+			PlayerVariables.skill_1 = "sword"
+			PlayerVariables.skill_2 = "axe"
+		
+		button_pressed_manager()
 
 func _on_w_2_spear_pressed():
-	if PlayerVariables.skill_1 != "spear":
-		PlayerVariables.skill_2 = "spear"
-	else:
-		PlayerVariables.skill_1 = "sword"
-		PlayerVariables.skill_2 = "spear"
-	
-	button_pressed_manager()
+	if PlayerVariables.spear_unlocked:
+		if PlayerVariables.skill_1 != "spear":
+			PlayerVariables.skill_2 = "spear"
+		else:
+			PlayerVariables.skill_1 = "sword"
+			PlayerVariables.skill_2 = "spear"
+		
+		button_pressed_manager()
 
 func _on_settings_pressed() -> void:
 	parameter_settings.visible = true
@@ -95,13 +101,13 @@ func _on_back_pressed() -> void:
 
 func button_pressed_manager():
 	for button in weapon_1_buttons:
-		if button.name != PlayerVariables.skill_1:
+		if button.name != PlayerVariables.skill_1 or not PlayerVariables.get(button.name + "_unlocked"):
 			button.button_pressed = false
 		else:
 			button.button_pressed = true
 	
 	for button in weapon_2_buttons:
-		if button.name != PlayerVariables.skill_2:
+		if button.name != PlayerVariables.skill_2 or not PlayerVariables.get(button.name + "_unlocked"):
 			button.button_pressed = false
 		else:
 			button.button_pressed = true

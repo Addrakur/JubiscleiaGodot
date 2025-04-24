@@ -1,6 +1,6 @@
 extends Node2D
 
-var element: String
+@export var element: String
 @onready var timer: Timer = $timer
 @onready var texture: Sprite2D = $texture
 @export var animation: AnimationPlayer

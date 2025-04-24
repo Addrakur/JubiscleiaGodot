@@ -28,8 +28,8 @@ var next_skill: String #Arma que vai ser usada no ataque que vai vir
 var current_skill: String #Arma sendo usada no ataque atual
 var current_attack: String #Ataque que está sendo usado atualmente
 var last_skill: String #Ultima arma usada
-var skill_1: String = "sword" 
-var skill_2: String = "axe"
+var skill_1: String = "none" 
+var skill_2: String = "none"
 
 var move: bool = false
 var my_knockup: bool = false
@@ -45,19 +45,20 @@ var axe_jump_speed: float = 0
 var axe_jump_gravity: float = 1000
 var axe_element: String = "fire"
 var axe_element_amount: float = 5
+var axe_unlocked: bool = false
 
-var axe_1_damage: float = 3
+var axe_1_damage: float = 5
 var axe_1_knockback: float = 300
 var axe_1_knockup: float = 0
 var axe_1_poise: float = 5
 var axe_1_shake: float = 1
 
-var axe_2_damage: float = 4
+var axe_2_damage: float = 7
 var axe_2_knockback: float = 320
 var axe_2_knockup: float = 0
 var axe_2_poise: float = 7
 
-var axe_3_damage: float = 6
+var axe_3_damage: float = 10
 var axe_3_knockback: float = 350
 var axe_3_knockup: float = 0
 var axe_3_poise: float = 10
@@ -77,8 +78,9 @@ var sword_jump_speed: float = 0
 var sword_jump_gravity: float = 0
 var sword_element: String = "water"
 var sword_element_amount: float = 3
+var sword_unlocked: bool = true
 
-var sword_1_damage: float = 3
+var sword_1_damage: float = 2
 var sword_1_knockback: float = 80
 var sword_1_knockup: float = 0
 var sword_1_poise: float = 5
@@ -114,6 +116,7 @@ var spear_jump_gravity: float = 0
 var spear_jump_my_knockup: float = -500
 var spear_element: String = "air"
 var spear_element_amount: float = 3
+var spear_unlocked: bool = false
 
 var spear_1_damage: float = 2
 var spear_1_knockback: float = 70

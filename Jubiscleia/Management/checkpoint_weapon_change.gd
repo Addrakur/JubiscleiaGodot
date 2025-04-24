@@ -3,6 +3,7 @@ extends CanvasLayer
 
 @onready var w_1_label: Label = $W1Label
 @onready var w_2_label: Label = $W2Label
+@onready var panel: Panel = $Panel
 
 func _ready() -> void:
 	pass
@@ -55,4 +56,15 @@ func _process(_delta: float) -> void:
 	
 	w_1_label.text = "Weapon 1 = " + PlayerVariables.skill_1
 	w_2_label.text = "Weapon 2 = " + PlayerVariables.skill_2
-	
+
+func _on_visibility_changed() -> void:
+	if not visible:
+		return
+	var children = panel.get_children()
+	for child in children:
+		if child is Button:
+			print(PlayerVariables.get(child.name.rstrip("2") + "_unlocked"))
+			if PlayerVariables.get(child.name.rstrip("2") + "_unlocked"):
+				child.disabled = false
+			else:
+				child.disabled = true

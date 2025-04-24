@@ -196,7 +196,7 @@ script = ExtResource("1_2pkr2")
 [node name="animation" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Sprite2D")
 libraries = {
-"": SubResource("AnimationLibrary_l6j48")
+&"": SubResource("AnimationLibrary_l6j48")
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

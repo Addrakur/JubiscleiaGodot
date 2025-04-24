@@ -1,0 +1,3 @@
+Isso na sua frente é um Checkpoint, caso você morra vai retornar aqui ao invés do início da fase.
+Ele também serve para trocar as suas armas atuais, mas vai ser inútil se você não pegar as armas nos altares (Tipo aquele que você passou reto)
+do PlayerVariables.toggle_active_player(true)
