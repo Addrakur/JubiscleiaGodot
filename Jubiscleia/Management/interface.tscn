@@ -203,7 +203,7 @@ textures = Array[Texture2D]([ExtResource("6_7hyyx"), ExtResource("8_lppqw"), Ext
 
 [node name="TextureChange" type="AnimationPlayer" parent="PlayerUI"]
 libraries = {
-"": SubResource("AnimationLibrary_s0x3m")
+&"": SubResource("AnimationLibrary_s0x3m")
 }
 
 [node name="water" parent="PlayerUI" node_paths=PackedStringArray("parent") instance=ExtResource("12_l4c1m")]

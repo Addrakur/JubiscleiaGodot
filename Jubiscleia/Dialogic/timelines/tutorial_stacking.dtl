@@ -1,14 +1,4 @@
-Agora é hora de falar sobre os Acumulos elementais e o efeito de Ruptura.
-label repetir_explicacao
-Seus ataques concedem Acumulos Elementais, a quantidade recebida e o elemento variam dependendo da arma usada.
-Quando conseguir Acumulos o suficiente de um determinado elemento, vai ocorrer uma Ruptura Elemental, e você vai receber um efeito positivo diferente dependendo do elemento da Ruptura.
-No caso da espada, o seu elemento é a Água. O efeito da água é causar lentidão nos inimigos, fazendo eles se moverem e atacarem mais devagar, entendeu?
-- Sim
-	Então mostre.
-- Não
-	Quer ver a explicação de novo?
-	- Sim
-		jump repetir_explicacao
-	- Não
-	Não se preocupe, na prática é bem mais fácil.
+Seus ataques concedem [wave]Acumulos Elementais[/wave] para o elemento da sua arma.
+Acumulos são usados para ativar a [wave]Ruptura Elemental[/wave], concedendo um efeito positivo dependendo do seu elemento.
+No caso da espada de [color=#A5F2F3]água[/color], você causa [color=#A5F2F3]lentidão[/color] no inimigo.
 do PlayerVariables.toggle_active_player(true)

@@ -41,7 +41,7 @@ func exit_state() -> void:
 	player.health_component.invulnerable = false
 	player.set_collision_mask_value(2,true)
 	player.set_collision_layer_value(1,true)
-	player.collision.shape.size = Vector2(14,28)
+	player.collision.shape.size = Vector2(11,28)
 	player.override_gravity = 0
 	player.floor_snap_length = 5
 	player.can_flip = true

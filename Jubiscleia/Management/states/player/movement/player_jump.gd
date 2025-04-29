@@ -1,8 +1,13 @@
 class_name PlayerJump
 extends State
 
-@export var player: CharacterBody2D
+@export var player: Player
 @export var animation: AnimationPlayer
+@onready var right_outer_ray: RayCast2D = $"../../right_outer_ray"
+@onready var right_inner_ray: RayCast2D = $"../../right_inner_ray"
+@onready var left_outer_ray: RayCast2D = $"../../left_outer_ray"
+@onready var left_inner_ray: RayCast2D = $"../../left_inner_ray"
+
 var speed: float
 
 var can_move: bool = true
@@ -20,20 +25,24 @@ func enter_state() -> void:
 
 func exit_state() -> void:
 	set_physics_process(false)
-	can_move = true
 
 func _physics_process(_delta):
 	if can_move:
 		player.velocity.x = player.direction * speed
 	
-	if player.velocity.y > 0 or player.is_on_ceiling() or Input.is_action_just_released("jump"):
+	if player.velocity.y > 0 or Input.is_action_just_released("jump"):
 		player.fsm.change_state(player.fall_state)
+	
+	if right_outer_ray.is_colliding() and not right_inner_ray.is_colliding():
+		player.position.x -= 5
+	
+	if left_outer_ray.is_colliding() and not left_inner_ray.is_colliding():
+		player.position.x += 5
+	
 	
 	if player.velocity.x > 0 and Input.is_action_just_pressed("left") or player.velocity.x < 0 and Input.is_action_just_pressed("right"):
 		can_move = true
 	
-	#if Input.is_action_just_pressed("jump") and player.jump_count < player.max_jump_count:
-	#	player.fsm.change_state(player.double_jump_state)
 	
 	if Input.is_action_just_pressed("attack_button_1") and PlayerVariables.can_attack and PlayerVariables.skill_1 != "none":
 		PlayerVariables.next_skill = PlayerVariables.skill_1
@@ -45,5 +54,5 @@ func _physics_process(_delta):
 
 func _on_direction_0_timeout():
 	pass
-	#player.fsm.change_state(player.fall_state)
-	can_move = true
+	if player.direction != 0:
+		can_move = true

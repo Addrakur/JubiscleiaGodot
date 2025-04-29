@@ -1,4 +1,4 @@
 Alguns inimigos vão deixar cair orbes de seus respectivos elementos ao serem derrotados.
-Esses orbes concedem a Ruptura Elemental ao serem coletados. Mas cuidado, pois eles substituem o seu elemento atual caso você já esteja com alguma Ruptura ativa.
-Caso você tenha alguma arma que tenha o mesmo elemento que a sua Ruptura atual, você pode apertar R para consumir ela e se curar. Quanto mais tempo você tiver de Ruptura sobrando, mais forte vai ser a cura.
+Esses orbes concedem a [wave]Ruptura Elemental[/wave] ao serem coletados.
+Apenas uma [wave]Ruptura elemental[/wave] pode estar ativa por vez.
 do PlayerVariables.toggle_active_player(true)

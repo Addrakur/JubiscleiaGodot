@@ -20,7 +20,11 @@ func exit_state() -> void:
 	set_physics_process(false)
 
 func _physics_process(_delta):
-	player.velocity.x = player.direction * speed
+	if player.jump_state.can_move:
+		player.velocity.x = player.direction * speed
+	
+	if player.direction != 0:
+		player.jump_state.can_move = true
 	
 	if player.velocity.y > terminal_velocity:
 		player.velocity.y = terminal_velocity

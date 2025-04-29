@@ -1,3 +1,0 @@
-Aperte SHIFT para dar um dash na direção que estiver apontando.
-Seu dash te deixa invulnerável e pode ser usado para passar certos obstáculos, assim como atravessar inimigos e evitar o dano de ataques.
-do PlayerVariables.toggle_active_player(true)

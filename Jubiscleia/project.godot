@@ -31,19 +31,8 @@ directories/dch_directory={
 "unit_test_character": "res://addons/Tests/Resources/unit_test_character.dch"
 }
 directories/dtl_directory={
-"tutorial_1": "res://Dialogic/timelines/tutorial_1.dtl",
-"tutorial_attacks": "res://Dialogic/timelines/tutorial_attacks.dtl",
-"tutorial_checkpoint_com_machado": "res://Dialogic/timelines/tutorial_checkpoint_com_machado.dtl",
-"tutorial_checkpoint_sem_machado": "res://Dialogic/timelines/tutorial_checkpoint_sem_machado.dtl",
-"tutorial_dash": "res://Dialogic/timelines/tutorial_dash.dtl",
-"tutorial_double_jump": "res://Dialogic/timelines/tutorial_double_jump.dtl",
-"tutorial_duck": "res://Dialogic/timelines/tutorial_duck.dtl",
-"tutorial_jump": "res://Dialogic/timelines/tutorial_jump.dtl",
-"tutorial_obstacles": "res://Dialogic/timelines/tutorial_obstacles.dtl",
 "tutorial_orb_drop": "res://Dialogic/timelines/tutorial_orb_drop.dtl",
-"tutorial_plat_down": "res://Dialogic/timelines/tutorial_plat_down.dtl",
-"tutorial_stacking": "res://Dialogic/timelines/tutorial_stacking.dtl",
-"tutorial_walljump": "res://Dialogic/timelines/tutorial_walljump.dtl"
+"tutorial_stacking": "res://Dialogic/timelines/tutorial_stacking.dtl"
 }
 variables={}
 extensions_folder="res://addons/dialogic_additions"

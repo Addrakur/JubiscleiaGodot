@@ -1,7 +1,0 @@
-PARABENS!!! VOCÊ ACABOU DE LIBERAR UMA ARMA NOVA. O MACHADO DE FOGO
-Armas novas significam combos novos e, nesse caso, um elemento novo. Todos os inimigos do jogo possuem um elemento, assim como os obstáculos.
-Ataques de um elemento forte contra o inimigo te dão mais acumulos e causam mais dano no inimigo, assim como ataques de um elemento fraco contra o inimigo dão menos acumulos e causam menos dano.
-Isso ali na sua frente é um Checkpoint, caso você morra vai retornar aqui ao invés do início da fase.
-Ele também serve para trocar as suas armas atuais, sempre que liberar uma arma nova você vai poder trocar para ela em um checkpoint.
-Tente equipar o machado usando o checkpoint.
-do PlayerVariables.toggle_active_player(true)

@@ -26,6 +26,7 @@ radius = 18.0
 resource_local_to_scene = true
 shader = ExtResource("2_eatqc")
 shader_parameter/blue_value = 0.0
+shader_parameter/red_value = 0.0
 
 [sub_resource type="Animation" id="Animation_fixrv"]
 length = 0.001

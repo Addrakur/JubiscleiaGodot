@@ -1,4 +1,0 @@
-Aperte o BOTÃO ESQUERDO do MOUSE para atacar.
-A sua arma possui um combo de 3 ataques.
-Você e seus inimigos tem VIDA e POSTURA, quebrar a POSTURA do seu inimigo faz ele ser jogado para trás.
-do PlayerVariables.toggle_active_player(true)

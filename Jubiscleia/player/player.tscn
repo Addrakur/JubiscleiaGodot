@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://cyum4hvfs7wnh"]
+[gd_scene load_steps=104 format=3 uid="uid://cyum4hvfs7wnh"]
 
 [ext_resource type="Script" uid="uid://cvl15g6x6hrij" path="res://player/player.gd" id="1_5lux4"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_tuo6g"]
@@ -45,6 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://8cv7proap5ue" path="res://Management/temp_life_bar.tscn" id="52_o0loj"]
 [ext_resource type="Texture2D" uid="uid://duybggky7yoqx" path="res://assets/player/Ataques/Machado/C0/axe_0_2.png" id="54_xe58q"]
 [ext_resource type="Texture2D" uid="uid://bwddmt2twr7jt" path="res://assets/player/Ataques/Lanca/C0/Lanca_0_1.png" id="57_pf0gw"]
+[ext_resource type="Texture2D" uid="uid://dfiiskp4wtu34" path="res://assets/player/testes/UI_1.png" id="58_a1u5o"]
 [ext_resource type="Texture2D" uid="uid://87npuqs8med2" path="res://assets/player/Ataques/Machado/C0/axe_0_3.png" id="58_e5bi3"]
 [ext_resource type="Texture2D" uid="uid://c1d8huh1ajyyg" path="res://assets/player/Ataques/Lanca/C0/Lanca_0_2.png" id="60_mdsbt"]
 [ext_resource type="Texture2D" uid="uid://wnlgcdplb6f0" path="res://assets/player/Ataques/Lanca/C0/Lanca_0_3.png" id="61_ep0d2"]
@@ -59,10 +60,10 @@
 [ext_resource type="Script" uid="uid://rdmps2ntmg5a" path="res://player/camera.gd" id="95_v1sao"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ar5uo"]
-size = Vector2(15, 28)
+size = Vector2(11, 28)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v34mu"]
-size = Vector2(13.1591, 12.0227)
+size = Vector2(9.39938, 12.0227)
 
 [sub_resource type="Animation" id="Animation_115di"]
 length = 0.001
@@ -2989,7 +2990,6 @@ animation = NodePath("../../Animations")
 [node name="Aura" type="Sprite2D" parent="."]
 visible = false
 position = Vector2(0, -14)
-scale = Vector2(1.02396, 0.989389)
 texture = ExtResource("17_7bh1j")
 
 [node name="Texture" type="Sprite2D" parent="."]
@@ -3000,7 +3000,7 @@ texture = ExtResource("39_gjx6q")
 hframes = 5
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(7.10543e-15, -14.0265)
+position = Vector2(5.60247e-08, -14.0132)
 shape = SubResource("RectangleShape2D_ar5uo")
 
 [node name="DashCollision" type="Area2D" parent="."]
@@ -3060,7 +3060,7 @@ max_temp_life = 50.0
 
 [node name="WallGrab" type="RayCast2D" parent="."]
 position = Vector2(0, -14)
-target_position = Vector2(9, 0)
+target_position = Vector2(6.57957, -0.0265102)
 collision_mask = 4
 collide_with_areas = true
 
@@ -3096,7 +3096,7 @@ one_shot = true
 [node name="element_manager" type="Node2D" parent="." node_paths=PackedStringArray("player", "animation", "element_timer")]
 scale = Vector2(1.00538, 1)
 script = ExtResource("94_8uuoj")
-max_element_stack = 1.0
+max_element_stack = 15.0
 timer = 10.0
 player = NodePath("..")
 animation = NodePath("../AuraAnimations")
@@ -3137,6 +3137,30 @@ offset_bottom = -28.1288
 max_value = 50.0
 value = 25.0
 parent = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16.0303)
+texture = ExtResource("58_a1u5o")
+
+[node name="right_outer_ray" type="RayCast2D" parent="."]
+position = Vector2(5.63963, -28.053)
+target_position = Vector2(0, -6.01136)
+collision_mask = 38
+
+[node name="right_inner_ray" type="RayCast2D" parent="."]
+position = Vector2(1.87988, -28.053)
+target_position = Vector2(1.19209e-07, -6.01136)
+collision_mask = 38
+
+[node name="left_outer_ray" type="RayCast2D" parent="."]
+position = Vector2(-5.63963, -28.053)
+target_position = Vector2(0, -6.01136)
+collision_mask = 38
+
+[node name="left_inner_ray" type="RayCast2D" parent="."]
+position = Vector2(-1.87988, -28.053)
+target_position = Vector2(0, -6.01136)
+collision_mask = 38
 
 [connection signal="body_entered" from="DashCollision" to="StateMachine/PlayerDash" method="_on_dash_collision_body_entered"]
 [connection signal="body_exited" from="DashCollision" to="StateMachine/PlayerDash" method="_on_dash_collision_body_exited"]

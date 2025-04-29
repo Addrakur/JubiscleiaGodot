@@ -7,6 +7,8 @@ extends Node2D
 @export var animation: AnimationPlayer
 @export var element_timer: Timer
 
+var active: bool = true
+
 var elements: Array[String] = ["fire","water","air","earth"]
 
 func _ready() -> void:

@@ -52,7 +52,7 @@ func hit_func(body: Node2D):
 				if has_elemental_weakness(current_element, body.element):
 					body.health_component.update_health(damage, 0, 0,0, attack_name, 0, parent.position.x, parent) # Chama a função que aplica o dano no alvo
 			else:
-				if PlayerVariables.elemental_rupture == "":
+				if PlayerVariables.elemental_rupture == "" and GameSettings.player.element_manager.active:
 					var current_meter_value = PlayerVariables.get(current_element + "_stack_count") # Recebe o valor atual do contador do elemento da arma
 					var new_value: float
 					if has_elemental_weakness(current_element, body.element):
