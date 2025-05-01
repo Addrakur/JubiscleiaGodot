@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://cgg6xsxhly141"]
+[gd_scene load_steps=25 format=4 uid="uid://cgg6xsxhly141"]
 
 [ext_resource type="Script" uid="uid://cr0m6uuoltxgb" path="res://levels/level.gd" id="1_1nyry"]
 [ext_resource type="PackedScene" uid="uid://c33bx5e2javr1" path="res://levels/BG.tscn" id="2_boya2"]
@@ -17,6 +17,8 @@
 [ext_resource type="Script" uid="uid://dxunkhkho123g" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="13_fgpce"]
 [ext_resource type="Script" uid="uid://b0yfdy7e0kx0p" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="14_5jlmx"]
 [ext_resource type="PackedScene" uid="uid://bgtm18yxrdsdx" path="res://Management/camera_area.tscn" id="15_0a4as"]
+[ext_resource type="PackedScene" uid="uid://bqe4xjip7tii4" path="res://enemies/tree_boss_rock.tscn" id="18_w54s1"]
+[ext_resource type="PackedScene" uid="uid://dofww7w55i7it" path="res://Management/enemy_wall.tscn" id="19_pfhby"]
 
 [sub_resource type="Resource" id="Resource_w54s1"]
 script = ExtResource("14_5jlmx")
@@ -39,11 +41,13 @@ point_count = 2
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fgpce"]
 size = Vector2(2560, 864)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ils6h"]
+size = Vector2(2, 100)
+
 [node name="tutorial_boss_level" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_1nyry")
 player = NodePath("player")
 free_spawn = true
-weapon_locked = true
 skill_1 = "sword"
 skill_2 = "axe"
 
@@ -176,8 +180,12 @@ limit = NodePath("..")
 [node name="middle" type="Marker2D" parent="Limit"]
 position = Vector2(1408, 352)
 
+[node name="tree_boss_rock" parent="." instance=ExtResource("18_w54s1")]
+position = Vector2(1429, 314)
+mass = 2000.0
+
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("11_c2a8s")]
-position = Vector2(608, 64)
+position = Vector2(710, 337)
 camera = NodePath("../Camera2D")
 
 [node name="grass" type="TileMapLayer" parent="."]
@@ -193,17 +201,19 @@ follow_target = NodePath("../player")
 follow_path = NodePath("../camera/CameraArea2/Path2D")
 zoom = Vector2(0.75, 0.75)
 tween_resource = SubResource("Resource_w54s1")
+draw_limits = true
 metadata/_custom_type_script = "uid://dxunkhkho123g"
 
 [node name="free_camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(608, 64)
+position = Vector2(710, 208)
 script = ExtResource("13_fgpce")
 follow_mode = 2
 follow_target = NodePath("../player")
 zoom = Vector2(0.75, 0.75)
 tween_resource = SubResource("Resource_pfhby")
 follow_damping = true
+draw_limits = true
 limit_target = NodePath("../camera/CollisionShape2D")
 metadata/_custom_type_script = "uid://dxunkhkho123g"
 
@@ -234,3 +244,9 @@ curve = SubResource("Curve2D_fgpce")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="camera"]
 position = Vector2(1280, 16)
 shape = SubResource("RectangleShape2D_fgpce")
+
+[node name="EnemyWall" parent="." instance=ExtResource("19_pfhby")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyWall"]
+position = Vector2(668, 313)
+shape = SubResource("RectangleShape2D_ils6h")

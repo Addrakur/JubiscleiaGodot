@@ -16,6 +16,7 @@ extends Area2D
 @export var one_hit_destroy: bool = false
 @export var destroy_on_terrain: bool = false
 @export var single_hit_per_enemy: bool = true
+@export var destroy_on_walls: bool = false
 
 var body_ref: Node2D
 

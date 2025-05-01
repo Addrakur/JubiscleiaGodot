@@ -11,6 +11,7 @@ extends CharacterBody2D
 @onready var texture: Sprite2D = $texture
 @onready var melee_detect_area: Area2D = $melee_detect_area
 @onready var ranged_detect_area: Area2D = $ranged_detect_area
+@onready var rock_position: Marker2D = $rock_position
 
 @onready var hsm: LimboHSM = $hsm
 @onready var idle_state: LimboState = $hsm/idle
@@ -21,6 +22,7 @@ var target: Node2D
 var player_on_limit: bool = false
 var can_attack_melee: bool = false
 var can_attack_ranged: bool = false
+var rock = preload("res://enemies/tree_boss_rock.tscn")
 
 func _ready() -> void:
 	init_state_machine()
@@ -67,3 +69,9 @@ func left():
 	texture.flip_h = false
 	melee_detect_area.scale.x = 1
 	ranged_detect_area.scale.x = 1
+
+func spawn_rock():
+	var proj = rock.instantiate()
+	proj.position = rock_position.global_position
+	proj.starting_pos = proj.position #Usado pra medir o range do ataque
+	proj.direction = 1 if player_ref.position.x > position.x else -1

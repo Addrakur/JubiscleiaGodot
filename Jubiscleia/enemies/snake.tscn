@@ -511,6 +511,7 @@ debug_color = Color(0.831373, 0.305882, 0.317647, 0.419608)
 position = Vector2(0, -24)
 collision_mask = 1
 target = "player"
+targets = Array[String](["player"])
 damage = 8.0
 knockup_force = 10.0
 knockback_force = 50.0

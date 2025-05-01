@@ -7,7 +7,7 @@ extends LimboState
 func _enter():
 	print("enter idle")
 	tree.active = true
-	animation.play("idle")
+	animation.play("idle_1")
 
 func _exit():
 	print("exit idle")

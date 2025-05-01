@@ -3,6 +3,7 @@ extends State
 
 @export var player: Player
 @export var animation: AnimationPlayer
+@export var input_buffering: Timer
 @onready var right_outer_ray: RayCast2D = $"../../right_outer_ray"
 @onready var right_inner_ray: RayCast2D = $"../../right_inner_ray"
 @onready var left_outer_ray: RayCast2D = $"../../left_outer_ray"
@@ -22,6 +23,7 @@ func enter_state() -> void:
 	player.jump_count += 1
 	animation.play("jump")
 	player.velocity.y = player.jump_velocity
+	input_buffering.stop()
 
 func exit_state() -> void:
 	set_physics_process(false)

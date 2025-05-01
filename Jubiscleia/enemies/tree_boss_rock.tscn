@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://bqe4xjip7tii4"]
+
+[ext_resource type="Texture2D" uid="uid://bh2mbvt7usnmw" path="res://assets/enemy/tree_boss/rock.png" id="1_2wxbs"]
+[ext_resource type="Script" uid="uid://d0wbb0gtqql0m" path="res://enemies/tree_boss_rock.gd" id="1_pb16i"]
+[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_sfuc7"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sfuc7"]
+radius = 41.0488
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pb16i"]
+radius = 42.0476
+
+[node name="tree_boss_rock" type="RigidBody2D"]
+collision_layer = 64
+collision_mask = 32813
+contact_monitor = true
+max_contacts_reported = 10
+script = ExtResource("1_pb16i")
+
+[node name="collision" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_sfuc7")
+
+[node name="AttackArea" parent="." instance=ExtResource("2_sfuc7")]
+targets = Array[String](["player"])
+one_hit_destroy = true
+
+[node name="attack_area_collision" type="CollisionShape2D" parent="AttackArea"]
+rotation = -0.00198728
+shape = SubResource("CircleShape2D_pb16i")
+disabled = true
+
+[node name="texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_2wxbs")

@@ -3,6 +3,7 @@ extends State
 
 @export var player: Player
 @export var animation: AnimationPlayer
+@export var input_buffering: Timer
 var speed: float
 var terminal_velocity: float
 
@@ -46,12 +47,15 @@ func _physics_process(_delta):
 		player.fsm.change_state(player.wall_grab_state)
 	
 	if PlayerVariables.active:
-		if Input.is_action_just_pressed("jump") and player.jump_count < player.max_jump_count:
-			if !player.coyote_time.is_stopped():
-				player.coyote_time.stop()
-				player.fsm.change_state(player.jump_state)
+		if Input.is_action_just_pressed("jump"):
+			if player.jump_count < player.max_jump_count:
+				if !player.coyote_time.is_stopped():
+					player.coyote_time.stop()
+					player.fsm.change_state(player.jump_state)
+				else:
+					player.fsm.change_state(player.double_jump_state)
 			else:
-				player.fsm.change_state(player.double_jump_state)
+				input_buffering.start()
 		
 		if Input.is_action_just_pressed("attack_button_1") and PlayerVariables.can_attack and PlayerVariables.skill_1 != "none":
 			PlayerVariables.next_skill = PlayerVariables.skill_1

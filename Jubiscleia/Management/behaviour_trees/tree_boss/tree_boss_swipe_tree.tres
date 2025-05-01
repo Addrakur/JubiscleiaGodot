@@ -22,7 +22,7 @@ resource_name = "animation"
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_sm2ss"]
 animation_player = SubResource("BBNode_7udd3")
-animation_name = &"swipe"
+animation_name = &"swipe_1"
 
 [sub_resource type="BBNode" id="BBNode_sm2ss"]
 saved_value = NodePath("animation")
@@ -55,7 +55,7 @@ resource_name = "animation"
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_jcrl7"]
 animation_player = SubResource("BBNode_62ihk")
-animation_name = &"walk"
+animation_name = &"walk_1"
 
 [sub_resource type="BTAction" id="BTAction_a65uw"]
 script = ExtResource("6_8ol1b")
