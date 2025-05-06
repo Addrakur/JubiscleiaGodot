@@ -3150,7 +3150,7 @@ target_position = Vector2(0, -6.01136)
 collision_mask = 38
 
 [node name="right_inner_ray" type="RayCast2D" parent="."]
-position = Vector2(1.87988, -28.053)
+position = Vector2(0.939938, -28.053)
 target_position = Vector2(1.19209e-07, -6.01136)
 collision_mask = 38
 
@@ -3160,7 +3160,7 @@ target_position = Vector2(0, -6.01136)
 collision_mask = 38
 
 [node name="left_inner_ray" type="RayCast2D" parent="."]
-position = Vector2(-1.87988, -28.053)
+position = Vector2(-0.939938, -28.053)
 target_position = Vector2(0, -6.01136)
 collision_mask = 38
 

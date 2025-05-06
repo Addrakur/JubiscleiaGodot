@@ -45,7 +45,7 @@ var axe_jump_speed: float = 0
 var axe_jump_gravity: float = 1000
 var axe_element: String = "fire"
 var axe_element_amount: float = 5
-var axe_unlocked: bool = false
+var axe_unlocked: bool = true
 
 var axe_1_damage: float = 5
 var axe_1_knockback: float = 300

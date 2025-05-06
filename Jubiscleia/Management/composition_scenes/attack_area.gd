@@ -70,13 +70,18 @@ func hit_func(body: Node2D):
 							var slow_timer = Paths.slow_timer.instantiate()
 							body.add_child(slow_timer)
 						"fire":
-							var fire_dot = Paths.fire_dot.instantiate()
 							var nodes = body.get_children()
 							var can_create: bool = true
 							for node in nodes:
 								if node is FireDot:
 									can_create = false
 							if can_create:
+								var fire_dot = Paths.fire_dot.instantiate()
+								fire_dot.damage = PlayerVariables.get(PlayerVariables.current_attack + "_damage") if parent.is_in_group("player") else PlayerVariables.get(parent.animation.current_animation + "_damage")
+								if has_elemental_weakness("fire",body.element):
+									fire_dot.damage *= PlayerVariables.element_extra_damage
+								elif has_elemental_strength("fire", body.element):
+									fire_dot.damage *= PlayerVariables.element_reduced_damage
 								body.add_child(fire_dot)
 						"air":
 							var area = Paths.air_damage_area.instantiate()

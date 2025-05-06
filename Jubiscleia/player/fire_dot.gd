@@ -14,7 +14,6 @@ func _ready() -> void:
 	shader = parent.texture.get_material()
 	print(shader)
 	shader.set_shader_parameter("red_value",0.4)
-	damage = PlayerVariables.fire_dot_damage * PlayerVariables.element_extra_damage if parent.element == "earth" else PlayerVariables.fire_dot_damage
 
 func _on_cooldown_timeout() -> void:
 	if parent.health_component != null:
