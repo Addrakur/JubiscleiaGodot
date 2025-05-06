@@ -41,6 +41,8 @@ func _physics_process(_delta):
 	if left_outer_ray.is_colliding() and not left_inner_ray.is_colliding():
 		player.position.x += 5
 	
+	if player.wall_grab_ray_cast.is_colliding(): #and player.direction == player.wall_grab_ray_cast.scale.x:
+		player.fsm.change_state(player.wall_grab_state)
 	
 	if player.velocity.x > 0 and Input.is_action_just_pressed("left") or player.velocity.x < 0 and Input.is_action_just_pressed("right"):
 		can_move = true

@@ -9,46 +9,22 @@ func _ready() -> void:
 	pass
 
 func _on_sword_1_pressed() -> void:
-	if PlayerVariables.skill_2 != "sword":
-		PlayerVariables.skill_1 = "sword"
-	else:
-		PlayerVariables.skill_2 = "axe"
-		PlayerVariables.skill_1 = "sword"
+	PlayerVariables.set_skill_1("sword")
 
 func _on_sword_2_pressed() -> void:
-	if PlayerVariables.skill_1 != "sword":
-		PlayerVariables.skill_2 = "sword"
-	else:
-		PlayerVariables.skill_1 = "axe"
-		PlayerVariables.skill_2 = "sword"
+	PlayerVariables.set_skill_2("sword")
 
 func _on_axe_1_pressed() -> void:
-	if PlayerVariables.skill_2 != "axe":
-		PlayerVariables.skill_1 = "axe"
-	else:
-		PlayerVariables.skill_2 = "sword"
-		PlayerVariables.skill_1 = "axe"
+	PlayerVariables.set_skill_1("axe")
 
 func _on_axe_2_pressed() -> void:
-	if PlayerVariables.skill_1 != "axe":
-		PlayerVariables.skill_2 = "axe"
-	else:
-		PlayerVariables.skill_1 = "sword"
-		PlayerVariables.skill_2 = "axe"
+	PlayerVariables.set_skill_2("axe")
 
 func _on_spear_1_pressed() -> void:
-	if PlayerVariables.skill_2 != "spear":
-		PlayerVariables.skill_1 = "spear"
-	else:
-		PlayerVariables.skill_2 = "sword"
-		PlayerVariables.skill_1 = "spear"
+	PlayerVariables.set_skill_1("spear")
 
 func _on_spear_2_pressed() -> void:
-	if PlayerVariables.skill_1 != "spear":
-		PlayerVariables.skill_2 = "spear"
-	else:
-		PlayerVariables.skill_1 = "sword"
-		PlayerVariables.skill_2 = "spear"
+	PlayerVariables.set_skill_2("spear")
 
 func _process(_delta: float) -> void:
 	if not visible:
@@ -63,7 +39,6 @@ func _on_visibility_changed() -> void:
 	var children = panel.get_children()
 	for child in children:
 		if child is Button:
-			print(PlayerVariables.get(child.name.rstrip("2") + "_unlocked"))
 			if PlayerVariables.get(child.name.rstrip("2") + "_unlocked"):
 				child.disabled = false
 			else:

@@ -33,64 +33,28 @@ func on_quit_pressed():
 	get_tree().quit()
 
 func _on_w_1_sword_pressed():
-	if PlayerVariables.sword_unlocked:
-		if PlayerVariables.skill_2 != "sword":
-			PlayerVariables.skill_1 = "sword"
-		else:
-			PlayerVariables.skill_2 = "axe"
-			PlayerVariables.skill_1 = "sword"
-		
-		button_pressed_manager()
+	PlayerVariables.set_skill_1("sword")
+	button_pressed_manager()
 
 func _on_w_1_axe_pressed():
-	if PlayerVariables.axe_unlocked:
-		if PlayerVariables.skill_2 != "axe":
-			PlayerVariables.skill_1 = "axe"
-		else:
-			PlayerVariables.skill_2 = "sword"
-			PlayerVariables.skill_1 = "axe"
-		
-		button_pressed_manager()
+	PlayerVariables.set_skill_1("axe")
+	button_pressed_manager()
 
 func _on_w_1_spear_pressed():
-	if PlayerVariables.spear_unlocked:
-		if PlayerVariables.skill_2 != "spear":
-			PlayerVariables.skill_1 = "spear"
-		else:
-			PlayerVariables.skill_2 = "sword"
-			PlayerVariables.skill_1 = "spear"
-		
-		button_pressed_manager()
+	PlayerVariables.set_skill_1("spear")
+	button_pressed_manager()
 
 func _on_w_2_sword_pressed():
-	if PlayerVariables.sword_unlocked:
-		if PlayerVariables.skill_1 != "sword":
-			PlayerVariables.skill_2 = "sword"
-		else:
-			PlayerVariables.skill_1 = "axe"
-			PlayerVariables.skill_2 = "sword"
-		
-		button_pressed_manager()
+	PlayerVariables.set_skill_2("sword")
+	button_pressed_manager()
 
 func _on_w_2_axe_pressed():
-	if PlayerVariables.sword_unlocked:
-		if PlayerVariables.skill_1 != "axe":
-			PlayerVariables.skill_2 = "axe"
-		else:
-			PlayerVariables.skill_1 = "sword"
-			PlayerVariables.skill_2 = "axe"
-		
-		button_pressed_manager()
+	PlayerVariables.set_skill_2("axe")
+	button_pressed_manager()
 
 func _on_w_2_spear_pressed():
-	if PlayerVariables.spear_unlocked:
-		if PlayerVariables.skill_1 != "spear":
-			PlayerVariables.skill_2 = "spear"
-		else:
-			PlayerVariables.skill_1 = "sword"
-			PlayerVariables.skill_2 = "spear"
-		
-		button_pressed_manager()
+	PlayerVariables.set_skill_2("spear")
+	button_pressed_manager()
 
 func _on_settings_pressed() -> void:
 	parameter_settings.visible = true

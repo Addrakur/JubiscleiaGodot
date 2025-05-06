@@ -21,6 +21,8 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var camera_methods: CameraMethods = $camera_methods
 @onready var attack_number: Label = $AttackNumber
 @onready var element_manager: ElementManager = $element_manager
+@onready var element_meter_orb: TextureProgressBar = $element_meter_orb
+@onready var element_meter_orb_2: TextureProgressBar = $element_meter_orb2
 
 @onready var dash_cooldown: Timer = $DashCooldown
 

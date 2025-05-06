@@ -45,7 +45,7 @@
 [ext_resource type="PackedScene" uid="uid://8cv7proap5ue" path="res://Management/temp_life_bar.tscn" id="52_o0loj"]
 [ext_resource type="Texture2D" uid="uid://duybggky7yoqx" path="res://assets/player/Ataques/Machado/C0/axe_0_2.png" id="54_xe58q"]
 [ext_resource type="Texture2D" uid="uid://bwddmt2twr7jt" path="res://assets/player/Ataques/Lanca/C0/Lanca_0_1.png" id="57_pf0gw"]
-[ext_resource type="Texture2D" uid="uid://dfiiskp4wtu34" path="res://assets/player/testes/UI_1.png" id="58_a1u5o"]
+[ext_resource type="PackedScene" uid="uid://vvwpgpesra88" path="res://Management/element_meter_orb.tscn" id="58_a1u5o"]
 [ext_resource type="Texture2D" uid="uid://87npuqs8med2" path="res://assets/player/Ataques/Machado/C0/axe_0_3.png" id="58_e5bi3"]
 [ext_resource type="Texture2D" uid="uid://c1d8huh1ajyyg" path="res://assets/player/Ataques/Lanca/C0/Lanca_0_2.png" id="60_mdsbt"]
 [ext_resource type="Texture2D" uid="uid://wnlgcdplb6f0" path="res://assets/player/Ataques/Lanca/C0/Lanca_0_3.png" id="61_ep0d2"]
@@ -3144,10 +3144,6 @@ max_value = 50.0
 value = 25.0
 parent = NodePath("..")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -16.0303)
-texture = ExtResource("58_a1u5o")
-
 [node name="right_outer_ray" type="RayCast2D" parent="."]
 position = Vector2(5.63963, -28.053)
 target_position = Vector2(0, -6.01136)
@@ -3167,6 +3163,22 @@ collision_mask = 38
 position = Vector2(-1.87988, -28.053)
 target_position = Vector2(0, -6.01136)
 collision_mask = 38
+
+[node name="element_meter_orb" parent="." node_paths=PackedStringArray("element_manager") instance=ExtResource("58_a1u5o")]
+offset_left = -15.9789
+offset_top = -41.0776
+offset_right = -6.97895
+offset_bottom = -25.0776
+element_manager = NodePath("../element_manager")
+skill = "1"
+
+[node name="element_meter_orb2" parent="." node_paths=PackedStringArray("element_manager") instance=ExtResource("58_a1u5o")]
+offset_left = 6.57957
+offset_top = -41.0776
+offset_right = 15.5796
+offset_bottom = -25.0776
+element_manager = NodePath("../element_manager")
+skill = "2"
 
 [connection signal="body_entered" from="DashCollision" to="StateMachine/PlayerDash" method="_on_dash_collision_body_entered"]
 [connection signal="body_exited" from="DashCollision" to="StateMachine/PlayerDash" method="_on_dash_collision_body_exited"]

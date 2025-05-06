@@ -19,7 +19,7 @@ func enter_state() -> void:
 	set_physics_process(true)
 	animation.play("wall_grab")
 	player.velocity.x = 0
-	player.velocity.y = 1 if player.velocity.y > 0 else player.velocity.y
+	player.velocity.y = 1# if player.velocity.y > 0 else player.velocity.y
 	player.override_gravity = 1
 	player.jump_count = player.max_jump_count - 1
 	player.can_dash = true
@@ -42,6 +42,7 @@ func _physics_process(delta):
 		player.last_direction = -player.wall_grab_ray_cast.scale.x
 		player.direction_0.wait_time = wait_time_min if player.direction != 0 else wait_time_max
 		player.direction_0.start()
+		player.wall_grab_ray_cast.scale.x *= -1
 		player.fsm.change_state(player.jump_state)
 	
 	if player.is_on_floor():

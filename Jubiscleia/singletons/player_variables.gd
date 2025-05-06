@@ -28,7 +28,7 @@ var next_skill: String #Arma que vai ser usada no ataque que vai vir
 var current_skill: String #Arma sendo usada no ataque atual
 var current_attack: String #Ataque que está sendo usado atualmente
 var last_skill: String #Ultima arma usada
-var skill_1: String = "none" 
+var skill_1: String = "none"
 var skill_2: String = "none"
 
 var move: bool = false
@@ -146,3 +146,29 @@ var spear_jump_poise: float = 5
 
 func toggle_active_player(t_or_f: bool):
 	active = t_or_f
+
+func set_skill_1(new_skill: String):
+	if not get(new_skill + "_unlocked"):
+		return
+	
+	if skill_2 == new_skill:
+		if new_skill == "sword":
+			skill_2 = "axe"
+		else:
+			skill_2 = "sword"
+	
+	skill_1 = new_skill
+	
+
+func set_skill_2(new_skill: String):
+	if not get(new_skill + "_unlocked"):
+		return
+	
+	if skill_1 == new_skill:
+		if new_skill == "sword":
+			skill_1 = "axe"
+		else:
+			skill_1 = "sword"
+	
+	skill_2 = new_skill
+	
