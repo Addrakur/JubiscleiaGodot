@@ -250,7 +250,6 @@ size = Vector2(434, 41)
 [node name="tutorial" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_7dotf")
 player = NodePath("Player")
-free_spawn = true
 has_starting_weapon = true
 skill_1 = "sword"
 skill_2 = "none"
@@ -358,7 +357,7 @@ texture = ExtResource("9_0j6fp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(2155, -3.00006)
+position = Vector2(-21.3333, 240)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = -448
@@ -559,12 +558,12 @@ position = Vector2(8788, -603)
 weapon = "axe"
 
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_q1c72")]
-position = Vector2(2155, 28.9999)
+position = Vector2(-273, 310)
 camera = NodePath("../Camera2D")
 
 [node name="free_camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(2155, -3.00006)
+position = Vector2(-21.3333, 240)
 script = ExtResource("8_rt00j")
 follow_mode = 2
 follow_target = NodePath("../Player")
