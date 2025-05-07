@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://dseb6ginyey2r"]
+[gd_scene load_steps=14 format=3 uid="uid://dseb6ginyey2r"]
 
 [ext_resource type="Script" uid="uid://n10od2stw3uq" path="res://Management/elemental_orb.gd" id="1_2k52p"]
 [ext_resource type="Texture2D" uid="uid://cis27bwcdnqfy" path="res://assets/elemental_orbs/air_orb.png" id="1_2u8a6"]
 [ext_resource type="Texture2D" uid="uid://yhf4r6yeoi5h" path="res://assets/elemental_orbs/earth_orb.png" id="2_hbs1q"]
 [ext_resource type="Texture2D" uid="uid://bq78grrkom1fj" path="res://assets/elemental_orbs/fire_orb.png" id="3_oevdq"]
 [ext_resource type="Texture2D" uid="uid://fn7lcd6ckcli" path="res://assets/elemental_orbs/water_orb.png" id="4_2u8ri"]
+[ext_resource type="Texture2D" uid="uid://78j14dasvxnt" path="res://assets/placeholder/botao_e.png" id="6_xgrdi"]
 
 [sub_resource type="Animation" id="Animation_g8wyd"]
 length = 0.001
@@ -126,4 +127,10 @@ shape = SubResource("CircleShape2D_wk365")
 [node name="timer" type="Timer" parent="."]
 wait_time = 10.0
 
+[node name="BotaoE" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -47)
+texture = ExtResource("6_xgrdi")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

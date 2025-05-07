@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://b3xa4xiengywm"]
+[gd_scene load_steps=76 format=4 uid="uid://b3xa4xiengywm"]
 
 [ext_resource type="Script" uid="uid://cr0m6uuoltxgb" path="res://levels/level.gd" id="1_7dotf"]
 [ext_resource type="PackedScene" uid="uid://c33bx5e2javr1" path="res://levels/BG.tscn" id="3_5npyn"]
@@ -31,28 +31,18 @@
 [ext_resource type="PackedScene" uid="uid://bx4lmho2y840s" path="res://enemies/snake.tscn" id="21_dvpbm"]
 [ext_resource type="PackedScene" uid="uid://bpmgpdleeh4k6" path="res://objects/obstacle_manager.tscn" id="21_e1fn6"]
 [ext_resource type="PackedScene" uid="uid://dapytgyx0bv7t" path="res://objects/elemental_obstacle.tscn" id="22_g1vyw"]
-[ext_resource type="PackedScene" uid="uid://b6glqch7cqccj" path="res://Management/tutorial_plate.tscn" id="27_rwkmp"]
+[ext_resource type="Texture2D" uid="uid://dne2kosf8o8aa" path="res://assets/placeholder/placa_dash.png" id="24_v25dc"]
+[ext_resource type="Texture2D" uid="uid://dvr6otfa0l0n6" path="res://assets/placeholder/placa_atacar.png" id="25_ol2d2"]
+[ext_resource type="Texture2D" uid="uid://dmcs7i562rhpg" path="res://assets/placeholder/placa_abaixar.png" id="26_og7rj"]
+[ext_resource type="Texture2D" uid="uid://c6b5e7h7iqjxl" path="res://assets/placeholder/placa_descer.png" id="27_uqvak"]
 [ext_resource type="PackedScene" uid="uid://dofww7w55i7it" path="res://Management/enemy_wall.tscn" id="28_g1vyw"]
+[ext_resource type="Texture2D" uid="uid://camj1ihvewgln" path="res://assets/placeholder/placa_vantagens.png" id="28_hqnx5"]
 [ext_resource type="PackedScene" uid="uid://cv5vvn1dq5jyq" path="res://Management/dialog_start.tscn" id="29_0k1lm"]
+[ext_resource type="Texture2D" uid="uid://bqi51m5ybfeln" path="res://assets/placeholder/placa_curar.png" id="29_s0nv4"]
 [ext_resource type="PackedScene" uid="uid://b182cvp28iapt" path="res://Management/checkpoint.tscn" id="31_ima6j"]
 [ext_resource type="Texture2D" uid="uid://i7w7w1phcv6" path="res://assets/player/corruption_aura/healing_tutorial.png" id="33_sk8w0"]
 [ext_resource type="PackedScene" uid="uid://dseb6ginyey2r" path="res://Management/elemental_orb.tscn" id="34_0sdop"]
 [ext_resource type="Script" uid="uid://n216r4n0h2eh" path="res://Management/sei_la.gd" id="35_niye7"]
-
-[sub_resource type="Resource" id="Resource_a3tg3"]
-script = ExtResource("9_da2ds")
-duration = 1.0
-transition = 0
-ease = 2
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_24aq3"]
-size = Vector2(12928, 1824)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0k1lm"]
-size = Vector2(1, 64)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_niye7"]
-size = Vector2(434, 41)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rwkmp"]
 atlas = ExtResource("33_sk8w0")
@@ -244,12 +234,28 @@ animations = [{
 "speed": 6.0
 }]
 
+[sub_resource type="Resource" id="Resource_a3tg3"]
+script = ExtResource("9_da2ds")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24aq3"]
+size = Vector2(12928, 1824)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0k1lm"]
+size = Vector2(1, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_niye7"]
+size = Vector2(434, 41)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38gw4"]
 size = Vector2(434, 41)
 
 [node name="tutorial" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_7dotf")
 player = NodePath("Player")
+free_spawn = true
 has_starting_weapon = true
 skill_1 = "sword"
 skill_2 = "none"
@@ -357,7 +363,7 @@ texture = ExtResource("9_0j6fp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(-21.3333, 240)
+position = Vector2(10499, -566)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = -448
@@ -557,13 +563,46 @@ level = NodePath("..")
 position = Vector2(8788, -603)
 weapon = "axe"
 
+[node name="placas" type="Node2D" parent="."]
+position = Vector2(-21.3333, 240)
+
+[node name="PlacaDash" type="Sprite2D" parent="placas"]
+position = Vector2(4661.33, -432)
+texture = ExtResource("24_v25dc")
+
+[node name="PlacaAtacar" type="Sprite2D" parent="placas"]
+position = Vector2(1189.33, -108)
+texture = ExtResource("25_ol2d2")
+
+[node name="PlacaAbaixar" type="Sprite2D" parent="placas"]
+position = Vector2(5445.33, -330)
+texture = ExtResource("26_og7rj")
+
+[node name="PlacaDescer" type="Sprite2D" parent="placas"]
+position = Vector2(7117.33, -1206)
+texture = ExtResource("27_uqvak")
+
+[node name="PlacaVantagens" type="Sprite2D" parent="placas"]
+position = Vector2(9283.33, -938)
+texture = ExtResource("28_hqnx5")
+
+[node name="PlacaCurar" type="Sprite2D" parent="placas"]
+position = Vector2(10742.3, -908)
+texture = ExtResource("29_s0nv4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="placas"]
+position = Vector2(10742.3, -892)
+sprite_frames = SubResource("SpriteFrames_v7h7t")
+autoplay = "default"
+frame_progress = 0.843228
+
 [node name="Player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_q1c72")]
-position = Vector2(-273, 310)
+position = Vector2(10499, -534)
 camera = NodePath("../Camera2D")
 
 [node name="free_camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(-21.3333, 240)
+position = Vector2(10499, -566)
 script = ExtResource("8_rt00j")
 follow_mode = 2
 follow_target = NodePath("../Player")
@@ -573,33 +612,6 @@ follow_offset = Vector2(0, -32)
 follow_damping = true
 draw_limits = true
 limit_target = NodePath("../CameraArea/free_camera_limit")
-
-[node name="placas" type="Node2D" parent="."]
-position = Vector2(-21.3333, 240)
-
-[node name="atacar" parent="placas" node_paths=PackedStringArray("itens") instance=ExtResource("27_rwkmp")]
-position = Vector2(1189.33, -11)
-itens = [NodePath("../../Tutorial/atacar2")]
-
-[node name="dash" parent="placas" node_paths=PackedStringArray("itens") instance=ExtResource("27_rwkmp")]
-position = Vector2(4666.33, -363)
-itens = [NodePath("../../Tutorial/dash")]
-
-[node name="abaixar" parent="placas" node_paths=PackedStringArray("itens") instance=ExtResource("27_rwkmp")]
-position = Vector2(5460.33, -265)
-itens = [NodePath("../../Tutorial/abaixar")]
-
-[node name="descer" parent="placas" node_paths=PackedStringArray("itens") instance=ExtResource("27_rwkmp")]
-position = Vector2(7068.33, -1131)
-itens = [NodePath("../../Tutorial/descer")]
-
-[node name="vantagens" parent="placas" node_paths=PackedStringArray("itens") instance=ExtResource("27_rwkmp")]
-position = Vector2(9268.33, -843)
-itens = [NodePath("../../Tutorial/vantagens")]
-
-[node name="curar" parent="placas" node_paths=PackedStringArray("itens") instance=ExtResource("27_rwkmp")]
-position = Vector2(10681.3, -811)
-itens = [NodePath("../../Tutorial/curar"), NodePath("../../Tutorial/AnimatedSprite2D")]
 
 [node name="LavaTiles" type="Node2D" parent="."]
 
@@ -758,81 +770,6 @@ enemies = [NodePath("../../Limit/BigWorm")]
 [node name="elemental_orb" parent="." instance=ExtResource("34_0sdop")]
 position = Vector2(10720, -571)
 element = "water"
-
-[node name="Tutorial" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -1.0
-offset_right = 39.0
-offset_bottom = 40.0
-
-[node name="atacar2" type="RichTextLabel" parent="Tutorial"]
-visible = false
-layout_mode = 0
-offset_left = 1058.0
-offset_top = 111.0
-offset_right = 1282.0
-offset_bottom = 143.0
-bbcode_enabled = true
-text = "ATACAR = BOTÃO DIREITO"
-
-[node name="dash" type="RichTextLabel" parent="Tutorial"]
-visible = false
-layout_mode = 0
-offset_left = 4572.0
-offset_top = -201.0
-offset_right = 4796.0
-offset_bottom = -169.0
-bbcode_enabled = true
-text = "DASH = SHIFT"
-
-[node name="abaixar" type="RichTextLabel" parent="Tutorial"]
-visible = false
-layout_mode = 0
-offset_left = 5398.0
-offset_top = -101.0
-offset_right = 5622.0
-offset_bottom = -69.0
-bbcode_enabled = true
-text = "ABAIXAR = S"
-
-[node name="descer" type="RichTextLabel" parent="Tutorial"]
-visible = false
-layout_mode = 0
-offset_left = 6940.0
-offset_top = -978.0
-offset_right = 7164.0
-offset_bottom = -946.0
-bbcode_enabled = true
-text = "DESCER = ABAIXAR + PULAR"
-
-[node name="vantagens" type="RichTextLabel" parent="Tutorial"]
-visible = false
-layout_mode = 0
-offset_left = 9492.0
-offset_top = -791.0
-offset_right = 9627.0
-offset_bottom = -741.0
-bbcode_enabled = true
-text = "[color=#A5F2F3]Água[/color] -> [color=#ff5a00]Fogo[/color]
- [color=#ff5a00]Fogo[/color] -> [color=#a8ca58]Terra[/color]"
-
-[node name="curar" type="RichTextLabel" parent="Tutorial"]
-visible = false
-layout_mode = 0
-offset_left = 10688.0
-offset_top = -672.0
-offset_right = 10784.0
-offset_bottom = -640.0
-bbcode_enabled = true
-text = "CURAR = R"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tutorial"]
-visible = false
-position = Vector2(10727, -702)
-sprite_frames = SubResource("SpriteFrames_v7h7t")
-autoplay = "default"
-frame_progress = 0.857324
 
 [node name="sei_la" type="Node2D" parent="." node_paths=PackedStringArray("player")]
 script = ExtResource("35_niye7")
