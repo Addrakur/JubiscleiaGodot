@@ -30,7 +30,7 @@ resource_name = "animation"
 
 [sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_prcag"]
 animation_player = SubResource("BBNode_sm2ss")
-animation_name = &"swipe"
+animation_name = &"swipe_1"
 max_time = 2.083
 
 [sub_resource type="BTAction" id="BTAction_ek8e1"]

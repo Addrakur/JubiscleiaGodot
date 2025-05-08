@@ -9,6 +9,8 @@
 [ext_resource type="BehaviorTree" uid="uid://djga7cm0ugc4e" path="res://Management/behaviour_trees/tree_boss/tree_boss_idle_tree.tres" id="6_gafwg"]
 [ext_resource type="Script" uid="uid://dw4rhurscgw0s" path="res://Management/states/tree_boss/attack_swipe.gd" id="8_1hkfu"]
 [ext_resource type="BehaviorTree" uid="uid://b1ptrptn023l8" path="res://Management/behaviour_trees/tree_boss/tree_boss_swipe_tree.tres" id="10_lebh0"]
+[ext_resource type="Script" uid="uid://ypbxlwlpjeku" path="res://Management/states/tree_boss/attack_throw_rock.gd" id="10_vi44x"]
+[ext_resource type="BehaviorTree" uid="uid://buel6gwxt2kna" path="res://ai/trees/attack_throw_rock_tree.tres" id="11_c8gdp"]
 
 [sub_resource type="Animation" id="Animation_u76h0"]
 length = 0.001
@@ -51,14 +53,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("rock_position:position")
+tracks/3/path = NodePath("Path2D/PathFollow2D:progress_ratio")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-62, -47)]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_u1iyd"]
@@ -143,17 +145,51 @@ tracks/2/keys = {
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("rock_position:position")
+tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.75, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"spawn_rock"
+}, {
+"args": [false],
+"method": &"set_preparing_rock"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5, 2.16667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"set_physics"
+}, {
+"args": [],
+"method": &"throw_rock"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Path2D/PathFollow2D:progress_ratio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.833333, 1.5),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-13, 38), Vector2(-13, 19), Vector2(-6, 2), Vector2(-1, -11), Vector2(-1, -42), Vector2(-11, -42), Vector2(-41, -42), Vector2(-64, -42), Vector2(-100, -51)]
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_vdt7u"]
@@ -257,25 +293,25 @@ height = 164.0
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_urt7n"]
 
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_lebh0"]
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_vi44x"]
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_xul8h"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_c8gdp"]
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_xul8h"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_16syl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ptil"]
 size = Vector2(57, 160)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hi1ka"]
-size = Vector2(358, 160)
+[sub_resource type="Curve2D" id="Curve2D_vi44x"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -13, 38, 0, 0, 0, 0, -13, 19, 0, 0, 0, 0, -6, 2, 0, 0, 0, 0, -1, -11, 0, 0, 0, 0, -1, -42, 0, 0, 0, 0, -11, -42, 0, 0, 0, 0, -41, -42, 0, 0, 0, 0, -64, -42, 0, 0, 0, 0, -100, -51)
+}
+point_count = 9
 
 [node name="tree_boss" type="CharacterBody2D" groups=["enemy"]]
+z_index = -2
 collision_layer = 2
-collision_mask = 65581
+collision_mask = 65580
 script = ExtResource("1_w1ig0")
 element = "earth"
 
@@ -303,7 +339,7 @@ blackboard_plan = SubResource("BlackboardPlan_1hkfu")
 
 [node name="attack_swipe" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "tree")]
 script = ExtResource("8_1hkfu")
-speed = 100.0
+speed = 250.0
 parent = NodePath("../..")
 tree = NodePath("attack_swipe_tree")
 
@@ -312,25 +348,22 @@ behavior_tree = ExtResource("10_lebh0")
 active = false
 blackboard_plan = SubResource("BlackboardPlan_urt7n")
 
-[node name="attack_throw" type="LimboState" parent="hsm"]
+[node name="attack_throw_rock" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "tree", "animation")]
+script = ExtResource("10_vi44x")
+parent = NodePath("../..")
+speed = 250.0
+tree = NodePath("attack_throw_rock_tree")
+animation = NodePath("../../animation")
 
-[node name="attack_throw_tree" type="BTPlayer" parent="hsm/attack_throw"]
-blackboard_plan = SubResource("BlackboardPlan_lebh0")
-
-[node name="attack_root" type="LimboState" parent="hsm"]
-
-[node name="attack_root_tree" type="BTPlayer" parent="hsm/attack_root"]
-blackboard_plan = SubResource("BlackboardPlan_vi44x")
+[node name="attack_throw_rock_tree" type="BTPlayer" parent="hsm/attack_throw_rock"]
+behavior_tree = ExtResource("11_c8gdp")
+active = false
+blackboard_plan = SubResource("BlackboardPlan_xul8h")
 
 [node name="attack_fire" type="LimboState" parent="hsm"]
 
 [node name="attack_fire_tree" type="BTPlayer" parent="hsm/attack_fire"]
 blackboard_plan = SubResource("BlackboardPlan_c8gdp")
-
-[node name="attack_run" type="LimboState" parent="hsm"]
-
-[node name="attack_run_tree" type="BTPlayer" parent="hsm/attack_run"]
-blackboard_plan = SubResource("BlackboardPlan_xul8h")
 
 [node name="change_fase" type="LimboState" parent="hsm"]
 
@@ -346,23 +379,22 @@ collision_layer = 0
 position = Vector2(-54.5, -80)
 shape = SubResource("RectangleShape2D_3ptil")
 
-[node name="ranged_detect_area" type="Area2D" parent="."]
-collision_layer = 0
-
-[node name="ranged_detect_collision" type="CollisionShape2D" parent="ranged_detect_area"]
-position = Vector2(-205, -80)
-shape = SubResource("RectangleShape2D_hi1ka")
-
 [node name="texture" type="Sprite2D" parent="."]
 position = Vector2(0, -96)
 texture = ExtResource("1_kjuq6")
 hframes = 25
 frame = 1
 
-[node name="rock_position" type="Marker2D" parent="."]
-position = Vector2(-62, -47)
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_vi44x")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(-100, -51)
+rotation = -2.89661
+progress = 182.421
+
+[node name="rock_position" type="Marker2D" parent="Path2D/PathFollow2D"]
+rotation = 2.89661
 
 [connection signal="body_entered" from="melee_detect_area" to="." method="_on_melee_detect_area_body_entered"]
 [connection signal="body_exited" from="melee_detect_area" to="." method="_on_melee_detect_area_body_exited"]
-[connection signal="body_entered" from="ranged_detect_area" to="." method="_on_ranged_detect_area_body_entered"]
-[connection signal="body_exited" from="ranged_detect_area" to="." method="_on_ranged_detect_area_body_exited"]

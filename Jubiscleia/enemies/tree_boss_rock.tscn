@@ -11,17 +11,29 @@ radius = 41.0488
 radius = 42.0476
 
 [node name="tree_boss_rock" type="RigidBody2D"]
-collision_layer = 64
-collision_mask = 32813
+top_level = true
+z_index = -1
+collision_layer = 0
+collision_mask = 44
+mass = 2000.0
+gravity_scale = 0.0
 contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_pb16i")
+throw_force = 800.0
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sfuc7")
+disabled = true
 
 [node name="AttackArea" parent="." instance=ExtResource("2_sfuc7")]
+collision_mask = 1
 targets = Array[String](["player"])
+damage = 20.0
+knockup_force = -10.0
+knockback_force = 500.0
+poise_damage = 50.0
+attack_name = "BIG_ROCK"
 one_hit_destroy = true
 
 [node name="attack_area_collision" type="CollisionShape2D" parent="AttackArea"]

@@ -1,0 +1,79 @@
+[gd_resource type="BehaviorTree" load_steps=24 format=3 uid="uid://buel6gwxt2kna"]
+
+[ext_resource type="Script" uid="uid://dvu6fuaoqjp1g" path="res://ai/tasks/parent_var_check.gd" id="1_6kcs6"]
+[ext_resource type="Script" uid="uid://c7qn0683f181d" path="res://ai/tasks/set_velocity.gd" id="1_bccfa"]
+[ext_resource type="Script" uid="uid://bg3ndytd1lpqf" path="res://ai/tasks/move_to_direction.gd" id="2_kjor8"]
+[ext_resource type="Script" uid="uid://dfiw2i6ulwna8" path="res://ai/tasks/set_direction_to_target.gd" id="3_s32r3"]
+[ext_resource type="Script" uid="uid://d2drruk6boo2v" path="res://ai/tasks/dispatch.gd" id="3_xg23e"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_skjmf"]
+
+[sub_resource type="BTAction" id="BTAction_kon6w"]
+script = ExtResource("1_6kcs6")
+var_name = "can_attack_ranged"
+
+[sub_resource type="BTAction" id="BTAction_xg23e"]
+script = ExtResource("1_bccfa")
+value = Vector2(0, 0)
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_kjor8"]
+text = "Throw Rock"
+
+[sub_resource type="BBNode" id="BBNode_s32r3"]
+saved_value = NodePath("animation")
+resource_name = "animation"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_xg23e"]
+animation_player = SubResource("BBNode_s32r3")
+animation_name = &"rock_throw"
+
+[sub_resource type="BBNode" id="BBNode_xg23e"]
+saved_value = NodePath("animation")
+resource_name = "animation"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_s32r3"]
+animation_player = SubResource("BBNode_xg23e")
+animation_name = &"rock_throw"
+max_time = 5.0
+
+[sub_resource type="BTAction" id="BTAction_h1hry"]
+script = ExtResource("3_xg23e")
+dispatch_name = "throw_to_idle"
+
+[sub_resource type="BTSequence" id="BTSequence_skjmf"]
+custom_name = "throw_rock"
+children = [SubResource("BTAction_kon6w"), SubResource("BTAction_xg23e"), SubResource("BTConsolePrint_kjor8"), SubResource("BTPlayAnimation_xg23e"), SubResource("BTAwaitAnimation_s32r3"), SubResource("BTAction_h1hry")]
+
+[sub_resource type="BTAction" id="BTAction_s32r3"]
+custom_name = "is_moving check"
+script = ExtResource("1_6kcs6")
+var_name = "is_moving"
+
+[sub_resource type="BTSequence" id="BTSequence_6kcs6"]
+custom_name = "is_running"
+children = [SubResource("BTAction_s32r3")]
+
+[sub_resource type="BTAction" id="BTAction_kjor8"]
+script = ExtResource("3_s32r3")
+
+[sub_resource type="BBNode" id="BBNode_kjor8"]
+saved_value = NodePath("animation")
+resource_name = "animation"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_6kcs6"]
+animation_player = SubResource("BBNode_kjor8")
+animation_name = &"walk_1"
+
+[sub_resource type="BTAction" id="BTAction_6kcs6"]
+script = ExtResource("2_kjor8")
+
+[sub_resource type="BTSequence" id="BTSequence_bccfa"]
+custom_name = "move_to_place"
+children = [SubResource("BTAction_kjor8"), SubResource("BTPlayAnimation_6kcs6"), SubResource("BTAction_6kcs6")]
+
+[sub_resource type="BTSelector" id="BTSelector_kjor8"]
+children = [SubResource("BTSequence_skjmf"), SubResource("BTSequence_6kcs6"), SubResource("BTSequence_bccfa")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_skjmf")
+root_task = SubResource("BTSelector_kjor8")

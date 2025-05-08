@@ -238,6 +238,7 @@ theme_override_font_sizes/font_size = 37
 text = "Parametros"
 
 [node name="Level1" type="TextureButton" parent="."]
+visible = false
 layout_mode = 2
 offset_left = 96.0
 offset_top = 160.0
@@ -250,6 +251,7 @@ texture_normal = ExtResource("6_7hd5p")
 texture_hover = ExtResource("7_7cqmf")
 
 [node name="Level2" type="TextureButton" parent="."]
+visible = false
 layout_mode = 2
 offset_left = 133.0
 offset_top = 160.0
@@ -262,6 +264,7 @@ texture_normal = ExtResource("8_0jgdy")
 texture_hover = ExtResource("9_c6cib")
 
 [node name="Level3" type="TextureButton" parent="."]
+visible = false
 layout_mode = 2
 offset_left = 171.0
 offset_top = 160.0

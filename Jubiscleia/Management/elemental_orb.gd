@@ -18,7 +18,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		botao_e.visible = false
 		can_collect = false
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("collect_orb") and can_collect:
 		collect_orb()
 

@@ -13,8 +13,8 @@ var_name = "player_on_limit"
 custom_name = "Verifica se o ataque está em cooldown"
 
 [sub_resource type="BTRandomWait" id="BTRandomWait_a782n"]
-min_duration = 3.0
-max_duration = 5.0
+min_duration = 2.0
+max_duration = 3.5
 children = [SubResource("BTComment_wmhf4")]
 
 [sub_resource type="BTAction" id="BTAction_r34ki"]
@@ -26,15 +26,17 @@ dispatch_name = "idle_to_swipe"
 run_chance = 0.4
 children = [SubResource("BTAction_r34ki")]
 
-[sub_resource type="BTConsolePrint" id="BTConsolePrint_a782n"]
-text = "ranged"
+[sub_resource type="BTAction" id="BTAction_a782n"]
+custom_name = "dispatch to throw"
+script = ExtResource("3_a782n")
+dispatch_name = "idle_to_throw"
 
 [sub_resource type="BTSequence" id="BTSequence_iklfa"]
 custom_name = "ranged"
-children = [SubResource("BTConsolePrint_a782n")]
+children = [SubResource("BTAction_a782n")]
 
 [sub_resource type="BTProbability" id="BTProbability_r34ki"]
-run_chance = 0.6
+run_chance = 0.8
 children = [SubResource("BTSequence_iklfa")]
 
 [sub_resource type="BTConsolePrint" id="BTConsolePrint_05rcb"]

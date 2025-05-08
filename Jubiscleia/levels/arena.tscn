@@ -35,7 +35,6 @@ size = Vector2(3104, 586)
 script = ExtResource("1_5moen")
 player = NodePath("player")
 free_spawn = true
-has_starting_weapon = true
 skill_1 = "sword"
 skill_2 = "none"
 
