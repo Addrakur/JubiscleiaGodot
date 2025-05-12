@@ -10,6 +10,7 @@
 radius = 11.0454
 
 [node name="tree_boss_seed" type="RigidBody2D"]
+visible = false
 top_level = true
 z_index = -1
 collision_layer = 0

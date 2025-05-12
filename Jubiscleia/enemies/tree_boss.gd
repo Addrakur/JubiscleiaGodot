@@ -47,6 +47,8 @@ func _physics_process(_delta: float) -> void:
 	
 	if target == arena_middle and position.x > arena_middle.position.x - 10 and position.x < arena_middle.position.x + 10:
 		can_rain_seed = true
+	else:
+		can_rain_seed = false
 	
 	if target == arena_left and on_left_limit and velocity.x < 0 or target == arena_right and on_right_limit and velocity.x > 0:
 		can_attack_ranged = true

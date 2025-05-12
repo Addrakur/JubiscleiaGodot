@@ -1,9 +1,12 @@
-[gd_resource type="BehaviorTree" load_steps=18 format=3 uid="uid://djga7cm0ugc4e"]
+[gd_resource type="BehaviorTree" load_steps=19 format=3 uid="uid://djga7cm0ugc4e"]
 
 [ext_resource type="Script" uid="uid://dvu6fuaoqjp1g" path="res://ai/tasks/parent_var_check.gd" id="1_wmhf4"]
 [ext_resource type="Script" uid="uid://d2drruk6boo2v" path="res://ai/tasks/dispatch.gd" id="3_a782n"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_b0vht"]
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_648k1"]
+text = "idle tree started"
 
 [sub_resource type="BTAction" id="BTAction_648k1"]
 script = ExtResource("1_wmhf4")
@@ -13,7 +16,8 @@ var_name = "player_on_limit"
 custom_name = "Verifica se o ataque está em cooldown"
 
 [sub_resource type="BTRandomWait" id="BTRandomWait_a782n"]
-min_duration = 1.5
+min_duration = 2.0
+max_duration = 3.0
 children = [SubResource("BTComment_wmhf4")]
 
 [sub_resource type="BTAction" id="BTAction_r34ki"]
@@ -22,7 +26,7 @@ script = ExtResource("3_a782n")
 dispatch_name = "idle_to_swipe"
 
 [sub_resource type="BTProbability" id="BTProbability_648k1"]
-run_chance = 0.6
+run_chance = 0.4
 children = [SubResource("BTAction_r34ki")]
 
 [sub_resource type="BTAction" id="BTAction_a782n"]
@@ -41,6 +45,7 @@ children = [SubResource("BTSequence_iklfa")]
 text = "rain seed"
 
 [sub_resource type="BTAction" id="BTAction_iklfa"]
+custom_name = "dispatch to seed rain"
 script = ExtResource("3_a782n")
 dispatch_name = "idle_to_seed"
 
@@ -56,7 +61,7 @@ children = [SubResource("BTProbability_648k1"), SubResource("BTProbability_r34ki
 children = [SubResource("BTRandomWait_a782n"), SubResource("BTSelector_bg0r3")]
 
 [sub_resource type="BTSequence" id="BTSequence_648k1"]
-children = [SubResource("BTAction_648k1"), SubResource("BTSequence_a782n")]
+children = [SubResource("BTConsolePrint_648k1"), SubResource("BTAction_648k1"), SubResource("BTSequence_a782n")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_b0vht")
