@@ -10,7 +10,8 @@ radius = 41.0488
 [sub_resource type="CircleShape2D" id="CircleShape2D_pb16i"]
 radius = 42.0476
 
-[node name="tree_boss_rock" type="RigidBody2D"]
+[node name="tree_boss_rock" type="RigidBody2D" groups=["projectile"]]
+visible = false
 top_level = true
 z_index = -1
 collision_layer = 0

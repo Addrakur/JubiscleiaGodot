@@ -3,7 +3,6 @@ extends Area2D
 
 @onready var parent: Node2D = get_parent()
 
-@export var target: String
 @export var targets: Array[String]
 
 @export var damage: float

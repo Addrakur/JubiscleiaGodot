@@ -3019,7 +3019,6 @@ debug_color = Color(0.944279, 7.79718e-06, 0.597798, 0.42)
 position = Vector2(0, -14)
 scale = Vector2(1.00346, 1)
 collision_mask = 2
-target = "enemy"
 targets = Array[String](["enemy", "obstacle"])
 
 [node name="AttackArea" type="CollisionPolygon2D" parent="AttackArea"]

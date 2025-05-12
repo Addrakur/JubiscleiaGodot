@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=24 format=3 uid="uid://buel6gwxt2kna"]
+[gd_resource type="BehaviorTree" load_steps=23 format=3 uid="uid://buel6gwxt2kna"]
 
 [ext_resource type="Script" uid="uid://dvu6fuaoqjp1g" path="res://ai/tasks/parent_var_check.gd" id="1_6kcs6"]
 [ext_resource type="Script" uid="uid://c7qn0683f181d" path="res://ai/tasks/set_velocity.gd" id="1_bccfa"]
@@ -16,9 +16,6 @@ var_name = "can_attack_ranged"
 script = ExtResource("1_bccfa")
 value = Vector2(0, 0)
 
-[sub_resource type="BTConsolePrint" id="BTConsolePrint_kjor8"]
-text = "Throw Rock"
-
 [sub_resource type="BBNode" id="BBNode_s32r3"]
 saved_value = NodePath("animation")
 resource_name = "animation"
@@ -34,7 +31,7 @@ resource_name = "animation"
 [sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_s32r3"]
 animation_player = SubResource("BBNode_xg23e")
 animation_name = &"rock_throw"
-max_time = 5.0
+max_time = 10.0
 
 [sub_resource type="BTAction" id="BTAction_h1hry"]
 script = ExtResource("3_xg23e")
@@ -42,7 +39,7 @@ dispatch_name = "throw_to_idle"
 
 [sub_resource type="BTSequence" id="BTSequence_skjmf"]
 custom_name = "throw_rock"
-children = [SubResource("BTAction_kon6w"), SubResource("BTAction_xg23e"), SubResource("BTConsolePrint_kjor8"), SubResource("BTPlayAnimation_xg23e"), SubResource("BTAwaitAnimation_s32r3"), SubResource("BTAction_h1hry")]
+children = [SubResource("BTAction_kon6w"), SubResource("BTAction_xg23e"), SubResource("BTPlayAnimation_xg23e"), SubResource("BTAwaitAnimation_s32r3"), SubResource("BTAction_h1hry")]
 
 [sub_resource type="BTAction" id="BTAction_s32r3"]
 custom_name = "is_moving check"

@@ -1,0 +1,111 @@
+[gd_resource type="BehaviorTree" load_steps=31 format=3 uid="uid://c81fijvxmwmx5"]
+
+[ext_resource type="Script" uid="uid://dfiw2i6ulwna8" path="res://ai/tasks/set_direction_to_target.gd" id="1_aw5fg"]
+[ext_resource type="Script" uid="uid://dvu6fuaoqjp1g" path="res://ai/tasks/parent_var_check.gd" id="1_oomev"]
+[ext_resource type="Script" uid="uid://c7qn0683f181d" path="res://ai/tasks/set_velocity.gd" id="2_clpwr"]
+[ext_resource type="Script" uid="uid://bg3ndytd1lpqf" path="res://ai/tasks/move_to_direction.gd" id="2_oomev"]
+[ext_resource type="Script" uid="uid://d2drruk6boo2v" path="res://ai/tasks/dispatch.gd" id="3_5d6mq"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ehi2m"]
+
+[sub_resource type="BTAction" id="BTAction_oomev"]
+custom_name = "can_rain_seed check"
+script = ExtResource("1_oomev")
+var_name = "can_rain_seed"
+
+[sub_resource type="BTAction" id="BTAction_5d6mq"]
+script = ExtResource("2_clpwr")
+value = Vector2(0, 0)
+
+[sub_resource type="BBNode" id="BBNode_h6unh"]
+saved_value = NodePath("animation")
+resource_name = "animation"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_sb6il"]
+animation_player = SubResource("BBNode_h6unh")
+animation_name = &"rain_seed"
+
+[sub_resource type="BBNode" id="BBNode_clpwr"]
+saved_value = NodePath("animation")
+resource_name = "animation"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_5d6mq"]
+animation_player = SubResource("BBNode_clpwr")
+animation_name = &"rain_seed"
+max_time = 30.0
+
+[sub_resource type="BBNode" id="BBNode_5d6mq"]
+saved_value = NodePath("animation")
+resource_name = "animation"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_h6unh"]
+animation_player = SubResource("BBNode_5d6mq")
+animation_name = &"rain_seed"
+
+[sub_resource type="BBNode" id="BBNode_j7ku6"]
+saved_value = NodePath("animation")
+resource_name = "animation"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_dh5nw"]
+animation_player = SubResource("BBNode_j7ku6")
+animation_name = &"rain_seed"
+max_time = 30.0
+
+[sub_resource type="BBNode" id="BBNode_1tiu1"]
+saved_value = NodePath("animation")
+resource_name = "animation"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_opyk7"]
+animation_player = SubResource("BBNode_1tiu1")
+animation_name = &"rain_seed"
+
+[sub_resource type="BBNode" id="BBNode_rgaka"]
+saved_value = NodePath("animation")
+resource_name = "animation"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_273uw"]
+animation_player = SubResource("BBNode_rgaka")
+animation_name = &"rain_seed"
+max_time = 30.0
+
+[sub_resource type="BTAction" id="BTAction_sb6il"]
+script = ExtResource("3_5d6mq")
+dispatch_name = "rain_to_idle"
+
+[sub_resource type="BTSequence" id="BTSequence_clpwr"]
+custom_name = "seed rain"
+children = [SubResource("BTAction_oomev"), SubResource("BTAction_5d6mq"), SubResource("BTPlayAnimation_sb6il"), SubResource("BTAwaitAnimation_5d6mq"), SubResource("BTPlayAnimation_h6unh"), SubResource("BTAwaitAnimation_dh5nw"), SubResource("BTPlayAnimation_opyk7"), SubResource("BTAwaitAnimation_273uw"), SubResource("BTAction_sb6il")]
+
+[sub_resource type="BTAction" id="BTAction_clpwr"]
+custom_name = "is_moving check"
+script = ExtResource("1_oomev")
+var_name = "is_moving"
+
+[sub_resource type="BTSequence" id="BTSequence_5d6mq"]
+custom_name = "is running"
+children = [SubResource("BTAction_clpwr")]
+
+[sub_resource type="BTAction" id="BTAction_h6unh"]
+script = ExtResource("1_aw5fg")
+
+[sub_resource type="BBNode" id="BBNode_sb6il"]
+saved_value = NodePath("animation")
+resource_name = "animation"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_j7ku6"]
+animation_player = SubResource("BBNode_sb6il")
+animation_name = &"walk_1"
+
+[sub_resource type="BTAction" id="BTAction_dh5nw"]
+script = ExtResource("2_oomev")
+
+[sub_resource type="BTSequence" id="BTSequence_1tiu1"]
+custom_name = "move to place"
+children = [SubResource("BTAction_h6unh"), SubResource("BTPlayAnimation_j7ku6"), SubResource("BTAction_dh5nw")]
+
+[sub_resource type="BTSelector" id="BTSelector_opyk7"]
+children = [SubResource("BTSequence_clpwr"), SubResource("BTSequence_5d6mq"), SubResource("BTSequence_1tiu1")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_ehi2m")
+root_task = SubResource("BTSelector_opyk7")

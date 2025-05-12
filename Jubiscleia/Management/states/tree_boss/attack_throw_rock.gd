@@ -6,7 +6,6 @@ extends LimboState
 @export var animation: AnimationPlayer
 
 func _enter() -> void:
-	print("enter throw rock")
 	if parent.player_ref.position.x > parent.position.x:
 		parent.target = parent.arena_left
 	else:
@@ -14,7 +13,6 @@ func _enter() -> void:
 	tree.active = true
 
 func _exit() -> void:
-	print("exit throw rock")
 	tree.active = false
 
 func _update(_delta) -> void:

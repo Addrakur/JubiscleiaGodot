@@ -5,10 +5,8 @@ extends LimboState
 @export var tree: BTPlayer
 
 func _enter():
-	print("enter idle")
 	tree.active = true
 	animation.play("idle_1")
 
 func _exit():
-	print("exit idle")
 	tree.active = false

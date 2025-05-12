@@ -3,7 +3,7 @@ extends Node
 #Player Variables
 
 var player_max_health: float = 100
-var player_max_poise: float = 5
+var player_max_poise: float = 6
 var player_poise_recover_time: float = 5
 var player_knockback_mult: float = 1
 var player_hit_recover_limit: float = 50
