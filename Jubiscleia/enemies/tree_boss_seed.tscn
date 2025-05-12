@@ -15,7 +15,7 @@ top_level = true
 z_index = -1
 collision_layer = 0
 collision_mask = 36
-mass = 10.0
+mass = 20.0
 gravity_scale = 0.2
 script = ExtResource("1_7pdjn")
 
@@ -30,7 +30,7 @@ collision_mask = 37
 targets = Array[String](["player"])
 damage = 10.0
 knockback_force = -50.0
-poise_damage = 5.0
+poise_damage = 6.0
 attack_name = "boss_seed"
 one_hit_destroy = true
 destroy_on_terrain = true

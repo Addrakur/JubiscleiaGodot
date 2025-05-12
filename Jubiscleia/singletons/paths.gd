@@ -7,6 +7,7 @@ var level1: String = "res://levels/level_1.tscn"
 var level2: String = "res://levels/level_2.tscn"
 var level3: String = "res://levels/level_3.tscn"
 var arena: String = "res://levels/arena.tscn"
+var tutorial_boss_level: String = "res://levels/tutorial_boss_level.tscn"
 
 #Objects
 var projectile = preload("res://player/player_attack_projectile.tscn")

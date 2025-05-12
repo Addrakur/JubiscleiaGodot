@@ -29,6 +29,9 @@ func _on_level_3_pressed():
 func _on_arena_pressed():
 	GameSettings.change_scene(Paths.arena)
 
+func _on_tutorial_boss_pressed() -> void:
+	GameSettings.change_scene(Paths.tutorial_boss_level)
+
 func on_quit_pressed():
 	get_tree().quit()
 

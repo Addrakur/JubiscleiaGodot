@@ -276,6 +276,14 @@ scale = Vector2(0.5, 0.5)
 texture_normal = ExtResource("10_10avj")
 texture_hover = ExtResource("11_gb0yr")
 
+[node name="Tutorial_boss" type="Button" parent="."]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 160.0
+offset_right = 171.0
+offset_bottom = 191.0
+text = "Boss"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
@@ -4818,6 +4826,7 @@ text = "Skill Tree"
 [connection signal="pressed" from="Level1" to="." method="on_level1_pressed"]
 [connection signal="pressed" from="Level2" to="." method="on_level2_pressed"]
 [connection signal="pressed" from="Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="Tutorial_boss" to="." method="_on_tutorial_boss_pressed"]
 [connection signal="pressed" from="HBoxContainer/sword" to="." method="_on_w_1_sword_pressed"]
 [connection signal="pressed" from="HBoxContainer/axe" to="." method="_on_w_1_axe_pressed"]
 [connection signal="pressed" from="HBoxContainer/spear" to="." method="_on_w_1_spear_pressed"]

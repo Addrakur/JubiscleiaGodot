@@ -16,6 +16,7 @@ extends CharacterBody2D
 @onready var rock_position: Marker2D = $Path2D/PathFollow2D/rock_position
 @onready var collision_polygon_2d: CollisionPolygon2D = $AttackArea/CollisionPolygon2D
 @onready var path_2d: Path2D = $Path2D
+@onready var hit_modulate: AnimationPlayer = $hit_modulate
 
 @onready var hsm: LimboHSM = $hsm
 @onready var idle_state: LimboState = $hsm/idle
@@ -32,6 +33,7 @@ var on_right_limit: bool = false
 var is_moving: bool = false
 var can_attack_ranged: bool = false
 var can_rain_seed: bool = false
+var alive: bool = true
 var rock = preload("res://enemies/tree_boss_rock.tscn")
 var seed = preload("res://enemies/tree_boss_seed.tscn")
 
@@ -142,3 +144,6 @@ func _on_left_area_body_exited(body: Node2D) -> void:
 
 func set_preparing_rock(value: bool):
 	preparing_rock = value
+
+func _on_hit_modulate_animation_finished(_anim_name):
+	health_component.last_attack = ""

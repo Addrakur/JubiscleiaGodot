@@ -515,7 +515,6 @@ attack_timer = NodePath("../AttackTimer")
 [node name="AttackArea" parent="." instance=ExtResource("8_iw5ih")]
 position = Vector2(0, -32)
 collision_mask = 1
-target = "player"
 targets = Array[String](["player"])
 damage = 20.0
 knockup_force = -20.0
