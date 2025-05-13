@@ -44,7 +44,7 @@ func _ready() -> void:
 	init_state_machine()
 	player_ref = player
 
-func _physics_process(_delta: float) -> void:
+func _process(_delta: float) -> void:
 	is_moving = true if velocity.x != 0 else false
 	
 	if target == arena_middle and position.x > arena_middle.position.x - 10 and position.x < arena_middle.position.x + 10:
@@ -65,6 +65,10 @@ func _physics_process(_delta: float) -> void:
 	if preparing_rock:
 		proj.position = rock_position.global_position
 	
+	if not alive:
+		queue_free()
+
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
 func init_state_machine():
