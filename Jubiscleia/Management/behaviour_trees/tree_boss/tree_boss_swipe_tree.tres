@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=23 format=3 uid="uid://b1ptrptn023l8"]
+[gd_resource type="BehaviorTree" load_steps=37 format=3 uid="uid://b1ptrptn023l8"]
 
 [ext_resource type="BlackboardPlan" uid="uid://bvu2xc7ap8cpy" path="res://Management/behaviour_trees/tree_boss/tree_boss_blackboard.tres" id="1_prcag"]
 [ext_resource type="Script" uid="uid://d2drruk6boo2v" path="res://ai/tasks/dispatch.gd" id="1_sm2ss"]
@@ -15,6 +15,10 @@ var_name = "can_attack_melee"
 [sub_resource type="BTAction" id="BTAction_8ol1b"]
 script = ExtResource("3_jcrl7")
 value = Vector2(0, 0)
+
+[sub_resource type="BTAction" id="BTAction_jcrl7"]
+script = ExtResource("2_ek8e1")
+var_name = "fase_1"
 
 [sub_resource type="BBNode" id="BBNode_7udd3"]
 saved_value = NodePath("animation")
@@ -33,13 +37,42 @@ animation_player = SubResource("BBNode_sm2ss")
 animation_name = &"swipe_1"
 max_time = 2.083
 
+[sub_resource type="BTSequence" id="BTSequence_8ol1b"]
+custom_name = "fase 1"
+children = [SubResource("BTAction_jcrl7"), SubResource("BTPlayAnimation_sm2ss"), SubResource("BTAwaitAnimation_prcag")]
+
+[sub_resource type="BBNode" id="BBNode_5a16x"]
+saved_value = NodePath("animation")
+resource_name = "animation"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_bndkf"]
+animation_player = SubResource("BBNode_5a16x")
+animation_name = &"swipe_2"
+
+[sub_resource type="BBNode" id="BBNode_a65uw"]
+saved_value = NodePath("animation")
+resource_name = "animation"
+
+[sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_6rmca"]
+animation_player = SubResource("BBNode_a65uw")
+animation_name = &"swipe_2"
+max_time = 1.533
+
+[sub_resource type="BTSequence" id="BTSequence_w54pj"]
+custom_name = "fase 2"
+children = [SubResource("BTPlayAnimation_bndkf"), SubResource("BTAwaitAnimation_6rmca")]
+
+[sub_resource type="BTSelector" id="BTSelector_2g72c"]
+custom_name = "fase selector"
+children = [SubResource("BTSequence_8ol1b"), SubResource("BTSequence_w54pj")]
+
 [sub_resource type="BTAction" id="BTAction_ek8e1"]
 script = ExtResource("1_sm2ss")
 dispatch_name = "swipe_to_idle"
 
 [sub_resource type="BTSequence" id="BTSequence_prcag"]
 custom_name = "Attacking"
-children = [SubResource("BTAction_1nh3i"), SubResource("BTAction_8ol1b"), SubResource("BTPlayAnimation_sm2ss"), SubResource("BTAwaitAnimation_prcag"), SubResource("BTAction_ek8e1")]
+children = [SubResource("BTAction_1nh3i"), SubResource("BTAction_8ol1b"), SubResource("BTSelector_2g72c"), SubResource("BTAction_ek8e1")]
 
 [sub_resource type="BTAction" id="BTAction_5a16x"]
 script = ExtResource("4_62ihk")
@@ -49,20 +82,44 @@ value = "player_ref"
 [sub_resource type="BTAction" id="BTAction_bndkf"]
 script = ExtResource("5_jcrl7")
 
-[sub_resource type="BBNode" id="BBNode_62ihk"]
+[sub_resource type="BTAction" id="BTAction_6rmca"]
+script = ExtResource("2_ek8e1")
+var_name = "fase_1"
+
+[sub_resource type="BBNode" id="BBNode_w54pj"]
 saved_value = NodePath("animation")
 resource_name = "animation"
 
-[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_jcrl7"]
-animation_player = SubResource("BBNode_62ihk")
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_2g72c"]
+animation_player = SubResource("BBNode_w54pj")
 animation_name = &"walk_1"
+
+[sub_resource type="BTSequence" id="BTSequence_mbw4k"]
+custom_name = "fase 1"
+children = [SubResource("BTAction_6rmca"), SubResource("BTPlayAnimation_2g72c")]
+
+[sub_resource type="BBNode" id="BBNode_h464o"]
+saved_value = NodePath("animation")
+resource_name = "animation"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_fgk5s"]
+animation_player = SubResource("BBNode_h464o")
+animation_name = &"walk_2"
+
+[sub_resource type="BTSequence" id="BTSequence_6vlbf"]
+custom_name = "fase 2"
+children = [SubResource("BTPlayAnimation_fgk5s")]
+
+[sub_resource type="BTSelector" id="BTSelector_uykee"]
+custom_name = "fase selector"
+children = [SubResource("BTSequence_mbw4k"), SubResource("BTSequence_6vlbf")]
 
 [sub_resource type="BTAction" id="BTAction_a65uw"]
 script = ExtResource("6_8ol1b")
 
 [sub_resource type="BTSequence" id="BTSequence_6rmca"]
 custom_name = "move_to_target"
-children = [SubResource("BTAction_5a16x"), SubResource("BTAction_bndkf"), SubResource("BTPlayAnimation_jcrl7"), SubResource("BTAction_a65uw")]
+children = [SubResource("BTAction_5a16x"), SubResource("BTAction_bndkf"), SubResource("BTSelector_uykee"), SubResource("BTAction_a65uw")]
 
 [sub_resource type="BTSelector" id="BTSelector_4me7a"]
 children = [SubResource("BTSequence_prcag"), SubResource("BTSequence_6rmca")]

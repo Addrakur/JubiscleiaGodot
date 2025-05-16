@@ -40,6 +40,8 @@ var seed = preload("res://enemies/tree_boss_seed.tscn")
 var proj: Node2D
 var preparing_rock: bool = false
 
+var fase_1: bool = true
+
 func _ready() -> void:
 	init_state_machine()
 	player_ref = player

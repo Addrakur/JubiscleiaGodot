@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://d3itdnmn8ah43"]
+[gd_scene load_steps=47 format=3 uid="uid://d3itdnmn8ah43"]
 
 [ext_resource type="Texture2D" uid="uid://bjfl0l5bdyq5s" path="res://assets/enemy/tree_boss/tree_boss_idle.png" id="1_kjuq6"]
 [ext_resource type="Script" uid="uid://bwjayd6kp0gh8" path="res://enemies/tree_boss.gd" id="1_w1ig0"]
@@ -9,7 +9,10 @@
 [ext_resource type="Script" uid="uid://4gnydbw1e83y" path="res://Management/states/tree_boss/tree_boss_idle.gd" id="5_vdt7u"]
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="6_c8gdp"]
 [ext_resource type="BehaviorTree" uid="uid://djga7cm0ugc4e" path="res://Management/behaviour_trees/tree_boss/tree_boss_idle_tree.tres" id="6_gafwg"]
+[ext_resource type="Texture2D" uid="uid://ccrjr6w515577" path="res://assets/enemy/tree_boss/tree_boss_idle_2.png" id="7_vnig1"]
 [ext_resource type="Script" uid="uid://dw4rhurscgw0s" path="res://Management/states/tree_boss/attack_swipe.gd" id="8_1hkfu"]
+[ext_resource type="Texture2D" uid="uid://dtl5ja7cdj3qr" path="res://assets/enemy/tree_boss/tree_boss_Walk_2.png" id="8_pfjid"]
+[ext_resource type="Texture2D" uid="uid://02h40gamheed" path="res://assets/enemy/tree_boss/tree_boss_swipe_2.png" id="9_sduox"]
 [ext_resource type="BehaviorTree" uid="uid://b1ptrptn023l8" path="res://Management/behaviour_trees/tree_boss/tree_boss_swipe_tree.tres" id="10_lebh0"]
 [ext_resource type="Script" uid="uid://ypbxlwlpjeku" path="res://Management/states/tree_boss/attack_throw_rock.gd" id="10_vi44x"]
 [ext_resource type="BehaviorTree" uid="uid://buel6gwxt2kna" path="res://ai/trees/attack_throw_rock_tree.tres" id="11_c8gdp"]
@@ -18,6 +21,7 @@
 [ext_resource type="Shader" uid="uid://dqi4fnw7r5atv" path="res://enemies/slow_shader.gdshader" id="16_agibw"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="16_urt7n"]
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="18_8u7iw"]
+[ext_resource type="Texture2D" uid="uid://i66ud5io5alb" path="res://assets/enemy/tree_boss/small_fire_ball.png" id="22_7hwjo"]
 
 [sub_resource type="Animation" id="Animation_u76h0"]
 length = 0.001
@@ -81,6 +85,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AttackArea/CollisionPolygon2D:polygon")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-71, 0, -86, -68, -85, -103, -70, -148, -44, -176, -17, -191, -3, -191, -24, -177, -42, -150, -49, -114, -48, -77, -12, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_u1iyd"]
 resource_name = "idle_1"
@@ -122,6 +138,48 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24]
+}
+
+[sub_resource type="Animation" id="Animation_pfjid"]
+resource_name = "idle_2"
+length = 1.06667
+loop_mode = 1
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_vnig1")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667, 0.733333, 0.8, 0.866667, 0.933333, 1, 1.06667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
 }
 
 [sub_resource type="Animation" id="Animation_16syl"]
@@ -319,6 +377,84 @@ tracks/3/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/CollisionPolygon2D:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.41667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [PackedVector2Array(-71, 0, -86, -68, -85, -103, -70, -148, -44, -176, -17, -191, -3, -191, -24, -177, -42, -150, -49, -114, -48, -77, -12, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7hwjo"]
+resource_name = "swipe_2"
+length = 1.53334
+loop_mode = 1
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("9_sduox")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667, 0.733333, 0.8, 0.866667, 0.933333, 1, 1.06667, 1.13333, 1.2, 1.26667, 1.33333, 1.4, 1.46667, 1.53333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackArea/CollisionPolygon2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.6, 0.666667, 1.2, 1.26667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [false, true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AttackArea/CollisionPolygon2D:polygon")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.6, 1.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [PackedVector2Array(-74, 0, -87, -42, -87, -74, -78, -108, -51, -141, -24, -147, 3, -145, 24, -135, -18, -129, -42, -102, -48, -77, -12, 0), PackedVector2Array(-74, 0, -95, -55, -95, -80, -85, -111, -69, -127, -46, -136, -31, -135, -49, -122, -61, -97, -60, -72, -12, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_w1ig0"]
 resource_name = "walk_1"
@@ -362,14 +498,64 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 }
 
+[sub_resource type="Animation" id="Animation_sduox"]
+resource_name = "walk_2"
+length = 0.73334
+loop_mode = 1
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("8_pfjid")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667, 0.733333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_cdk4p"]
+resource_name = "fire_throw"
+step = 0.0833333
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w1ig0"]
 _data = {
 &"RESET": SubResource("Animation_u76h0"),
+&"fire_throw": SubResource("Animation_cdk4p"),
 &"idle_1": SubResource("Animation_u1iyd"),
+&"idle_2": SubResource("Animation_pfjid"),
 &"rain_seed": SubResource("Animation_16syl"),
 &"rock_throw": SubResource("Animation_1hkfu"),
 &"swipe_1": SubResource("Animation_vdt7u"),
-&"walk_1": SubResource("Animation_w1ig0")
+&"swipe_2": SubResource("Animation_7hwjo"),
+&"walk_1": SubResource("Animation_w1ig0"),
+&"walk_2": SubResource("Animation_sduox")
 }
 
 [sub_resource type="Animation" id="Animation_agibw"]
@@ -491,7 +677,8 @@ blackboard_plan = SubResource("BlackboardPlan_1hkfu")
 
 [node name="attack_swipe" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "tree")]
 script = ExtResource("8_1hkfu")
-speed = 250.0
+speed_1 = 250.0
+speed_2 = 350.0
 parent = NodePath("../..")
 tree = NodePath("attack_swipe_tree")
 
@@ -573,6 +760,46 @@ one_shot = true
 offset_top = -210.0
 offset_bottom = -200.0
 parent = NodePath("..")
+
+[node name="SmallFireBall" type="Sprite2D" parent="."]
+position = Vector2(-378, -127)
+texture = ExtResource("22_7hwjo")
+
+[node name="SmallFireBall4" type="Sprite2D" parent="."]
+position = Vector2(-378, -159)
+texture = ExtResource("22_7hwjo")
+
+[node name="SmallFireBall2" type="Sprite2D" parent="."]
+position = Vector2(-378, -48)
+texture = ExtResource("22_7hwjo")
+
+[node name="SmallFireBall3" type="Sprite2D" parent="."]
+position = Vector2(-378, -16)
+texture = ExtResource("22_7hwjo")
+
+[node name="SmallFireBall5" type="Sprite2D" parent="."]
+position = Vector2(-513, -16)
+texture = ExtResource("22_7hwjo")
+
+[node name="SmallFireBall6" type="Sprite2D" parent="."]
+position = Vector2(-513, -48)
+texture = ExtResource("22_7hwjo")
+
+[node name="SmallFireBall7" type="Sprite2D" parent="."]
+position = Vector2(-513, -80)
+texture = ExtResource("22_7hwjo")
+
+[node name="SmallFireBall8" type="Sprite2D" parent="."]
+position = Vector2(-231, -16)
+texture = ExtResource("22_7hwjo")
+
+[node name="SmallFireBall9" type="Sprite2D" parent="."]
+position = Vector2(-231, -48)
+texture = ExtResource("22_7hwjo")
+
+[node name="SmallFireBall10" type="Sprite2D" parent="."]
+position = Vector2(-231, -80)
+texture = ExtResource("22_7hwjo")
 
 [connection signal="animation_finished" from="hit_modulate" to="." method="_on_hit_modulate_animation_finished"]
 [connection signal="body_entered" from="melee_detect_area" to="." method="_on_melee_detect_area_body_entered"]
