@@ -1,9 +1,10 @@
-[gd_scene load_steps=47 format=3 uid="uid://d3itdnmn8ah43"]
+[gd_scene load_steps=50 format=3 uid="uid://d3itdnmn8ah43"]
 
 [ext_resource type="Texture2D" uid="uid://bjfl0l5bdyq5s" path="res://assets/enemy/tree_boss/tree_boss_idle.png" id="1_kjuq6"]
 [ext_resource type="Script" uid="uid://bwjayd6kp0gh8" path="res://enemies/tree_boss.gd" id="1_w1ig0"]
 [ext_resource type="Texture2D" uid="uid://dhlp3n8t4wtr8" path="res://assets/enemy/tree_boss/tree_boss_Walk.png" id="2_u1iyd"]
 [ext_resource type="Texture2D" uid="uid://bib54eqr546uu" path="res://assets/enemy/tree_boss/tree_boss_1_swipe.png" id="3_1hkfu"]
+[ext_resource type="Texture2D" uid="uid://j3n03oxnbiaj" path="res://assets/enemy/tree_boss/tree_boss_fire_throw.png" id="3_cdk4p"]
 [ext_resource type="Texture2D" uid="uid://dru7s6eysysc4" path="res://assets/enemy/tree_boss/tree_boss_rock_throw.png" id="3_gafwg"]
 [ext_resource type="Texture2D" uid="uid://cioqmc7522o3d" path="res://assets/enemy/tree_boss/tree_boss_rain_seed.png" id="3_rfgjc"]
 [ext_resource type="Script" uid="uid://4gnydbw1e83y" path="res://Management/states/tree_boss/tree_boss_idle.gd" id="5_vdt7u"]
@@ -16,12 +17,14 @@
 [ext_resource type="BehaviorTree" uid="uid://b1ptrptn023l8" path="res://Management/behaviour_trees/tree_boss/tree_boss_swipe_tree.tres" id="10_lebh0"]
 [ext_resource type="Script" uid="uid://ypbxlwlpjeku" path="res://Management/states/tree_boss/attack_throw_rock.gd" id="10_vi44x"]
 [ext_resource type="BehaviorTree" uid="uid://buel6gwxt2kna" path="res://ai/trees/attack_throw_rock_tree.tres" id="11_c8gdp"]
+[ext_resource type="Texture2D" uid="uid://b87y1k4al3n8k" path="res://assets/enemy/tree_boss/tree_boss_rain_fire.png" id="11_cdk4p"]
+[ext_resource type="Texture2D" uid="uid://dm5x2r0unw4aq" path="res://assets/enemy/tree_boss/tree_boss_change_fase.png" id="12_sak3g"]
 [ext_resource type="Script" uid="uid://cahokucy3f0n" path="res://Management/states/tree_boss/attack_seed_rain.gd" id="13_16syl"]
 [ext_resource type="BehaviorTree" uid="uid://c81fijvxmwmx5" path="res://ai/trees/attack_seed_rain_tree.tres" id="13_xul8h"]
 [ext_resource type="Shader" uid="uid://dqi4fnw7r5atv" path="res://enemies/slow_shader.gdshader" id="16_agibw"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="16_urt7n"]
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="18_8u7iw"]
-[ext_resource type="Texture2D" uid="uid://i66ud5io5alb" path="res://assets/enemy/tree_boss/small_fire_ball.png" id="22_7hwjo"]
+[ext_resource type="Script" uid="uid://c1aag76tqu2br" path="res://Management/states/tree_boss/tree_boss_change_fase.gd" id="21_vo17w"]
 
 [sub_resource type="Animation" id="Animation_u76h0"]
 length = 0.001
@@ -96,6 +99,108 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [PackedVector2Array(-71, 0, -86, -68, -85, -103, -70, -148, -44, -176, -17, -191, -3, -191, -24, -177, -42, -150, -49, -114, -48, -77, -12, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_rab7e"]
+resource_name = "change_fase"
+length = 1.50001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("12_sak3g")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [19]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
+}
+
+[sub_resource type="Animation" id="Animation_cdk4p"]
+resource_name = "fire_throw"
+length = 2.91667
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_cdk4p")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 2.66667, 2.75, 2.83333, 2.91667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.333333, 1.5, 2.66667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [true, true, true, false, false, false, true],
+"method": &"spawn_fireball_on_right_place"
+}, {
+"args": [true, true, false, false, true, true, true],
+"method": &"spawn_fireball_on_right_place"
+}, {
+"args": [true, true, true, false, false, false, true],
+"method": &"spawn_fireball_on_right_place"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_u1iyd"]
@@ -180,6 +285,70 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]
+}
+
+[sub_resource type="Animation" id="Animation_vo17w"]
+resource_name = "rain_fire"
+length = 3.16667
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("11_cdk4p")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 1, 1.08333, 1.16667, 1.25, 1.58333, 1.66667, 1.75, 1.83333, 2.16667, 2.25, 2.33333, 2.41667, 2.75, 2.83333, 2.91667, 3, 3.08333, 3.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 9, 8, 9, 10, 9, 8, 9, 10, 9, 8, 9, 10, 11, 12, 13, 14]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.666667, 1.25, 1.83333, 2.41667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [false, false, false, false, false, false, false],
+"method": &"spawn_fireball_on_right_place"
+}, {
+"args": [false, false, false, false, false, false, false],
+"method": &"spawn_fireball_on_right_place"
+}, {
+"args": [false, false, false, false, false, false, false],
+"method": &"spawn_fireball_on_right_place"
+}, {
+"args": [false, false, false, false, false, false, false],
+"method": &"spawn_fireball_on_right_place"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_16syl"]
@@ -455,6 +624,26 @@ tracks/4/keys = {
 "update": 0,
 "values": [PackedVector2Array(-74, 0, -87, -42, -87, -74, -78, -108, -51, -141, -24, -147, 3, -145, 24, -135, -18, -129, -42, -102, -48, -77, -12, 0), PackedVector2Array(-74, 0, -95, -55, -95, -80, -85, -111, -69, -127, -46, -136, -31, -135, -49, -122, -61, -97, -60, -72, -12, 0)]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("hsm/attack_swipe")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6, 1.13333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"set_direction"
+}, {
+"args": [true],
+"method": &"set_move"
+}, {
+"args": [false],
+"method": &"set_move"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_w1ig0"]
 resource_name = "walk_1"
@@ -540,16 +729,14 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
 
-[sub_resource type="Animation" id="Animation_cdk4p"]
-resource_name = "fire_throw"
-step = 0.0833333
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w1ig0"]
 _data = {
 &"RESET": SubResource("Animation_u76h0"),
+&"change_fase": SubResource("Animation_rab7e"),
 &"fire_throw": SubResource("Animation_cdk4p"),
 &"idle_1": SubResource("Animation_u1iyd"),
 &"idle_2": SubResource("Animation_pfjid"),
+&"rain_fire": SubResource("Animation_vo17w"),
 &"rain_seed": SubResource("Animation_16syl"),
 &"rock_throw": SubResource("Animation_1hkfu"),
 &"swipe_1": SubResource("Animation_vdt7u"),
@@ -608,10 +795,6 @@ height = 164.0
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_rfgjc"]
 
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_c8gdp"]
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_16syl"]
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ptil"]
 size = Vector2(28, 160)
 
@@ -626,7 +809,7 @@ _data = {
 }
 point_count = 9
 
-[node name="tree_boss" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
+[node name="tree_boss" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area", "fireball_horizontal_spawn_points") groups=["enemy"]]
 z_index = -2
 collision_layer = 2
 collision_mask = 65580
@@ -634,6 +817,7 @@ script = ExtResource("1_w1ig0")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
 element = "earth"
+fireball_horizontal_spawn_points = [NodePath("fireball_spawn_points/1"), NodePath("fireball_spawn_points/2"), NodePath("fireball_spawn_points/3"), NodePath("fireball_spawn_points/4"), NodePath("fireball_spawn_points/5"), NodePath("fireball_spawn_points/6")]
 
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -669,6 +853,7 @@ script = ExtResource("5_vdt7u")
 parent = NodePath("../..")
 animation = NodePath("../../animation")
 tree = NodePath("idle_tree")
+change_fase_life_threshold = 0.8
 
 [node name="idle_tree" type="BTPlayer" parent="hsm/idle"]
 behavior_tree = ExtResource("6_gafwg")
@@ -681,6 +866,7 @@ speed_1 = 250.0
 speed_2 = 350.0
 parent = NodePath("../..")
 tree = NodePath("attack_swipe_tree")
+move_speed = 15000.0
 
 [node name="attack_swipe_tree" type="BTPlayer" parent="hsm/attack_swipe"]
 behavior_tree = ExtResource("10_lebh0")
@@ -711,15 +897,10 @@ behavior_tree = ExtResource("13_xul8h")
 active = false
 blackboard_plan = SubResource("BlackboardPlan_rfgjc")
 
-[node name="attack_fire" type="LimboState" parent="hsm"]
-
-[node name="attack_fire_tree" type="BTPlayer" parent="hsm/attack_fire"]
-blackboard_plan = SubResource("BlackboardPlan_c8gdp")
-
-[node name="change_fase" type="LimboState" parent="hsm"]
-
-[node name="change_fase_tree" type="BTPlayer" parent="hsm/change_fase"]
-blackboard_plan = SubResource("BlackboardPlan_16syl")
+[node name="change_fase" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("21_vo17w")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
 
 [node name="death" type="LimboState" parent="hsm"]
 
@@ -761,46 +942,27 @@ offset_top = -210.0
 offset_bottom = -200.0
 parent = NodePath("..")
 
-[node name="SmallFireBall" type="Sprite2D" parent="."]
-position = Vector2(-378, -127)
-texture = ExtResource("22_7hwjo")
+[node name="fireball_spawn_points" type="Node2D" parent="."]
 
-[node name="SmallFireBall4" type="Sprite2D" parent="."]
-position = Vector2(-378, -159)
-texture = ExtResource("22_7hwjo")
+[node name="1" type="Marker2D" parent="fireball_spawn_points"]
+position = Vector2(-32, -16)
 
-[node name="SmallFireBall2" type="Sprite2D" parent="."]
-position = Vector2(-378, -48)
-texture = ExtResource("22_7hwjo")
+[node name="2" type="Marker2D" parent="fireball_spawn_points"]
+position = Vector2(-32, -48)
 
-[node name="SmallFireBall3" type="Sprite2D" parent="."]
-position = Vector2(-378, -16)
-texture = ExtResource("22_7hwjo")
+[node name="3" type="Marker2D" parent="fireball_spawn_points"]
+position = Vector2(-32, -80)
 
-[node name="SmallFireBall5" type="Sprite2D" parent="."]
-position = Vector2(-513, -16)
-texture = ExtResource("22_7hwjo")
+[node name="4" type="Marker2D" parent="fireball_spawn_points"]
+position = Vector2(-32, -112)
 
-[node name="SmallFireBall6" type="Sprite2D" parent="."]
-position = Vector2(-513, -48)
-texture = ExtResource("22_7hwjo")
+[node name="5" type="Marker2D" parent="fireball_spawn_points"]
+position = Vector2(-32, -144)
 
-[node name="SmallFireBall7" type="Sprite2D" parent="."]
-position = Vector2(-513, -80)
-texture = ExtResource("22_7hwjo")
+[node name="6" type="Marker2D" parent="fireball_spawn_points"]
+position = Vector2(-32, -176)
 
-[node name="SmallFireBall8" type="Sprite2D" parent="."]
-position = Vector2(-231, -16)
-texture = ExtResource("22_7hwjo")
-
-[node name="SmallFireBall9" type="Sprite2D" parent="."]
-position = Vector2(-231, -48)
-texture = ExtResource("22_7hwjo")
-
-[node name="SmallFireBall10" type="Sprite2D" parent="."]
-position = Vector2(-231, -80)
-texture = ExtResource("22_7hwjo")
-
+[connection signal="animation_finished" from="animation" to="hsm/change_fase" method="_on_animation_animation_finished"]
 [connection signal="animation_finished" from="hit_modulate" to="." method="_on_hit_modulate_animation_finished"]
 [connection signal="body_entered" from="melee_detect_area" to="." method="_on_melee_detect_area_body_entered"]
 [connection signal="body_exited" from="melee_detect_area" to="." method="_on_melee_detect_area_body_exited"]

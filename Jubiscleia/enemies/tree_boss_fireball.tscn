@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5voq5jbeo3ab"]
+
+[ext_resource type="Script" uid="uid://citd40rjkjhi3" path="res://enemies/tree_boss_fireball.gd" id="1_4grp2"]
+[ext_resource type="Texture2D" uid="uid://i66ud5io5alb" path="res://assets/enemy/tree_boss/small_fire_ball.png" id="1_db1un"]
+[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_4grp2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1vq74"]
+radius = 13.0
+
+[node name="tree_boss_fireball" type="Node2D"]
+top_level = true
+z_index = -1
+script = ExtResource("1_4grp2")
+speed_x = 300.0
+speed_y = 300.0
+
+[node name="texture" type="Sprite2D" parent="."]
+texture = ExtResource("1_db1un")
+
+[node name="AttackArea" parent="." instance=ExtResource("2_4grp2")]
+collision_mask = 37
+targets = Array[String](["player"])
+damage = 10.0
+knockup_force = -50.0
+knockback_force = 100.0
+poise_damage = 10.0
+attack_name = "boss_fireball"
+one_hit_destroy = true
+destroy_on_terrain = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
+shape = SubResource("CircleShape2D_1vq74")

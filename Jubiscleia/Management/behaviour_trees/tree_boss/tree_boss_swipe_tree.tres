@@ -1,9 +1,10 @@
-[gd_resource type="BehaviorTree" load_steps=37 format=3 uid="uid://b1ptrptn023l8"]
+[gd_resource type="BehaviorTree" load_steps=36 format=3 uid="uid://b1ptrptn023l8"]
 
 [ext_resource type="BlackboardPlan" uid="uid://bvu2xc7ap8cpy" path="res://Management/behaviour_trees/tree_boss/tree_boss_blackboard.tres" id="1_prcag"]
 [ext_resource type="Script" uid="uid://d2drruk6boo2v" path="res://ai/tasks/dispatch.gd" id="1_sm2ss"]
 [ext_resource type="Script" uid="uid://dvu6fuaoqjp1g" path="res://ai/tasks/parent_var_check.gd" id="2_ek8e1"]
 [ext_resource type="Script" uid="uid://c7qn0683f181d" path="res://ai/tasks/set_velocity.gd" id="3_jcrl7"]
+[ext_resource type="Script" uid="uid://c5yn3mulsluk8" path="res://ai/tasks/play_animation_with_parent_speed.gd" id="4_8ol1b"]
 [ext_resource type="Script" uid="uid://cokas24u28bqe" path="res://ai/tasks/set_parent_string.gd" id="4_62ihk"]
 [ext_resource type="Script" uid="uid://dfiw2i6ulwna8" path="res://ai/tasks/set_direction_to_target.gd" id="5_jcrl7"]
 [ext_resource type="Script" uid="uid://bg3ndytd1lpqf" path="res://ai/tasks/move_to_direction.gd" id="6_8ol1b"]
@@ -20,13 +21,10 @@ value = Vector2(0, 0)
 script = ExtResource("2_ek8e1")
 var_name = "fase_1"
 
-[sub_resource type="BBNode" id="BBNode_7udd3"]
-saved_value = NodePath("animation")
-resource_name = "animation"
-
-[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_sm2ss"]
-animation_player = SubResource("BBNode_7udd3")
-animation_name = &"swipe_1"
+[sub_resource type="BTAction" id="BTAction_w54pj"]
+custom_name = "play swipe_1"
+script = ExtResource("4_8ol1b")
+anim_name = "swipe_1"
 
 [sub_resource type="BBNode" id="BBNode_sm2ss"]
 saved_value = NodePath("animation")
@@ -39,15 +37,12 @@ max_time = 2.083
 
 [sub_resource type="BTSequence" id="BTSequence_8ol1b"]
 custom_name = "fase 1"
-children = [SubResource("BTAction_jcrl7"), SubResource("BTPlayAnimation_sm2ss"), SubResource("BTAwaitAnimation_prcag")]
+children = [SubResource("BTAction_jcrl7"), SubResource("BTAction_w54pj"), SubResource("BTAwaitAnimation_prcag")]
 
-[sub_resource type="BBNode" id="BBNode_5a16x"]
-saved_value = NodePath("animation")
-resource_name = "animation"
-
-[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_bndkf"]
-animation_player = SubResource("BBNode_5a16x")
-animation_name = &"swipe_2"
+[sub_resource type="BTAction" id="BTAction_2g72c"]
+custom_name = "play swipe_2"
+script = ExtResource("4_8ol1b")
+anim_name = "swipe_2"
 
 [sub_resource type="BBNode" id="BBNode_a65uw"]
 saved_value = NodePath("animation")
@@ -60,7 +55,7 @@ max_time = 1.533
 
 [sub_resource type="BTSequence" id="BTSequence_w54pj"]
 custom_name = "fase 2"
-children = [SubResource("BTPlayAnimation_bndkf"), SubResource("BTAwaitAnimation_6rmca")]
+children = [SubResource("BTAction_2g72c"), SubResource("BTAwaitAnimation_6rmca")]
 
 [sub_resource type="BTSelector" id="BTSelector_2g72c"]
 custom_name = "fase selector"

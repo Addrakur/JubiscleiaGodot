@@ -11,12 +11,13 @@ func _enter() -> void:
 	else:
 		parent.target = parent.arena_right
 	tree.active = true
+	
 
 func _exit() -> void:
 	tree.active = false
 
 func _update(_delta) -> void:
-	if parent.can_attack_ranged and animation.current_animation != "rock_throw":
+	if parent.can_attack_ranged and animation.current_animation != "rock_throw" and animation.current_animation != "fire_throw":
 		if parent.player.position.x > parent.position.x:
 			parent.right()
 		else:

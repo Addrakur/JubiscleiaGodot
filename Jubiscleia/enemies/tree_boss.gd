@@ -9,8 +9,11 @@ extends CharacterBody2D
 @export var arena_left: Marker2D
 @export var arena_middle: Marker2D
 @export var seed_spawn_points: Node2D
-
 @export var limit: Area2D
+@export var fireball_horizontal_spawn_points: Array[Marker2D]
+@export var fireball_vertical_spawn_points: Node2D
+
+@onready var animation: AnimationPlayer = $animation
 @onready var texture: Sprite2D = $texture
 @onready var melee_detect_area: Area2D = $melee_detect_area
 @onready var rock_position: Marker2D = $Path2D/PathFollow2D/rock_position
@@ -23,6 +26,7 @@ extends CharacterBody2D
 @onready var swipe_state: LimboState = $hsm/attack_swipe
 @onready var rock_throw_state: LimboState = $hsm/attack_throw_rock
 @onready var seed_rain_state: LimboState = $hsm/attack_seed_rain
+@onready var change_fase_state: LimboState = $hsm/change_fase
 
 @onready var player_ref: Player
 var target: Node2D
@@ -36,11 +40,14 @@ var can_rain_seed: bool = false
 var alive: bool = true
 var rock = preload("res://enemies/tree_boss_rock.tscn")
 var seed = preload("res://enemies/tree_boss_seed.tscn")
+var fireball = preload("res://enemies/tree_boss_fireball.tscn")
 
 var proj: Node2D
 var preparing_rock: bool = false
 
 var fase_1: bool = true
+
+var speed: float = 1
 
 func _ready() -> void:
 	init_state_machine()
@@ -69,6 +76,9 @@ func _process(_delta: float) -> void:
 	
 	if not alive:
 		queue_free()
+	
+	if player_ref != null:
+		fireball_vertical_spawn_points.global_position.x = player_ref.global_position.x
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
@@ -77,12 +87,15 @@ func init_state_machine():
 	hsm.add_transition(idle_state, swipe_state, &"idle_to_swipe")
 	hsm.add_transition(idle_state, rock_throw_state, &"idle_to_throw")
 	hsm.add_transition(idle_state, seed_rain_state, &"idle_to_seed")
+	hsm.add_transition(idle_state, change_fase_state, &"idle_to_change_fase")
 	
 	hsm.add_transition(swipe_state, idle_state, &"swipe_to_idle")
 	
 	hsm.add_transition(rock_throw_state, idle_state, &"throw_to_idle")
 	
 	hsm.add_transition(seed_rain_state, idle_state, &"seed_to_idle")
+	
+	hsm.add_transition(change_fase_state, idle_state, &"change_fase_to_idle")
 	
 	hsm.initial_state = idle_state
 	hsm.initialize(self)
@@ -117,13 +130,43 @@ func spawn_rock():
 	proj.direction = 1 if texture.flip_h else -1
 
 func spawn_seed():
-	print("spawn seed")
 	var spawn_points = seed_spawn_points.get_children()
 	for seed_spawn_point in spawn_points:
 		proj = seed.instantiate()
 		add_child(proj)
 		proj.position = seed_spawn_point.global_position + Vector2(randf_range(-10,10), randf_range(-10,10))
 		proj.visible = true
+
+func spawn_fireball_on_right_place(spawn_1: bool, spawn_2: bool, spawn_3: bool, spawn_4: bool, spawn_5: bool, spawn_6: bool, horizontal: bool):
+	match horizontal:
+		true:
+			if spawn_1:
+				spawn_fireball(fireball_horizontal_spawn_points[0].global_position, horizontal)
+			if spawn_2:
+				spawn_fireball(fireball_horizontal_spawn_points[1].global_position, horizontal)
+			if spawn_3:
+				spawn_fireball(fireball_horizontal_spawn_points[2].global_position, horizontal)
+			if spawn_4:
+				spawn_fireball(fireball_horizontal_spawn_points[3].global_position, horizontal)
+			if spawn_5:
+				spawn_fireball(fireball_horizontal_spawn_points[4].global_position, horizontal)
+			if spawn_6:
+				spawn_fireball(fireball_horizontal_spawn_points[5].global_position, horizontal)
+		false:
+			var spawn_points = fireball_vertical_spawn_points.get_children()
+			for spawn_point in spawn_points:
+				spawn_fireball(spawn_point.global_position, horizontal)
+
+func spawn_fireball(position: Vector2, horizontal: bool):
+	proj = fireball.instantiate()
+	add_child(proj)
+	proj.position = position
+	proj.visible = true
+	if horizontal:
+		proj.horizontal = true
+		proj.direction = 1 if texture.flip_h else -1
+	else:
+		proj.horizontal = false
 
 func throw_rock():
 	if proj != null:

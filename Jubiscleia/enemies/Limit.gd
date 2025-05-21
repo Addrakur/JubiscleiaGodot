@@ -35,7 +35,8 @@ func on_body_exited(body):
 	if body.is_in_group("player"):
 		player_inside_limit = false
 		for enemy in enemy_list:
-			enemy.player_on_limit = false
+			if enemy != null:
+				enemy.player_on_limit = false
 	
 	if body.is_in_group("enemy"):
 		erase(body)

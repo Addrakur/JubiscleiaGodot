@@ -180,14 +180,15 @@ visible = false
 color = Color(1, 1, 1, 0.309804)
 polygon = PackedVector2Array(672, 64, 672, 352, 2144, 352, 2144, 64)
 
-[node name="tree_boss" parent="Limit" node_paths=PackedStringArray("player", "arena_right", "arena_left", "arena_middle", "seed_spawn_points", "limit") instance=ExtResource("11_5jlmx")]
-position = Vector2(1216, 358)
+[node name="tree_boss" parent="Limit" node_paths=PackedStringArray("player", "arena_right", "arena_left", "arena_middle", "seed_spawn_points", "limit", "fireball_vertical_spawn_points") instance=ExtResource("11_5jlmx")]
+position = Vector2(1138, 357)
 player = NodePath("../../player")
 arena_right = NodePath("../right")
 arena_left = NodePath("../left")
 arena_middle = NodePath("../middle")
 seed_spawn_points = NodePath("../seed_spawn_points")
 limit = NodePath("..")
+fireball_vertical_spawn_points = NodePath("../fire_spawn_points")
 
 [node name="right" type="Marker2D" parent="Limit"]
 position = Vector2(2087, 358)
@@ -284,6 +285,29 @@ position = Vector2(1920, -342)
 
 [node name="up11" type="Marker2D" parent="Limit/seed_spawn_points"]
 position = Vector2(2048, -342)
+
+[node name="fire_spawn_points" type="Node2D" parent="Limit"]
+position = Vector2(1150, -150)
+
+[node name="0" type="Marker2D" parent="Limit/fire_spawn_points"]
+
+[node name="1" type="Marker2D" parent="Limit/fire_spawn_points"]
+position = Vector2(40, -20)
+
+[node name="2" type="Marker2D" parent="Limit/fire_spawn_points"]
+position = Vector2(-40, -20)
+
+[node name="3" type="Marker2D" parent="Limit/fire_spawn_points"]
+position = Vector2(80, -40)
+
+[node name="4" type="Marker2D" parent="Limit/fire_spawn_points"]
+position = Vector2(-80, -40)
+
+[node name="5" type="Marker2D" parent="Limit/fire_spawn_points"]
+position = Vector2(120, -60)
+
+[node name="6" type="Marker2D" parent="Limit/fire_spawn_points"]
+position = Vector2(-120, -60)
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("11_c2a8s")]
 position = Vector2(64, 0)
