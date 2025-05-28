@@ -39,7 +39,7 @@ var can_attack_ranged: bool = false
 var can_rain_seed: bool = false
 var alive: bool = true
 var rock = preload("res://enemies/tree_boss_rock.tscn")
-var seed = preload("res://enemies/tree_boss_seed.tscn")
+var boss_seed = preload("res://enemies/tree_boss_seed.tscn")
 var fireball = preload("res://enemies/tree_boss_fireball.tscn")
 
 var proj: Node2D
@@ -48,6 +48,8 @@ var preparing_rock: bool = false
 var fase_1: bool = true
 
 var speed: float = 1
+
+var speed_mult: bool = false
 
 func _ready() -> void:
 	init_state_machine()
@@ -132,7 +134,7 @@ func spawn_rock():
 func spawn_seed():
 	var spawn_points = seed_spawn_points.get_children()
 	for seed_spawn_point in spawn_points:
-		proj = seed.instantiate()
+		proj = boss_seed.instantiate()
 		add_child(proj)
 		proj.position = seed_spawn_point.global_position + Vector2(randf_range(-10,10), randf_range(-10,10))
 		proj.visible = true
@@ -157,10 +159,10 @@ func spawn_fireball_on_right_place(spawn_1: bool, spawn_2: bool, spawn_3: bool, 
 			for spawn_point in spawn_points:
 				spawn_fireball(spawn_point.global_position, horizontal)
 
-func spawn_fireball(position: Vector2, horizontal: bool):
+func spawn_fireball(spawn_position: Vector2, horizontal: bool):
 	proj = fireball.instantiate()
 	add_child(proj)
-	proj.position = position
+	proj.position = spawn_position
 	proj.visible = true
 	if horizontal:
 		proj.horizontal = true

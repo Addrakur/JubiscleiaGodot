@@ -7,9 +7,6 @@ var can_destroy: bool = false
 
 var horizontal: bool
 
-func _ready() -> void:
-	print(global_position)
-
 func _physics_process(delta: float) -> void:
 	if horizontal:
 		position.x += direction * speed_x * delta

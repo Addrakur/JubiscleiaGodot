@@ -36,3 +36,7 @@ func set_direction():
 		dir = 1
 	else:
 		dir = -1
+
+func _on_animation_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "swipe_1" or anim_name == "swipe_2":
+		dispatch("swipe_to_idle")

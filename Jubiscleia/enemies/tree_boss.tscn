@@ -496,7 +496,6 @@ tracks/5/keys = {
 [sub_resource type="Animation" id="Animation_vdt7u"]
 resource_name = "swipe_1"
 length = 2.08334
-loop_mode = 1
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -562,7 +561,6 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_7hwjo"]
 resource_name = "swipe_2"
 length = 1.53334
-loop_mode = 1
 step = 0.0666667
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -853,7 +851,7 @@ script = ExtResource("5_vdt7u")
 parent = NodePath("../..")
 animation = NodePath("../../animation")
 tree = NodePath("idle_tree")
-change_fase_life_threshold = 0.8
+change_fase_life_threshold = 0.5
 
 [node name="idle_tree" type="BTPlayer" parent="hsm/idle"]
 behavior_tree = ExtResource("6_gafwg")
@@ -929,8 +927,8 @@ rotation = -1.5708
 rotation = 2.89661
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("16_urt7n")]
-max_health = 600.0
-max_poise = 200.0
+max_health = 400.0
+max_poise = 100000.0
 poise_recover_timer = 0.1
 attack_timer = NodePath("../PoiseTimer")
 

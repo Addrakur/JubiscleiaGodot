@@ -34,7 +34,7 @@ resource_name = "animation"
 [sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_bjtt0"]
 animation_player = SubResource("BBNode_273uw")
 animation_name = &"rain_seed"
-max_time = 2.08
+max_time = 10.0
 
 [sub_resource type="BTSequence" id="BTSequence_h6unh"]
 children = [SubResource("BTAction_opyk7"), SubResource("BTAwaitAnimation_bjtt0")]
@@ -59,7 +59,7 @@ resource_name = "animation"
 [sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_yrlon"]
 animation_player = SubResource("BBNode_y5qky")
 animation_name = &"rain_fire"
-max_time = 3.16
+max_time = 10.0
 
 [sub_resource type="BTSequence" id="BTSequence_bqesj"]
 custom_name = "fase 2"

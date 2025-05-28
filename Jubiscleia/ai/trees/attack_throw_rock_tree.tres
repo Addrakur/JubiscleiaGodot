@@ -35,7 +35,7 @@ resource_name = "animation"
 [sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_s32r3"]
 animation_player = SubResource("BBNode_xg23e")
 animation_name = &"rock_throw"
-max_time = 2.5
+max_time = 10.0
 
 [sub_resource type="BTSequence" id="BTSequence_p78an"]
 custom_name = "fase 1"
@@ -56,7 +56,7 @@ resource_name = "animation"
 [sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_0s47h"]
 animation_player = SubResource("BBNode_2gxch")
 animation_name = &"fire_throw"
-max_time = 1.91
+max_time = 10.0
 
 [sub_resource type="BTSequence" id="BTSequence_xh1oo"]
 custom_name = "fase 2"

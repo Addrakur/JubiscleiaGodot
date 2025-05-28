@@ -33,7 +33,7 @@ resource_name = "animation"
 [sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_prcag"]
 animation_player = SubResource("BBNode_sm2ss")
 animation_name = &"swipe_1"
-max_time = 2.083
+max_time = 10.0
 
 [sub_resource type="BTSequence" id="BTSequence_8ol1b"]
 custom_name = "fase 1"
@@ -51,7 +51,7 @@ resource_name = "animation"
 [sub_resource type="BTAwaitAnimation" id="BTAwaitAnimation_6rmca"]
 animation_player = SubResource("BBNode_a65uw")
 animation_name = &"swipe_2"
-max_time = 1.533
+max_time = 10.0
 
 [sub_resource type="BTSequence" id="BTSequence_w54pj"]
 custom_name = "fase 2"
