@@ -635,6 +635,7 @@ height = 62.0
 resource_local_to_scene = true
 shader = ExtResource("17_fv7fv")
 shader_parameter/blue_value = 0.0
+shader_parameter/red_value = 0.0
 
 [node name="spike_shield_enemy" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy", "shield_enemy"]]
 collision_layer = 2
@@ -665,7 +666,6 @@ left = true
 
 [node name="AttackArea" parent="." instance=ExtResource("4_6roo1")]
 collision_mask = 1
-target = "player"
 damage = 10.0
 knockup_force = -10.0
 knockback_force = 500.0

@@ -1,0 +1,85 @@
+[gd_resource type="BehaviorTree" load_steps=23 format=3 uid="uid://jl3nir4suhfl"]
+
+[ext_resource type="Script" uid="uid://c7qn0683f181d" path="res://ai/tasks/set_velocity.gd" id="1_1w01v"]
+[ext_resource type="Script" uid="uid://dvu6fuaoqjp1g" path="res://ai/tasks/parent_var_check.gd" id="2_3vb7x"]
+[ext_resource type="Script" uid="uid://d2drruk6boo2v" path="res://ai/tasks/dispatch.gd" id="4_ci8f5"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ie5eq"]
+
+[sub_resource type="BTAction" id="BTAction_13fwk"]
+custom_name = "can_attack_player check"
+script = ExtResource("2_3vb7x")
+var_name = "can_attack_player"
+
+[sub_resource type="BTAction" id="BTAction_q8ci4"]
+custom_name = "can_attack check"
+script = ExtResource("2_3vb7x")
+var_name = "can_attack"
+
+[sub_resource type="BTAction" id="BTAction_pj0fm"]
+custom_name = "dispatch to attack"
+script = ExtResource("4_ci8f5")
+dispatch_name = "idle_to_attack"
+
+[sub_resource type="BTSequence" id="BTSequence_3vb7x"]
+custom_name = "can_attack"
+children = [SubResource("BTAction_q8ci4"), SubResource("BTAction_pj0fm")]
+
+[sub_resource type="BTAction" id="BTAction_ekyh2"]
+script = ExtResource("1_1w01v")
+value = Vector2(0, 0)
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_13fwk"]
+text = "stay idle"
+
+[sub_resource type="BTSequence" id="BTSequence_ci8f5"]
+children = [SubResource("BTAction_ekyh2"), SubResource("BTConsolePrint_13fwk")]
+
+[sub_resource type="BTSelector" id="BTSelector_q8ci4"]
+children = [SubResource("BTSequence_3vb7x"), SubResource("BTSequence_ci8f5")]
+
+[sub_resource type="BTSequence" id="BTSequence_no8h3"]
+custom_name = "dispatch if can attack"
+children = [SubResource("BTSelector_q8ci4")]
+
+[sub_resource type="BTSequence" id="BTSequence_pj0fm"]
+custom_name = "attack"
+children = [SubResource("BTAction_13fwk"), SubResource("BTSequence_no8h3")]
+
+[sub_resource type="BTAction" id="BTAction_ci8f5"]
+custom_name = "player_on_chase_area check"
+script = ExtResource("2_3vb7x")
+var_name = "player_on_chase_area"
+
+[sub_resource type="BTAction" id="BTAction_q1gtn"]
+custom_name = "dispatch to chase"
+script = ExtResource("4_ci8f5")
+dispatch_name = "idle_to_chase"
+
+[sub_resource type="BTSequence" id="BTSequence_q8ci4"]
+custom_name = "chase"
+children = [SubResource("BTAction_ci8f5"), SubResource("BTAction_q1gtn")]
+
+[sub_resource type="BTAction" id="BTAction_t7jv4"]
+custom_name = "can_move check"
+script = ExtResource("2_3vb7x")
+var_name = "can_move"
+
+[sub_resource type="BTAction" id="BTAction_no8h3"]
+custom_name = "dispatch to walk"
+script = ExtResource("4_ci8f5")
+dispatch_name = "idle_to_walk"
+
+[sub_resource type="BTSequence" id="BTSequence_t7jv4"]
+custom_name = "nao viu o jogador"
+children = [SubResource("BTAction_t7jv4"), SubResource("BTAction_no8h3")]
+
+[sub_resource type="BTSelector" id="BTSelector_no8h3"]
+children = [SubResource("BTSequence_pj0fm"), SubResource("BTSequence_q8ci4"), SubResource("BTSequence_t7jv4")]
+
+[sub_resource type="BTSequence" id="BTSequence_13fwk"]
+children = [SubResource("BTSelector_no8h3")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_ie5eq")
+root_task = SubResource("BTSequence_13fwk")

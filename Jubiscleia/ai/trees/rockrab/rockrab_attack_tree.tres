@@ -1,0 +1,16 @@
+[gd_resource type="BehaviorTree" load_steps=5 format=3 uid="uid://c0evunhurd6u8"]
+
+[ext_resource type="Script" uid="uid://c5yn3mulsluk8" path="res://ai/tasks/play_animation_with_parent_speed.gd" id="1_hbm3f"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_ytqsw"]
+
+[sub_resource type="BTAction" id="BTAction_wtqwk"]
+script = ExtResource("1_hbm3f")
+anim_name = "stomp_attack"
+
+[sub_resource type="BTSequence" id="BTSequence_iwcmp"]
+children = [SubResource("BTAction_wtqwk")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_ytqsw")
+root_task = SubResource("BTSequence_iwcmp")

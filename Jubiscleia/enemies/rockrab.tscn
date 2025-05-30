@@ -1,11 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://qiv55jlwciey"]
+[gd_scene load_steps=31 format=3 uid="uid://qiv55jlwciey"]
 
 [ext_resource type="Texture2D" uid="uid://iiaewatn4wo" path="res://assets/enemy/rockrab/idle.png" id="1_76sde"]
 [ext_resource type="Script" uid="uid://djhxq25x0fxd2" path="res://enemies/rockrab.gd" id="1_cbade"]
 [ext_resource type="Texture2D" uid="uid://bt0epmf4mrlnx" path="res://assets/enemy/rockrab/walk.png" id="2_r73ga"]
+[ext_resource type="Texture2D" uid="uid://dglsn44y2tul3" path="res://assets/enemy/rockrab/stomp_attack.png" id="4_ie5eq"]
 [ext_resource type="Script" uid="uid://vmn154w5x1u" path="res://Management/states/rockrab/rockrab_idle.gd" id="4_tiibl"]
+[ext_resource type="Texture2D" uid="uid://bmlblcgy6gdp8" path="res://assets/enemy/rockrab/hit.png" id="5_r1bc8"]
 [ext_resource type="Script" uid="uid://cptl0jxutii7v" path="res://Management/states/rockrab/rockrab_walk.gd" id="5_vh4ja"]
+[ext_resource type="BehaviorTree" uid="uid://jl3nir4suhfl" path="res://ai/trees/rockrab/rockrab_idle_tree.tres" id="6_2fold"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="6_bc0aq"]
+[ext_resource type="Texture2D" uid="uid://c7rq2dnecyo1o" path="res://assets/enemy/rockrab/death.png" id="6_yrtb5"]
+[ext_resource type="Script" uid="uid://i0j7x1v7ox03" path="res://Management/states/rockrab/rockrab_attack.gd" id="8_d6vaw"]
+[ext_resource type="Script" uid="uid://btk5oqhjx402i" path="res://Management/states/rockrab/rockrab_chase.gd" id="8_eotrt"]
+[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="8_pppjm"]
+[ext_resource type="BehaviorTree" uid="uid://c0evunhurd6u8" path="res://ai/trees/rockrab/rockrab_attack_tree.tres" id="9_ncewy"]
+[ext_resource type="Script" uid="uid://c8ubgwkklenet" path="res://Management/states/rockrab/rockrab_hit.gd" id="11_fu4na"]
+[ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="13_h8dso"]
+[ext_resource type="Script" uid="uid://d0o4lsjr4ma6q" path="res://Management/states/rockrab/rockrab_death.gd" id="14_exmcc"]
 
 [sub_resource type="Animation" id="Animation_cbade"]
 length = 0.001
@@ -44,6 +55,42 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackArea/CollisionPolygon2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:collision_mask")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [45]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:collision_layer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
 }
 
 [sub_resource type="Animation" id="Animation_r73ga"]
@@ -88,6 +135,59 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
 }
 
+[sub_resource type="Animation" id="Animation_pppjm"]
+resource_name = "stomp_attack"
+length = 4.33334
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("4_ie5eq"), ExtResource("1_76sde")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [27, 19]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2, 2.08333, 2.16667, 2.5, 2.58333, 2.66667, 2.75, 2.83333, 2.91667, 3, 3.08333, 3.16667, 3.41667, 3.5, 3.58333, 3.66667, 3.75, 3.83333, 3.91667, 4, 4.08333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AttackArea/CollisionPolygon2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.58333, 1.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="Animation" id="Animation_tiibl"]
 resource_name = "walk"
 length = 1.08334
@@ -130,21 +230,173 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
 }
 
+[sub_resource type="Animation" id="Animation_r1bc8"]
+resource_name = "hit"
+length = 0.166675
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_r1bc8")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="Animation" id="Animation_exmcc"]
+resource_name = "dead"
+length = 1.6
+step = 0.04
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_yrtb5")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [13]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.04, 0.08, 0.12, 0.16, 0.2, 0.24, 0.28, 0.32, 0.36, 0.4, 0.44, 0.48),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:collision_mask")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [36]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:collision_layer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tiibl"]
 _data = {
 &"RESET": SubResource("Animation_cbade"),
+&"dead": SubResource("Animation_exmcc"),
+&"hit": SubResource("Animation_r1bc8"),
 &"idle": SubResource("Animation_r73ga"),
+&"stomp_attack": SubResource("Animation_pppjm"),
 &"walk": SubResource("Animation_tiibl")
+}
+
+[sub_resource type="Animation" id="Animation_agibw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_urt7n"]
+resource_name = "hit"
+length = 0.150005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(100, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8u7iw"]
+_data = {
+&"RESET": SubResource("Animation_agibw"),
+&"hit": SubResource("Animation_urt7n")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r73ga"]
 radius = 18.0278
 
-[node name="rockrab" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemy"]]
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_2fold"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_eotrt"]
+
+[node name="rockrab" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 collision_layer = 2
 collision_mask = 45
 script = ExtResource("1_cbade")
 health_component = NodePath("HealthComponent")
+attack_area = NodePath("AttackArea")
 element = "earth"
 
 [node name="texture" type="Sprite2D" parent="."]
@@ -157,18 +409,30 @@ libraries = {
 &"": SubResource("AnimationLibrary_tiibl")
 }
 
+[node name="hit_modulate" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8u7iw")
+}
+
 [node name="collision" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -18)
 shape = SubResource("CircleShape2D_r73ga")
 
 [node name="hsm" type="LimboHSM" parent="."]
 
-[node name="rockrab_idle" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+[node name="rockrab_idle" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "tree")]
 script = ExtResource("4_tiibl")
 parent = NodePath("../..")
 animation = NodePath("../../animation")
 idle_min_time = 4.0
 idle_max_time = 7.0
+tree = NodePath("rockrab_idle_tree")
+
+[node name="rockrab_idle_tree" type="BTPlayer" parent="hsm/rockrab_idle"]
+behavior_tree = ExtResource("6_2fold")
+active = false
+blackboard_plan = SubResource("BlackboardPlan_2fold")
 
 [node name="rockrab_walk" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
 script = ExtResource("5_vh4ja")
@@ -176,13 +440,96 @@ parent = NodePath("../..")
 animation = NodePath("../../animation")
 speed = 3500.0
 
+[node name="rockrab_chase" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("8_eotrt")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+speed = 8000.0
+anim_speed_mult = 1.5
+
+[node name="rockrab_attack" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "tree")]
+script = ExtResource("8_d6vaw")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+tree = NodePath("rockrab_attack_tree")
+
+[node name="rockrab_attack_tree" type="BTPlayer" parent="hsm/rockrab_attack"]
+behavior_tree = ExtResource("9_ncewy")
+active = false
+blackboard_plan = SubResource("BlackboardPlan_eotrt")
+
+[node name="rockrab_hit" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("11_fu4na")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+knock_multi = 1.0
+hit_recover_limit = 30.0
+
+[node name="rockrab_death" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("14_exmcc")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+
 [node name="idle_timer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
-[node name="HealthComponent" parent="." instance=ExtResource("6_bc0aq")]
+[node name="attack_timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("6_bc0aq")]
 max_health = 20.0
 max_poise = 10.0
 poise_recover_timer = 6.0
+attack_timer = NodePath("../attack_timer")
 
+[node name="AttackArea" parent="." instance=ExtResource("8_pppjm")]
+visible = false
+collision_mask = 1
+targets = Array[String](["player"])
+damage = 10.0
+knockup_force = -10.0
+knockback_force = 100.0
+poise_damage = 6.0
+attack_name = "rockrab_attack"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackArea"]
+polygon = PackedVector2Array(-38, -55, -38, 0, 0, 0, 0, -55)
+disabled = true
+
+[node name="can_attack_area" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 32769
+
+[node name="can_attack_collision" type="CollisionPolygon2D" parent="can_attack_area"]
+polygon = PackedVector2Array(-32, -96, -32, 0, 0, 0, 0, -96)
+
+[node name="can_chase_area" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 32769
+
+[node name="can_chase_collision" type="CollisionPolygon2D" parent="can_chase_area"]
+polygon = PackedVector2Array(-256, -96, -256, 0, 96, 0, 96, -96)
+
+[node name="can_chase_collision_open" type="CollisionPolygon2D" parent="can_chase_area"]
+polygon = PackedVector2Array(-512, -256, -512, 0, 512, 0, 512, -256)
+disabled = true
+
+[node name="ProgressBar" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("13_h8dso")]
+offset_top = -78.0
+offset_bottom = -68.0
+parent = NodePath("..")
+
+[connection signal="animation_finished" from="animation" to="hsm/rockrab_attack" method="_on_animation_animation_finished"]
+[connection signal="animation_finished" from="animation" to="hsm/rockrab_hit" method="_on_animation_animation_finished"]
+[connection signal="animation_finished" from="animation" to="hsm/rockrab_death" method="_on_animation_finished"]
+[connection signal="animation_finished" from="hit_modulate" to="." method="_on_hit_modulate_animation_finished"]
 [connection signal="timeout" from="idle_timer" to="hsm/rockrab_idle" method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="body_entered" from="can_attack_area" to="." method="_on_can_attack_area_body_entered"]
+[connection signal="body_exited" from="can_attack_area" to="." method="_on_can_attack_area_body_exited"]
+[connection signal="body_entered" from="can_chase_area" to="." method="_on_can_chase_area_body_entered"]
+[connection signal="body_exited" from="can_chase_area" to="." method="_on_can_chase_area_body_exited"]
