@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ddptg8j7uu8c7"]
+
+[node name="fire_reaper" type="CharacterBody2D"]
+
+[node name="animation" type="AnimationPlayer" parent="."]
+
+[node name="texture" type="Sprite2D" parent="."]
