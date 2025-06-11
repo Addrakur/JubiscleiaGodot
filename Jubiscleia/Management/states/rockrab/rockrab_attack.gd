@@ -14,7 +14,7 @@ func _exit():
 	parent.can_attack = false
 	attack_timer.start()
 	tree.active = false
-	collision_polygon_2d.disabled = true
+	set_deferred(str(collision_polygon_2d.disabled), true)
 
 func _on_animation_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "stomp_attack":

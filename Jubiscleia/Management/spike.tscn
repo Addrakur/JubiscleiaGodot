@@ -17,7 +17,7 @@ texture = ExtResource("1_30gas")
 
 [node name="AttackArea" parent="." instance=ExtResource("2_5hn2l")]
 collision_mask = 1
-target = "player"
+targets = Array[String](["player"])
 damage = 15.0
 knockup_force = -300.0
 poise_damage = 10.0

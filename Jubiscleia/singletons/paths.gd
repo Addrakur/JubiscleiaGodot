@@ -9,11 +9,8 @@ var level3: String = "res://levels/level_3.tscn"
 var arena: String = "res://levels/arena.tscn"
 var tutorial_boss_level: String = "res://levels/tutorial_boss_level.tscn"
 
-#Objects
-var projectile = preload("res://player/player_attack_projectile.tscn")
-var spear_burst = preload("res://player/player_spear_burst.tscn")
+#Enemies
 var bee = preload("res://enemies/bee.tscn")
-var fireball = preload("res://enemies/kitsune_fire.tscn")
 var big_worm = preload("res://enemies/big_worm.tscn")
 var kitsune = preload("res://enemies/kitsune.tscn")
 var scorpion = preload("res://enemies/scorpion.tscn")
@@ -23,6 +20,12 @@ var snake = preload("res://enemies/snake.tscn")
 var spike_shield_enemy = preload("res://enemies/spike_shield_enemy.tscn")
 var aereal_suicide_enemy = preload("res://enemies/aereal_suicide_enemy.tscn")
 var sniper_enemy = preload("res://enemies/sniper_enemy.tscn")
+var rockrab = preload("res://enemies/rockrab.tscn")
+
+#Objects
+var projectile = preload("res://player/player_attack_projectile.tscn")
+var spear_burst = preload("res://player/player_spear_burst.tscn")
+var fireball = preload("res://enemies/kitsune_fire.tscn")
 var sniper_enemy_projectile = preload("res://enemies/sniper_enemy_projectile.tscn")
 var elemental_orb = preload("res://Management/elemental_orb.tscn")
 var slow_timer = preload("res://Management/composition_scenes/slow_timer.tscn")

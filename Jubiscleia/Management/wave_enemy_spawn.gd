@@ -1,7 +1,7 @@
 class_name WaveEnemySpawn
 extends Node
 
-@export_enum("big_worm","kitsune","scorpion","spear_skeleton","sword_skeleton","snake","spike_shield_enemy","aereal_suicide_enemy","sniper_enemy") var enemy: String
+@export_enum("big_worm","kitsune","scorpion","spear_skeleton","sword_skeleton","snake","spike_shield_enemy","aereal_suicide_enemy","sniper_enemy","rockrab") var enemy: String
 
 @export_group("Bools")
 @export var has_starting_x: bool

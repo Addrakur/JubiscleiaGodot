@@ -12,7 +12,8 @@ func _ready():
 		camera.follow_damping_value.y = 0.25
 
 func _on_body_entered(body):
-	if body == GameSettings.player:
+	if body is Player:
+		print(camera.name)
 		camera.set_priority(10)
 		for cameras in old_cameras:
 			camera.set_priority(0)

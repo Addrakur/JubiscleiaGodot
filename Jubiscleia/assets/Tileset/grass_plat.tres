@@ -1,0 +1,27 @@
+[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://b7uc6ueks7yf8"]
+
+[ext_resource type="Texture2D" uid="uid://1010jbbyytlw" path="res://assets/Tileset/grass_plat.png" id="1_e52d6"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mo77t"]
+texture = ExtResource("1_e52d6")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11, -11, 16, -11, 16, -8, -11, -8)
+0:0/0/physics_layer_0/polygon_0/one_way = true
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -11, 16, -11, 16, -8, -16, -8)
+1:0/0/physics_layer_0/polygon_0/one_way = true
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -11, 11, -11, 11, -8, -16, -8)
+2:0/0/physics_layer_0/polygon_0/one_way = true
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(11, -11, 16, -11, 16, -8, 11, -8)
+0:1/0/physics_layer_0/polygon_0/one_way = true
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -11, -11, -11, -11, -8, -16, -8)
+
+[resource]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 128
+physics_layer_0/collision_mask = 32771
+sources/0 = SubResource("TileSetAtlasSource_mo77t")

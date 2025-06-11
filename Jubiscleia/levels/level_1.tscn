@@ -92,22 +92,20 @@ visible = false
 [node name="CameraAreaPC1" parent="Cameras" node_paths=PackedStringArray("camera", "old_cameras") instance=ExtResource("13_ca7o2")]
 horizontal = true
 camera = NodePath("../../PC1")
-old_cameras = [NodePath(""), NodePath("")]
+old_cameras = [null, null]
 
 [node name="CollisionCamera2" type="CollisionPolygon2D" parent="Cameras/CameraAreaPC1"]
 polygon = PackedVector2Array(-3680, 768, 4896, 768, 4896, 128, 4384, 128, 4384, 736, 3424, 736, 3424, 128, -256, 128, -256, 736, -1216, 736, -1216, 128, -3680, 128)
 
-[node name="CameraAreaPCArena1" parent="Cameras" node_paths=PackedStringArray("camera", "old_cameras") instance=ExtResource("13_ca7o2")]
+[node name="CameraAreaPCArena1" parent="Cameras" node_paths=PackedStringArray("old_cameras") instance=ExtResource("13_ca7o2")]
 horizontal = true
-camera = NodePath("")
 old_cameras = [NodePath("../../PC1")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cameras/CameraAreaPCArena1"]
 polygon = PackedVector2Array(-1184, 704, -1184, 128, -288, 128, -288, 704)
 
-[node name="CameraAreaPCArena2" parent="Cameras" node_paths=PackedStringArray("camera", "old_cameras") instance=ExtResource("13_ca7o2")]
+[node name="CameraAreaPCArena2" parent="Cameras" node_paths=PackedStringArray("old_cameras") instance=ExtResource("13_ca7o2")]
 horizontal = true
-camera = NodePath("")
 old_cameras = [NodePath("../../PC1")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cameras/CameraAreaPCArena2"]

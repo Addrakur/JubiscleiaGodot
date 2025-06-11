@@ -2060,6 +2060,6 @@ draw_limits = true
 [node name="Arena2" type="Node2D" parent="."]
 position = Vector2(12832, 2464)
 script = ExtResource("14_nee6w")
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(0.75, 0.75)
 tween_resource = SubResource("Resource_g80eo")
 draw_limits = true

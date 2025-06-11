@@ -19,7 +19,8 @@ func enter_state() -> void:
 func exit_state() -> void:
 	set_physics_process(false)
 	collision.shape.size.y = 28
-	collision.position.y = -11
+	collision.position.y = -14
+	
 
 func _physics_process(_delta):
 	animation.play("crouch")

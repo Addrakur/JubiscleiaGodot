@@ -172,6 +172,7 @@ collect_orb={
 2d_physics/layer_5="enemy_projectile_wall"
 2d_physics/layer_6="tile que nao pode escalar"
 2d_physics/layer_7="boss_obj"
+2d_physics/layer_8="platform"
 2d_physics/layer_15="non_movable_enemy"
 2d_physics/layer_16="player_inv_collision"
 2d_physics/layer_17="management_tiles"
