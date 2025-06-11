@@ -1,4 +1,4 @@
-[gd_resource type="BehaviorTree" load_steps=23 format=3 uid="uid://jl3nir4suhfl"]
+[gd_resource type="BehaviorTree" load_steps=22 format=3 uid="uid://jl3nir4suhfl"]
 
 [ext_resource type="Script" uid="uid://c7qn0683f181d" path="res://ai/tasks/set_velocity.gd" id="1_1w01v"]
 [ext_resource type="Script" uid="uid://dvu6fuaoqjp1g" path="res://ai/tasks/parent_var_check.gd" id="2_3vb7x"]
@@ -29,11 +29,8 @@ children = [SubResource("BTAction_q8ci4"), SubResource("BTAction_pj0fm")]
 script = ExtResource("1_1w01v")
 value = Vector2(0, 0)
 
-[sub_resource type="BTConsolePrint" id="BTConsolePrint_13fwk"]
-text = "stay idle"
-
 [sub_resource type="BTSequence" id="BTSequence_ci8f5"]
-children = [SubResource("BTAction_ekyh2"), SubResource("BTConsolePrint_13fwk")]
+children = [SubResource("BTAction_ekyh2")]
 
 [sub_resource type="BTSelector" id="BTSelector_q8ci4"]
 children = [SubResource("BTSequence_3vb7x"), SubResource("BTSequence_ci8f5")]
