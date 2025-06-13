@@ -85,7 +85,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [45]
+"values": [65709]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -400,7 +400,7 @@ radius = 18.0278
 
 [node name="rockrab" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 collision_layer = 2
-collision_mask = 45
+collision_mask = 65709
 script = ExtResource("1_cbade")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")

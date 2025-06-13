@@ -3,11 +3,12 @@ extends Node
 #Scenes
 var menu: String = "res://Management/menu.tscn"
 var tutorial: String = "res://levels/loop_basico.tscn"
+var tutorial_level_1: String = "res://levels/tutorial_level_1.tscn"
+var tutorial_boss_level: String = "res://levels/tutorial_boss_level.tscn"
 var level1: String = "res://levels/level_1.tscn"
 var level2: String = "res://levels/level_2.tscn"
 var level3: String = "res://levels/level_3.tscn"
 var arena: String = "res://levels/arena.tscn"
-var tutorial_boss_level: String = "res://levels/tutorial_boss_level.tscn"
 
 #Enemies
 var bee = preload("res://enemies/bee.tscn")
@@ -21,6 +22,7 @@ var spike_shield_enemy = preload("res://enemies/spike_shield_enemy.tscn")
 var aereal_suicide_enemy = preload("res://enemies/aereal_suicide_enemy.tscn")
 var sniper_enemy = preload("res://enemies/sniper_enemy.tscn")
 var rockrab = preload("res://enemies/rockrab.tscn")
+var fire_reaper = preload("res://enemies/fire_reaper.tscn")
 
 #Objects
 var projectile = preload("res://player/player_attack_projectile.tscn")
