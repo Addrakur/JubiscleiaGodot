@@ -14,24 +14,6 @@ extends Control
 func _ready() -> void:
 	button_pressed_manager()
 
-func on_tutorial_pressed():
-	GameSettings.change_scene(Paths.tutorial)
-
-func on_level1_pressed():
-	GameSettings.change_scene(Paths.level1)
-
-func on_level2_pressed():
-	GameSettings.change_scene(Paths.level2)
-
-func _on_level_3_pressed():
-	GameSettings.change_scene(Paths.level3)
-
-func _on_arena_pressed():
-	GameSettings.change_scene(Paths.arena)
-
-func _on_tutorial_boss_pressed() -> void:
-	GameSettings.change_scene(Paths.tutorial_boss_level)
-
 func on_quit_pressed():
 	get_tree().quit()
 

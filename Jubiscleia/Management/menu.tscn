@@ -1,20 +1,10 @@
-[gd_scene load_steps=37 format=3 uid="uid://drbjtfhmgpum0"]
+[gd_scene load_steps=27 format=3 uid="uid://drbjtfhmgpum0"]
 
 [ext_resource type="Script" uid="uid://crbph13qapiwe" path="res://Management/Menu.gd" id="1_slu8i"]
-[ext_resource type="Texture2D" uid="uid://bfuaipif3rr8" path="res://assets/UI/tutorial_button.png" id="2_b6hrv"]
-[ext_resource type="Texture2D" uid="uid://ymdypl2ibi2g" path="res://assets/UI/background.png" id="2_cpmcd"]
-[ext_resource type="Texture2D" uid="uid://dhdq5ackgb0e1" path="res://assets/UI/tutorial_button_selected.png" id="3_74m52"]
+[ext_resource type="PackedScene" uid="uid://cat0rb63ebmb7" path="res://Management/change_scene_button.tscn" id="2_msjmb"]
 [ext_resource type="Script" uid="uid://c4714two8lm5t" path="res://Management/parametro_linha_update.gd" id="3_vq8mx"]
-[ext_resource type="Texture2D" uid="uid://csw7wk51p2rpu" path="res://assets/UI/arena_button.png" id="4_wcdt5"]
-[ext_resource type="Texture2D" uid="uid://ctmx5t7r53beb" path="res://assets/UI/arena_button_selected.png" id="5_1ssod"]
-[ext_resource type="Texture2D" uid="uid://wq8861meu5sr" path="res://assets/UI/level_1_button.png" id="6_7hd5p"]
 [ext_resource type="Texture2D" uid="uid://bgldtq2ds4wgj" path="res://assets/UI/exit_button.png" id="6_srlhf"]
-[ext_resource type="Texture2D" uid="uid://4gq7grlygr1v" path="res://assets/UI/level_1_button_selected.png" id="7_7cqmf"]
 [ext_resource type="Texture2D" uid="uid://bgv5xmbsx71k7" path="res://assets/UI/exit_button_selected.png" id="7_deshu"]
-[ext_resource type="Texture2D" uid="uid://ed50yoanwmex" path="res://assets/UI/level_2_button.png" id="8_0jgdy"]
-[ext_resource type="Texture2D" uid="uid://bl0b0wa3mxlr8" path="res://assets/UI/level_2_button_selected.png" id="9_c6cib"]
-[ext_resource type="Texture2D" uid="uid://birownw16c3gj" path="res://assets/UI/level_3_button.png" id="10_10avj"]
-[ext_resource type="Texture2D" uid="uid://b8kvmtrsj2sr5" path="res://assets/UI/level_3_button_selected.png" id="11_gb0yr"]
 [ext_resource type="Texture2D" uid="uid://dw3u3dtfbb1fh" path="res://assets/UI/sword_button.png" id="14_d6exe"]
 [ext_resource type="Texture2D" uid="uid://b2ttutuofhqcy" path="res://assets/UI/axe_button.png" id="15_0quxr"]
 [ext_resource type="Texture2D" uid="uid://dqhgr6ti84ck6" path="res://assets/UI/sword_selected_button.png" id="15_e6xa3"]
@@ -181,49 +171,68 @@ script = ExtResource("1_slu8i")
 weapon_1_buttons = [NodePath("HBoxContainer/sword"), NodePath("HBoxContainer/axe"), NodePath("HBoxContainer/spear")]
 weapon_2_buttons = [NodePath("HBoxContainer2/sword"), NodePath("HBoxContainer2/axe"), NodePath("HBoxContainer2/spear")]
 
-[node name="ColorRect" type="TextureRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_cpmcd")
-expand_mode = 1
+color = Color(0.0594, 0.0968734, 0.22, 1)
 
-[node name="Tutorial" type="TextureButton" parent="."]
-process_mode = 3
-layout_mode = 2
-offset_left = 113.0
-offset_top = 125.0
-offset_right = 259.0
-offset_bottom = 157.0
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("2_b6hrv")
-texture_hover = ExtResource("3_74m52")
+[node name="buttons" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Arena" type="TextureButton" parent="."]
-layout_mode = 2
-offset_left = 124.0
-offset_top = 91.0
+[node name="tutorial" parent="buttons" instance=ExtResource("2_msjmb")]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 80.0
 offset_right = 220.0
-offset_bottom = 123.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("4_wcdt5")
-texture_hover = ExtResource("5_1ssod")
+offset_bottom = 111.0
+text = "Tutorial"
+scene_name = "tutorial"
+
+[node name="tutorial_level_1" parent="buttons" instance=ExtResource("2_msjmb")]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 120.0
+offset_right = 220.0
+offset_bottom = 151.0
+text = "Tutorial Level 1"
+scene_name = "tutorial_level_1"
+
+[node name="tutorial_boss" parent="buttons" instance=ExtResource("2_msjmb")]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 160.0
+offset_right = 220.0
+offset_bottom = 191.0
+text = "Tutorial Boss
+"
+scene_name = "tutorial_boss"
+
+[node name="arena" parent="buttons" instance=ExtResource("2_msjmb")]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 200.0
+offset_right = 220.0
+offset_bottom = 231.0
+text = "Arena"
+scene_name = "arena"
 
 [node name="Quit" type="TextureButton" parent="."]
+top_level = true
 layout_mode = 1
-anchors_preset = -1
-offset_left = 132.0
-offset_top = 200.0
-offset_right = 199.0
-offset_bottom = 232.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 116.0
+offset_top = -56.0
+offset_right = 183.0
+offset_bottom = -24.0
+grow_vertical = 0
 texture_normal = ExtResource("6_srlhf")
 texture_hover = ExtResource("7_deshu")
 
@@ -236,53 +245,6 @@ offset_right = 323.0
 offset_bottom = 316.0
 theme_override_font_sizes/font_size = 37
 text = "Parametros"
-
-[node name="Level1" type="TextureButton" parent="."]
-visible = false
-layout_mode = 2
-offset_left = 96.0
-offset_top = 160.0
-offset_right = 145.0
-offset_bottom = 208.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("6_7hd5p")
-texture_hover = ExtResource("7_7cqmf")
-
-[node name="Level2" type="TextureButton" parent="."]
-visible = false
-layout_mode = 2
-offset_left = 133.0
-offset_top = 160.0
-offset_right = 181.0
-offset_bottom = 208.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("8_0jgdy")
-texture_hover = ExtResource("9_c6cib")
-
-[node name="Level3" type="TextureButton" parent="."]
-visible = false
-layout_mode = 2
-offset_left = 171.0
-offset_top = 160.0
-offset_right = 220.0
-offset_bottom = 208.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.5, 0.5)
-texture_normal = ExtResource("10_10avj")
-texture_hover = ExtResource("11_gb0yr")
-
-[node name="Tutorial_boss" type="Button" parent="."]
-layout_mode = 0
-offset_left = 127.0
-offset_top = 154.0
-offset_right = 171.0
-offset_bottom = 185.0
-text = "Boss"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
@@ -363,9 +325,8 @@ stretch_mode = 0
 [node name="Title" type="TextureRect" parent="."]
 layout_mode = 0
 offset_left = -20.0
-offset_top = 8.0
 offset_right = 428.0
-offset_bottom = 136.0
+offset_bottom = 128.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("22_pvhg6")
 expand_mode = 1
@@ -4813,20 +4774,14 @@ layout_mode = 1
 
 [node name="skill_tree_button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 500.0
-offset_top = 8.0
-offset_right = 578.0
-offset_bottom = 39.0
+offset_left = 540.0
+offset_top = 20.0
+offset_right = 618.0
+offset_bottom = 51.0
 text = "Skill Tree"
 
-[connection signal="pressed" from="Tutorial" to="." method="on_tutorial_pressed"]
-[connection signal="pressed" from="Arena" to="." method="_on_arena_pressed"]
 [connection signal="pressed" from="Quit" to="." method="on_quit_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="Level1" to="." method="on_level1_pressed"]
-[connection signal="pressed" from="Level2" to="." method="on_level2_pressed"]
-[connection signal="pressed" from="Level3" to="." method="_on_level_3_pressed"]
-[connection signal="pressed" from="Tutorial_boss" to="." method="_on_tutorial_boss_pressed"]
 [connection signal="pressed" from="HBoxContainer/sword" to="." method="_on_w_1_sword_pressed"]
 [connection signal="pressed" from="HBoxContainer/axe" to="." method="_on_w_1_axe_pressed"]
 [connection signal="pressed" from="HBoxContainer/spear" to="." method="_on_w_1_spear_pressed"]

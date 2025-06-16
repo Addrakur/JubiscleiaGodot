@@ -46,7 +46,7 @@ children = [SubResource("BTAction_13fwk"), SubResource("BTSequence_no8h3")]
 [sub_resource type="BTAction" id="BTAction_ci8f5"]
 custom_name = "player_on_chase_area check"
 script = ExtResource("2_3vb7x")
-var_name = "player_on_chase_area"
+var_name = "can_chase"
 
 [sub_resource type="BTAction" id="BTAction_q1gtn"]
 custom_name = "dispatch to chase"

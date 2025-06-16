@@ -3129,7 +3129,7 @@ text = "1"
 [node name="ground_raycast" type="RayCast2D" parent="."]
 position = Vector2(0, -14.0265)
 target_position = Vector2(0, 15.0284)
-collision_mask = 36
+collision_mask = 164
 
 [node name="center_damage_area" type="Marker2D" parent="."]
 position = Vector2(0, -14.0265)

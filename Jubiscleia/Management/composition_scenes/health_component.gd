@@ -66,8 +66,8 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 						parent.hsm.dispatch("apply_knockback")
 					
 					current_poise = max_poise if not has_parameter_slider else true_max_poise # Arrumar depois
-					if attack_timer != null:
-						attack_timer.stop()
+					#if attack_timer != null:
+						#attack_timer.stop()
 				
 				else:
 					parent.hit_modulate.play("hit")

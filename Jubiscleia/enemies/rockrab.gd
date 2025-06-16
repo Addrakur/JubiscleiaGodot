@@ -28,6 +28,7 @@ var can_attack_player: bool = false
 var player_on_chase_area: bool = false
 var player_on_limit: bool = false
 var can_attack: bool = true
+var can_chase: bool = false
 var can_move: bool = false
 
 var alive: bool = true 
@@ -54,7 +55,14 @@ func _process(_delta):
 	
 	if not player_on_limit:
 		can_attack_player = false
-		player_on_chase_area = false
+	
+	if player_on_limit and player_on_chase_area:
+		can_chase = true
+		can_chase_collision_open.set_deferred("disabled",false)
+	else:
+		can_chase = false
+		can_chase_collision_open.set_deferred("disabled",true)
+	
 
 func left():
 	texture.flip_h = false
@@ -72,6 +80,7 @@ func _physics_process(delta):
 	move_and_slide()
 	if not is_on_floor():
 		velocity.y = GameSettings.default_gravity * delta
+	
 
 func init_state_machine():
 	hsm.add_transition(idle_state, walk_state, &"idle_to_walk")
@@ -105,18 +114,14 @@ func _on_can_attack_area_body_exited(body: Node2D) -> void:
 		can_attack_player = false
 
 func _on_can_chase_area_body_entered(body: Node2D) -> void:
-	if body is Player and player_on_limit:
+	if body is Player:
 		player_on_chase_area = true
 		player_ref = body
-		set_deferred(str(can_chase_collision_open.disabled), false)
-		set_deferred(str(can_chase_collision.disabled), true)
 
 func _on_can_chase_area_body_exited(body: Node2D) -> void:
-	if body is Player and not player_on_limit:
+	if body is Player:
 		player_on_chase_area = false
 		player_ref = null
-		set_deferred(str(can_chase_collision_open.disabled), true)
-		set_deferred(str(can_chase_collision.disabled), false)
 
 func _on_hit_modulate_animation_finished(_anim_name):
 	health_component.last_attack = ""

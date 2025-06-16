@@ -16,13 +16,13 @@
 [ext_resource type="Script" uid="uid://bc32s34fopk33" path="res://Management/states/fire_reaper/fire_reaper_hit.gd" id="9_88vq7"]
 [ext_resource type="Script" uid="uid://dckw5xar58bk0" path="res://Management/states/fire_reaper/fire_reaper_death.gd" id="10_y3d0c"]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xel0x"]
+height = 56.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qttnp"]
 shader = ExtResource("2_ao5jt")
 shader_parameter/blue_value = 0.0
 shader_parameter/red_value = 0.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xel0x"]
-height = 56.0
 
 [sub_resource type="Animation" id="Animation_j4y8o"]
 length = 0.001
@@ -89,8 +89,8 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_xel0x"]
 resource_name = "attack"
-length = 2.16668
-step = 0.0833333
+length = 1.56251
+step = 0.0625
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -122,7 +122,7 @@ tracks/2/path = NodePath("texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.25, 1.33333, 1.41667, 1.5, 1.58333, 1.66667, 1.75, 1.83333, 1.91667, 2, 2.08333),
+"times": PackedFloat32Array(0, 0.0625, 0.125, 0.1875, 0.25, 0.3125, 0.375, 0.4375, 0.5, 0.5625, 0.625, 0.6875, 0.75, 0.8125, 0.875, 0.9375, 1, 1.0625, 1.125, 1.1875, 1.25, 1.3125, 1.375, 1.4375, 1.5, 1.5625),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25]
@@ -134,7 +134,7 @@ tracks/3/path = NodePath("AttackArea/CollisionPolygon2D:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.25),
+"times": PackedFloat32Array(0.9375),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [PackedVector2Array(-73, -41, -84, 0, -10, 0, -10, -50, 50, -40, 42, -55, 29, -69, 6, -83, -19, -84, -40, -78, -61, -61)]
@@ -146,7 +146,7 @@ tracks/4/path = NodePath("AttackArea/CollisionPolygon2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1.25, 1.33333),
+"times": PackedFloat32Array(0.9375, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -292,14 +292,14 @@ health_component = NodePath("HealthComponent")
 attack_area = NodePath("AttackArea")
 element = "fire"
 
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -28)
+shape = SubResource("CapsuleShape2D_xel0x")
+
 [node name="texture" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_qttnp")
 texture = ExtResource("1_e4v3k")
 hframes = 11
-
-[node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -28)
-shape = SubResource("CapsuleShape2D_xel0x")
 
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {
