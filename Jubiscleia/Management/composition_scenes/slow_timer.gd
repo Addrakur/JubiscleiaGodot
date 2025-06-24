@@ -15,3 +15,8 @@ func _on_timeout() -> void:
 	parent.speed = 1
 	shader.set_shader_parameter("blue_value",0.0)
 	
+
+func _process(_delta: float) -> void:
+	if not parent.alive:
+		shader.set_shader_parameter("blue_value",0.0)
+		queue_free()

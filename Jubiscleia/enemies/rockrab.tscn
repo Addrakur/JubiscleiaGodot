@@ -518,8 +518,7 @@ poise_damage = 6.0
 attack_name = "rockrab_attack"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackArea"]
-visible = false
-polygon = PackedVector2Array(-38, -55, -38, 0, 0, 0, 0, -55)
+polygon = PackedVector2Array(-38, -55, -38, 0, 11, 0, 11, -55)
 disabled = true
 
 [node name="can_attack_area" type="Area2D" parent="."]

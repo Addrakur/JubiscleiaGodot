@@ -18,6 +18,7 @@ func change_scene(scene_name:String):
 
 var arena_spawn_point: Vector2 = Vector2(-768,480)
 var tutorial_spawn_point: Vector2 = Vector2(-389,421)
+var tutorial_level_1_spawn_point: Vector2 = Vector2(320,0)
 var tutorial_boss_level_spawn_point: Vector2 = Vector2(64,0)
 var level_1_spawn_point: Vector2 = Vector2(-5434,1637)
 var level_2_spawn_point: Vector2 = Vector2(45,1733)
