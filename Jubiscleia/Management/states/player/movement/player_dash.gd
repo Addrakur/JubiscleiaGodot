@@ -20,7 +20,7 @@ func _ready():
 func enter_state() -> void:
 	if player.is_on_floor():
 		player.dash_cooldown.start()
-	player.set_collision_mask_value(2,false)
+	#player.set_collision_mask_value(2,false)
 	player.set_collision_layer_value(1,false)
 	player.collision.shape.size = Vector2(15,10)
 	player.floor_snap_length = 0
@@ -39,7 +39,7 @@ func exit_state() -> void:
 	set_physics_process(false)
 	PlayerVariables.move = false
 	player.health_component.invulnerable = false
-	player.set_collision_mask_value(2,true)
+	#player.set_collision_mask_value(2,true)
 	player.set_collision_layer_value(1,true)
 	player.collision.shape.size = Vector2(11,28)
 	player.override_gravity = 0

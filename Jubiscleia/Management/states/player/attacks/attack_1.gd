@@ -24,6 +24,8 @@ func enter_state() -> void:
 	player.attack_area.attack_name = PlayerVariables.current_attack
 
 	speed = PlayerVariables.get(str(PlayerVariables.current_skill) + "_1_speed")
+	if speed != 0:
+		player.set_collision_mask_value(2,true)
 	
 	player.attack_area.damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_1_damage") * PlayerVariables.damage_mult
 	player.attack_area.knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_1_knockback")
@@ -32,6 +34,7 @@ func enter_state() -> void:
 
 func exit_state() -> void:
 	set_physics_process(false)
+	player.set_collision_mask_value(2,false)
 	PlayerVariables.player_attacking = false
 	PlayerVariables.last_skill = PlayerVariables.current_skill
 	PlayerVariables.current_attack = ""

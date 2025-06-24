@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var can_chase_collision: CollisionPolygon2D = $can_chase_area/can_chase_collision
 @onready var can_chase_collision_open: CollisionPolygon2D = $can_chase_area/can_chase_collision_open
 @onready var hit_modulate: AnimationPlayer = $hit_modulate
+@onready var collision_damage: CollisionShape2D = $collision_damage/collision_damage
 
 @onready var hsm: LimboHSM = $hsm
 @onready var idle_state: LimboState = $hsm/fire_reaper_idle

@@ -176,7 +176,7 @@ tile_set = ExtResource("11_ow0og")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(11958, -2661)
+position = Vector2(426.667, -32.0001)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = 0
@@ -307,7 +307,10 @@ color = Color(1, 1, 1, 0.243137)
 polygon = PackedVector2Array(11973, -2848, 11973, -2683, 12699, -2683, 12699, -2848)
 
 [node name="rockrab" parent="enemies/Limit7" instance=ExtResource("14_rj8md")]
-position = Vector2(12358, -2687)
+position = Vector2(12222, -2687)
+
+[node name="rockrab2" parent="enemies/Limit7" instance=ExtResource("14_rj8md")]
+position = Vector2(12444, -2687)
 
 [node name="Limit8" parent="enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("13_m5qke")]
 limit_polygon = NodePath("limit8")
@@ -648,7 +651,7 @@ color = Color(1, 1, 1, 0.188235)
 polygon = PackedVector2Array(10144, -1568, 10144, -1120, 10976, -1120, 10976, -1568)
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("6_4wbcj")]
-position = Vector2(11958, -2629)
+position = Vector2(338, -6.10352e-05)
 camera = NodePath("../Camera2D")
 
 [node name="lava" type="Node2D" parent="."]
@@ -794,7 +797,7 @@ tile_set = ExtResource("4_e1sg6")
 
 [node name="free_camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(11958, -2661)
+position = Vector2(426.667, -32.0001)
 script = ExtResource("9_co3pi")
 follow_mode = 2
 follow_target = NodePath("../player")

@@ -1,42 +1,24 @@
 extends LimboState
 
-@export var speed_1: float
-@export var speed_2: float
 @export var parent:  BossTree
-@export var tree: BTPlayer
-
-var speed: float
 
 var move: bool = false
-var dir: float
 @export var move_speed: float
 
 func _enter() -> void:
-	if parent.fase_1:
-		speed = speed_1
-	else:
-		speed = speed_2
-	
-	tree.active = true
+	parent.velocity.x = 0
+	parent.animation.play("swipe_1" if parent.fase_1 else "swipe_2", -1, parent.speed, false)
 
 func _update(delta) -> void:
 	if move:
-		parent.velocity.x = move_speed * dir * delta
+		parent.velocity.x = move_speed * parent.direction * delta * parent.speed
 	else:
 		parent.velocity.x = 0
-
-func _exit() -> void:
-	tree.active = false
 
 func set_move(t_or_f: bool):
 	move = t_or_f
 
-func set_direction():
-	if parent.player_ref.position.x > parent.position.x:
-		dir = 1
-	else:
-		dir = -1
-
-func _on_animation_animation_finished(anim_name: StringName) -> void:
+func _on_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "swipe_1" or anim_name == "swipe_2":
 		dispatch("swipe_to_idle")
+		parent.target = null

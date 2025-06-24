@@ -12,6 +12,7 @@ var direction: float
 var anim_finish: bool
 
 func _enter() -> void:
+	parent.collision_damage.set_deferred("disabled", true)
 	parent.health_component.is_getting_hit = true
 	animation.play("hit")
 	parent.velocity.x = 0
@@ -21,6 +22,7 @@ func _exit() -> void:
 	parent.health_component.is_getting_hit = false
 	anim_finish = false
 	parent.health_component.last_attack = ""
+	parent.collision_damage.set_deferred("disabled", false)
 
 func _update(delta):
 	if not parent.velocity == Vector2(0,0):

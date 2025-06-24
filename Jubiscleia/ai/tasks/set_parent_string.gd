@@ -4,5 +4,5 @@ extends BTAction
 @export var value: String
 
 func _tick(_delta: float) -> Status:
-	agent.parent.set(var_name,agent.parent.get(value))
+	agent.parent.set(var_name,value)
 	return SUCCESS

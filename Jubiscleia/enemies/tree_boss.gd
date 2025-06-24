@@ -27,6 +27,7 @@ extends CharacterBody2D
 @onready var rock_throw_state: LimboState = $hsm/attack_throw_rock
 @onready var seed_rain_state: LimboState = $hsm/attack_seed_rain
 @onready var change_fase_state: LimboState = $hsm/change_fase
+@onready var run_state: LimboState = $hsm/run
 
 @onready var player_ref: Player
 var target: Node2D
@@ -38,9 +39,11 @@ var is_moving: bool = false
 var can_attack_ranged: bool = false
 var can_rain_seed: bool = false
 var alive: bool = true
+var move: bool = false
 var rock = preload("res://enemies/tree_boss_rock.tscn")
 var boss_seed = preload("res://enemies/tree_boss_seed.tscn")
 var fireball = preload("res://enemies/tree_boss_fireball.tscn")
+var next_attack: String
 
 var proj: Node2D
 var preparing_rock: bool = false
@@ -49,7 +52,7 @@ var fase_1: bool = true
 
 var speed: float = 1
 
-var speed_mult: bool = false
+var direction: float
 
 func _ready() -> void:
 	init_state_machine()
@@ -58,12 +61,12 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	is_moving = true if velocity.x != 0 else false
 	
-	if target == arena_middle and position.x > arena_middle.position.x - 10 and position.x < arena_middle.position.x + 10:
+	if position.x > arena_middle.position.x - 10 and position.x < arena_middle.position.x + 10:
 		can_rain_seed = true
 	else:
 		can_rain_seed = false
 	
-	if target == arena_left and on_left_limit and velocity.x < 0 or target == arena_right and on_right_limit and velocity.x > 0:
+	if target == arena_left and on_left_limit or target == arena_right and on_right_limit:
 		can_attack_ranged = true
 	else:
 		can_attack_ranged = false
@@ -90,25 +93,31 @@ func init_state_machine():
 	hsm.add_transition(idle_state, rock_throw_state, &"idle_to_throw")
 	hsm.add_transition(idle_state, seed_rain_state, &"idle_to_seed")
 	hsm.add_transition(idle_state, change_fase_state, &"idle_to_change_fase")
+	hsm.add_transition(idle_state, run_state, &"idle_to_run")
 	
 	hsm.add_transition(swipe_state, idle_state, &"swipe_to_idle")
 	
 	hsm.add_transition(rock_throw_state, idle_state, &"throw_to_idle")
+	hsm.add_transition(rock_throw_state, run_state, &"throw_to_run")
 	
 	hsm.add_transition(seed_rain_state, idle_state, &"seed_to_idle")
 	
 	hsm.add_transition(change_fase_state, idle_state, &"change_fase_to_idle")
+	
+	hsm.add_transition(run_state, swipe_state, &"run_to_swipe")
+	hsm.add_transition(run_state, rock_throw_state, &"run_to_throw")
+	hsm.add_transition(run_state, seed_rain_state, &"run_to_seed")
 	
 	hsm.initial_state = idle_state
 	hsm.initialize(self)
 	hsm.set_active(true)
 
 func _on_melee_detect_area_body_entered(body: Node2D) -> void:
-	if body == player_ref:
+	if body is Player:
 		can_attack_melee = true
 
 func _on_melee_detect_area_body_exited(body: Node2D) -> void:
-	if body == player_ref:
+	if body is Player:
 		can_attack_melee = false
 
 func right():

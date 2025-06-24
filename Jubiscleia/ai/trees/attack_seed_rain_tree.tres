@@ -1,9 +1,7 @@
-[gd_resource type="BehaviorTree" load_steps=36 format=3 uid="uid://c81fijvxmwmx5"]
+[gd_resource type="BehaviorTree" load_steps=23 format=3 uid="uid://c81fijvxmwmx5"]
 
-[ext_resource type="Script" uid="uid://dfiw2i6ulwna8" path="res://ai/tasks/set_direction_to_target.gd" id="1_aw5fg"]
 [ext_resource type="Script" uid="uid://dvu6fuaoqjp1g" path="res://ai/tasks/parent_var_check.gd" id="1_oomev"]
 [ext_resource type="Script" uid="uid://c7qn0683f181d" path="res://ai/tasks/set_velocity.gd" id="2_clpwr"]
-[ext_resource type="Script" uid="uid://bg3ndytd1lpqf" path="res://ai/tasks/move_to_direction.gd" id="2_oomev"]
 [ext_resource type="Script" uid="uid://d2drruk6boo2v" path="res://ai/tasks/dispatch.gd" id="3_5d6mq"]
 [ext_resource type="Script" uid="uid://c5yn3mulsluk8" path="res://ai/tasks/play_animation_with_parent_speed.gd" id="3_h6unh"]
 
@@ -77,53 +75,8 @@ dispatch_name = "seed_to_idle"
 custom_name = "seed rain"
 children = [SubResource("BTAction_oomev"), SubResource("BTAction_5d6mq"), SubResource("BTSelector_83e7s"), SubResource("BTAction_sb6il")]
 
-[sub_resource type="BTAction" id="BTAction_clpwr"]
-custom_name = "is_moving check"
-script = ExtResource("1_oomev")
-var_name = "is_moving"
-
-[sub_resource type="BTSequence" id="BTSequence_5d6mq"]
-custom_name = "is running"
-children = [SubResource("BTAction_clpwr")]
-
-[sub_resource type="BTAction" id="BTAction_h6unh"]
-script = ExtResource("1_aw5fg")
-
-[sub_resource type="BTAction" id="BTAction_j7ku6"]
-script = ExtResource("1_oomev")
-var_name = "fase_1"
-
-[sub_resource type="BTAction" id="BTAction_273uw"]
-custom_name = "play walk_1"
-script = ExtResource("3_h6unh")
-anim_name = "walk_1"
-
-[sub_resource type="BTSequence" id="BTSequence_opyk7"]
-custom_name = "fase 1"
-children = [SubResource("BTAction_j7ku6"), SubResource("BTAction_273uw")]
-
-[sub_resource type="BTAction" id="BTAction_bjtt0"]
-custom_name = "play walk_2"
-script = ExtResource("3_h6unh")
-anim_name = "walk_2"
-
-[sub_resource type="BTSequence" id="BTSequence_bjtt0"]
-custom_name = "fase 2"
-children = [SubResource("BTAction_bjtt0")]
-
-[sub_resource type="BTSelector" id="BTSelector_1rt11"]
-custom_name = "fase selector"
-children = [SubResource("BTSequence_opyk7"), SubResource("BTSequence_bjtt0")]
-
-[sub_resource type="BTAction" id="BTAction_dh5nw"]
-script = ExtResource("2_oomev")
-
-[sub_resource type="BTSequence" id="BTSequence_1tiu1"]
-custom_name = "move to place"
-children = [SubResource("BTAction_h6unh"), SubResource("BTSelector_1rt11"), SubResource("BTAction_dh5nw")]
-
 [sub_resource type="BTSelector" id="BTSelector_opyk7"]
-children = [SubResource("BTSequence_clpwr"), SubResource("BTSequence_5d6mq"), SubResource("BTSequence_1tiu1")]
+children = [SubResource("BTSequence_clpwr")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_ehi2m")

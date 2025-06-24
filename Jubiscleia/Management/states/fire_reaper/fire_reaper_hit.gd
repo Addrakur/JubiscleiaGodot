@@ -12,12 +12,14 @@ var direction: float
 var anim_finish: bool
 
 func _enter() -> void:
+	parent.collision_damage.set_deferred("disabled", true)
 	parent.health_component.is_getting_hit = true
 	animation.play("hit")
 	parent.velocity.x = 0
 	knockback()
 
 func _exit() -> void:
+	parent.collision_damage.set_deferred("disabled", false)
 	parent.health_component.is_getting_hit = false
 	anim_finish = false
 	parent.health_component.last_attack = ""

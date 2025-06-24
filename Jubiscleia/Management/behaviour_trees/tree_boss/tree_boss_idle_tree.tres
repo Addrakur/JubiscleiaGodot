@@ -1,6 +1,7 @@
-[gd_resource type="BehaviorTree" load_steps=20 format=3 uid="uid://djga7cm0ugc4e"]
+[gd_resource type="BehaviorTree" load_steps=35 format=3 uid="uid://djga7cm0ugc4e"]
 
 [ext_resource type="Script" uid="uid://dvu6fuaoqjp1g" path="res://ai/tasks/parent_var_check.gd" id="1_wmhf4"]
+[ext_resource type="Script" uid="uid://cokas24u28bqe" path="res://ai/tasks/set_parent_string.gd" id="2_a782n"]
 [ext_resource type="Script" uid="uid://d2drruk6boo2v" path="res://ai/tasks/dispatch.gd" id="3_a782n"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_b0vht"]
@@ -26,14 +27,47 @@ children = [SubResource("BTAction_05rcb"), SubResource("BTRandomWait_dor2w")]
 custom_name = "quanto de cooldown?"
 children = [SubResource("BTSequence_bg0r3"), SubResource("BTRandomWait_a782n")]
 
+[sub_resource type="BTAction" id="BTAction_dor2w"]
+custom_name = "set next_attack"
+script = ExtResource("2_a782n")
+var_name = "next_attack"
+value = "swipe"
+
+[sub_resource type="BTAction" id="BTAction_bg0r3"]
+custom_name = "can_attack_melee check"
+script = ExtResource("1_wmhf4")
+var_name = "can_attack_melee"
+
 [sub_resource type="BTAction" id="BTAction_r34ki"]
 custom_name = "dispatch to swipe"
 script = ExtResource("3_a782n")
 dispatch_name = "idle_to_swipe"
 
+[sub_resource type="BTSequence" id="BTSequence_cln5r"]
+children = [SubResource("BTAction_bg0r3"), SubResource("BTAction_r34ki")]
+
+[sub_resource type="BTAction" id="BTAction_ip2xy"]
+custom_name = "dispatch to run"
+script = ExtResource("3_a782n")
+dispatch_name = "idle_to_run"
+
+[sub_resource type="BTSequence" id="BTSequence_2hcos"]
+children = [SubResource("BTAction_ip2xy")]
+
+[sub_resource type="BTSelector" id="BTSelector_uggku"]
+children = [SubResource("BTSequence_cln5r"), SubResource("BTSequence_2hcos")]
+
+[sub_resource type="BTSequence" id="BTSequence_cr4fg"]
+children = [SubResource("BTAction_dor2w"), SubResource("BTSelector_uggku")]
+
 [sub_resource type="BTProbability" id="BTProbability_648k1"]
-run_chance = 0.4
-children = [SubResource("BTAction_r34ki")]
+run_chance = 0.0
+children = [SubResource("BTSequence_cr4fg")]
+
+[sub_resource type="BTAction" id="BTAction_cr4fg"]
+script = ExtResource("2_a782n")
+var_name = "next_attack"
+value = "throw_rock"
 
 [sub_resource type="BTAction" id="BTAction_a782n"]
 custom_name = "dispatch to throw"
@@ -42,19 +76,45 @@ dispatch_name = "idle_to_throw"
 
 [sub_resource type="BTSequence" id="BTSequence_iklfa"]
 custom_name = "ranged"
-children = [SubResource("BTAction_a782n")]
+children = [SubResource("BTAction_cr4fg"), SubResource("BTAction_a782n")]
 
 [sub_resource type="BTProbability" id="BTProbability_r34ki"]
+run_chance = 0.0
 children = [SubResource("BTSequence_iklfa")]
+
+[sub_resource type="BTAction" id="BTAction_cln5r"]
+custom_name = "set next_attack"
+script = ExtResource("2_a782n")
+var_name = "next_attack"
+value = "seed_rain"
+
+[sub_resource type="BTAction" id="BTAction_2hcos"]
+custom_name = "can_rain_seed check"
+script = ExtResource("1_wmhf4")
+var_name = "can_rain_seed"
 
 [sub_resource type="BTAction" id="BTAction_iklfa"]
 custom_name = "dispatch to seed rain"
 script = ExtResource("3_a782n")
 dispatch_name = "idle_to_seed"
 
+[sub_resource type="BTSequence" id="BTSequence_uggku"]
+children = [SubResource("BTAction_2hcos"), SubResource("BTAction_iklfa")]
+
+[sub_resource type="BTAction" id="BTAction_10tbw"]
+custom_name = "dispatch_to_run"
+script = ExtResource("3_a782n")
+dispatch_name = "idle_to_run"
+
+[sub_resource type="BTSequence" id="BTSequence_w1532"]
+children = [SubResource("BTAction_10tbw")]
+
+[sub_resource type="BTSelector" id="BTSelector_tvg07"]
+children = [SubResource("BTSequence_uggku"), SubResource("BTSequence_w1532")]
+
 [sub_resource type="BTSequence" id="BTSequence_dor2w"]
 custom_name = "seed"
-children = [SubResource("BTAction_iklfa")]
+children = [SubResource("BTAction_cln5r"), SubResource("BTSelector_tvg07")]
 
 [sub_resource type="BTSelector" id="BTSelector_bg0r3"]
 custom_name = "attack_selector"

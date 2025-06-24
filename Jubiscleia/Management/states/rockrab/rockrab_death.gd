@@ -5,6 +5,7 @@ extends LimboState
 
 
 func _enter() -> void:
+	parent.collision_damage.set_deferred("disabled", true)
 	animation.play("dead")
 	parent.limit.erase(parent)
 
