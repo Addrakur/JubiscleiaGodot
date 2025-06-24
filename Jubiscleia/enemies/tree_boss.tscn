@@ -551,10 +551,10 @@ tracks/4/path = NodePath("AttackArea/CollisionPolygon2D:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1.41667),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.41667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [PackedVector2Array(-71, 0, -86, -68, -85, -103, -70, -148, -44, -176, -17, -191, -3, -191, -24, -177, -42, -150, -49, -114, -48, -77, -12, 0)]
+"values": [PackedVector2Array(-71, 0, -86, -68, -85, -103, -70, -148, -44, -176, -17, -191, -3, -191, 20, -162, 20, 0), PackedVector2Array(-71, 0, -86, -68, -85, -103, -70, -148, -44, -176, -17, -191, -3, -191, -24, -177, -42, -150, -49, -114, -48, -77, -12, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_7hwjo"]
@@ -619,7 +619,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0.6, 1.2),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [PackedVector2Array(-74, 0, -87, -42, -87, -74, -78, -108, -51, -141, -24, -147, 3, -145, 24, -135, -18, -129, -42, -102, -48, -77, -12, 0), PackedVector2Array(-74, 0, -95, -55, -95, -80, -85, -111, -69, -127, -46, -136, -31, -135, -49, -122, -61, -97, -60, -72, -12, 0)]
+"values": [PackedVector2Array(-74, 0, -87, -42, -87, -74, -78, -108, -51, -141, -24, -147, 3, -145, 24, -135, 18, 0), PackedVector2Array(-74, 0, -95, -55, -95, -80, -85, -111, -69, -127, -46, -136, 0, -136, 0, 0)]
 }
 tracks/5/type = "method"
 tracks/5/imported = false
@@ -781,11 +781,6 @@ _data = {
 radius = 24.0
 height = 164.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8u7iw"]
-shader = ExtResource("16_agibw")
-shader_parameter/blue_value = 0.0
-shader_parameter/red_value = 0.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vo17w"]
 radius = 22.0
 height = 160.0
@@ -793,6 +788,11 @@ height = 160.0
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_1hkfu"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_rfgjc"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8u7iw"]
+shader = ExtResource("16_agibw")
+shader_parameter/blue_value = 0.0
+shader_parameter/red_value = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3ptil"]
 size = Vector2(28, 160)
@@ -826,13 +826,6 @@ libraries = {
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -82)
 shape = SubResource("CapsuleShape2D_kjuq6")
-
-[node name="texture" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_8u7iw")
-position = Vector2(0, -96)
-texture = ExtResource("1_kjuq6")
-hframes = 25
-frame = 1
 
 [node name="collision_damage" parent="." instance=ExtResource("6_c8gdp")]
 collision_mask = 1
@@ -910,6 +903,13 @@ parent = NodePath("../..")
 animation = NodePath("../../animation")
 speed_1 = 40000.0
 speed_2 = 30000.0
+
+[node name="texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_8u7iw")
+position = Vector2(0, -96)
+texture = ExtResource("1_kjuq6")
+hframes = 25
+frame = 1
 
 [node name="melee_detect_area" type="Area2D" parent="."]
 collision_layer = 0
