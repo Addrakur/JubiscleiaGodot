@@ -8,6 +8,8 @@ extends LimboState
 func _enter() -> void:
 	parent.target = parent.arena_middle
 	tree.active = true
+	print(parent.target)
 
 func _exit() -> void:
 	tree.active = false
+	parent.target = null

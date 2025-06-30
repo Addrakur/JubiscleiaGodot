@@ -4,16 +4,14 @@ extends State
 @export var player: Player
 @export var animation: AnimationPlayer
 @export var input_buffering: Timer
-var speed: float
-var terminal_velocity: float
+@export var speed: float
+@export var terminal_velocity: float
 
 func _ready():
 	set_physics_process(false)
 
 func enter_state() -> void:
 	set_physics_process(true)
-	speed = Parameters.player_fall_move_speed
-	terminal_velocity = Parameters.player_fall_terminal_velocity
 	player.direction_0.stop()
 	player.velocity.y = 1
 

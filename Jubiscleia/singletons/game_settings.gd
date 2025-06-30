@@ -23,3 +23,9 @@ var tutorial_boss_level_spawn_point: Vector2 = Vector2(64,0)
 var level_1_spawn_point: Vector2 = Vector2(-5434,1637)
 var level_2_spawn_point: Vector2 = Vector2(45,1733)
 var level_3_spawn_point: Vector2 = Vector2(-68,37)
+
+# Levels cleared
+
+var tutorial_cleared: bool = false
+var tutorial_level_1_cleared: bool = false
+var tutorial_boss_level_cleared: bool = false

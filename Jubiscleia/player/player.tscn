@@ -506,8 +506,8 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_w1xyu"]
 resource_name = "axe_jump"
-length = 0.75
-step = 0.075
+length = 0.833342
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -539,7 +539,7 @@ tracks/2/path = NodePath("Texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375, 0.45, 0.525, 0.6, 0.675),
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
@@ -551,7 +551,7 @@ tracks/3/path = NodePath("AttackArea/AttackArea:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.375, 0.45, 0.525, 0.6, 0.675),
+"times": PackedFloat32Array(0.416667, 0.5, 0.583333, 0.666667, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [PackedVector2Array(-23.9172, 16, -30.8931, -15, -78.7276, -44, -46.8379, -51, -18.9345, -44, -1.99308, -21, 2.28882e-05, 16), PackedVector2Array(-33.8827, 18, -30.8931, -15, -51.8207, -44, -21.9241, -39, -1.99308, -21, 1.99313, 10, -2.98964, 23, -20.9276, 31), PackedVector2Array(-52.8172, 7, -30.8931, -15, -44.8448, -37, -24.9138, -35, -1.99308, -21, 3.98623, 14, -14.9483, 39, -52.8172, 39), PackedVector2Array(-54.8103, 0, -30.8931, -15, -44.8448, -37, -24.9138, -35, -1.99308, -21, 3.98623, 14, -14.9483, 39, -52.8172, 39, -69.7586, 19), PackedVector2Array(-78.7276, -17, -43.8483, -16, -43.8483, -32, -24.9138, -35, -1.99308, -21, 3.98623, 14, -14.9483, 39, -52.8172, 39, -73.7448, 16)]
@@ -563,7 +563,7 @@ tracks/4/path = NodePath("AttackArea/AttackArea:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.375),
+"times": PackedFloat32Array(0.416667),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
@@ -575,7 +575,7 @@ tracks/5/path = NodePath("StateMachine/PlayerJumpAttack")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.375, 0.6, 0.75),
+"times": PackedFloat32Array(0, 0.416667, 0.666667, 0.833333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": [0.1],
@@ -688,8 +688,8 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_v356d"]
 resource_name = "axe_jump_wind_down"
-length = 0.45
-step = 0.075
+length = 0.500008
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -721,7 +721,7 @@ tracks/2/path = NodePath("Texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15, 0.225, 0.3, 0.375),
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
@@ -745,7 +745,7 @@ tracks/4/path = NodePath("AttackArea/AttackArea:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.3),
+"times": PackedFloat32Array(0, 0.333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -757,7 +757,7 @@ tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.45),
+"times": PackedFloat32Array(0.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -771,7 +771,7 @@ tracks/6/path = NodePath("camera_methods")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.15),
+"times": PackedFloat32Array(0, 0.166667),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -2894,6 +2894,9 @@ safe_margin = 0.001
 script = ExtResource("1_5lux4")
 attack_area = NodePath("AttackArea")
 health_component = NodePath("HealthComponent")
+jump_height = 110.0
+jump_time_to_peak = 0.45
+jump_time_to_descent = 0.4
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
 script = ExtResource("12_8y4yw")
@@ -2917,6 +2920,7 @@ dash_cooldown = NodePath("../../DashCooldown")
 script = ExtResource("14_nnfso")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
+speed = 200.0
 
 [node name="Crouch" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("18_ia5tc")
@@ -2928,23 +2932,31 @@ script = ExtResource("15_dnbrn")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 input_buffering = NodePath("../../input_buffering")
+speed = 200.0
 
 [node name="DoubleJump" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("17_ywk3g")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
+speed = 200.0
+jump_height = 60.0
+jump_time_to_peak = 0.4
 
 [node name="Fall" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation", "input_buffering")]
 script = ExtResource("16_xs1j5")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 input_buffering = NodePath("../../input_buffering")
+speed = 200.0
+terminal_velocity = 450.0
 
 [node name="Hit" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("23_j7sbs")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 knockback_mult = 2.5
+knock_multi = 1.0
+hit_recover_limit = 50.0
 
 [node name="Death" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation")]
 script = ExtResource("25_wysx4")
@@ -2980,6 +2992,7 @@ script = ExtResource("15_6875b")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 ground_raycast = NodePath("../../ground_raycast")
+speed = 450.0
 
 [node name="State" type="Node" parent="StateMachine"]
 script = ExtResource("16_hy8fg")
@@ -2988,6 +3001,10 @@ script = ExtResource("16_hy8fg")
 script = ExtResource("17_dwjry")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
+gravity = 130.0
+out_force = 260.0
+wait_time_min = 0.08
+wait_time_max = 0.3
 
 [node name="Aura" type="Sprite2D" parent="."]
 visible = false
@@ -3053,10 +3070,9 @@ process_mode = 3
 [node name="AttackSpawnPoint" type="Marker2D" parent="."]
 
 [node name="HealthComponent" parent="." instance=ExtResource("9_6bxkt")]
-has_parameter_slider = true
-variable_name = "player"
 max_health = 100.0
-max_poise = 5.0
+max_poise = 6.0
+poise_recover_timer = 5.0
 max_temp_life = 50.0
 
 [node name="WallGrab" type="RayCast2D" parent="."]
@@ -3066,6 +3082,7 @@ collision_mask = 4
 collide_with_areas = true
 
 [node name="DashCooldown" type="Timer" parent="."]
+wait_time = 2.0
 one_shot = true
 
 [node name="HitTimer" type="Timer" parent="."]

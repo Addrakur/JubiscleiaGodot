@@ -9,13 +9,12 @@ extends State
 @onready var left_outer_ray: RayCast2D = $"../../left_outer_ray"
 @onready var left_inner_ray: RayCast2D = $"../../left_inner_ray"
 
-var speed: float
+@export var speed: float
 
 var can_move: bool = true
 
 func _ready():
 	set_physics_process(false)
-	speed = Parameters.player_first_jump_move_speed
 
 func enter_state() -> void:
 	set_physics_process(true)
@@ -41,7 +40,7 @@ func _physics_process(_delta):
 	if left_outer_ray.is_colliding() and not left_inner_ray.is_colliding():
 		player.position.x += 5
 	
-	if player.wall_grab_ray_cast.is_colliding(): #and player.direction == player.wall_grab_ray_cast.scale.x:
+	if player.wall_grab_ray_cast.is_colliding() and player.direction == player.wall_grab_ray_cast.scale.x:
 		player.fsm.change_state(player.wall_grab_state)
 	
 	if player.velocity.x > 0 and Input.is_action_just_pressed("left") or player.velocity.x < 0 and Input.is_action_just_pressed("right"):

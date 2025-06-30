@@ -30,7 +30,6 @@ func _process(_delta: float) -> void:
 		if PlayerVariables.get(element + "_stack_count") >= max_element_stack:
 			rupture(element)
 
-
 func rupture(element: String) -> void:
 	for variable in elements:
 		if variable != element:
@@ -48,14 +47,6 @@ func rupture(element: String) -> void:
 			PlayerVariables.damage_mult = 1.5
 		"earth":
 			player.health_component.current_temp_life = player.health_component.max_temp_life
-
-func _input(_event: InputEvent) -> void:
-	if Input.is_key_pressed(KEY_1):
-		print("Water: ",PlayerVariables.water_stack_count)
-		print("Fire: ",PlayerVariables.fire_stack_count)
-		print("Earth: ",PlayerVariables.earth_stack_count)
-		print("Air: ",PlayerVariables.air_stack_count)
-
 
 func _on_element_timer_timeout() -> void:
 	end_rupture()

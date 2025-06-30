@@ -1,11 +1,6 @@
 class_name HealthComponent
 extends Node2D
 
-@export var has_parameter_slider: bool
-var true_max_health: float = 1000
-var true_max_poise: float = 1000
-var true_poise_recover_time: float
-@export var variable_name: String
 @export var max_health: float
 @export var max_poise: float
 @export var poise_recover_timer: float
@@ -26,20 +21,13 @@ var last_attack: String
 var orb_spawned: bool = false
 
 func _ready() -> void:
-	if not has_parameter_slider:
-		current_health = max_health
-		current_poise = max_poise
-	else:
-		true_max_health = Parameters.get(variable_name + "_max_health")
-		true_max_poise = Parameters.get(variable_name + "_max_poise")
-		true_poise_recover_time = Parameters.get(variable_name + "_poise_recover_time")
-		current_health = true_max_health
-		current_poise = true_max_poise
+	current_health = max_health
+	current_poise = max_poise
 	
 	if parent is Player:
-		true_max_health += SkillTree.bonus_life
-		current_health = true_max_health
-		print(true_max_health)
+		max_health += SkillTree.bonus_life
+		current_health = max_health
+		print(max_health)
 
 func _process(_delta):
 	die()
@@ -54,6 +42,7 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 			else:
 				current_health -= health_damage
 				current_poise -= poise_damage
+				print("dano")
 				
 				if current_poise <= 0:
 					parent.hit_state.knockup_force = knockup * parent.hit_state.knock_multi # Aplica a força do knockback
@@ -65,7 +54,7 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 					else:
 						parent.hsm.dispatch("apply_knockback")
 					
-					current_poise = max_poise if not has_parameter_slider else true_max_poise # Arrumar depois
+					current_poise = max_poise
 					#if attack_timer != null:
 						#attack_timer.stop()
 				

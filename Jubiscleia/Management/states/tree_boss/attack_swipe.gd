@@ -9,6 +9,9 @@ func _enter() -> void:
 	parent.velocity.x = 0
 	parent.animation.play("swipe_1" if parent.fase_1 else "swipe_2", -1, parent.speed, false)
 
+func _exit() -> void:
+	parent.target = null
+
 func _update(delta) -> void:
 	if move:
 		parent.velocity.x = move_speed * parent.direction * delta * parent.speed

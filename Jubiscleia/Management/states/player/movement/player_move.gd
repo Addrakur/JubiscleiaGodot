@@ -3,11 +3,10 @@ extends State
 
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
-var speed: float
+@export var speed: float
 
 func _ready():
 	set_physics_process(false)
-	speed = Parameters.player_run_speed
 
 func enter_state() -> void:
 	set_physics_process(true)

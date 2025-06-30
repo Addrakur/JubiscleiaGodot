@@ -191,27 +191,8 @@ offset_left = 80.0
 offset_top = 80.0
 offset_right = 220.0
 offset_bottom = 111.0
-text = "Tutorial"
-scene_name = "tutorial"
-
-[node name="tutorial_level_1" parent="buttons" instance=ExtResource("2_msjmb")]
-layout_mode = 0
-offset_left = 80.0
-offset_top = 120.0
-offset_right = 220.0
-offset_bottom = 151.0
-text = "Tutorial Level 1"
-scene_name = "tutorial_level_1"
-
-[node name="tutorial_boss" parent="buttons" instance=ExtResource("2_msjmb")]
-layout_mode = 0
-offset_left = 80.0
-offset_top = 160.0
-offset_right = 220.0
-offset_bottom = 191.0
-text = "Tutorial Boss
-"
-scene_name = "tutorial_boss"
+text = "Level Map"
+scene_name = "level_map"
 
 [node name="arena" parent="buttons" instance=ExtResource("2_msjmb")]
 layout_mode = 0
@@ -4770,9 +4751,11 @@ libraries = {
 
 [node name="skill_tree" parent="." instance=ExtResource("26_y8r8k")]
 visible = false
+z_index = 1
 layout_mode = 1
 
 [node name="skill_tree_button" type="Button" parent="."]
+z_index = 1
 layout_mode = 0
 offset_left = 540.0
 offset_top = 20.0

@@ -4,7 +4,7 @@ extends State
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
 @export var ground_raycast: RayCast2D
-var speed: float
+@export var speed: float
 
 var direction: float
 
@@ -15,7 +15,6 @@ var passed_enemy: bool = false
 
 func _ready():
 	set_physics_process(false)
-	speed = Parameters.player_dash_speed
 
 func enter_state() -> void:
 	if player.is_on_floor():

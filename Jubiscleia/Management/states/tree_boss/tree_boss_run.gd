@@ -8,6 +8,7 @@ extends LimboState
 func _enter() -> void:
 	animation.play("walk_1" if parent.fase_1 else "walk_2")
 	set_dir()
+	print(parent.target)
 
 func _update(delta) -> void:
 	if parent.fase_1:

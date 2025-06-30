@@ -2,7 +2,7 @@ extends LimboState
 
 @export var parent: FireReaper
 @export var animation: AnimationPlayer
-@onready var attack_timer: Timer = $"../../attack_timer"
+@export var attack_timer: Timer
 @onready var collision_polygon_2d: CollisionPolygon2D = $"../../AttackArea/CollisionPolygon2D"
 
 func _enter():

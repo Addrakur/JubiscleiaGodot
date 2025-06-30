@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c38p3p0grwy4a"]
+[gd_scene load_steps=3 format=3 uid="uid://c38p3p0grwy4a"]
 
 [ext_resource type="Script" uid="uid://jhbonorhko78" path="res://Management/pause_menu.gd" id="1_5l843"]
+[ext_resource type="PackedScene" uid="uid://cat0rb63ebmb7" path="res://Management/change_scene_button.tscn" id="2_y7175"]
 
 [node name="PauseMenu" type="CanvasLayer"]
 script = ExtResource("1_5l843")
@@ -23,15 +24,15 @@ anchor_bottom = 0.5
 offset_left = -128.0
 offset_top = -132.0
 offset_right = 128.0
-offset_bottom = 140.0
+offset_bottom = 124.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ColorRect" type="ColorRect" parent="PauseMenu/Panel"]
 layout_mode = 0
 offset_right = 256.0
-offset_bottom = 272.0
-color = Color(0, 0.0795, 0.53, 1)
+offset_bottom = 256.0
+color = Color(0.1364, 0.31372, 0.62, 1)
 
 [node name="Title" type="Label" parent="PauseMenu/Panel"]
 layout_mode = 2
@@ -41,31 +42,47 @@ text = "= Pause Menu ="
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Restart" type="Button" parent="PauseMenu/Panel"]
+layout_mode = 2
 offset_left = 16.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Resume" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
-layout_mode = 2
-text = "Continuar"
-
-[node name="Restart" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
-layout_mode = 2
+offset_top = 112.0
+offset_right = 240.0
+offset_bottom = 144.0
 text = "Restart"
 
-[node name="Menu" type="Button" parent="PauseMenu/Panel/VBoxContainer"]
+[node name="Resume" type="Button" parent="PauseMenu/Panel"]
 layout_mode = 2
-text = "Ir para o Menu"
+offset_left = 16.0
+offset_top = 64.0
+offset_right = 240.0
+offset_bottom = 96.0
+text = "Continuar"
 
-[connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Resume" to="." method="on_resume_pressed"]
-[connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Restart" to="." method="on_restart_pressed"]
-[connection signal="pressed" from="PauseMenu/Panel/VBoxContainer/Menu" to="." method="on_menu_pressed"]
+[node name="menu" parent="PauseMenu/Panel" instance=ExtResource("2_y7175")]
+layout_mode = 2
+anchor_left = 0.3
+anchor_top = 0.133
+anchor_right = 0.3
+anchor_bottom = 0.133
+offset_left = 16.0
+offset_top = 208.12
+offset_right = 240.0
+offset_bottom = 240.12
+text = "Menu"
+scene_name = "menu"
+
+[node name="menu2" parent="PauseMenu/Panel" instance=ExtResource("2_y7175")]
+layout_mode = 2
+anchor_left = 0.3
+anchor_top = 0.133
+anchor_right = 0.3
+anchor_bottom = 0.133
+offset_left = 16.0
+offset_top = 160.12
+offset_right = 240.0
+offset_bottom = 192.12
+text = "Level Map"
+scene_name = "level_map"
+
+[connection signal="pressed" from="PauseMenu/Panel/Restart" to="." method="on_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/Panel/Resume" to="." method="on_resume_pressed"]

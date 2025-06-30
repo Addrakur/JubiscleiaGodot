@@ -45,9 +45,10 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var state = $StateMachine/State as State
 @onready var interface = $Interface
 
-var jump_height: float
-var jump_time_to_peak: float
-var jump_time_to_descent: float
+@export_category("Jump Variables")
+@export var jump_height: float
+@export var jump_time_to_peak: float
+@export var jump_time_to_descent: float
 var max_jump_count: float = 2
 var jump_count: float = 0
 var jump_velocity: float
@@ -68,7 +69,6 @@ var last_direction: float = 1
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	set_parameters()
 	last_direction = 1
 	PlayerVariables.player = self
 	PlayerVariables.player_alive = true
@@ -205,13 +205,6 @@ func hit_modulate_animation_finished(_anim_name):
 func _on_poise_timer_timeout():
 	health_component.current_poise = health_component.max_poise
 
-func set_parameters():
-	coyote_time.wait_time = Parameters.player_coyote_time #player_coyote_time
-	jump_height = Parameters.player_first_jump_height #player_first_jump_height
-	jump_time_to_peak = Parameters.player_first_jump_time_to_peak #player_first_jump_time_to_peak
-	jump_time_to_descent = Parameters.player_first_jump_time_to_descend #player_first_jump_time_to_descend
-	dash_cooldown.wait_time = Parameters.player_dash_cd #player_dash_cd
-	combo_timer.wait_time = Parameters.player_combo_memory_time #player_combo_memory_time
 func combo_timer_start():
 	combo_timer.wait_time = Parameters.player_combo_memory_time
 	combo_timer.start()

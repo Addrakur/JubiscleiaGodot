@@ -3,19 +3,16 @@ extends State
 
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
-var speed: float
+@export var speed: float
 
-var jump_height: float
-var jump_time_to_peak: float
+@export var jump_height: float
+@export var jump_time_to_peak: float
 
 var jump_velocity: float
 var jump_gravity: float
 
 func _ready():
 	set_physics_process(false)
-	jump_height = Parameters.player_double_jump_height
-	jump_time_to_peak = Parameters.player_double_jump_time_to_peak
-	speed = Parameters.player_double_jump_move_speed
 	jump_velocity = ((2.0 * jump_height) / jump_time_to_peak) * -1
 	jump_gravity = ((-2.0 * jump_height) / pow(jump_time_to_peak,2)) * -1
 

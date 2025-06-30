@@ -4,8 +4,8 @@ extends State
 @export var player: CharacterBody2D
 @export var animation: AnimationPlayer
 @export var knockback_mult: float
-var knock_multi: float
-var hit_recover_limit: float
+@export var knock_multi: float
+@export var hit_recover_limit: float
 
 var knockup_force: float
 var knockback_force: float
@@ -15,8 +15,6 @@ var anim_finish: bool
 
 func _ready():
 	set_physics_process(false)
-	knock_multi = Parameters.player_knockback_mult
-	hit_recover_limit = Parameters.player_hit_recover_limit
 
 func enter_state() -> void:
 	set_physics_process(true)

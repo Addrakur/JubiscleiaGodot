@@ -20,7 +20,7 @@ func _on_player_collision_body_entered(body: Node2D) -> void:
 		PlayerVariables.can_attack = false
 		if not activated:
 			activated = true
-			PlayerVariables.player.health_component.current_health = PlayerVariables.player.health_component.true_max_health
+			PlayerVariables.player.health_component.current_health = PlayerVariables.player.health_component.max_health
 			play_animation("activating")
 			GameSettings.set(level.name + "_spawn_point", position)
 

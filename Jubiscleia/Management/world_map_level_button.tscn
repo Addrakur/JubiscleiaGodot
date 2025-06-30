@@ -1,0 +1,16 @@
+[gd_scene load_steps=5 format=3 uid="uid://b0jayg76d5air"]
+
+[ext_resource type="Texture2D" uid="uid://byii2lygycb52" path="res://assets/placeholder/world_map/level_button.png" id="1_cmvc7"]
+[ext_resource type="Texture2D" uid="uid://d3xfsmjf4pcj0" path="res://assets/placeholder/world_map/level_button_focus.png" id="2_nyq48"]
+[ext_resource type="Texture2D" uid="uid://bstng4idp4524" path="res://assets/placeholder/world_map/level_button_disabled.png" id="3_3tst4"]
+[ext_resource type="Script" uid="uid://fbhkbev6em4f" path="res://Management/world_map_level_button.gd" id="4_nyq48"]
+
+[node name="world_map_level_button" type="TextureButton"]
+offset_right = 32.0
+offset_bottom = 32.0
+texture_normal = ExtResource("1_cmvc7")
+texture_hover = ExtResource("2_nyq48")
+texture_disabled = ExtResource("3_3tst4")
+script = ExtResource("4_nyq48")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

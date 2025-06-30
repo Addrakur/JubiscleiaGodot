@@ -23,6 +23,10 @@ func set_target():
 		parent.target = parent.arena_right
 	print(parent.target)
 
+func _exit() -> void:
+	if parent.can_attack_ranged:
+		parent.target = null
+
 func _on_animation_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "rock_throw" or anim_name == "fire_throw":
 		dispatch("throw_to_idle")

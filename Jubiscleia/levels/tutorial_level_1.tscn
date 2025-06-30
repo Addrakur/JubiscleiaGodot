@@ -176,7 +176,7 @@ tile_set = ExtResource("11_ow0og")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(426.667, -32)
+position = Vector2(17589.3, -2272)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = 0
@@ -191,6 +191,7 @@ script = ExtResource("2_7kgwx")
 
 [node name="LevelEnd" parent="." instance=ExtResource("27_ew3n5")]
 position = Vector2(17792, -2235)
+level = "tutorial_level_1"
 
 [node name="enemies" type="Node2D" parent="."]
 
@@ -227,6 +228,14 @@ position = Vector2(12704, -2720)
 scale = Vector2(-1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/EnemyWall4"]
+position = Vector2(4, 5)
+shape = SubResource("RectangleShape2D_a775i")
+
+[node name="EnemyWall6" parent="enemies" instance=ExtResource("9_ecve8")]
+position = Vector2(6208, 160)
+scale = Vector2(-1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemies/EnemyWall6"]
 position = Vector2(4, 5)
 shape = SubResource("RectangleShape2D_a775i")
 
@@ -651,7 +660,7 @@ color = Color(1, 1, 1, 0.188235)
 polygon = PackedVector2Array(10144, -1568, 10144, -1120, 10976, -1120, 10976, -1568)
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("6_4wbcj")]
-position = Vector2(320, 9.53674e-07)
+position = Vector2(17632, -2240)
 camera = NodePath("../Camera2D")
 
 [node name="lava" type="Node2D" parent="."]
@@ -797,7 +806,7 @@ tile_set = ExtResource("4_e1sg6")
 
 [node name="free_camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(426.667, -32)
+position = Vector2(17589.3, -2272)
 script = ExtResource("9_co3pi")
 follow_mode = 2
 follow_target = NodePath("../player")
