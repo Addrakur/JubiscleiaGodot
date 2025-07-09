@@ -19,3 +19,8 @@ func _ready():
 
 func spawn_point():
 	player.position = GameSettings.get(name + "_spawn_point")
+
+func _input(event):
+	if event.is_action_pressed("pause"):
+		var current_value: bool = get_tree().paused
+		get_tree().paused = !current_value

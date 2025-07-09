@@ -2887,7 +2887,7 @@ _data = {
 scale = Vector2(1.0639, 0.99811)
 collision_layer = 32769
 collision_mask = 82148
-floor_constant_speed = true
+floor_stop_on_slope = false
 floor_max_angle = 1.22173
 floor_snap_length = 5.0
 safe_margin = 0.001
@@ -3161,7 +3161,7 @@ value = 25.0
 parent = NodePath("..")
 
 [node name="right_outer_ray" type="RayCast2D" parent="."]
-position = Vector2(5.63963, -28.053)
+position = Vector2(4.69969, -28.053)
 target_position = Vector2(0, -6.01136)
 collision_mask = 38
 
@@ -3171,7 +3171,7 @@ target_position = Vector2(1.19209e-07, -6.01136)
 collision_mask = 38
 
 [node name="left_outer_ray" type="RayCast2D" parent="."]
-position = Vector2(-5.63963, -28.053)
+position = Vector2(-4.69969, -28.053)
 target_position = Vector2(0, -6.01136)
 collision_mask = 38
 

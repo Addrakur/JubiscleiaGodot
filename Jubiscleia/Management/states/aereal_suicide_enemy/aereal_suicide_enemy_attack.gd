@@ -12,9 +12,9 @@ func _enter():
 	animation.play("prepare")
 	parent.velocity.x = 0
 
-func _update(_delta: float) -> void:
+func _update(delta: float) -> void:
 	if start_descent and parent.velocity.y < descent_speed_limit:
-		parent.velocity.y = parent.velocity.y + parent.velocity.y * 0.05
+		parent.velocity.y = parent.velocity.y + parent.velocity.y * delta * 10
 
 func _on_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "prepare":

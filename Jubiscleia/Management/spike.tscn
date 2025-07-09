@@ -4,16 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_5hn2l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0hdm"]
-size = Vector2(32, 15)
+size = Vector2(32, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8ae0"]
-size = Vector2(30, 14)
+size = Vector2(30, 6)
 
 [node name="Spike" type="StaticBody2D" groups=["terrain"]]
-collision_layer = 4
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_30gas")
+collision_layer = 32
 
 [node name="AttackArea" parent="." instance=ExtResource("2_5hn2l")]
 collision_mask = 1
@@ -25,9 +22,13 @@ attack_name = "spike"
 single_hit_per_enemy = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(16, -7.5)
+position = Vector2(16, -3.5)
 shape = SubResource("RectangleShape2D_d0hdm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16, -7)
+position = Vector2(16, -3)
 shape = SubResource("RectangleShape2D_a8ae0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(16, -8)
+texture = ExtResource("1_30gas")

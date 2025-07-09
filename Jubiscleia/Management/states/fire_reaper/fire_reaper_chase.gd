@@ -13,8 +13,9 @@ func _enter() -> void:
 func _update(delta) -> void:
 	if parent.can_attack_player or parent.player_ref == null or not parent.player_on_limit:
 		dispatch("chase_to_idle")
-	set_direction()
-	parent.velocity.x = speed * delta * parent.direction * parent.speed
+	else:
+		set_direction()
+		parent.velocity.x = speed * delta * parent.direction * parent.speed
 
 func _exit() -> void:
 	parent.velocity.x = 0

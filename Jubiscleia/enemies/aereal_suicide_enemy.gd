@@ -34,9 +34,8 @@ func init_state_machine():
 	hsm.initialize(self)
 	hsm.set_active(true)
 
-func _on_trigger_area_body_entered(body: Node2D) -> void:
-	if body == GameSettings.player or body.is_in_group("terrain"):
-		can_destroy = true
+func _on_trigger_area_body_entered(_body: Node2D) -> void:
+	can_destroy = true
 
 func _on_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "explode":
