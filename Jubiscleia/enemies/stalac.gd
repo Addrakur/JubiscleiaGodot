@@ -5,13 +5,14 @@ extends CharacterBody2D
 @export var attack_area: AttackArea
 @export_enum("water","fire","earth","air") var element: String
 
-#@onready var limit: EnemyLimit = get_parent()
+@onready var limit: EnemyLimit = get_parent()
 @onready var texture: Sprite2D = $texture
 @onready var collision: CollisionShape2D = $collision
 
 @onready var hsm: LimboHSM = $hsm
 @onready var idle_state: LimboState = $hsm/stalac_idle
 @onready var walk_state: LimboState = $hsm/stalac_walk
+@onready var chase_state: LimboState = $hsm/stalac_chase
 @onready var inactive_state: LimboState = $hsm/stalac_inactive
 @onready var fall_attack_state: LimboState = $hsm/stalac_fall_attack
 @onready var attack_state: LimboState = $hsm/stalac_dash_attack
@@ -36,12 +37,12 @@ func _process(delta: float) -> void:
 	if not alive:
 		hsm.dispatch("die")
 	
-	#if alive and not health_component.is_getting_hit:
-		#if hsm.get_active_state() == walk_state:
-			#if velocity.x < 0:
-				#left()
-			#elif velocity.x > 0:
-				#right()
+	if alive:# and not health_component.is_getting_hit:
+		if hsm.get_active_state() == walk_state:
+			if velocity.x < 0:
+				left()
+			elif velocity.x > 0:
+				right()
 	
 	if not PlayerVariables.player_alive:
 		player_ref = null
@@ -56,6 +57,12 @@ func init_state_machine():
 	hsm.add_transition(inactive_state, fall_attack_state, &"inactive_to_fall_attack")
 	
 	hsm.add_transition(idle_state, attack_state, &"idle_to_attack")
+	hsm.add_transition(idle_state, walk_state, &"idle_to_walk")
+	hsm.add_transition(idle_state, chase_state, &"idle_to_chase")
+	
+	hsm.add_transition(walk_state, idle_state, &"walk_to_idle")
+	
+	hsm.add_transition(chase_state, idle_state, &"chase_to_idle")
 	
 	hsm.add_transition(fall_attack_state, idle_state, &"fall_attack_to_idle")
 	
