@@ -9,6 +9,7 @@ var target: float
 
 func _enter() -> void:
 	animation.play("walk",-1,anim_speed_mult,false)
+	print("chase_enter")
 
 func _update(delta) -> void:
 	if parent.can_attack_player or parent.player_ref == null or not parent.player_on_limit:
@@ -19,6 +20,7 @@ func _update(delta) -> void:
 
 func _exit() -> void:
 	parent.velocity.x = 0
+	print("chase_exit")
 
 func set_direction():
 	if parent.player_ref.position.x > parent.position.x:

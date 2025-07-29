@@ -44,8 +44,18 @@ func _process(delta: float) -> void:
 			elif velocity.x > 0:
 				right()
 	
+	if not player_on_limit:
+		can_attack_player = false
+	
 	if not PlayerVariables.player_alive:
 		player_ref = null
+	
+	if player_on_limit and player_on_chase_area:
+		can_chase = true
+		#can_chase_collision_open.set_deferred("disabled",false)
+	else:
+		can_chase = false
+		#can_chase_collision_open.set_deferred("disabled",true)
 
 func _physics_process(delta):
 	if not is_on_floor() and hsm.get_active_state() != inactive_state:
@@ -63,6 +73,8 @@ func init_state_machine():
 	hsm.add_transition(walk_state, idle_state, &"walk_to_idle")
 	
 	hsm.add_transition(chase_state, idle_state, &"chase_to_idle")
+	
+	hsm.add_transition(attack_state, idle_state, &"attack_to_idle")
 	
 	hsm.add_transition(fall_attack_state, idle_state, &"fall_attack_to_idle")
 	
