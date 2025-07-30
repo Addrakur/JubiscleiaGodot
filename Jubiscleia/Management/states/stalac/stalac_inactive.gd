@@ -23,8 +23,7 @@ func _on_animation_finished(anim_name: StringName) -> void:
 		if parent.is_on_floor():
 			dispatch("inactive_to_idle")
 		else:
-			#dispatch("inactive_to_fall_attack")
-			print("dispatch to fall attack")
+			dispatch("inactive_to_fall_attack")
 
 func _on_activate_area_body_entered(body: Node2D) -> void:
 	if parent.rotation == 0 and parent.hsm.get_active_state() == parent.inactive_state:
