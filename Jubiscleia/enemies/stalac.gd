@@ -58,7 +58,7 @@ func _process(delta: float) -> void:
 		#can_chase_collision_open.set_deferred("disabled",true)
 
 func _physics_process(delta):
-	if not is_on_floor() and hsm.get_active_state() != inactive_state:
+	if not is_on_floor() and hsm.get_active_state() != inactive_state and hsm.get_active_state() != fall_attack_state:
 		velocity.y = GameSettings.default_gravity * delta * 10
 	move_and_slide()
 
