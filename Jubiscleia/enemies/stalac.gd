@@ -8,6 +8,7 @@ extends CharacterBody2D
 @onready var limit: EnemyLimit = get_parent()
 @onready var texture: Sprite2D = $texture
 @onready var collision: CollisionShape2D = $collision
+@onready var hit_modulate: AnimationPlayer = $hit_modulate
 
 @onready var hsm: LimboHSM = $hsm
 @onready var idle_state: LimboState = $hsm/stalac_idle
@@ -16,6 +17,8 @@ extends CharacterBody2D
 @onready var inactive_state: LimboState = $hsm/stalac_inactive
 @onready var fall_attack_state: LimboState = $hsm/stalac_fall_attack
 @onready var attack_state: LimboState = $hsm/stalac_dash_attack
+@onready var hit_state: LimboState = $hsm/stalac_hit
+@onready var death_state: LimboState = $hsm/stalac_death
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player: bool = false
@@ -37,7 +40,7 @@ func _process(delta: float) -> void:
 	if not alive:
 		hsm.dispatch("die")
 	
-	if alive:# and not health_component.is_getting_hit:
+	if alive and not health_component.is_getting_hit:
 		if hsm.get_active_state() == walk_state:
 			if velocity.x < 0:
 				left()
@@ -77,6 +80,11 @@ func init_state_machine():
 	hsm.add_transition(attack_state, idle_state, &"attack_to_idle")
 	
 	hsm.add_transition(fall_attack_state, idle_state, &"fall_attack_to_idle")
+	
+	hsm.add_transition(hsm.ANYSTATE, hit_state, &"apply_knockback")
+	hsm.add_transition(hit_state, idle_state, &"hit_to_idle")
+	
+	hsm.add_transition(hsm.ANYSTATE, death_state, &"die")
 	
 	hsm.initial_state = inactive_state
 	hsm.initialize(self)

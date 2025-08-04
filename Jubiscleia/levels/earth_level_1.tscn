@@ -435,6 +435,13 @@ position = Vector2(6848, -704)
 position = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_trfcx")
 
+[node name="EnemyWall15" parent="Node/Enemies/Walls" instance=ExtResource("10_1e8g7")]
+position = Vector2(8352, -544)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Enemies/Walls/EnemyWall15"]
+position = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_trfcx")
+
 [node name="EnemyWall10" parent="Node/Enemies/Walls" instance=ExtResource("10_1e8g7")]
 position = Vector2(3840, -192)
 scale = Vector2(-1, 1)
@@ -456,6 +463,14 @@ position = Vector2(7104, -704)
 scale = Vector2(-1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Enemies/Walls/EnemyWall13"]
+position = Vector2(5, 5)
+shape = SubResource("RectangleShape2D_trfcx")
+
+[node name="EnemyWall16" parent="Node/Enemies/Walls" instance=ExtResource("10_1e8g7")]
+position = Vector2(8640, -544)
+scale = Vector2(-1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node/Enemies/Walls/EnemyWall16"]
 position = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_trfcx")
 

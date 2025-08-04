@@ -4,6 +4,7 @@ extends LimboState
 @export var animation: AnimationPlayer
 @export var knock_multi: float
 @export var hit_recover_limit: float
+@export var collision_damage: CollisionShape2D
 
 var knockup_force: float
 var knockback_force: float
@@ -12,21 +13,22 @@ var direction: float
 var anim_finish: bool
 
 func _enter() -> void:
-	parent.collision_damage.set_deferred("disabled", true)
+	collision_damage.set_deferred("disabled", true)
 	parent.health_component.is_getting_hit = true
 	animation.play("hit")
 	parent.velocity.x = 0
 	knockback()
+	print("hit enter")
 
 func _exit() -> void:
 	parent.health_component.is_getting_hit = false
 	anim_finish = false
 	parent.health_component.last_attack = ""
-	parent.collision_damage.set_deferred("disabled", false)
+	collision_damage.set_deferred("disabled", false)
+	print("hit exit")
 
 func _update(delta):
-	if not parent.velocity == Vector2(0,0):
-		parent.velocity.x = parent.velocity.x - parent.velocity.x * delta * 2.5
+	parent.velocity.x = parent.velocity.x - parent.velocity.x * delta * 2.5
 	
 	if direction == 1 and parent.velocity.x <= hit_recover_limit or direction == -1 and parent.velocity.x >=-hit_recover_limit:
 		if parent.is_on_floor() and anim_finish:
@@ -38,3 +40,4 @@ func knockback():
 func _on_animation_animation_finished(anim: StringName) -> void:
 	if anim == "hit":
 		anim_finish = true
+		print("anim_finish: " + str(anim_finish))
