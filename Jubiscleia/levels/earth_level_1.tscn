@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://lqfqrp52dju2"]
+[gd_scene load_steps=44 format=4 uid="uid://lqfqrp52dju2"]
 
 [ext_resource type="Script" uid="uid://cr0m6uuoltxgb" path="res://levels/level.gd" id="1_a2qih"]
 [ext_resource type="Script" uid="uid://7l0dptvgprr3" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_6bx8y"]
@@ -38,7 +38,6 @@
 [ext_resource type="Script" uid="uid://b0yfdy7e0kx0p" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="27_5gbid"]
 [ext_resource type="PackedScene" uid="uid://cfqxniy5thpiw" path="res://Management/arena_manager.tscn" id="27_a2qih"]
 [ext_resource type="PackedScene" uid="uid://dqcjed481d1q3" path="res://Management/enemy_kill_wall_manager.tscn" id="28_6bx8y"]
-[ext_resource type="PackedScene" uid="uid://bv1vep1wp1e0f" path="res://enemies/stalac.tscn" id="30_3kax0"]
 [ext_resource type="PackedScene" uid="uid://bgtm18yxrdsdx" path="res://Management/camera_area.tscn" id="40_2nvjr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trfcx"]
@@ -582,21 +581,6 @@ position = Vector2(6784, -924)
 visible = false
 color = Color(1, 1, 1, 0.219608)
 polygon = PackedVector2Array(6523, -1019, 6523, -924, 6993, -924, 6993, -1019)
-
-[node name="Limit9" parent="Node/Enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("12_8yd3s")]
-limit_polygon = NodePath("limit9")
-
-[node name="limit9" type="Polygon2D" parent="Node/Enemies/Limit9"]
-visible = false
-color = Color(1, 1, 1, 0.305882)
-polygon = PackedVector2Array(8000, -416, 8000, -320, 8800, -320, 8800, -416)
-
-[node name="stalac" parent="Node/Enemies/Limit9" instance=ExtResource("30_3kax0")]
-position = Vector2(8448, -315)
-
-[node name="stalac2" parent="Node/Enemies/Limit9" instance=ExtResource("30_3kax0")]
-position = Vector2(8544, -485)
-rotation = 3.14159
 
 [node name="arena_manager" parent="Node" node_paths=PackedStringArray("waves", "wall_manager", "close_polygon", "interval_label") instance=ExtResource("27_a2qih")]
 waves = [NodePath("1"), NodePath("2")]

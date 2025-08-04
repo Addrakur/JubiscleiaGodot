@@ -473,7 +473,6 @@ libraries = {
 
 [node name="AttackArea" parent="." instance=ExtResource("4_6h2qd")]
 collision_mask = 65574
-target = "enemy"
 targets = Array[String](["enemy", "obstacle"])
 one_hit_destroy = true
 destroy_on_terrain = true

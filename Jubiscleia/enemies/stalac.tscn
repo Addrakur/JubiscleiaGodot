@@ -583,7 +583,7 @@ dash_speed = 50000.0
 [node name="stalac_fall_attack" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "attack_timer", "turn_timer")]
 script = ExtResource("8_hhg45")
 parent = NodePath("../..")
-fall_speed = 20000.0
+fall_speed = 50000.0
 attack_timer = NodePath("../../attack_timer")
 turn_timer = NodePath("../../turn_timer")
 

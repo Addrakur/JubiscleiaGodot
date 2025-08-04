@@ -25,6 +25,6 @@ func _on_animation_finished(anim_name: StringName) -> void:
 		else:
 			dispatch("inactive_to_fall_attack")
 
-func _on_activate_area_body_entered(body: Node2D) -> void:
+func _on_activate_area_body_entered(_body: Node2D) -> void:
 	if parent.rotation == 0 and parent.hsm.get_active_state() == parent.inactive_state:
 		animation.play("idle_out")

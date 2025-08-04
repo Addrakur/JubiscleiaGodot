@@ -9,6 +9,8 @@ func _enter():
 	pass
 
 func _exit():
+	parent.position.y += 40
+	parent.rotation_degrees = 0
 	attack_timer.start()
 
 func _update(delta) -> void:
@@ -18,6 +20,4 @@ func _update(delta) -> void:
 			turn_timer.start()
 
 func _on_turn_timer_timeout() -> void:
-	parent.position.y += 40
-	parent.rotation_degrees = 0
 	dispatch("fall_attack_to_idle")

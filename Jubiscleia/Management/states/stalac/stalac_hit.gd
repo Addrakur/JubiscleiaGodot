@@ -18,14 +18,12 @@ func _enter() -> void:
 	animation.play("hit")
 	parent.velocity.x = 0
 	knockback()
-	print("hit enter")
 
 func _exit() -> void:
 	parent.health_component.is_getting_hit = false
 	anim_finish = false
 	parent.health_component.last_attack = ""
 	collision_damage.set_deferred("disabled", false)
-	print("hit exit")
 
 func _update(delta):
 	parent.velocity.x = parent.velocity.x - parent.velocity.x * delta * 2.5
@@ -40,4 +38,3 @@ func knockback():
 func _on_animation_animation_finished(anim: StringName) -> void:
 	if anim == "hit":
 		anim_finish = true
-		print("anim_finish: " + str(anim_finish))

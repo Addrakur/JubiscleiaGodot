@@ -36,7 +36,7 @@ var direction: float
 func _ready() -> void:
 	init_state_machine()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if not alive:
 		hsm.dispatch("die")
 	
@@ -55,10 +55,8 @@ func _process(delta: float) -> void:
 	
 	if player_on_limit and player_on_chase_area:
 		can_chase = true
-		#can_chase_collision_open.set_deferred("disabled",false)
 	else:
 		can_chase = false
-		#can_chase_collision_open.set_deferred("disabled",true)
 
 func _physics_process(delta):
 	if not is_on_floor() and hsm.get_active_state() != inactive_state and hsm.get_active_state() != fall_attack_state:
