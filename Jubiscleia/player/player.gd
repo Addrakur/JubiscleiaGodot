@@ -66,7 +66,7 @@ var direction: float
 var last_direction: float = 1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity: float
 
 func _ready():
 	last_direction = 1

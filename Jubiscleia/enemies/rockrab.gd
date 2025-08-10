@@ -78,9 +78,9 @@ func right():
 	can_chase_collision.scale.x = -1
 
 func _physics_process(delta):
-	move_and_slide()
 	if not is_on_floor():
 		velocity.y = GameSettings.default_gravity * delta
+	move_and_slide()
 	
 
 func init_state_machine():

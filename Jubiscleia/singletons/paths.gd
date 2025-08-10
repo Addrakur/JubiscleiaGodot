@@ -24,6 +24,7 @@ var aereal_suicide_enemy = preload("res://enemies/aereal_suicide_enemy.tscn")
 var sniper_enemy = preload("res://enemies/sniper_enemy.tscn")
 var rockrab = preload("res://enemies/rockrab.tscn")
 var fire_reaper = preload("res://enemies/fire_reaper.tscn")
+var stalac = preload("res://enemies/stalac.tscn")
 
 #Objects
 var projectile = preload("res://player/player_attack_projectile.tscn")

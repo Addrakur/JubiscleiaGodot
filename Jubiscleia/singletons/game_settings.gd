@@ -2,7 +2,7 @@ extends Node
 
 @onready var player: Player
 
-var default_gravity: float
+var default_gravity: float = 10000
 
 func _ready():
 	Engine.max_fps = 60

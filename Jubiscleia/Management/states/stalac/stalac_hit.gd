@@ -15,8 +15,12 @@ var anim_finish: bool
 func _enter() -> void:
 	collision_damage.set_deferred("disabled", true)
 	parent.health_component.is_getting_hit = true
-	animation.play("hit")
 	parent.velocity.x = 0
+	if parent.rotation != 0:
+		parent.position.y += 40
+	parent.rotation = 0
+	parent.texture.rotation = 0
+	animation.play("hit")
 	knockback()
 
 func _exit() -> void:

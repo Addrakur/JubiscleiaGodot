@@ -191,11 +191,11 @@ libraries = {
 }
 autoplay = "idle"
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -85)
+shape = SubResource("CapsuleShape2D_jwxbh")
+
 [node name="texture" type="Sprite2D" parent="."]
 position = Vector2(-7, -80)
 texture = ExtResource("1_awf1e")
 hframes = 23
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -85)
-shape = SubResource("CapsuleShape2D_jwxbh")
