@@ -169,7 +169,7 @@ texture = ExtResource("9_0pffd")
 
 [node name="Camera2D" type="Camera2D" parent="Node"]
 physics_interpolation_mode = 1
-position = Vector2(8288, -352)
+position = Vector2(426.667, 144)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = 0
@@ -869,7 +869,7 @@ level = NodePath("../..")
 
 [node name="player" parent="Node" node_paths=PackedStringArray("camera") instance=ExtResource("17_ud6dx")]
 process_mode = 1
-position = Vector2(8288, -320)
+position = Vector2(160, 224)
 camera = NodePath("../Camera2D")
 
 [node name="Lava" type="Node2D" parent="Node"]
@@ -923,7 +923,7 @@ tile_set = ExtResource("25_xw7rh")
 
 [node name="PC1" type="Node2D" parent="Node" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(8288, -352)
+position = Vector2(426.667, 144)
 script = ExtResource("26_djypo")
 priority = 10
 follow_mode = 2

@@ -53,7 +53,7 @@ ease = 2
 
 [node name="level_3" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_v0pp0")
-player = NodePath("Node/Enemies/Player")
+player = NodePath("Node/Player")
 
 [node name="Node" type="Node" parent="."]
 
@@ -272,10 +272,6 @@ position = Vector2(320, -1019)
 [node name="stalac2" parent="Node/Enemies/Limit3" instance=ExtResource("7_67vg4")]
 position = Vector2(256, -1125)
 rotation = 3.14159
-
-[node name="Player" parent="Node/Enemies" node_paths=PackedStringArray("camera") instance=ExtResource("3_u8sxp")]
-position = Vector2(-160, 16)
-camera = NodePath("../../Camera2D")
 
 [node name="Spikes" type="Node2D" parent="Node"]
 
@@ -1152,6 +1148,10 @@ level = NodePath("../../..")
 position = Vector2(2103, -2587)
 level = NodePath("../../..")
 
+[node name="Player" parent="Node" node_paths=PackedStringArray("camera") instance=ExtResource("3_u8sxp")]
+position = Vector2(-160, 16)
+camera = NodePath("../Camera2D")
+
 [node name="Turret" parent="Node" instance=ExtResource("16_03nfs")]
 position = Vector2(2117, -683)
 direction = 1.0
@@ -1422,7 +1422,7 @@ top_level = true
 position = Vector2(138.667, -112)
 script = ExtResource("9_qomd1")
 follow_mode = 2
-follow_target = NodePath("../Enemies/Player")
+follow_target = NodePath("../Player")
 zoom = Vector2(0.75, 0.75)
 tween_resource = SubResource("Resource_pm3wg")
 follow_offset = Vector2(0, -32)
