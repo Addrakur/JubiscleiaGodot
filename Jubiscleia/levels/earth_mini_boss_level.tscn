@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpdd5x6dnop7"]
+
+[ext_resource type="Script" uid="uid://cr0m6uuoltxgb" path="res://levels/level.gd" id="1_s5du1"]
+
+[node name="earth_mini_boss_level" type="Node2D"]
+script = ExtResource("1_s5du1")
+metadata/_custom_type_script = "uid://cr0m6uuoltxgb"

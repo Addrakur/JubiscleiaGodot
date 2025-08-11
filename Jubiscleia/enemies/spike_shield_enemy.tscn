@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://daabvpmmaefaf"]
+[gd_scene load_steps=35 format=3 uid="uid://daabvpmmaefaf"]
 
 [ext_resource type="Texture2D" uid="uid://cfk40b7vx8e7h" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_walk.png" id="1_j8oj4"]
 [ext_resource type="Script" uid="uid://k4dj66yl2ck7" path="res://enemies/spike_shield_enemy.gd" id="1_jys8c"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://b2rycjbkqr8ec" path="res://Management/states/spike_shield/spike_shield_idle.gd" id="7_h2e6f"]
 [ext_resource type="Texture2D" uid="uid://t0rbfgr0bg02" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_hit.png" id="7_v4sg3"]
 [ext_resource type="Texture2D" uid="uid://cn3y5ip3xufci" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_death.png" id="8_4sxjj"]
+[ext_resource type="Texture2D" uid="uid://dcfnaiqjyq0uo" path="res://assets/enemy/Spike_Shield_Enemy/walk_novo.png" id="9_lr0xd"]
 [ext_resource type="Texture2D" uid="uid://b34413yxf1760" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_turn.png" id="10_wy2kl"]
 [ext_resource type="Texture2D" uid="uid://d4dcheggmc7xu" path="res://assets/enemy/Spike_Shield_Enemy/spike_shield_turn_attack.png" id="11_qkqfi"]
 [ext_resource type="Script" uid="uid://cmwq77s8ybres" path="res://Management/states/spike_shield/spike_shield_hit.gd" id="13_hpytp"]
@@ -480,7 +481,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_j8oj4")]
+"values": [ExtResource("9_lr0xd")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -492,7 +493,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [18]
+"values": [29]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -501,30 +502,18 @@ tracks/2/path = NodePath("texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.333333, 0.5, 0.666667, 0.75, 0.833333, 0.916667, 1, 1.08333, 1.16667, 1.33333, 1.5, 1.66667, 1.75, 1.83333, 1.91667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
 "update": 1,
-"values": [2, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+"values": []
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AttackArea/shield_collision:polygon")
+tracks/3/path = NodePath("HSM/SpikeShieldEnemyWalk")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [PackedVector2Array(-62, -59, -62, 0, -39, 0, -39, -59)]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HSM/SpikeShieldEnemyWalk")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.666667, 1, 1.6525, 2),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "values": [{
@@ -544,13 +533,13 @@ tracks/4/keys = {
 "method": &"move_false"
 }]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("HSM/SpikeShieldEnemyWalk")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HSM/SpikeShieldEnemyWalk")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -673,7 +662,7 @@ poise_damage = 30.0
 attack_name = "spike_shield"
 
 [node name="shield_collision" type="CollisionPolygon2D" parent="AttackArea"]
-polygon = PackedVector2Array(-52, -59, -52, 0, -29, 0, -29, -59)
+polygon = PackedVector2Array(-62, -59, -62, 0, -39, 0, -39, -59)
 
 [node name="detect_area" type="Area2D" parent="."]
 collision_layer = 0

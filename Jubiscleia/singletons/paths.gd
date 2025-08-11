@@ -8,7 +8,7 @@ var tutorial_boss: String = "res://levels/tutorial_boss_level.tscn"
 var level_map: String = "res://levels/level_map.tscn"
 var earth_level_1: String = "res://levels/earth_level_1.tscn"
 var earth_level_2: String = "res://levels/earth_level_2.tscn"
-var level3: String = "res://levels/level_3.tscn"
+var earth_level_3: String = "res://levels/earth_level_3.tscn"
 var arena: String = "res://levels/arena.tscn"
 
 #Enemies
