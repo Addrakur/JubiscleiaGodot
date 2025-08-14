@@ -25,12 +25,12 @@ var direction: float = -1
 
 
 @onready var hsm: LimboHSM = $HSM
-@onready var idle_state: SpikeShieldEnemyIdle = $HSM/SpikeShieldEnemyIdle
-@onready var walk_state: SpikeShieldEnemyWalk = $HSM/SpikeShieldEnemyWalk
-@onready var turn_state: SpikeShieldEnemyTurn = $HSM/SpikeShieldEnemyTurn
-@onready var attack_state: SpikeShieldEnemyAttack = $HSM/SpikeShieldEnemyAttack
-@onready var hit_state: SpikeShieldEnemyHit = $HSM/SpikeShieldEnemyHit
-@onready var death_state: SpikeShieldEnemyDeath = $HSM/SpikeShieldEnemyDeath
+@onready var idle_state: SpikeShieldEnemyIdle = $HSM/idle
+@onready var walk_state: SpikeShieldEnemyWalk = $HSM/walk
+@onready var turn_state: SpikeShieldEnemyTurn = $HSM/turn
+@onready var attack_state: SpikeShieldEnemyAttack = $HSM/attack
+@onready var hit_state: SpikeShieldEnemyHit = $HSM/hit
+@onready var death_state: SpikeShieldEnemyDeath = $HSM/death
 
 
 @onready var player_ref: CharacterBody2D
@@ -53,7 +53,10 @@ func _ready() -> void:
 	init_state_machine()
 
 func _process(_delta):
-	if not health_component.is_getting_hit and alive:
+	if not alive:
+		hsm.dispatch("die")
+	
+	if not health_component.is_getting_hit and hsm.get_active_state() == walk_state and alive:
 		if velocity.x < 0:
 			left()
 		elif velocity.x > 0:
@@ -62,15 +65,10 @@ func _process(_delta):
 	if not PlayerVariables.player_alive:
 		player_ref = null
 	
-	#if not alive:
-	#	fsm.change_state(death_state)
 
 func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y = GameSettings.default_gravity * delta * gravity_mult
-	
-	if not alive:
-		hsm.dispatch("die")
 	
 	move_and_slide()
 

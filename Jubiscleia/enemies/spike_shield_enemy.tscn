@@ -339,7 +339,7 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HSM/SpikeShieldEnemyTurn")
+tracks/3/path = NodePath("HSM/turn")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -406,7 +406,7 @@ tracks/2/keys = {
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("HSM/SpikeShieldEnemyTurn")
+tracks/3/path = NodePath("HSM/turn")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -624,14 +624,14 @@ one_shot = true
 
 [node name="HSM" type="LimboHSM" parent="."]
 
-[node name="SpikeShieldEnemyIdle" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "idle_timer", "attack_timer", "animation")]
+[node name="idle" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "idle_timer", "attack_timer", "animation")]
 script = ExtResource("7_h2e6f")
 parent = NodePath("../..")
 idle_timer = NodePath("../../idle_timer")
 attack_timer = NodePath("../../attack_timer")
 animation = NodePath("../../animation")
 
-[node name="SpikeShieldEnemyWalk" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation", "attack_timer")]
+[node name="walk" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation", "attack_timer")]
 script = ExtResource("4_begci")
 parent = NodePath("../..")
 animation = NodePath("../../animation")
@@ -639,26 +639,26 @@ speed = 55.0
 wander_limit = 160.0
 attack_timer = NodePath("../../attack_timer")
 
-[node name="SpikeShieldEnemyTurn" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation", "attack_timer")]
+[node name="turn" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation", "attack_timer")]
 script = ExtResource("6_v2cu5")
 parent = NodePath("../..")
 animation = NodePath("../../animation")
 attack_timer = NodePath("../../attack_timer")
 
-[node name="SpikeShieldEnemyAttack" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation", "attack_timer")]
+[node name="attack" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation", "attack_timer")]
 script = ExtResource("5_8ncuv")
 parent = NodePath("../..")
 animation = NodePath("../../animation")
 attack_timer = NodePath("../../attack_timer")
 
-[node name="SpikeShieldEnemyHit" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation")]
+[node name="hit" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation")]
 script = ExtResource("13_hpytp")
 parent = NodePath("../..")
 animation = NodePath("../../animation")
 knock_multi = 0.2
 hit_recover_limit = 30.0
 
-[node name="SpikeShieldEnemyDeath" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation")]
+[node name="death" type="LimboState" parent="HSM" node_paths=PackedStringArray("parent", "animation")]
 script = ExtResource("15_w4p7o")
 parent = NodePath("../..")
 animation = NodePath("../../animation")
@@ -688,10 +688,10 @@ position = Vector2(0, -51)
 target_position = Vector2(-62, 0)
 collision_mask = 65580
 
-[connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyTurn" method="_on_animation_finished"]
-[connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyAttack" method="_on_animation_finished"]
-[connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyHit" method="_on_animation_finished"]
-[connection signal="animation_finished" from="animation" to="HSM/SpikeShieldEnemyDeath" method="_on_animation_finished"]
+[connection signal="animation_finished" from="animation" to="HSM/turn" method="_on_animation_finished"]
+[connection signal="animation_finished" from="animation" to="HSM/attack" method="_on_animation_finished"]
+[connection signal="animation_finished" from="animation" to="HSM/hit" method="_on_animation_finished"]
+[connection signal="animation_finished" from="animation" to="HSM/death" method="_on_animation_finished"]
 [connection signal="animation_finished" from="hit_modulate" to="." method="_on_hit_modulate_animation_finished"]
 [connection signal="body_entered" from="detect_area" to="." method="_on_detect_area_body_entered"]
 [connection signal="body_exited" from="detect_area" to="." method="_on_detect_area_body_exited"]
@@ -699,5 +699,5 @@ collision_mask = 65580
 [connection signal="body_exited" from="can_attack_area" to="." method="_on_can_attack_area_body_exited"]
 [connection signal="body_entered" from="turn_attack_area" to="." method="_on_turn_attack_area_body_entered"]
 [connection signal="body_exited" from="turn_attack_area" to="." method="_on_turn_attack_area_body_exited"]
-[connection signal="timeout" from="idle_timer" to="HSM/SpikeShieldEnemyIdle" method="_on_idle_timer_timeout"]
+[connection signal="timeout" from="idle_timer" to="HSM/idle" method="_on_idle_timer_timeout"]
 [connection signal="timeout" from="poise_timer" to="." method="_on_poise_timer_timeout"]
