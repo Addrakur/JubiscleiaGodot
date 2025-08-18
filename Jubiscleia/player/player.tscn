@@ -3002,7 +3002,7 @@ script = ExtResource("17_dwjry")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 gravity = 130.0
-out_force = 260.0
+out_force = 200.0
 wait_time_min = 0.08
 wait_time_max = 0.3
 
@@ -3070,7 +3070,7 @@ process_mode = 3
 [node name="AttackSpawnPoint" type="Marker2D" parent="."]
 
 [node name="HealthComponent" parent="." instance=ExtResource("9_6bxkt")]
-max_health = 100.0
+max_health = 50.0
 max_poise = 6.0
 poise_recover_timer = 5.0
 max_temp_life = 50.0
