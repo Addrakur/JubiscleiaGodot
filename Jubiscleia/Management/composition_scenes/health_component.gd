@@ -42,7 +42,6 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 			else:
 				current_health -= health_damage
 				current_poise -= poise_damage
-				print("dano")
 				
 				if current_poise <= 0:
 					parent.hit_state.knockup_force = knockup * parent.hit_state.knock_multi # Aplica a força do knockback

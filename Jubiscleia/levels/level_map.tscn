@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://bybr1xsulh4h4"]
+[gd_scene load_steps=18 format=4 uid="uid://bybr1xsulh4h4"]
 
 [ext_resource type="Script" uid="uid://c3v5jy0s2dmwl" path="res://levels/level_map.gd" id="1_4loae"]
 [ext_resource type="Script" uid="uid://7l0dptvgprr3" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_4loae"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://b0yfdy7e0kx0p" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_oa1e2"]
 [ext_resource type="PackedScene" uid="uid://cat0rb63ebmb7" path="res://Management/change_scene_button.tscn" id="6_quxal"]
 [ext_resource type="Script" uid="uid://dp4mtvv0nnywj" path="res://world_map_camera_control.gd" id="7_oa1e2"]
+[ext_resource type="Texture2D" uid="uid://dobog72icvr4b" path="res://icon.svg" id="9_ej4te"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_oa1e2"]
 texture = ExtResource("2_quxal")
@@ -151,7 +152,19 @@ transition = 0
 ease = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlvnr"]
-size = Vector2(1280, 720)
+size = Vector2(1344, 832)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ej4te"]
+size = Vector2(32, 1760)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vhlk5"]
+size = Vector2(32, 1760)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_neo7p"]
+size = Vector2(2048, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h8nuk"]
+size = Vector2(2048, 32)
 
 [node name="level_map" type="Node2D"]
 script = ExtResource("1_4loae")
@@ -213,7 +226,6 @@ no_required_levels = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
-position = Vector2(96, 416)
 zoom = Vector2(0.5, 0.5)
 process_callback = 0
 
@@ -225,7 +237,6 @@ metadata/_custom_type_script = "uid://7l0dptvgprr3"
 
 [node name="camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(96, 416)
 script = ExtResource("3_quxal")
 follow_mode = 1
 follow_target = NodePath("../camera_control")
@@ -236,8 +247,6 @@ draw_limits = true
 metadata/_custom_type_script = "uid://dxunkhkho123g"
 
 [node name="camera_control" type="CharacterBody2D" parent="."]
-visible = false
-position = Vector2(96, 416)
 motion_mode = 1
 script = ExtResource("7_oa1e2")
 speed = 50000.0
@@ -263,3 +272,49 @@ offset_bottom = 64.0
 grow_horizontal = 0
 text = "Menu"
 scene_name = "menu"
+
+[node name="barrier" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="barrier"]
+
+[node name="Icon" type="Sprite2D" parent="barrier/StaticBody2D"]
+position = Vector2(-1040, 48)
+scale = Vector2(0.25, 13.75)
+texture = ExtResource("9_ej4te")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barrier/StaticBody2D"]
+position = Vector2(-1040, 48)
+shape = SubResource("RectangleShape2D_ej4te")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="barrier"]
+
+[node name="Icon2" type="Sprite2D" parent="barrier/StaticBody2D2"]
+position = Vector2(1040, 48)
+scale = Vector2(0.25, 13.75)
+texture = ExtResource("9_ej4te")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="barrier/StaticBody2D2"]
+position = Vector2(1040, 48)
+shape = SubResource("RectangleShape2D_vhlk5")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="barrier"]
+
+[node name="Icon3" type="Sprite2D" parent="barrier/StaticBody2D3"]
+position = Vector2(0, 912)
+scale = Vector2(16, 0.25)
+texture = ExtResource("9_ej4te")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="barrier/StaticBody2D3"]
+position = Vector2(0, 912)
+shape = SubResource("RectangleShape2D_neo7p")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="barrier"]
+
+[node name="Icon4" type="Sprite2D" parent="barrier/StaticBody2D4"]
+position = Vector2(0, -816)
+scale = Vector2(16, 0.25)
+texture = ExtResource("9_ej4te")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="barrier/StaticBody2D4"]
+position = Vector2(0, -816)
+shape = SubResource("RectangleShape2D_h8nuk")

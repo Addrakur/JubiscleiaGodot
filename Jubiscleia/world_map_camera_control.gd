@@ -5,6 +5,10 @@ extends CharacterBody2D
 var horizontal_direction: float
 var vertical_direction: float
 
+func _ready() -> void:
+	horizontal_direction = 0
+	vertical_direction = 0
+
 func _physics_process(delta: float) -> void:
 	horizontal_direction = Input.get_axis("map_left", "map_right")
 	vertical_direction = Input.get_axis("map_up", "map_down")

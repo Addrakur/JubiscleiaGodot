@@ -97,6 +97,7 @@ ease = 2
 [node name="earth_level_3" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_o325b")
 player = NodePath("Node/Player")
+free_spawn = true
 
 [node name="Node" type="Node" parent="."]
 
@@ -204,7 +205,7 @@ texture = ExtResource("9_tickl")
 [node name="Camera2D" type="Camera2D" parent="Node"]
 physics_interpolation_mode = 1
 visible = false
-position = Vector2(138.667, -112)
+position = Vector2(6820, -3419)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = -288
@@ -828,7 +829,7 @@ position = Vector2(2368, -2459)
 level = NodePath("../../..")
 
 [node name="Player" parent="Node" node_paths=PackedStringArray("camera") instance=ExtResource("19_v3gl8")]
-position = Vector2(-63.9998, 0)
+position = Vector2(6820, -3387)
 camera = NodePath("../Camera2D")
 
 [node name="Turret" parent="Node" instance=ExtResource("20_qox22")]
@@ -1153,7 +1154,7 @@ shape = SubResource("RectangleShape2D_bl1jh")
 
 [node name="free_camera" type="Node2D" parent="Node" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(138.667, -112)
+position = Vector2(6820, -3419)
 script = ExtResource("31_eba3l")
 follow_mode = 2
 follow_target = NodePath("../Player")
