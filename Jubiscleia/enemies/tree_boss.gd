@@ -12,6 +12,7 @@ extends CharacterBody2D
 @export var limit: Area2D
 @export var fireball_horizontal_spawn_points: Array[Marker2D]
 @export var fireball_vertical_spawn_points: Node2D
+@export var fade_grass_tileset: TileMapLayer
 
 @onready var animation: AnimationPlayer = $animation
 @onready var texture: Sprite2D = $texture
@@ -28,6 +29,7 @@ extends CharacterBody2D
 @onready var seed_rain_state: LimboState = $hsm/attack_seed_rain
 @onready var change_fase_state: LimboState = $hsm/change_fase
 @onready var run_state: LimboState = $hsm/run
+@onready var death_state: LimboState = $hsm/death
 
 @onready var player_ref: Player
 var target: Node2D
@@ -80,7 +82,7 @@ func _process(_delta: float) -> void:
 		proj.position = rock_position.global_position
 	
 	if not alive:
-		queue_free()
+		hsm.dispatch("die")
 	
 	if player_ref != null:
 		fireball_vertical_spawn_points.global_position.x = player_ref.global_position.x
@@ -107,6 +109,8 @@ func init_state_machine():
 	hsm.add_transition(run_state, swipe_state, &"run_to_swipe")
 	hsm.add_transition(run_state, rock_throw_state, &"run_to_throw")
 	hsm.add_transition(run_state, seed_rain_state, &"run_to_seed")
+	
+	hsm.add_transition(hsm.ANYSTATE, death_state, &"die")
 	
 	hsm.initial_state = idle_state
 	hsm.initialize(self)
