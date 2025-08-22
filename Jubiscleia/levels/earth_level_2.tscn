@@ -75,7 +75,6 @@ ease = 2
 process_mode = 3
 script = ExtResource("1_b18lv")
 player = NodePath("Node/player")
-free_spawn = true
 
 [node name="Node" type="Node" parent="."]
 process_mode = 1
@@ -183,7 +182,7 @@ texture = ExtResource("9_swgoj")
 
 [node name="Camera2D" type="Camera2D" parent="Node"]
 physics_interpolation_mode = 1
-position = Vector2(8568, 361)
+position = Vector2(138.667, 1664)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = -288
@@ -380,7 +379,7 @@ position = Vector2(12006, 2629)
 level = NodePath("../../..")
 
 [node name="player" parent="Node" node_paths=PackedStringArray("camera") instance=ExtResource("18_b32qe")]
-position = Vector2(8568, 393)
+position = Vector2(32, 1696)
 camera = NodePath("../Camera2D")
 
 [node name="spinning_saw" type="Node2D" parent="Node"]
@@ -1466,7 +1465,7 @@ shape = SubResource("RectangleShape2D_ttapc")
 
 [node name="FreeCamera" type="Node2D" parent="Node" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(8568, 361)
+position = Vector2(138.667, 1664)
 script = ExtResource("33_v3wbb")
 follow_mode = 2
 follow_target = NodePath("../player")
@@ -1479,7 +1478,7 @@ limit_target = NodePath("../cameras/FreeCameraLimit")
 
 [node name="PC2" type="Node2D" parent="Node" node_paths=PackedStringArray("follow_target", "follow_path")]
 top_level = true
-position = Vector2(5984, 392.697)
+position = Vector2(5984, 1696)
 script = ExtResource("33_v3wbb")
 follow_mode = 4
 follow_target = NodePath("../player")
