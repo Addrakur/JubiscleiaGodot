@@ -233,14 +233,6 @@ scale = Vector2(-1, 1)
 position = Vector2(4, 5)
 shape = SubResource("RectangleShape2D_a775i")
 
-[node name="EnemyWall6" parent="pause/enemies" instance=ExtResource("10_1e8g7")]
-position = Vector2(6208, 160)
-scale = Vector2(-1, 1)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="pause/enemies/EnemyWall6"]
-position = Vector2(4, 5)
-shape = SubResource("RectangleShape2D_a775i")
-
 [node name="Limit" parent="pause/enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("12_8yd3s")]
 limit_polygon = NodePath("limit")
 
@@ -273,17 +265,6 @@ polygon = PackedVector2Array(4603, -105, 4603, 101, 5062, 101, 5062, -105)
 
 [node name="rockrab" parent="pause/enemies/Limit3" instance=ExtResource("13_gguv0")]
 position = Vector2(4864, 96)
-
-[node name="Limit4" parent="pause/enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("12_8yd3s")]
-limit_polygon = NodePath("limit4")
-
-[node name="fire_reaper" parent="pause/enemies/Limit4" instance=ExtResource("15_3kax0")]
-position = Vector2(6057, 197)
-
-[node name="limit4" type="Polygon2D" parent="pause/enemies/Limit4"]
-visible = false
-color = Color(1, 1, 1, 0.254902)
-polygon = PackedVector2Array(5880, 91, 5880, 197, 6203, 197, 6203, 91)
 
 [node name="Limit5" parent="pause/enemies" node_paths=PackedStringArray("limit_polygon") instance=ExtResource("12_8yd3s")]
 limit_polygon = NodePath("limit5")
