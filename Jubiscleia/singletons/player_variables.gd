@@ -47,24 +47,24 @@ var axe_element: String = "fire"
 var axe_element_amount: float = 5
 var axe_unlocked: bool = true
 
-var axe_1_damage: float = 5
+var axe_1_damage: float = 3
 var axe_1_knockback: float = 300
 var axe_1_knockup: float = 0
 var axe_1_poise: float = 5
 var axe_1_shake: float = 1
 
-var axe_2_damage: float = 7
+var axe_2_damage: float = 3
 var axe_2_knockback: float = 320
 var axe_2_knockup: float = 0
 var axe_2_poise: float = 7
 
-var axe_3_damage: float = 10
+var axe_3_damage: float = 5
 var axe_3_knockback: float = 350
 var axe_3_knockup: float = 0
 var axe_3_poise: float = 10
 var axe_3_shake: float = 1.5
 
-var axe_jump_damage: float = 5
+var axe_jump_damage: float = 3
 var axe_jump_knockback: float = 200
 var axe_jump_knockup: float = 0
 var axe_jump_poise: float = 10

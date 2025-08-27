@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://kqbay724xnxt" path="res://assets/player/banco_de_assets/player_hit.png" id="6_buhst"]
 [ext_resource type="Texture2D" uid="uid://cxvbg3g0m8q4w" path="res://assets/player/banco_de_assets/player_jump.png" id="6_lipvx"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="9_6bxkt"]
-[ext_resource type="PackedScene" uid="uid://dig4ptur76dp0" path="res://Management/interface.tscn" id="9_181sd"]
 [ext_resource type="PackedScene" uid="uid://c38p3p0grwy4a" path="res://Management/pause_menu.tscn" id="10_yhe3o"]
 [ext_resource type="Script" uid="uid://ddf7tsdxe0rpy" path="res://Management/states/state_machine.gd" id="12_8y4yw"]
 [ext_resource type="Texture2D" uid="uid://taqvn8kcxrob" path="res://assets/player/banco_de_assets/player_death.png" id="12_sohuu"]
@@ -42,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://cd3uanae2v0jg" path="res://assets/player/Ataques/Machado/C0/axe_0_1.png" id="50_6mi2m"]
 [ext_resource type="Texture2D" uid="uid://qrwri5x1m2jj" path="res://assets/player/Ataques/Espada/C0/sword_0_2.png" id="50_rdt3s"]
 [ext_resource type="Texture2D" uid="uid://dkhb5k7uvtuni" path="res://assets/player/Ataques/Espada/C0/sword_0_3.png" id="51_is44h"]
+[ext_resource type="PackedScene" uid="uid://bfk4ysxbxg5if" path="res://Management/death_menu.tscn" id="52_a1u5o"]
 [ext_resource type="PackedScene" uid="uid://8cv7proap5ue" path="res://Management/temp_life_bar.tscn" id="52_o0loj"]
 [ext_resource type="Texture2D" uid="uid://duybggky7yoqx" path="res://assets/player/Ataques/Machado/C0/axe_0_2.png" id="54_xe58q"]
 [ext_resource type="Texture2D" uid="uid://bwddmt2twr7jt" path="res://assets/player/Ataques/Lanca/C0/Lanca_0_1.png" id="57_pf0gw"]
@@ -3058,14 +3058,12 @@ libraries = {
 &"": SubResource("AnimationLibrary_w1rpo")
 }
 
-[node name="Interface" parent="." node_paths=PackedStringArray("player", "health_component", "element_manager") instance=ExtResource("9_181sd")]
-layer = 0
-player = NodePath("..")
-health_component = NodePath("../HealthComponent")
-element_manager = NodePath("../element_manager")
-
-[node name="PauseMenu" parent="." instance=ExtResource("10_yhe3o")]
+[node name="PauseMenu" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_yhe3o")]
 process_mode = 3
+player = NodePath("..")
+
+[node name="death_menu" parent="." instance=ExtResource("52_a1u5o")]
+visible = false
 
 [node name="AttackSpawnPoint" type="Marker2D" parent="."]
 
@@ -3199,6 +3197,7 @@ skill = "2"
 [connection signal="body_entered" from="DashCollision" to="StateMachine/PlayerDash" method="_on_dash_collision_body_entered"]
 [connection signal="body_exited" from="DashCollision" to="StateMachine/PlayerDash" method="_on_dash_collision_body_exited"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/Hit" method="_on_animation_finished"]
+[connection signal="animation_finished" from="Animations" to="StateMachine/Death" method="_on_animations_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/PlayerJumpAttack" method="_on_animation_finished"]
 [connection signal="animation_finished" from="Animations" to="StateMachine/PlayerDash" method="_on_animation_finished"]
 [connection signal="animation_finished" from="AuraAnimations" to="StateMachine/Heal" method="_on_aura_animations_animation_finished"]

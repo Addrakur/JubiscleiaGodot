@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfk4ysxbxg5if"]
+
+[ext_resource type="Script" uid="uid://4kvb11a22pi2" path="res://Management/death_menu.gd" id="1_eo1dj"]
+[ext_resource type="PackedScene" uid="uid://cat0rb63ebmb7" path="res://Management/change_scene_button.tscn" id="1_h7t34"]
+
+[node name="death_menu" type="CanvasLayer"]
+script = ExtResource("1_eo1dj")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = 64.0
+offset_right = -160.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -160.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "= Game Over ="
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="change_scene_button" parent="Control/Panel" instance=ExtResource("1_h7t34")]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 224.0
+offset_right = 384.0
+offset_bottom = 256.0
+text = "Level Map"
+scene_name = "level_map"
+
+[node name="restart_button" type="Button" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 96.0
+offset_top = 96.0
+offset_right = -96.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Restart"
+
+[connection signal="pressed" from="Control/Panel/restart_button" to="." method="_on_restart_button_pressed"]

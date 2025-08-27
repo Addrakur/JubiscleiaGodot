@@ -6,7 +6,7 @@ extends LimboState
 @export var idle_max_time: float
 @export var tree: BTPlayer
 
-@onready var idle_timer: Timer = $"../../idle_timer"
+@export var idle_timer: Timer
 
 func _enter():
 	parent.velocity.x = 0

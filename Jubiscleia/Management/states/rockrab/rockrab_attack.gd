@@ -3,8 +3,8 @@ extends LimboState
 @export var parent: Rockrab
 @export var animation: AnimationPlayer
 @export var tree: BTPlayer
-@onready var attack_timer: Timer = $"../../attack_timer"
-@onready var collision_polygon_2d: CollisionPolygon2D = $"../../AttackArea/CollisionPolygon2D"
+@export var attack_timer: Timer
+@export var collision_polygon_2d: CollisionPolygon2D
 
 func _enter():
 	parent.velocity.x = 0

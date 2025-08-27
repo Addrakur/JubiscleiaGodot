@@ -44,6 +44,7 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var heal_state: PlayerHeal = $StateMachine/Heal
 @onready var state = $StateMachine/State as State
 @onready var interface = $Interface
+@onready var death_menu: CanvasLayer = $death_menu
 
 @export_category("Jump Variables")
 @export var jump_height: float

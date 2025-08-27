@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=4 uid="uid://cgj0r7yrsptvx"]
+[gd_scene load_steps=41 format=4 uid="uid://cgj0r7yrsptvx"]
 
 [ext_resource type="Script" uid="uid://cr0m6uuoltxgb" path="res://levels/level.gd" id="1_o325b"]
 [ext_resource type="PackedScene" uid="uid://c33bx5e2javr1" path="res://levels/BG.tscn" id="2_5qofd"]
@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://bgtm18yxrdsdx" path="res://Management/camera_area.tscn" id="30_or3p6"]
 [ext_resource type="Script" uid="uid://dxunkhkho123g" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="31_eba3l"]
 [ext_resource type="Script" uid="uid://b0yfdy7e0kx0p" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="32_b3cxq"]
+[ext_resource type="PackedScene" uid="uid://mv5smksp3lqy" path="res://Management/level_timer.tscn" id="36_0erjo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dufck"]
 size = Vector2(0.5, 64)
@@ -1123,3 +1124,6 @@ script = ExtResource("31_eba3l")
 zoom = Vector2(0.7, 0.7)
 tween_resource = SubResource("Resource_s8lqy")
 draw_limits = true
+
+[node name="level_timer" parent="Node" node_paths=PackedStringArray("level") instance=ExtResource("36_0erjo")]
+level = NodePath("../..")

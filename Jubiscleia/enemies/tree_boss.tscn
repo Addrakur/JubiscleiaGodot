@@ -142,6 +142,9 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18]
 }
 
+[sub_resource type="Animation" id="Animation_sak3g"]
+resource_name = "dead"
+
 [sub_resource type="Animation" id="Animation_cdk4p"]
 resource_name = "fire_throw"
 length = 2.91667
@@ -724,9 +727,6 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
 
-[sub_resource type="Animation" id="Animation_sak3g"]
-resource_name = "dead"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w1ig0"]
 _data = {
 &"RESET": SubResource("Animation_u76h0"),
@@ -938,7 +938,7 @@ rotation = -1.5708
 rotation = 2.89661
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("16_urt7n")]
-max_health = 10.0
+max_health = 100.0
 max_poise = 100000.0
 poise_recover_timer = 0.1
 attack_timer = NodePath("../PoiseTimer")

@@ -1,9 +1,10 @@
 extends CanvasLayer
 
+@export var player: Player
 @onready var pause_menu: Control = $PauseMenu
 
 func _process(_delta):
-	if get_tree().is_paused():
+	if get_tree().is_paused() and player.alive:
 		pause_menu.show()
 	else:
 		pause_menu.hide()

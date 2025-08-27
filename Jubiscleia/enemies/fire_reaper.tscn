@@ -499,7 +499,7 @@ texture = ExtResource("1_e4v3k")
 hframes = 11
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("4_drejg")]
-max_health = 20.0
+max_health = 15.0
 max_poise = 10.0
 poise_recover_timer = 6.0
 attack_timer = NodePath("../attack_timer")

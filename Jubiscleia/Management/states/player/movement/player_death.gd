@@ -1,7 +1,7 @@
 class_name PlayerDeath
 extends State
 
-@export var player: CharacterBody2D
+@export var player: Player
 @export var animation: AnimationPlayer
 
 func _ready():
@@ -18,5 +18,6 @@ func enter_state() -> void:
 func exit_state() -> void:
 	set_physics_process(false)
 
-func _physics_process(_delta):
-	pass
+func _on_animations_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "dead":
+		player.death_menu.visible = true

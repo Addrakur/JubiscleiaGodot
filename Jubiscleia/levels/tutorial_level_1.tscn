@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=4 uid="uid://lqfqrp52dju2"]
+[gd_scene load_steps=44 format=4 uid="uid://lqfqrp52dju2"]
 
 [ext_resource type="Script" uid="uid://cr0m6uuoltxgb" path="res://levels/level.gd" id="1_gkrss"]
 [ext_resource type="Script" uid="uid://7l0dptvgprr3" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_7kgwx"]
@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://bolenc8px11st" path="res://Management/level_end.tscn" id="27_ew3n5"]
 [ext_resource type="PackedScene" uid="uid://dqcjed481d1q3" path="res://Management/enemy_kill_wall_manager.tscn" id="27_yb6b7"]
 [ext_resource type="TileSet" uid="uid://dj1f7b7dmfjm7" path="res://assets/Tileset/tree_not_climb.tres" id="28_g4yv4"]
+[ext_resource type="PackedScene" uid="uid://mv5smksp3lqy" path="res://Management/level_timer.tscn" id="39_ow0og"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_trfcx"]
 size = Vector2(0, 64)
@@ -769,3 +770,6 @@ polygon = PackedVector2Array(10170, -1728, 10169, -1216, 10112, -1216, 10112, -1
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Node/Cameras/free"]
 polygon = PackedVector2Array(11072, -1728, 11072, -1216, 11014, -1216, 11014, -1728)
+
+[node name="level_timer" parent="Node" node_paths=PackedStringArray("level") instance=ExtResource("39_ow0og")]
+level = NodePath("../..")

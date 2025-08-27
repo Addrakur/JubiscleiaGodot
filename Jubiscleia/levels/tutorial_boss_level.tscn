@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://cgg6xsxhly141"]
+[gd_scene load_steps=29 format=4 uid="uid://cgg6xsxhly141"]
 
 [ext_resource type="Script" uid="uid://cr0m6uuoltxgb" path="res://levels/level.gd" id="1_1nyry"]
 [ext_resource type="PackedScene" uid="uid://c33bx5e2javr1" path="res://levels/BG.tscn" id="2_boya2"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bgtm18yxrdsdx" path="res://Management/camera_area.tscn" id="15_0a4as"]
 [ext_resource type="PackedScene" uid="uid://b182cvp28iapt" path="res://Management/checkpoint.tscn" id="19_ils6h"]
 [ext_resource type="PackedScene" uid="uid://dofww7w55i7it" path="res://Management/enemy_wall.tscn" id="19_pfhby"]
+[ext_resource type="PackedScene" uid="uid://mv5smksp3lqy" path="res://Management/level_timer.tscn" id="21_65m0q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pfhby"]
 size = Vector2(72, 272)
@@ -397,6 +398,9 @@ shape = SubResource("RectangleShape2D_ils6h")
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="pause/EnemyWall"]
 position = Vector2(2150, 313)
 shape = SubResource("RectangleShape2D_ils6h")
+
+[node name="level_timer" parent="pause" node_paths=PackedStringArray("level") instance=ExtResource("21_65m0q")]
+level = NodePath("../..")
 
 [connection signal="body_entered" from="pause/Limit/right/right_area" to="pause/Limit/tree_boss" method="_on_right_area_body_entered"]
 [connection signal="body_exited" from="pause/Limit/right/right_area" to="pause/Limit/tree_boss" method="_on_right_area_body_exited"]
