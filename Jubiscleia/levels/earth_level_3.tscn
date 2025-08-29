@@ -781,10 +781,6 @@ level = NodePath("../../..")
 position = Vector2(2368, -2459)
 level = NodePath("../../..")
 
-[node name="Player" parent="Node" node_paths=PackedStringArray("camera") instance=ExtResource("19_v3gl8")]
-position = Vector2(-128, 32)
-camera = NodePath("../Camera2D")
-
 [node name="Turret" parent="Node" instance=ExtResource("20_qox22")]
 position = Vector2(2117, -683)
 direction = 1.0
@@ -792,6 +788,10 @@ direction = 1.0
 [node name="Turret2" parent="Node" instance=ExtResource("20_qox22")]
 position = Vector2(2011, -683)
 direction = -1.0
+
+[node name="Player" parent="Node" node_paths=PackedStringArray("camera") instance=ExtResource("19_v3gl8")]
+position = Vector2(-128, 32)
+camera = NodePath("../Camera2D")
 
 [node name="arena_manager" parent="Node" node_paths=PackedStringArray("waves", "wall_manager", "close_polygon", "interval_label") instance=ExtResource("22_4v54j")]
 waves = [NodePath("1"), NodePath("2"), NodePath("3")]

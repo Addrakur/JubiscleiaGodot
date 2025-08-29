@@ -247,6 +247,7 @@ draw_limits = true
 metadata/_custom_type_script = "uid://dxunkhkho123g"
 
 [node name="camera_control" type="CharacterBody2D" parent="."]
+visible = false
 motion_mode = 1
 script = ExtResource("7_oa1e2")
 speed = 50000.0
