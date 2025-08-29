@@ -226,6 +226,7 @@ no_required_levels = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
+position = Vector2(0, 288)
 zoom = Vector2(0.5, 0.5)
 process_callback = 0
 
@@ -237,6 +238,7 @@ metadata/_custom_type_script = "uid://7l0dptvgprr3"
 
 [node name="camera" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 top_level = true
+position = Vector2(0, 288)
 script = ExtResource("3_quxal")
 follow_mode = 1
 follow_target = NodePath("../camera_control")
@@ -247,7 +249,7 @@ draw_limits = true
 metadata/_custom_type_script = "uid://dxunkhkho123g"
 
 [node name="camera_control" type="CharacterBody2D" parent="."]
-visible = false
+position = Vector2(0, 288)
 motion_mode = 1
 script = ExtResource("7_oa1e2")
 speed = 50000.0
