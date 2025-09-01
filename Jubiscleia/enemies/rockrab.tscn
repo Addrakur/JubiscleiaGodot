@@ -394,12 +394,12 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_r73ga"]
 radius = 18.0278
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_2fi22"]
+radius = 16.0
+
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_2fold"]
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_eotrt"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_2fi22"]
-radius = 16.0
 
 [node name="rockrab" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 collision_layer = 2
@@ -428,60 +428,6 @@ libraries = {
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -18)
 shape = SubResource("CircleShape2D_r73ga")
-
-[node name="hsm" type="LimboHSM" parent="."]
-
-[node name="rockrab_idle" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "tree", "idle_timer")]
-script = ExtResource("4_tiibl")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-idle_min_time = 4.0
-idle_max_time = 7.0
-tree = NodePath("rockrab_idle_tree")
-idle_timer = NodePath("../../idle_timer")
-
-[node name="rockrab_idle_tree" type="BTPlayer" parent="hsm/rockrab_idle"]
-behavior_tree = ExtResource("6_2fold")
-active = false
-blackboard_plan = SubResource("BlackboardPlan_2fold")
-
-[node name="rockrab_walk" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
-script = ExtResource("5_vh4ja")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-speed = 3500.0
-
-[node name="rockrab_chase" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
-script = ExtResource("8_eotrt")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-speed = 5000.0
-anim_speed_mult = 1.5
-
-[node name="rockrab_attack" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "tree", "attack_timer", "collision_polygon_2d")]
-script = ExtResource("8_d6vaw")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-tree = NodePath("rockrab_attack_tree")
-attack_timer = NodePath("../../attack_timer")
-collision_polygon_2d = NodePath("../../AttackArea/CollisionPolygon2D")
-
-[node name="rockrab_attack_tree" type="BTPlayer" parent="hsm/rockrab_attack"]
-behavior_tree = ExtResource("9_ncewy")
-active = false
-blackboard_plan = SubResource("BlackboardPlan_eotrt")
-
-[node name="rockrab_hit" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
-script = ExtResource("11_fu4na")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-knock_multi = 1.0
-hit_recover_limit = 30.0
-
-[node name="rockrab_death" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
-script = ExtResource("14_exmcc")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
 
 [node name="idle_timer" type="Timer" parent="."]
 wait_time = 5.0
@@ -548,6 +494,60 @@ disabled = true
 offset_top = -78.0
 offset_bottom = -68.0
 parent = NodePath("..")
+
+[node name="hsm" type="LimboHSM" parent="."]
+
+[node name="rockrab_idle" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "tree", "idle_timer")]
+script = ExtResource("4_tiibl")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+idle_min_time = 4.0
+idle_max_time = 7.0
+tree = NodePath("rockrab_idle_tree")
+idle_timer = NodePath("../../idle_timer")
+
+[node name="rockrab_idle_tree" type="BTPlayer" parent="hsm/rockrab_idle"]
+behavior_tree = ExtResource("6_2fold")
+active = false
+blackboard_plan = SubResource("BlackboardPlan_2fold")
+
+[node name="rockrab_walk" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("5_vh4ja")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+speed = 3500.0
+
+[node name="rockrab_chase" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("8_eotrt")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+speed = 5000.0
+anim_speed_mult = 1.5
+
+[node name="rockrab_attack" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "tree", "attack_timer", "collision_polygon_2d")]
+script = ExtResource("8_d6vaw")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+tree = NodePath("rockrab_attack_tree")
+attack_timer = NodePath("../../attack_timer")
+collision_polygon_2d = NodePath("../../AttackArea/CollisionPolygon2D")
+
+[node name="rockrab_attack_tree" type="BTPlayer" parent="hsm/rockrab_attack"]
+behavior_tree = ExtResource("9_ncewy")
+active = false
+blackboard_plan = SubResource("BlackboardPlan_eotrt")
+
+[node name="rockrab_hit" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("11_fu4na")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+knock_multi = 1.0
+hit_recover_limit = 30.0
+
+[node name="rockrab_death" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("14_exmcc")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
 
 [connection signal="animation_finished" from="animation" to="hsm/rockrab_attack" method="_on_animation_animation_finished"]
 [connection signal="animation_finished" from="animation" to="hsm/rockrab_hit" method="_on_animation_animation_finished"]

@@ -41,6 +41,7 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var jump_attack_state: State = $StateMachine/PlayerJumpAttack as PlayerJumpAttack
 @onready var dash_state: State = $StateMachine/PlayerDash as PlayerDash
 @onready var wall_grab_state = $StateMachine/PlayerWallGrab
+@onready var wall_sensor: RayCast2D = $wall_sensor
 @onready var heal_state: PlayerHeal = $StateMachine/Heal
 @onready var state = $StateMachine/State as State
 @onready var interface = $Interface
@@ -126,11 +127,13 @@ func flip() -> void:
 		attack_area_polygon.position.x = ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = 1
 		wall_grab_ray_cast.scale.x = 1
+		wall_sensor.scale.x = 1
 	elif PlayerVariables.current_attack == "" and velocity.x < 0 or not PlayerVariables.current_attack == "" and direction == -1:
 		texture.flip_h = true
 		attack_area_polygon.position.x = -ATTACK_AREA_POSITION
 		attack_area_polygon.scale.x = -1
 		wall_grab_ray_cast.scale.x = -1
+		wall_sensor.scale.x = -1
 
 func can_combo_true() -> void: #Vinculado aos ataques
 	can_combo = true

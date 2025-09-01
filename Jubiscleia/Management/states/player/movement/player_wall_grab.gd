@@ -13,6 +13,7 @@ func _ready():
 
 func enter_state() -> void:
 	set_physics_process(true)
+	player.wall_sensor.scale.x = -player.wall_grab_ray_cast.scale.x
 	animation.play("wall_grab")
 	player.velocity.x = 0
 	player.velocity.y = 1# if player.velocity.y > 0 else player.velocity.y

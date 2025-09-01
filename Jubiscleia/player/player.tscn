@@ -2987,12 +2987,13 @@ player = NodePath("../..")
 animation = NodePath("../../Animations")
 move_speed = 200.0
 
-[node name="PlayerDash" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation", "ground_raycast")]
+[node name="PlayerDash" type="Node" parent="StateMachine" node_paths=PackedStringArray("player", "animation", "ground_raycast", "wall_sensor")]
 script = ExtResource("15_6875b")
 player = NodePath("../..")
 animation = NodePath("../../Animations")
 ground_raycast = NodePath("../../ground_raycast")
 speed = 450.0
+wall_sensor = NodePath("../../wall_sensor")
 
 [node name="State" type="Node" parent="StateMachine"]
 script = ExtResource("16_hy8fg")
@@ -3077,6 +3078,12 @@ max_temp_life = 50.0
 position = Vector2(0, -14)
 target_position = Vector2(6.57957, -0.0265102)
 collision_mask = 4
+collide_with_areas = true
+
+[node name="wall_sensor" type="RayCast2D" parent="."]
+position = Vector2(0, -14)
+target_position = Vector2(6.57957, -0.0265102)
+collision_mask = 36
 collide_with_areas = true
 
 [node name="DashCooldown" type="Timer" parent="."]

@@ -41,7 +41,7 @@ func _process(_delta: float) -> void:
 		hsm.dispatch("die")
 	
 	if alive and not health_component.is_getting_hit:
-		if hsm.get_active_state() == walk_state:
+		if hsm.get_active_state() == walk_state or hsm.get_active_state() == chase_state:
 			if velocity.x < 0:
 				left()
 			elif velocity.x > 0:

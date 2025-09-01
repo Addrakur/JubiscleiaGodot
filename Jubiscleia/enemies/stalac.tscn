@@ -156,7 +156,7 @@ tracks/4/path = NodePath("hsm/stalac_dash_attack")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.666667, 1.16667),
+"times": PackedFloat32Array(0.666667, 1),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [true],
@@ -511,8 +511,6 @@ _data = {
 &"hit": SubResource("Animation_urt7n")
 }
 
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_hhg45"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0rsqb"]
 resource_local_to_scene = true
 shader = ExtResource("13_28xrp")
@@ -522,6 +520,8 @@ shader_parameter/red_value = 0.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8djhq"]
 radius = 2.0
 height = 50.0
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_hhg45"]
 
 [node name="stalac" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 collision_layer = 2
@@ -544,69 +544,6 @@ libraries = {
 libraries = {
 &"": SubResource("AnimationLibrary_8u7iw")
 }
-
-[node name="hsm" type="LimboHSM" parent="."]
-
-[node name="stalac_inactive" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "fall_1", "fall_2")]
-script = ExtResource("4_wkc6q")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-fall_1 = NodePath("../../fall_1")
-fall_2 = NodePath("../../fall_2")
-
-[node name="stalac_idle" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "tree", "idle_timer")]
-script = ExtResource("5_8djhq")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-idle_min_time = 2.0
-idle_max_time = 3.0
-tree = NodePath("idle_tree")
-idle_timer = NodePath("../../idle_timer")
-
-[node name="idle_tree" type="BTPlayer" parent="hsm/stalac_idle"]
-behavior_tree = ExtResource("7_0mhi6")
-blackboard_plan = SubResource("BlackboardPlan_hhg45")
-
-[node name="stalac_walk" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
-script = ExtResource("8_tvg2v")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-speed = 8000.0
-
-[node name="stalac_dash_attack" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "attack_timer")]
-script = ExtResource("8_sluh6")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-attack_timer = NodePath("../../attack_timer")
-dash_speed = 50000.0
-
-[node name="stalac_fall_attack" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "attack_timer", "turn_timer")]
-script = ExtResource("8_hhg45")
-parent = NodePath("../..")
-fall_speed = 50000.0
-attack_timer = NodePath("../../attack_timer")
-turn_timer = NodePath("../../turn_timer")
-
-[node name="stalac_chase" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
-script = ExtResource("11_84xmj")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-speed = 12000.0
-anim_speed_mult = 1.5
-
-[node name="stalac_hit" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "collision_damage")]
-script = ExtResource("12_cdw0t")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-knock_multi = 2.0
-hit_recover_limit = 15.0
-collision_damage = NodePath("../../texture/collision_damage/attack_area_collision")
-
-[node name="stalac_death" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "collision_damage")]
-script = ExtResource("13_0rsqb")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-collision_damage = NodePath("../../texture/collision_damage/attack_area_collision")
 
 [node name="fall_1" type="RayCast2D" parent="."]
 position = Vector2(-6, 0)
@@ -684,6 +621,69 @@ starting_temp_life = 5.0
 offset_top = -76.0
 offset_bottom = -66.0
 parent = NodePath("..")
+
+[node name="hsm" type="LimboHSM" parent="."]
+
+[node name="stalac_inactive" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "fall_1", "fall_2")]
+script = ExtResource("4_wkc6q")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+fall_1 = NodePath("../../fall_1")
+fall_2 = NodePath("../../fall_2")
+
+[node name="stalac_idle" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "tree", "idle_timer")]
+script = ExtResource("5_8djhq")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+idle_min_time = 2.0
+idle_max_time = 3.0
+tree = NodePath("idle_tree")
+idle_timer = NodePath("../../idle_timer")
+
+[node name="idle_tree" type="BTPlayer" parent="hsm/stalac_idle"]
+behavior_tree = ExtResource("7_0mhi6")
+blackboard_plan = SubResource("BlackboardPlan_hhg45")
+
+[node name="stalac_walk" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("8_tvg2v")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+speed = 8000.0
+
+[node name="stalac_dash_attack" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "attack_timer")]
+script = ExtResource("8_sluh6")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+attack_timer = NodePath("../../attack_timer")
+dash_speed = 50000.0
+
+[node name="stalac_fall_attack" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "attack_timer", "turn_timer")]
+script = ExtResource("8_hhg45")
+parent = NodePath("../..")
+fall_speed = 50000.0
+attack_timer = NodePath("../../attack_timer")
+turn_timer = NodePath("../../turn_timer")
+
+[node name="stalac_chase" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("11_84xmj")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+speed = 12000.0
+anim_speed_mult = 1.5
+
+[node name="stalac_hit" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "collision_damage")]
+script = ExtResource("12_cdw0t")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+knock_multi = 2.0
+hit_recover_limit = 15.0
+collision_damage = NodePath("../../texture/collision_damage/attack_area_collision")
+
+[node name="stalac_death" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "collision_damage")]
+script = ExtResource("13_0rsqb")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+collision_damage = NodePath("../../texture/collision_damage/attack_area_collision")
 
 [connection signal="animation_finished" from="animation" to="hsm/stalac_inactive" method="_on_animation_finished"]
 [connection signal="animation_finished" from="animation" to="hsm/stalac_dash_attack" method="_on_animation_animation_finished"]

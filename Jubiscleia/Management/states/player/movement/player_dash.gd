@@ -5,6 +5,7 @@ extends State
 @export var animation: AnimationPlayer
 @export var ground_raycast: RayCast2D
 @export var speed: float
+@export var wall_sensor: RayCast2D
 
 var direction: float
 
@@ -19,9 +20,8 @@ func _ready():
 func enter_state() -> void:
 	if player.is_on_floor():
 		player.dash_cooldown.start()
-	#player.set_collision_mask_value(2,false)
 	player.set_collision_layer_value(1,false)
-	player.collision.shape.size = Vector2(15,10)
+	player.collision.shape.size = Vector2(10,12)
 	player.floor_snap_length = 0
 	player.can_dash = false
 	set_physics_process(true)
@@ -38,7 +38,6 @@ func exit_state() -> void:
 	set_physics_process(false)
 	PlayerVariables.move = false
 	player.health_component.invulnerable = false
-	#player.set_collision_mask_value(2,true)
 	player.set_collision_layer_value(1,true)
 	player.collision.shape.size = Vector2(11,28)
 	player.override_gravity = 0
@@ -53,6 +52,9 @@ func exit_state() -> void:
 func _physics_process(_delta):
 	if PlayerVariables.move:
 		player.velocity.x = speed * direction
+		
+	if wall_sensor.is_colliding():
+		player.fsm.change_state(player.fall_state)
 	
 	if Input.is_action_just_pressed("jump") and not passed_enemy:
 		player.fsm.change_state(player.jump_state)
@@ -84,9 +86,6 @@ func _on_dash_collision_body_entered(body: Node2D) -> void:
 		passed_enemy = true
 		enemy.append(body)
 		print(body.name + " entered")
-	
-	if body.is_in_group("terrain"):
-		player.fsm.change_state(player.fall_state)
 	
 
 func _on_dash_collision_body_exited(body: Node2D) -> void:
