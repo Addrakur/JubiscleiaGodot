@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://dru7s6eysysc4" path="res://assets/enemy/tree_boss/tree_boss_rock_throw.png" id="3_gafwg"]
 [ext_resource type="Texture2D" uid="uid://cioqmc7522o3d" path="res://assets/enemy/tree_boss/tree_boss_rain_seed.png" id="3_rfgjc"]
 [ext_resource type="Script" uid="uid://4gnydbw1e83y" path="res://Management/states/tree_boss/tree_boss_idle.gd" id="5_vdt7u"]
-[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="6_c8gdp"]
 [ext_resource type="BehaviorTree" uid="uid://djga7cm0ugc4e" path="res://Management/behaviour_trees/tree_boss/tree_boss_idle_tree.tres" id="6_gafwg"]
 [ext_resource type="Texture2D" uid="uid://ccrjr6w515577" path="res://assets/enemy/tree_boss/tree_boss_idle_2.png" id="7_vnig1"]
 [ext_resource type="Script" uid="uid://dw4rhurscgw0s" path="res://Management/states/tree_boss/attack_swipe.gd" id="8_1hkfu"]
@@ -18,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://b87y1k4al3n8k" path="res://assets/enemy/tree_boss/tree_boss_rain_fire.png" id="11_cdk4p"]
 [ext_resource type="Texture2D" uid="uid://dm5x2r0unw4aq" path="res://assets/enemy/tree_boss/tree_boss_change_fase.png" id="12_sak3g"]
 [ext_resource type="Script" uid="uid://cahokucy3f0n" path="res://Management/states/tree_boss/attack_seed_rain.gd" id="13_16syl"]
+[ext_resource type="PackedScene" uid="uid://c3tb3d720s55q" path="res://enemies/enemy_attack_area.tscn" id="13_sak3g"]
 [ext_resource type="BehaviorTree" uid="uid://c81fijvxmwmx5" path="res://ai/trees/attack_seed_rain_tree.tres" id="13_xul8h"]
 [ext_resource type="Shader" uid="uid://dqi4fnw7r5atv" path="res://enemies/slow_shader.gdshader" id="16_agibw"]
 [ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="16_urt7n"]
@@ -79,7 +79,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AttackArea/CollisionPolygon2D:disabled")
+tracks/4/path = NodePath("enemy_attack_area/CollisionPolygon2D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -91,7 +91,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AttackArea/CollisionPolygon2D:polygon")
+tracks/5/path = NodePath("enemy_attack_area/CollisionPolygon2D:polygon")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -539,7 +539,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AttackArea/CollisionPolygon2D:disabled")
+tracks/3/path = NodePath("enemy_attack_area/CollisionPolygon2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -551,7 +551,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AttackArea/CollisionPolygon2D:polygon")
+tracks/4/path = NodePath("enemy_attack_area/CollisionPolygon2D:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -604,7 +604,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AttackArea/CollisionPolygon2D:disabled")
+tracks/3/path = NodePath("enemy_attack_area/CollisionPolygon2D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -616,7 +616,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AttackArea/CollisionPolygon2D:polygon")
+tracks/4/path = NodePath("enemy_attack_area/CollisionPolygon2D:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -787,12 +787,8 @@ radius = 24.0
 height = 164.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vo17w"]
-radius = 22.0
+radius = 20.0
 height = 160.0
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_1hkfu"]
-
-[sub_resource type="BlackboardPlan" id="BlackboardPlan_rfgjc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8u7iw"]
 shader = ExtResource("16_agibw")
@@ -808,13 +804,17 @@ _data = {
 }
 point_count = 9
 
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_1hkfu"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_rfgjc"]
+
 [node name="tree_boss" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area", "fireball_horizontal_spawn_points") groups=["enemy"]]
 z_index = -2
 collision_layer = 2
 collision_mask = 65580
 script = ExtResource("1_w1ig0")
 health_component = NodePath("HealthComponent")
-attack_area = NodePath("AttackArea")
+attack_area = NodePath("")
 element = "earth"
 fireball_horizontal_spawn_points = [NodePath("fireball_spawn_points/1"), NodePath("fireball_spawn_points/2"), NodePath("fireball_spawn_points/3"), NodePath("fireball_spawn_points/4"), NodePath("fireball_spawn_points/5"), NodePath("fireball_spawn_points/6")]
 
@@ -832,86 +832,30 @@ libraries = {
 position = Vector2(0, -82)
 shape = SubResource("CapsuleShape2D_kjuq6")
 
-[node name="collision_damage" parent="." instance=ExtResource("6_c8gdp")]
-collision_mask = 1
-targets = Array[String](["player"])
+[node name="enemy_collision_damage" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("13_sak3g")]
+parent = NodePath("..")
 damage = 5.0
-knockup_force = -10.0
 knockback_force = 300.0
+knockup_force = -10.0
 poise_damage = 20.0
 attack_name = "boss_collision"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="collision_damage"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_collision_damage"]
 position = Vector2(0, -82)
 shape = SubResource("CapsuleShape2D_vo17w")
 debug_color = Color(1, 0, 0.0166664, 0.419608)
 
-[node name="AttackArea" parent="." instance=ExtResource("6_c8gdp")]
-collision_mask = 1
-targets = Array[String](["player"])
+[node name="enemy_attack_area" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("13_sak3g")]
+parent = NodePath("..")
 damage = 20.0
-knockup_force = -10.0
 knockback_force = 300.0
+knockup_force = -10.0
 poise_damage = 50.0
 attack_name = "BOSS_SWING"
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AttackArea"]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="enemy_attack_area"]
 polygon = PackedVector2Array(-71, 0, -86, -68, -85, -103, -70, -148, -44, -176, -17, -191, -3, -191, -24, -177, -42, -150, -49, -114, -48, -77, -12, 0)
 disabled = true
-
-[node name="hsm" type="LimboHSM" parent="."]
-
-[node name="idle" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "tree")]
-script = ExtResource("5_vdt7u")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-tree = NodePath("idle_tree")
-change_fase_life_threshold = 0.5
-
-[node name="idle_tree" type="BTPlayer" parent="hsm/idle"]
-behavior_tree = ExtResource("6_gafwg")
-active = false
-blackboard_plan = SubResource("BlackboardPlan_1hkfu")
-
-[node name="attack_swipe" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent")]
-script = ExtResource("8_1hkfu")
-parent = NodePath("../..")
-move_speed = 15000.0
-
-[node name="attack_throw_rock" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
-script = ExtResource("10_vi44x")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-
-[node name="attack_seed_rain" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "tree", "animation")]
-script = ExtResource("13_16syl")
-parent = NodePath("../..")
-speed = 250.0
-tree = NodePath("attack_seed_rain_tree")
-animation = NodePath("../../animation")
-
-[node name="attack_seed_rain_tree" type="BTPlayer" parent="hsm/attack_seed_rain"]
-behavior_tree = ExtResource("13_xul8h")
-active = false
-blackboard_plan = SubResource("BlackboardPlan_rfgjc")
-
-[node name="change_fase" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
-script = ExtResource("21_vo17w")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-
-[node name="death" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "collision_damage")]
-script = ExtResource("21_sak3g")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-collision_damage = NodePath("../../collision_damage/CollisionShape2D")
-
-[node name="run" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
-script = ExtResource("23_rab7e")
-parent = NodePath("../..")
-animation = NodePath("../../animation")
-speed_1 = 35000.0
-speed_2 = 50000.0
 
 [node name="texture" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_8u7iw")
@@ -970,6 +914,60 @@ position = Vector2(-32, -144)
 
 [node name="6" type="Marker2D" parent="fireball_spawn_points"]
 position = Vector2(-32, -176)
+
+[node name="hsm" type="LimboHSM" parent="."]
+
+[node name="idle" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "tree")]
+script = ExtResource("5_vdt7u")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+tree = NodePath("idle_tree")
+change_fase_life_threshold = 0.5
+
+[node name="idle_tree" type="BTPlayer" parent="hsm/idle"]
+behavior_tree = ExtResource("6_gafwg")
+active = false
+blackboard_plan = SubResource("BlackboardPlan_1hkfu")
+
+[node name="attack_swipe" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent")]
+script = ExtResource("8_1hkfu")
+parent = NodePath("../..")
+move_speed = 15000.0
+
+[node name="attack_throw_rock" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("10_vi44x")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+
+[node name="attack_seed_rain" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "tree", "animation")]
+script = ExtResource("13_16syl")
+parent = NodePath("../..")
+speed = 250.0
+tree = NodePath("attack_seed_rain_tree")
+animation = NodePath("../../animation")
+
+[node name="attack_seed_rain_tree" type="BTPlayer" parent="hsm/attack_seed_rain"]
+behavior_tree = ExtResource("13_xul8h")
+active = false
+blackboard_plan = SubResource("BlackboardPlan_rfgjc")
+
+[node name="change_fase" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("21_vo17w")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+
+[node name="death" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "collision_damage")]
+script = ExtResource("21_sak3g")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+collision_damage = NodePath("../../enemy_collision_damage/CollisionShape2D")
+
+[node name="run" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("23_rab7e")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+speed_1 = 35000.0
+speed_2 = 50000.0
 
 [connection signal="animation_finished" from="animation" to="hsm/attack_swipe" method="_on_animation_finished"]
 [connection signal="animation_finished" from="animation" to="hsm/attack_throw_rock" method="_on_animation_animation_finished"]

@@ -11,11 +11,11 @@ var water_stack_count: float = 0
 var air_stack_count: float = 0
 var earth_stack_count: float = 0
 
-var element_extra_damage: float = 1.5
-var element_extra_stack: float = 2
+var element_extra_damage: float = 1.2
+var element_extra_stack: float = 1.5
 
-var element_reduced_damage: float = 0.7
-var element_reduced_stack: float = 0.5
+var element_reduced_damage: float = 0.9
+var element_reduced_stack: float = 0.75
 
 var fire_dot_damage: float = 3
 
@@ -48,18 +48,18 @@ var axe_element_amount: float = 5
 var axe_unlocked: bool = true
 
 var axe_1_damage: float = 3
-var axe_1_knockback: float = 300
+var axe_1_knockback: float = 200
 var axe_1_knockup: float = 0
 var axe_1_poise: float = 5
 var axe_1_shake: float = 1
 
 var axe_2_damage: float = 3
-var axe_2_knockback: float = 320
+var axe_2_knockback: float = 200
 var axe_2_knockup: float = 0
 var axe_2_poise: float = 7
 
 var axe_3_damage: float = 5
-var axe_3_knockback: float = 350
+var axe_3_knockback: float = 250
 var axe_3_knockup: float = 0
 var axe_3_poise: float = 10
 var axe_3_shake: float = 1.5
@@ -83,20 +83,20 @@ var sword_unlocked: bool = true
 var sword_1_damage: float = 2
 var sword_1_knockback: float = 80
 var sword_1_knockup: float = 0
-var sword_1_poise: float = 5
+var sword_1_poise: float = 3
 
 var sword_2_damage: float = 3
-var sword_2_knockback: float = 100
+var sword_2_knockback: float = 80
 var sword_2_knockup: float = 0
-var sword_2_poise: float = 5
+var sword_2_poise: float = 3
 
 var sword_3_damage: float = 0
 var sword_3_knockback: float = 0
 var sword_3_knockup: float = 0
 var sword_3_projectile_damage: float = 3
-var sword_3_projectile_speed: float = 150
+var sword_3_projectile_speed: float = 100
 var sword_3_projectile_knockback: float = 100
-var sword_3_projectile_poise: float = 5
+var sword_3_projectile_poise: float = 3
 var sword_3_location: Vector2 = Vector2 (0,0)
 var sword_3_projectile_max_distance: float = 100
 var sword_3_poise: float = 0

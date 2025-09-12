@@ -2,7 +2,7 @@ class_name BossTree
 extends CharacterBody2D
 
 @export var health_component: HealthComponent
-@export var attack_area: AttackArea
+@export var attack_area: EnemyAttackArea
 @export_enum("water","fire","earth","air") var element: String
 @export var player: Player
 @export var arena_right: Marker2D
@@ -18,7 +18,7 @@ extends CharacterBody2D
 @onready var texture: Sprite2D = $texture
 @onready var melee_detect_area: Area2D = $melee_detect_area
 @onready var rock_position: Marker2D = $Path2D/PathFollow2D/rock_position
-@onready var collision_polygon_2d: CollisionPolygon2D = $AttackArea/CollisionPolygon2D
+@onready var collision_polygon_2d: CollisionPolygon2D = $enemy_attack_area/CollisionPolygon2D
 @onready var path_2d: Path2D = $Path2D
 @onready var hit_modulate: AnimationPlayer = $hit_modulate
 

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3tb3d720s55q"]
+
+[ext_resource type="Script" uid="uid://bat548l67w4sv" path="res://enemies/enemy_attack_area.gd" id="1_j8jei"]
+
+[node name="enemy_attack_area" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_j8jei")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -18,6 +18,7 @@ var tutorial_boss_level_spawn_point: Vector2 = Vector2(64,0)
 var earth_level_1_spawn_point: Vector2 = Vector2(320,0)
 var earth_level_2_spawn_point: Vector2 = Vector2(45,1733)
 var earth_level_3_spawn_point: Vector2 = Vector2(-68,37)
+var earth_key_1_level_1_spawn_point: Vector2 = Vector2(192,-763)
 
 # Levels cleared
 
@@ -28,3 +29,4 @@ var tutorial_boss_cleared: bool = true
 var earth_level_1_cleared: bool = true
 var earth_level_2_cleared: bool = true
 var earth_level_3_cleared: bool = true
+var earth_key_1_level_1_cleared: bool = true

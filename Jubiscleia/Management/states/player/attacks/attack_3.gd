@@ -3,7 +3,6 @@ extends State
 
 @export var player: Player
 @export var animation: AnimationPlayer
-@export var attack_area: CollisionPolygon2D
 
 var speed: float
 
@@ -14,6 +13,7 @@ func enter_state() -> void:
 	set_physics_process(true)
 	PlayerVariables.current_skill = PlayerVariables.next_skill
 	PlayerVariables.next_skill = ""
+	player.attack_area.current_element = PlayerVariables.get(PlayerVariables.current_skill + "_element")
 	player.next_attack = 1
 	player.attack_number.text = "1"
 	player.can_combo = false

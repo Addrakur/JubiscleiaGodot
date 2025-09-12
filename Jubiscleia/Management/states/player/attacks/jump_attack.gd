@@ -4,7 +4,6 @@ extends State
 @export var player: Player
 @export var animation: AnimationPlayer
 @export var move_speed: float
-@onready var attack_area = $"../../AttackArea/AttackArea"
 
 var speed: float
 var direction: float

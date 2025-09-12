@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://pi2qjpijhtcv" path="res://assets/placeholder/spike_fall_enemy.png" id="4_ni8p4"]
 [ext_resource type="Script" uid="uid://caarb4bmf4cd0" path="res://Management/states/stalac/stalac_inactive.gd" id="4_wkc6q"]
 [ext_resource type="Script" uid="uid://clc53hxo1oe16" path="res://Management/states/stalac/stalac_idle.gd" id="5_8djhq"]
-[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="5_xe8q6"]
+[ext_resource type="PackedScene" uid="uid://c3tb3d720s55q" path="res://enemies/enemy_attack_area.tscn" id="6_0rsqb"]
 [ext_resource type="BehaviorTree" uid="uid://jl3nir4suhfl" path="res://ai/trees/rockrab/rockrab_idle_tree.tres" id="7_0mhi6"]
 [ext_resource type="Script" uid="uid://c40ktihwr8ptl" path="res://Management/states/stalac/stalac_fall_attack.gd" id="8_hhg45"]
 [ext_resource type="Script" uid="uid://mka5gat6w87y" path="res://enemies/stalac_dash_attack.gd" id="8_sluh6"]
@@ -19,8 +19,8 @@
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="15_maaf4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8s1wh"]
-radius = 3.0
-height = 42.0
+radius = 6.0
+height = 46.0
 
 [sub_resource type="Animation" id="Animation_xe8q6"]
 length = 0.001
@@ -528,11 +528,11 @@ collision_layer = 2
 collision_mask = 65708
 script = ExtResource("1_8s1wh")
 health_component = NodePath("HealthComponent")
-attack_area = NodePath("texture/collision_damage")
+attack_area = NodePath("texture/enemy_collision_damage")
 element = "earth"
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -21)
+position = Vector2(0, -23)
 shape = SubResource("CapsuleShape2D_8s1wh")
 
 [node name="animation" type="AnimationPlayer" parent="."]
@@ -585,24 +585,22 @@ position = Vector2(0, -25)
 texture = ExtResource("3_wkc6q")
 hframes = 9
 
-[node name="collision_damage" parent="texture" instance=ExtResource("5_xe8q6")]
-position = Vector2(0, 25)
-collision_mask = 1
-targets = Array[String](["player"])
+[node name="enemy_collision_damage" parent="texture" node_paths=PackedStringArray("parent") instance=ExtResource("6_0rsqb")]
+parent = NodePath("../..")
 damage = 10.0
-knockback_force = -100.0
+knockback_force = 100.0
+knockup_force = -10.0
 poise_damage = 6.0
-attack_name = "stalac_stab"
+attack_name = "stalac_dash"
 
-[node name="attack_area_collision" type="CollisionShape2D" parent="texture/collision_damage"]
-position = Vector2(0, -25)
+[node name="attack_area_collision" type="CollisionShape2D" parent="texture/enemy_collision_damage"]
 shape = SubResource("CapsuleShape2D_8djhq")
 
 [node name="idle_timer" type="Timer" parent="."]
 one_shot = true
 
 [node name="attack_timer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="turn_timer" type="Timer" parent="."]
@@ -610,12 +608,10 @@ wait_time = 2.0
 one_shot = true
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("13_84xmj")]
-max_health = 10.0
-max_poise = 1.0
+max_health = 15.0
+max_poise = 4.0
 poise_recover_timer = 3.0
 attack_timer = NodePath("../attack_timer")
-max_temp_life = 5.0
-starting_temp_life = 5.0
 
 [node name="ProgressBar" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("15_maaf4")]
 offset_top = -76.0
@@ -675,15 +671,15 @@ anim_speed_mult = 1.5
 script = ExtResource("12_cdw0t")
 parent = NodePath("../..")
 animation = NodePath("../../animation")
-knock_multi = 2.0
+knock_multi = 1.2
 hit_recover_limit = 15.0
-collision_damage = NodePath("../../texture/collision_damage/attack_area_collision")
+collision_damage = NodePath("../../texture/enemy_collision_damage/attack_area_collision")
 
 [node name="stalac_death" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "collision_damage")]
 script = ExtResource("13_0rsqb")
 parent = NodePath("../..")
 animation = NodePath("../../animation")
-collision_damage = NodePath("../../texture/collision_damage/attack_area_collision")
+collision_damage = NodePath("../../texture/enemy_collision_damage/attack_area_collision")
 
 [connection signal="animation_finished" from="animation" to="hsm/stalac_inactive" method="_on_animation_finished"]
 [connection signal="animation_finished" from="animation" to="hsm/stalac_dash_attack" method="_on_animation_animation_finished"]

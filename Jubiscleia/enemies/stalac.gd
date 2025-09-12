@@ -2,7 +2,7 @@ class_name Stalac
 extends CharacterBody2D
  
 @export var health_component: HealthComponent
-@export var attack_area: AttackArea
+@export var attack_area: EnemyAttackArea
 @export_enum("water","fire","earth","air") var element: String
 
 @onready var limit: EnemyLimit = get_parent()

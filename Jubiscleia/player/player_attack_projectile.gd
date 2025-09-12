@@ -6,7 +6,7 @@ var direction: float
 @export var animation: AnimationPlayer
 @export var texture: Sprite2D
 @export var collision_area: CollisionPolygon2D
-@export var attack_area: AttackArea
+@export var attack_area: PlayerAttackArea
 
 var can_destroy: bool = false
 var attack: String = PlayerVariables.current_attack
@@ -26,8 +26,9 @@ func _ready():
 	attack_area.poise_damage = PlayerVariables.get(attack + "_projectile_poise")
 	speed = PlayerVariables.get(attack + "_projectile_speed")
 	element = PlayerVariables.get(PlayerVariables.current_skill + "_element")
-	
+	attack_area.current_element = element
 	attack_area.attack_name = name
+	
 
 func _physics_process(delta):
 	if move:

@@ -9,6 +9,7 @@ var level_map: String = "res://levels/level_map.tscn"
 var earth_level_1: String = "res://levels/earth_level_1.tscn"
 var earth_level_2: String = "res://levels/earth_level_2.tscn"
 var earth_level_3: String = "res://levels/earth_level_3.tscn"
+var earth_key_1_level_1: String = "res://levels/earth_key_1_level_1.tscn"
 var arena: String = "res://levels/arena.tscn"
 
 #Enemies

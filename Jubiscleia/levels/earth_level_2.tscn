@@ -76,6 +76,7 @@ ease = 2
 process_mode = 3
 script = ExtResource("1_b18lv")
 player = NodePath("Node/player")
+free_spawn = true
 
 [node name="Node" type="Node" parent="."]
 process_mode = 1
@@ -183,7 +184,7 @@ texture = ExtResource("9_swgoj")
 
 [node name="Camera2D" type="Camera2D" parent="Node"]
 physics_interpolation_mode = 1
-position = Vector2(138.667, 1664)
+position = Vector2(5984, 2208)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = -288
@@ -373,6 +374,10 @@ level = NodePath("../../..")
 
 [node name="Checkpoint2" parent="Node/checkpoints" node_paths=PackedStringArray("level") instance=ExtResource("17_o01s4")]
 position = Vector2(6832, 4165)
+level = NodePath("../../..")
+
+[node name="Checkpoint5" parent="Node/checkpoints" node_paths=PackedStringArray("level") instance=ExtResource("17_o01s4")]
+position = Vector2(7552, 677)
 level = NodePath("../../..")
 
 [node name="Checkpoint3" parent="Node/checkpoints" node_paths=PackedStringArray("level") instance=ExtResource("17_o01s4")]
@@ -1394,7 +1399,7 @@ position = Vector2(5792, 3739)
 position = Vector2(5600, 3771)
 
 [node name="player" parent="Node" node_paths=PackedStringArray("camera") instance=ExtResource("18_b32qe")]
-position = Vector2(32, 1696)
+position = Vector2(5984, 2240)
 camera = NodePath("../Camera2D")
 
 [node name="tree" type="TileMapLayer" parent="Node" groups=["terrain"]]
@@ -1454,7 +1459,7 @@ shape = SubResource("RectangleShape2D_ttapc")
 
 [node name="FreeCamera" type="Node2D" parent="Node" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(138.667, 1664)
+position = Vector2(5984, 2208)
 script = ExtResource("33_v3wbb")
 follow_mode = 2
 follow_target = NodePath("../player")
@@ -1467,7 +1472,7 @@ limit_target = NodePath("../cameras/FreeCameraLimit")
 
 [node name="PC2" type="Node2D" parent="Node" node_paths=PackedStringArray("follow_target", "follow_path")]
 top_level = true
-position = Vector2(5984, 1696)
+position = Vector2(5984, 2240)
 script = ExtResource("33_v3wbb")
 follow_mode = 4
 follow_target = NodePath("../player")

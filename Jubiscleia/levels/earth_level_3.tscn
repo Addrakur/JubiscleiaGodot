@@ -58,7 +58,6 @@ ease = 2
 [node name="earth_level_3" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_o325b")
 player = NodePath("Node/Player")
-free_spawn = true
 
 [node name="Node" type="Node" parent="."]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=12 format=3 uid="uid://bedppref8pxcj"]
 
 [ext_resource type="Script" uid="uid://b6o7lia5mp0ma" path="res://player/player_attack_projectile.gd" id="1_c1jhh"]
-[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="4_6h2qd"]
 [ext_resource type="Texture2D" uid="uid://chlhq0o5haq1w" path="res://assets/player/Ataques/Lanca/C0/projetil_0_3.png" id="4_pky7b"]
+[ext_resource type="PackedScene" uid="uid://cbxf7kpu8j2ho" path="res://player/player_attack_area.tscn" id="5_ke6d2"]
 [ext_resource type="Texture2D" uid="uid://dvfcrr1iu0lbw" path="res://assets/player/Ataques/Espada/C0/sword_0_3_projectile.png" id="6_qykke"]
 [ext_resource type="Texture2D" uid="uid://blr2yv63pnh4w" path="res://assets/player/Ataques/Lanca/C0/projetil_dest_0_3.png" id="8_h4wh0"]
 
@@ -35,7 +35,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AttackArea/CollisionArea:disabled")
+tracks/2/path = NodePath("player_attack_area/CollisionArea:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -59,46 +59,22 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("AttackArea:destroy_on_terrain")
+tracks/4/path = NodePath("Texture:scale")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(1, 1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AttackArea:one_hit_destroy")
+tracks/5/path = NodePath("player_attack_area/CollisionArea:polygon")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Texture:scale")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("AttackArea/CollisionArea:polygon")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -124,7 +100,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AttackArea/CollisionArea:polygon")
+tracks/1/path = NodePath("player_attack_area/CollisionArea:polygon")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -136,70 +112,46 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AttackArea:one_hit_destroy")
+tracks/2/path = NodePath("Texture:hframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [1]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Texture:hframes")
+tracks/3/path = NodePath("Texture:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Texture:frame")
+tracks/4/path = NodePath("player_attack_area/CollisionArea:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AttackArea/CollisionArea:disabled")
+tracks/5/path = NodePath("Texture:scale")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("AttackArea:destroy_on_terrain")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Texture:scale")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -249,7 +201,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AttackArea/CollisionArea:disabled")
+tracks/3/path = NodePath("player_attack_area/CollisionArea:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -325,7 +277,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AttackArea/CollisionArea:polygon")
+tracks/3/path = NodePath("player_attack_area/CollisionArea:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -353,18 +305,6 @@ tracks/5/path = NodePath(".:move")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("AttackArea:one_hit_destroy")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -413,7 +353,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("AttackArea/CollisionArea:polygon")
+tracks/3/path = NodePath("player_attack_area/CollisionArea:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -461,8 +401,8 @@ top_level = true
 script = ExtResource("1_c1jhh")
 animation = NodePath("Animations")
 texture = NodePath("Texture")
-collision_area = NodePath("AttackArea/CollisionArea")
-attack_area = NodePath("AttackArea")
+collision_area = NodePath("player_attack_area/CollisionArea")
+attack_area = NodePath("player_attack_area")
 
 [node name="Texture" type="Sprite2D" parent="."]
 
@@ -471,13 +411,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_hei53")
 }
 
-[node name="AttackArea" parent="." instance=ExtResource("4_6h2qd")]
-collision_mask = 65574
-targets = Array[String](["enemy", "obstacle"])
+[node name="player_attack_area" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("5_ke6d2")]
+collision_mask = 38
+parent = NodePath("..")
 one_hit_destroy = true
 destroy_on_terrain = true
 
-[node name="CollisionArea" type="CollisionPolygon2D" parent="AttackArea"]
+[node name="CollisionArea" type="CollisionPolygon2D" parent="player_attack_area"]
 polygon = PackedVector2Array(0, -1, 4, -1, 4, -4, 0, -4)
 
 [connection signal="animation_finished" from="Animations" to="." method="_on_animation_finished"]

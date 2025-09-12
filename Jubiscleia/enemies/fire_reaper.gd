@@ -2,19 +2,20 @@ class_name FireReaper
 extends CharacterBody2D
 
 @export var health_component: HealthComponent
-@export var attack_area: AttackArea
+@export var attack_area: EnemyAttackArea
 @export_enum("water","fire","earth","air") var element: String
 
 @onready var limit: EnemyLimit = get_parent()
 @onready var texture: Sprite2D = $texture
 @onready var collision: CollisionShape2D = $collision
-@onready var attack_polygon: CollisionPolygon2D = $AttackArea/CollisionPolygon2D
+@onready var attack_polygon: CollisionPolygon2D = $enemy_attack_area/CollisionPolygon2D
 @onready var can_attack_collision: CollisionPolygon2D = $can_attack_area/can_attack_collision
 @onready var animation: AnimationPlayer = $animation
 @onready var can_chase_collision: CollisionPolygon2D = $can_chase_area/can_chase_collision
 @onready var can_chase_collision_open: CollisionPolygon2D = $can_chase_area/can_chase_collision_open
 @onready var hit_modulate: AnimationPlayer = $hit_modulate
-@onready var collision_damage: CollisionShape2D = $collision_damage/collision_damage
+@onready var collision_damage: CollisionShape2D = $enemy_collision_damage/collision_damage
+@onready var collision_damage_polygon: CollisionShape2D = $enemy_collision_damage/collision_damage
 
 @onready var hsm: LimboHSM = $hsm
 @onready var idle_state: LimboState = $hsm/fire_reaper_idle

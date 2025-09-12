@@ -1,13 +1,13 @@
 class_name Player
 extends CharacterBody2D
 
-@export var attack_area: Area2D
+@export var attack_area: PlayerAttackArea
 @export var health_component: HealthComponent
 @export var camera: Camera2D
 
 @onready var animation: AnimationPlayer = $Animations
 @onready var texture: Sprite2D = $Texture
-@onready var attack_area_polygon: CollisionPolygon2D = $AttackArea/AttackArea
+@onready var attack_area_polygon: CollisionPolygon2D = $player_attack_area/AttackArea
 const ATTACK_AREA_POSITION: float = 39
 @onready var attack_spawn_point = $AttackSpawnPoint
 @onready var combo_timer = $ComboTimer
@@ -44,7 +44,6 @@ const ATTACK_AREA_POSITION: float = 39
 @onready var wall_sensor: RayCast2D = $wall_sensor
 @onready var heal_state: PlayerHeal = $StateMachine/Heal
 @onready var state = $StateMachine/State as State
-@onready var interface = $Interface
 @onready var death_menu: CanvasLayer = $death_menu
 
 @export_category("Jump Variables")

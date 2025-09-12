@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bh2mbvt7usnmw" path="res://assets/enemy/tree_boss/rock.png" id="1_2wxbs"]
 [ext_resource type="Script" uid="uid://d0wbb0gtqql0m" path="res://enemies/tree_boss_rock.gd" id="1_pb16i"]
-[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_sfuc7"]
+[ext_resource type="PackedScene" uid="uid://c3tb3d720s55q" path="res://enemies/enemy_attack_area.tscn" id="2_gmx83"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sfuc7"]
 radius = 41.0488
@@ -27,17 +27,16 @@ throw_force = 800.0
 shape = SubResource("CircleShape2D_sfuc7")
 disabled = true
 
-[node name="AttackArea" parent="." instance=ExtResource("2_sfuc7")]
-collision_mask = 1
-targets = Array[String](["player"])
+[node name="enemy_attack_area" parent="." instance=ExtResource("2_gmx83")]
 damage = 20.0
-knockup_force = -10.0
 knockback_force = 500.0
+knockup_force = -10.0
 poise_damage = 50.0
-attack_name = "BIG_ROCK"
+attack_name = "boss_rock"
 one_hit_destroy = true
+destroy_on_walls = true
 
-[node name="attack_area_collision" type="CollisionShape2D" parent="AttackArea"]
+[node name="attack_area_collision" type="CollisionShape2D" parent="enemy_attack_area"]
 rotation = -0.00198728
 shape = SubResource("CircleShape2D_pb16i")
 disabled = true

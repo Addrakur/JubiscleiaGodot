@@ -369,7 +369,7 @@ texture = ExtResource("9_0j6fp")
 
 [node name="Camera2D" type="Camera2D" parent="pause"]
 physics_interpolation_mode = 1
-position = Vector2(-21.3333, 224)
+position = Vector2(-21.3333, 240)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = -448
@@ -560,7 +560,7 @@ weapon = "axe"
 position = Vector2(-21.3333, 240)
 
 [node name="PlacaDash" type="Sprite2D" parent="pause/placas"]
-position = Vector2(4661.33, -432)
+position = Vector2(4712.33, -432)
 texture = ExtResource("24_v25dc")
 
 [node name="PlacaAtacar" type="Sprite2D" parent="pause/placas"]
@@ -590,12 +590,12 @@ autoplay = "default"
 frame_progress = 0.843228
 
 [node name="Player" parent="pause" node_paths=PackedStringArray("camera") instance=ExtResource("3_q1c72")]
-position = Vector2(-256, 256)
+position = Vector2(-311, 351)
 camera = NodePath("../Camera2D")
 
 [node name="free_camera" type="Node2D" parent="pause" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(-21.3333, 224)
+position = Vector2(-21.3333, 240)
 script = ExtResource("8_rt00j")
 follow_mode = 2
 follow_target = NodePath("../Player")
@@ -609,94 +609,70 @@ limit_target = NodePath("../CameraArea/free_camera_limit")
 [node name="LavaTiles" type="Node2D" parent="pause"]
 
 [node name="Lava9" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(4680, -105)
+position = Vector2(4727, -105)
 
 [node name="Lava10" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(4680, -121)
+position = Vector2(4727, -121)
 
 [node name="Lava11" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(4680, -137)
+position = Vector2(4727, -137)
 
 [node name="Lava12" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(4680, -153)
+position = Vector2(4727, -153)
 
 [node name="Lava13" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(4680, -169)
+position = Vector2(4727, -169)
 
 [node name="Lava14" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(4680, -185)
+position = Vector2(4727, -185)
 
 [node name="Lava15" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(4680, -201)
+position = Vector2(4727, -201)
 
 [node name="Lava21" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5032, -224)
+position = Vector2(5234, -224)
 
 [node name="Lava22" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5032, -208)
+position = Vector2(5234, -208)
 
 [node name="Lava29" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5032, -256)
+position = Vector2(5234, -256)
 
 [node name="Lava30" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5032, -240)
+position = Vector2(5234, -240)
 
 [node name="Lava23" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5032, -192)
+position = Vector2(5234, -192)
 
 [node name="Lava24" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5032, -176)
+position = Vector2(5234, -176)
 
 [node name="Lava25" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5032, -160)
-
-[node name="Lava31" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5320, -196)
-
-[node name="Lava32" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5320, -180)
-
-[node name="Lava37" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5320, -228)
-
-[node name="Lava38" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5320, -212)
-
-[node name="Lava33" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5320, -164)
-
-[node name="Lava34" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5320, -148)
-
-[node name="Lava35" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5320, -132)
-
-[node name="Lava36" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5320, -116)
+position = Vector2(5234, -160)
 
 [node name="Lava26" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5032, -144)
+position = Vector2(5234, -144)
 
 [node name="Lava27" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5032, -128)
+position = Vector2(5234, -128)
 
 [node name="Lava28" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(5032, -112)
+position = Vector2(5234, -112)
 
 [node name="Lava16" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(4680, -217)
+position = Vector2(4727, -217)
 
 [node name="Lava17" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(4680, -233)
+position = Vector2(4727, -233)
 
 [node name="Lava18" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(4680, -249)
+position = Vector2(4727, -249)
 
 [node name="Lava19" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(4680, -265)
+position = Vector2(4727, -265)
 
 [node name="Lava20" parent="pause/LavaTiles" instance=ExtResource("11_xhs30")]
-position = Vector2(4680, -281)
+position = Vector2(4727, -281)
 
 [node name="grass_plat" type="TileMapLayer" parent="pause"]
 tile_map_data = PackedByteArray("AADeAOT/AAABAAAAAADfAOT/AAABAAAAAADfAO3/AAABAAAAAADeAO3/AAABAAAAAADfAOr/AAABAAAAAADeAOr/AAABAAAAAADfAOf/AAABAAAAAADeAOf/AAABAAAAAADgAOT/AAACAAEAAADgAOf/AAACAAEAAADgAOr/AAACAAEAAADgAO3/AAACAAEAAADdAO3/AAAAAAEAAADdAOr/AAAAAAEAAADdAOf/AAAAAAEAAADdAOT/AAAAAAEAAAARAe3/AAABAAAAAAASAe3/AAABAAAAAAATAe3/AAABAAAAAAAUAe3/AAACAAAAAAAQAe3/AAAAAAAAAABgAOf/AAABAAAAAABhAOf/AAABAAAAAABiAOf/AAABAAAAAABjAOf/AAACAAAAAABfAOf/AAAAAAAAAABrAOf/AAAAAAAAAABvAOf/AAACAAAAAABsAOf/AAABAAAAAABtAOf/AAABAAAAAABuAOf/AAABAAAAAAA=")
@@ -784,5 +760,13 @@ shape = SubResource("RectangleShape2D_38gw4")
 
 [node name="level_timer" parent="pause" node_paths=PackedStringArray("level") instance=ExtResource("46_hqnx5")]
 level = NodePath("../..")
+
+[node name="Label" type="Label" parent="pause"]
+offset_left = 10610.0
+offset_top = -783.0
+offset_right = 10866.0
+offset_bottom = -708.0
+text = "So pode se curar caso tenha uma arma daquele elemento."
+autowrap_mode = 3
 
 [connection signal="body_entered" from="pause/sei_la/Area2D" to="pause/sei_la" method="_on_area_2d_body_entered"]

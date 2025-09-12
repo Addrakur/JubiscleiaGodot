@@ -64,9 +64,6 @@ single_hit_per_enemy = false
 [node name="attack_collision" type="CollisionShape2D" parent="AttackArea"]
 shape = SubResource("CircleShape2D_kkkcx")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_h0b04")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_wwugd")
@@ -76,3 +73,6 @@ autoplay = "spin"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_yq0tl")
 debug_color = Color(0.78365, 0.264296, 0.853592, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_h0b04")
