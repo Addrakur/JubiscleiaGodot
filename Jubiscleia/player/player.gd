@@ -4,6 +4,10 @@ extends CharacterBody2D
 @export var attack_area: PlayerAttackArea
 @export var health_component: HealthComponent
 @export var camera: Camera2D
+@export var top_size_y: float
+@export var bot_size_y: float
+@export var left_size_x: float
+@export var right_size_x: float
 
 @onready var animation: AnimationPlayer = $Animations
 @onready var texture: Sprite2D = $Texture

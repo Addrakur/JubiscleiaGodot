@@ -21,9 +21,9 @@ func hit_func(body: Node2D):
 		body_is_target = true
 	
 	if not body_is_target:
-		print("body not target")
+		#print("body not target")
 		return
-	print("body is target")
+	#print("body is target")
 	
 	if not body.health_component.invulnerable and body.alive:
 		body.health_component.update_health(damage, knockup_force, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage, parent.position.x, parent)

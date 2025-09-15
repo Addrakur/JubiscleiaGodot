@@ -13,6 +13,10 @@ z_index = -1
 script = ExtResource("1_4grp2")
 speed_x = 300.0
 speed_y = 300.0
+top_size_y = -13.0
+bot_size_y = 13.0
+left_size_x = -13.0
+right_size_x = 13.0
 
 [node name="texture" type="Sprite2D" parent="."]
 texture = ExtResource("1_db1un")

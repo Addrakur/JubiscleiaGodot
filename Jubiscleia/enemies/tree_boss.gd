@@ -4,6 +4,10 @@ extends CharacterBody2D
 @export var health_component: HealthComponent
 @export var attack_area: EnemyAttackArea
 @export_enum("water","fire","earth","air") var element: String
+@export var top_size_y: float
+@export var bot_size_y: float
+@export var left_size_x: float
+@export var right_size_x: float
 @export var player: Player
 @export var arena_right: Marker2D
 @export var arena_left: Marker2D

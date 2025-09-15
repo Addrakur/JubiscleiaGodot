@@ -1,32 +1,34 @@
-[gd_scene load_steps=5 format=3 uid="uid://djqldg2hn5i3u"]
+[gd_scene load_steps=6 format=3 uid="uid://djqldg2hn5i3u"]
 
 [ext_resource type="Texture2D" uid="uid://cnmannxggs5cm" path="res://assets/Spikes.png" id="1_30gas"]
-[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_5hn2l"]
+[ext_resource type="Script" uid="uid://da21elk6ru524" path="res://Management/spike.gd" id="1_rtt5g"]
+[ext_resource type="PackedScene" uid="uid://c3tb3d720s55q" path="res://enemies/enemy_attack_area.tscn" id="2_rtt5g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d0hdm"]
-size = Vector2(32, 7)
+size = Vector2(29, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8ae0"]
-size = Vector2(30, 6)
+size = Vector2(31, 6)
 
 [node name="Spike" type="StaticBody2D" groups=["terrain"]]
 collision_layer = 32
+script = ExtResource("1_rtt5g")
+top_size_y = -6.0
+right_size_x = 32.0
 
-[node name="AttackArea" parent="." instance=ExtResource("2_5hn2l")]
-collision_mask = 1
-targets = Array[String](["player"])
-damage = 10.0
-knockup_force = -300.0
+[node name="enemy_attack_area" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_rtt5g")]
+parent = NodePath("..")
+damage = 5.0
+knockback_force = 200.0
 poise_damage = 10.0
 attack_name = "spike"
-single_hit_per_enemy = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackArea"]
-position = Vector2(16, -3.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_attack_area"]
+position = Vector2(15.5, -3.5)
 shape = SubResource("RectangleShape2D_d0hdm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(16, -3)
+position = Vector2(15.5, -3)
 shape = SubResource("RectangleShape2D_a8ae0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

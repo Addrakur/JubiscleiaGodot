@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://enns3weeg1g0"]
+[gd_scene load_steps=14 format=3 uid="uid://enns3weeg1g0"]
 
 [ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="1_2ie45"]
+[ext_resource type="Script" uid="uid://dtc5t1e6pi115" path="res://objects/lava.gd" id="1_7eiwy"]
 [ext_resource type="Texture2D" uid="uid://c365axc5oq0gd" path="res://assets/lava_placeholder.png" id="2_4htoa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7pjg0"]
@@ -71,14 +72,15 @@ animations = [{
 }]
 
 [node name="Lava" type="Node2D"]
+script = ExtResource("1_7eiwy")
+top_size_y = -500.0
+bot_size_y = 500.0
 
 [node name="AttackArea" parent="." instance=ExtResource("1_2ie45")]
 collision_mask = 1
-target = "player"
-targets = Array[String](["player"])
 damage = 5.0
-knockup_force = -30.0
 knockback_force = 500.0
+knockup_force = -30.0
 poise_damage = 50.0
 attack_name = "lava"
 

@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1q0mp6dsqy6p"]
+[gd_scene load_steps=9 format=3 uid="uid://b1q0mp6dsqy6p"]
 
+[ext_resource type="Script" uid="uid://6o2gppqhx7xx" path="res://Management/spinning_saw.gd" id="1_4usuw"]
 [ext_resource type="Texture2D" uid="uid://crrbvqpj7gx45" path="res://assets/spinning_saw.png" id="1_h0b04"]
-[ext_resource type="PackedScene" uid="uid://dtmpj3pwogil8" path="res://Management/composition_scenes/attack_area.tscn" id="2_52cmm"]
+[ext_resource type="PackedScene" uid="uid://c3tb3d720s55q" path="res://enemies/enemy_attack_area.tscn" id="2_g6ygq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kkkcx"]
 radius = 14.0
@@ -50,18 +51,21 @@ radius = 13.0
 [node name="spinning_saw" type="AnimatableBody2D"]
 collision_layer = 65538
 collision_mask = 32769
+script = ExtResource("1_4usuw")
+top_size_y = -13.0
+bot_size_y = 13.0
+left_size_x = -13.0
+right_size_x = 13.0
 
-[node name="AttackArea" parent="." instance=ExtResource("2_52cmm")]
-collision_mask = 32769
-targets = Array[String](["player"])
-damage = 10.0
-knockup_force = -50.0
-knockback_force = 300.0
-poise_damage = 50.0
+[node name="enemy_attack_area" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("2_g6ygq")]
+parent = NodePath("..")
+damage = 1.0
+knockback_force = 200.0
+poise_damage = 10.0
 attack_name = "spinning_saw"
-single_hit_per_enemy = false
+multi_hit = true
 
-[node name="attack_collision" type="CollisionShape2D" parent="AttackArea"]
+[node name="attack_collision" type="CollisionShape2D" parent="enemy_attack_area"]
 shape = SubResource("CircleShape2D_kkkcx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

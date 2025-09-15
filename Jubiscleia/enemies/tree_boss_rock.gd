@@ -1,6 +1,10 @@
 extends RigidBody2D
 
 @export var throw_force: float
+@export var top_size_y: float
+@export var bot_size_y: float
+@export var left_size_x: float
+@export var right_size_x: float
 
 @onready var attack_area_collision: CollisionShape2D = $AttackArea/attack_area_collision
 @onready var collision: CollisionShape2D = $collision

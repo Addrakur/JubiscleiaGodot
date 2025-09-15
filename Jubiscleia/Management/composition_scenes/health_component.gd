@@ -44,8 +44,33 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 				current_poise -= poise_damage
 				
 				if current_poise <= 0:
-					parent.hit_state.knockup_force = knockup * parent.hit_state.knock_multi # Aplica a força do knockback
-					parent.hit_state.knockback_force = knockback * parent.hit_state.knock_multi # Aplica a força do knockup
+					
+					print("parent.top_size_y: " + str(parent.position.y - parent.top_size_y))
+					print("parent.bot_size_y: " + str(parent.position.y + parent.bot_size_y))
+					#print("parent.left_size_x: " + str(parent.position.x - parent.left_size_x))
+					#print("parent.right_size_x: " + str(parent.position.x + parent.right_size_x))
+					
+					print("attacker.top_size_y: " + str(attacker.position.y - attacker.top_size_y))
+					print("attacker.bot_size_y: " + str(attacker.position.y + attacker.bot_size_y))
+					#print("attacker.left_size_x: " + str(attacker.position.x - attacker.left_size_x))
+					#print("attacker.right_size_x: " + str(attacker.position.x + attacker.right_size_x))
+					
+					if parent.global_position.y + parent.bot_size_y < attacker.global_position.y + attacker.top_size_y: #Verifica se o jogador esta acima do inimigo
+						parent.hit_state.knockup_force = -knockback * parent.hit_state.knock_multi * 1.5
+						if parent.global_position.x < attacker.global_position.x + attacker.right_size_x and parent.global_position.x > attacker.global_position.x + attacker.left_size_x: #Verifica se o jogador esta dentro do comprimento do inimigo
+							parent.hit_state.knockback_force = 0
+						else:
+							parent.hit_state.knockback_force = knockback * parent.hit_state.knock_multi * 0.7
+					elif parent.global_position.y + parent.top_size_y > attacker.global_position.y + parent.bot_size_y: #Verifica se o jogador esta abaixo do inimigo
+						parent.hit_state.knockup_force = 0
+						if parent.global_position.x < attacker.global_position.x + attacker.right_size_x and parent.global_position.x > attacker.global_position.x + attacker.left_size_x: #Verifica se o jogador esta dentro do comprimento do inimigo
+							parent.hit_state.knockback_force = 0
+						else:
+							parent.hit_state.knockback_force = knockback * parent.hit_state.knock_multi
+					else: #Jogador esta ao lado do inimigo
+						parent.hit_state.knockup_force = 0
+						parent.hit_state.knockback_force = knockback * parent.hit_state.knock_multi # Aplica a força do knockup
+					
 					parent.hit_state.direction = direction
 				
 					if parent.get("fsm") != null:

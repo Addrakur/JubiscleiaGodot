@@ -11,6 +11,10 @@ height = 8.0
 [node name="Bee" type="Node2D"]
 script = ExtResource("1_khtff")
 speed = 250.0
+top_size_y = -2.0
+bot_size_y = 2.0
+left_size_x = -4.0
+right_size_x = 4.0
 
 [node name="Texture" type="Sprite2D" parent="."]
 texture = ExtResource("2_cs6qf")

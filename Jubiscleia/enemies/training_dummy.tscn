@@ -188,10 +188,13 @@ shader_parameter/red_value = 0.0
 
 [node name="Training Dummy" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemy"]]
 collision_layer = 2
-collision_mask = 44
+collision_mask = 172
 script = ExtResource("1_qe621")
 element = "fire"
 health_component = NodePath("HealthComponent")
+top_size_y = -32.0
+left_size_x = -6.0
+right_size_x = 6.0
 metadata/_edit_horizontal_guides_ = [-93.0]
 
 [node name="HitModulate" type="AnimationPlayer" parent="."]

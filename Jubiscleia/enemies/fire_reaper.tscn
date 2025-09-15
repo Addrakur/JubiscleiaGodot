@@ -429,6 +429,9 @@ script = ExtResource("1_1aj1k")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("enemy_attack_area")
 element = "fire"
+top_size_y = -56.0
+left_size_x = -10.0
+right_size_x = 10.0
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -28)

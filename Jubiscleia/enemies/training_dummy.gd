@@ -2,6 +2,10 @@ extends CharacterBody2D
 
 @export_enum("water","fire","earth","air") var element: String
 @export var health_component: Node2D
+@export var top_size_y: float
+@export var bot_size_y: float
+@export var left_size_x: float
+@export var right_size_x: float
 @onready var fsm = $StateMachine as StateMachine
 @onready var idle_state = $StateMachine/DummyIdleState as DummyIdleState
 @onready var hit_state = $StateMachine/DummyHitState as DummyHitState
@@ -24,6 +28,9 @@ func _ready():
 func _process(_delta):
 	if health_component.is_getting_hit and not fsm.state == hit_state:
 		fsm.change_state(hit_state)
+	
+	if Input.is_physical_key_pressed(KEY_0):
+		GameSettings.player.health_component.update_health(1,0,200,1 if GameSettings.player.position.x > position.x else -1, "dummy",10,position.x,self)
 
 func _physics_process(delta):
 	move_and_slide()

@@ -392,7 +392,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r73ga"]
-radius = 18.0278
+radius = 18.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2fi22"]
 radius = 16.0
@@ -407,6 +407,9 @@ collision_mask = 65708
 script = ExtResource("1_cbade")
 health_component = NodePath("HealthComponent")
 element = "earth"
+top_size_y = -36.0
+left_size_x = -18.0
+right_size_x = 18.0
 
 [node name="texture" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_0tklo")

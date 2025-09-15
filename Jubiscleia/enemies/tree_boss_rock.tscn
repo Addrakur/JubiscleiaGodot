@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c3tb3d720s55q" path="res://enemies/enemy_attack_area.tscn" id="2_gmx83"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sfuc7"]
-radius = 41.0488
+radius = 41.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pb16i"]
 radius = 42.0476
@@ -22,6 +22,10 @@ contact_monitor = true
 max_contacts_reported = 10
 script = ExtResource("1_pb16i")
 throw_force = 800.0
+top_size_y = -41.0
+bot_size_y = 41.0
+left_size_x = -41.0
+right_size_x = 41.0
 
 [node name="collision" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_sfuc7")

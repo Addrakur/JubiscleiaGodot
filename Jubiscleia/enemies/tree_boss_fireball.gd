@@ -2,6 +2,10 @@ extends Node2D
 
 @export var speed_x: float
 @export var speed_y: float
+@export var top_size_y: float
+@export var bot_size_y: float
+@export var left_size_x: float
+@export var right_size_x: float
 var direction: float
 var can_destroy: bool = false
 

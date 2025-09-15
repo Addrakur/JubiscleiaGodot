@@ -18,6 +18,10 @@ collision_mask = 36
 mass = 20.0
 gravity_scale = 0.2
 script = ExtResource("1_7pdjn")
+top_size_y = -10.0
+bot_size_y = 10.0
+left_size_x = -10.0
+right_size_x = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_o3btm")

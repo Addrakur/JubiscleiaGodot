@@ -808,14 +808,16 @@ point_count = 9
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_rfgjc"]
 
-[node name="tree_boss" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area", "fireball_horizontal_spawn_points") groups=["enemy"]]
+[node name="tree_boss" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "fireball_horizontal_spawn_points") groups=["enemy"]]
 z_index = -2
 collision_layer = 2
 collision_mask = 65580
 script = ExtResource("1_w1ig0")
 health_component = NodePath("HealthComponent")
-attack_area = NodePath("")
 element = "earth"
+top_size_y = -164.0
+left_size_x = -24.0
+right_size_x = 24.0
 fireball_horizontal_spawn_points = [NodePath("fireball_spawn_points/1"), NodePath("fireball_spawn_points/2"), NodePath("fireball_spawn_points/3"), NodePath("fireball_spawn_points/4"), NodePath("fireball_spawn_points/5"), NodePath("fireball_spawn_points/6")]
 
 [node name="animation" type="AnimationPlayer" parent="."]
