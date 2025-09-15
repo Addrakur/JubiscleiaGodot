@@ -45,16 +45,6 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 				
 				if current_poise <= 0:
 					
-					print("parent.top_size_y: " + str(parent.position.y - parent.top_size_y))
-					print("parent.bot_size_y: " + str(parent.position.y + parent.bot_size_y))
-					#print("parent.left_size_x: " + str(parent.position.x - parent.left_size_x))
-					#print("parent.right_size_x: " + str(parent.position.x + parent.right_size_x))
-					
-					print("attacker.top_size_y: " + str(attacker.position.y - attacker.top_size_y))
-					print("attacker.bot_size_y: " + str(attacker.position.y + attacker.bot_size_y))
-					#print("attacker.left_size_x: " + str(attacker.position.x - attacker.left_size_x))
-					#print("attacker.right_size_x: " + str(attacker.position.x + attacker.right_size_x))
-					
 					if parent.global_position.y + parent.bot_size_y < attacker.global_position.y + attacker.top_size_y: #Verifica se o jogador esta acima do inimigo
 						parent.hit_state.knockup_force = -knockback * parent.hit_state.knock_multi * 1.5
 						if parent.global_position.x < attacker.global_position.x + attacker.right_size_x and parent.global_position.x > attacker.global_position.x + attacker.left_size_x: #Verifica se o jogador esta dentro do comprimento do inimigo

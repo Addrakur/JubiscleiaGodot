@@ -24,6 +24,7 @@ func enter_state() -> void:
 	PlayerVariables.current_skill = PlayerVariables.next_skill
 	animation.play(PlayerVariables.current_skill + "_jump", -1, PlayerVariables.attack_speed,false)
 	PlayerVariables.current_attack = PlayerVariables.current_skill + "_jump"
+	player.attack_area.current_element = PlayerVariables.get(PlayerVariables.current_skill + "_element")
 	player.attack_area.attack_name = PlayerVariables.current_attack
 	player.can_combo = false
 	

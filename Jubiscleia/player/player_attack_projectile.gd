@@ -7,6 +7,10 @@ var direction: float
 @export var texture: Sprite2D
 @export var collision_area: CollisionPolygon2D
 @export var attack_area: PlayerAttackArea
+@export var top_size_y: float
+@export var bot_size_y: float
+@export var left_size_x: float
+@export var right_size_x: float
 
 var can_destroy: bool = false
 var attack: String = PlayerVariables.current_attack

@@ -56,7 +56,7 @@ var axe_1_shake: float = 1
 var axe_2_damage: float = 3
 var axe_2_knockback: float = 200
 var axe_2_knockup: float = 0
-var axe_2_poise: float = 7
+var axe_2_poise: float = 5
 
 var axe_3_damage: float = 5
 var axe_3_knockback: float = 250

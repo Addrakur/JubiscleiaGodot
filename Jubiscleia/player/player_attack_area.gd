@@ -50,8 +50,8 @@ func hit_func(body: Node2D):
 			elif has_elemental_strength(current_element, body.element):
 				new_value = current_meter_value + (PlayerVariables.get(PlayerVariables.current_skill + "_element_amount") * PlayerVariables.element_reduced_stack) if parent.is_in_group("player") else current_meter_value + (PlayerVariables.get(parent.skill + "_element_amount") * PlayerVariables.element_reduced_stack)# Calcula o novo valor
 			else:
-				new_value = current_meter_value + PlayerVariables.get(PlayerVariables.current_skill + "_element_amount") if parent.is_in_group("player") else current_meter_value + PlayerVariables.get(parent.skill + "_element_amount")# Calcula o novo valor
-					
+				new_value = current_meter_value + PlayerVariables.get(PlayerVariables.current_skill + "_element_amount") if parent is Player else current_meter_value + PlayerVariables.get(parent.skill + "_element_amount")# Calcula o novo valor
+				
 			PlayerVariables.set(current_element + "_stack_count" , new_value)  # Vincula o novo valor ao contador
 			
 		else:
