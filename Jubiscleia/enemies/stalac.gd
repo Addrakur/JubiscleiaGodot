@@ -61,6 +61,8 @@ func _process(_delta: float) -> void:
 		can_chase = true
 	else:
 		can_chase = false
+	
+	collision.rotation_degrees = texture.rotation_degrees
 
 func _physics_process(delta):
 	if not is_on_floor() and hsm.get_active_state() != inactive_state and hsm.get_active_state() != fall_attack_state:

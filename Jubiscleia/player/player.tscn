@@ -3037,6 +3037,14 @@ debug_color = Color(0.944279, 7.79718e-06, 0.597798, 0.42)
 position = Vector2(0, -14)
 scale = Vector2(1.00346, 1)
 parent = NodePath("..")
+damage = null
+knockback_force = null
+poise_damage = null
+attack_name = null
+one_hit_destroy = null
+destroy_on_terrain = null
+multi_hit = null
+destroy_on_walls = null
 
 [node name="AttackArea" type="CollisionPolygon2D" parent="player_attack_area"]
 position = Vector2(38.8655, 9.53674e-07)

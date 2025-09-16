@@ -30,7 +30,7 @@ func _process(_delta):
 		fsm.change_state(hit_state)
 	
 	if Input.is_physical_key_pressed(KEY_0):
-		GameSettings.player.health_component.update_health(1,0,200,1 if GameSettings.player.position.x > position.x else -1, "dummy",10,position.x,self)
+		GameSettings.player.health_component.update_health(1,200,1 if GameSettings.player.position.x > position.x else -1, "dummy",10,position.x,self)
 
 func _physics_process(delta):
 	move_and_slide()

@@ -1,12 +1,8 @@
 extends Control
 
-@export var w1_text: Sprite2D
-@export var w2_text: Sprite2D
-@onready var parameter_settings: Control = $ParameterSettings
-@onready var w_1: AnimationPlayer = $w1
-@onready var w_2: AnimationPlayer = $w2
 @onready var skill_tree: Control = $skill_tree
-
+@onready var w1_t: RichTextLabel = $w1_t
+@onready var w2_t: RichTextLabel = $w2_t
 
 @export var weapon_1_buttons: Array[TextureButton]
 @export var weapon_2_buttons: Array[TextureButton]
@@ -41,13 +37,6 @@ func _on_w_2_spear_pressed():
 	PlayerVariables.set_skill_2("spear")
 	button_pressed_manager()
 
-func _on_settings_pressed() -> void:
-	parameter_settings.visible = true
-
-func _on_back_pressed() -> void:
-	parameter_settings.visible = false
-	
-
 func button_pressed_manager():
 	for button in weapon_1_buttons:
 		if button.name != PlayerVariables.skill_1 or not PlayerVariables.get(button.name + "_unlocked"):
@@ -61,8 +50,8 @@ func button_pressed_manager():
 		else:
 			button.button_pressed = true
 	
-	w_1.play(PlayerVariables.skill_1)
-	w_2.play(PlayerVariables.skill_2)
+	w1_t.text = PlayerVariables.skill_1
+	w2_t.text = PlayerVariables.skill_2
 	
 
 func _on_skill_tree_button_pressed() -> void:

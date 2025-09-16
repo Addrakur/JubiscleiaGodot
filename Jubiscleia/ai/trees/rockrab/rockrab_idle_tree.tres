@@ -27,7 +27,6 @@ children = [SubResource("BTAction_q8ci4"), SubResource("BTAction_pj0fm")]
 
 [sub_resource type="BTAction" id="BTAction_ekyh2"]
 script = ExtResource("1_1w01v")
-value = Vector2(0, 0)
 
 [sub_resource type="BTSequence" id="BTSequence_ci8f5"]
 children = [SubResource("BTAction_ekyh2")]

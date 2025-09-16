@@ -30,7 +30,7 @@ func _ready() -> void:
 func _process(_delta):
 	die()
 
-func update_health(health_damage: float, knockup: float, knockback: float, direction: float, last_attack_name: String, poise_damage: float, attack_position: float, attacker: Node2D) -> void:
+func update_health(health_damage: float, knockback: float, direction: float, last_attack_name: String, poise_damage: float, attack_position: float, attacker: Node2D) -> void:
 	if last_attack_name != last_attack:
 		last_attack = last_attack_name
 		if can_recieve_damage(attack_position):

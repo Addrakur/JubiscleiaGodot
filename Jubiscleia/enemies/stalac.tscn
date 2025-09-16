@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bv1vep1wp1e0f"]
+[gd_scene load_steps=35 format=3 uid="uid://bv1vep1wp1e0f"]
 
 [ext_resource type="Script" uid="uid://cb0bpds2brbvg" path="res://enemies/stalac.gd" id="1_8s1wh"]
 [ext_resource type="Texture2D" uid="uid://c24c22pd2hffn" path="res://assets/placeholder/spike_fall_enemy_walk.png" id="2_8s1wh"]
@@ -19,8 +19,11 @@
 [ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="15_maaf4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8s1wh"]
+radius = 4.0
+height = 50.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0rsqb"]
 radius = 6.0
-height = 46.0
 
 [sub_resource type="Animation" id="Animation_xe8q6"]
 length = 0.001
@@ -95,6 +98,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:collision_layer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [2]
 }
 
 [sub_resource type="Animation" id="Animation_tvg2v"]
@@ -230,6 +245,18 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.57079]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:collision_layer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_cdw0t"]
@@ -533,8 +560,12 @@ element = "earth"
 top_size_y = -50.0
 
 [node name="collision" type="CollisionShape2D" parent="."]
-position = Vector2(0, -23)
+position = Vector2(0, -25)
 shape = SubResource("CapsuleShape2D_8s1wh")
+
+[node name="ground" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_0rsqb")
 
 [node name="animation" type="AnimationPlayer" parent="."]
 libraries = {
@@ -609,7 +640,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("13_84xmj")]
-max_health = 15.0
+max_health = 8.0
 max_poise = 4.0
 poise_recover_timer = 3.0
 attack_timer = NodePath("../attack_timer")

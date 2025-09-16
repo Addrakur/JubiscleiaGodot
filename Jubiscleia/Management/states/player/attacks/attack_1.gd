@@ -29,7 +29,6 @@ func enter_state() -> void:
 	
 	player.attack_area.damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_1_damage") * PlayerVariables.damage_mult
 	player.attack_area.knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_1_knockback")
-	player.attack_area.knockup_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_1_knockup")
 	player.attack_area.poise_damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_1_poise")
 
 func exit_state() -> void:

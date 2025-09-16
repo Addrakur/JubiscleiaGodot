@@ -4,7 +4,6 @@ extends Area2D
 @export var parent: Node
 @export var damage: float
 @export var knockback_force: float
-@export var knockup_force: float
 @export var poise_damage: float
 @export var attack_name: String
 

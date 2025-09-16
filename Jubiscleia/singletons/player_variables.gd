@@ -49,24 +49,20 @@ var axe_unlocked: bool = true
 
 var axe_1_damage: float = 3
 var axe_1_knockback: float = 200
-var axe_1_knockup: float = 0
 var axe_1_poise: float = 5
 var axe_1_shake: float = 1
 
-var axe_2_damage: float = 3
+var axe_2_damage: float = 4
 var axe_2_knockback: float = 200
-var axe_2_knockup: float = 0
 var axe_2_poise: float = 5
 
 var axe_3_damage: float = 5
 var axe_3_knockback: float = 250
-var axe_3_knockup: float = 0
 var axe_3_poise: float = 10
 var axe_3_shake: float = 1.5
 
 var axe_jump_damage: float = 3
 var axe_jump_knockback: float = 200
-var axe_jump_knockup: float = 0
 var axe_jump_poise: float = 10
 var axe_jump_shake: float = 3
 
@@ -82,17 +78,14 @@ var sword_unlocked: bool = true
 
 var sword_1_damage: float = 2
 var sword_1_knockback: float = 80
-var sword_1_knockup: float = 0
 var sword_1_poise: float = 3
 
 var sword_2_damage: float = 3
 var sword_2_knockback: float = 80
-var sword_2_knockup: float = 0
 var sword_2_poise: float = 3
 
 var sword_3_damage: float = 0
 var sword_3_knockback: float = 0
-var sword_3_knockup: float = 0
 var sword_3_projectile_damage: float = 3
 var sword_3_projectile_speed: float = 100
 var sword_3_projectile_knockback: float = 100
@@ -104,7 +97,6 @@ var sword_3_shake: float = 1
 
 var sword_jump_damage: float = 2
 var sword_jump_knockback: float = 50
-var sword_jump_knockup: float = 0
 var sword_jump_poise: float = 5
 
 
@@ -120,17 +112,14 @@ var spear_unlocked: bool = false
 
 var spear_1_damage: float = 2
 var spear_1_knockback: float = 70
-var spear_1_knockup: float = 0
 var spear_1_poise: float = 3
 
 var spear_2_damage: float = 2
 var spear_2_knockback: float = 50
-var spear_2_knockup: float = 0
 var spear_2_poise: float = 3
 
 var spear_3_damage: float = 0
 var spear_3_knockback: float = 0
-var spear_3_knockup: float = 0
 var spear_3_projectile_damage: float = 3
 var spear_3_projectile_speed: float = 250
 var spear_3_projectile_knockback: float = 30
@@ -141,7 +130,6 @@ var spear_3_poise: float = 0
 
 var spear_jump_damage: float = 2
 var spear_jump_knockback: float = 0
-var spear_jump_knockup: float = 0
 var spear_jump_poise: float = 5
 
 func toggle_active_player(t_or_f: bool):

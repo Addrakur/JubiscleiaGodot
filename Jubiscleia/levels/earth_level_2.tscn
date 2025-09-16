@@ -56,21 +56,12 @@ size = Vector2(16320, 4672)
 
 [sub_resource type="Resource" id="Resource_qoof4"]
 script = ExtResource("34_a3snn")
-duration = 1.0
-transition = 0
-ease = 2
 
 [sub_resource type="Resource" id="Resource_gx74b"]
 script = ExtResource("34_a3snn")
-duration = 1.0
-transition = 0
-ease = 2
 
 [sub_resource type="Resource" id="Resource_3bjul"]
 script = ExtResource("34_a3snn")
-duration = 1.0
-transition = 0
-ease = 2
 
 [node name="earth_level_2" type="Node2D" node_paths=PackedStringArray("player")]
 process_mode = 3
@@ -183,7 +174,7 @@ texture = ExtResource("9_swgoj")
 
 [node name="Camera2D" type="Camera2D" parent="Node"]
 physics_interpolation_mode = 1
-position = Vector2(138.667, 1630)
+position = Vector2(138.6667, 1606.9996)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = -288
@@ -1398,7 +1389,7 @@ position = Vector2(5792, 3739)
 position = Vector2(5600, 3771)
 
 [node name="player" parent="Node" node_paths=PackedStringArray("camera") instance=ExtResource("18_b32qe")]
-position = Vector2(-4, 1662)
+position = Vector2(20, 1639)
 camera = NodePath("../Camera2D")
 
 [node name="tree" type="TileMapLayer" parent="Node" groups=["terrain"]]
@@ -1458,7 +1449,7 @@ shape = SubResource("RectangleShape2D_ttapc")
 
 [node name="FreeCamera" type="Node2D" parent="Node" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(138.667, 1630)
+position = Vector2(138.66666, 1607)
 script = ExtResource("33_v3wbb")
 follow_mode = 2
 follow_target = NodePath("../player")
@@ -1471,7 +1462,7 @@ limit_target = NodePath("../cameras/FreeCameraLimit")
 
 [node name="PC2" type="Node2D" parent="Node" node_paths=PackedStringArray("follow_target", "follow_path")]
 top_level = true
-position = Vector2(5984, 1662)
+position = Vector2(5984, 1638.792)
 script = ExtResource("33_v3wbb")
 follow_mode = 4
 follow_target = NodePath("../player")
