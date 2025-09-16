@@ -58,7 +58,7 @@ func update_health(health_damage: float, knockup: float, knockback: float, direc
 						else:
 							parent.hit_state.knockback_force = knockback * parent.hit_state.knock_multi
 					else: #Jogador esta ao lado do inimigo
-						parent.hit_state.knockup_force = 0
+						parent.hit_state.knockup_force = -knockback * parent.hit_state.knock_multi * 0.5
 						parent.hit_state.knockback_force = knockback * parent.hit_state.knock_multi # Aplica a força do knockup
 					
 					parent.hit_state.direction = direction
