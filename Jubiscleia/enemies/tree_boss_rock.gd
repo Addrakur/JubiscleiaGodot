@@ -6,7 +6,7 @@ extends RigidBody2D
 @export var left_size_x: float
 @export var right_size_x: float
 
-@onready var attack_area_collision: CollisionShape2D = $AttackArea/attack_area_collision
+@onready var attack_area_collision: CollisionShape2D = $enemy_attack_area/attack_area_collision
 @onready var collision: CollisionShape2D = $collision
 
 var can_destroy: bool = false

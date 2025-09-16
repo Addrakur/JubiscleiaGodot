@@ -969,7 +969,7 @@ script = ExtResource("23_rab7e")
 parent = NodePath("../..")
 animation = NodePath("../../animation")
 speed_1 = 35000.0
-speed_2 = 50000.0
+speed_2 = 45000.0
 
 [connection signal="animation_finished" from="animation" to="hsm/attack_swipe" method="_on_animation_finished"]
 [connection signal="animation_finished" from="animation" to="hsm/attack_throw_rock" method="_on_animation_animation_finished"]

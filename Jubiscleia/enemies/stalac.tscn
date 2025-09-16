@@ -530,6 +530,7 @@ script = ExtResource("1_8s1wh")
 health_component = NodePath("HealthComponent")
 attack_area = NodePath("texture/enemy_collision_damage")
 element = "earth"
+top_size_y = -50.0
 
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -23)

@@ -60,9 +60,9 @@ size = Vector2(18016, 4704)
 
 [node name="earth_level_1" type="Node2D" node_paths=PackedStringArray("player")]
 process_mode = 3
+position = Vector2(-25, 0)
 script = ExtResource("1_a2qih")
 player = NodePath("pause/player")
-free_spawn = true
 
 [node name="pause" type="Node" parent="."]
 process_mode = 1
@@ -178,7 +178,7 @@ tile_set = ExtResource("6_5mv62")
 
 [node name="Camera2D" type="Camera2D" parent="pause"]
 physics_interpolation_mode = 1
-position = Vector2(3996, -32)
+position = Vector2(426.667, 12)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = 0
@@ -788,7 +788,7 @@ color = Color(1, 1, 1, 0.188235)
 polygon = PackedVector2Array(10144, -1568, 10144, -1120, 10976, -1120, 10976, -1568)
 
 [node name="player" parent="pause" node_paths=PackedStringArray("camera") instance=ExtResource("17_ud6dx")]
-position = Vector2(3996, -3.05176e-05)
+position = Vector2(340, 44)
 camera = NodePath("../Camera2D")
 
 [node name="grass_plat" type="TileMapLayer" parent="pause"]
@@ -816,7 +816,7 @@ tile_set = ExtResource("25_xw7rh")
 
 [node name="free_camera" type="Node2D" parent="pause" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(3996, -32)
+position = Vector2(426.667, 12)
 script = ExtResource("26_djypo")
 follow_mode = 2
 follow_target = NodePath("../player")

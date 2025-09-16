@@ -13,8 +13,6 @@ var current_poise: float = 1000
 var current_temp_life: float
 var is_getting_hit: bool = false
 var invulnerable: bool = false
-@export var defending: bool = false
-@export var left: bool
 
 var last_attack: String
 
@@ -89,19 +87,7 @@ func die() -> void:
 			orb_spawned = true
 
 func can_recieve_damage(attack_position: float) -> bool:
-	if defending:
-		if left:
-			if parent.position.x > attack_position and parent.texture.flip_h or parent.position.x < attack_position and not parent.texture.flip_h:
-				return true
-			else:
-				return false
-		else:
-			if parent.position.x > attack_position and not parent.texture.flip_h or parent.position.x < attack_position and parent.texture.flip_h:
-				return true
-			else:
-				return false
-	else:
-		return true
+	return true
 
 func spawn_elemental_orb(spawn_position: Vector2, element: String, limit: EnemyLimit):
 	var orb = Paths.elemental_orb.instantiate()

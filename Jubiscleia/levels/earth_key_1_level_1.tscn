@@ -50,7 +50,6 @@ size = Vector2(13280, 3520)
 [node name="earth_key_1_level_1" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_eqhh8")
 player = NodePath("pause/player")
-free_spawn = true
 metadata/_custom_type_script = "uid://cr0m6uuoltxgb"
 
 [node name="pause" type="Node" parent="."]
@@ -159,7 +158,7 @@ texture = ExtResource("9_d7538")
 [node name="Camera2D" type="Camera2D" parent="pause"]
 physics_interpolation_mode = 1
 visible = false
-position = Vector2(458.667, -795)
+position = Vector2(458.667, -867)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = 32
@@ -765,7 +764,7 @@ position = Vector2(10528, -315)
 position = Vector2(13088, 325)
 
 [node name="player" parent="pause" node_paths=PackedStringArray("camera") instance=ExtResource("13_4ibst")]
-position = Vector2(192, -763)
+position = Vector2(204.001, -835)
 camera = NodePath("../Camera2D")
 
 [node name="tree" type="TileMapLayer" parent="pause"]
@@ -798,7 +797,7 @@ tile_set = ExtResource("17_5mvcf")
 
 [node name="free_camera" type="Node2D" parent="pause" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(458.667, -795)
+position = Vector2(458.667, -867)
 script = ExtResource("21_spfk3")
 follow_mode = 2
 follow_target = NodePath("../player")
