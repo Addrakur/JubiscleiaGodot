@@ -4,6 +4,8 @@ extends Node
 
 var default_gravity: float = 10000
 
+var next_scene: String
+
 func _ready():
 	Engine.max_fps = 60
 
