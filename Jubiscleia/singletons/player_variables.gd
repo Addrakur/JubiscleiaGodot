@@ -29,7 +29,18 @@ var current_skill: String #Arma sendo usada no ataque atual
 var current_attack: String #Ataque que está sendo usado atualmente
 var last_skill: String #Ultima arma usada
 var skill_1: String = "none"
+var skill_1_weapon: String = "none"
+var skill_1_element: String = "none"
+var skill_1_attack_1: int = 1
+var skill_1_attack_2: int = 2
+var skill_1_finisher: int = 1
+
 var skill_2: String = "none"
+var skill_2_weapon: String = "none"
+var skill_2_element: String = "none"
+var skill_2_attack_1: String
+var skill_2_attack_2: String
+var skill_2_finisher: String
 
 var move: bool = false
 var my_knockup: bool = false
@@ -37,6 +48,57 @@ var anim_finish: bool = false
 var can_move_during_attack: bool = false
 var can_attack: bool = true
 var active: bool = true
+
+#Armas e ataques desbloqueados
+
+var sword_fire_unlocked: bool = false
+
+var sword_air_unlocked: bool = false
+
+var sword_water_unlocked: bool = true
+var sword_water_1: bool = true
+var sword_water_2: bool = true
+var sword_water_3: bool = false
+var sword_water_4: bool = false
+var sword_water_5: bool = false
+var sword_water_6: bool = false
+
+var sword_water_finisher_1: bool = true
+var sword_water_finisher_2: bool = false
+var sword_water_finisher_3: bool = false
+
+var sword_earth_unlocked: bool = false
+
+
+var axe_fire_unlocked: bool = true
+var axe_fire_1: bool = true
+var axe_fire_2: bool = true
+var axe_fire_3: bool = false
+var axe_fire_4: bool = false
+var axe_fire_5: bool = false
+var axe_fire_6: bool = false
+
+var axe_fire_finisher_1: bool = true
+var axe_fire_finisher_2: bool = false
+var axe_fire_finisher_3: bool = false
+
+var axe_air_unlocked: bool = false
+var axe_water_unlocked: bool = false
+var axe_earth_unlocked: bool = false
+
+
+var shield_fire_unlocked: bool = false
+var shield_air_unlocked: bool = false
+var shield_water_unlocked: bool = false
+var shield_earth_unlocked: bool = false
+
+
+var range_fire_unlocked: bool = false
+var range_air_unlocked: bool = false
+var range_water_unlocked: bool = false
+var range_earth_unlocked: bool = false
+
+#Variaveis dos ataques
 
 var axe_1_speed: float = 0
 var axe_2_speed: float = 800

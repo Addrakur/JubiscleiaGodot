@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://4c6gupuf23ft"]
+
+[ext_resource type="Texture2D" uid="uid://ck6vdvjbeo7qv" path="res://assets/UI/change_weapon_screen/choose_attack/choose_attack_1_not_focus.png" id="1_ynjxv"]
+[ext_resource type="Texture2D" uid="uid://x6sjbatp8nle" path="res://assets/UI/change_weapon_screen/choose_attack/choose_attack_1_focus.png" id="2_rpfkn"]
+[ext_resource type="Script" uid="uid://b1atv30khxwab" path="res://Management/change_attack_button.gd" id="3_rpfkn"]
+
+[node name="change_attack_button" type="TextureButton"]
+offset_right = 28.0
+offset_bottom = 28.0
+toggle_mode = true
+texture_normal = ExtResource("1_ynjxv")
+texture_pressed = ExtResource("2_rpfkn")
+texture_hover = ExtResource("2_rpfkn")
+script = ExtResource("3_rpfkn")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

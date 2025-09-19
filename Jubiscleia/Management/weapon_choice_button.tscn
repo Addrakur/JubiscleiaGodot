@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt67875388u64"]
+
+[ext_resource type="Texture2D" uid="uid://bnmtfvsnjh7hn" path="res://assets/UI/change_weapon_screen/axe_choose_button_not_focus.png" id="1_qsdd4"]
+[ext_resource type="Texture2D" uid="uid://douc0j5uedmmr" path="res://assets/UI/change_weapon_screen/axe_choose_button_focus.png" id="2_1apka"]
+[ext_resource type="Texture2D" uid="uid://3et5c0x1nw4x" path="res://assets/UI/change_weapon_screen/axe_choose_button_disabled.png" id="3_jyylk"]
+[ext_resource type="Script" uid="uid://ijefggv0qdw6" path="res://Management/weapon_choice_button.gd" id="4_1apka"]
+
+[node name="weapon_choice_button" type="TextureButton"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -602.0
+offset_bottom = -304.0
+grow_horizontal = 2
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("1_qsdd4")
+texture_pressed = ExtResource("2_1apka")
+texture_hover = ExtResource("2_1apka")
+texture_disabled = ExtResource("3_jyylk")
+script = ExtResource("4_1apka")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

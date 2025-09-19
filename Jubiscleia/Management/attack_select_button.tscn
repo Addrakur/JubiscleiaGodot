@@ -1,0 +1,40 @@
+[gd_scene load_steps=23 format=3 uid="uid://cm24duxsm0jlr"]
+
+[ext_resource type="Texture2D" uid="uid://fbcv4y0fvvbp" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/blank_not_focus.png" id="1_1eh57"]
+[ext_resource type="Script" uid="uid://b8qgefoymgj3" path="res://attack_select_button.gd" id="1_lrgjn"]
+[ext_resource type="Texture2D" uid="uid://1j2ldfqglkqb" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/blank_focus.png" id="2_s7bgr"]
+[ext_resource type="Texture2D" uid="uid://dgs48y4y1ahhs" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_1_not_focus.png" id="2_y577j"]
+[ext_resource type="Texture2D" uid="uid://56hbhhf3pmac" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_2_not_focus.png" id="3_4imsg"]
+[ext_resource type="Texture2D" uid="uid://csp1prabtykxl" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/blank_disabled.png" id="3_j4yx5"]
+[ext_resource type="Texture2D" uid="uid://i36r47c1rllx" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_3_not_focus.png" id="4_ffi66"]
+[ext_resource type="Texture2D" uid="uid://bljqaldi4sjju" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_4_not_focus.png" id="5_x6e7f"]
+[ext_resource type="Texture2D" uid="uid://bvfddb17ej2jq" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_5_not_focus.png" id="6_7beh1"]
+[ext_resource type="Texture2D" uid="uid://b46tjcn2g72ru" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_6_not_focus.png" id="7_ny71m"]
+[ext_resource type="Texture2D" uid="uid://mmck33inuuyx" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_1_focus.png" id="8_pk3js"]
+[ext_resource type="Texture2D" uid="uid://de0ca0xmg5oui" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_2_focus.png" id="9_wa70o"]
+[ext_resource type="Texture2D" uid="uid://dmd0ke1vi6k7i" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_3_focus.png" id="10_uamqy"]
+[ext_resource type="Texture2D" uid="uid://dcoyn2rqjaei7" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_4_focus.png" id="11_prql1"]
+[ext_resource type="Texture2D" uid="uid://camiw0p85efla" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_6_focus.png" id="12_pnafw"]
+[ext_resource type="Texture2D" uid="uid://bt35sprt1ygbp" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_1_disabled.png" id="13_auhyb"]
+[ext_resource type="Texture2D" uid="uid://cyd0033suqysc" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_2_disabled.png" id="14_ncg1a"]
+[ext_resource type="Texture2D" uid="uid://27bfyrsan763" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_5_focus.png" id="15_7beh1"]
+[ext_resource type="Texture2D" uid="uid://7vg0w0gvapam" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_3_disabled.png" id="15_smw48"]
+[ext_resource type="Texture2D" uid="uid://p1iy14xciaev" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_4_disabled.png" id="16_rpeqa"]
+[ext_resource type="Texture2D" uid="uid://dex44sfrhbv1a" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_5_disabled.png" id="17_n40eu"]
+[ext_resource type="Texture2D" uid="uid://dep10hs2r45dq" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_6_disabled.png" id="18_g1gch"]
+
+[node name="attack_select_button" type="TextureButton"]
+offset_right = 40.0
+offset_bottom = 40.0
+toggle_mode = true
+texture_normal = ExtResource("1_1eh57")
+texture_pressed = ExtResource("2_s7bgr")
+texture_hover = ExtResource("2_s7bgr")
+texture_disabled = ExtResource("3_j4yx5")
+script = ExtResource("1_lrgjn")
+attack = null
+normal_textures = Array[CompressedTexture2D]([ExtResource("2_y577j"), ExtResource("3_4imsg"), ExtResource("4_ffi66"), ExtResource("5_x6e7f"), ExtResource("6_7beh1"), ExtResource("7_ny71m")])
+focus_textures = Array[CompressedTexture2D]([ExtResource("8_pk3js"), ExtResource("9_wa70o"), ExtResource("10_uamqy"), ExtResource("11_prql1"), ExtResource("15_7beh1"), ExtResource("12_pnafw")])
+disabled_textures = Array[CompressedTexture2D]([ExtResource("13_auhyb"), ExtResource("14_ncg1a"), ExtResource("15_smw48"), ExtResource("16_rpeqa"), ExtResource("17_n40eu"), ExtResource("18_g1gch")])
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]
