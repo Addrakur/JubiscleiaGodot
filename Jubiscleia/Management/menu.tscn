@@ -1,15 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://drbjtfhmgpum0"]
+[gd_scene load_steps=7 format=3 uid="uid://drbjtfhmgpum0"]
 
 [ext_resource type="Script" uid="uid://crbph13qapiwe" path="res://Management/Menu.gd" id="1_slu8i"]
 [ext_resource type="PackedScene" uid="uid://cat0rb63ebmb7" path="res://Management/change_scene_button.tscn" id="2_msjmb"]
 [ext_resource type="Texture2D" uid="uid://bgldtq2ds4wgj" path="res://assets/UI/exit_button.png" id="6_srlhf"]
 [ext_resource type="Texture2D" uid="uid://bgv5xmbsx71k7" path="res://assets/UI/exit_button_selected.png" id="7_deshu"]
-[ext_resource type="Texture2D" uid="uid://dw3u3dtfbb1fh" path="res://assets/UI/sword_button.png" id="14_d6exe"]
-[ext_resource type="Texture2D" uid="uid://b2ttutuofhqcy" path="res://assets/UI/axe_button.png" id="15_0quxr"]
-[ext_resource type="Texture2D" uid="uid://dqhgr6ti84ck6" path="res://assets/UI/sword_selected_button.png" id="15_e6xa3"]
-[ext_resource type="Texture2D" uid="uid://ctlngi86o3uro" path="res://assets/UI/spear_button.png" id="16_l2spj"]
-[ext_resource type="Texture2D" uid="uid://blq5eqgd5n2ku" path="res://assets/UI/axe_selected_button.png" id="17_3nv2h"]
-[ext_resource type="Texture2D" uid="uid://dopaha3f7fbcr" path="res://assets/UI/spear_selected_button.png" id="19_2b1f4"]
 [ext_resource type="Texture2D" uid="uid://dswxgnihe3un7" path="res://assets/UI/Title.png" id="22_pvhg6"]
 [ext_resource type="PackedScene" uid="uid://cneih5yhue5ap" path="res://player/skill_tree.tscn" id="26_y8r8k"]
 
@@ -22,8 +16,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_slu8i")
-weapon_1_buttons = [NodePath("HBoxContainer/sword"), NodePath("HBoxContainer/axe"), NodePath("HBoxContainer/spear")]
-weapon_2_buttons = [NodePath("HBoxContainer2/sword"), NodePath("HBoxContainer2/axe"), NodePath("HBoxContainer2/spear")]
+weapon_1_buttons = [NodePath(""), NodePath(""), NodePath("")]
+weapon_2_buttons = [NodePath(""), NodePath(""), NodePath("")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -40,19 +34,25 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="tutorial" parent="buttons" instance=ExtResource("2_msjmb")]
-layout_mode = 0
-offset_left = 80.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
 offset_top = 136.0
-offset_right = 220.0
+offset_right = 64.0
 offset_bottom = 167.0
 text = "Level Map"
 scene_name = "level_map"
 
 [node name="arena" parent="buttons" instance=ExtResource("2_msjmb")]
-layout_mode = 0
-offset_left = 80.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
 offset_top = 200.0
-offset_right = 220.0
+offset_right = 64.0
 offset_bottom = 231.0
 text = "Arena"
 scene_name = "arena"
@@ -60,12 +60,14 @@ scene_name = "arena"
 [node name="Quit" type="TextureButton" parent="."]
 top_level = true
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = -1
+anchor_left = 0.5
 anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 116.0
+offset_left = -33.0
 offset_top = -56.0
-offset_right = 183.0
+offset_right = 34.0
 offset_bottom = -24.0
 grow_vertical = 0
 texture_normal = ExtResource("6_srlhf")
@@ -95,30 +97,6 @@ scale = Vector2(0.5, 0.5)
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="sword" type="TextureButton" parent="HBoxContainer"]
-layout_mode = 2
-toggle_mode = true
-texture_normal = ExtResource("14_d6exe")
-texture_pressed = ExtResource("15_e6xa3")
-texture_hover = ExtResource("15_e6xa3")
-stretch_mode = 0
-
-[node name="axe" type="TextureButton" parent="HBoxContainer"]
-layout_mode = 2
-toggle_mode = true
-texture_normal = ExtResource("15_0quxr")
-texture_pressed = ExtResource("17_3nv2h")
-texture_hover = ExtResource("17_3nv2h")
-stretch_mode = 0
-
-[node name="spear" type="TextureButton" parent="HBoxContainer"]
-layout_mode = 2
-toggle_mode = true
-texture_normal = ExtResource("16_l2spj")
-texture_pressed = ExtResource("19_2b1f4")
-texture_hover = ExtResource("19_2b1f4")
-stretch_mode = 0
-
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 1
@@ -133,57 +111,18 @@ scale = Vector2(0.5, 0.5)
 theme_override_constants/separation = 30
 alignment = 1
 
-[node name="sword" type="TextureButton" parent="HBoxContainer2"]
-layout_mode = 2
-toggle_mode = true
-texture_normal = ExtResource("14_d6exe")
-texture_pressed = ExtResource("15_e6xa3")
-texture_hover = ExtResource("15_e6xa3")
-stretch_mode = 0
-
-[node name="axe" type="TextureButton" parent="HBoxContainer2"]
-layout_mode = 2
-toggle_mode = true
-texture_normal = ExtResource("15_0quxr")
-texture_pressed = ExtResource("17_3nv2h")
-texture_hover = ExtResource("17_3nv2h")
-stretch_mode = 0
-
-[node name="spear" type="TextureButton" parent="HBoxContainer2"]
-layout_mode = 2
-toggle_mode = true
-texture_normal = ExtResource("16_l2spj")
-texture_pressed = ExtResource("19_2b1f4")
-texture_hover = ExtResource("19_2b1f4")
-stretch_mode = 0
-
 [node name="Title" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = -20.0
-offset_right = 428.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -168.0
+offset_right = 280.0
 offset_bottom = 128.0
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("22_pvhg6")
 expand_mode = 1
 stretch_mode = 4
-
-[node name="w1_t" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 400.0
-offset_top = 48.0
-offset_right = 512.0
-offset_bottom = 72.0
-text = "None"
-horizontal_alignment = 1
-
-[node name="w2_t" type="RichTextLabel" parent="."]
-layout_mode = 0
-offset_left = 400.0
-offset_top = 184.0
-offset_right = 512.0
-offset_bottom = 208.0
-text = "None"
-horizontal_alignment = 1
 
 [node name="skill_tree" parent="." instance=ExtResource("26_y8r8k")]
 visible = false
@@ -201,10 +140,4 @@ text = "Skill Tree"
 
 [connection signal="pressed" from="Quit" to="." method="on_quit_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
-[connection signal="pressed" from="HBoxContainer/sword" to="." method="_on_w_1_sword_pressed"]
-[connection signal="pressed" from="HBoxContainer/axe" to="." method="_on_w_1_axe_pressed"]
-[connection signal="pressed" from="HBoxContainer/spear" to="." method="_on_w_1_spear_pressed"]
-[connection signal="pressed" from="HBoxContainer2/sword" to="." method="_on_w_2_sword_pressed"]
-[connection signal="pressed" from="HBoxContainer2/axe" to="." method="_on_w_2_axe_pressed"]
-[connection signal="pressed" from="HBoxContainer2/spear" to="." method="_on_w_2_spear_pressed"]
 [connection signal="pressed" from="skill_tree_button" to="." method="_on_skill_tree_button_pressed"]

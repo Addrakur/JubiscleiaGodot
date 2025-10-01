@@ -13,4 +13,5 @@ func _ready() -> void:
 	
 
 func _on_pressed() -> void:
-	GameSettings.change_scene(Paths.get(level_name))
+	GameSettings.next_level = level_name
+	GameSettings.change_scene(Paths.weapon_choice_screen)

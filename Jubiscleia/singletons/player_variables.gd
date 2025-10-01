@@ -32,16 +32,16 @@ var last_skill: String #Ultima arma usada
 var skill_1: String = "none"
 var skill_1_weapon: String = "none"
 var skill_1_element: String = "none"
-var skill_1_attack_1: int = 1
-var skill_1_attack_2: int = 2
-var skill_1_finisher: int = 1
+var skill_1_attack_1: int = 0
+var skill_1_attack_2: int = 0
+var skill_1_finisher: int = 0
 
 var skill_2: String = "none"
 var skill_2_weapon: String = "none"
 var skill_2_element: String = "none"
-var skill_2_attack_1: int = 1
-var skill_2_attack_2: int = 2
-var skill_2_finisher: int = 1
+var skill_2_attack_1: int = 0
+var skill_2_attack_2: int = 0
+var skill_2_finisher: int = 0
 
 var move: bool = false
 var my_knockup: bool = false

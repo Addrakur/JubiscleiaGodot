@@ -147,9 +147,6 @@ sources/1 = SubResource("TileSetAtlasSource_oa1e2")
 
 [sub_resource type="Resource" id="Resource_4loae"]
 script = ExtResource("4_oa1e2")
-duration = 1.0
-transition = 0
-ease = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mlvnr"]
 size = Vector2(1344, 832)

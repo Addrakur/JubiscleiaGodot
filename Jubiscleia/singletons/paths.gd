@@ -2,6 +2,7 @@ extends Node
 
 #Scenes
 var menu: String = "res://Management/menu.tscn"
+var weapon_choice_screen: String = "res://Management/weapon_choice_screen.tscn"
 var tutorial: String = "res://levels/loop_basico.tscn"
 var tutorial_level_1: String = "res://levels/tutorial_level_1.tscn"
 var tutorial_boss: String = "res://levels/tutorial_boss_level.tscn"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cm24duxsm0jlr"]
+[gd_scene load_steps=24 format=3 uid="uid://cm24duxsm0jlr"]
 
 [ext_resource type="Texture2D" uid="uid://fbcv4y0fvvbp" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/blank_not_focus.png" id="1_1eh57"]
 [ext_resource type="Script" uid="uid://b8qgefoymgj3" path="res://attack_select_button.gd" id="1_lrgjn"]
@@ -23,17 +23,20 @@
 [ext_resource type="Texture2D" uid="uid://dex44sfrhbv1a" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_5_disabled.png" id="17_n40eu"]
 [ext_resource type="Texture2D" uid="uid://dep10hs2r45dq" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_6_disabled.png" id="18_g1gch"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7beh1"]
+load_path = "res://.godot/imported/blank_not_focus.png-25b5b3d70fb3d41de5e65e9c4d823658.ctex"
+
 [node name="attack_select_button" type="TextureButton"]
 offset_right = 40.0
 offset_bottom = 40.0
 toggle_mode = true
-texture_normal = ExtResource("1_1eh57")
+texture_normal = SubResource("CompressedTexture2D_7beh1")
 texture_pressed = ExtResource("2_s7bgr")
 texture_hover = ExtResource("2_s7bgr")
 texture_disabled = ExtResource("3_j4yx5")
 script = ExtResource("1_lrgjn")
-normal_textures = Array[CompressedTexture2D]([ExtResource("2_y577j"), ExtResource("3_4imsg"), ExtResource("4_ffi66"), ExtResource("5_x6e7f"), ExtResource("6_7beh1"), ExtResource("7_ny71m")])
-focus_textures = Array[CompressedTexture2D]([ExtResource("8_pk3js"), ExtResource("9_wa70o"), ExtResource("10_uamqy"), ExtResource("11_prql1"), ExtResource("15_7beh1"), ExtResource("12_pnafw")])
-disabled_textures = Array[CompressedTexture2D]([ExtResource("13_auhyb"), ExtResource("14_ncg1a"), ExtResource("15_smw48"), ExtResource("16_rpeqa"), ExtResource("17_n40eu"), ExtResource("18_g1gch")])
+normal_textures = Array[CompressedTexture2D]([ExtResource("1_1eh57"), ExtResource("2_y577j"), ExtResource("3_4imsg"), ExtResource("4_ffi66"), ExtResource("5_x6e7f"), ExtResource("6_7beh1"), ExtResource("7_ny71m")])
+focus_textures = Array[CompressedTexture2D]([ExtResource("2_s7bgr"), ExtResource("8_pk3js"), ExtResource("9_wa70o"), ExtResource("10_uamqy"), ExtResource("11_prql1"), ExtResource("15_7beh1"), ExtResource("12_pnafw")])
+disabled_textures = Array[CompressedTexture2D]([ExtResource("3_j4yx5"), ExtResource("13_auhyb"), ExtResource("14_ncg1a"), ExtResource("15_smw48"), ExtResource("16_rpeqa"), ExtResource("17_n40eu"), ExtResource("18_g1gch")])
 
 [connection signal="pressed" from="." to="." method="_on_pressed"]

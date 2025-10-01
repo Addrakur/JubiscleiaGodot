@@ -31,11 +31,20 @@ extends Control
 @onready var weapon_change_button_symbol_2: Sprite2D = $weapon_choose_activate2/weapon_change_button_symbol_2
 @onready var element_change_button_symbol_2: Sprite2D = $element_choose_activate2/element_change_button_symbol_2
 @onready var attack_options: Node = $attack_options
+@onready var play_button: TextureButton = $play_button
 
 var attack_being_changed_1: String
 var attack_being_changed_2: String
 
 func _process(_delta: float) -> void:
+	
+	if can_play_check():
+		play_button.disabled = false
+		print("enable")
+	else:
+		play_button.disabled = true
+		print("disable")
+	
 	match PlayerVariables.skill_1_weapon:
 		"axe":
 			weapon_change_button_symbol_1.texture = weapon_change_button_symbols[0]
@@ -96,8 +105,10 @@ func choose_attack_to_change(attack: String, button_choice: TextureButton, skill
 
 func set_attack(attack_number:int, skill: int):
 	PlayerVariables.set(get("attack_being_changed_" + str(skill)),attack_number)
-	print(get("attack_being_changed_" + str(skill)))
-	print(PlayerVariables.get(get("attack_being_changed_" + str(skill))))
+	if get("attack_being_changed_" + str(skill)).contains("attack_1") and PlayerVariables.get("skill_" + str(skill) + "_attack_2") == attack_number:
+		PlayerVariables.set("skill_" + str(skill) + "_attack_2",0)
+	if get("attack_being_changed_" + str(skill)).contains("attack_2") and PlayerVariables.get("skill_" + str(skill) + "_attack_1") == attack_number:
+		PlayerVariables.set("skill_" + str(skill) + "_attack_1",0)
 	set("attack_being_changed_" + str(skill), "")
 	for button in get("skill_" + str(skill) + "_attack_choice_buttons"):
 		button.button_pressed = false
@@ -105,18 +116,31 @@ func set_attack(attack_number:int, skill: int):
 
 func set_texture():
 	for button in skill_1_attack_choice_buttons:
-		button.texture_normal = button.normal_textures[PlayerVariables.get("skill_1_" + button.attack) - 1]
-		button.texture_focused = button.focus_textures[PlayerVariables.get("skill_1_" + button.attack) - 1]
-		button.texture_hover = button.focus_textures[PlayerVariables.get("skill_1_" + button.attack) - 1]
-		button.texture_disabled = button.disabled_textures[PlayerVariables.get("skill_1_" + button.attack) - 1]
+		button.texture_normal = button.normal_textures[PlayerVariables.get("skill_1_" + button.attack)]
+		button.texture_focused = button.focus_textures[PlayerVariables.get("skill_1_" + button.attack)]
+		button.texture_hover = button.focus_textures[PlayerVariables.get("skill_1_" + button.attack)]
+		button.texture_disabled = button.disabled_textures[PlayerVariables.get("skill_1_" + button.attack)]
 	
 	for button in skill_2_attack_choice_buttons:
-		button.texture_normal = button.normal_textures[PlayerVariables.get("skill_2_" + button.attack) - 1]
-		button.texture_focused = button.focus_textures[PlayerVariables.get("skill_2_" + button.attack) - 1]
-		button.texture_hover = button.focus_textures[PlayerVariables.get("skill_2_" + button.attack) - 1]
-		button.texture_disabled = button.disabled_textures[PlayerVariables.get("skill_2_" + button.attack) - 1]
+		button.texture_normal = button.normal_textures[PlayerVariables.get("skill_2_" + button.attack)]
+		button.texture_focused = button.focus_textures[PlayerVariables.get("skill_2_" + button.attack)]
+		button.texture_hover = button.focus_textures[PlayerVariables.get("skill_2_" + button.attack)]
+		button.texture_disabled = button.disabled_textures[PlayerVariables.get("skill_2_" + button.attack)]
 	
 func reset_attacks(skill: int):
 	PlayerVariables.set("skill_" + str(skill) + "_attack_1", 0)
 	PlayerVariables.set("skill_" + str(skill) + "_attack_2", 0)
 	PlayerVariables.set("skill_" + str(skill) + "_finisher", 0)
+
+func _on_play_button_pressed() -> void:
+	GameSettings.change_scene(Paths.get(GameSettings.next_level))
+
+func can_play_check() -> bool:
+	if PlayerVariables.skill_1_weapon == "none" or PlayerVariables.skill_2_weapon == "none" or PlayerVariables.skill_1_element == "none" or PlayerVariables.skill_2_element == "none" or PlayerVariables.skill_1_attack_1 == 0 or PlayerVariables.skill_1_attack_2 == 0 or PlayerVariables.skill_1_finisher == 0 or PlayerVariables.skill_2_attack_1 == 0 or PlayerVariables.skill_2_attack_2 == 0 or PlayerVariables.skill_2_finisher == 0:
+		return false
+	else:
+		return true
+
+func _on_back_button_pressed() -> void:
+	GameSettings.next_level = ""
+	GameSettings.change_scene(Paths.level_map)

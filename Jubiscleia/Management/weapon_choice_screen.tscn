@@ -1,7 +1,6 @@
-[gd_scene load_steps=51 format=3 uid="uid://dwiubebxhl1ir"]
+[gd_scene load_steps=57 format=3 uid="uid://dwiubebxhl1ir"]
 
 [ext_resource type="Script" uid="uid://dd6pnomfqkfin" path="res://Management/weapon_choice_screen.gd" id="1_cfrfs"]
-[ext_resource type="Texture2D" uid="uid://bnahuv0tdoyp5" path="res://assets/UI/change_weapon_screen/change_weapon_screen.png" id="1_yrlvo"]
 [ext_resource type="Texture2D" uid="uid://c3l5k4ei3y8h2" path="res://assets/UI/change_weapon_screen/element_button_not_focus.png" id="2_04qsu"]
 [ext_resource type="Texture2D" uid="uid://bkgegy5h8ahfy" path="res://assets/UI/change_weapon_screen/weapon_button_outside.png" id="2_iojy5"]
 [ext_resource type="Texture2D" uid="uid://mm77a442583c" path="res://assets/UI/change_weapon_screen/weapon_button_axe_symbol.png" id="2_lcq11"]
@@ -24,8 +23,15 @@
 [ext_resource type="PackedScene" uid="uid://bt67875388u64" path="res://Management/weapon_choice_button.tscn" id="16_mdtn4"]
 [ext_resource type="PackedScene" uid="uid://b3yuog7ppyqtl" path="res://Management/element_choice_button.tscn" id="17_2wklk"]
 [ext_resource type="Texture2D" uid="uid://d0nwq5snbeu6f" path="res://assets/UI/change_weapon_screen/air_choose_not_focus.png" id="19_26qk0"]
+[ext_resource type="Texture2D" uid="uid://6nk8wsavt503" path="res://assets/UI/change_weapon_screen/back_button_not_focus.png" id="19_bdc8o"]
+[ext_resource type="Texture2D" uid="uid://dmavrv2fr1nfg" path="res://assets/UI/change_weapon_screen/play_button_not_focus.png" id="19_v7156"]
+[ext_resource type="Texture2D" uid="uid://cnyx1lrlmd357" path="res://assets/UI/change_weapon_screen/play_button_focus.png" id="20_40jic"]
 [ext_resource type="Texture2D" uid="uid://distoewwg8sal" path="res://assets/UI/change_weapon_screen/air_choose_focus.png" id="20_cfrfs"]
+[ext_resource type="Texture2D" uid="uid://5h6fx1f3muq5" path="res://assets/UI/change_weapon_screen/back_button_focus.png" id="20_oh7x7"]
+[ext_resource type="Texture2D" uid="uid://2qmtnulb0wxr" path="res://assets/UI/change_weapon_screen/play_button_disabled.png" id="21_40jic"]
+[ext_resource type="Texture2D" uid="uid://bopv4hvugrxp4" path="res://assets/UI/change_weapon_screen/back_button_disabled.png" id="21_esopr"]
 [ext_resource type="Texture2D" uid="uid://b08ystbn4h8b8" path="res://assets/UI/change_weapon_screen/air_choose_disabled.png" id="21_jtnr6"]
+[ext_resource type="Texture2D" uid="uid://kt3puapttvag" path="res://assets/UI/change_weapon_screen/play_button_outside.png" id="21_x5ypx"]
 [ext_resource type="Texture2D" uid="uid://ckxsh0ncax5dc" path="res://assets/UI/change_weapon_screen/water_choose_not_focus.png" id="22_08uvo"]
 [ext_resource type="Texture2D" uid="uid://ddh1bxke2y3ks" path="res://assets/UI/change_weapon_screen/water_choose_focus.png" id="23_e66uu"]
 [ext_resource type="Texture2D" uid="uid://eid638duh3mn" path="res://assets/UI/change_weapon_screen/water_choose_disabled.png" id="24_o4xl7"]
@@ -80,12 +86,6 @@ element_change_button_symbols = Array[CompressedTexture2D]([ExtResource("4_dbu6w
 
 [node name="sprites" type="Node" parent="."]
 
-[node name="ChangeWeaponScreenGuide" type="Sprite2D" parent="sprites"]
-visible = false
-modulate = Color(1, 1, 1, 0.3137255)
-position = Vector2(320, 180)
-texture = ExtResource("1_yrlvo")
-
 [node name="WeaponButtonOutside" type="Sprite2D" parent="sprites"]
 position = Vector2(215, 47)
 texture = ExtResource("2_iojy5")
@@ -139,15 +139,15 @@ position = Vector2(215, 166)
 texture = ExtResource("8_o0t57")
 
 [node name="AttackOutside4" type="Sprite2D" parent="sprites"]
-position = Vector2(425, 166)
+position = Vector2(563, 166)
 texture = ExtResource("8_o0t57")
 
 [node name="AttackOutside5" type="Sprite2D" parent="sprites"]
-position = Vector2(515, 166)
+position = Vector2(418, 166)
 texture = ExtResource("8_o0t57")
 
 [node name="AttackOutside6" type="Sprite2D" parent="sprites"]
-position = Vector2(570, 166)
+position = Vector2(473, 166)
 texture = ExtResource("8_o0t57")
 
 [node name="weapon_choose_activate" type="TextureButton" parent="."]
@@ -209,6 +209,38 @@ texture_hover = ExtResource("3_6bo7b")
 
 [node name="element_change_button_symbol_2" type="Sprite2D" parent="element_choose_activate2"]
 position = Vector2(22, 22)
+
+[node name="back_button" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 99.0
+offset_right = 369.0
+offset_bottom = 139.0
+texture_normal = ExtResource("19_bdc8o")
+texture_pressed = ExtResource("20_oh7x7")
+texture_hover = ExtResource("20_oh7x7")
+texture_disabled = ExtResource("21_esopr")
+texture_focused = ExtResource("20_oh7x7")
+
+[node name="PlayButtonOutside2" type="Sprite2D" parent="back_button"]
+position = Vector2(49, 13.5)
+texture = ExtResource("21_x5ypx")
+
+[node name="play_button" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 36.0
+offset_right = 369.0
+offset_bottom = 63.0
+texture_normal = ExtResource("19_v7156")
+texture_pressed = ExtResource("20_40jic")
+texture_hover = ExtResource("20_40jic")
+texture_disabled = ExtResource("21_40jic")
+texture_focused = ExtResource("20_40jic")
+
+[node name="PlayButtonOutside" type="Sprite2D" parent="play_button"]
+position = Vector2(49, 13.5)
+texture = ExtResource("21_x5ypx")
 
 [node name="axe_1" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("16_mdtn4")]
 layout_mode = 0
@@ -395,9 +427,9 @@ skill = 1
 change_attack_buttons = [NodePath("../../attack_options/s1_choose_attack_1"), NodePath("../../attack_options/s1_choose_attack_2"), NodePath("../../attack_options/s1_choose_attack_3"), NodePath("../../attack_options/s1_choose_attack_4"), NodePath("../../attack_options/s1_choose_attack_5"), NodePath("../../attack_options/s1_choose_attack_6")]
 
 [node name="s2_attack_1_select_button" parent="attack_select" node_paths=PackedStringArray("parent", "change_attack_buttons") instance=ExtResource("31_quns8")]
-offset_left = 548.0
+offset_left = 396.0
 offset_top = 144.0
-offset_right = 592.0
+offset_right = 440.0
 offset_bottom = 188.0
 parent = NodePath("../..")
 attack = "attack_1"
@@ -415,9 +447,9 @@ skill = 1
 change_attack_buttons = [NodePath("../../attack_options/s1_choose_attack_1"), NodePath("../../attack_options/s1_choose_attack_2"), NodePath("../../attack_options/s1_choose_attack_3"), NodePath("../../attack_options/s1_choose_attack_4"), NodePath("../../attack_options/s1_choose_attack_5"), NodePath("../../attack_options/s1_choose_attack_6")]
 
 [node name="s2_attack_2_select_button" parent="attack_select" node_paths=PackedStringArray("parent", "change_attack_buttons") instance=ExtResource("31_quns8")]
-offset_left = 493.0
+offset_left = 451.0
 offset_top = 144.0
-offset_right = 537.0
+offset_right = 495.0
 offset_bottom = 188.0
 parent = NodePath("../..")
 attack = "attack_2"
@@ -435,9 +467,9 @@ skill = 1
 change_attack_buttons = [NodePath("../../attack_options/s1_choose_finisher_1"), NodePath("../../attack_options/s1_choose_finisher_2"), NodePath("../../attack_options/s1_choose_finisher_3")]
 
 [node name="s2_finisher_select_button" parent="attack_select" node_paths=PackedStringArray("parent", "change_attack_buttons") instance=ExtResource("31_quns8")]
-offset_left = 403.0
+offset_left = 541.0
 offset_top = 144.0
-offset_right = 447.0
+offset_right = 585.0
 offset_bottom = 188.0
 parent = NodePath("../..")
 attack = "finisher"
@@ -667,3 +699,6 @@ texture_disabled = ExtResource("37_dbu6w")
 parent = NodePath("../..")
 number = 3
 skill = 2
+
+[connection signal="pressed" from="back_button" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="play_button" to="." method="_on_play_button_pressed"]
