@@ -28,6 +28,7 @@ var next_skill: String #Arma que vai ser usada no ataque que vai vir
 var current_skill: String #Arma sendo usada no ataque atual
 var current_attack: String #Ataque que está sendo usado atualmente
 var last_skill: String #Ultima arma usada
+
 var skill_1: String = "none"
 var skill_1_weapon: String = "none"
 var skill_1_element: String = "none"
@@ -38,9 +39,9 @@ var skill_1_finisher: int = 1
 var skill_2: String = "none"
 var skill_2_weapon: String = "none"
 var skill_2_element: String = "none"
-var skill_2_attack_1: String
-var skill_2_attack_2: String
-var skill_2_finisher: String
+var skill_2_attack_1: int = 1
+var skill_2_attack_2: int = 2
+var skill_2_finisher: int = 1
 
 var move: bool = false
 var my_knockup: bool = false
@@ -56,12 +57,12 @@ var sword_fire_unlocked: bool = false
 var sword_air_unlocked: bool = false
 
 var sword_water_unlocked: bool = true
-var sword_water_1: bool = true
-var sword_water_2: bool = true
-var sword_water_3: bool = false
-var sword_water_4: bool = false
-var sword_water_5: bool = false
-var sword_water_6: bool = false
+var sword_water_attack_1: bool = true
+var sword_water_attack_2: bool = true
+var sword_water_attack_3: bool = false
+var sword_water_attack_4: bool = false
+var sword_water_attack_5: bool = false
+var sword_water_attack_6: bool = false
 
 var sword_water_finisher_1: bool = true
 var sword_water_finisher_2: bool = false
@@ -71,12 +72,12 @@ var sword_earth_unlocked: bool = false
 
 
 var axe_fire_unlocked: bool = true
-var axe_fire_1: bool = true
-var axe_fire_2: bool = true
-var axe_fire_3: bool = false
-var axe_fire_4: bool = false
-var axe_fire_5: bool = false
-var axe_fire_6: bool = false
+var axe_fire_attack_1: bool = true
+var axe_fire_attack_2: bool = true
+var axe_fire_attack_3: bool = false
+var axe_fire_attack_4: bool = false
+var axe_fire_attack_5: bool = false
+var axe_fire_attack_6: bool = false
 
 var axe_fire_finisher_1: bool = true
 var axe_fire_finisher_2: bool = false

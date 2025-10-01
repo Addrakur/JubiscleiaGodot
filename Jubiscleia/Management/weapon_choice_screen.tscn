@@ -1,16 +1,20 @@
-[gd_scene load_steps=47 format=3 uid="uid://dwiubebxhl1ir"]
+[gd_scene load_steps=51 format=3 uid="uid://dwiubebxhl1ir"]
 
 [ext_resource type="Script" uid="uid://dd6pnomfqkfin" path="res://Management/weapon_choice_screen.gd" id="1_cfrfs"]
 [ext_resource type="Texture2D" uid="uid://bnahuv0tdoyp5" path="res://assets/UI/change_weapon_screen/change_weapon_screen.png" id="1_yrlvo"]
 [ext_resource type="Texture2D" uid="uid://c3l5k4ei3y8h2" path="res://assets/UI/change_weapon_screen/element_button_not_focus.png" id="2_04qsu"]
 [ext_resource type="Texture2D" uid="uid://bkgegy5h8ahfy" path="res://assets/UI/change_weapon_screen/weapon_button_outside.png" id="2_iojy5"]
-[ext_resource type="Texture2D" uid="uid://mm77a442583c" path="res://assets/UI/change_weapon_screen/weapon_button_axe_symbol.png" id="2_mdtn4"]
+[ext_resource type="Texture2D" uid="uid://mm77a442583c" path="res://assets/UI/change_weapon_screen/weapon_button_axe_symbol.png" id="2_lcq11"]
 [ext_resource type="Texture2D" uid="uid://dyholajcpja1c" path="res://assets/UI/change_weapon_screen/element_button_focus.png" id="3_6bo7b"]
-[ext_resource type="Texture2D" uid="uid://bvd06spvng5b2" path="res://assets/UI/change_weapon_screen/weapon_button_sword_symbol.png" id="3_o0t57"]
+[ext_resource type="Texture2D" uid="uid://bvd06spvng5b2" path="res://assets/UI/change_weapon_screen/weapon_button_sword_symbol.png" id="3_g1or4"]
+[ext_resource type="Texture2D" uid="uid://fr54ugqc85pf" path="res://assets/UI/change_weapon_screen/element_button_air_symbol.png" id="4_dbu6w"]
 [ext_resource type="Texture2D" uid="uid://c5s2x8ra5tjxg" path="res://assets/UI/change_weapon_screen/weapon_button_not_focus.png" id="4_wpgf5"]
 [ext_resource type="Texture2D" uid="uid://dmkib8x0nau80" path="res://assets/UI/change_weapon_screen/weapon_button_focus.png" id="5_aq2s1"]
 [ext_resource type="Texture2D" uid="uid://8his248yxy5q" path="res://assets/UI/change_weapon_screen/element_button_outside.png" id="5_dtppq"]
+[ext_resource type="Texture2D" uid="uid://to4qxan3lejd" path="res://assets/UI/change_weapon_screen/element_button_fire_symbol.png" id="5_v7156"]
+[ext_resource type="Texture2D" uid="uid://cudk0k0afkk68" path="res://assets/UI/change_weapon_screen/element_button_earth_symbol.png" id="6_40jic"]
 [ext_resource type="Texture2D" uid="uid://bnf5jjdx3bkt5" path="res://assets/UI/change_weapon_screen/choose_attack_outside.png" id="7_jtnr6"]
+[ext_resource type="Texture2D" uid="uid://ct3wwnybkr40h" path="res://assets/UI/change_weapon_screen/element_button_water_symbol.png" id="7_x5ypx"]
 [ext_resource type="Texture2D" uid="uid://cqdrarfl1yj1w" path="res://assets/UI/change_weapon_screen/element_choice_outside.png" id="8_iojy5"]
 [ext_resource type="Texture2D" uid="uid://cwfq4gff63mm" path="res://assets/UI/change_weapon_screen/choose_attack/choose_order/attack_outside.png" id="8_o0t57"]
 [ext_resource type="Texture2D" uid="uid://m8gdguh0ckwp" path="res://assets/UI/change_weapon_screen/weapon_choice_outside.png" id="9_raqsr"]
@@ -47,7 +51,7 @@
 [ext_resource type="Texture2D" uid="uid://yhjlfexs12et" path="res://assets/UI/change_weapon_screen/choose_attack/choose_attack_6_focus.png" id="45_25lx1"]
 [ext_resource type="Texture2D" uid="uid://bu3f14e7beocw" path="res://assets/UI/change_weapon_screen/choose_attack/choose_attack_6_disabled.png" id="46_874fr"]
 
-[node name="weapon_choice_screen" type="Control" node_paths=PackedStringArray("skill_1_change_weapon_button", "skill_1_change_element_button", "skill_1_change_attack_1_button", "skill_1_change_attack_2_button", "skill_1_change_finisher_button", "skill_1_weapon_buttons", "skill_1_element_buttons", "skill_1_attack_buttons", "skill_1_finisher_buttons")]
+[node name="weapon_choice_screen" type="Control" node_paths=PackedStringArray("skill_1_change_weapon_button", "skill_1_change_element_button", "skill_1_change_attack_1_button", "skill_1_change_attack_2_button", "skill_1_change_finisher_button", "skill_2_change_weapon_button", "skill_2_change_element_button", "skill_2_change_attack_1_button", "skill_2_change_attack_2_button", "skill_2_change_finisher_button", "skill_1_weapon_buttons", "skill_1_element_buttons", "skill_1_attack_choice_buttons", "skill_2_weapon_buttons", "skill_2_element_buttons", "skill_2_attack_choice_buttons")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,15 +64,24 @@ skill_1_change_element_button = NodePath("element_choose_activate")
 skill_1_change_attack_1_button = NodePath("attack_select/s1_attack_1_select_button")
 skill_1_change_attack_2_button = NodePath("attack_select/s1_attack_2_select_button")
 skill_1_change_finisher_button = NodePath("attack_select/s1_finisher_select_button")
+skill_2_change_weapon_button = NodePath("weapon_choose_activate2")
+skill_2_change_element_button = NodePath("element_choose_activate2")
+skill_2_change_attack_1_button = NodePath("attack_select/s2_attack_1_select_button")
+skill_2_change_attack_2_button = NodePath("attack_select/s2_attack_2_select_button")
+skill_2_change_finisher_button = NodePath("attack_select/s2_finisher_select_button")
 skill_1_weapon_buttons = [NodePath("axe_1"), NodePath("sword_1")]
 skill_1_element_buttons = [NodePath("fire_1"), NodePath("air_1"), NodePath("water_1"), NodePath("earth_1")]
-skill_1_attack_buttons = [NodePath("attack_options/s1_choose_attack_1"), NodePath("attack_options/s1_choose_attack_2"), NodePath("attack_options/s1_choose_attack_3"), NodePath("attack_options/s1_choose_attack_4"), NodePath("attack_options/s1_choose_attack_5"), NodePath("attack_options/s1_choose_attack_6")]
-skill_1_finisher_buttons = [NodePath("attack_options/s1_choose_finisher_1"), NodePath("attack_options/s1_choose_finisher_2"), NodePath("attack_options/s1_choose_finisher_3")]
-weapon_change_button_symbols_1 = Array[CompressedTexture2D]([ExtResource("2_mdtn4"), ExtResource("3_o0t57")])
+skill_1_attack_choice_buttons = [NodePath("attack_select/s1_attack_1_select_button"), NodePath("attack_select/s1_attack_2_select_button"), NodePath("attack_select/s1_finisher_select_button")]
+skill_2_weapon_buttons = [NodePath("axe_2"), NodePath("sword_2")]
+skill_2_element_buttons = [NodePath("fire_2"), NodePath("air_2"), NodePath("water_2"), NodePath("earth_2")]
+skill_2_attack_choice_buttons = [NodePath("attack_select/s2_attack_1_select_button"), NodePath("attack_select/s2_attack_2_select_button"), NodePath("attack_select/s2_finisher_select_button")]
+weapon_change_button_symbols = Array[CompressedTexture2D]([ExtResource("2_lcq11"), ExtResource("3_g1or4")])
+element_change_button_symbols = Array[CompressedTexture2D]([ExtResource("4_dbu6w"), ExtResource("5_v7156"), ExtResource("6_40jic"), ExtResource("7_x5ypx")])
 
 [node name="sprites" type="Node" parent="."]
 
 [node name="ChangeWeaponScreenGuide" type="Sprite2D" parent="sprites"]
+visible = false
 modulate = Color(1, 1, 1, 0.3137255)
 position = Vector2(320, 180)
 texture = ExtResource("1_yrlvo")
@@ -77,20 +90,40 @@ texture = ExtResource("1_yrlvo")
 position = Vector2(215, 47)
 texture = ExtResource("2_iojy5")
 
+[node name="WeaponButtonOutside2" type="Sprite2D" parent="sprites"]
+position = Vector2(425, 47)
+texture = ExtResource("2_iojy5")
+
 [node name="ElementButtonOutside" type="Sprite2D" parent="sprites"]
 position = Vector2(215, 111)
+texture = ExtResource("5_dtppq")
+
+[node name="ElementButtonOutside2" type="Sprite2D" parent="sprites"]
+position = Vector2(425, 111)
 texture = ExtResource("5_dtppq")
 
 [node name="ElementChoiceOutside" type="Sprite2D" parent="sprites"]
 position = Vector2(120.5, 111)
 texture = ExtResource("8_iojy5")
 
+[node name="ElementChoiceOutside2" type="Sprite2D" parent="sprites"]
+position = Vector2(519.5, 111)
+texture = ExtResource("8_iojy5")
+
 [node name="WeaponChoiceOutside" type="Sprite2D" parent="sprites"]
 position = Vector2(97.5, 47)
 texture = ExtResource("9_raqsr")
 
+[node name="WeaponChoiceOutside2" type="Sprite2D" parent="sprites"]
+position = Vector2(542.5, 47)
+texture = ExtResource("9_raqsr")
+
 [node name="ChooseAttackOutside" type="Sprite2D" parent="sprites"]
 position = Vector2(146, 272)
+texture = ExtResource("7_jtnr6")
+
+[node name="ChooseAttackOutside2" type="Sprite2D" parent="sprites"]
+position = Vector2(494, 272)
 texture = ExtResource("7_jtnr6")
 
 [node name="AttackOutside" type="Sprite2D" parent="sprites"]
@@ -103,6 +136,18 @@ texture = ExtResource("8_o0t57")
 
 [node name="AttackOutside3" type="Sprite2D" parent="sprites"]
 position = Vector2(215, 166)
+texture = ExtResource("8_o0t57")
+
+[node name="AttackOutside4" type="Sprite2D" parent="sprites"]
+position = Vector2(425, 166)
+texture = ExtResource("8_o0t57")
+
+[node name="AttackOutside5" type="Sprite2D" parent="sprites"]
+position = Vector2(515, 166)
+texture = ExtResource("8_o0t57")
+
+[node name="AttackOutside6" type="Sprite2D" parent="sprites"]
+position = Vector2(570, 166)
 texture = ExtResource("8_o0t57")
 
 [node name="weapon_choose_activate" type="TextureButton" parent="."]
@@ -120,6 +165,21 @@ texture_hover = ExtResource("5_aq2s1")
 [node name="weapon_change_button_symbol" type="Sprite2D" parent="weapon_choose_activate"]
 position = Vector2(31, 31)
 
+[node name="weapon_choose_activate2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 394.0
+offset_top = 16.0
+offset_right = 456.0
+offset_bottom = 78.0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("4_wpgf5")
+texture_pressed = ExtResource("5_aq2s1")
+texture_hover = ExtResource("5_aq2s1")
+
+[node name="weapon_change_button_symbol_2" type="Sprite2D" parent="weapon_choose_activate2"]
+position = Vector2(31, 31)
+
 [node name="element_choose_activate" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 193.0
@@ -131,6 +191,24 @@ action_mode = 0
 texture_normal = ExtResource("2_04qsu")
 texture_pressed = ExtResource("3_6bo7b")
 texture_hover = ExtResource("3_6bo7b")
+
+[node name="element_change_button_symbol" type="Sprite2D" parent="element_choose_activate"]
+position = Vector2(22, 22)
+
+[node name="element_choose_activate2" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 403.0
+offset_top = 89.0
+offset_right = 447.0
+offset_bottom = 133.0
+toggle_mode = true
+action_mode = 0
+texture_normal = ExtResource("2_04qsu")
+texture_pressed = ExtResource("3_6bo7b")
+texture_hover = ExtResource("3_6bo7b")
+
+[node name="element_change_button_symbol_2" type="Sprite2D" parent="element_choose_activate2"]
+position = Vector2(22, 22)
 
 [node name="axe_1" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("16_mdtn4")]
 layout_mode = 0
@@ -146,6 +224,21 @@ grow_vertical = 1
 parent = NodePath("..")
 weapon = "axe"
 skill = 1
+
+[node name="axe_2" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("16_mdtn4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 504.0
+offset_top = 19.0
+offset_right = 542.0
+offset_bottom = 75.0
+grow_horizontal = 1
+grow_vertical = 1
+parent = NodePath("..")
+weapon = "axe"
+skill = 2
 
 [node name="sword_1" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("16_mdtn4")]
 layout_mode = 0
@@ -166,6 +259,25 @@ parent = NodePath("..")
 weapon = "sword"
 skill = 1
 
+[node name="sword_2" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("16_mdtn4")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 465.0
+offset_top = 19.0
+offset_right = 503.0
+offset_bottom = 75.0
+grow_horizontal = 1
+grow_vertical = 1
+texture_normal = ExtResource("10_o2u4l")
+texture_pressed = ExtResource("11_5qfhu")
+texture_hover = ExtResource("11_5qfhu")
+texture_disabled = ExtResource("12_ulv2e")
+parent = NodePath("..")
+weapon = "sword"
+skill = 2
+
 [node name="fire_1" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("17_2wklk")]
 layout_mode = 0
 offset_left = 153.0
@@ -175,6 +287,16 @@ offset_bottom = 131.0
 parent = NodePath("..")
 element = "fire"
 skill = 1
+
+[node name="fire_2" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("17_2wklk")]
+layout_mode = 0
+offset_left = 456.0
+offset_top = 91.0
+offset_right = 487.0
+offset_bottom = 131.0
+parent = NodePath("..")
+element = "fire"
+skill = 2
 
 [node name="air_1" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("17_2wklk")]
 layout_mode = 0
@@ -190,6 +312,20 @@ parent = NodePath("..")
 element = "air"
 skill = 1
 
+[node name="air_2" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("17_2wklk")]
+layout_mode = 0
+offset_left = 488.0
+offset_top = 91.0
+offset_right = 519.0
+offset_bottom = 131.0
+texture_normal = ExtResource("19_26qk0")
+texture_pressed = ExtResource("20_cfrfs")
+texture_hover = ExtResource("20_cfrfs")
+texture_disabled = ExtResource("21_jtnr6")
+parent = NodePath("..")
+element = "air"
+skill = 2
+
 [node name="water_1" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("17_2wklk")]
 layout_mode = 0
 offset_left = 89.0
@@ -203,6 +339,20 @@ texture_disabled = ExtResource("24_o4xl7")
 parent = NodePath("..")
 element = "water"
 skill = 1
+
+[node name="water_2" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("17_2wklk")]
+layout_mode = 0
+offset_left = 520.0
+offset_top = 91.0
+offset_right = 551.0
+offset_bottom = 131.0
+texture_normal = ExtResource("22_08uvo")
+texture_pressed = ExtResource("23_e66uu")
+texture_hover = ExtResource("23_e66uu")
+texture_disabled = ExtResource("24_o4xl7")
+parent = NodePath("..")
+element = "water"
+skill = 2
 
 [node name="earth_1" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("17_2wklk")]
 layout_mode = 0
@@ -218,32 +368,81 @@ parent = NodePath("..")
 element = "earth"
 skill = 1
 
+[node name="earth_2" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("17_2wklk")]
+layout_mode = 0
+offset_left = 552.0
+offset_top = 91.0
+offset_right = 583.0
+offset_bottom = 131.0
+texture_normal = ExtResource("25_26qk0")
+texture_pressed = ExtResource("26_cfrfs")
+texture_hover = ExtResource("26_cfrfs")
+texture_disabled = ExtResource("27_jtnr6")
+parent = NodePath("..")
+element = "earth"
+skill = 2
+
 [node name="attack_select" type="Node" parent="."]
 
-[node name="s1_attack_1_select_button" parent="attack_select" node_paths=PackedStringArray("parent") instance=ExtResource("31_quns8")]
+[node name="s1_attack_1_select_button" parent="attack_select" node_paths=PackedStringArray("parent", "change_attack_buttons") instance=ExtResource("31_quns8")]
 offset_left = 48.0
 offset_top = 144.0
 offset_right = 92.0
 offset_bottom = 188.0
 parent = NodePath("../..")
-attack = "1"
+attack = "attack_1"
+skill = 1
+change_attack_buttons = [NodePath("../../attack_options/s1_choose_attack_1"), NodePath("../../attack_options/s1_choose_attack_2"), NodePath("../../attack_options/s1_choose_attack_3"), NodePath("../../attack_options/s1_choose_attack_4"), NodePath("../../attack_options/s1_choose_attack_5"), NodePath("../../attack_options/s1_choose_attack_6")]
 
-[node name="s1_attack_2_select_button" parent="attack_select" node_paths=PackedStringArray("parent") instance=ExtResource("31_quns8")]
+[node name="s2_attack_1_select_button" parent="attack_select" node_paths=PackedStringArray("parent", "change_attack_buttons") instance=ExtResource("31_quns8")]
+offset_left = 548.0
+offset_top = 144.0
+offset_right = 592.0
+offset_bottom = 188.0
+parent = NodePath("../..")
+attack = "attack_1"
+skill = 2
+change_attack_buttons = [NodePath("../../attack_options/s2_choose_attack_1"), NodePath("../../attack_options/s2_choose_attack_2"), NodePath("../../attack_options/s2_choose_attack_3"), NodePath("../../attack_options/s2_choose_attack_4"), NodePath("../../attack_options/s2_choose_attack_5"), NodePath("../../attack_options/s2_choose_attack_6")]
+
+[node name="s1_attack_2_select_button" parent="attack_select" node_paths=PackedStringArray("parent", "change_attack_buttons") instance=ExtResource("31_quns8")]
 offset_left = 103.0
 offset_top = 144.0
 offset_right = 147.0
 offset_bottom = 188.0
 parent = NodePath("../..")
-attack = "2"
+attack = "attack_2"
+skill = 1
+change_attack_buttons = [NodePath("../../attack_options/s1_choose_attack_1"), NodePath("../../attack_options/s1_choose_attack_2"), NodePath("../../attack_options/s1_choose_attack_3"), NodePath("../../attack_options/s1_choose_attack_4"), NodePath("../../attack_options/s1_choose_attack_5"), NodePath("../../attack_options/s1_choose_attack_6")]
 
-[node name="s1_finisher_select_button" parent="attack_select" node_paths=PackedStringArray("parent") instance=ExtResource("31_quns8")]
+[node name="s2_attack_2_select_button" parent="attack_select" node_paths=PackedStringArray("parent", "change_attack_buttons") instance=ExtResource("31_quns8")]
+offset_left = 493.0
+offset_top = 144.0
+offset_right = 537.0
+offset_bottom = 188.0
+parent = NodePath("../..")
+attack = "attack_2"
+skill = 2
+change_attack_buttons = [NodePath("../../attack_options/s2_choose_attack_1"), NodePath("../../attack_options/s2_choose_attack_2"), NodePath("../../attack_options/s2_choose_attack_3"), NodePath("../../attack_options/s2_choose_attack_4"), NodePath("../../attack_options/s2_choose_attack_5"), NodePath("../../attack_options/s2_choose_attack_6")]
+
+[node name="s1_finisher_select_button" parent="attack_select" node_paths=PackedStringArray("parent", "change_attack_buttons") instance=ExtResource("31_quns8")]
 offset_left = 193.0
 offset_top = 144.0
 offset_right = 237.0
 offset_bottom = 188.0
 parent = NodePath("../..")
 attack = "finisher"
-finisher = true
+skill = 1
+change_attack_buttons = [NodePath("../../attack_options/s1_choose_finisher_1"), NodePath("../../attack_options/s1_choose_finisher_2"), NodePath("../../attack_options/s1_choose_finisher_3")]
+
+[node name="s2_finisher_select_button" parent="attack_select" node_paths=PackedStringArray("parent", "change_attack_buttons") instance=ExtResource("31_quns8")]
+offset_left = 403.0
+offset_top = 144.0
+offset_right = 447.0
+offset_bottom = 188.0
+parent = NodePath("../..")
+attack = "finisher"
+skill = 2
+change_attack_buttons = [NodePath("../../attack_options/s2_choose_finisher_1"), NodePath("../../attack_options/s2_choose_finisher_2"), NodePath("../../attack_options/s2_choose_finisher_3")]
 
 [node name="attack_options" type="Node" parent="."]
 
@@ -255,6 +454,17 @@ offset_bottom = 237.0
 texture_disabled = ExtResource("31_mdtn4")
 parent = NodePath("../..")
 number = 1
+skill = 1
+
+[node name="s2_choose_attack_1" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
+offset_left = 411.0
+offset_top = 209.0
+offset_right = 439.0
+offset_bottom = 237.0
+texture_disabled = ExtResource("31_mdtn4")
+parent = NodePath("../..")
+number = 1
+skill = 2
 
 [node name="s1_choose_attack_2" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
 offset_left = 104.0
@@ -267,6 +477,20 @@ texture_hover = ExtResource("33_quns8")
 texture_disabled = ExtResource("34_2cv3h")
 parent = NodePath("../..")
 number = 2
+skill = 1
+
+[node name="s2_choose_attack_2" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
+offset_left = 452.0
+offset_top = 209.0
+offset_right = 480.0
+offset_bottom = 237.0
+texture_normal = ExtResource("32_o0t57")
+texture_pressed = ExtResource("33_quns8")
+texture_hover = ExtResource("33_quns8")
+texture_disabled = ExtResource("34_2cv3h")
+parent = NodePath("../..")
+number = 2
+skill = 2
 
 [node name="s1_choose_attack_3" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
 offset_left = 63.0
@@ -279,6 +503,20 @@ texture_hover = ExtResource("36_g1or4")
 texture_disabled = ExtResource("37_dbu6w")
 parent = NodePath("../..")
 number = 3
+skill = 1
+
+[node name="s2_choose_attack_3" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
+offset_left = 411.0
+offset_top = 258.0
+offset_right = 439.0
+offset_bottom = 286.0
+texture_normal = ExtResource("35_lcq11")
+texture_pressed = ExtResource("36_g1or4")
+texture_hover = ExtResource("36_g1or4")
+texture_disabled = ExtResource("37_dbu6w")
+parent = NodePath("../..")
+number = 3
+skill = 2
 
 [node name="s1_choose_attack_4" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
 offset_left = 104.0
@@ -291,6 +529,20 @@ texture_hover = ExtResource("39_40jic")
 texture_disabled = ExtResource("40_x5ypx")
 parent = NodePath("../..")
 number = 4
+skill = 1
+
+[node name="s2_choose_attack_4" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
+offset_left = 452.0
+offset_top = 258.0
+offset_right = 480.0
+offset_bottom = 286.0
+texture_normal = ExtResource("38_v7156")
+texture_pressed = ExtResource("39_40jic")
+texture_hover = ExtResource("39_40jic")
+texture_disabled = ExtResource("40_x5ypx")
+parent = NodePath("../..")
+number = 4
+skill = 2
 
 [node name="s1_choose_attack_5" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
 offset_left = 63.0
@@ -303,6 +555,20 @@ texture_hover = ExtResource("42_bdc8o")
 texture_disabled = ExtResource("43_oh7x7")
 parent = NodePath("../..")
 number = 5
+skill = 1
+
+[node name="s2_choose_attack_5" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
+offset_left = 411.0
+offset_top = 307.0
+offset_right = 439.0
+offset_bottom = 335.0
+texture_normal = ExtResource("41_gj4s3")
+texture_pressed = ExtResource("42_bdc8o")
+texture_hover = ExtResource("42_bdc8o")
+texture_disabled = ExtResource("43_oh7x7")
+parent = NodePath("../..")
+number = 5
+skill = 2
 
 [node name="s1_choose_attack_6" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
 offset_left = 104.0
@@ -315,6 +581,20 @@ texture_hover = ExtResource("45_25lx1")
 texture_disabled = ExtResource("46_874fr")
 parent = NodePath("../..")
 number = 6
+skill = 1
+
+[node name="s2_choose_attack_6" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
+offset_left = 452.0
+offset_top = 307.0
+offset_right = 480.0
+offset_bottom = 335.0
+texture_normal = ExtResource("44_esopr")
+texture_pressed = ExtResource("45_25lx1")
+texture_hover = ExtResource("45_25lx1")
+texture_disabled = ExtResource("46_874fr")
+parent = NodePath("../..")
+number = 6
+skill = 2
 
 [node name="s1_choose_finisher_1" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
 offset_left = 201.0
@@ -323,8 +603,18 @@ offset_right = 229.0
 offset_bottom = 237.0
 texture_disabled = ExtResource("31_mdtn4")
 parent = NodePath("../..")
-finisher = true
 number = 1
+skill = 1
+
+[node name="s2_choose_finisher_1" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
+offset_left = 549.0
+offset_top = 209.0
+offset_right = 577.0
+offset_bottom = 237.0
+texture_disabled = ExtResource("31_mdtn4")
+parent = NodePath("../..")
+number = 1
+skill = 2
 
 [node name="s1_choose_finisher_2" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
 offset_left = 201.0
@@ -336,8 +626,21 @@ texture_pressed = ExtResource("33_quns8")
 texture_hover = ExtResource("33_quns8")
 texture_disabled = ExtResource("34_2cv3h")
 parent = NodePath("../..")
-finisher = true
 number = 2
+skill = 1
+
+[node name="s2_choose_finisher_2" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
+offset_left = 549.0
+offset_top = 258.0
+offset_right = 577.0
+offset_bottom = 286.0
+texture_normal = ExtResource("32_o0t57")
+texture_pressed = ExtResource("33_quns8")
+texture_hover = ExtResource("33_quns8")
+texture_disabled = ExtResource("34_2cv3h")
+parent = NodePath("../..")
+number = 2
+skill = 2
 
 [node name="s1_choose_finisher_3" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
 offset_left = 201.0
@@ -349,5 +652,18 @@ texture_pressed = ExtResource("36_g1or4")
 texture_hover = ExtResource("36_g1or4")
 texture_disabled = ExtResource("37_dbu6w")
 parent = NodePath("../..")
-finisher = true
 number = 3
+skill = 1
+
+[node name="s2_choose_finisher_3" parent="attack_options" node_paths=PackedStringArray("parent") instance=ExtResource("30_08uvo")]
+offset_left = 549.0
+offset_top = 307.0
+offset_right = 577.0
+offset_bottom = 335.0
+texture_normal = ExtResource("35_lcq11")
+texture_pressed = ExtResource("36_g1or4")
+texture_hover = ExtResource("36_g1or4")
+texture_disabled = ExtResource("37_dbu6w")
+parent = NodePath("../..")
+number = 3
+skill = 2

@@ -32,7 +32,6 @@ texture_pressed = ExtResource("2_s7bgr")
 texture_hover = ExtResource("2_s7bgr")
 texture_disabled = ExtResource("3_j4yx5")
 script = ExtResource("1_lrgjn")
-attack = null
 normal_textures = Array[CompressedTexture2D]([ExtResource("2_y577j"), ExtResource("3_4imsg"), ExtResource("4_ffi66"), ExtResource("5_x6e7f"), ExtResource("6_7beh1"), ExtResource("7_ny71m")])
 focus_textures = Array[CompressedTexture2D]([ExtResource("8_pk3js"), ExtResource("9_wa70o"), ExtResource("10_uamqy"), ExtResource("11_prql1"), ExtResource("15_7beh1"), ExtResource("12_pnafw")])
 disabled_textures = Array[CompressedTexture2D]([ExtResource("13_auhyb"), ExtResource("14_ncg1a"), ExtResource("15_smw48"), ExtResource("16_rpeqa"), ExtResource("17_n40eu"), ExtResource("18_g1gch")])
