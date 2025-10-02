@@ -105,6 +105,7 @@ func choose_attack_to_change(attack: String, button_choice: TextureButton, skill
 
 func set_attack(attack_number:int, skill: int):
 	PlayerVariables.set(get("attack_being_changed_" + str(skill)),attack_number)
+	print(PlayerVariables.get(get("attack_being_changed_" + str(skill))))
 	if get("attack_being_changed_" + str(skill)).contains("attack_1") and PlayerVariables.get("skill_" + str(skill) + "_attack_2") == attack_number:
 		PlayerVariables.set("skill_" + str(skill) + "_attack_2",0)
 	if get("attack_being_changed_" + str(skill)).contains("attack_2") and PlayerVariables.get("skill_" + str(skill) + "_attack_1") == attack_number:

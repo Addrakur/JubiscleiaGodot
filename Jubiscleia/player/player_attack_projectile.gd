@@ -29,7 +29,7 @@ func _ready():
 	attack_area.knockback_force = PlayerVariables.get(attack + "_projectile_knockback")
 	attack_area.poise_damage = PlayerVariables.get(attack + "_projectile_poise")
 	speed = PlayerVariables.get(attack + "_projectile_speed")
-	element = PlayerVariables.get(PlayerVariables.current_skill + "_element")
+	element = PlayerVariables.get("skill_" + PlayerVariables.current_skill + "_element")
 	attack_area.current_element = element
 	attack_area.attack_name = name
 	

@@ -236,7 +236,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_rx5ej"]
-resource_name = "sword_3"
+resource_name = "sword_water_finisher_1"
 length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -312,7 +312,7 @@ tracks/5/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_mosy4"]
-resource_name = "sword_3_finish"
+resource_name = "sword_water_finisher_1_finish"
 length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -392,8 +392,8 @@ _data = {
 &"RESET": SubResource("Animation_jxw51"),
 &"spear_3": SubResource("Animation_7twia"),
 &"spear_3_finish": SubResource("Animation_v2vey"),
-&"sword_3": SubResource("Animation_rx5ej"),
-&"sword_3_finish": SubResource("Animation_mosy4")
+&"sword_water_finisher_1": SubResource("Animation_rx5ej"),
+&"sword_water_finisher_1_finish": SubResource("Animation_mosy4")
 }
 
 [node name="player_attack_projectile" type="Node2D" node_paths=PackedStringArray("animation", "texture", "collision_area", "attack_area") groups=["player_object", "projectile"]]

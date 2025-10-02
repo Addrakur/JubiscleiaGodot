@@ -29,14 +29,12 @@ var current_skill: String #Arma sendo usada no ataque atual
 var current_attack: String #Ataque que está sendo usado atualmente
 var last_skill: String #Ultima arma usada
 
-var skill_1: String = "none"
 var skill_1_weapon: String = "none"
 var skill_1_element: String = "none"
 var skill_1_attack_1: int = 0
 var skill_1_attack_2: int = 0
 var skill_1_finisher: int = 0
 
-var skill_2: String = "none"
 var skill_2_weapon: String = "none"
 var skill_2_element: String = "none"
 var skill_2_attack_1: int = 0
@@ -58,13 +56,46 @@ var sword_air_unlocked: bool = false
 
 var sword_water_unlocked: bool = true
 var sword_water_attack_1: bool = true
+var sword_water_attack_1_damage: float = 2
+var sword_water_attack_1_knockback: float = 80
+var sword_water_attack_1_poise: float = 3
+var sword_water_attack_1_speed: float = 300 * (attack_speed - 0.2)
+var sword_water_attack_1_element_amount: float = 3
+
 var sword_water_attack_2: bool = true
+var sword_water_attack_2_damage: float = 3
+var sword_water_attack_2_knockback: float = 80
+var sword_water_attack_2_poise: float = 3
+var sword_water_attack_2_speed: float = 0
+var sword_water_attack_2_element_amount: float = 3
+
 var sword_water_attack_3: bool = false
+
+
 var sword_water_attack_4: bool = false
+
+
 var sword_water_attack_5: bool = false
+
+
 var sword_water_attack_6: bool = false
 
+
 var sword_water_finisher_1: bool = true
+var sword_water_finisher_1_damage: float = 0
+var sword_water_finisher_1_knockback: float = 0
+var sword_water_finisher_1_poise: float = 0
+var sword_water_finisher_1_speed: float = 0
+var sword_water_finisher_1_element_amount: float = 0
+var sword_water_finisher_1_projectile_damage: float = 3
+var sword_water_finisher_1_projectile_speed: float = 100
+var sword_water_finisher_1_projectile_knockback: float = 100
+var sword_water_finisher_1_projectile_poise: float = 3
+var sword_water_finisher_1_location: Vector2 = Vector2 (0,0)
+var sword_water_finisher_1_projectile_max_distance: float = 100
+var sword_water_finisher_1_projectile_element_amount: float = 2
+var sword_water_finisher_1_shake: float = 1
+
 var sword_water_finisher_2: bool = false
 var sword_water_finisher_3: bool = false
 
@@ -73,13 +104,33 @@ var sword_earth_unlocked: bool = false
 
 var axe_fire_unlocked: bool = true
 var axe_fire_attack_1: bool = true
+var axe_fire_attack_1_damage: float = 3
+var axe_fire_attack_1_knockback: float = 200
+var axe_fire_attack_1_poise: float = 5
+var axe_fire_attack_1_speed: float = 0
+var axe_fire_attack_1_element_amount: float = 5
+var axe_fire_attack_1_shake: float = 1
+
 var axe_fire_attack_2: bool = true
+var axe_fire_attack_2_damage: float = 4
+var axe_fire_attack_2_knockback: float = 200
+var axe_fire_attack_2_poise: float = 5
+var axe_fire_attack_2_speed: float = 800
+var axe_fire_attack_2_element_amount: float = 5
+
 var axe_fire_attack_3: bool = false
 var axe_fire_attack_4: bool = false
 var axe_fire_attack_5: bool = false
 var axe_fire_attack_6: bool = false
 
 var axe_fire_finisher_1: bool = true
+var axe_fire_finisher_1_damage: float = 5
+var axe_fire_finisher_1_knockback: float = 250
+var axe_fire_finisher_1_poise: float = 10
+var axe_fire_finisher_1_speed: float = 0
+var axe_fire_finisher_1_element_amount: float = 5
+var axe_fire_finisher_1_shake: float = 1.5
+
 var axe_fire_finisher_2: bool = false
 var axe_fire_finisher_3: bool = false
 
@@ -199,27 +250,29 @@ func toggle_active_player(t_or_f: bool):
 	active = t_or_f
 
 func set_skill_1(new_skill: String):
-	if not get(new_skill + "_unlocked"):
-		return
-	
-	if skill_2 == new_skill:
-		if new_skill == "sword":
-			skill_2 = "axe"
-		else:
-			skill_2 = "sword"
-	
-	skill_1 = new_skill
+	#if not get(new_skill + "_unlocked"):
+		#return
+	#
+	#if skill_2 == new_skill:
+		#if new_skill == "sword":
+			#skill_2 = "axe"
+		#else:
+			#skill_2 = "sword"
+	#
+	#skill_1 = new_skill
+	pass
 	
 
 func set_skill_2(new_skill: String):
-	if not get(new_skill + "_unlocked"):
-		return
-	
-	if skill_1 == new_skill:
-		if new_skill == "sword":
-			skill_1 = "axe"
-		else:
-			skill_1 = "sword"
-	
-	skill_2 = new_skill
+	#if not get(new_skill + "_unlocked"):
+		#return
+	#
+	#if skill_1 == new_skill:
+		#if new_skill == "sword":
+			#skill_1 = "axe"
+		#else:
+			#skill_1 = "sword"
+	#
+	#skill_2 = new_skill
+	pass
 	

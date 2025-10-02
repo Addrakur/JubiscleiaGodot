@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 	value = PlayerVariables.get(element + "_stack_count")
 
 func set_element_meter():
-	element = PlayerVariables.get(PlayerVariables.get("skill_" + skill) + "_element")
+	element = PlayerVariables.get("skill_" + skill + "_element")
 	match element:
 		"air":
 			texture_progress = texture[0]

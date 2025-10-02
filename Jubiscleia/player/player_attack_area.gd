@@ -23,16 +23,12 @@ func hit_func(body: Node2D):
 		body_is_target = true
 	
 	if not body_is_target:
-		print("body not target")
 		return
-	print("body is target")
 	
 	if body.is_in_group("obstacle"):
 		if has_elemental_weakness(current_element, body.element):
 			body.health_component.update_health(damage, 0, 0,0, attack_name, 0, parent.position.x, parent)
-		print("body is obstacle")
 		return
-	print("body is not obstacle")
 	
 	if not body.health_component.invulnerable and body.alive:
 		if has_elemental_weakness(current_element, body.element):
@@ -46,11 +42,11 @@ func hit_func(body: Node2D):
 			var current_meter_value = PlayerVariables.get(current_element + "_stack_count") # Recebe o valor atual do contador do elemento da arma
 			var new_value: float
 			if has_elemental_weakness(current_element, body.element):
-				new_value = current_meter_value + (PlayerVariables.get(PlayerVariables.current_skill + "_element_amount") * PlayerVariables.element_extra_stack) if parent.is_in_group("player") else current_meter_value + (PlayerVariables.get(parent.skill + "_element_amount") * PlayerVariables.element_extra_stack)# Calcula o novo valor
+				new_value = current_meter_value + PlayerVariables.get(PlayerVariables.current_attack + "_element_amount") * PlayerVariables.element_extra_stack if parent.is_in_group("player") else current_meter_value + (PlayerVariables.get(parent.attack + "_element_amount") * PlayerVariables.element_extra_stack)# Calcula o novo valor
 			elif has_elemental_strength(current_element, body.element):
-				new_value = current_meter_value + (PlayerVariables.get(PlayerVariables.current_skill + "_element_amount") * PlayerVariables.element_reduced_stack) if parent.is_in_group("player") else current_meter_value + (PlayerVariables.get(parent.skill + "_element_amount") * PlayerVariables.element_reduced_stack)# Calcula o novo valor
+				new_value = current_meter_value + PlayerVariables.get(PlayerVariables.current_attack + "_element_amount") * PlayerVariables.element_reduced_stack if parent.is_in_group("player") else current_meter_value + (PlayerVariables.get(parent.attack + "_element_amount") * PlayerVariables.element_reduced_stack)# Calcula o novo valor
 			else:
-				new_value = current_meter_value + PlayerVariables.get(PlayerVariables.current_skill + "_element_amount") if parent is Player else current_meter_value + PlayerVariables.get(parent.skill + "_element_amount")# Calcula o novo valor
+				new_value = current_meter_value + PlayerVariables.get(PlayerVariables.current_attack + "_element_amount") if parent is Player else current_meter_value + PlayerVariables.get(parent.attack + "_element_amount")# Calcula o novo valor
 				
 			PlayerVariables.set(current_element + "_stack_count" , new_value)  # Vincula o novo valor ao contador
 			
@@ -67,7 +63,7 @@ func hit_func(body: Node2D):
 							can_create = false
 					if can_create:
 						var fire_dot = Paths.fire_dot.instantiate()
-						fire_dot.damage = PlayerVariables.get(PlayerVariables.current_attack + "_damage") if parent.is_in_group("player") else PlayerVariables.get(parent.animation.current_animation + "_damage")
+						fire_dot.damage = PlayerVariables.get(PlayerVariables.current_attack + "_damage") if parent.is_in_group("player") else PlayerVariables.get(parent.attack + "_damage")
 						if has_elemental_weakness("fire",body.element):
 							fire_dot.damage *= PlayerVariables.element_extra_damage
 						elif has_elemental_strength("fire", body.element):
