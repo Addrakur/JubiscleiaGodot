@@ -19,7 +19,7 @@ func enter_state() -> void:
 	player.can_combo = false
 	
 	player.combo_timer.stop()
-	PlayerVariables.current_attack = PlayerVariables.get("skill_" + PlayerVariables.current_skill + "_weapon") + "_" + PlayerVariables.get("skill_" + PlayerVariables.current_skill + "_element") + "_finisher_" + str(PlayerVariables.get("skill_" + PlayerVariables.current_skill + "_finisher"))
+	PlayerVariables.current_attack = PlayerVariables.get("skill_" + PlayerVariables.current_skill + "_weapon") + "_" + PlayerVariables.get("skill_" + PlayerVariables.current_skill + "_element") + "_finisher"
 	animation.play(PlayerVariables.current_attack,-1,PlayerVariables.attack_speed,false)
 	player.attack_area.attack_name = PlayerVariables.current_attack
 

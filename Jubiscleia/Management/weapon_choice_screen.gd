@@ -5,13 +5,11 @@ extends Control
 @export var skill_1_change_element_button: TextureButton
 @export var skill_1_change_attack_1_button: TextureButton
 @export var skill_1_change_attack_2_button: TextureButton
-@export var skill_1_change_finisher_button: TextureButton
 
 @export var skill_2_change_weapon_button: TextureButton
 @export var skill_2_change_element_button: TextureButton
 @export var skill_2_change_attack_1_button: TextureButton
 @export var skill_2_change_attack_2_button: TextureButton
-@export var skill_2_change_finisher_button: TextureButton
 
 @export_group("Button Arrays")
 @export var skill_1_weapon_buttons: Array[TextureButton]
@@ -137,7 +135,7 @@ func _on_play_button_pressed() -> void:
 	GameSettings.change_scene(Paths.get(GameSettings.next_level))
 
 func can_play_check() -> bool:
-	if PlayerVariables.skill_1_weapon == "none" or PlayerVariables.skill_2_weapon == "none" or PlayerVariables.skill_1_element == "none" or PlayerVariables.skill_2_element == "none" or PlayerVariables.skill_1_attack_1 == 0 or PlayerVariables.skill_1_attack_2 == 0 or PlayerVariables.skill_1_finisher == 0 or PlayerVariables.skill_2_attack_1 == 0 or PlayerVariables.skill_2_attack_2 == 0 or PlayerVariables.skill_2_finisher == 0:
+	if PlayerVariables.skill_1_weapon == "none" or PlayerVariables.skill_2_weapon == "none" or PlayerVariables.skill_1_element == "none" or PlayerVariables.skill_2_element == "none" or PlayerVariables.skill_1_attack_1 == 0 or PlayerVariables.skill_1_attack_2 == 0 or PlayerVariables.skill_2_attack_1 == 0 or PlayerVariables.skill_2_attack_2 == 0:
 		return false
 	else:
 		return true

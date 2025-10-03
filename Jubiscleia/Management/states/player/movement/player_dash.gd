@@ -63,14 +63,14 @@ func _physics_process(_delta):
 		if anim_finish:
 			player.fsm.change_state(player.fall_state)
 		
-		if Input.is_action_just_pressed("attack_button_1") and PlayerVariables.can_attack and PlayerVariables.skill_1 != "none":
-			PlayerVariables.next_skill = PlayerVariables.skill_1
+		if Input.is_action_just_pressed("attack_button_1") and PlayerVariables.can_attack and PlayerVariables.skill_1_weapon != "none":
+			PlayerVariables.next_skill = "1"
 			if ground_raycast.is_colliding():
 				player.fsm.change_state(player.get("attack_" + str(player.next_attack) + "_state"))
 			else:
 				player.fsm.change_state(player.get("jump_attack_state"))
-		if Input.is_action_just_pressed("attack_button_2") and PlayerVariables.can_attack and PlayerVariables.skill_2 != "none":
-			PlayerVariables.next_skill = PlayerVariables.skill_2
+		if Input.is_action_just_pressed("attack_button_2") and PlayerVariables.can_attack and PlayerVariables.skill_2_weapon != "none":
+			PlayerVariables.next_skill = "2"
 			if ground_raycast.is_colliding():
 				player.fsm.change_state(player.get("attack_" + str(player.next_attack) + "_state"))
 			else:

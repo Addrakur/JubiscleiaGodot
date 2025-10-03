@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dswxgnihe3un7" path="res://assets/UI/Title.png" id="22_pvhg6"]
 [ext_resource type="PackedScene" uid="uid://cneih5yhue5ap" path="res://player/skill_tree.tscn" id="26_y8r8k"]
 
-[node name="Menu" type="Control" node_paths=PackedStringArray("weapon_1_buttons", "weapon_2_buttons")]
+[node name="Menu" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -16,8 +16,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_slu8i")
-weapon_1_buttons = [NodePath(""), NodePath(""), NodePath("")]
-weapon_2_buttons = [NodePath(""), NodePath(""), NodePath("")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -82,34 +80,6 @@ offset_right = 323.0
 offset_bottom = 316.0
 theme_override_font_sizes/font_size = 37
 text = "Parametros"
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -236.0
-offset_top = 85.0
-offset_right = -32.0
-offset_bottom = 165.0
-grow_horizontal = 0
-scale = Vector2(0.5, 0.5)
-theme_override_constants/separation = 30
-alignment = 1
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -236.0
-offset_top = 220.0
-offset_right = -32.0
-offset_bottom = 300.0
-grow_horizontal = 0
-scale = Vector2(0.5, 0.5)
-theme_override_constants/separation = 30
-alignment = 1
 
 [node name="Title" type="TextureRect" parent="."]
 layout_mode = 1

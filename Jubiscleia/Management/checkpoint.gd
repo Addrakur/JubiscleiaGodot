@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func _on_player_collision_body_entered(body: Node2D) -> void:
 	if body == PlayerVariables.player:
-		checkpoint_weapon_change.visible = true
+		#checkpoint_weapon_change.visible = true
 		PlayerVariables.can_attack = false
 		if not activated:
 			activated = true
@@ -29,5 +29,5 @@ func play_animation(anim_name: String):
 
 func _on_player_collision_body_exited(body: Node2D) -> void:
 	if body == PlayerVariables.player:
-		checkpoint_weapon_change.visible = false
+		#checkpoint_weapon_change.visible = false
 		PlayerVariables.can_attack = true

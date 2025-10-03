@@ -22,18 +22,19 @@ func enter_state() -> void:
 	player.combo_timer.stop()
 	
 	PlayerVariables.current_skill = PlayerVariables.next_skill
-	animation.play(PlayerVariables.current_skill + "_jump", -1, PlayerVariables.attack_speed,false)
-	PlayerVariables.current_attack = PlayerVariables.current_skill + "_jump"
-	player.attack_area.current_element = PlayerVariables.get(PlayerVariables.current_skill + "_element")
+	PlayerVariables.next_skill = ""
+	player.attack_area.current_element = PlayerVariables.get("skill_" + PlayerVariables.current_skill + "_element")
+	PlayerVariables.current_attack = PlayerVariables.get("skill_" + PlayerVariables.current_skill + "_weapon") + "_" + PlayerVariables.get("skill_" + PlayerVariables.current_skill + "_element") + "_jump_attack"
+	animation.play(PlayerVariables.current_attack, -1, PlayerVariables.attack_speed,false)
 	player.attack_area.attack_name = PlayerVariables.current_attack
 	player.can_combo = false
 	
-	speed = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_speed")
-	player.override_gravity = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_gravity")
+	speed = PlayerVariables.get(PlayerVariables.current_attack + "_speed")
+	player.override_gravity = PlayerVariables.get(PlayerVariables.current_attack + "_gravity")
 	
-	player.attack_area.damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_damage") * PlayerVariables.damage_mult
-	player.attack_area.knockback_force = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_knockback")
-	player.attack_area.poise_damage = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_poise")
+	player.attack_area.damage = PlayerVariables.get(PlayerVariables.current_attack + "_damage") * PlayerVariables.damage_mult
+	player.attack_area.knockback_force = PlayerVariables.get(PlayerVariables.current_attack + "_knockback")
+	player.attack_area.poise_damage = PlayerVariables.get(PlayerVariables.current_attack + "_poise")
 	
 	player.velocity.x = 0
 	
@@ -70,8 +71,9 @@ func _physics_process(delta):
 	if PlayerVariables.anim_finish: #Sai do estado de ataque
 		player.fsm.change_state(player.fall_state)
 	
-	if PlayerVariables.current_skill == "axe" and player.is_on_floor():
-		_play_animation("axe_jump_wind_down")
+	if animation.current_animation == PlayerVariables.current_attack + "_loop" and player.is_on_floor():
+		_play_animation(PlayerVariables.current_attack + "_finish")
+	
 
 func stop_false() -> void:
 	stop = false
@@ -86,7 +88,7 @@ func set_gravity_override(value: float):
 	if value != 0:
 		player.override_gravity = value
 	else:
-		player.override_gravity = PlayerVariables.get(str(PlayerVariables.current_skill) + "_jump_gravity")
+		player.override_gravity = PlayerVariables.get(PlayerVariables.current_attack + "_gravity")
 
 func _set_velocity_y(value: float):
 	player.velocity.y = value

@@ -57,12 +57,12 @@ func _physics_process(delta):
 			else:
 				input_buffering.start()
 		
-		if Input.is_action_just_pressed("attack_button_1") and PlayerVariables.can_attack and PlayerVariables.skill_1 != "none":
-			PlayerVariables.next_skill = PlayerVariables.skill_1
+		if Input.is_action_just_pressed("attack_button_1") and PlayerVariables.can_attack and PlayerVariables.skill_1_weapon != "none":
+			PlayerVariables.next_skill = "1"
 			player.fsm.change_state(player.jump_attack_state)
-		
-		if Input.is_action_just_pressed("attack_button_2") and PlayerVariables.can_attack and PlayerVariables.skill_2 != "none":
-			PlayerVariables.next_skill = PlayerVariables.skill_2
+	
+		if Input.is_action_just_pressed("attack_button_2") and PlayerVariables.can_attack and PlayerVariables.skill_2_weapon != "none":
+			PlayerVariables.next_skill = "2"
 			player.fsm.change_state(player.jump_attack_state)
 
 func _on_coyote_time_timeout():
