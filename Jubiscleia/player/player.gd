@@ -196,6 +196,9 @@ func spawn_point_location_change():
 	attack_spawn_point.position.x = PlayerVariables.get(PlayerVariables.current_attack + "_location").x * spawn_direction
 	attack_spawn_point.position.y = PlayerVariables.get(PlayerVariables.current_attack + "_location").y
 
+func _play_animation(anim_name: String) -> void:
+	animation.play(anim_name, -1, PlayerVariables.attack_speed, false)
+
 func _on_dash_cooldown_timeout():
 	can_dash = true
 
@@ -215,3 +218,21 @@ func _on_poise_timer_timeout():
 func combo_timer_start():
 	combo_timer.wait_time = Parameters.player_combo_memory_time
 	combo_timer.start()
+
+func parry_true():
+	PlayerVariables.player_parry = true
+
+func parry_false():
+	PlayerVariables.player_parry = false
+
+func reduce_damage_true():
+	PlayerVariables.player_reduce_damage = true
+
+func reduce_damage_false():
+	PlayerVariables.player_reduce_damage = false
+
+func immune_to_poise_true():
+	PlayerVariables.immune_to_poise_damage = true
+
+func immune_to_poise_false():
+	PlayerVariables.immune_to_poise_damage = false

@@ -23,21 +23,24 @@ var elemental_rupture: String = ""
 
 var player_alive: bool = true
 var player_attacking: bool = false
+var player_parry: bool = false
+var player_reduce_damage: bool = false
+var gauntlet_reduced_damage: float = 0.3
 
 var next_skill: String #Arma que vai ser usada no ataque que vai vir
 var current_skill: String #Arma sendo usada no ataque atual
 var current_attack: String #Ataque que está sendo usado atualmente
 var last_skill: String #Ultima arma usada
 
-var skill_1_weapon: String = "none"
-var skill_1_element: String = "none"
-var skill_1_attack_1: int = 0
-var skill_1_attack_2: int = 0
+var skill_1_weapon: String = "gauntlet"
+var skill_1_element: String = "earth"
+var skill_1_attack_1: int = 1
+var skill_1_attack_2: int = 2
 
-var skill_2_weapon: String = "none"
-var skill_2_element: String = "none"
-var skill_2_attack_1: int = 0
-var skill_2_attack_2: int = 0
+var skill_2_weapon: String = "sword"
+var skill_2_element: String = "water"
+var skill_2_attack_1: int = 1
+var skill_2_attack_2: int = 2
 
 var move: bool = false
 var my_knockup: bool = false
@@ -45,12 +48,9 @@ var anim_finish: bool = false
 var can_move_during_attack: bool = false
 var can_attack: bool = true
 var active: bool = true
+var immune_to_poise_damage: bool = false
 
 #Armas e ataques desbloqueados
-
-var sword_fire_unlocked: bool = false
-
-var sword_air_unlocked: bool = false
 
 var sword_water_unlocked: bool = true
 var sword_water_attack_1: bool = true
@@ -141,22 +141,40 @@ var axe_fire_jump_attack_gravity: float = 1000
 var axe_fire_jump_attack_element_amount: float = 5
 var axe_fire_jump_attack_shake: float = 3
 
-var axe_air_unlocked: bool = false
-var axe_water_unlocked: bool = false
-var axe_earth_unlocked: bool = false
+var gauntlet_earth_unlocked: bool = true
+var gauntlet_earth_attack_1: bool = true
+var gauntlet_earth_attack_1_damage: float = 2
+var gauntlet_earth_attack_1_knockback: float = 300
+var gauntlet_earth_attack_1_poise: float = 4
+var gauntlet_earth_attack_1_speed: float = 0
+var gauntlet_earth_attack_1_element_amount: float = 2
 
+var gauntlet_earth_attack_2: bool = true
+var gauntlet_earth_attack_2_damage: float = 2
+var gauntlet_earth_attack_2_knockback: float = 300
+var gauntlet_earth_attack_2_poise: float = 4
+var gauntlet_earth_attack_2_speed: float = 0
+var gauntlet_earth_attack_2_element_amount: float = 2
 
-var shield_fire_unlocked: bool = false
-var shield_air_unlocked: bool = false
-var shield_water_unlocked: bool = false
-var shield_earth_unlocked: bool = false
+var gauntlet_earth_attack_3: bool = true
+var gauntlet_earth_attack_4: bool = true
+var gauntlet_earth_attack_5: bool = true
+var gauntlet_earth_attack_6: bool = true
 
-
-var range_fire_unlocked: bool = false
-var range_air_unlocked: bool = false
-var range_water_unlocked: bool = false
-var range_earth_unlocked: bool = false
-
+# gauntlet_earth_finisher
+var gauntlet_earth_finisher_damage: float = 0
+var gauntlet_earth_finisher_knockback: float = 0
+var gauntlet_earth_finisher_poise: float = 0
+var gauntlet_earth_finisher_speed: float = 0
+var gauntlet_earth_finisher_element_amount: float = 0
+var gauntlet_earth_finisher_projectile_damage: float = 2
+var gauntlet_earth_finisher_projectile_speed: float = 200
+var gauntlet_earth_finisher_projectile_knockback: float = 200
+var gauntlet_earth_finisher_projectile_poise: float = 20
+var gauntlet_earth_finisher_location: Vector2 = Vector2 (0,0)
+var gauntlet_earth_finisher_projectile_max_distance: float = 100
+var gauntlet_earth_finisher_projectile_element_amount: float = 2
+var gauntlet_earth_finisher_shake: float = 1
 
 func toggle_active_player(t_or_f: bool):
 	active = t_or_f

@@ -1,10 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://bedppref8pxcj"]
+[gd_scene load_steps=11 format=3 uid="uid://bedppref8pxcj"]
 
 [ext_resource type="Script" uid="uid://b6o7lia5mp0ma" path="res://player/player_attack_projectile.gd" id="1_c1jhh"]
-[ext_resource type="Texture2D" uid="uid://chlhq0o5haq1w" path="res://assets/player/Ataques/Lanca/C0/projetil_0_3.png" id="4_pky7b"]
+[ext_resource type="Texture2D" uid="uid://dbw62o3mluupt" path="res://assets/player/Ataques/manopla/terra/finisher_proj.png" id="3_rqr3n"]
 [ext_resource type="PackedScene" uid="uid://cbxf7kpu8j2ho" path="res://player/player_attack_area.tscn" id="5_ke6d2"]
 [ext_resource type="Texture2D" uid="uid://dvfcrr1iu0lbw" path="res://assets/player/Ataques/Espada/C0/sword_0_3_projectile.png" id="6_qykke"]
-[ext_resource type="Texture2D" uid="uid://blr2yv63pnh4w" path="res://assets/player/Ataques/Lanca/C0/projetil_dest_0_3.png" id="8_h4wh0"]
 
 [sub_resource type="Animation" id="Animation_jxw51"]
 length = 0.001
@@ -59,91 +58,14 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Texture:scale")
+tracks/4/path = NodePath("player_attack_area/CollisionArea:polygon")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("player_attack_area/CollisionArea:polygon")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [PackedVector2Array(0, -1, 4, -1, 4, -4, 0, -4)]
-}
-
-[sub_resource type="Animation" id="Animation_7twia"]
-resource_name = "spear_3"
-length = 0.6
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Texture:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("4_pky7b")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("player_attack_area/CollisionArea:polygon")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [PackedVector2Array(0, 5, 65, 5, 65, -5, 0, -5)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Texture:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Texture:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("player_attack_area/CollisionArea:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -158,10 +80,10 @@ tracks/5/keys = {
 "values": [Vector2(1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_v2vey"]
-resource_name = "spear_3_finish"
-length = 0.15
-step = 0.075
+[sub_resource type="Animation" id="Animation_rx5ej"]
+resource_name = "sword_water_finisher"
+length = 1.6666751
+step = 0.083333336
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -172,7 +94,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("8_h4wh0")]
+"values": [ExtResource("6_qykke")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -184,31 +106,31 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [3]
+"values": [13]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:move")
+tracks/2/path = NodePath("Texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25, 0.33333334, 0.41666666, 0.5, 0.5833333, 0.6666667, 0.75000006, 0.8333333, 0.9166667, 1, 1.0833335, 1.1666667, 1.25, 1.3333335, 1.4166667, 1.5, 1.5833335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [false]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 5, 6, 7, 5, 6, 7, 5, 6, 7, 5, 6, 7]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("player_attack_area/CollisionArea:disabled")
+tracks/3/path = NodePath("player_attack_area/CollisionArea:polygon")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [PackedVector2Array(-3, -1, 21, -1, 21, -36, -3, -36)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -222,17 +144,19 @@ tracks/4/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
-tracks/5/type = "value"
+tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Texture:frame")
+tracks/5/path = NodePath(".")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.075, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"move_true"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_mosy4"]
@@ -286,34 +210,25 @@ tracks/3/keys = {
 "update": 1,
 "values": [PackedVector2Array(0, 0, 21, 0, 21, -39, 0, -39)]
 }
-tracks/4/type = "value"
+tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Texture:scale")
+tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:move")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"values": [{
+"args": [false],
+"method": &"move_true"
+}]
 }
 
-[sub_resource type="Animation" id="Animation_rx5ej"]
-resource_name = "sword_water_finisher"
-length = 0.8
+[sub_resource type="Animation" id="Animation_ke6d2"]
+resource_name = "gauntlet_earth_finisher"
+length = 1.5000083
+step = 0.083333336
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -324,7 +239,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_qykke")]
+"values": [ExtResource("3_rqr3n")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -336,7 +251,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [13]
+"values": [16]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -345,10 +260,10 @@ tracks/2/path = NodePath("Texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.041666668, 0.083333336, 0.125, 0.16666667, 0.20833333, 0.25, 0.29166666, 0.5833333, 0.6666666, 0.7499999, 0.8333334, 0.9166667, 0.99999994, 1.0833334, 1.1666667, 1.25, 1.3333334, 1.4166667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 8, 9, 10, 8, 9, 10, 8, 9, 10]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -360,38 +275,86 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [PackedVector2Array(-3, -1, 21, -1, 21, -36, -3, -36)]
+"values": [PackedVector2Array(12, -1, 31, -1, 31, -52, 12, -52)]
 }
-tracks/4/type = "value"
+tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Texture:scale")
+tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
+"times": PackedFloat32Array(0, 0.5833333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"move_true"
+}, {
+"args": [true],
+"method": &"move_true"
+}]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:move")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+
+[sub_resource type="Animation" id="Animation_rqr3n"]
+resource_name = "gauntlet_earth_finisher_finish"
+length = 0.3333417
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [ExtResource("3_rqr3n")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 0.25, 0.33333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 13, 14, 15]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [false],
+"method": &"move_true"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hei53"]
 _data = {
 &"RESET": SubResource("Animation_jxw51"),
-&"spear_3": SubResource("Animation_7twia"),
-&"spear_3_finish": SubResource("Animation_v2vey"),
+&"gauntlet_earth_finisher": SubResource("Animation_ke6d2"),
+&"gauntlet_earth_finisher_finish": SubResource("Animation_rqr3n"),
 &"sword_water_finisher": SubResource("Animation_rx5ej"),
 &"sword_water_finisher_finish": SubResource("Animation_mosy4")
 }

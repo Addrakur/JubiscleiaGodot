@@ -27,16 +27,16 @@ func hit_func(body: Node2D):
 	
 	if body.is_in_group("obstacle"):
 		if has_elemental_weakness(current_element, body.element):
-			body.health_component.update_health(damage, 0, 0,0, attack_name, 0, parent.position.x, parent)
+			body.health_component.update_health(damage, 0, 0, attack_name, 0, parent)
 		return
 	
 	if not body.health_component.invulnerable and body.alive:
 		if has_elemental_weakness(current_element, body.element):
-			body.health_component.update_health(damage * PlayerVariables.element_extra_damage, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage, parent.position.x, parent)
+			body.health_component.update_health(damage * PlayerVariables.element_extra_damage, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage, parent)
 		elif has_elemental_strength(current_element, body.element):
-			body.health_component.update_health(damage * PlayerVariables.element_reduced_damage_damage, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage, parent.position.x, parent)
+			body.health_component.update_health(damage * PlayerVariables.element_reduced_damage, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage, parent)
 		else:
-			body.health_component.update_health(damage, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage, parent.position.x, parent)
+			body.health_component.update_health(damage, knockback_force, 1 if body.position.x > parent.position.x else -1, attack_name, poise_damage, parent)
 			
 		if PlayerVariables.elemental_rupture == "" and GameSettings.player.element_manager.active:
 			var current_meter_value = PlayerVariables.get(current_element + "_stack_count") # Recebe o valor atual do contador do elemento da arma

@@ -30,7 +30,14 @@ func _process(_delta):
 		fsm.change_state(hit_state)
 	
 	if Input.is_physical_key_pressed(KEY_0):
-		GameSettings.player.health_component.update_health(1,200,1 if GameSettings.player.position.x > position.x else -1, "dummy",10,position.x,self)
+		if PlayerVariables.player_parry:
+			GameSettings.player.health_component.update_health(0,200,1 if GameSettings.player.position.x > position.x else -1, "dummy",0,self)
+			GameSettings.player._play_animation(PlayerVariables.current_attack + "_parry")
+		elif PlayerVariables.player_reduce_damage:
+			GameSettings.player.health_component.update_health(1,200,1 if GameSettings.player.position.x > position.x else -1, "dummy",0,self)
+			GameSettings.player._play_animation(PlayerVariables.current_attack + "_parry")
+		else:
+			GameSettings.player.health_component.update_health(1,200,1 if GameSettings.player.position.x > position.x else -1, "dummy",10.0 if not PlayerVariables.immune_to_poise_damage else 0.0,self)
 
 func _physics_process(delta):
 	move_and_slide()

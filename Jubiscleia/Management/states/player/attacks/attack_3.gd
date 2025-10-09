@@ -39,6 +39,9 @@ func exit_state() -> void:
 	PlayerVariables.current_attack = ""
 	PlayerVariables.current_skill = ""
 	PlayerVariables.move = false
+	PlayerVariables.player_reduce_damage = false
+	PlayerVariables.player_parry = false
+	PlayerVariables.immune_to_poise_damage = false
 	player.can_flip = true
 	player.camera_methods.weapon_shake_false()
 	PlayerVariables.anim_finish = false

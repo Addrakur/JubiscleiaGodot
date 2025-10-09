@@ -25,9 +25,6 @@
 
 [sub_resource type="Resource" id="Resource_td1jt"]
 script = ExtResource("9_dny5v")
-duration = 1.0
-transition = 0
-ease = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38c5u"]
 size = Vector2(3104, 586)

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dboexykbv3xkm"
-path="res://.godot/imported/player_run.png-9d357591933ec124fd658ea374ceeadf.ctex"
+uid="uid://cbqhiaiejacol"
+path="res://.godot/imported/gauntlet_choose_button_not_focus.png-0312aa7eedcaf9caf858ad0c1dec113c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/movimentcoes/player_run.png"
-dest_files=["res://.godot/imported/player_run.png-9d357591933ec124fd658ea374ceeadf.ctex"]
+source_file="res://assets/UI/change_weapon_screen/gauntlet_choose_button_not_focus.png"
+dest_files=["res://.godot/imported/gauntlet_choose_button_not_focus.png-0312aa7eedcaf9caf858ad0c1dec113c.ctex"]
 
 [params]
 

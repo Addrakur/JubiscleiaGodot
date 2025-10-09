@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dboexykbv3xkm"
-path="res://.godot/imported/player_run.png-9d357591933ec124fd658ea374ceeadf.ctex"
+uid="uid://dbw62o3mluupt"
+path="res://.godot/imported/finisher_proj.png-0add4a15a219c3fb01a5a4dfddf979e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/movimentcoes/player_run.png"
-dest_files=["res://.godot/imported/player_run.png-9d357591933ec124fd658ea374ceeadf.ctex"]
+source_file="res://assets/player/Ataques/manopla/terra/finisher_proj.png"
+dest_files=["res://.godot/imported/finisher_proj.png-0add4a15a219c3fb01a5a4dfddf979e9.ctex"]
 
 [params]
 

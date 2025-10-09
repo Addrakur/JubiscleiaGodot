@@ -48,6 +48,8 @@ func _process(_delta: float) -> void:
 			weapon_change_button_symbol_1.texture = weapon_change_button_symbols[0]
 		"sword":
 			weapon_change_button_symbol_1.texture = weapon_change_button_symbols[1]
+		"gauntlet":
+			weapon_change_button_symbol_1.texture = weapon_change_button_symbols[2]
 	
 	match PlayerVariables.skill_1_element:
 		"air":
@@ -66,6 +68,8 @@ func _process(_delta: float) -> void:
 			weapon_change_button_symbol_2.texture = weapon_change_button_symbols[0]
 		"sword":
 			weapon_change_button_symbol_2.texture = weapon_change_button_symbols[1]
+		"gauntlet":
+			weapon_change_button_symbol_2.texture = weapon_change_button_symbols[2]
 	
 	match PlayerVariables.skill_2_element:
 		"air":

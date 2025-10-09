@@ -14,7 +14,6 @@ var direction: float
 
 var can_destroy: bool = false
 var attack: String = PlayerVariables.current_attack
-var skill: String = PlayerVariables.current_skill
 
 var starting_pos: Vector2
 
@@ -52,5 +51,5 @@ func _on_animation_finished(anim):
 	if anim == attack + "_finish":
 		queue_free()
 	
-	#if anim == attack:
-		#can_destroy = true
+func move_true(value: bool):
+	move = value

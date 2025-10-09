@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dboexykbv3xkm"
-path="res://.godot/imported/player_run.png-9d357591933ec124fd658ea374ceeadf.ctex"
+uid="uid://3ntjlc3sjgn7"
+path="res://.godot/imported/ataque_1_parry.png-625c126ebabb74cc5e13674bf2a709a7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player/movimentcoes/player_run.png"
-dest_files=["res://.godot/imported/player_run.png-9d357591933ec124fd658ea374ceeadf.ctex"]
+source_file="res://assets/player/Ataques/manopla/terra/ataque_1_parry.png"
+dest_files=["res://.godot/imported/ataque_1_parry.png-625c126ebabb74cc5e13674bf2a709a7.ctex"]
 
 [params]
 
