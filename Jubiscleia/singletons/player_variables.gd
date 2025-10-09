@@ -175,6 +175,13 @@ var gauntlet_earth_finisher_location: Vector2 = Vector2 (0,0)
 var gauntlet_earth_finisher_projectile_max_distance: float = 100
 var gauntlet_earth_finisher_projectile_element_amount: float = 2
 var gauntlet_earth_finisher_shake: float = 1
+# gauntlet_earth_jump_attack
+var gauntlet_earth_jump_attack_damage: float = 2
+var gauntlet_earth_jump_attack_knockback: float = 50
+var gauntlet_earth_jump_attack_poise: float = 5
+var gauntlet_earth_jump_attack_speed: float = 0
+var gauntlet_earth_jump_attack_gravity: float = 0
+var gauntlet_earth_jump_attack_element_amount: float = 3
 
 func toggle_active_player(t_or_f: bool):
 	active = t_or_f
