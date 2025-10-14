@@ -199,6 +199,19 @@ func spawn_point_location_change():
 func _play_animation(anim_name: String) -> void:
 	animation.play(anim_name, -1, PlayerVariables.attack_speed, false)
 
+func reset_player_variables():
+	PlayerVariables.player_attacking = false
+	PlayerVariables.last_skill = PlayerVariables.current_skill
+	PlayerVariables.current_attack = ""
+	PlayerVariables.current_skill = ""
+	PlayerVariables.move = false
+	PlayerVariables.player_reduce_damage = false
+	PlayerVariables.player_parry = false
+	PlayerVariables.immune_to_poise_damage = false
+	PlayerVariables.player_charge_attack_start = false
+	PlayerVariables.anim_finish = false
+	can_flip = true
+
 func _on_dash_cooldown_timeout():
 	can_dash = true
 
@@ -236,3 +249,11 @@ func immune_to_poise_true():
 
 func immune_to_poise_false():
 	PlayerVariables.immune_to_poise_damage = false
+
+func charge_attack_true():
+	PlayerVariables.player_charge_attack_start = true
+
+func set_attack_level(level: int):
+	attack_area.damage = PlayerVariables.get(PlayerVariables.current_attack + "_damage_level_" + str(level))
+	attack_area.poise_damage = PlayerVariables.get(PlayerVariables.current_attack + "_poise_level_" + str(level))
+	attack_area.knockback_force = PlayerVariables.get(PlayerVariables.current_attack + "_knockback_level_" + str(level))

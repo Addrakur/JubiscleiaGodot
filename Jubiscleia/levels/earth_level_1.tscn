@@ -172,7 +172,7 @@ tile_set = ExtResource("6_5mv62")
 
 [node name="Camera2D" type="Camera2D" parent="pause"]
 physics_interpolation_mode = 1
-position = Vector2(426.66684, 12)
+position = Vector2(426.66666, 12)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = 0
@@ -349,12 +349,6 @@ polygon = PackedVector2Array(4517, -293, 4517, -154, 4603, -154, 4603, -293)
 element = "earth"
 polygon2d = NodePath("Polygon2D")
 
-[node name="obstacle" parent="pause/obstacles/obstacle_manager2" instance=ExtResource("29_gguv0")]
-position = Vector2(11616, -1455)
-
-[node name="obstacle2" parent="pause/obstacles/obstacle_manager2" instance=ExtResource("29_gguv0")]
-position = Vector2(11616, -1487)
-
 [node name="obstacle3" parent="pause/obstacles/obstacle_manager2" instance=ExtResource("29_gguv0")]
 position = Vector2(11616, -1519)
 
@@ -375,9 +369,6 @@ position = Vector2(12672, -2651)
 [node name="obstacle2" parent="pause/obstacles/obstacle_manager3" instance=ExtResource("29_gguv0")]
 position = Vector2(12736, -2651)
 
-[node name="obstacle3" parent="pause/obstacles/obstacle_manager3" instance=ExtResource("29_gguv0")]
-position = Vector2(12800, -2651)
-
 [node name="Polygon2D" type="Polygon2D" parent="pause/obstacles/obstacle_manager3"]
 visible = false
 polygon = PackedVector2Array(12699, -2683, 12699, -2651, 12869, -2651, 12869, -2683)
@@ -394,9 +385,6 @@ position = Vector2(12704, -2464)
 
 [node name="obstacle3" parent="pause/obstacles/obstacle_manager4" instance=ExtResource("29_gguv0")]
 position = Vector2(12768, -2464)
-
-[node name="obstacle4" parent="pause/obstacles/obstacle_manager4" instance=ExtResource("29_gguv0")]
-position = Vector2(12832, -2464)
 
 [node name="Polygon2D" type="Polygon2D" parent="pause/obstacles/obstacle_manager4"]
 visible = false
@@ -415,9 +403,6 @@ position = Vector2(12704, -2272)
 [node name="obstacle3" parent="pause/obstacles/obstacle_manager5" instance=ExtResource("29_gguv0")]
 position = Vector2(12768, -2272)
 
-[node name="obstacle4" parent="pause/obstacles/obstacle_manager5" instance=ExtResource("29_gguv0")]
-position = Vector2(12832, -2272)
-
 [node name="Polygon2D" type="Polygon2D" parent="pause/obstacles/obstacle_manager5"]
 visible = false
 polygon = PackedVector2Array(12640, -2304, 12640, -2272, 12928, -2272, 12928, -2304)
@@ -434,9 +419,6 @@ position = Vector2(12704, -2080)
 
 [node name="obstacle3" parent="pause/obstacles/obstacle_manager6" instance=ExtResource("29_gguv0")]
 position = Vector2(12768, -2080)
-
-[node name="obstacle4" parent="pause/obstacles/obstacle_manager6" instance=ExtResource("29_gguv0")]
-position = Vector2(12832, -2080)
 
 [node name="Polygon2D" type="Polygon2D" parent="pause/obstacles/obstacle_manager6"]
 visible = false
@@ -455,9 +437,6 @@ position = Vector2(12704, -1888)
 [node name="obstacle3" parent="pause/obstacles/obstacle_manager7" instance=ExtResource("29_gguv0")]
 position = Vector2(12768, -1888)
 
-[node name="obstacle4" parent="pause/obstacles/obstacle_manager7" instance=ExtResource("29_gguv0")]
-position = Vector2(12832, -1888)
-
 [node name="Polygon2D" type="Polygon2D" parent="pause/obstacles/obstacle_manager7"]
 visible = false
 polygon = PackedVector2Array(12640, -1920, 12640, -1888, 12928, -1888, 12928, -1920)
@@ -465,12 +444,6 @@ polygon = PackedVector2Array(12640, -1920, 12640, -1888, 12928, -1888, 12928, -1
 [node name="obstacle_manager8" parent="pause/obstacles" node_paths=PackedStringArray("polygon2d") instance=ExtResource("28_8yd3s")]
 element = "fire"
 polygon2d = NodePath("Polygon2D")
-
-[node name="obstacle" parent="pause/obstacles/obstacle_manager8" instance=ExtResource("29_gguv0")]
-position = Vector2(15040, -1745)
-
-[node name="obstacle2" parent="pause/obstacles/obstacle_manager8" instance=ExtResource("29_gguv0")]
-position = Vector2(15040, -1777)
 
 [node name="obstacle3" parent="pause/obstacles/obstacle_manager8" instance=ExtResource("29_gguv0")]
 position = Vector2(15040, -1809)

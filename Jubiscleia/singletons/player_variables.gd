@@ -23,9 +23,11 @@ var elemental_rupture: String = ""
 
 var player_alive: bool = true
 var player_attacking: bool = false
+
 var player_parry: bool = false
 var player_reduce_damage: bool = false
 var gauntlet_reduced_damage: float = 0.3
+var player_charge_attack_start: bool = false
 
 var next_skill: String #Arma que vai ser usada no ataque que vai vir
 var current_skill: String #Arma sendo usada no ataque atual
@@ -37,8 +39,8 @@ var skill_1_element: String = "earth"
 var skill_1_attack_1: int = 1
 var skill_1_attack_2: int = 2
 
-var skill_2_weapon: String = "sword"
-var skill_2_element: String = "water"
+var skill_2_weapon: String = "axe"
+var skill_2_element: String = "fire"
 var skill_2_attack_1: int = 1
 var skill_2_attack_2: int = 2
 
@@ -106,17 +108,29 @@ var sword_earth_unlocked: bool = false
 
 var axe_fire_unlocked: bool = true
 var axe_fire_attack_1: bool = true
-var axe_fire_attack_1_damage: float = 3
-var axe_fire_attack_1_knockback: float = 200
-var axe_fire_attack_1_poise: float = 5
+var axe_fire_attack_1_damage: float = 2
+var axe_fire_attack_1_damage_level_2 = 4
+var axe_fire_attack_1_damage_level_3 = 6
+var axe_fire_attack_1_knockback: float = 150
+var axe_fire_attack_1_knockback_level_2: float = 200
+var axe_fire_attack_1_knockback_level_3: float = 250
+var axe_fire_attack_1_poise: float = 3
+var axe_fire_attack_1_poise_level_2: float = 5
+var axe_fire_attack_1_poise_level_3: float = 8
 var axe_fire_attack_1_speed: float = 0
 var axe_fire_attack_1_element_amount: float = 5
 var axe_fire_attack_1_shake: float = 1
 
 var axe_fire_attack_2: bool = true
-var axe_fire_attack_2_damage: float = 4
-var axe_fire_attack_2_knockback: float = 200
-var axe_fire_attack_2_poise: float = 5
+var axe_fire_attack_2_damage: float = 2
+var axe_fire_attack_2_damage_level_2: float = 4
+var axe_fire_attack_2_damage_level_3: float = 6
+var axe_fire_attack_2_knockback: float = 150
+var axe_fire_attack_2_knockback_level_2: float = 200
+var axe_fire_attack_2_knockback_level_3: float = 250
+var axe_fire_attack_2_poise: float = 3
+var axe_fire_attack_2_poise_level_2: float = 5
+var axe_fire_attack_2_poise_level_3: float = 8
 var axe_fire_attack_2_speed: float = 800
 var axe_fire_attack_2_element_amount: float = 5
 
@@ -126,9 +140,15 @@ var axe_fire_attack_5: bool = false
 var axe_fire_attack_6: bool = false
 
 # axe_fire_finisher
-var axe_fire_finisher_damage: float = 5
-var axe_fire_finisher_knockback: float = 250
-var axe_fire_finisher_poise: float = 10
+var axe_fire_finisher_damage: float = 3
+var axe_fire_finisher_damage_level_2: float = 6
+var axe_fire_finisher_damage_level_3: float = 10
+var axe_fire_finisher_knockback: float = 200
+var axe_fire_finisher_knockback_level_2: float = 250
+var axe_fire_finisher_knockback_level_3: float = 300
+var axe_fire_finisher_poise: float = 7
+var axe_fire_finisher_poise_level_2: float = 10
+var axe_fire_finisher_poise_level_3: float = 15
 var axe_fire_finisher_speed: float = 0
 var axe_fire_finisher_element_amount: float = 5
 var axe_fire_finisher_shake: float = 1.5

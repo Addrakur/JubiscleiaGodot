@@ -239,9 +239,6 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_a3tg3"]
 script = ExtResource("9_da2ds")
-duration = 1.0
-transition = 0
-ease = 2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24aq3"]
 size = Vector2(12928, 1824)
@@ -369,7 +366,7 @@ texture = ExtResource("9_0j6fp")
 
 [node name="Camera2D" type="Camera2D" parent="pause"]
 physics_interpolation_mode = 1
-position = Vector2(-21.3333, 240)
+position = Vector2(-21.333336, 240)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = -448
@@ -421,12 +418,6 @@ position = Vector2(4450, -65)
 element = "fire"
 polygon2d = NodePath("Polygon2D")
 
-[node name="obstacle" parent="pause/obstacle_manager" instance=ExtResource("22_g1vyw")]
-position = Vector2(7936, -434)
-
-[node name="obstacle2" parent="pause/obstacle_manager" instance=ExtResource("22_g1vyw")]
-position = Vector2(7936, -466)
-
 [node name="obstacle3" parent="pause/obstacle_manager" instance=ExtResource("22_g1vyw")]
 position = Vector2(7936, -498)
 
@@ -451,12 +442,6 @@ polygon = PackedVector2Array(7943, -645, 7943, -443, 8028, -443, 8028, -645)
 element = "fire"
 polygon2d = NodePath("Polygon2D")
 
-[node name="obstacle" parent="pause/obstacle_manager2" instance=ExtResource("22_g1vyw")]
-position = Vector2(8480, -593)
-
-[node name="obstacle5" parent="pause/obstacle_manager2" instance=ExtResource("22_g1vyw")]
-position = Vector2(8480, -561)
-
 [node name="obstacle2" parent="pause/obstacle_manager2" instance=ExtResource("22_g1vyw")]
 position = Vector2(8480, -625)
 
@@ -474,12 +459,6 @@ polygon = PackedVector2Array(8485, -709, 8571, -709, 8571, -571, 8485, -571)
 [node name="obstacle_manager3" parent="pause" node_paths=PackedStringArray("polygon2d") instance=ExtResource("21_e1fn6")]
 element = "earth"
 polygon2d = NodePath("Polygon2D")
-
-[node name="obstacle" parent="pause/obstacle_manager3" instance=ExtResource("22_g1vyw")]
-position = Vector2(10144, -789)
-
-[node name="obstacle2" parent="pause/obstacle_manager3" instance=ExtResource("22_g1vyw")]
-position = Vector2(10144, -821)
 
 [node name="obstacle3" parent="pause/obstacle_manager3" instance=ExtResource("22_g1vyw")]
 position = Vector2(10144, -853)
@@ -595,7 +574,7 @@ camera = NodePath("../Camera2D")
 
 [node name="free_camera" type="Node2D" parent="pause" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(-21.3333, 240)
+position = Vector2(-21.333344, 240)
 script = ExtResource("8_rt00j")
 follow_mode = 2
 follow_target = NodePath("../Player")

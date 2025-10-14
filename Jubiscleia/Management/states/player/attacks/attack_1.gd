@@ -33,22 +33,12 @@ func enter_state() -> void:
 
 func exit_state() -> void:
 	set_physics_process(false)
+	player.reset_player_variables()
 	player.set_collision_mask_value(2,false)
-	PlayerVariables.player_attacking = false
-	PlayerVariables.last_skill = PlayerVariables.current_skill
-	PlayerVariables.current_attack = ""
-	PlayerVariables.current_skill = ""
-	PlayerVariables.move = false
-	PlayerVariables.player_reduce_damage = false
-	PlayerVariables.player_parry = false
-	PlayerVariables.immune_to_poise_damage = false
-	player.can_flip = true
 	player.camera_methods.weapon_shake_false()
-	PlayerVariables.anim_finish = false
 	player.combo_timer_start()
-
+ 
 func _physics_process(delta):
-	
 	if Input.is_action_just_pressed("jump"):
 		player.fsm.change_state(player.jump_state)
 	
@@ -71,6 +61,9 @@ func _physics_process(delta):
 	
 	if PlayerVariables.anim_finish:
 		player.fsm.change_state(player.idle_state)
+	
+	if PlayerVariables.player_charge_attack_start and not Input.is_action_pressed("attack_button_" + PlayerVariables.current_skill):
+		player._play_animation(PlayerVariables.current_attack + "_finish")
 
 func zero_speed(delta: float):
 	if player.velocity.x > 0:

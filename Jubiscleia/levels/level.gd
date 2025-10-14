@@ -13,9 +13,9 @@ func _ready():
 	if not free_spawn:
 		spawn_point()
 	
-	if has_starting_weapon:
-		PlayerVariables.skill_1 = skill_1
-		PlayerVariables.skill_2 = skill_2
+#	if has_starting_weapon:
+#		PlayerVariables.skill_1 = skill_1
+#		PlayerVariables.skill_2 = skill_2
 
 func spawn_point():
 	player.position = GameSettings.get(name + "_spawn_point")
