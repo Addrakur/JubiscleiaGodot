@@ -5,6 +5,7 @@ extends LimboState
 @export var attack_timer: Timer
 @export var dash_speed: float
 
+
 var can_rotate: bool = false
 var can_move: bool = false
 

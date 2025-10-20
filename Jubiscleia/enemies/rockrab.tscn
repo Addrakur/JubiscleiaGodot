@@ -401,11 +401,12 @@ radius = 16.0
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_eotrt"]
 
-[node name="rockrab" type="CharacterBody2D" node_paths=PackedStringArray("health_component") groups=["enemy"]]
+[node name="rockrab" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 collision_layer = 2
 collision_mask = 65708
 script = ExtResource("1_cbade")
 health_component = NodePath("HealthComponent")
+attack_area = NodePath("enemy_attack_area")
 element = "earth"
 top_size_y = -36.0
 left_size_x = -18.0
@@ -449,7 +450,6 @@ attack_timer = NodePath("../attack_timer")
 parent = NodePath("..")
 damage = 5.0
 knockback_force = 50.0
-knockup_force = -10.0
 poise_damage = 20.0
 attack_name = "rockrab_collision"
 
@@ -462,7 +462,6 @@ debug_color = Color(0.99, 0, 0.0164997, 0.419608)
 parent = NodePath("..")
 damage = 10.0
 knockback_force = 150.0
-knockup_force = -10.0
 poise_damage = 6.0
 attack_name = "rockrab_attack"
 

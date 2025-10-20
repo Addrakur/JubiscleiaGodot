@@ -1,0 +1,495 @@
+[gd_scene load_steps=26 format=3 uid="uid://bntvr1e8q1ygc"]
+
+[ext_resource type="Texture2D" uid="uid://dhi73d6n2m0am" path="res://assets/enemy/lightning_dash/lightning_enemy_idle.png" id="1_6e4fc"]
+[ext_resource type="Script" uid="uid://dn0tp68dtli02" path="res://enemies/lightning_dash.gd" id="1_g3bt0"]
+[ext_resource type="Texture2D" uid="uid://dpy6l7aad5ty7" path="res://assets/enemy/lightning_dash/lightning_enemy_attack.png" id="2_65b13"]
+[ext_resource type="PackedScene" uid="uid://c3tb3d720s55q" path="res://enemies/enemy_attack_area.tscn" id="3_65b13"]
+[ext_resource type="Texture2D" uid="uid://bka65c3p5kd64" path="res://assets/enemy/lightning_dash/lightning_enemy_walk.png" id="4_4vchi"]
+[ext_resource type="Texture2D" uid="uid://bgyyt3cu3846a" path="res://assets/enemy/lightning_dash/lightning_enemy_stun.png" id="5_i1k86"]
+[ext_resource type="PackedScene" uid="uid://dghe1uklhuim0" path="res://Management/composition_scenes/health_component.tscn" id="5_qh487"]
+[ext_resource type="Script" uid="uid://dgdxilwcyhs7b" path="res://Management/states/lightning_dash/lightning_dash_walk.gd" id="6_1ov4f"]
+[ext_resource type="Shader" uid="uid://dqi4fnw7r5atv" path="res://enemies/slow_shader.gdshader" id="7_m7thr"]
+[ext_resource type="Script" uid="uid://nthtdiryedmx" path="res://Management/states/lightning_dash/lightning_dash_attack.gd" id="9_j3p0s"]
+[ext_resource type="Script" uid="uid://dhd8uf6bb0ih2" path="res://Management/states/lightning_dash/lightning_dash_stun.gd" id="10_0wp46"]
+[ext_resource type="PackedScene" uid="uid://2bdikhijltvv" path="res://Management/life_label.tscn" id="11_3n68g"]
+[ext_resource type="Script" uid="uid://dr8wxsdnrput4" path="res://Management/states/lightning_dash/lightning_dash_death.gd" id="11_l58nx"]
+
+[sub_resource type="Animation" id="Animation_qh487"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_6e4fc")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("enemy_attack_area/CollisionShape2D:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("enemy_attack_area/CollisionShape2D:shape:height")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [18.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("is_on_wall:target_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-11, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1ov4f"]
+resource_name = "attack"
+length = 1.0000083
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_65b13")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("enemy_attack_area/CollisionShape2D:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [6.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("enemy_attack_area/CollisionShape2D:shape:height")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [28.0]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("hsm/lightning_dash_attack")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [true],
+"method": &"can_move_toggle"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("is_on_wall:target_position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-13, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g3bt0"]
+resource_name = "walk"
+length = 0.83335
+loop_mode = 1
+step = 0.16666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_4vchi")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.5, 0.6666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("enemy_attack_area/CollisionShape2D:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("enemy_attack_area/CollisionShape2D:shape:height")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [18.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("is_on_wall:target_position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-11, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_j3p0s"]
+resource_name = "stun"
+length = 3.0000083
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_i1k86")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 2.9166667, 2.9952855),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_l58nx"]
+resource_name = "dead"
+length = 1.0000083
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_i1k86")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4vchi"]
+_data = {
+&"RESET": SubResource("Animation_qh487"),
+&"attack": SubResource("Animation_1ov4f"),
+&"dead": SubResource("Animation_l58nx"),
+&"stun": SubResource("Animation_j3p0s"),
+&"walk": SubResource("Animation_g3bt0")
+}
+
+[sub_resource type="Animation" id="Animation_agibw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_urt7n"]
+resource_name = "hit"
+length = 0.100005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(100, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8u7iw"]
+_data = {
+&"RESET": SubResource("Animation_agibw"),
+&"hit": SubResource("Animation_urt7n")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6e4fc"]
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4vchi"]
+radius = 9.0
+height = 18.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f12iy"]
+shader = ExtResource("7_m7thr")
+shader_parameter/blue_value = 0.0
+shader_parameter/red_value = 0.0
+
+[node name="lightning_dash" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
+collision_layer = 2
+collision_mask = 65708
+script = ExtResource("1_g3bt0")
+health_component = NodePath("HealthComponent")
+attack_area = NodePath("enemy_attack_area")
+element = "air"
+top_size_y = -22.0
+left_size_x = -10.0
+right_size_x = 10.0
+
+[node name="animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_4vchi")
+}
+
+[node name="hit_modulate" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8u7iw")
+}
+
+[node name="collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -13)
+shape = SubResource("CapsuleShape2D_6e4fc")
+
+[node name="enemy_attack_area" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("3_65b13")]
+parent = NodePath("..")
+damage = 10.0
+knockback_force = 300.0
+poise_damage = 2.0
+attack_name = "ball_contact"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_attack_area"]
+position = Vector2(0, -16)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_4vchi")
+debug_color = Color(0.9, 0.09900001, 0.09900001, 0.41960785)
+
+[node name="can_attack_player" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="can_attack_player_collision" type="CollisionPolygon2D" parent="can_attack_player"]
+polygon = PackedVector2Array(-224, -64, -224, 0, 64, 0, 64, -64)
+
+[node name="texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_f12iy")
+position = Vector2(0, -16)
+texture = ExtResource("1_6e4fc")
+
+[node name="is_on_wall" type="RayCast2D" parent="."]
+position = Vector2(0, -13)
+target_position = Vector2(-11, 0)
+collision_mask = 65581
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_qh487")]
+max_health = 10.0
+max_poise = 50.0
+
+[node name="hsm" type="LimboHSM" parent="."]
+
+[node name="lightning_dash_walk" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("6_1ov4f")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+speed = 10000.0
+
+[node name="lightning_dash_attack" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("9_j3p0s")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+dash_speed = 30000.0
+
+[node name="lightning_dash_stun" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("10_0wp46")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+
+[node name="lightning_dash_death" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation", "collision_damage")]
+script = ExtResource("11_l58nx")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+collision_damage = NodePath("../../enemy_attack_area/CollisionShape2D")
+
+[node name="ProgressBar" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("11_3n68g")]
+offset_top = -64.0
+offset_bottom = -54.0
+parent = NodePath("..")
+
+[connection signal="animation_finished" from="animation" to="hsm/lightning_dash_attack" method="_on_animation_animation_finished"]
+[connection signal="animation_finished" from="animation" to="hsm/lightning_dash_stun" method="_on_animation_animation_finished"]
+[connection signal="animation_finished" from="animation" to="hsm/lightning_dash_death" method="_on_animation_finished"]
+[connection signal="animation_finished" from="hit_modulate" to="." method="_on_hit_modulate_animation_finished"]
+[connection signal="body_entered" from="can_attack_player" to="." method="_on_can_attack_player_body_entered"]
+[connection signal="body_exited" from="can_attack_player" to="." method="_on_can_attack_player_body_exited"]

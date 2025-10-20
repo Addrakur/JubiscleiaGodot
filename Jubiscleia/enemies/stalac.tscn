@@ -621,7 +621,6 @@ hframes = 9
 parent = NodePath("../..")
 damage = 10.0
 knockback_force = 100.0
-knockup_force = -10.0
 poise_damage = 6.0
 attack_name = "stalac_dash"
 
