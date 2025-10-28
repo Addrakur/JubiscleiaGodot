@@ -43,6 +43,11 @@ func _process(_delta: float) -> void:
 	if not alive:
 		hsm.dispatch("die")
 	
+	if player_on_limit and player_ref != null:
+		can_attack_player = true
+	else:
+		can_attack_player = false
+	
 
 func _physics_process(delta):
 	if not is_on_floor():
@@ -74,12 +79,11 @@ func init_state_machine():
 
 func _on_can_attack_player_body_entered(body: Node2D) -> void:
 	if body is Player:
-		can_attack_player = true
 		player_ref = body
 
 func _on_can_attack_player_body_exited(body: Node2D) -> void:
 	if body is Player:
-		can_attack_player = false
+		player_ref = null
 
 func turn():
 	if velocity.x < 0:

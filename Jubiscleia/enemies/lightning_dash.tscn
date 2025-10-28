@@ -55,7 +55,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("enemy_attack_area/CollisionShape2D:shape:radius")
+tracks/3/path = NodePath("enemy_attack_area/attack_area_collision:shape:radius")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -67,7 +67,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("enemy_attack_area/CollisionShape2D:shape:height")
+tracks/4/path = NodePath("enemy_attack_area/attack_area_collision:shape:height")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -89,10 +89,10 @@ tracks/5/keys = {
 "values": [Vector2(-11, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_1ov4f"]
+[sub_resource type="Animation" id="Animation_m7thr"]
 resource_name = "attack"
-length = 1.0000083
-step = 0.083333336
+length = 2.0000167
+step = 0.16666667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -115,7 +115,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [4]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -124,60 +124,204 @@ tracks/2/path = NodePath("texture:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.16666667, 0.33333334, 0.8333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [0]
+"values": [0, 1, 2, 3]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("enemy_attack_area/CollisionShape2D:shape:radius")
+tracks/3/path = NodePath("hsm/lightning_dash_attack")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [6.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("enemy_attack_area/CollisionShape2D:shape:height")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [28.0]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("hsm/lightning_dash_attack")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.8333333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [true],
 "method": &"can_move_toggle"
 }]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("hsm/lightning_dash_attack")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.8333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"attacking_true"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("enemy_attack_area/attack_area_collision:shape:radius")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.7972887, 0.8333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [9.0, 9.0, 6.0]
+}
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("is_on_wall:target_position")
+tracks/6/path = NodePath("enemy_attack_area/attack_area_collision:shape:height")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0, 0.7972887, 0.8333334),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [18.0, 18.0, 30.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("is_on_wall:target_position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.8333334),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-13, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l58nx"]
+resource_name = "dead"
+length = 1.0000083
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_i1k86")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("enemy_attack_area/attack_area_collision:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("enemy_attack_area/attack_area_collision:shape:height")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [18.0]
+}
+
+[sub_resource type="Animation" id="Animation_j3p0s"]
+resource_name = "stun"
+length = 3.0000083
+step = 0.083333336
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_i1k86")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 2.9166667, 2.9952855),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("enemy_attack_area/attack_area_collision:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("enemy_attack_area/attack_area_collision:shape:height")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [18.0]
 }
 
 [sub_resource type="Animation" id="Animation_g3bt0"]
@@ -224,7 +368,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("enemy_attack_area/CollisionShape2D:shape:radius")
+tracks/3/path = NodePath("enemy_attack_area/attack_area_collision:shape:radius")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -236,7 +380,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("enemy_attack_area/CollisionShape2D:shape:height")
+tracks/4/path = NodePath("enemy_attack_area/attack_area_collision:shape:height")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -258,92 +402,10 @@ tracks/5/keys = {
 "values": [Vector2(-11, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_j3p0s"]
-resource_name = "stun"
-length = 3.0000083
-step = 0.083333336
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("texture:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("5_i1k86")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("texture:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("texture:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.083333336, 0.16666667, 2.9166667, 2.9952855),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 1, 0]
-}
-
-[sub_resource type="Animation" id="Animation_l58nx"]
-resource_name = "dead"
-length = 1.0000083
-step = 0.083333336
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("texture:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("5_i1k86")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("texture:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("texture:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.083333336, 0.16666667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [0, 1, 2]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4vchi"]
 _data = {
 &"RESET": SubResource("Animation_qh487"),
-&"attack": SubResource("Animation_1ov4f"),
+&"attack": SubResource("Animation_m7thr"),
 &"dead": SubResource("Animation_l58nx"),
 &"stun": SubResource("Animation_j3p0s"),
 &"walk": SubResource("Animation_g3bt0")
@@ -390,14 +452,14 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6e4fc"]
 height = 26.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4vchi"]
-radius = 9.0
-height = 18.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_f12iy"]
 shader = ExtResource("7_m7thr")
 shader_parameter/blue_value = 0.0
 shader_parameter/red_value = 0.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4vchi"]
+radius = 9.0
+height = 18.0
 
 [node name="lightning_dash" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 collision_layer = 2
@@ -424,6 +486,11 @@ libraries = {
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_6e4fc")
 
+[node name="texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_f12iy")
+position = Vector2(0, -16)
+texture = ExtResource("1_6e4fc")
+
 [node name="enemy_attack_area" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("3_65b13")]
 parent = NodePath("..")
 damage = 10.0
@@ -431,7 +498,7 @@ knockback_force = 300.0
 poise_damage = 2.0
 attack_name = "ball_contact"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="enemy_attack_area"]
+[node name="attack_area_collision" type="CollisionShape2D" parent="enemy_attack_area"]
 position = Vector2(0, -16)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_4vchi")
@@ -442,11 +509,6 @@ collision_layer = 0
 
 [node name="can_attack_player_collision" type="CollisionPolygon2D" parent="can_attack_player"]
 polygon = PackedVector2Array(-224, -64, -224, 0, 64, 0, 64, -64)
-
-[node name="texture" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_f12iy")
-position = Vector2(0, -16)
-texture = ExtResource("1_6e4fc")
 
 [node name="is_on_wall" type="RayCast2D" parent="."]
 position = Vector2(0, -13)
@@ -480,7 +542,7 @@ animation = NodePath("../../animation")
 script = ExtResource("11_l58nx")
 parent = NodePath("../..")
 animation = NodePath("../../animation")
-collision_damage = NodePath("../../enemy_attack_area/CollisionShape2D")
+collision_damage = NodePath("../../enemy_attack_area/attack_area_collision")
 
 [node name="ProgressBar" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("11_3n68g")]
 offset_top = -64.0

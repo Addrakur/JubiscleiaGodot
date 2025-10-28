@@ -4,8 +4,10 @@ extends Node2D
 @export var player: Player
 @export var free_spawn: bool
 @export var has_starting_weapon: bool
-@export_enum("sword","axe","spear","none") var skill_1: String
-@export_enum("sword","axe","spear","none") var skill_2: String
+@export_enum("sword","axe","spear","gauntlet","none") var weapon_1: String
+@export_enum("water","fire","air","earth") var element_1: String
+@export_enum("sword","axe","spear","gauntlet","none") var weapon_2: String
+@export_enum("water","fire","air","earth") var element_2: String
 
 func _ready():
 	GameSettings.player = player
@@ -13,9 +15,11 @@ func _ready():
 	if not free_spawn:
 		spawn_point()
 	
-#	if has_starting_weapon:
-#		PlayerVariables.skill_1 = skill_1
-#		PlayerVariables.skill_2 = skill_2
+	if has_starting_weapon:
+		PlayerVariables.skill_1_weapon = weapon_1
+		PlayerVariables.skill_1_element = element_1
+		PlayerVariables.skill_2_weapon = weapon_2
+		PlayerVariables.skill_2_element = element_2
 
 func spawn_point():
 	player.position = GameSettings.get(name + "_spawn_point")

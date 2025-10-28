@@ -3,14 +3,14 @@ extends Node
 #Scenes
 var menu: String = "res://Management/menu.tscn"
 var weapon_choice_screen: String = "res://Management/weapon_choice_screen.tscn"
-var tutorial: String = "res://levels/loop_basico.tscn"
-var tutorial_level_1: String = "res://levels/tutorial_level_1.tscn"
+var tutorial: String = "res://levels/tutorial.tscn"
+var tutorial_2: String = "res://levels/tutorial_2.tscn"
 var tutorial_boss: String = "res://levels/tutorial_boss_level.tscn"
 var level_map: String = "res://levels/level_map.tscn"
-var earth_level_1: String = "res://levels/earth_level_1.tscn"
-var earth_level_2: String = "res://levels/earth_level_2.tscn"
-var earth_level_3: String = "res://levels/earth_level_3.tscn"
-var earth_key_1_level_1: String = "res://levels/earth_key_1_level_1.tscn"
+var level_1: String = "res://levels/level_1.tscn"
+var level_2: String = "res://levels/level_2.tscn"
+var level_3: String = "res://levels/level_3.tscn"
+var level_4: String = "res://levels/level_4.tscn"
 var arena: String = "res://levels/arena.tscn"
 
 #Enemies
@@ -27,6 +27,7 @@ var sniper_enemy = preload("res://enemies/sniper_enemy.tscn")
 var rockrab = preload("res://enemies/rockrab.tscn")
 var fire_reaper = preload("res://enemies/fire_reaper.tscn")
 var stalac = preload("res://enemies/stalac.tscn")
+var lightning_dash = preload("res://enemies/lightning_dash.tscn")
 
 #Objects
 var projectile = preload("res://player/player_attack_projectile.tscn")

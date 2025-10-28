@@ -1,16 +1,18 @@
 class_name WaveEnemySpawn
 extends Node
 
-@export_enum("spike_shield_enemy","aereal_suicide_enemy","rockrab","fire_reaper","stalac") var enemy: String
+@export_enum("spike_shield_enemy","aereal_suicide_enemy","rockrab","fire_reaper","stalac","lightning_dash") var enemy: String
 
 @export_group("Bools")
 @export var has_starting_x: bool
 @export var has_set_direction: bool
 @export var has_left_and_right_points: bool
 @export var upside_down: bool
+@export var has_wander_limit:bool
 
 @export_group("Refs")
 @export var set_direction: float
+@export var wander_limit: float
 @export var starting_x: Marker2D
 @export var limit: EnemyLimit
 @export var spawn_point: Marker2D
@@ -41,3 +43,6 @@ func spawn_enemy():
 	
 	if upside_down:
 		enemy_inst.rotation_degrees = 180
+	
+	if has_wander_limit:
+		enemy_inst.max_wandering_distance = wander_limit

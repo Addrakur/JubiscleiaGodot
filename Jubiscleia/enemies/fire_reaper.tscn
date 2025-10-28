@@ -457,16 +457,15 @@ texture = ExtResource("1_e4v3k")
 hframes = 11
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("4_drejg")]
-max_health = 25.0
+max_health = 15.0
 max_poise = 9.0
 poise_recover_timer = 6.0
 attack_timer = NodePath("../attack_timer")
 
 [node name="enemy_attack_area" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("10_o3w8l")]
 parent = NodePath("..")
-damage = 20.0
+damage = 12.0
 knockback_force = 150.0
-knockup_force = -10.0
 poise_damage = 6.0
 attack_name = "fire_reaper"
 
@@ -479,7 +478,6 @@ disabled = true
 parent = NodePath("..")
 damage = 5.0
 knockback_force = 50.0
-knockup_force = -10.0
 poise_damage = 20.0
 attack_name = "fire_reaper_collision"
 

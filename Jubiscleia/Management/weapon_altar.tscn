@@ -1,8 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://d02iqmvry0lkc"]
+[gd_scene load_steps=13 format=3 uid="uid://d02iqmvry0lkc"]
 
 [ext_resource type="Script" uid="uid://dfbpmwhqriti6" path="res://Management/weapon_altar.gd" id="1_ufh5v"]
 [ext_resource type="Texture2D" uid="uid://cbx2awq183oh3" path="res://assets/axe_altar_PH.png" id="2_h7s3x"]
 [ext_resource type="Texture2D" uid="uid://dbat6h6re37ho" path="res://assets/axe_altar_interacted_PH.png" id="3_d4eof"]
+[ext_resource type="Texture2D" uid="uid://cu4rxo68n40e1" path="res://assets/gauntlet_altar_PH.png" id="4_nxxbv"]
+[ext_resource type="Texture2D" uid="uid://syry5ghilr1" path="res://assets/gauntlet_altar_interacted_PH.png" id="5_ei13q"]
 
 [sub_resource type="Animation" id="Animation_tjxee"]
 length = 0.001
@@ -20,7 +22,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_d4eof"]
-resource_name = "axe"
+resource_name = "axe_fire"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -36,7 +38,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_nxxbv"]
-resource_name = "axe_interacted"
+resource_name = "axe_fire_interacted"
 length = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -51,11 +53,43 @@ tracks/0/keys = {
 "values": [ExtResource("3_d4eof")]
 }
 
+[sub_resource type="Animation" id="Animation_afcf4"]
+resource_name = "gauntlet_earth"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_nxxbv")]
+}
+
+[sub_resource type="Animation" id="Animation_0jw1j"]
+resource_name = "gauntlet_earth_interacted"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("5_ei13q")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nxxbv"]
 _data = {
 &"RESET": SubResource("Animation_tjxee"),
-&"axe": SubResource("Animation_d4eof"),
-&"axe_interacted": SubResource("Animation_nxxbv")
+&"axe_fire": SubResource("Animation_d4eof"),
+&"axe_fire_interacted": SubResource("Animation_nxxbv"),
+&"gauntlet_earth": SubResource("Animation_afcf4"),
+&"gauntlet_earth_interacted": SubResource("Animation_0jw1j")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4eof"]
