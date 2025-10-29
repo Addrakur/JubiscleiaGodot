@@ -23,6 +23,7 @@ extends CharacterBody2D
 @onready var attack_state: LimboState = $hsm/stalac_dash_attack
 @onready var hit_state: LimboState = $hsm/stalac_hit
 @onready var death_state: LimboState = $hsm/stalac_death
+@onready var stun_state: LimboState = $hsm/stalac_stun
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player: bool = false
@@ -86,7 +87,9 @@ func init_state_machine():
 	hsm.add_transition(fall_attack_state, idle_state, &"fall_attack_to_idle")
 	
 	hsm.add_transition(hsm.ANYSTATE, hit_state, &"apply_knockback")
-	hsm.add_transition(hit_state, idle_state, &"hit_to_idle")
+	hsm.add_transition(hit_state, stun_state, &"hit_to_stun")
+	
+	hsm.add_transition(stun_state, idle_state, &"stun_to_idle")
 	
 	hsm.add_transition(hsm.ANYSTATE, death_state, &"die")
 	

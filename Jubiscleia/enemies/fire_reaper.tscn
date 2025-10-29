@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ddptg8j7uu8c7"]
+[gd_scene load_steps=34 format=3 uid="uid://ddptg8j7uu8c7"]
 
 [ext_resource type="Script" uid="uid://xiksx3eoua5n" path="res://enemies/fire_reaper.gd" id="1_1aj1k"]
 [ext_resource type="Texture2D" uid="uid://bhswrcr8fpd7r" path="res://assets/enemy/fire_reaper/idle.png" id="1_e4v3k"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://bc32s34fopk33" path="res://Management/states/fire_reaper/fire_reaper_hit.gd" id="9_88vq7"]
 [ext_resource type="PackedScene" uid="uid://c3tb3d720s55q" path="res://enemies/enemy_attack_area.tscn" id="10_o3w8l"]
 [ext_resource type="Script" uid="uid://dckw5xar58bk0" path="res://Management/states/fire_reaper/fire_reaper_death.gd" id="10_y3d0c"]
+[ext_resource type="Script" uid="uid://b3r3ctr056b2n" path="res://Management/states/fire_reaper/fire_reaper_stun.gd" id="18_y3d0c"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xel0x"]
 height = 56.0
@@ -362,6 +363,47 @@ tracks/2/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 }
 
+[sub_resource type="Animation" id="Animation_o3w8l"]
+resource_name = "stun"
+length = 1.3333411
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("texture:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_qttnp")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("texture:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [15]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("texture:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 1.0833334, 1.1666666, 1.25, 1.3333334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 3, 2, 1, 0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_drejg"]
 _data = {
 &"RESET": SubResource("Animation_j4y8o"),
@@ -369,6 +411,7 @@ _data = {
 &"dead": SubResource("Animation_ao5jt"),
 &"hit": SubResource("Animation_y3d0c"),
 &"idle": SubResource("Animation_dvoxg"),
+&"stun": SubResource("Animation_o3w8l"),
 &"walk": SubResource("Animation_drejg")
 }
 
@@ -410,15 +453,15 @@ _data = {
 &"hit": SubResource("Animation_urt7n")
 }
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ao5jt"]
+radius = 8.0
+height = 52.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qttnp"]
 resource_local_to_scene = true
 shader = ExtResource("2_ao5jt")
 shader_parameter/blue_value = 0.0
 shader_parameter/red_value = 0.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ao5jt"]
-radius = 8.0
-height = 52.0
 
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_qttnp"]
 
@@ -450,11 +493,6 @@ libraries = {
 [node name="attack_timer" type="Timer" parent="."]
 
 [node name="idle_timer" type="Timer" parent="."]
-
-[node name="texture" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_qttnp")
-texture = ExtResource("1_e4v3k")
-hframes = 11
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("attack_timer") instance=ExtResource("4_drejg")]
 max_health = 15.0
@@ -506,6 +544,11 @@ polygon = PackedVector2Array(-192, -96, -192, 0, 96, 0, 96, -96)
 polygon = PackedVector2Array(-352, -160, -352, 0, 352, 0, 352, -160)
 disabled = true
 
+[node name="texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_qttnp")
+texture = ExtResource("1_e4v3k")
+hframes = 11
+
 [node name="ProgressBar" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("6_nmmrm")]
 offset_top = -84.0
 offset_bottom = -74.0
@@ -556,9 +599,15 @@ script = ExtResource("10_y3d0c")
 parent = NodePath("../..")
 animation = NodePath("../../animation")
 
+[node name="fire_reaper_stun" type="LimboState" parent="hsm" node_paths=PackedStringArray("parent", "animation")]
+script = ExtResource("18_y3d0c")
+parent = NodePath("../..")
+animation = NodePath("../../animation")
+
 [connection signal="animation_finished" from="animation" to="hsm/fire_reaper_attack" method="_on_animation_animation_finished"]
 [connection signal="animation_finished" from="animation" to="hsm/fire_reaper_hit" method="_on_animation_animation_finished"]
 [connection signal="animation_finished" from="animation" to="hsm/fire_reaper_death" method="_on_animation_finished"]
+[connection signal="animation_finished" from="animation" to="hsm/fire_reaper_stun" method="_on_animation_animation_finished"]
 [connection signal="animation_finished" from="hit_modulate" to="." method="_on_hit_modulate_animation_finished"]
 [connection signal="timeout" from="attack_timer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="idle_timer" to="hsm/fire_reaper_idle" method="_on_idle_timer_timeout"]

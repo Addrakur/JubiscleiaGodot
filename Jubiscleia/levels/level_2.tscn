@@ -67,6 +67,8 @@ script = ExtResource("40_p3sfv")
 process_mode = 3
 script = ExtResource("1_6oa44")
 player = NodePath("Node/player")
+free_spawn = true
+metadata/_edit_group_ = true
 
 [node name="Node" type="Node" parent="."]
 process_mode = 1
@@ -174,7 +176,7 @@ texture = ExtResource("9_wvv8u")
 
 [node name="Camera2D" type="Camera2D" parent="Node"]
 physics_interpolation_mode = 1
-position = Vector2(138.66666, 1607)
+position = Vector2(5713, 2845.0002)
 zoom = Vector2(0.75, 0.75)
 process_callback = 0
 limit_left = -288
@@ -1380,7 +1382,7 @@ position = Vector2(5792, 3739)
 position = Vector2(5600, 3771)
 
 [node name="player" parent="Node" node_paths=PackedStringArray("camera") instance=ExtResource("31_js1ip")]
-position = Vector2(20, 1639)
+position = Vector2(5713, 2877.0002)
 camera = NodePath("../Camera2D")
 
 [node name="tree" type="TileMapLayer" parent="Node" groups=["terrain"]]
@@ -1440,7 +1442,7 @@ shape = SubResource("RectangleShape2D_ttapc")
 
 [node name="FreeCamera" type="Node2D" parent="Node" node_paths=PackedStringArray("follow_target")]
 top_level = true
-position = Vector2(138.66666, 1607)
+position = Vector2(5713, 2845.0002)
 script = ExtResource("39_hor3l")
 follow_mode = 2
 follow_target = NodePath("../player")
@@ -1453,7 +1455,7 @@ limit_target = NodePath("../cameras/FreeCameraLimit")
 
 [node name="PC2" type="Node2D" parent="Node" node_paths=PackedStringArray("follow_target", "follow_path")]
 top_level = true
-position = Vector2(5984, 1638.792)
+position = Vector2(5984, 2877.0002)
 script = ExtResource("39_hor3l")
 follow_mode = 4
 follow_target = NodePath("../player")

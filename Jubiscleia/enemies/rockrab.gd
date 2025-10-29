@@ -27,6 +27,7 @@ extends CharacterBody2D
 @onready var chase_state: LimboState = $hsm/rockrab_chase
 @onready var hit_state: LimboState = $hsm/rockrab_hit
 @onready var death_state: LimboState = $hsm/rockrab_death
+@onready var stun_state: LimboState = $hsm/rockrab_stun
 
 @onready var player_ref: CharacterBody2D
 var can_attack_player: bool = false
@@ -99,7 +100,9 @@ func init_state_machine():
 	hsm.add_transition(chase_state, idle_state, &"chase_to_idle")
 	
 	hsm.add_transition(hsm.ANYSTATE, hit_state, &"apply_knockback")
-	hsm.add_transition(hit_state,idle_state, &"hit_to_idle")
+	hsm.add_transition(hit_state,stun_state, &"hit_to_stun")
+	
+	hsm.add_transition(stun_state,idle_state, &"stun_to_idle")
 	
 	hsm.add_transition(hsm.ANYSTATE, death_state, &"die")
 	

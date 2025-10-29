@@ -452,16 +452,16 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6e4fc"]
 height = 26.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_f12iy"]
-shader = ExtResource("7_m7thr")
-shader_parameter/blue_value = 0.0
-shader_parameter/red_value = 0.0
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4vchi"]
 radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m7thr"]
 radius = 9.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_f12iy"]
+shader = ExtResource("7_m7thr")
+shader_parameter/blue_value = 0.0
+shader_parameter/red_value = 0.0
 
 [node name="lightning_dash" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 collision_layer = 2
@@ -487,11 +487,6 @@ libraries = {
 [node name="collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_6e4fc")
-
-[node name="texture" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_f12iy")
-position = Vector2(0, -16)
-texture = ExtResource("1_6e4fc")
 
 [node name="enemy_attack_area" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("3_65b13")]
 parent = NodePath("..")
@@ -523,6 +518,11 @@ polygon = PackedVector2Array(-224, -64, -224, 0, 64, 0, 64, -64)
 position = Vector2(0, -13)
 target_position = Vector2(-11, 0)
 collision_mask = 65581
+
+[node name="texture" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_f12iy")
+position = Vector2(0, -16)
+texture = ExtResource("1_6e4fc")
 
 [node name="HealthComponent" parent="." instance=ExtResource("5_qh487")]
 max_health = 10.0

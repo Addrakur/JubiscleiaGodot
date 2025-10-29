@@ -30,7 +30,7 @@ func _update(delta):
 	
 	if direction == 1 and parent.velocity.x <= hit_recover_limit or direction == -1 and parent.velocity.x >=-hit_recover_limit:
 		if parent.is_on_floor() and anim_finish:
-			dispatch("hit_to_idle")
+			dispatch("hit_to_stun")
 
 func knockback():
 	parent.velocity = Vector2(knockback_force * direction, knockup_force)
