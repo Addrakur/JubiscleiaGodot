@@ -93,3 +93,7 @@ func turn():
 
 func _on_hit_modulate_animation_finished(_anim_name):
 	health_component.last_attack = ""
+
+func teste():
+	print("1")
+ 

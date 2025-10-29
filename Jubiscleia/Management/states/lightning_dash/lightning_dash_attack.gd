@@ -10,7 +10,6 @@ var can_move: bool = false
 var attacking: bool = false
 
 func _enter():
-	print("enter attack")
 	parent.velocity.x = 0
 	animation.play("attack")
 	set_direction()
@@ -23,7 +22,6 @@ func _update(delta) -> void:
 		dispatch("attack_to_stun")
 
 func _exit():
-	print("exit attack")
 	can_move = false
 	attacking = false
 

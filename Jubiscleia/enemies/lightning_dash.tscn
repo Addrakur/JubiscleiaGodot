@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bntvr1e8q1ygc"]
+[gd_scene load_steps=27 format=3 uid="uid://bntvr1e8q1ygc"]
 
 [ext_resource type="Texture2D" uid="uid://dhi73d6n2m0am" path="res://assets/enemy/lightning_dash/lightning_enemy_idle.png" id="1_6e4fc"]
 [ext_resource type="Script" uid="uid://dn0tp68dtli02" path="res://enemies/lightning_dash.gd" id="1_g3bt0"]
@@ -55,38 +55,38 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("enemy_attack_area/attack_area_collision:shape:radius")
+tracks/3/path = NodePath("is_on_wall:target_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [9.0]
+"values": [Vector2(-11, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("enemy_attack_area/attack_area_collision:shape:height")
+tracks/4/path = NodePath("enemy_attack_area/attack_area_collision:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [18.0]
+"update": 1,
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("is_on_wall:target_position")
+tracks/5/path = NodePath("enemy_attack_area/attack_area_collision_circle:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-11, 0)]
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_m7thr"]
@@ -160,38 +160,38 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("enemy_attack_area/attack_area_collision:shape:radius")
+tracks/5/path = NodePath("is_on_wall:target_position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.7972887, 0.8333334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [9.0, 9.0, 6.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("enemy_attack_area/attack_area_collision:shape:height")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.7972887, 0.8333334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [18.0, 18.0, 30.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("is_on_wall:target_position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0.8333334),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-13, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("enemy_attack_area/attack_area_collision_circle:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.8333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("enemy_attack_area/attack_area_collision:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.8333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_l58nx"]
@@ -237,26 +237,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("enemy_attack_area/attack_area_collision:shape:radius")
+tracks/3/path = NodePath("enemy_attack_area/attack_area_collision:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [9.0]
+"update": 1,
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("enemy_attack_area/attack_area_collision:shape:height")
+tracks/4/path = NodePath("enemy_attack_area/attack_area_collision_circle:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [18.0]
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_j3p0s"]
@@ -302,26 +302,26 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("enemy_attack_area/attack_area_collision:shape:radius")
+tracks/3/path = NodePath("enemy_attack_area/attack_area_collision_circle:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [9.0]
+"update": 1,
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("enemy_attack_area/attack_area_collision:shape:height")
+tracks/4/path = NodePath("enemy_attack_area/attack_area_collision:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [18.0]
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_g3bt0"]
@@ -368,38 +368,38 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("enemy_attack_area/attack_area_collision:shape:radius")
+tracks/3/path = NodePath("is_on_wall:target_position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [9.0]
+"values": [Vector2(-11, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("enemy_attack_area/attack_area_collision:shape:height")
+tracks/4/path = NodePath("enemy_attack_area/attack_area_collision:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [18.0]
+"update": 1,
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("is_on_wall:target_position")
+tracks/5/path = NodePath("enemy_attack_area/attack_area_collision_circle:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-11, 0)]
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4vchi"]
@@ -458,8 +458,10 @@ shader_parameter/blue_value = 0.0
 shader_parameter/red_value = 0.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4vchi"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m7thr"]
 radius = 9.0
-height = 18.0
 
 [node name="lightning_dash" type="CharacterBody2D" node_paths=PackedStringArray("health_component", "attack_area") groups=["enemy"]]
 collision_layer = 2
@@ -502,7 +504,14 @@ attack_name = "ball_contact"
 position = Vector2(0, -16)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_4vchi")
+disabled = true
 debug_color = Color(0.9, 0.09900001, 0.09900001, 0.41960785)
+
+[node name="attack_area_collision_circle" type="CollisionShape2D" parent="enemy_attack_area"]
+position = Vector2(0, -16)
+shape = SubResource("CircleShape2D_m7thr")
+disabled = true
+debug_color = Color(0.7, 0.6766667, 0, 0.41960785)
 
 [node name="can_attack_player" type="Area2D" parent="."]
 collision_layer = 0
